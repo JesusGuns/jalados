@@ -899,14 +899,14 @@
                     </div>
                 </div>
                 <!-- Controles -->
-                <!-- <button class="carousel-control-prev" type="button" data-bs-target="#_invitation-carousel" data-bs-slide="prev" style="display: none;">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Anterior</span>
-          </button>
-          <button class="carousel-control-next" type="button" data-bs-target="#_invitation-carousel" data-bs-slide="next" style="display: none;">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Siguiente</span>
-          </button> -->
+                <button class="carousel-control-prev d-none d-md-block" type="button" data-bs-target="#_invitation-carousel" data-bs-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Anterior</span>
+                </button>
+                <button class="carousel-control-next d-none d-md-block" type="button" data-bs-target="#_invitation-carousel" data-bs-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Siguiente</span>
+                </button>
             </div>
 
             <!-- Modal -->
@@ -955,17 +955,17 @@
             var $this = $('#_invitation-carousel');
             if ($('.carousel-inner .carousel-item:first').hasClass('active')) {
               // Hide left arrow
-              $this.children('.carousel-control-prev').hide();
+              $this.children('.carousel-control-prev').removeClass("d-md-block");
               // But show right arrow
-              $this.children('.carousel-control-next').show();
+              $this.children('.carousel-control-next').addClass("d-md-block");
             } else if ($('.carousel-inner .carousel-item:last').hasClass('active')) {
               // Hide right arrow
-              $this.children('.carousel-control-next').hide();
+              $this.children('.carousel-control-next').removeClass("d-md-block");
               // But show left arrow
-              $this.children('.carousel-control-prev').show();
+              $this.children('.carousel-control-prev').addClass("d-md-block");
             } else {
-              $this.children('.carousel-control-next').show();
-              $this.children('.carousel-control-prev').show();
+              $this.children('.carousel-control-next').addClass("d-md-block");
+              $this.children('.carousel-control-prev').addClass("d-md-block");
             }
           }
     
