@@ -68,7 +68,7 @@
           }
           #audioButton.off{
             filter: grayscale(1);
-            animation: none;
+            animation: vibrar 0.4s infinite;
           }
           #audioButton img{
             width: 45px;
@@ -87,6 +87,14 @@
             100% {
                 transform: scale(1);
             }
+          }
+
+          @keyframes vibrar {
+            0%   { transform: translate(0); }
+            25%  { transform: translate(-1px, 1px); }
+            50%  { transform: translate(1px, -1px); }
+            75%  { transform: translate(-1px, -1px); }
+            100% { transform: translate(1px, 1px); }
           }
     
           @media (max-width: 575.98px) { 
@@ -724,7 +732,7 @@
                 </div>
                 <!-- Slides -->
                 <div class="carousel-inner">
-                    <span id="audioButton"><img src="https://cdn-icons-png.freepik.com/512/13896/13896624.png?ga=GA1.1.1993030682.1745256637"></span>
+                    <span id="audioButton" class="off"><img src="https://cdn-icons-png.freepik.com/512/13896/13896624.png?ga=GA1.1.1993030682.1745256637"></span>
                     <div class="carousel-item active">
                         <!-- Portada -->
                         <div class="card-face front">
@@ -806,7 +814,7 @@
                                     <div class="timeline-content">
                                         <h3>Misa</h3>
                                         <p>Se celebrará a la 1:00 p.m. en la Iglesia Santa María para agradecer por estos 15 años.</p>
-                                        <a href="https://maps.app.goo.gl/hBdb191LiXzkPRfR8">Cómo llegar...</a>
+                                        <a href="https://maps.app.goo.gl/hBdb191LiXzkPRfR8" target="_blank">Cómo llegar...</a>
                                     </div>
                                 </div>
                                 <div class="timeline-item">
@@ -814,7 +822,7 @@
                                     <div class="timeline-content">
                                         <h3>Bienvenida</h3>
                                         <p>Una cálida bienvenida a todos los invitados a esta celebración tan especial.</p>
-                                        <a href="https://maps.app.goo.gl/1wwmTSk84XA8pLMn8">Cómo llegar...</a>
+                                        <a href="https://maps.app.goo.gl/1wwmTSk84XA8pLMn8" target="_blank">Cómo llegar...</a>
                                     </div>
                                 </div>
                                 <div class="timeline-item">
@@ -871,7 +879,7 @@
                                         <img src="https://static-00.iconduck.com/assets.00/amazon-icon-2048x2048-pqt2fe18.png" class="imagenRegalo"> Amazon
                                     </a>
 
-                                    <a href="https://www.liverpool.com.mx/" target="_blank" class="_btn-gifttable">
+                                    <a href="https://www.liverpool.com.mx/tienda/home" target="_blank" class="_btn-gifttable">
                                         <img src="https://play-lh.googleusercontent.com/FwrxfHaknUKLneazGpPsjJvQ4mUYKJkccj-efHNeXQISwCwqC9ymNAnqlAY5J5oHIOc" class="imagenRegalo"> Liverpool
                                     </a>
                                 </div>
