@@ -55,26 +55,8 @@
       }
 
       /* #endregion HTML*/
-      /* #region Audio*/
-      #audioButton {
-        animation: audioPulse 1.5s infinite;
-        position: absolute;
-        right: 0;
-        top: 11%;
-        z-index: 2;
-      }
-
-      #audioButton.off {
-        filter: brightness(0);
-        animation: vibrar 0.4s infinite;
-      }
-
-      #audioButton img {
-        width: 45px;
-        cursor: pointer;
-      }
-
-      /* Animación de pulso */
+      /* #region Animations*/
+      
       @keyframes audioPulse {
         0% {
           transform: scale(1);
@@ -110,7 +92,67 @@
           transform: translate(1px, 1px);
         }
       }
+  
+      @keyframes pulse {
+        0% {
+          transform: scale(1);
+        }
 
+        50% {
+          transform: scale(1.03);
+        }
+
+        100% {
+          transform: scale(1);
+        }
+      }
+
+      
+      @keyframes shake {
+        0%   { transform: translateX(0); }
+        15%  { transform: translateX(-5px); }
+        30%  { transform: translateX(5px); }
+        45%  { transform: translateX(-4px); }
+        60%  { transform: translateX(4px); }
+        75%  { transform: translateX(-2px); }
+        90%  { transform: translateX(2px); }
+        100% { transform: translateX(0); }
+      }
+      
+      /* #endregion Animations*/
+      
+      /* #region General*/
+      ._btn-floating{
+        animation: vibrar 0.4s infinite;
+        position: absolute;
+        top: 55%;
+        right: 1%;
+        z-index: 2;
+      }
+
+      ._btn-floating img{
+        width: 40px;;
+      }
+      /* #endregion General*/
+      
+      /* #region Audio*/
+      #audioButton {
+        animation: audioPulse 1.5s infinite;
+        position: absolute;
+        right: 0;
+        top: 11%;
+        z-index: 2;
+      }
+
+      #audioButton.off {
+        filter: brightness(0);
+        animation: vibrar 0.4s infinite;
+      }
+
+      #audioButton img {
+        width: 45px;
+        cursor: pointer;
+      }
       @media (max-width: 575.98px) {
         #audioButton {
           top: 45%;
@@ -120,7 +162,6 @@
           width: 40px;
         }
       }
-
       /* #endregion Audio*/
       /* #region Carousel*/
       .carousel-inner,
@@ -251,21 +292,6 @@
         font-weight: 700;
         letter-spacing: 2px;
         animation: pulse 3s infinite;
-      }
-
-      /* Pulso más suave */
-      @keyframes pulse {
-        0% {
-          transform: scale(1);
-        }
-
-        50% {
-          transform: scale(1.03);
-        }
-
-        100% {
-          transform: scale(1);
-        }
       }
 
       @media (max-width: 575.98px) {
@@ -821,6 +847,9 @@
           <div class="carousel-inner">
             <span id="audioButton" class="off">
               <img src="https://cdn-icons-png.freepik.com/512/13896/13896624.png?ga=GA1.1.1993030682.1745256637" />
+            </span>
+            <span class="_btn-floating">
+              <a href="https://wa.link/jucwk6"><img src="https://cdn-icons-png.freepik.com/512/11302/11302131.png?ga=GA1.1.1993030682.1745256637"></a>
             </span>
             <div class="carousel-item active">
               <!-- Portada -->
