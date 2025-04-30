@@ -726,7 +726,7 @@
                 <audio id="audio" src="https://invitameok.com/invitaciones/admin/imagenes/27433/MUSICAstyle-taylor.mp3" autoplay loop></audio>
                 <div id="interactionArea"></div>
             </div>
-            <div id="_invitation-carousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000" data-bs-touch="true">
+            <div id="_invitation-carousel" class="carousel slide" data-bs-ride="carousel">
                 <!-- Indicadores -->
                 <div class="carousel-indicators">
                     <button type="button" data-bs-target="#_invitation-carousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -945,7 +945,7 @@
           $(document).ready(function() {
             var myCarousel = document.querySelector('#_invitation-carousel');
             var carousel = new bootstrap.Carousel(myCarousel, {
-              interval: 3000,
+              interval: 10000,
               touch: true,
               ride: 'carousel',
               pause: false, // No se pausa al tocar
