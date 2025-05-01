@@ -14,6 +14,8 @@
       /* #region ROOT*/
       :root {
         --color1: white;
+        --counterColor: #a14d74;
+        --fontOutfit: "Outfit", serif;
       }
 
       /* #endregion ROOT*/
@@ -138,7 +140,7 @@
       #audioButton {
         animation: audioPulse 1.5s infinite;
         position: absolute;
-        right: 0;
+        right: 1%;
         top: 11%;
         z-index: 2;
       }
@@ -283,7 +285,7 @@
         flex-direction: column;
         align-items: center;
         font-size: 22px;
-        color: #a14d74;
+        color: var(--counterColor);
       }
 
       .time-box span {
@@ -296,6 +298,8 @@
       @media (max-width: 575.98px) {
         #countdown {
           gap: 15px;
+          width: 100%;
+          box-shadow: 0px -10px 25px rgb(0 0 0 / 15%);
         }
 
         .time-box {
@@ -303,14 +307,16 @@
         }
 
         .time-box span {
-          font-size: 45px;
+          font-size: 40px;
         }
       }
 
       @media (max-width: 375.98px) {
-        #countdown{
-          width: 100%;
-          box-shadow: 0px -10px 25px rgb(0 0 0 / 15%);
+        #countdown {
+          gap: 10px;
+        }
+        .time-box span {
+          font-size: 35px;
         }
       }
       /* #endregion Counter*/
@@ -889,10 +895,10 @@
                   <p> Los momentos más esperados se sueñan, se imaginan, se construyen y cuando llegue ese día tan especial, lo más importante es que estés a mi lado. <br />
                     <strong>Te invito a mis 15 Años</strong>.
                   </p>
-                  <p class="name">María Aguilar</p>
+                  <p class="name" data-replace="EventName"></p>
                   <p class="ceremony _ceremony-detail"> La celebración será el <br />
-                    <strong>sábado 20 de mayo de 2025</strong>
-                    <br /> a la <strong>1:00 p.m.</strong>
+                    <strong data-replace="EventDateString"></strong>
+                    <br /><strong data-replace="EventHourString"></strong>
                   </p>
                   <p class="_signed">Esperando contar con tu presencia.</p>
                 </div>
@@ -911,13 +917,13 @@
                 <p class="_signed">Con todo mi cariño.</p>
                 <p class="title">Mis Padres</p>
                 <ul class="list-unstyled">
-                  <li>Jose Aguilar</li>
-                  <li>Maria Socorro</li>
+                  <li data-replace="EventFather"></li>
+                  <li data-replace="EventMother"></li>
                 </ul>
                 <p class="title">Mis Padrinos</p>
                 <ul class="list-unstyled">
-                  <li>Juan Fernandez</li>
-                  <li>Laura Jimenez</li>
+                  <li data-replace="EventGodFather"></li>
+                  <li data-replace="EventGodMother"></li>
                 </ul>
                 <div class="_end-decoration">✧ ✦ ✧</div>
               </div>
@@ -935,8 +941,8 @@
                     <div class="icon">⛪</div>
                     <div class="timeline-content">
                       <h3>Misa</h3>
-                      <p> Se celebrará a la 1:00 p.m. en la Iglesia Santa María para agradecer por estos 15 años. </p>
-                      <a href="https://maps.app.goo.gl/hBdb191LiXzkPRfR8" target="_blank">Cómo llegar...</a>
+                      <p> Se celebrará a <span data-replace="EventHourString"></span> en la Iglesia Santa María para agradecer por estos 15 años. </p>
+                      <a data-replace="EventChurchUrl" href="#" target="_blank">Cómo llegar...</a>
                     </div>
                   </div>
                   <div class="timeline-item">
@@ -944,7 +950,7 @@
                     <div class="timeline-content">
                       <h3>Recepción</h3>
                       <p class="_hide-mobile-xxs"> Una cálida bienvenida a todos los invitados a esta celebración tan especial. </p>
-                      <a href="https://maps.app.goo.gl/1wwmTSk84XA8pLMn8" target="_blank">Cómo llegar...</a>
+                      <a data-replace="EventReceptionUrl" href="#" target="_blank">Cómo llegar...</a>
                     </div>
                   </div>
                   <div class="timeline-item">
@@ -1003,9 +1009,9 @@
                     <br /> Para nosotros tu presencia es nuestro mejor regalo, pero si deseas hacernos llegar un obsequio, te sugerimos la siguiente opción:
                   </p>
                   <div class="_btn-brands">
-                    <a href="https://www.amazon.com.mx/" target="_blank" class="_btn-gifttable">
+                    <a data-replace="EventAmazonGiftTableUrl" href="#" target="_blank" class="_btn-gifttable">
                       <img src="https://static-00.iconduck.com/assets.00/amazon-icon-2048x2048-pqt2fe18.png" class="imagenRegalo" /> Amazon </a>
-                    <a href="https://www.liverpool.com.mx/tienda/home" target="_blank" class="_btn-gifttable">
+                    <a data-replace="EventLiverpoolGiftTableUrl" href="#" target="_blank" class="_btn-gifttable">
                       <img src="https://play-lh.googleusercontent.com/FwrxfHaknUKLneazGpPsjJvQ4mUYKJkccj-efHNeXQISwCwqC9ymNAnqlAY5J5oHIOc" class="imagenRegalo" /> Liverpool </a>
                   </div>
                 </div>
@@ -1136,31 +1142,63 @@
             "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
             "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"
           ];
+
+          const days = ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"];
           
           const day = EventDate.getDate();
+          const dayOfWeek = EventDate.getDay();
+          const dayName = days[dayOfWeek];
           const month = months[EventDate.getMonth()];
           const year = EventDate.getFullYear();
-          return `${day} de ${month} del ${year}`;
+          return `${dayName} ${day} de ${month} del ${year}`;
         },
-        onGetHours: function(EventDate){
+        onGetHoursString: function(EventDate){
           let hours = EventDate.getHours();
-          const ampm = hours >= 12 ? "pm" : "am";
+          const ampm = hours >= 12 ? "p.m." : "a.m.";
           const mins = EventDate.getMinutes().toString().padStart(2, "0");
-          return `${hours}:${mins} ${ampm}`;
+          const the =  hours > 1 ? "las " : "la";
+          hours = hours % 12 || 12;
+          return `${the} ${hours}:${mins} ${ampm}`;
         }
       };
+      
       const EventDate = new Date("2025-11-25T13:00:00");
       var Resources = {
         EventDate: EventDate,
         EventTime: EventDate.getTime(),
         EventDateString: helpers.onGetDateString(EventDate),
-        EventHour: helpers.onGetHours(EventDate),
+        EventHourString: helpers.onGetHoursString(EventDate),
         EventName: "María Aguilar",
+        EventFather: "José Aguilar",
+        EventMother: "María Socorro",
+        EventGodFather: "Juan Fernández",
+        EventGodMother: "Laura Jimenez",
+        EventChurchUrl: "https://maps.app.goo.gl/hBdb191LiXzkPRfR8",
+        EventReceptionUrl: "https://maps.app.goo.gl/1wwmTSk84XA8pLMn8",
+        EventAmazonGiftTableUrl: "https://www.amazon.com.mx/",
+        EventLiverpoolGiftTableUrl: "https://www.liverpool.com.mx/tienda/home",
         ImageBackground: "",
         ImageCard1: "",
-
+        ImageAudioUrl: ""
       };
-      function Init() {debugger
+
+      var helpers = {
+        onLoad: function(){
+          $("[data-replace=EventDateString]").text(Resources.EventDateString);
+          $("[data-replace=EventHourString]").text(Resources.EventHourString);
+          $("[data-replace=EventName]").text(Resources.EventName);
+          $("[data-replace=EventFather]").text(Resources.EventFather);
+          $("[data-replace=EventMother]").text(Resources.EventMother);
+          $("[data-replace=EventGodFather]").text(Resources.EventGodFather);
+          $("[data-replace=EventGodMother]").text(Resources.EventGodMother);
+          $("[data-replace=EventChurchUrl]").attr("href", Resources.EventChurchUrl);
+          $("[data-replace=EventReceptionUrl]").attr("href", Resources.EventReceptionUrl);
+          $("[data-replace=EventAmazonGiftTableUrl]").attr("href", Resources.EventAmazonGiftTableUrl);
+          $("[data-replace=EventLiverpoolGiftTableUrl]").attr("href", Resources.EventLiverpoolGiftTableUrl);
+        }
+      };
+      function Init() {
+        helpers.onLoad();
         actions.onCounter(Resources.EventDate);
         actions.onAudioPlayer();
 
