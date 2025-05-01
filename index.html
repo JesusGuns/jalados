@@ -123,7 +123,6 @@
       
       /* #region General*/
       ._btn-floating{
-        animation: vibrar 0.4s infinite;
         position: absolute;
         top: 55%;
         right: 1%;
@@ -1050,15 +1049,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-      document.addEventListener("DOMContentLoaded", () => {
-        const modalImage = document.getElementById("modalCarouselImage");
-        document.querySelectorAll(".collage img").forEach((img) => {
-          img.addEventListener("click", function() {
-            const src = this.getAttribute("data-bs-image");
-            modalImage.src = src;
-          });
-        });
-      });
       $(document).ready(function() {
         var myCarousel = document.querySelector("#_invitation-carousel");
         var carousel = new bootstrap.Carousel(myCarousel, {
@@ -1068,73 +1058,114 @@
           pause: false, // No se pausa al tocar
           wrap: true, // Loop infinito
         });
-        checkitem();
+        actions.onCarouselCheckItems()
       });
-      $("#_invitation-carousel").on("slid.bs.carousel", checkitem);
 
-      function checkitem() {
-        var $this = $("#_invitation-carousel");
-        if ($(".carousel-inner .carousel-item:first").hasClass("active")) {
-          // Hide left arrow
-          $this.children(".carousel-control-prev").removeClass("d-md-block");
-          // But show right arrow
-          $this.children(".carousel-control-next").addClass("d-md-block");
-        } else if ($(".carousel-inner .carousel-item:last").hasClass("active")) {
-          // Hide right arrow
-          $this.children(".carousel-control-next").removeClass("d-md-block");
-          // But show left arrow
-          $this.children(".carousel-control-prev").addClass("d-md-block");
-        } else {
-          $this.children(".carousel-control-next").addClass("d-md-block");
-          $this.children(".carousel-control-prev").addClass("d-md-block");
-        }
-      }
-
-      function counter() {
-        const targetDate = new Date("2025-06-20T00:00:00").getTime();
-        const interval = setInterval(() => {
-          const now = new Date().getTime();
-          const distance = targetDate - now;
-          const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-          const hours = Math.floor(
-            (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-          const minutes = Math.floor(
-            (distance % (1000 * 60 * 60)) / (1000 * 60));
-          const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-          $("#days").text(addDigit(days));
-          $("#hours").text(addDigit(hours));
-          $("#minutes").text(addDigit(minutes));
-          $("#seconds").text(addDigit(seconds));
-          if (distance < 0) {
-            clearInterval(interval);
-            $("countdown").innerHTML = "¡Ha llegado el gran día!";
+      var actions = {
+        onCounter: function(targetDate){
+          const interval = setInterval(() => {
+            const now = new Date().getTime();
+            const distance = targetDate - now;
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor(
+              (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor(
+              (distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            $("#days").text(actions.onHelperAddDigits(days));
+            $("#hours").text(actions.onHelperAddDigits(hours));
+            $("#minutes").text(actions.onHelperAddDigits(minutes));
+            $("#seconds").text(actions.onHelperAddDigits(seconds));
+            if (distance < 0) {
+              clearInterval(interval);
+              $("countdown").innerHTML = "¡Ha llegado el gran día!";
+            }
+          }, 1000);
+        },
+        onHelperAddDigits: function(number){
+          if (number.toString().length == 1) {
+            return "0" + number.toString();
           }
-        }, 1000);
-      }
-
-      function addDigit(number) {
-        if (number.toString().length == 1) {
-          return "0" + number.toString();
-        }
-        return number;
-      }
-
-      function audioPlayer() {
-        const audio = document.getElementById("audio");
-        $("#audioButton").on("click", function() {
-          if (audio.paused) {
-            audio.play();
-            $("#audioButton").removeClass("off");
+          return number;
+        },
+        onAudioPlayer: function(){
+          const audio = document.getElementById("audio");
+          $("#audioButton").on("click", function() {
+            if (audio.paused) {
+              audio.play();
+              $("#audioButton").removeClass("off");
+            } else {
+              audio.pause();
+              $("#audioButton").addClass("off");
+            }
+          });
+        },
+        onCarouselCheckItems: function(){
+          var $this = $("#_invitation-carousel");
+          if ($(".carousel-inner .carousel-item:first").hasClass("active")) {
+            // Hide left arrow
+            $this.children(".carousel-control-prev").removeClass("d-md-block");
+            // But show right arrow
+            $this.children(".carousel-control-next").addClass("d-md-block");
+          } else if ($(".carousel-inner .carousel-item:last").hasClass("active")) {
+            // Hide right arrow
+            $this.children(".carousel-control-next").removeClass("d-md-block");
+            // But show left arrow
+            $this.children(".carousel-control-prev").addClass("d-md-block");
           } else {
-            audio.pause();
-            $("#audioButton").addClass("off");
+            $this.children(".carousel-control-next").addClass("d-md-block");
+            $this.children(".carousel-control-prev").addClass("d-md-block");
           }
-        });
-      }
+        },
+        onCarouselModal: function(){
+          document.addEventListener("DOMContentLoaded", () => {
+            const modalImage = document.getElementById("modalCarouselImage");
+            document.querySelectorAll(".collage img").forEach((img) => {
+              img.addEventListener("click", function() {
+                const src = this.getAttribute("data-bs-image");
+                modalImage.src = src;
+              });
+            });
+          });
+        }
+      };
 
-      function Init() {
-        counter();
-        audioPlayer();
+      var helpers= {
+        onGetDateString: function(EventDate) {
+          const months = [
+            "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
+            "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"
+          ];
+          
+          const day = EventDate.getDate();
+          const month = months[EventDate.getMonth()];
+          const year = EventDate.getFullYear();
+          return `${day} de ${month} del ${year}`;
+        },
+        onGetHours: function(EventDate){
+          let hours = EventDate.getHours();
+          const ampm = hours >= 12 ? "pm" : "am";
+          const mins = EventDate.getMinutes().toString().padStart(2, "0");
+          return `${hours}:${mins} ${ampm}`;
+        }
+      };
+      const EventDate = new Date("2025-11-25T13:00:00");
+      var Resources = {
+        EventDate: EventDate,
+        EventTime: EventDate.getTime(),
+        EventDateString: helpers.onGetDateString(EventDate),
+        EventHour: helpers.onGetHours(EventDate),
+        EventName: "María Aguilar",
+        ImageBackground: "",
+        ImageCard1: "",
+
+      };
+      function Init() {debugger
+        actions.onCounter(Resources.EventDate);
+        actions.onAudioPlayer();
+
+        $("#_invitation-carousel").on("slid.bs.carousel", actions.onCarouselCheckItems());
+        actions.onCarouselModal();
       }
       Init();
     </script>
