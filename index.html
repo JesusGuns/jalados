@@ -1117,7 +1117,8 @@
           pause: false, // No se pausa al tocar
           wrap: true, // Loop infinito
         });
-        actions.onCarouselCheckItems()
+        actions.onCarouselCheckItems();
+        $("#_invitation-carousel").on("slid.bs.carousel", () => {actions.onCarouselCheckItems();});
       });
 
       var actions = {
@@ -1312,12 +1313,9 @@
       function Init() {
         helpers.onLoad();
         actions.onCounter();
-        setInterval(() => {actions.onCounter()}, 1000);
+        setInterval(() => {actions.onCounter();}, 1000);
         actions.onAudioPlayer();
-
-        $("#_invitation-carousel").on("slid.bs.carousel", actions.onCarouselCheckItems());
         actions.onCarouselModal();
-        
       }
       Init();
     </script>
