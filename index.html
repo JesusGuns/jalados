@@ -378,7 +378,6 @@
       }
 
       .corner {
-        background-image: url(https://static.vecteezy.com/system/resources/previews/033/494/904/large_2x/golden-thai-pattern-corners-decorate-the-corner-edges-png.png);
         background-repeat: no-repeat;
         background-size: contain;
         width: 80px;
@@ -1235,6 +1234,7 @@
         },
         onLoad: function(){
           $('body').css('background-image', 'url("'+Resources.Image_BodyBackground+'")');
+          $('.corner').css('background-image', 'url("'+Resources.Image_Corner+'")');
           $("[data-replace=Image_FrontCard]").attr("src", Resources.Image_FrontCard);
           $("[data-replace=Image_AudioUrl]").attr("src", Resources.Image_AudioUrl);
           $("[data-replace=AudioUrl]").attr("src", Resources.AudioUrl);
@@ -1293,6 +1293,7 @@
         Image_BodyBackground: "https://img.freepik.com/fotos-premium/vestido-flores-cortina-bodas_53876-181091.jpg",
         Image_FrontCard: "https://img.freepik.com/foto-gratis/adolescente-celebrando-quinceanera_23-2148478038.jpg",
         Image_AudioUrl: "https://cdn-icons-png.freepik.com/512/13896/13896624.png?ga=GA1.1.1993030682.1745256637",
+        Image_Corner: "https://static.vecteezy.com/system/resources/previews/033/494/904/large_2x/golden-thai-pattern-corners-decorate-the-corner-edges-png.png",
         Image_CodeDressUrl: "https://img.freepik.com/vector-premium/diseno-silueta-danza-pareja_715413-725.jpg",
         Image_AmazonUrl: "https://static-00.iconduck.com/assets.00/amazon-icon-2048x2048-pqt2fe18.png",
         Image_LiverpoolUrl: "https://play-lh.googleusercontent.com/FwrxfHaknUKLneazGpPsjJvQ4mUYKJkccj-efHNeXQISwCwqC9ymNAnqlAY5J5oHIOc",
