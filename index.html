@@ -10,6 +10,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Outfit&display=swap" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Tenor+Sans&display=swap" rel="stylesheet" />
+    <!-- Font Awesome (si no está ya cargado) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
     <style>
       /* #region ROOT*/
       :root {
@@ -36,7 +39,6 @@
       }
 
       body {
-        background-image: url("https://img.freepik.com/fotos-premium/vestido-flores-cortina-bodas_53876-181091.jpg");
         background-size: cover;
         background-repeat: no-repeat;
         min-height: 100%;
@@ -57,6 +59,7 @@
       }
 
       /* #endregion HTML*/
+      
       /* #region Animations*/
       
       @keyframes audioPulse {
@@ -122,18 +125,54 @@
       }
       
       /* #endregion Animations*/
-      
       /* #region General*/
-      ._btn-floating{
-        position: absolute;
-        top: 55%;
-        right: 1%;
-        z-index: 2;
+      ._btn-elegant-pink {
+        background-color: #C77B91; /* dusty rose */
+        color: #fff;
+        padding: 12px 32px;
+        font-size: 16px;
+        font-weight: 500;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        box-shadow: 0 4px 12px rgba(199, 123, 145, 0.4);
+        transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        animation: btn-animation-pulse 2s infinite;
+        text-decoration: none;
+        text-transform: uppercase;
+        width: 100%;
+        text-align: center;
       }
 
-      ._btn-floating img{
-        width: 40px;;
+      ._btn-elegant-pink i {
+        margin-right: 8px;
+        transition: transform 0.3s ease;
       }
+
+      ._btn-elegant-pink:hover {
+        background-color: #AD5F7D; /* rosewood */
+        box-shadow: 0 6px 18px rgba(173, 95, 125, 0.45);
+      }
+
+      ._btn-elegant-pink:hover i {
+        animation: heartbeat 1s ease-in-out infinite;
+      }
+
+      @keyframes btn-animation-pulse {
+        0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(199, 123, 145, 0.4); }
+        70% { transform: scale(1.05); box-shadow: 0 0 0 10px rgba(199, 123, 145, 0); }
+        100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(199, 123, 145, 0); }
+      }
+
+      @keyframes heartbeat {
+        0% { transform: scale(1); }
+        30% { transform: scale(1.3); }
+        50% { transform: scale(1); }
+        70% { transform: scale(1.2); }
+        100% { transform: scale(1); }
+      }
+      
+      
       /* #endregion General*/
       
       /* #region Audio*/
@@ -829,13 +868,22 @@
       }
 
       /* #endregion Gift Table Section*/
+      /* #region Confirmation Section*/
+      ._section-confirmation{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 2rem;
+      }
+       /* #endregion Confirmation Section*/
     </style>
   </head>
   <body>
     <div class="container">
       <main role="main" class="w-100">
         <div id="player">
-          <audio id="audio" src="https://invitameok.com/invitaciones/admin/imagenes/27433/MUSICAstyle-taylor.mp3" autoplay loop></audio>
+          <audio id="audio" src="#" data-replace="AudioUrl" autoplay loop></audio>
           <div id="interactionArea"></div>
         </div>
         <div id="_invitation-carousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="300000" data-bs-touch="true">
@@ -847,19 +895,17 @@
             <button type="button" data-bs-target="#_invitation-carousel" data-bs-slide-to="3" aria-label="Slide 4"></button>
             <button type="button" data-bs-target="#_invitation-carousel" data-bs-slide-to="4" aria-label="Slide 5"></button>
             <button type="button" data-bs-target="#_invitation-carousel" data-bs-slide-to="5" aria-label="Slide 6"></button>
+            <button type="button" data-bs-target="#_invitation-carousel" data-bs-slide-to="6" aria-label="Slide 7"></button>
           </div>
           <!-- Slides -->
           <div class="carousel-inner">
             <span id="audioButton" class="off">
-              <img src="https://cdn-icons-png.freepik.com/512/13896/13896624.png?ga=GA1.1.1993030682.1745256637" />
-            </span>
-            <span class="_btn-floating">
-              <a href="https://wa.link/jucwk6"><img src="https://cdn-icons-png.freepik.com/512/11302/11302131.png?ga=GA1.1.1993030682.1745256637"></a>
+              <img src="#" data-replace="Image_AudioUrl" />
             </span>
             <div class="carousel-item active">
               <!-- Portada -->
               <div class="card-face front">
-                <img src="https://img.freepik.com/foto-gratis/adolescente-celebrando-quinceanera_23-2148478038.jpg" alt="Portada Quinceañera" />
+                <img src="#" data-replace="Image_FrontCard" />
                 <div id="countdown">
                   <div class="time-box">
                     <span id="days">0</span> Días
@@ -940,9 +986,9 @@
                   <div class="timeline-item">
                     <div class="icon">⛪</div>
                     <div class="timeline-content">
-                      <h3>Misa</h3>
+                      <h3>Ceremonia</h3>
                       <p> Se celebrará a <span data-replace="EventHourString"></span> en la Iglesia Santa María para agradecer por estos 15 años. </p>
-                      <a data-replace="EventChurchUrl" href="#" target="_blank">Cómo llegar...</a>
+                      <a href="#" data-replace="EventChurchUrl" target="_blank">Cómo llegar...</a>
                     </div>
                   </div>
                   <div class="timeline-item">
@@ -950,7 +996,7 @@
                     <div class="timeline-content">
                       <h3>Recepción</h3>
                       <p class="_hide-mobile-xxs"> Una cálida bienvenida a todos los invitados a esta celebración tan especial. </p>
-                      <a data-replace="EventReceptionUrl" href="#" target="_blank">Cómo llegar...</a>
+                      <a href="#" data-replace="EventReceptionUrl" target="_blank">Cómo llegar...</a>
                     </div>
                   </div>
                   <div class="timeline-item">
@@ -988,7 +1034,7 @@
                     <h3>Código de Vestimenta</h3>
                   </div>
                   <div class="_version-mobile">
-                    <img src="https://img.freepik.com/vector-premium/diseno-silueta-danza-pareja_715413-725.jpg" />
+                    <img src="#" data-replace="Image_CodeDressUrl"/>
                     <div class="_details">
                       <p class="text-center">
                         <strong>FORMAL</strong>
@@ -1009,10 +1055,8 @@
                     <br /> Para nosotros tu presencia es nuestro mejor regalo, pero si deseas hacernos llegar un obsequio, te sugerimos la siguiente opción:
                   </p>
                   <div class="_btn-brands">
-                    <a data-replace="EventAmazonGiftTableUrl" href="#" target="_blank" class="_btn-gifttable">
-                      <img src="https://static-00.iconduck.com/assets.00/amazon-icon-2048x2048-pqt2fe18.png" class="imagenRegalo" /> Amazon </a>
-                    <a data-replace="EventLiverpoolGiftTableUrl" href="#" target="_blank" class="_btn-gifttable">
-                      <img src="https://play-lh.googleusercontent.com/FwrxfHaknUKLneazGpPsjJvQ4mUYKJkccj-efHNeXQISwCwqC9ymNAnqlAY5J5oHIOc" class="imagenRegalo" /> Liverpool </a>
+                    <a href="#" data-replace="EventAmazonGiftTableUrl" target="_blank" class="_btn-gifttable"><img src="#" data-replace="Image_AmazonUrl"/> Amazon </a>
+                    <a  href="#" data-replace="EventLiverpoolGiftTableUrl" target="_blank" class="_btn-gifttable"><img src="#" data-replace="Image_LiverpoolUrl"/> Liverpool </a>
                   </div>
                 </div>
                 <div class="_end-decoration">✧ ✦ ✧</div>
@@ -1020,12 +1064,22 @@
             </div>
             <div class="carousel-item">
               <div class="collage">
-                <img src="https://img.freepik.com/foto-gratis/adolescente-celebrando-quinceanera_23-2148478038.jpg" class="img-large" alt="Foto Grande" data-bs-toggle="modal" data-bs-target="#carouselModal" data-bs-image="https://img.freepik.com/foto-gratis/adolescente-celebrando-quinceanera_23-2148478038.jpg" />
-                <img src="https://img.freepik.com/foto-gratis/adolescente-celebrando-quinceanera_23-2148478038.jpg" alt="Foto 2" data-bs-toggle="modal" data-bs-target="#carouselModal" data-bs-image="https://img.freepik.com/foto-gratis/adolescente-celebrando-quinceanera_23-2148478038.jpg" />
-                <img src="https://img.freepik.com/foto-gratis/adolescente-celebrando-quinceanera_23-2148478038.jpg" alt="Foto 3" data-bs-toggle="modal" data-bs-target="#carouselModal" data-bs-image="https://img.freepik.com/foto-gratis/adolescente-celebrando-quinceanera_23-2148478038.jpg" />
-                <img src="https://img.freepik.com/foto-gratis/adolescente-celebrando-quinceanera_23-2148478038.jpg" alt="Foto 4" data-bs-toggle="modal" data-bs-target="#carouselModal" data-bs-image="https://img.freepik.com/foto-gratis/adolescente-celebrando-quinceanera_23-2148478038.jpg" />
-                <img src="https://img.freepik.com/foto-gratis/adolescente-celebrando-quinceanera_23-2148478038.jpg" alt="Foto 5" data-bs-toggle="modal" data-bs-target="#carouselModal" data-bs-image="https://img.freepik.com/foto-gratis/adolescente-celebrando-quinceanera_23-2148478038.jpg" />
-                <img src="https://img.freepik.com/foto-gratis/adolescente-celebrando-quinceanera_23-2148478038.jpg" alt="Foto 6" data-bs-toggle="modal" data-bs-target="#carouselModal" data-bs-image="https://img.freepik.com/foto-gratis/adolescente-celebrando-quinceanera_23-2148478038.jpg" />
+                <!--Dynamically Injected-->
+              </div>
+            </div>
+            <div class="carousel-item">
+              <!-- Interior -->
+              <div class="card-face back d-flex-center">
+                <div class="corner top-left"></div>
+                <div class="corner top-right"></div>
+                <div class="corner bottom-left"></div>
+                <div class="corner bottom-right"></div>
+                <div class="_start-decoration">✧ ✦ ✧</div>
+                <div class="_section-confirmation">
+                  <a href="#" data-replace="WhatsAppUrl" class="_btn-elegant-pink"><i class="fas fa-heart"></i> Confirmar asistencia</a>
+                  <a href="#" data-replace="GoogleCalendarUrl" target="_blank" class="_btn-elegant-pink"><i class="fas fa-calendar"></i> Agendar</a>
+                </div>
+                <div class="_end-decoration">✧ ✦ ✧</div>
               </div>
             </div>
           </div>
@@ -1068,25 +1122,22 @@
       });
 
       var actions = {
-        onCounter: function(targetDate){
-          const interval = setInterval(() => {
-            const now = new Date().getTime();
-            const distance = targetDate - now;
-            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            const hours = Math.floor(
-              (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor(
-              (distance % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-            $("#days").text(actions.onHelperAddDigits(days));
-            $("#hours").text(actions.onHelperAddDigits(hours));
-            $("#minutes").text(actions.onHelperAddDigits(minutes));
-            $("#seconds").text(actions.onHelperAddDigits(seconds));
-            if (distance < 0) {
-              clearInterval(interval);
-              $("countdown").innerHTML = "¡Ha llegado el gran día!";
-            }
-          }, 1000);
+        onCounter: function(){
+          
+          const now = new Date().getTime();
+          const distance = EventDate - now;
+          const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+          const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+          const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+          const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+          $("#days").text(actions.onHelperAddDigits(days));
+          $("#hours").text(actions.onHelperAddDigits(hours));
+          $("#minutes").text(actions.onHelperAddDigits(minutes));
+          $("#seconds").text(actions.onHelperAddDigits(seconds));
+          if (distance < 0) {
+            clearInterval(interval);
+            $("countdown").innerHTML = "¡Ha llegado el gran día!";
+          }
         },
         onHelperAddDigits: function(number){
           if (number.toString().length == 1) {
@@ -1133,10 +1184,15 @@
               });
             });
           });
-        }
+        },
       };
 
       var helpers= {
+        onGetDateYYYYMMDDTHHmmssZ: function(previousDays){
+          var date = new Date(EventDate);;
+          date.setDate(EventDate.getDate() - previousDays);
+          return date.toISOString().replace(/[-:]|\.\d{3}/g, '');
+        },
         onGetDateString: function(EventDate) {
           const months = [
             "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
@@ -1159,9 +1215,62 @@
           const the =  hours > 1 ? "las " : "la";
           hours = hours % 12 || 12;
           return `${the} ${hours}:${mins} ${ampm}`;
+        },
+        onGoogleCalendar: function(){
+          const base = 'https://calendar.google.com/calendar/u/0/r/eventedit';
+          const details = `Acompáñanos a celebrar los XV de ${Resources.EventName}.
+          📍 Lugar: ${Resources.GoogleCalendarLocation}
+          🕒 Hora: ${Resources.EventHourString}
+          ⏰ Recordatorio: Llega con 30 minutos de anticipación.
+          ✨ ¡Te esperamos para compartir este momento tan especial!`;
+
+          
+          const params = new URLSearchParams({
+            text: Resources.GoogleCalendarTitle + Resources.EventName,
+            dates: `${Resources.GoogleCalendarStartDate}/${Resources.GoogleCalendarEndDate}`,
+            details: details,
+            location: Resources.GoogleCalendarLocation
+          });
+          return `${base}?${params.toString()}`;
+        },
+        onLoad: function(){
+          $('body').css('background-image', 'url("'+Resources.Image_BodyBackground+'")');
+          $("[data-replace=Image_FrontCard]").attr("src", Resources.Image_FrontCard);
+          $("[data-replace=Image_AudioUrl]").attr("src", Resources.Image_AudioUrl);
+          $("[data-replace=AudioUrl]").attr("src", Resources.AudioUrl);
+          $("[data-replace=Image_CodeDressUrl]").attr("src", Resources.Image_CodeDressUrl);
+          $("[data-replace=Image_AmazonUrl]").attr("src", Resources.Image_AmazonUrl);
+          $("[data-replace=Image_LiverpoolUrl]").attr("src", Resources.Image_LiverpoolUrl);
+
+          $("[data-replace=EventDateString]").text(Resources.EventDateString);
+          $("[data-replace=EventHourString]").text(Resources.EventHourString);
+          $("[data-replace=EventName]").text(Resources.EventName);
+          $("[data-replace=EventFather]").text(Resources.EventFather);
+          $("[data-replace=EventMother]").text(Resources.EventMother);
+          $("[data-replace=EventGodFather]").text(Resources.EventGodFather);
+          $("[data-replace=EventGodMother]").text(Resources.EventGodMother);
+          $("[data-replace=EventChurchUrl]").attr("href", Resources.EventChurchUrl);
+          $("[data-replace=EventReceptionUrl]").attr("href", Resources.EventReceptionUrl);
+          $("[data-replace=EventAmazonGiftTableUrl]").attr("href", Resources.EventAmazonGiftTableUrl);
+          $("[data-replace=EventLiverpoolGiftTableUrl]").attr("href", Resources.EventLiverpoolGiftTableUrl);
+
+          $("[data-replace=WhatsAppUrl]").attr("href", Resources.WhatsAppUrl);
+          $("[data-replace=GoogleCalendarUrl]").attr("href", helpers.onGoogleCalendar());
+
+          Resources.CollageImages.forEach(function(url, index) {
+            const imgElement = $('<img>', {
+              src: url,
+              class: index == 0 ? 'img-large' : '',
+              'data-bs-toggle': 'modal',
+              'data-bs-target': '#carouselModal',
+              'data-bs-image': url
+            });
+
+            $('.collage').append(imgElement);
+          });
         }
       };
-      
+
       const EventDate = new Date("2025-11-25T13:00:00");
       var Resources = {
         EventDate: EventDate,
@@ -1177,33 +1286,37 @@
         EventReceptionUrl: "https://maps.app.goo.gl/1wwmTSk84XA8pLMn8",
         EventAmazonGiftTableUrl: "https://www.amazon.com.mx/",
         EventLiverpoolGiftTableUrl: "https://www.liverpool.com.mx/tienda/home",
-        ImageBackground: "",
-        ImageCard1: "",
-        ImageAudioUrl: ""
+        GoogleCalendarTitle: "Mis XV ",
+        GoogleCalendarStartDate: helpers.onGetDateYYYYMMDDTHHmmssZ(1),
+        GoogleCalendarEndDate: helpers.onGetDateYYYYMMDDTHHmmssZ(0),
+        GoogleCalendarLocation: "Catedral de Guadalajara",
+        Image_BodyBackground: "https://img.freepik.com/fotos-premium/vestido-flores-cortina-bodas_53876-181091.jpg",
+        Image_FrontCard: "https://img.freepik.com/foto-gratis/adolescente-celebrando-quinceanera_23-2148478038.jpg",
+        Image_AudioUrl: "https://cdn-icons-png.freepik.com/512/13896/13896624.png?ga=GA1.1.1993030682.1745256637",
+        Image_CodeDressUrl: "https://img.freepik.com/vector-premium/diseno-silueta-danza-pareja_715413-725.jpg",
+        Image_AmazonUrl: "https://static-00.iconduck.com/assets.00/amazon-icon-2048x2048-pqt2fe18.png",
+        Image_LiverpoolUrl: "https://play-lh.googleusercontent.com/FwrxfHaknUKLneazGpPsjJvQ4mUYKJkccj-efHNeXQISwCwqC9ymNAnqlAY5J5oHIOc",
+        AudioUrl: "https://invitameok.com/invitaciones/admin/imagenes/27433/MUSICAstyle-taylor.mp3",
+        WhatsAppUrl: "https://wa.link/encb79",
+        CollageImages:[
+          'https://img.freepik.com/foto-gratis/adolescente-celebrando-quinceanera_23-2148478038.jpg',
+          'https://img.freepik.com/foto-gratis/adolescente-celebrando-quinceanera_23-2148478038.jpg',
+          'https://img.freepik.com/foto-gratis/adolescente-celebrando-quinceanera_23-2148478038.jpg',
+          'https://img.freepik.com/foto-gratis/adolescente-celebrando-quinceanera_23-2148478038.jpg',
+          'https://img.freepik.com/foto-gratis/adolescente-celebrando-quinceanera_23-2148478038.jpg',
+          'https://img.freepik.com/foto-gratis/adolescente-celebrando-quinceanera_23-2148478038.jpg'
+        ]
       };
 
-      var helpers = {
-        onLoad: function(){
-          $("[data-replace=EventDateString]").text(Resources.EventDateString);
-          $("[data-replace=EventHourString]").text(Resources.EventHourString);
-          $("[data-replace=EventName]").text(Resources.EventName);
-          $("[data-replace=EventFather]").text(Resources.EventFather);
-          $("[data-replace=EventMother]").text(Resources.EventMother);
-          $("[data-replace=EventGodFather]").text(Resources.EventGodFather);
-          $("[data-replace=EventGodMother]").text(Resources.EventGodMother);
-          $("[data-replace=EventChurchUrl]").attr("href", Resources.EventChurchUrl);
-          $("[data-replace=EventReceptionUrl]").attr("href", Resources.EventReceptionUrl);
-          $("[data-replace=EventAmazonGiftTableUrl]").attr("href", Resources.EventAmazonGiftTableUrl);
-          $("[data-replace=EventLiverpoolGiftTableUrl]").attr("href", Resources.EventLiverpoolGiftTableUrl);
-        }
-      };
       function Init() {
         helpers.onLoad();
-        actions.onCounter(Resources.EventDate);
+        actions.onCounter();
+        setInterval(() => {actions.onCounter()}, 1000);
         actions.onAudioPlayer();
 
         $("#_invitation-carousel").on("slid.bs.carousel", actions.onCarouselCheckItems());
         actions.onCarouselModal();
+        
       }
       Init();
     </script>
