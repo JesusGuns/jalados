@@ -10,15 +10,20 @@
     <link href="https://fonts.googleapis.com/css2?family=Outfit&display=swap" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Tenor+Sans&display=swap" rel="stylesheet" />
-    <!-- Font Awesome (si no está ya cargado) -->
+    <!-- Font Awesome-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
       /* #region ROOT*/
       :root {
-        --color1: white;
-        --counterColor: #a14d74;
+        --color_counter: #a14d74;
+        --color_decoration-HF:  #a14d74;
+        --color_btn-elegant-pink: #C77B91; /* dusty rose */
+        --color_btn-elegant-pink-hover: #AD5F7D; /* rosewood */
+        
+        --color_back-border:#800020;
         --fontOutfit: "Outfit", serif;
+        
       }
 
       /* #endregion ROOT*/
@@ -59,57 +64,26 @@
       }
 
       /* #endregion HTML*/
-      
       /* #region Animations*/
       
-      @keyframes audioPulse {
-        0% {
-          transform: scale(1);
-        }
-
-        50% {
-          transform: scale(1.1);
-        }
-
-        100% {
-          transform: scale(1);
-        }
+      @keyframes _audio-Pulse {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.1);}
+        100% { transform: scale(1);}
       }
 
-      @keyframes vibrar {
-        0% {
-          transform: translate(0);
-        }
-
-        25% {
-          transform: translate(-1px, 1px);
-        }
-
-        50% {
-          transform: translate(1px, -1px);
-        }
-
-        75% {
-          transform: translate(-1px, -1px);
-        }
-
-        100% {
-          transform: translate(1px, 1px);
-        }
+      @keyframes _vibrate {
+        0% { transform: translate(0); }
+        25% { transform: translate(-1px, 1px); }
+        50% { transform: translate(1px, -1px); }
+        75% { transform: translate(-1px, -1px); }
+        100% { transform: translate(1px, 1px); }
       }
   
-      @keyframes pulse {
-        0% {
-          transform: scale(1);
-        }
-
-        50% {
-          transform: scale(1.03);
-        }
-
-        100% {
-          transform: scale(1);
-        }
+      @keyframes _pulse {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.03); }
+        100% { transform: scale(1); }
       }
 
       
@@ -124,10 +98,24 @@
         100% { transform: translateX(0); }
       }
       
+      
+      @keyframes btn-animation-pulse {
+        0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(199, 123, 145, 0.4); }
+        70% { transform: scale(1.05); box-shadow: 0 0 0 10px rgba(199, 123, 145, 0); }
+        100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(199, 123, 145, 0); }
+      }
+
+      @keyframes heartbeat {
+        0% { transform: scale(1); }
+        30% { transform: scale(1.3); }
+        50% { transform: scale(1); }
+        70% { transform: scale(1.2); }
+        100% { transform: scale(1); }
+      }
       /* #endregion Animations*/
       /* #region General*/
       ._btn-elegant-pink {
-        background-color: #C77B91; /* dusty rose */
+        background-color: var(--color_btn-elegant-pink); 
         color: #fff;
         padding: 12px 32px;
         font-size: 16px;
@@ -150,34 +138,18 @@
       }
 
       ._btn-elegant-pink:hover {
-        background-color: #AD5F7D; /* rosewood */
+        background-color: var(--color_btn-elegant-pink-hover); 
         box-shadow: 0 6px 18px rgba(173, 95, 125, 0.45);
       }
 
       ._btn-elegant-pink:hover i {
         animation: heartbeat 1s ease-in-out infinite;
       }
-
-      @keyframes btn-animation-pulse {
-        0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(199, 123, 145, 0.4); }
-        70% { transform: scale(1.05); box-shadow: 0 0 0 10px rgba(199, 123, 145, 0); }
-        100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(199, 123, 145, 0); }
-      }
-
-      @keyframes heartbeat {
-        0% { transform: scale(1); }
-        30% { transform: scale(1.3); }
-        50% { transform: scale(1); }
-        70% { transform: scale(1.2); }
-        100% { transform: scale(1); }
-      }
-      
-      
       /* #endregion General*/
       
       /* #region Audio*/
       #audioButton {
-        animation: audioPulse 1.5s infinite;
+        animation: _audio-Pulse 1.5s infinite;
         position: absolute;
         right: 1%;
         top: 11%;
@@ -186,7 +158,7 @@
 
       #audioButton.off {
         filter: brightness(0);
-        animation: vibrar 0.4s infinite;
+        animation: _vibrate 0.4s infinite;
       }
 
       #audioButton img {
@@ -273,7 +245,7 @@
         box-sizing: border-box;
         position: relative;
         box-shadow: 0 0 25px rgba(0, 0, 0, 0.1);
-        border: 2px solid #800020;
+        border: 2px solid var(--color_back-border);
       }
 
       .back .dorado {
@@ -324,14 +296,14 @@
         flex-direction: column;
         align-items: center;
         font-size: 22px;
-        color: var(--counterColor);
+        color: var(--color_counter);
       }
 
       .time-box span {
         font-size: 60px;
         font-weight: 700;
         letter-spacing: 2px;
-        animation: pulse 3s infinite;
+        animation: _pulse 3s infinite;
       }
 
       @media (max-width: 575.98px) {
@@ -360,21 +332,26 @@
       }
       /* #endregion Counter*/
       /* #region Decoration Section*/
-      ._start-decoration {
-        top: 15px;
-      }
-
-      ._end-decoration {
-        bottom: 15px;
-      }
-
-      ._end-decoration,
-      ._start-decoration {
+      ._decoration-HF::before{
+        content: '✧ ✦ ✧';
         position: absolute;
         left: 50%;
         transform: translateX(-50%);
         font-size: 1.8rem;
-        color: #a14d74;
+        color: var(--color_decoration-HF);
+        top: 15px;
+        z-index: 1;
+      }
+
+      ._decoration-HF::after{
+        content: '✧ ✦ ✧';
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 1.8rem;
+        color: var(--color_decoration-HF);
+        bottom: 15px;
+        z-index: 1;
       }
 
       .corner {
@@ -883,7 +860,6 @@
       <main role="main" class="w-100">
         <div id="player">
           <audio id="audio" src="#" data-replace="AudioUrl" autoplay loop></audio>
-          <div id="interactionArea"></div>
         </div>
         <div id="_invitation-carousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="300000" data-bs-touch="true">
           <!-- Indicadores -->
@@ -902,7 +878,7 @@
               <img src="#" data-replace="Image_AudioUrl" />
             </span>
             <div class="carousel-item active">
-              <!-- Portada -->
+              <!-- Front Cover -->
               <div class="card-face front">
                 <img src="#" data-replace="Image_FrontCard" />
                 <div id="countdown">
@@ -927,14 +903,13 @@
                 </div>
               </div>
             </div>
-            <div class="carousel-item">
-              <!-- Interior -->
+            <div class="carousel-item _decoration-HF">
+              <!-- Inside -->
               <div class="card-face back _section-event">
                 <div class="corner top-left"></div>
                 <div class="corner top-right"></div>
                 <div class="corner bottom-left"></div>
                 <div class="corner bottom-right"></div>
-                <div class="_start-decoration">✧ ✦ ✧</div>
                 <div class="details">
                   <h1>Mis XV años</h1>
                   <p> Los momentos más esperados se sueñan, se imaginan, se construyen y cuando llegue ese día tan especial, lo más importante es que estés a mi lado. <br />
@@ -947,17 +922,15 @@
                   </p>
                   <p class="_signed">Esperando contar con tu presencia.</p>
                 </div>
-                <div class="_end-decoration">✧ ✦ ✧</div>
               </div>
             </div>
-            <div class="carousel-item">
-              <!-- Interior -->
+            <div class="carousel-item _decoration-HF">
+              <!-- Inside -->
               <div class="card-face back _section-thanks">
                 <div class="corner top-left"></div>
                 <div class="corner top-right"></div>
                 <div class="corner bottom-left"></div>
                 <div class="corner bottom-right"></div>
-                <div class="_start-decoration">✧ ✦ ✧</div>
                 <p class="_text"> Su presencia en mi vida ha sido un tesoro invaluable. Gracias por guiarme con amor y celebrar junto a mí este momento tan especial. </p>
                 <p class="_signed">Con todo mi cariño.</p>
                 <p class="title">Mis Padres</p>
@@ -970,17 +943,15 @@
                   <li data-replace="EventGodFather"></li>
                   <li data-replace="EventGodMother"></li>
                 </ul>
-                <div class="_end-decoration">✧ ✦ ✧</div>
               </div>
             </div>
-            <div class="carousel-item">
-              <!-- Interior -->
+            <div class="carousel-item _decoration-HF">
+              <!-- Inside -->
               <div class="card-face back d-flex-center">
                 <div class="corner top-left"></div>
                 <div class="corner top-right"></div>
                 <div class="corner bottom-left"></div>
                 <div class="corner bottom-right"></div>
-                <div class="_start-decoration">✧ ✦ ✧</div>
                 <div class="timeline">
                   <div class="timeline-item">
                     <div class="icon">⛪</div>
@@ -1017,17 +988,15 @@
                     </div>
                   </div>
                 </div>
-                <div class="_end-decoration">✧ ✦ ✧</div>
               </div>
             </div>
-            <div class="carousel-item">
-              <!-- Interior -->
+            <div class="carousel-item _decoration-HF">
+              <!-- Inside -->
               <div class="card-face back d-flex-center">
                 <div class="corner top-left"></div>
                 <div class="corner top-right"></div>
                 <div class="corner bottom-left"></div>
                 <div class="corner bottom-right"></div>
-                <div class="_start-decoration">✧ ✦ ✧</div>
                 <div class="_section-codedress">
                   <div class="_version-mobile">
                     <h3>Código de Vestimenta</h3>
@@ -1058,7 +1027,6 @@
                     <a  href="#" data-replace="EventLiverpoolGiftTableUrl" target="_blank" class="_btn-gifttable"><img src="#" data-replace="Image_LiverpoolUrl"/> Liverpool </a>
                   </div>
                 </div>
-                <div class="_end-decoration">✧ ✦ ✧</div>
               </div>
             </div>
             <div class="carousel-item">
@@ -1066,19 +1034,17 @@
                 <!--Dynamically Injected-->
               </div>
             </div>
-            <div class="carousel-item">
-              <!-- Interior -->
+            <div class="carousel-item _decoration-HF">
+              <!-- Inside -->
               <div class="card-face back d-flex-center">
                 <div class="corner top-left"></div>
                 <div class="corner top-right"></div>
                 <div class="corner bottom-left"></div>
                 <div class="corner bottom-right"></div>
-                <div class="_start-decoration">✧ ✦ ✧</div>
                 <div class="_section-confirmation">
                   <a href="#" data-replace="WhatsAppUrl" class="_btn-elegant-pink"><i class="fas fa-heart"></i> Confirmar asistencia</a>
                   <a href="#" data-replace="GoogleCalendarUrl" target="_blank" class="_btn-elegant-pink"><i class="fas fa-calendar"></i> Agendar</a>
                 </div>
-                <div class="_end-decoration">✧ ✦ ✧</div>
               </div>
             </div>
           </div>
@@ -1123,7 +1089,6 @@
 
       var actions = {
         onCounter: function(){
-          
           const now = new Date().getTime();
           const distance = EventDate - now;
           const days = Math.floor(distance / (1000 * 60 * 60 * 24));
