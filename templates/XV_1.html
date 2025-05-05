@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" href="https://cdn-icons-png.flaticon.com/512/6277/6277555.png">
     <title>Invitación XV Años</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
@@ -17,11 +18,14 @@
       /* #region ROOT*/
       :root {
         --color_counter: #a14d74;
-        --color_decoration-HF:  #a14d74;
+        --color_text-strong-pink: #bf5666;
+        --color_decoration-HF:  var(--color_text-strong-pink);
         --color_btn-elegant-pink: #C77B91; /* dusty rose */
         --color_btn-elegant-pink-hover: #AD5F7D; /* rosewood */
-        
-        --color_back-border:#800020;
+        --color_corner-filter: var(--color_text-strong-pink);
+        --color_back-border:var(--color_text-strong-pink);
+        --color-text-pink:var(--color_text-strong-pink);
+        --color-line-pink: #a14d74;
         --fontOutfit: "Outfit", serif;
         
       }
@@ -146,7 +150,6 @@
         animation: heartbeat 1s ease-in-out infinite;
       }
       /* #endregion General*/
-      
       /* #region Audio*/
       #audioButton {
         animation: _audio-Pulse 1.5s infinite;
@@ -360,7 +363,7 @@
         width: 80px;
         height: 100px;
         position: absolute;
-        filter: drop-shadow(2px 4px 6px #b76e79);
+        filter: drop-shadow(2px 4px 6px var(--color_corner-filter));
       }
 
       .top-left {
@@ -409,7 +412,7 @@
         font-family: "Great Vibes", cursive;
         font-size: 3.1rem;
         font-weight: bold;
-        color: #bd5e6c;
+        color: var(--color-text-pink);
         margin: 0;
       }
 
@@ -423,14 +426,14 @@
         font-family: "Great Vibes", cursive;
         font-size: 4rem;
         font-weight: bold;
-        color: #bf5666;
+        color: var(--color-text-pink);
         margin: 0;
       }
 
       ._section-event .name::before,
       ._section-event .name::after {
         content: "❧";
-        color: #b76e79;
+        color: var(--color_text-strong-pink);
         font-size: 1.5rem;
         margin: 0 10px;
       }
@@ -515,13 +518,13 @@
       }
 
       ._section-thanks .title {
-        color: #800020;
-        border-bottom: 2px solid #bfa046;
+        color: var(--color-text-pink);
+        border-bottom: 2px solid var(--color-line-pink);
         font-family: "Dancing Script", cursive;
-        font-size: 1.5rem;
+        font-size: 30px;
         font-weight: bold;
-        letter-spacing: 1.2px;
-        text-transform: uppercase;
+        letter-spacing: 2px;
+        margin: 0;
       }
 
       ._section-thanks ul {
@@ -576,7 +579,7 @@
         content: "";
         position: absolute;
         width: 3px;
-        background-color: #e0a3c1;
+        background-color: var(--color-line-pink);
         top: 50px;
         bottom: 80px;
         left: 10px;
@@ -596,27 +599,26 @@
         width: 48px;
         height: 48px;
         background: #fbe3f0;
-        border: 3px solid #e0a3c1;
+        border: 3px solid var(--color-line-pink);
         border-radius: 50%;
         font-size: 30px;
         display: flex;
         align-items: center;
         justify-content: center;
-        color: #a14d74;
         z-index: 2;
       }
 
       .timeline-content {
-        background: #fff;
+        background: rgba(255, 255, 255, 0.5);
         padding: 10px 10px;
         border-radius: 10px;
         box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-        border-left: 4px solid #e0a3c1;
+        border-left: 4px solid var(--color-line-pink);
       }
 
       .timeline-content h3 {
-        color: #a14d74;
-        font-family: "Great Vibes";
+        color: var(--color-text-pink);
+        font-family: "Dancing Script", cursive;
         font-weight: bold;
         font-size: 30px;
         margin: 0;
@@ -774,8 +776,8 @@
       }
 
       ._btn-gifttable {
-        background-color: white;
-        border: 5px solid #fff;
+        background-color: rgba(255, 255, 255, 0.5);
+        border: 5px solid rgba(255, 255, 255, 0.1);;
         border-radius: 8px;
         box-shadow: 0 4px 6px 0 #ccc;
         color: black;
@@ -1042,7 +1044,7 @@
                 <div class="corner bottom-left"></div>
                 <div class="corner bottom-right"></div>
                 <div class="_section-confirmation">
-                  <a href="#" data-replace="WhatsAppUrl" class="_btn-elegant-pink"><i class="fas fa-heart"></i> Confirmar asistencia</a>
+                  <a href="#" data-replace="WhatsAppUrl" target="_blank" class="_btn-elegant-pink"><i class="fas fa-heart"></i> Confirmar asistencia</a>
                   <a href="#" data-replace="GoogleCalendarUrl" target="_blank" class="_btn-elegant-pink"><i class="fas fa-calendar"></i> Agendar</a>
                 </div>
               </div>

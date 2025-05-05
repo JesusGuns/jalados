@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" href="https://cdn-icons-png.flaticon.com/512/6277/6277555.png">
+    <title>Invitación XV Años</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Outfit&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Tenor+Sans&display=swap" rel="stylesheet" />
+    <!-- Font Awesome-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+      /* #region ROOT*/
+      :root {
+        --color_counter: #a14d74;
+        --color_decoration-HF:  #a14d74;
+        --color_btn-elegant-pink: #C77B91; /* dusty rose */
+        --color_btn-elegant-pink-hover: #AD5F7D; /* rosewood */
+        
+        --color_back-border:#800020;
+        --fontOutfit: "Outfit", serif;
+        
+      }
+
+      /* #endregion ROOT*/
+      /* #region HTML*/
+      html {
+        font-size: 14px;
+      }
+
+      @media (min-width: 768px) {
+        html {
+          font-size: 16px;
+        }
+      }
+
+      html {
+        position: relative;
+        min-height: 100%;
+      }
+
+      body {
+        min-height: 100%;
+        overflow: hidden;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background: rgb(113,59,95);
+        background: -moz-linear-gradient(0deg,rgba(113,59,95,1) 0%,rgba(95,59,113,1) 12%,rgba(15,19,41,1) 95%);
+        background: -webkit-linear-gradient(0deg,rgba(113,59,95,1) 0%,rgba(95,59,113,1) 12%,rgba(15,19,41,1) 95%);
+        background: linear-gradient(0deg,rgba(113,59,95,1) 0%,rgba(95,59,113,1) 12%,rgba(15,19,41,1) 95%);
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#713b5f",endColorstr="#0f1329",GradientType=1)
+      }
+
+      main {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100svh;
+      }
+
+      /* #endregion HTML*/
+      /* #region Animations*/
+      
+      @keyframes _audio-Pulse {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.1);}
+        100% { transform: scale(1);}
+      }
+
+      @keyframes _vibrate {
+        0% { transform: translate(0); }
+        25% { transform: translate(-1px, 1px); }
+        50% { transform: translate(1px, -1px); }
+        75% { transform: translate(-1px, -1px); }
+        100% { transform: translate(1px, 1px); }
+      }
+  
+      @keyframes _pulse {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.03); }
+        100% { transform: scale(1); }
+      }
+
+      
+      @keyframes shake {
+        0%   { transform: translateX(0); }
+        15%  { transform: translateX(-5px); }
+        30%  { transform: translateX(5px); }
+        45%  { transform: translateX(-4px); }
+        60%  { transform: translateX(4px); }
+        75%  { transform: translateX(-2px); }
+        90%  { transform: translateX(2px); }
+        100% { transform: translateX(0); }
+      }
+      
+      
+      @keyframes btn-animation-pulse {
+        0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(199, 123, 145, 0.4); }
+        70% { transform: scale(1.05); box-shadow: 0 0 0 10px rgba(199, 123, 145, 0); }
+        100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(199, 123, 145, 0); }
+      }
+
+      @keyframes heartbeat {
+        0% { transform: scale(1); }
+        30% { transform: scale(1.3); }
+        50% { transform: scale(1); }
+        70% { transform: scale(1.2); }
+        100% { transform: scale(1); }
+      }
+      /* #endregion Animations*/
+      
+      /* #region General*/
+      .fireworks-container {
+        position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    
+}
+.fireworks-container canvas {
+        display: block;
+    }
+      /* #endregion General*/
+      
+      /* #region Audio*/
+      #audioButton {
+        animation: _audio-Pulse 1.5s infinite;
+        position: absolute;
+        right: 1%;
+        top: 11%;
+        z-index: 2;
+      }
+
+      #audioButton.off {
+        filter: hue-rotate(45deg);
+        animation: _vibrate 0.4s infinite;
+      }
+
+      #audioButton img {
+        width: 45px;
+        cursor: pointer;
+      }
+      @media (max-width: 575.98px) {
+        #audioButton {
+          top: 45%;
+        }
+
+        #audioButton img {
+          width: 40px;
+        }
+      }
+      /* #endregion Audio*/
+     
+      /* #region Counter*/
+      #countdown {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+        padding: 0px 0px 25px;
+        border-radius: 20px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        margin-bottom: 5px;
+        font-family: "Outfit", serif;
+        position: absolute;
+        bottom: -5px;
+        width: 90%;
+      }
+
+      .time-box {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        font-size: 22px;
+        color: var(--color_counter);
+      }
+
+      .time-box span {
+        font-size: 60px;
+        font-weight: 700;
+        letter-spacing: 2px;
+        animation: _pulse 3s infinite;
+      }
+
+      @media (max-width: 575.98px) {
+        #countdown {
+          gap: 15px;
+          width: 100%;
+          box-shadow: 0px -10px 25px rgb(0 0 0 / 15%);
+        }
+
+        .time-box {
+          font-size: 1.2rem;
+        }
+
+        .time-box span {
+          font-size: 40px;
+        }
+      }
+
+      @media (max-width: 375.98px) {
+        #countdown {
+          gap: 10px;
+        }
+        .time-box span {
+          font-size: 35px;
+        }
+      }
+      /* #endregion Counter*/
+      
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <main role="main" class="w-100">
+        <div id="player">
+          <audio id="audio" src="#" data-replace="AudioUrl" loop></audio>
+        </div>
+        <span id="audioButton" class="off">
+            <img src="#" data-replace="Image_AudioUrl" />
+        </span>
+        <div class="fireworks-container"></div>
+      </main>
+    </div>
+    <!-- Bootstrap JS Bundle (con soporte touch incluido) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- jsDelivr  -->
+    <script src="https://cdn.jsdelivr.net/npm/fireworks-js@2.x/dist/index.umd.js"></script>
+
+    <!-- UNPKG -->
+    <script src="https://unpkg.com/fireworks-js@2.x/dist/index.umd.js"></script>
+
+    <script>
+      var actions = {
+        onCounter: function(){
+          const now = new Date().getTime();
+          const distance = EventDate - now;
+          const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+          const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+          const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+          const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+          $("#days").text(actions.onHelperAddDigits(days));
+          $("#hours").text(actions.onHelperAddDigits(hours));
+          $("#minutes").text(actions.onHelperAddDigits(minutes));
+          $("#seconds").text(actions.onHelperAddDigits(seconds));
+          if (distance < 0) {
+            clearInterval(interval);
+            $("countdown").innerHTML = "¡Ha llegado el gran día!";
+          }
+        },
+        onHelperAddDigits: function(number){
+          if (number.toString().length == 1) {
+            return "0" + number.toString();
+          }
+          return number;
+        },
+        onAudioPlayer: function(){
+          const audio = document.getElementById("audio");
+          $("#audioButton").on("click", function() {
+            if (audio.paused) {
+              audio.play();
+              $("#audioButton").removeClass("off");
+            } else {
+              audio.pause();
+              $("#audioButton").addClass("off");
+            }
+          });
+        }
+      };
+
+      var helpers= {
+        onGetDateYYYYMMDDTHHmmssZ: function(previousDays){
+          var date = new Date(EventDate);;
+          date.setDate(EventDate.getDate() - previousDays);
+          return date.toISOString().replace(/[-:]|\.\d{3}/g, '');
+        },
+        onGetDateString: function(EventDate) {
+          const months = [
+            "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
+            "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"
+          ];
+
+          const days = ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"];
+          
+          const day = EventDate.getDate();
+          const dayOfWeek = EventDate.getDay();
+          const dayName = days[dayOfWeek];
+          const month = months[EventDate.getMonth()];
+          const year = EventDate.getFullYear();
+          return `${dayName} ${day} de ${month} del ${year}`;
+        },
+        onGetHoursString: function(EventDate){
+          let hours = EventDate.getHours();
+          const ampm = hours >= 12 ? "p.m." : "a.m.";
+          const mins = EventDate.getMinutes().toString().padStart(2, "0");
+          const the =  hours > 1 ? "las " : "la";
+          hours = hours % 12 || 12;
+          return `${the} ${hours}:${mins} ${ampm}`;
+        },
+        onGoogleCalendar: function(){
+          const base = 'https://calendar.google.com/calendar/render';
+          const details = `Acompáñanos a celebrar los XV de ${Resources.EventName}.
+          📍 Lugar: ${Resources.GoogleCalendarLocation}
+          🕒 Hora: ${Resources.EventHourString}
+          ⏰ Recordatorio: Llega con 30 minutos de anticipación.
+          ✨ ¡Te esperamos para compartir este momento tan especial!`;
+
+          
+          const params = new URLSearchParams({
+            action: "TEMPLATE",
+            text: Resources.GoogleCalendarTitle + Resources.EventName,
+            dates: `${Resources.GoogleCalendarStartDate}/${Resources.GoogleCalendarEndDate}`,
+            details: details,
+            location: Resources.GoogleCalendarLocation
+          });
+          return `${base}?${params.toString()}`;
+        },
+        onLoad: function(){
+            
+          $("[data-replace=Image_AudioUrl]").attr("src", Resources.Image_AudioUrl);
+          $("[data-replace=AudioUrl]").attr("src", Resources.AudioUrl);
+
+        }
+      };
+
+      const EventDate = new Date("2025-11-25T13:00:00");
+      var Resources = {
+        EventDate: EventDate,
+        EventTime: EventDate.getTime(),
+        EventDateString: helpers.onGetDateString(EventDate),
+        EventHourString: helpers.onGetHoursString(EventDate),
+        EventName: "María Aguilar",
+        EventFather: "José Aguilar",
+        EventMother: "María Socorro",
+        EventGodFather: "Juan Fernández",
+        EventGodMother: "Laura Jimenez",
+        EventChurchUrl: "https://maps.app.goo.gl/hBdb191LiXzkPRfR8",
+        EventReceptionUrl: "https://maps.app.goo.gl/1wwmTSk84XA8pLMn8",
+        EventAmazonGiftTableUrl: "https://www.amazon.com.mx/",
+        EventLiverpoolGiftTableUrl: "https://www.liverpool.com.mx/tienda/home",
+        GoogleCalendarTitle: "Mis XV ",
+        GoogleCalendarStartDate: helpers.onGetDateYYYYMMDDTHHmmssZ(1),
+        GoogleCalendarEndDate: helpers.onGetDateYYYYMMDDTHHmmssZ(0),
+        GoogleCalendarLocation: "Catedral de Guadalajara",
+        Image_BodyBackground: "https://img.freepik.com/fotos-premium/vestido-flores-cortina-bodas_53876-181091.jpg",
+        Image_FrontCard: "https://img.freepik.com/foto-gratis/adolescente-celebrando-quinceanera_23-2148478038.jpg",
+        Image_AudioUrl: "https://cdn-icons-png.freepik.com/512/13896/13896624.png?ga=GA1.1.1993030682.1745256637",
+        Image_Corner: "https://static.vecteezy.com/system/resources/previews/033/494/904/large_2x/golden-thai-pattern-corners-decorate-the-corner-edges-png.png",
+        Image_CodeDressUrl: "https://img.freepik.com/vector-premium/diseno-silueta-danza-pareja_715413-725.jpg",
+        Image_AmazonUrl: "https://static-00.iconduck.com/assets.00/amazon-icon-2048x2048-pqt2fe18.png",
+        Image_LiverpoolUrl: "https://play-lh.googleusercontent.com/FwrxfHaknUKLneazGpPsjJvQ4mUYKJkccj-efHNeXQISwCwqC9ymNAnqlAY5J5oHIOc",
+        AudioUrl: "https://invitameok.com/invitaciones/admin/imagenes/26931/MUSICAdont-start-now-traducida-al-espanol%20(mp3cut.net).mp3",
+        WhatsAppUrl: "https://wa.link/encb79",
+        CollageImages:[
+          'https://img.freepik.com/foto-gratis/adolescente-celebrando-quinceanera_23-2148478038.jpg',
+          'https://img.freepik.com/foto-gratis/adolescente-celebrando-quinceanera_23-2148478038.jpg',
+          'https://img.freepik.com/foto-gratis/adolescente-celebrando-quinceanera_23-2148478038.jpg',
+          'https://img.freepik.com/foto-gratis/adolescente-celebrando-quinceanera_23-2148478038.jpg',
+          'https://img.freepik.com/foto-gratis/adolescente-celebrando-quinceanera_23-2148478038.jpg',
+          'https://img.freepik.com/foto-gratis/adolescente-celebrando-quinceanera_23-2148478038.jpg'
+        ]
+      };
+
+      function Init() {
+        helpers.onLoad();
+        actions.onCounter();
+        setInterval(() => {actions.onCounter();}, 1000);
+        actions.onAudioPlayer();
+
+        const container = document.querySelector('.fireworks-container')
+        const fireworks = new Fireworks.default(container,{
+            hue: {
+                min: 300,
+                max: 360
+            },
+            rocketsPoint: {
+                min: 20,
+                max: 80
+            },
+            lineWidth: {
+                explosion: {
+                    min: 1,
+                    max: 3
+                },
+                trace: {
+                    min: 1,
+                    max: 1
+                }
+            },
+            intensity: 100,
+            explosion: 10,
+            traceLength: 1
+            })
+            fireworks.start()
+        }
+      Init();
+    </script>
+  </body>
+</html>
