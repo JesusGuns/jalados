@@ -69,29 +69,16 @@
 
       /* #endregion HTML*/
       /* #region Animations*/
-      
-      @keyframes _audio-Pulse {
-        0% { transform: scale(1); }
-        50% { transform: scale(1.1);}
-        100% { transform: scale(1);}
-      }
 
-      @keyframes _vibrate {
+      @keyframes _animation-vibrate {
         0% { transform: translate(0); }
         25% { transform: translate(-1px, 1px); }
         50% { transform: translate(1px, -1px); }
         75% { transform: translate(-1px, -1px); }
         100% { transform: translate(1px, 1px); }
       }
-  
-      @keyframes _pulse {
-        0% { transform: scale(1); }
-        50% { transform: scale(1.03); }
-        100% { transform: scale(1); }
-      }
 
-      
-      @keyframes shake {
+      @keyframes _animation-shake {
         0%   { transform: translateX(0); }
         15%  { transform: translateX(-5px); }
         30%  { transform: translateX(5px); }
@@ -102,20 +89,32 @@
         100% { transform: translateX(0); }
       }
       
-      
-      @keyframes btn-animation-pulse {
-        0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(199, 123, 145, 0.4); }
-        70% { transform: scale(1.05); box-shadow: 0 0 0 10px rgba(199, 123, 145, 0); }
-        100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(199, 123, 145, 0); }
-      }
-
-      @keyframes heartbeat {
+      @keyframes _animation-heartbeat {
         0% { transform: scale(1); }
         30% { transform: scale(1.3); }
         50% { transform: scale(1); }
         70% { transform: scale(1.2); }
         100% { transform: scale(1); }
       }
+
+      @keyframes _animation-pulse-1 {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.1);}
+        100% { transform: scale(1);}
+      }
+
+      @keyframes _animation-pulse-2 {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.03); }
+        100% { transform: scale(1); }
+      }
+
+      @keyframes _animation-pulse-3 {
+        0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(199, 123, 145, 0.4); }
+        70% { transform: scale(1.05); box-shadow: 0 0 0 10px rgba(199, 123, 145, 0); }
+        100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(199, 123, 145, 0); }
+      }
+
       /* #endregion Animations*/
       /* #region General*/
       ._btn-elegant-pink {
@@ -129,7 +128,7 @@
         cursor: pointer;
         box-shadow: 0 4px 12px rgba(199, 123, 145, 0.4);
         transition: background-color 0.3s ease, box-shadow 0.3s ease;
-        animation: btn-animation-pulse 2s infinite;
+        animation: _animation-pulse-3 2s infinite;
         text-decoration: none;
         text-transform: uppercase;
         width: 100%;
@@ -147,12 +146,12 @@
       }
 
       ._btn-elegant-pink:hover i {
-        animation: heartbeat 1s ease-in-out infinite;
+        animation: _animation-heartbeat 1s ease-in-out infinite;
       }
       /* #endregion General*/
       /* #region Audio*/
       #audioButton {
-        animation: _audio-Pulse 1.5s infinite;
+        animation: _animation-pulse-1 1.5s infinite;
         position: absolute;
         right: 1%;
         top: 11%;
@@ -161,7 +160,7 @@
 
       #audioButton.off {
         filter: brightness(0);
-        animation: _vibrate 0.4s infinite;
+        animation: _animation-vibrate 0.4s infinite;
       }
 
       #audioButton img {
@@ -306,7 +305,7 @@
         font-size: 60px;
         font-weight: 700;
         letter-spacing: 2px;
-        animation: _pulse 3s infinite;
+        animation: _animation-pulse-2 3s infinite;
       }
 
       @media (max-width: 575.98px) {
