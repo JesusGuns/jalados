@@ -116,7 +116,7 @@
       /* #region Audio*/
       #audioButton {
         animation: _animation-pulse-1 1.5s infinite;
-        position: absolute;
+        position: fixed;
         right: 1%;
         top: 11%;
         z-index: 2;
@@ -213,7 +213,8 @@
       }
 
       ._main-section img{
-        width: 100%;
+        width: fit-content;
+        height: 100vh;
       }
 
       ._main-section ._details{
@@ -227,19 +228,140 @@
 
       ._main-section p{
         color: var(--color_text_1);
-        font-size: 3rem;
+        font-size: 7rem;
         margin: 0;
       }
 
       ._main-section p._event-date{
-        font-size: 2.5rem;
+        font-size: 3.5rem;
         font-weight: bold;
       }
-      /* #endregion Part 1*/
+      @media (max-width: 575.98px) {
+        ._main-section img{
+            width: 100%;
+        }
+
+        ._main-section p{
+            font-size: 3rem;
+        }
+
+        ._main-section p._event-date{
+            font-size: 2.5rem;
+        }
+      }
+
+      /* #endregion Main Section*/
+
+      /* #region Event Section*/
+      ._event-section{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+      }
+      ._celebration{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        position: relative;
+      }
+
+      ._celebration img{
+        width: 450px;
+      }
+
+      ._celebration ._details{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        position: absolute;
+        bottom: 0;
+        background-color: rgba(255, 255, 255, 0.4);
+        width: 100%;
+        box-shadow: 0px -10px 20px 0px rgba(255, 255, 255, 0.33);
+        border: 0px;
+        border-radius: 10px 0px;
+      }
+
+      ._celebration ._details h3,
+      ._celebration ._details p{
+        color: var(--color_text_1);
+        margin: 0;
+      }
+      /* #endregion Event Section*/
+
+    /* #region Carousel Section*/
+    ._carousel-section{
+        display: flex;
+        align-self: center;
+        justify-content: center;
+    }
+    .carousel {
+      position: relative;
+      width: 250px;
+      height: 250px;
+      overflow: visible;
+      user-select: none;
+    }
+
+    .image-wrapper {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 5;
+    }
+
+    .rotated-box {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      box-sizing: border-box;
+      pointer-events: none;
+      background-color: white;
+    }
+
+    .box1 {
+      transform: rotate(-15deg);
+      z-index: 1;
+      border: 4px solid rgba(51, 51, 51, 0.8);
+    }
+
+    .box2 {
+      transform: rotate(10deg);
+      z-index: 2;
+      border: 4px solid rgba(51, 51, 51, 0.8);
+    }
+
+    .box3 {
+      transform: rotate(20deg);
+      z-index: 3;
+      border: 4px solid rgba(51, 51, 51, 0.8);
+    }
+
+    .box4 {
+      z-index: 4;
+      border: 4px solid rgba(51, 51, 51, 0.8);
+      pointer-events: all;
+    }
+
+    .rotated-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      pointer-events: none;
+    }
+    /* #endregion Carousel Section*/
+
     </style>
   </head>
   <body>
-    <div class="">
+    <div class="container">
       <main role="main" class="w-100">
         <div id="player">
           <audio id="audio" src="#" data-replace="AudioUrl" loop></audio>
@@ -250,7 +372,7 @@
         <div class="fireworks-container"></div>
 
         <div class="_template">
-            <div class="_main-section">
+            <div id="_main" class="_main-section">
                 <img src="https://img.freepik.com/foto-gratis/chica-sonriente-tiro-medio-hermoso-vestido_52683-86468.jpg?t=st=1746555442~exp=1746559042~hmac=e8d5adc2117161bcd88377ab37d6e1358945489c42ac647e29fb996cf047ca4c&w=1800">
                 <div class="_details">
                     <p>❧ Mis XV ❧</p>
@@ -279,6 +401,35 @@
                         <span id="seconds">0</span> Segundos
                       </div>
                 </div>
+            </div>
+            <div class="_event-section">
+                <!-- <div class="_celebration">
+                    <img src="https://lh3.googleusercontent.com/p/AF1QipMv-RExo0XkTU7eg8u-FelVsp1gd3u4XZyR3ipA=s3072-v1">
+                    <div class="_details">
+                        <h3>Celebracion Relgiosa</h3>
+                        <p>sabado 25 de Noviembre del 2025  a la 1pm</p> 
+                        <p>Av. Fray Antonio Alcalde 10, Zona Centro, 44100 Guadalajara, Jal.</p>
+                        <a href="#" class="">Ver en mapa</a>
+                    </div>
+                </div> -->
+
+                <!-- <div class="_reception">
+                    <h3>Recepcion</h3>
+                    <img src="https://lh3.googleusercontent.com/p/AF1QipNk9cctNeskTP2Zg2EEOQjV-aMFrSO5RRxWtx5N=s1024-v1">
+                    <p>Fecha: sabado 25 de Noviembre del 2025  a la 7pm</p> 
+                    <a href="#">Como llegar...</a>
+                </div> -->
+            </div>
+
+            <div class="_carousel-section">
+                <div class="carousel" id="carousel">
+                    <div class="image-wrapper">
+                      <div class="rotated-box box1"></div>
+                      <div class="rotated-box box2"></div>
+                      <div class="rotated-box box3"></div>
+                      <div class="rotated-box box4"></div>
+                    </div>
+                  </div>
             </div>
         </div>
       </main>
@@ -327,6 +478,92 @@
               $("#audioButton").addClass("off");
             }
           });
+        },
+        onFireworks: function(){
+            const container = document.querySelector('.fireworks-container')
+            const fireworks = new Fireworks.default(container,{
+                hue: {
+                    min: 300,
+                    max: 360
+                },
+                rocketsPoint: {
+                    min: 20,
+                    max: 80
+                },
+                lineWidth: {
+                    explosion: {
+                        min: 1,
+                        max: 3
+                    },
+                    trace: {
+                        min: 1,
+                        max: 1
+                    }
+                },
+                intensity: 30, //speed
+                explosion: 5, //explosion size
+                traceLength: 1 // trace line from origin
+            });
+            fireworks.start()
+
+            window.addEventListener('scroll', () => {
+                const section = document.getElementById('_main');
+                const sectionTop = section.offsetTop;
+                const sectionOffsetH = section.offsetHeight / 3;
+                const sectionBottom = sectionTop + section.offsetHeight - sectionOffsetH;
+                const scrollPosition = window.scrollY;
+            
+                if (scrollPosition >= sectionTop && scrollPosition <= sectionBottom) {
+                    fireworks.start();
+                } else {
+                    fireworks.stop(true);
+                }
+            });
+        },
+        onUpdateImages: function(){
+            // Function to update the images in the boxes
+            const wrapper = carousel.querySelector('.image-wrapper');
+            const boxes = wrapper.querySelectorAll('.rotated-box');
+            
+            boxes.forEach((box, i) => {
+                const img = document.createElement('img');
+                img.src = Resources.CollageImages[i];
+                box.innerHTML = ''; // Clear any existing content in the box
+                box.appendChild(img); // Add the image to the box
+            });
+        },
+        onMoveImageToFront: function(){
+            // Function to move the image of box4 to the first position in the list
+            const movedImage = Resources.CollageImages.pop(); // Remove the image from box4
+            Resources.CollageImages.unshift(movedImage); // Add the image to the beginning of the list
+            actions.onUpdateImages(); // Update the images in the boxes
+        },
+        onCarousel: function(){
+            
+            const carousel = document.getElementById('carousel');
+            
+
+             // Add click event to box4
+            document.querySelector('.box4').addEventListener('click', actions.onMoveImageToFront);
+
+            // Initialize images on page load
+            actions.onUpdateImages();
+
+            // Mobile swipe events
+            let startX = 0;
+            let endX = 0;
+
+            carousel.addEventListener('touchstart', (e) => {
+                startX = e.changedTouches[0].screenX;
+            });
+
+            carousel.addEventListener('touchend', (e) => {
+                endX = e.changedTouches[0].screenX;
+                if (Math.abs(endX - startX) > 50) {
+                    // If swipe is large enough, move the image from box4
+                    actions.onMoveImageToFront();
+                }
+            });
         }
       };
 
@@ -386,7 +623,7 @@
       };
 
       const EventDate = new Date("2025-11-25T13:00:00");
-      var Resources = {
+      const Resources = {
         EventDate: EventDate,
         EventTime: EventDate.getTime(),
         EventDateString: helpers.onGetDateString(EventDate),
@@ -414,48 +651,24 @@
         AudioUrl: "https://invitameok.com/invitaciones/admin/imagenes/26931/MUSICAdont-start-now-traducida-al-espanol%20(mp3cut.net).mp3",
         WhatsAppUrl: "https://wa.link/encb79",
         CollageImages:[
-          'https://img.freepik.com/foto-gratis/adolescente-celebrando-quinceanera_23-2148478038.jpg',
-          'https://img.freepik.com/foto-gratis/adolescente-celebrando-quinceanera_23-2148478038.jpg',
-          'https://img.freepik.com/foto-gratis/adolescente-celebrando-quinceanera_23-2148478038.jpg',
-          'https://img.freepik.com/foto-gratis/adolescente-celebrando-quinceanera_23-2148478038.jpg',
-          'https://img.freepik.com/foto-gratis/adolescente-celebrando-quinceanera_23-2148478038.jpg',
-          'https://img.freepik.com/foto-gratis/adolescente-celebrando-quinceanera_23-2148478038.jpg'
+            'https://img.freepik.com/foto-gratis/adolescente-celebrando-quinceanera_23-2148478038.jpg',
+            'https://img.freepik.com/foto-gratis/chica-sonriente-tiro-medio-hermoso-vestido_52683-86468.jpg?t=st=1746555442~exp=1746559042~hmac=e8d5adc2117161bcd88377ab37d6e1358945489c42ac647e29fb996cf047ca4c&w=1800',
+            'https://lh3.googleusercontent.com/p/AF1QipMv-RExo0XkTU7eg8u-FelVsp1gd3u4XZyR3ipA=s3072-v1',
+            'https://lh3.googleusercontent.com/p/AF1QipNk9cctNeskTP2Zg2EEOQjV-aMFrSO5RRxWtx5N=s1024-v1'
         ]
       };
 
       function Init() {
+       //$(document).scrollTop(0);
         helpers.onLoad();
         actions.onCounter();
         setInterval(() => {actions.onCounter();}, 1000);
         actions.onAudioPlayer();
-
-        const container = document.querySelector('.fireworks-container')
-        const fireworks = new Fireworks.default(container,{
-            hue: {
-                min: 300,
-                max: 360
-            },
-            rocketsPoint: {
-                min: 20,
-                max: 80
-            },
-            lineWidth: {
-                explosion: {
-                    min: 1,
-                    max: 3
-                },
-                trace: {
-                    min: 1,
-                    max: 1
-                }
-            },
-            intensity: 30, //speed
-            explosion: 5, //explosion size
-            traceLength: 1 // trace line from origin
-            })
-            fireworks.start()
-        }
+        actions.onFireworks();
+        actions.onCarousel();
+    }
       Init();
     </script>
+
   </body>
 </html>
