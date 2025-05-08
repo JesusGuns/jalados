@@ -745,7 +745,7 @@
             const container = document.querySelector('.fireworks-container')
             const fireworks = new Fireworks.default(container,{
                 hue: {
-                    min: 300,
+                    min: 0,
                     max: 360
                 },
                 rocketsPoint: {
@@ -762,8 +762,8 @@
                         max: 1
                     }
                 },
-                intensity: 30, //speed
-                explosion: 5, //explosion size
+                intensity: 10, //speed
+                explosion: 3, //explosion size
                 traceLength: 1 // trace line from origin
             });
             fireworks.start()
