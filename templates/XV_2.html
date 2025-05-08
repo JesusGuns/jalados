@@ -360,7 +360,7 @@
         }
       
         ._event-section::after {
-          content: "";
+          /* content: ""; */
           position: absolute;
           top: 15%;
           width: 4px;
@@ -372,8 +372,19 @@
             font-size: 4rem;
             margin-bottom: 1rem;
             font-family: 'Dancing Script';
-            color: var(--color_text_1);
             font-weight: bold;
+        }
+
+        ._event-section h3.rosa{
+            color: var(--color_text_1);
+        }
+
+        ._event-section h3.blanco{
+            color: white;
+            filter: brightness(0.9);
+        }
+
+        ._event-section h3.crema{
             color: wheat;
         }
 
@@ -658,7 +669,9 @@
               </div>
             </div>
             <div class="_event-section">
-                <h3>Itinerario</h3>
+                <h3 class="rosa">Itinerario</h3>
+                <h3 class="blanco">Itinerario</h3>
+                <h3 class="crema">Itinerario</h3>
               <div class="location-section mt-0">
                 <img src="https://lh3.googleusercontent.com/p/AF1QipMv-RExo0XkTU7eg8u-FelVsp1gd3u4XZyR3ipA=s3072-v1" alt="Ubicación" />
                 <p class="location-text"> 1:00 p.m. - Ceremonia Religiosa</p>
