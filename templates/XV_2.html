@@ -18,6 +18,9 @@
           --color_counter: #a14d74;
           --color_text_1: #C2185B;
           --color_text_2: #713b5f;
+          --color_timeline_h3: white;
+          --color_timeline_p: white;
+          --color_family_bg: white;
           /* --color_text_3: #8E24AA;
           --color_text_4: #E91E63;
           --color_text_5: #7B1FA2; */
@@ -391,7 +394,7 @@
             margin-bottom: 1rem;
             font-family: 'Dancing Script';
             font-weight: bold;
-            color: white;
+            color: var(--color_timeline_h3);
             filter: brightness(0.9);
             letter-spacing: 0.3rem;
         }
@@ -404,7 +407,6 @@
           gap: 16px;
           padding: 12px 20px 12px 12px;
           background-color: var(--color_counter);
-          color: white;
           border-radius: 50px;
           box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
           transition: background-color 0.3s ease, transform 0.3s ease;
@@ -430,7 +432,7 @@
         }
       
         .timeline-section .location-text {
-          color: white;
+          color: var(--color_timeline_p);
           flex: 1;
           margin: 0;
           font-family: 'Caveat';
@@ -585,7 +587,7 @@
         }
 
         ._family-section ._details {
-            background: white;
+            background: var(--color_family_bg);
             padding: 10px 10px 30px 10px;
             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25);
             width: 240px;
@@ -619,6 +621,178 @@
             font-size: 1.1rem;
         }
         /* #region End Family Section*/
+
+        /* #region Gift Section*/
+    ._gift-section{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 7rem 0;
+        position: relative;
+    }
+
+        .scene {
+      position: relative;
+      width: 220px;
+      height: 230px;
+    }
+
+    canvas#confetti-canvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+      z-index: -1; /* Confeti ahora está detrás de la caja */
+      width: 220px;
+    }
+
+    .gift-wrapper {
+      position: relative;
+      width: 250px;
+      top: 50px;
+      left: -15px;
+      z-index: 7;
+      transition: transform 0.5s ease;
+      transform-origin: left bottom;
+    }
+
+    .gift-top {
+      background: linear-gradient(to bottom, #d32f4d, #b9203d);
+      width: 250px;
+      height: 60px;
+      border-radius: 20px;
+      box-shadow: 0 8px 12px rgba(0, 0, 0, 0.3), 0 10px 15px rgba(0, 0, 0, 0.2);
+      z-index: 2;
+      position: absolute;
+      top: 0;
+    }
+
+    .gift-top::before {
+      content: '';
+      position: absolute;
+      background: #ffffff;
+      width: 55px;
+      height: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .bow-wrapper {
+      position: absolute;
+      top: -25px;
+      left: 0;
+      width: 250px;
+      display: flex;
+      justify-content: center;
+      transition: transform 0.5s ease;
+      transform-origin: left bottom;
+    }
+
+    .bow {
+      width: 250px;
+      height: 40px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .bow-part {
+      width: 50px;
+      height: 91px;
+      background: #fff;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    .bow-part:first-child {
+      transform: rotate(55deg);
+      border-radius: 1.5em 0 3em 1em / 1.5em 0 3em 4.5em;
+      box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    .bow-part:last-child {
+      transform: rotate(302deg);
+      border-radius: 0 1.5em 1em 3em / 0 1.5em 3.5em 3em;
+      box-shadow: -4px 4px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    .bow-center {
+      width: 50px;
+      height: 35px;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0px 4px 6px 8px rgb(0 0 0 / 20%);
+      z-index: 1;
+    }
+
+    .gift-wrapper.lifted {
+      transform: translateY(-50px) rotate(-18deg);
+    }
+
+    .bow-wrapper.lifted {
+      transform: translateY(-50px) rotate(-18deg);
+    }
+
+    .gift-box {
+      position: absolute;
+      bottom: 0;
+      width: 220px;
+      height: 140px;
+      background: linear-gradient(to bottom, #ff4d6d, #d63050);
+      border-radius: 10px 10px 20px 20px;
+      box-shadow: 0 15px 20px rgba(0, 0, 0, 0.3);
+      z-index: 1;
+      cursor: pointer;
+      overflow: hidden;
+    }
+
+    .gift-box::before {
+      content: '';
+      position: absolute;
+      background: #ffffff;
+      width: 55px;
+      height: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .star {
+      position: absolute;
+      width: 12px;
+      height: 12px;
+      background: yellow;
+      clip-path: polygon(
+        50% 0%,
+        60% 35%,
+        100% 50%,
+        60% 65%,
+        50% 100%,
+        40% 65%,
+        0% 50%,
+        40% 35%
+      );
+      box-shadow: 0 0 10px yellow;
+      animation: twinkle 1s infinite ease-in-out; /* Parpadeo más fuerte */
+      z-index: 8;
+    }
+
+    /* Estrellas fuera de la caja */
+    .star:nth-child(7)  { top: -40px; left: -30px; }
+    .star:nth-child(8)  { top: -40px; right: -30px; }
+    .star:nth-child(9)  { bottom: -40px; left: -25px; }
+    .star:nth-child(10) { bottom: -40px; right: -25px; }
+    .star:nth-child(11) { top: -60px; left: 80px; }
+    .star:nth-child(12) { top: -65px; right: 50px; }
+    .star:nth-child(13) { top: 20px; left: 40px; }
+    .star:nth-child(14) { top: 30px; right: 50px; }
+    .star:nth-child(15) { bottom: 40px; left: 70px; }
+    .star:nth-child(16) { bottom: 50px; right: 60px; }
+
+    @keyframes twinkle {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.3; transform: scale(1.5); } /* Parpadeo más fuerte */
+    }
+        /* #region End Gift Section*/
       </style>
   </head>
   <body>
@@ -671,7 +845,7 @@
                 </div>
                 <div class="_details">
                     <div class="_title-caption">Mis Padrinos</div>
-                    <img src="https://img.freepik.com/foto-gratis/par-mudarse-casa-nueva_23-2149383615.jpg?ga=GA1.1.1993030682.1745256637&w=740" alt="Instantánea">
+                    <img src="https://img.freepik.com/fotos-premium/pareja-dia-san-valentin_772250-159.jpg?ga=GA1.1.1993030682.1745256637&w=740" alt="Instantánea">
                     <div class="caption">Juan Fernández <br> Laura Jimenez</div>
                 </div>
                 </div>
@@ -702,6 +876,45 @@
                 <p class="location-text">Vals</p>
               </div>
             </div>
+
+            <div class="_gift-section">
+                
+                <canvas id="confetti-canvas"></canvas>
+                <div class="scene" id="demo">
+                    
+                  <div class="gift-wrapper" id="giftWrapper">
+                    <div class="gift-top" id="giftTop"></div>
+                    <div class="bow-wrapper" id="bowWrapper">
+                      <div class="bow">
+                        <div class="bow-part"></div>
+                        <div class="bow-center"></div>
+                        <div class="bow-part"></div>
+                      </div>
+                    </div>
+                  </div>
+                
+                  <!-- Caja -->
+                  <div class="gift-box" id="giftBox"></div>
+                
+                  <!-- Estrellas -->
+                  <div class="star"></div>
+                  <div class="star"></div>
+                  <div class="star"></div>
+                  <div class="star"></div>
+                  <div class="star"></div>
+                  <div class="star"></div>
+                  <div class="star"></div>
+                  <div class="star"></div>
+                  <div class="star"></div>
+                  <div class="star"></div>
+                  <div class="star"></div>
+                  <div class="star"></div>
+                  <div class="star"></div>
+                  <div class="star"></div>
+                  <div class="star"></div>
+                  <div class="star"></div>
+                </div>
+            </div>
             <div class="_carousel-section">
               <div class="carousel" id="carousel">
                 <div class="image-wrapper">
@@ -723,7 +936,8 @@
 
     <!-- UNPKG -->
     <script src="https://unpkg.com/fireworks-js@2.x/dist/index.umd.js"></script>
-
+    <!-- Confetti.js desde CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/js-confetti@latest/dist/js-confetti.browser.js"></script>
     <script>
       var actions = {
         onCounter: function(){
@@ -828,6 +1042,27 @@
                     actions.onMoveImageToFront();
                 }
             });
+        },
+        onConfetti: function(){
+            const box = document.getElementById('giftBox');
+        
+            box.addEventListener('click', () => {debugger
+                const wrapper = document.getElementById('giftWrapper');
+                if (!wrapper.classList.contains('lifted')) {
+                    wrapper.classList.add('lifted');  // Levantar la tapa y el moño
+
+                    // if (!Resources.ConfettiHasBeenTriggered) {
+                    //     Resources.ConfettiHasBeenTriggered = true; // Marcar que el confeti ya fue disparado
+                    //     //Resources.Confetti.addConfetti()
+                    //     const canvas = document.getElementById('confetti-canvas')
+
+                    //     const jsConfetti = new JSConfetti({ canvas })
+                    //     jsConfetti.addConfetti({
+                    //     confettiNumber: 500,
+                    //     })
+                    // }
+                }
+            });
         }
       };
 
@@ -879,10 +1114,11 @@
           return `${base}?${params.toString()}`;
         },
         onLoad: function(){
-            
           $("[data-replace=Image_AudioUrl]").attr("src", Resources.Image_AudioUrl);
           $("[data-replace=AudioUrl]").attr("src", Resources.AudioUrl);
 
+         
+            
         }
       };
 
@@ -919,7 +1155,9 @@
             'https://img.freepik.com/foto-gratis/chica-sonriente-tiro-medio-hermoso-vestido_52683-86468.jpg?t=st=1746555442~exp=1746559042~hmac=e8d5adc2117161bcd88377ab37d6e1358945489c42ac647e29fb996cf047ca4c&w=1800',
             'https://lh3.googleusercontent.com/p/AF1QipMv-RExo0XkTU7eg8u-FelVsp1gd3u4XZyR3ipA=s3072-v1',
             'https://lh3.googleusercontent.com/p/AF1QipNk9cctNeskTP2Zg2EEOQjV-aMFrSO5RRxWtx5N=s1024-v1'
-        ]
+        ],
+        Confetti: null,
+        ConfettiHasBeenTriggered : false
       };
 
       function Init() {
@@ -930,6 +1168,7 @@
         actions.onAudioPlayer();
         actions.onFireworks();
         actions.onCarousel();
+        actions.onConfetti();
     }
       Init();
     </script>
