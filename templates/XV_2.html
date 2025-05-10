@@ -54,6 +54,12 @@
           filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#713b5f", endColorstr="#0f1329", GradientType=1)
         }
       
+        @media (max-width: 575.98px) {
+          .container {
+            margin: 0;
+            padding: 0;
+          }
+        }
         /* #endregion HTML*/
         /* #region Animations*/
         @keyframes _animation-vibrate {
@@ -243,7 +249,7 @@
       
         @media (max-width: 575.98px) {
           #audioButton {
-            top: 45%;
+            top: 15%;
           }
       
           #audioButton img {
@@ -518,30 +524,26 @@
         }
       
         .box1 {
-          transform: rotate(-25deg);
+          transform: rotate(12deg);
           z-index: 1;
-          border: 2px solid rgba(51, 51, 51, 0.8);
           pointer-events: none;
         }
       
         .box2 {
-          transform: rotate(-10deg);
+          transform: rotate(8deg);
           z-index: 2;
-          border: 2px solid rgba(51, 51, 51, 0.8);
           pointer-events: none;
         }
       
         .box3 {
-          transform: rotate(15deg);
+          transform: rotate(4deg);
           z-index: 3;
-          border: 2px solid rgba(51, 51, 51, 0.8);
           pointer-events: none;
         }
       
         .box4 {
           transform: rotate(0deg);
           z-index: 4;
-          border: 2px solid rgba(51, 51, 51, 0.8);
           cursor: pointer;
         }
       
@@ -620,7 +622,7 @@
             font-family: 'Courier New', Courier, monospace;
             font-size: 1.1rem;
         }
-        /* #region End Family Section*/
+        /* #endregion Family Section*/
 
         /* #region Gift Section*/
     ._gift-section{
@@ -772,27 +774,26 @@
         40% 35%
       );
       box-shadow: 0 0 10px yellow;
-      animation: twinkle 1s infinite ease-in-out; /* Parpadeo más fuerte */
+      animation: twinkle 1s infinite ease-in-out; 
       z-index: 8;
     }
 
-    /* Estrellas fuera de la caja */
-    .star:nth-child(7)  { top: -40px; left: -30px; }
-    .star:nth-child(8)  { top: -40px; right: -30px; }
-    .star:nth-child(9)  { bottom: -40px; left: -25px; }
-    .star:nth-child(10) { bottom: -40px; right: -25px; }
-    .star:nth-child(11) { top: -60px; left: 80px; }
-    .star:nth-child(12) { top: -65px; right: 50px; }
-    .star:nth-child(13) { top: 20px; left: 40px; }
-    .star:nth-child(14) { top: 30px; right: 50px; }
-    .star:nth-child(15) { bottom: 40px; left: 70px; }
-    .star:nth-child(16) { bottom: 50px; right: 60px; }
+    .star:nth-child(1)  { top: -40px; left: -30px; }
+    .star:nth-child(2)  { top: -40px; right: -30px; }
+    .star:nth-child(3)  { bottom: -40px; left: -25px; }
+    .star:nth-child(4) { bottom: -40px; right: -25px; }
+    .star:nth-child(5) { top: -60px; left: 80px; }
+    .star:nth-child(6) { top: -45px; right: 50px; }
+    .star:nth-child(7) { top: 70px; left: 40px; }
+    .star:nth-child(8) { top: 100px; right: 30px; }
+    .star:nth-child(9) { bottom: 40px; left: 70px; }
+    .star:nth-child(10) { bottom: 50px; right: 60px; }
 
     @keyframes twinkle {
       0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.3; transform: scale(1.5); } /* Parpadeo más fuerte */
+      50% { opacity: 0.3; transform: scale(1.5); } 
     }
-        /* #region End Gift Section*/
+        /* #endregion Gift Section*/
       </style>
   </head>
   <body>
@@ -880,7 +881,7 @@
             <div class="_gift-section">
                 
                 <canvas id="confetti-canvas"></canvas>
-                <div class="scene" id="demo">
+                <div class="scene">
                     
                   <div class="gift-wrapper" id="giftWrapper">
                     <div class="gift-top" id="giftTop"></div>
@@ -897,12 +898,6 @@
                   <div class="gift-box" id="giftBox"></div>
                 
                   <!-- Estrellas -->
-                  <div class="star"></div>
-                  <div class="star"></div>
-                  <div class="star"></div>
-                  <div class="star"></div>
-                  <div class="star"></div>
-                  <div class="star"></div>
                   <div class="star"></div>
                   <div class="star"></div>
                   <div class="star"></div>
@@ -937,7 +932,7 @@
     <!-- UNPKG -->
     <script src="https://unpkg.com/fireworks-js@2.x/dist/index.umd.js"></script>
     <!-- Confetti.js desde CDN -->
-    <script src="https://cdn.jsdelivr.net/npm/js-confetti@latest/dist/js-confetti.browser.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
     <script>
       var actions = {
         onCounter: function(){
@@ -1046,21 +1041,19 @@
         onConfetti: function(){
             const box = document.getElementById('giftBox');
         
-            box.addEventListener('click', () => {debugger
+            box.addEventListener('click', () => {
                 const wrapper = document.getElementById('giftWrapper');
                 if (!wrapper.classList.contains('lifted')) {
                     wrapper.classList.add('lifted');  // Levantar la tapa y el moño
+                    
+                    confetti({
+                      particleCount: 300,
+                      startVelocity: 30,
+                      spread: 360
+                    });
 
-                    // if (!Resources.ConfettiHasBeenTriggered) {
-                    //     Resources.ConfettiHasBeenTriggered = true; // Marcar que el confeti ya fue disparado
-                    //     //Resources.Confetti.addConfetti()
-                    //     const canvas = document.getElementById('confetti-canvas')
-
-                    //     const jsConfetti = new JSConfetti({ canvas })
-                    //     jsConfetti.addConfetti({
-                    //     confettiNumber: 500,
-                    //     })
-                    // }
+                }else{
+                  wrapper.classList.remove('lifted');
                 }
             });
         }
@@ -1156,8 +1149,6 @@
             'https://lh3.googleusercontent.com/p/AF1QipMv-RExo0XkTU7eg8u-FelVsp1gd3u4XZyR3ipA=s3072-v1',
             'https://lh3.googleusercontent.com/p/AF1QipNk9cctNeskTP2Zg2EEOQjV-aMFrSO5RRxWtx5N=s1024-v1'
         ],
-        Confetti: null,
-        ConfettiHasBeenTriggered : false
       };
 
       function Init() {
