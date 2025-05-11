@@ -24,6 +24,8 @@
         /* --color_text_3: #8E24AA;
           --color_text_4: #E91E63;
           --color_text_5: #7B1FA2; */
+        --color_btnConfirmation: #E91E63; /* dusty rose */
+        --color_btnConfirmation-hover: #C2185B; /* rosewood */
         --font-Courier: 'Courier New', Courier, monospace;
         --font-Caveat: 'Caveat';
         --font-Satisfy: 'Satisfy';
@@ -300,17 +302,71 @@
         margin-right: 1rem;
       }
 
+      
+      ._parent-confirmation{
+          display: flex;
+          align-items: center;
+          justify-content: center;
+      }
+      ._confirmation-section{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 2rem;
+        padding: 2rem 0px;
+        border-radius: 15px;
+        box-shadow: 0 0px 25px rgba(0, 0, 0, 0.33);
+        margin: 2rem 0;
+        width: 90%;
+        transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        animation: _animation-pulse-3 2s infinite;
+      }
+
+      ._btn-Confirmation {
+        background-color: var(--color_btnConfirmation); 
+        color: #fff;
+        font-family: var(--font-Caveat);
+        font-size: 2rem;
+        border-radius: 25px;
+        cursor: pointer;
+        box-shadow: 0 4px 12px rgba(199, 123, 145, 0.4);
+        transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        animation: _animation-pulse-3 2s infinite;
+        text-decoration: none;
+        width: 30%;
+        text-align: center;
+        padding: 12px 32px;
+      }
+
+      ._btn-Confirmation i {
+        margin-right: 8px;
+        transition: transform 0.3s ease;
+      }
+
+      ._btn-Confirmation:hover {
+        background-color: var(--color_btnConfirmation-hover); 
+        box-shadow: 0 6px 18px rgba(173, 95, 125, 0.45);
+      }
+
+      ._btn-Confirmation:hover i {
+        animation: _animation-heartbeat 1s ease-in-out infinite;
+      }
+
       @media (max-width: 575.98px) {
-        
         ._btn-gifttable{
           border: 0;
         }
         ._btn-gifttable img {
           width: 40px;
         }
+
+        ._confirmation-section{
+          flex-direction: column;
+        }
+        ._btn-Confirmation{
+          width: 80%;
+        }
       }
-
-
       /* #endregion General*/
       /* #region Audio*/
       #audioButton {
@@ -716,7 +772,7 @@
         align-items: center;
         justify-content: center;
         flex-direction: column;
-        margin: 7rem 0;
+        margin: 7rem 0 1rem;
         position: relative;
       }
 
@@ -1099,6 +1155,13 @@
             </div>
           </div>
 
+          <div class="_parent-confirmation">
+            <div class="_confirmation-section">
+              <a href="#" data-replace="WhatsAppUrl" target="_blank" class="_btn-Confirmation"><i class="fas fa-heart"></i> Asistiré</a>
+              <a href="#" data-replace="GoogleCalendarUrl" target="_blank" class="_btn-Confirmation"><i class="fas fa-calendar"></i> Agendar</a>
+            </div>
+          </div>
+
         </div>
       </main>
     </div>
@@ -1298,6 +1361,8 @@
           $("[data-replace=Image_GoogleLocation]").attr("src", Resources.Image_GoogleLocation);
           $("[data-replace=Image_DressCode]").attr("src", Resources.Image_DressCode);
 
+          $("[data-replace=WhatsAppUrl]").attr("href", Resources.WhatsAppUrl);
+          $("[data-replace=GoogleCalendarUrl]").attr("href", helpers.onGoogleCalendar());
         }
       };
       const EventDate = new Date("2025-11-25T13:00:00");
@@ -1308,9 +1373,9 @@
         EventDateString: helpers.onGetDateString(EventDate),
         EventHourString: helpers.onGetHoursString(EventDate),
         EventReceptionHourString: helpers.onGetHoursString(EventReception),
-        EventName: "Nicole Gutiérrez",
+        EventName: "Nicole", //Gutierrez
         EventFather: "José Gutiérrez",
-        EventMother: "Melissa Urtado",
+        EventMother: "Melissa Hurtado",
         EventGodFather: "Juan Fernández",
         EventGodMother: "Laura Jimenez",
         EventChurchUrl: "https://maps.app.goo.gl/hBdb191LiXzkPRfR8",
@@ -1318,7 +1383,7 @@
         EventAmazonGiftTableUrl: "https://www.amazon.com.mx/",
         EventLiverpoolGiftTableUrl: "https://www.liverpool.com.mx/tienda/home",
         GoogleCalendarTitle: "Mis XV ",
-        GoogleCalendarStartDate: helpers.onGetDateYYYYMMDDTHHmmssZ(1),
+        GoogleCalendarStartDate: helpers.onGetDateYYYYMMDDTHHmmssZ(0),
         GoogleCalendarEndDate: helpers.onGetDateYYYYMMDDTHHmmssZ(0),
         GoogleCalendarLocation: "Catedral de Guadalajara",
         Image_BodyBackground: "",

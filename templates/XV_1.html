@@ -1153,29 +1153,30 @@
       };
 
       var helpers= {
-        onGetDateYYYYMMDDTHHmmssZ: function(previousDays){
-          var date = new Date(EventDate);;
+        onGetDateYYYYMMDDTHHmmssZ: function(previousDays) {
+          var date = new Date(EventDate);
           date.setDate(EventDate.getDate() - previousDays);
           return date.toISOString().replace(/[-:]|\.\d{3}/g, '');
         },
-        onGetDateYYYYMMDD: function(){
-          const format = (f) => f.toISOString().split("T")[0].replace(/-/g, "");
-          return format(EventDate);
-        },
-        onGetDateString: function(EventDate) {
-          const months = [
-            "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
-            "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"
-          ];
-
+        onGetDateString: function(EventDate, includeDayName) {
+          const months = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
           const days = ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"];
-          
           const day = EventDate.getDate();
           const dayOfWeek = EventDate.getDay();
           const dayName = days[dayOfWeek];
           const month = months[EventDate.getMonth()];
           const year = EventDate.getFullYear();
-          return `${dayName} ${day} de ${month} del ${year}`;
+          const dateString = includeDayName ? `${dayName} ${day} de ${month} del ${year}` : `${day} de ${month} del ${year}`;
+          return dateString;
+        },
+        onGetHoursString: function(EventDate, includeThe) {
+          let hours = EventDate.getHours();
+          const ampm = hours >= 12 ? "p.m." : "a.m.";
+          const mins = EventDate.getMinutes().toString().padStart(2, "0");
+          const the = hours > 1 ? "las " : "la";
+          hours = hours % 12 || 12;
+          const hourString = includeThe ? `${the} ${hours}:${mins} ${ampm}` : `${hours}:${mins} ${ampm}`;
+          return hourString;
         },
         onGetHoursString: function(EventDate){
           let hours = EventDate.getHours();
@@ -1243,14 +1244,16 @@
       };
 
       const EventDate = new Date("2025-11-25T13:00:00");
+      const EventReception = new Date("2025-11-25T17:00:00");
       var Resources = {
         EventDate: EventDate,
         EventTime: EventDate.getTime(),
-        EventDateString: helpers.onGetDateString(EventDate),
-        EventHourString: helpers.onGetHoursString(EventDate),
-        EventName: "María Aguilar",
-        EventFather: "José Aguilar",
-        EventMother: "María Socorro",
+        EventDateString: helpers.onGetDateString(EventDate, true),
+        EventHourString: helpers.onGetHoursString(EventDate, true),
+        EventReceptionHourString: helpers.onGetHoursString(EventReception),
+        EventName: "Nicole Gutiérrez",
+        EventFather: "José Gutiérrez",
+        EventMother: "Melissa Hurtado",
         EventGodFather: "Juan Fernández",
         EventGodMother: "Laura Jimenez",
         EventChurchUrl: "https://maps.app.goo.gl/hBdb191LiXzkPRfR8",
@@ -1258,8 +1261,8 @@
         EventAmazonGiftTableUrl: "https://www.amazon.com.mx/",
         EventLiverpoolGiftTableUrl: "https://www.liverpool.com.mx/tienda/home",
         GoogleCalendarTitle: "Mis XV ",
-        GoogleCalendarStartDate: helpers.onGetDateYYYYMMDD(),
-        GoogleCalendarEndDate: helpers.onGetDateYYYYMMDD(),
+        GoogleCalendarStartDate: helpers.onGetDateYYYYMMDDTHHmmssZ(0),
+        GoogleCalendarEndDate: helpers.onGetDateYYYYMMDDTHHmmssZ(0),
         GoogleCalendarLocation: "Catedral de Guadalajara",
         Image_BodyBackground: "https://img.freepik.com/fotos-premium/vestido-flores-cortina-bodas_53876-181091.jpg",
         Image_FrontCard: "https://img.freepik.com/foto-gratis/adolescente-celebrando-quinceanera_23-2148478038.jpg",
