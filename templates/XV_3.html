@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rompecabezas 4x4</title>
     <style>
-      body {
+body {
     font-family: Arial, sans-serif;
     display: flex;
     flex-direction: column;
@@ -38,23 +38,21 @@ h1 {
     border: 1px solid #ccc;
 }
 
-.piece img {
-    width: 100%;
-    height: 100%;
-}
-
 .piece.dragging {
     opacity: 0.5;
 }
+
     </style>
 </head>
 <body>
     <div id="puzzle-container"></div>
     <script>
-      const puzzleContainer = document.getElementById('puzzle-container');
+        const puzzleContainer = document.getElementById('puzzle-container');
 const imageUrl = 'https://img.freepik.com/foto-gratis/chica-sonriente-tiro-medio-hermoso-vestido_52683-86468.jpg?t=st=1746555442~exp=1746559042~hmac=e8d5adc2117161bcd88377ab37d6e1358945489c42ac647e29fb996cf047ca4c&w=1800';
 const puzzleSize = 4;
 const pieceSize = 100;
+let draggedPiece = null;
+let initialPosition = {};
 
 // Crear el rompecabezas
 function createPuzzle() {
@@ -77,7 +75,12 @@ function createPuzzle() {
             piece.addEventListener('dragover', dragOver);
             piece.addEventListener('drop', drop);
             piece.addEventListener('dragend', dragEnd);
-            
+
+            // Agregar eventos táctiles
+            piece.addEventListener('touchstart', touchStart);
+            piece.addEventListener('touchmove', touchMove);
+            piece.addEventListener('touchend', touchEnd);
+
             pieces.push(piece);
             puzzleContainer.appendChild(piece);
         }
@@ -92,9 +95,10 @@ function shufflePieces(pieces) {
     shuffled.forEach(piece => puzzleContainer.appendChild(piece));
 }
 
-// Funciones para drag & drop
+// Funciones para drag & drop (ratón)
 function dragStart(e) {
-    e.target.classList.add('dragging');
+    draggedPiece = e.target;
+    draggedPiece.classList.add('dragging');
 }
 
 function dragOver(e) {
@@ -102,34 +106,63 @@ function dragOver(e) {
 }
 
 function drop(e) {
-    const draggedPiece = document.querySelector('.dragging');
-    const targetPiece = e.target;
-    
-    if (draggedPiece !== targetPiece) {
-        const draggedPosition = {
-            row: draggedPiece.dataset.row,
-            col: draggedPiece.dataset.col
-        };
-        const targetPosition = {
-            row: targetPiece.dataset.row,
-            col: targetPiece.dataset.col
-        };
-
-        // Intercambiar posiciones
-        draggedPiece.dataset.row = targetPosition.row;
-        draggedPiece.dataset.col = targetPosition.col;
-        targetPiece.dataset.row = draggedPosition.row;
-        targetPiece.dataset.col = draggedPosition.col;
-
-        // Intercambiar las piezas visualmente
-        const temp = draggedPiece.style.backgroundPosition;
-        draggedPiece.style.backgroundPosition = targetPiece.style.backgroundPosition;
-        targetPiece.style.backgroundPosition = temp;
+    if (draggedPiece !== e.target) {
+        swapPieces(draggedPiece, e.target);
     }
 }
 
 function dragEnd(e) {
-    e.target.classList.remove('dragging');
+    draggedPiece.classList.remove('dragging');
+    draggedPiece = null;
+}
+
+// Funciones para touch events (pantallas táctiles)
+function touchStart(e) {
+    e.preventDefault();
+    draggedPiece = e.target;
+    initialPosition = { x: e.touches[0].clientX, y: e.touches[0].clientY };
+    draggedPiece.classList.add('dragging');
+}
+
+function touchMove(e) {
+    e.preventDefault();
+    if (draggedPiece) {
+        const deltaX = e.touches[0].clientX - initialPosition.x;
+        const deltaY = e.touches[0].clientY - initialPosition.y;
+
+        draggedPiece.style.transform = `translate(${deltaX}px, ${deltaY}px)`;
+    }
+}
+
+function touchEnd(e) {
+    e.preventDefault();
+    if (draggedPiece) {
+        const targetPiece = document.elementFromPoint(e.changedTouches[0].clientX, e.changedTouches[0].clientY);
+        
+        if (targetPiece && targetPiece !== draggedPiece && targetPiece.classList.contains('piece')) {
+            swapPieces(draggedPiece, targetPiece);
+        }
+
+        draggedPiece.style.transform = '';
+        draggedPiece.classList.remove('dragging');
+        draggedPiece = null;
+    }
+}
+
+// Intercambiar las piezas
+function swapPieces(piece1, piece2) {
+    const tempRow = piece1.dataset.row;
+    const tempCol = piece1.dataset.col;
+    
+    piece1.dataset.row = piece2.dataset.row;
+    piece1.dataset.col = piece2.dataset.col;
+    
+    piece2.dataset.row = tempRow;
+    piece2.dataset.col = tempCol;
+
+    const tempPosition = piece1.style.backgroundPosition;
+    piece1.style.backgroundPosition = piece2.style.backgroundPosition;
+    piece2.style.backgroundPosition = tempPosition;
 }
 
 // Iniciar el rompecabezas
