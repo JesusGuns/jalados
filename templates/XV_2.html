@@ -57,7 +57,6 @@
         background: -moz-linear-gradient(0deg, rgba(113, 59, 95, 1) 0%, rgba(95, 59, 113, 1) 12%, rgba(15, 19, 41, 1) 95%);
         background: -webkit-linear-gradient(0deg, rgba(113, 59, 95, 1) 0%, rgba(95, 59, 113, 1) 12%, rgba(15, 19, 41, 1) 95%);
         background: linear-gradient(0deg, rgba(113, 59, 95, 1) 0%, rgba(95, 59, 113, 1) 12%, rgba(15, 19, 41, 1) 95%);
-        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#713b5f", endColorstr="#0f1329", GradientType=1)
       }
 
       @media (max-width: 575.98px) {
@@ -359,12 +358,13 @@
         ._btn-gifttable img {
           width: 40px;
         }
-
         ._confirmation-section{
-          flex-direction: column;
+          padding: 2rem;
         }
         ._btn-Confirmation{
+          font-size: 1.7rem;
           width: 80%;
+          padding: 12px 0px;
         }
       }
       /* #endregion General*/
@@ -708,18 +708,16 @@
         ._carousel-section .carousel {
           width: 300px;
           height: 300px;
-          margin: 3.5rem 0;
+          margin: 2rem 0;
         }
       }
 
       @media (max-width: 375.98px) {
         ._carousel-section .carousel {
-          width: 250px;
-          height: 250px;
-          margin: 3.5rem 0;
+          width: 270px;
+          height: 270px;
         }
       }
-
       /* #endregion Carousel Section*/
       /* #region Family Section*/
       ._family-section {
@@ -763,6 +761,10 @@
         margin-top: 12px;
         font-family: var(--font-Courier);
         font-size: 1.1rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
       }
 
       /* #endregion Family Section*/
@@ -979,10 +981,10 @@
       @media (max-width: 575.98px) {
         ._gift-box{
           margin-bottom: 0rem;
-          transform: scale(0.8);
+          transform: scale(0.6);
         }
         ._gift-section{
-          margin: 6rem 0 2rem;
+          margin: 2rem 0;
         }
       }
       /* #endregion Gift Section*/
@@ -1019,7 +1021,15 @@
           font-family: var(--font-Courier);
           font-size: 1.1rem;
         }
+        @media (max-width: 575.98px) {
+          ._dresscode-section ._details {
+            width: 200px;
+          }
 
+          ._dresscode-section img {
+            height: 230px;
+          }
+        }
       /* #endregion DressCode Section*/
     
     </style>
@@ -1069,12 +1079,12 @@
             <div class="_details">
               <div class="_title-caption">Mis Padres</div>
               <img src="https://img.freepik.com/fotos-premium/retrato-pareja-madura-feliz-abrazada-casa-conexion-amor-o-confianza-asociacion-juntos-cara-al-hombre-abrazar-mujer-compromiso-cuidado-relacion-saludable-apoyo-casa_590464-361056.jpg?ga=GA1.1.1993030682.1745256637&semt=ais_hybrid&w=740" alt="Instantánea">
-              <div class="caption"><span data-replace="EventFather"></span> <br> <span data-replace="EventMother"></span>  </div>
+              <div class="caption"><span data-replace="EventFather"></span> <span data-replace="EventMother"></span>  </div>
             </div>
             <div class="_details">
               <div class="_title-caption">Mis Padrinos</div>
               <img src="https://img.freepik.com/fotos-premium/pareja-dia-san-valentin_772250-159.jpg?ga=GA1.1.1993030682.1745256637&w=740" alt="Instantánea">
-              <div class="caption"><span data-replace="EventGodFather"></span>  <br> <span data-replace="EventGodMother"></span>  </div>
+              <div class="caption"><span data-replace="EventGodFather"></span> <span data-replace="EventGodMother"></span>  </div>
             </div>
           </div>
           <div class="_timeline-section">
