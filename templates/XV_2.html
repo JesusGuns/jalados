@@ -983,7 +983,7 @@
             <div class="_details">
               <p>❧ Mis XV ❧</p>
               <p data-replace="EventName"></p>
-              <p class="_event-date">25 de Noviembre del 2025</p>
+              <p class="_event-date" data-replace="EventDateString"></p>
             </div>
             <div class="fireworks-container"></div>
           </div>
@@ -1024,13 +1024,13 @@
           <div class="_timeline-section">
             <h3>Itinerario</h3>
             <div class="timeline-section mt-0">
-              <p class="location-text"> 1:00 p.m. - Ceremonia Religiosa</p>
+              <p class="location-text"> <span data-replace="EventHourString"></span> - Ceremonia Religiosa</p>
               <a href="#" data-replace="EventChurchUrl" target="_blank">
                 <img class="location-maps" src="#" data-replace="Image_GoogleLocation">
               </a>
             </div>
             <div class="timeline-section">
-              <p class="location-text">5:00 p.m. - Recepción</p>
+              <p class="location-text"><span data-replace="EventReceptionHourString"></span> - Recepción</p>
               <a href="#" data-replace="EventReceptionUrl" target="_blank">
                 <img class="location-maps" src="#" data-replace="Image_GoogleLocation">
               </a>
@@ -1237,7 +1237,7 @@
           date.setDate(EventDate.getDate() - previousDays);
           return date.toISOString().replace(/[-:]|\.\d{3}/g, '');
         },
-        onGetDateString: function(EventDate, withDay) {
+        onGetDateString: function(EventDate, includeDayName) {
           const months = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
           const days = ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"];
           const day = EventDate.getDate();
@@ -1245,15 +1245,17 @@
           const dayName = days[dayOfWeek];
           const month = months[EventDate.getMonth()];
           const year = EventDate.getFullYear();
-          return `${dayName} ${day} de ${month} del ${year}`;
+          const dateString = includeDayName ? `${dayName} ${day} de ${month} del ${year}` : `${day} de ${month} del ${year}`;
+          return dateString;
         },
-        onGetHoursString: function(EventDate) {
+        onGetHoursString: function(EventDate, includeThe) {
           let hours = EventDate.getHours();
           const ampm = hours >= 12 ? "p.m." : "a.m.";
           const mins = EventDate.getMinutes().toString().padStart(2, "0");
           const the = hours > 1 ? "las " : "la";
           hours = hours % 12 || 12;
-          return `${the} ${hours}:${mins} ${ampm}`;
+          const hourString = includeThe ? `${the} ${hours}:${mins} ${ampm}` : `${hours}:${mins} ${ampm}`;
+          return hourString;
         },
         onGoogleCalendar: function() {
           const base = 'https://calendar.google.com/calendar/render';
@@ -1279,6 +1281,10 @@
           $("[data-replace=EventAmazonGiftTableUrl]").attr("href", Resources.EventAmazonGiftTableUrl);
           $("[data-replace=EventLiverpoolGiftTableUrl]").attr("href", Resources.EventLiverpoolGiftTableUrl);
 
+          $("[data-replace=EventDateString]").text(Resources.EventDateString);
+          $("[data-replace=EventHourString]").text(Resources.EventHourString);
+          $("[data-replace=EventReceptionHourString]").text(Resources.EventReceptionHourString);
+
           $("[data-replace=EventName]").text(Resources.EventName);
           $("[data-replace=EventFather]").text(Resources.EventFather);
           $("[data-replace=EventMother]").text(Resources.EventMother);
@@ -1294,11 +1300,13 @@
         }
       };
       const EventDate = new Date("2025-11-25T13:00:00");
+      const EventReception = new Date("2025-11-25T17:00:00");
       const Resources = {
         EventDate: EventDate,
         EventTime: EventDate.getTime(),
         EventDateString: helpers.onGetDateString(EventDate),
         EventHourString: helpers.onGetHoursString(EventDate),
+        EventReceptionHourString: helpers.onGetHoursString(EventReception),
         EventName: "Nicole Gutiérrez",
         EventFather: "José Gutiérrez",
         EventMother: "Melissa Urtado",
