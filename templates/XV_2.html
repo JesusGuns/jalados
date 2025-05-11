@@ -1296,10 +1296,9 @@
         }
       };
       var helpers = {
-        onGetDateYYYYMMDDTHHmmssZ: function(previousDays) {
-          var date = new Date(EventDate);
-          date.setDate(EventDate.getDate() - previousDays);
-          return date.toISOString().replace(/[-:]|\.\d{3}/g, '');
+        onGetDateYYYYMMDD: function(){
+          const format = (f) => f.toISOString().split("T")[0].replace(/-/g, "");
+          return format(EventDate);
         },
         onGetDateString: function(EventDate, includeDayName) {
           const months = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
@@ -1383,8 +1382,8 @@
         EventAmazonGiftTableUrl: "https://www.amazon.com.mx/",
         EventLiverpoolGiftTableUrl: "https://www.liverpool.com.mx/tienda/home",
         GoogleCalendarTitle: "Mis XV ",
-        GoogleCalendarStartDate: helpers.onGetDateYYYYMMDDTHHmmssZ(0),
-        GoogleCalendarEndDate: helpers.onGetDateYYYYMMDDTHHmmssZ(0),
+        GoogleCalendarStartDate: helpers.onGetDateYYYYMMDD(),
+        GoogleCalendarEndDate: helpers.onGetDateYYYYMMDD(),
         GoogleCalendarLocation: "Catedral de Guadalajara",
         Image_BodyBackground: "",
         Image_FrontCard: "https://img.freepik.com/foto-gratis/chica-sonriente-tiro-medio-hermoso-vestido_52683-86468.jpg?t=st=1746555442~exp=1746559042~hmac=e8d5adc2117161bcd88377ab37d6e1358945489c42ac647e29fb996cf047ca4c&w=1800",
