@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rompecabezas 4x4</title>
+    <style>
+      body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f0f0f0;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#puzzle-container {
+    display: grid;
+    grid-template-columns: repeat(4, 100px);
+    grid-template-rows: repeat(4, 100px);
+    gap: 2px;
+    margin-top: 20px;
+}
+
+.piece {
+    width: 100px;
+    height: 100px;
+    background-size: 400px 400px;
+    cursor: pointer;
+    position: relative;
+    border: 1px solid #ccc;
+}
+
+.piece img {
+    width: 100%;
+    height: 100%;
+}
+
+.piece.dragging {
+    opacity: 0.5;
+}
+    </style>
+</head>
+<body>
+    <div id="puzzle-container"></div>
+    <script>
+      const puzzleContainer = document.getElementById('puzzle-container');
+const imageUrl = 'https://img.freepik.com/foto-gratis/chica-sonriente-tiro-medio-hermoso-vestido_52683-86468.jpg?t=st=1746555442~exp=1746559042~hmac=e8d5adc2117161bcd88377ab37d6e1358945489c42ac647e29fb996cf047ca4c&w=1800';
+const puzzleSize = 4;
+const pieceSize = 100;
+
+// Crear el rompecabezas
+function createPuzzle() {
+    const pieces = [];
+    
+    for (let row = 0; row < puzzleSize; row++) {
+        for (let col = 0; col < puzzleSize; col++) {
+            const piece = document.createElement('div');
+            piece.classList.add('piece');
+            piece.setAttribute('draggable', true);
+            
+            // Asignar la posición del fondo de cada pieza
+            piece.style.backgroundImage = `url(${imageUrl})`;
+            piece.style.backgroundPosition = `-${col * pieceSize}px -${row * pieceSize}px`;
+            piece.style.backgroundSize = `${puzzleSize * pieceSize}px ${puzzleSize * pieceSize}px`;
+            piece.dataset.row = row;
+            piece.dataset.col = col;
+
+            piece.addEventListener('dragstart', dragStart);
+            piece.addEventListener('dragover', dragOver);
+            piece.addEventListener('drop', drop);
+            piece.addEventListener('dragend', dragEnd);
+            
+            pieces.push(piece);
+            puzzleContainer.appendChild(piece);
+        }
+    }
+
+    shufflePieces(pieces);
+}
+
+// Mezclar las piezas
+function shufflePieces(pieces) {
+    const shuffled = pieces.sort(() => Math.random() - 0.5);
+    shuffled.forEach(piece => puzzleContainer.appendChild(piece));
+}
+
+// Funciones para drag & drop
+function dragStart(e) {
+    e.target.classList.add('dragging');
+}
+
+function dragOver(e) {
+    e.preventDefault();
+}
+
+function drop(e) {
+    const draggedPiece = document.querySelector('.dragging');
+    const targetPiece = e.target;
+    
+    if (draggedPiece !== targetPiece) {
+        const draggedPosition = {
+            row: draggedPiece.dataset.row,
+            col: draggedPiece.dataset.col
+        };
+        const targetPosition = {
+            row: targetPiece.dataset.row,
+            col: targetPiece.dataset.col
+        };
+
+        // Intercambiar posiciones
+        draggedPiece.dataset.row = targetPosition.row;
+        draggedPiece.dataset.col = targetPosition.col;
+        targetPiece.dataset.row = draggedPosition.row;
+        targetPiece.dataset.col = draggedPosition.col;
+
+        // Intercambiar las piezas visualmente
+        const temp = draggedPiece.style.backgroundPosition;
+        draggedPiece.style.backgroundPosition = targetPiece.style.backgroundPosition;
+        targetPiece.style.backgroundPosition = temp;
+    }
+}
+
+function dragEnd(e) {
+    e.target.classList.remove('dragging');
+}
+
+// Iniciar el rompecabezas
+createPuzzle();
+
+    </script>
+</body>
+</html>
