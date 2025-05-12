@@ -193,7 +193,7 @@
 
       @keyframes _animation-fade-in {
         from {
-          opacity: 0.5;
+          opacity: 0.7;
           transform: scale(0.95);
         }
 
@@ -1079,12 +1079,12 @@
           <div class="_family-section">
             <div class="_details">
               <div class="_title-caption">Mis Padres</div>
-              <img src="https://img.freepik.com/fotos-premium/retrato-pareja-madura-feliz-abrazada-casa-conexion-amor-o-confianza-asociacion-juntos-cara-al-hombre-abrazar-mujer-compromiso-cuidado-relacion-saludable-apoyo-casa_590464-361056.jpg?ga=GA1.1.1993030682.1745256637&semt=ais_hybrid&w=740" alt="Instantánea">
+              <img src="#" data-replace="Image_MyParents" alt="Mis Padres">
               <div class="caption"><span data-replace="EventFather"></span> <span data-replace="EventMother"></span>  </div>
             </div>
             <div class="_details">
               <div class="_title-caption">Mis Padrinos</div>
-              <img src="https://img.freepik.com/fotos-premium/pareja-dia-san-valentin_772250-159.jpg?ga=GA1.1.1993030682.1745256637&w=740" alt="Instantánea">
+              <img src="#" data-replace="Image_MyGodParents" alt="Mis Padrinos">
               <div class="caption"><span data-replace="EventGodFather"></span> <span data-replace="EventGodMother"></span>  </div>
             </div>
           </div>
@@ -1093,13 +1093,13 @@
             <div class="timeline-section mt-0">
               <p class="location-text"> <span data-replace="EventHourString"></span> - Ceremonia Religiosa</p>
               <a href="#" data-replace="EventChurchUrl" target="_blank">
-                <img class="location-maps" src="#" data-replace="Image_GoogleLocation">
+                <img class="location-maps" src="#" data-replace="Image_GoogleLocation" alt="Google Location">
               </a>
             </div>
             <div class="timeline-section">
               <p class="location-text"><span data-replace="EventReceptionHourString"></span> - Recepción</p>
               <a href="#" data-replace="EventReceptionUrl" target="_blank">
-                <img class="location-maps" src="#" data-replace="Image_GoogleLocation">
+                <img class="location-maps" src="#" data-replace="Image_GoogleLocation" alt="Google Location">
               </a>
             </div>
             <div class="timeline-section">
@@ -1116,7 +1116,7 @@
           <div class="_dresscode-section">
             <div class="_details">
               <div class="_title-caption">Dress Code</div>
-              <img src="" data-replace="Image_DressCode" alt="Instantánea">
+              <img src="" data-replace="Image_DressCode" alt="Dress Code">
               <div class="caption">Formal</div>
             </div>
           </div>
@@ -1149,9 +1149,9 @@
             </div>
             <div class="_btn-brands">
               <a href="#" data-replace="EventAmazonGiftTableUrl" target="_blank" class="_btn-gifttable">
-                <img src="#" data-replace="Image_AmazonUrl" /> Amazon </a>
+                <img src="#" data-replace="Image_AmazonUrl" alt="Amazon"/> Amazon </a>
               <a href="#" data-replace="EventLiverpoolGiftTableUrl" target="_blank" class="_btn-gifttable">
-                <img src="#" data-replace="Image_LiverpoolUrl" /> Liverpool </a>
+                <img src="#" data-replace="Image_LiverpoolUrl" alt="Liverpool"/> Liverpool </a>
             </div>
           </div>
 
@@ -1369,6 +1369,8 @@
 
           $("[data-replace=Image_FrontCard]").attr("src", Resources.Image_FrontCard);
           $("[data-replace=Image_GoogleLocation]").attr("src", Resources.Image_GoogleLocation);
+          $("[data-replace=Image_MyParents]").attr("src", Resources.Image_MyParents);
+          $("[data-replace=Image_MyGodParents]").attr("src", Resources.Image_MyGodParents);
           $("[data-replace=Image_DressCode]").attr("src", Resources.Image_DressCode);
 
           $("[data-replace=WhatsAppUrl]").attr("href", Resources.WhatsAppUrl);
@@ -1400,6 +1402,8 @@
         Image_FrontCard: "https://img.freepik.com/foto-gratis/chica-sonriente-tiro-medio-hermoso-vestido_52683-86468.jpg?t=st=1746555442~exp=1746559042~hmac=e8d5adc2117161bcd88377ab37d6e1358945489c42ac647e29fb996cf047ca4c&w=1800",
         Image_AudioUrl: "https://cdn-icons-png.freepik.com/512/13896/13896624.png?ga=GA1.1.1993030682.1745256637",
         Image_Corner: "",
+        Image_MyParents:"https://img.freepik.com/fotos-premium/retrato-pareja-madura-feliz-abrazada-casa-conexion-amor-o-confianza-asociacion-juntos-cara-al-hombre-abrazar-mujer-compromiso-cuidado-relacion-saludable-apoyo-casa_590464-361056.jpg?ga=GA1.1.1993030682.1745256637&semt=ais_hybrid&w=740",
+        Image_MyGodParents:"https://img.freepik.com/fotos-premium/pareja-dia-san-valentin_772250-159.jpg?ga=GA1.1.1993030682.1745256637&w=740",
         Image_CodeDressUrl: "https://img.freepik.com/vector-premium/diseno-silueta-danza-pareja_715413-725.jpg",
         Image_AmazonUrl: "https://static-00.iconduck.com/assets.00/amazon-icon-2048x2048-pqt2fe18.png",
         Image_LiverpoolUrl: "https://play-lh.googleusercontent.com/FwrxfHaknUKLneazGpPsjJvQ4mUYKJkccj-efHNeXQISwCwqC9ymNAnqlAY5J5oHIOc",
