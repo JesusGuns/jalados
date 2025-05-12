@@ -24,8 +24,8 @@
         /* --color_text_3: #8E24AA;
           --color_text_4: #E91E63;
           --color_text_5: #7B1FA2; */
-        --color_btnConfirmation: #E91E63; /* dusty rose */
-        --color_btnConfirmation-hover: #C2185B; /* rosewood */
+        --color_btnConfirmation: #ad1457; /* Elegant deep pink */
+        --color_btnConfirmation-hover: rgba(173, 20, 87, 0.45); /* Elegant deep pink with trasparence */
         --font-Courier: 'Courier New', Courier, monospace;
         --font-Caveat: 'Caveat';
         --font-Satisfy: 'Satisfy';
@@ -193,7 +193,7 @@
 
       @keyframes _animation-fade-in {
         from {
-          opacity: 0;
+          opacity: 0.5;
           transform: scale(0.95);
         }
 
@@ -759,12 +759,13 @@
 
       ._family-section .caption {
         margin-top: 12px;
-        font-family: var(--font-Courier);
-        font-size: 1.1rem;
+        font-family: var(--font-Caveat);
+        font-size: 1.8rem;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
+        letter-spacing: 1px;
       }
 
       /* #endregion Family Section*/
@@ -1045,7 +1046,7 @@
         </span>
         <div class="_template">
           <div id="_main" class="_main-section">
-            <img src="#" data-replace="Image_FrontCard">
+            <img src="#" data-replace="Image_FrontCard" alt="❧ Mis XV ❧">
             <div class="_details">
               <p>❧ Mis XV ❧</p>
               <p data-replace="EventName"></p>
