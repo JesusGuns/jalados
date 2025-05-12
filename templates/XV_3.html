@@ -40,6 +40,7 @@ h1 {
 
 .piece.dragging {
     opacity: 0.5;
+    z-index: 2;
 }
 
     </style>
@@ -137,8 +138,10 @@ function touchMove(e) {
 function touchEnd(e) {
     e.preventDefault();
     if (draggedPiece) {
-        const targetPiece = document.elementFromPoint(e.changedTouches[0].clientX, e.changedTouches[0].clientY);
-        
+        draggedPiece.style.visibility = 'hidden';
+        const touch = e.changedTouches[0];
+        const targetPiece = document.elementFromPoint(touch.clientX, touch.clientY);
+        draggedPiece.style.visibility = 'visible';
         if (targetPiece && targetPiece !== draggedPiece && targetPiece.classList.contains('piece')) {
             swapPieces(draggedPiece, targetPiece);
         }
