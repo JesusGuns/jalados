@@ -8,25 +8,27 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Outfit&display=swap" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Tenor+Sans&display=swap" rel="stylesheet" />
     <!-- Font Awesome-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
     <style>
       /* #region ROOT*/
       :root {
-        --color_counter: #a14d74;
+        --color-dark-pink: #C2185B;
+        --color_counter: var(--color-dark-pink);
         --color_text-strong-pink: #bf5666;
-        --color_decoration-HF:  var(--color_text-strong-pink);
-        --color_btn-elegant-pink: #C77B91; /* dusty rose */
-        --color_btn-elegant-pink-hover: #AD5F7D; /* rosewood */
+        --color_decoration-HF: var(--color-dark-pink);
+        --color_btn-elegant-pink: #C77B91;
+        --color-dark-pink-2: #bd4876;
         --color_corner-filter: var(--color_text-strong-pink);
-        --color_back-border:var(--color_text-strong-pink);
-        --color-text-pink:var(--color_text-strong-pink);
+        --color_back-border: var(--color_text-strong-pink);
+        --color-text-pink: var(--color_text-strong-pink);
         --color-line-pink: #a14d74;
         
+        --font-GreatVibes: 'Great Vibes';
+        --font-DancingScript: 'Dancing Script';
+        --font-TenorSans: 'Tenor Sans';
       }
 
       /* #endregion ROOT*/
@@ -68,56 +70,205 @@
 
       /* #endregion HTML*/
       /* #region Animations*/
-
       @keyframes _animation-vibrate {
-        0% { transform: translate(0); }
-        25% { transform: translate(-1px, 1px); }
-        50% { transform: translate(1px, -1px); }
-        75% { transform: translate(-1px, -1px); }
-        100% { transform: translate(1px, 1px); }
+        0% {
+          transform: translate(0);
+        }
+
+        25% {
+          transform: translate(-1px, 1px);
+        }
+
+        50% {
+          transform: translate(1px, -1px);
+        }
+
+        75% {
+          transform: translate(-1px, -1px);
+        }
+
+        100% {
+          transform: translate(1px, 1px);
+        }
       }
 
       @keyframes _animation-shake {
-        0%   { transform: translateX(0); }
-        15%  { transform: translateX(-5px); }
-        30%  { transform: translateX(5px); }
-        45%  { transform: translateX(-4px); }
-        60%  { transform: translateX(4px); }
-        75%  { transform: translateX(-2px); }
-        90%  { transform: translateX(2px); }
-        100% { transform: translateX(0); }
+        0% {
+          transform: translateX(0);
+        }
+
+        15% {
+          transform: translateX(-5px);
+        }
+
+        30% {
+          transform: translateX(5px);
+        }
+
+        45% {
+          transform: translateX(-4px);
+        }
+
+        60% {
+          transform: translateX(4px);
+        }
+
+        75% {
+          transform: translateX(-2px);
+        }
+
+        90% {
+          transform: translateX(2px);
+        }
+
+        100% {
+          transform: translateX(0);
+        }
       }
-      
+
       @keyframes _animation-heartbeat {
-        0% { transform: scale(1); }
-        30% { transform: scale(1.3); }
-        50% { transform: scale(1); }
-        70% { transform: scale(1.2); }
-        100% { transform: scale(1); }
+        0% {
+          transform: scale(1);
+        }
+
+        30% {
+          transform: scale(1.3);
+        }
+
+        50% {
+          transform: scale(1);
+        }
+
+        70% {
+          transform: scale(1.2);
+        }
+
+        100% {
+          transform: scale(1);
+        }
       }
 
       @keyframes _animation-pulse-1 {
-        0% { transform: scale(1); }
-        50% { transform: scale(1.1);}
-        100% { transform: scale(1);}
+        0% {
+          transform: scale(1);
+        }
+
+        50% {
+          transform: scale(1.1);
+        }
+
+        100% {
+          transform: scale(1);
+        }
       }
 
       @keyframes _animation-pulse-2 {
-        0% { transform: scale(1); }
-        50% { transform: scale(1.03); }
-        100% { transform: scale(1); }
+        0% {
+          transform: scale(1);
+        }
+
+        50% {
+          transform: scale(1.03);
+        }
+
+        100% {
+          transform: scale(1);
+        }
       }
 
       @keyframes _animation-pulse-3 {
-        0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(199, 123, 145, 0.4); }
-        70% { transform: scale(1.05); box-shadow: 0 0 0 10px rgba(199, 123, 145, 0); }
-        100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(199, 123, 145, 0); }
+        0% {
+          transform: scale(1);
+          box-shadow: 0 0 0 0 rgba(199, 123, 145, 0.4);
+        }
+
+        70% {
+          transform: scale(1.03);
+          box-shadow: 0 0 0 10px rgba(199, 123, 145, 0);
+        }
+
+        100% {
+          transform: scale(1);
+          box-shadow: 0 0 0 0 rgba(199, 123, 145, 0);
+        }
+      }
+
+      @keyframes _animation-fade-in {
+        from {
+          opacity: 0.7;
+          transform: scale(0.95);
+        }
+
+        to {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+
+      @keyframes _animation-bounceIn {
+        0% {
+          opacity: 0;
+          transform: scale(0.3);
+        }
+
+        50% {
+          opacity: 1;
+          transform: scale(1.05);
+        }
+
+        70% {
+          transform: scale(0.9);
+        }
+
+        100% {
+          transform: scale(1);
+        }
+      }
+
+      @keyframes _animation-surprise-Bounce {
+        0% {
+          transform: scale(0.3);
+          opacity: 0;
+        }
+
+        60% {
+          transform: scale(1.2);
+          opacity: 1;
+        }
+
+        80% {
+          transform: scale(0.95);
+        }
+
+        100% {
+          transform: scale(1);
+        }
+      }
+
+      @keyframes _animation-hide-Fade-Shrink {
+        0% {
+          opacity: 1;
+          transform: scale(1);
+        }
+
+        100% {
+          opacity: 0;
+          transform: scale(0.8);
+        }
       }
 
       /* #endregion Animations*/
       /* #region General*/
+      ._section-confirmation {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 2rem;
+      }
+
       ._btn-elegant-pink {
-        background-color: var(--color_btn-elegant-pink); 
+        background-color: var(--color-dark-pink);
         color: #fff;
         padding: 12px 32px;
         font-size: 16px;
@@ -140,13 +291,14 @@
       }
 
       ._btn-elegant-pink:hover {
-        background-color: var(--color_btn-elegant-pink-hover); 
+        background-color: var(--color-dark-pink-2);
         box-shadow: 0 6px 18px rgba(173, 95, 125, 0.45);
       }
 
       ._btn-elegant-pink:hover i {
         animation: _animation-heartbeat 1s ease-in-out infinite;
       }
+
       /* #endregion General*/
       /* #region Audio*/
       #audioButton {
@@ -158,7 +310,7 @@
       }
 
       #audioButton.off {
-        filter: brightness(0);
+        filter: hue-rotate(45deg);
         animation: _animation-vibrate 0.4s infinite;
       }
 
@@ -166,6 +318,7 @@
         width: 45px;
         cursor: pointer;
       }
+
       @media (max-width: 575.98px) {
         #audioButton {
           top: 45%;
@@ -175,6 +328,7 @@
           width: 40px;
         }
       }
+
       /* #endregion Audio*/
       /* #region Carousel*/
       .carousel-inner,
@@ -204,7 +358,7 @@
 
       @media (max-width: 1399.98px) {
         .carousel {
-          width: 60%;
+          width: 75%;
         }
       }
 
@@ -246,7 +400,7 @@
         box-sizing: border-box;
         position: relative;
         box-shadow: 0 0 25px rgba(0, 0, 0, 0.1);
-        border: 2px solid var(--color_back-border);
+        /* border: 2px solid var(--color_back-border); */
       }
 
       .back .dorado {
@@ -286,54 +440,55 @@
         border-radius: 20px;
         box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
         margin-bottom: 5px;
-        font-family: "Outfit", serif;
+        font-family: var(--font-GreatVibes);
         position: absolute;
         bottom: -5px;
         width: 90%;
+        transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        animation: _animation-pulse-3 2s infinite;
       }
 
       .time-box {
+        color: var(--color_counter);
+        font-size: 2rem;
+        font-weight: bold;
         display: flex;
         flex-direction: column;
         align-items: center;
-        font-size: 22px;
-        color: var(--color_counter);
       }
 
       .time-box span {
         font-size: 60px;
-        font-weight: 700;
-        letter-spacing: 2px;
-        animation: _animation-pulse-2 3s infinite;
+        height: 75px;
       }
 
       @media (max-width: 575.98px) {
         #countdown {
-          gap: 15px;
+          gap: 10px;
           width: 100%;
           box-shadow: 0px -10px 25px rgb(0 0 0 / 15%);
         }
 
         .time-box {
-          font-size: 1.2rem;
+          font-size: 1.5rem;
         }
 
         .time-box span {
-          font-size: 40px;
+          font-size: 55px;
+          height: 60px;
         }
       }
 
       @media (max-width: 375.98px) {
-        #countdown {
-          gap: 10px;
-        }
         .time-box span {
-          font-size: 35px;
+          font-size: 45px;
+          height: 50px;
         }
       }
+
       /* #endregion Counter*/
       /* #region Decoration Section*/
-      ._decoration-HF::before{
+      ._decoration-HF::before {
         content: '✧ ✦ ✧';
         position: absolute;
         left: 50%;
@@ -344,7 +499,7 @@
         z-index: 1;
       }
 
-      ._decoration-HF::after{
+      ._decoration-HF::after {
         content: '✧ ✦ ✧';
         position: absolute;
         left: 50%;
@@ -378,6 +533,7 @@
         border-bottom: none;
         border-left: none;
         rotate: 180deg;
+        display: none;
       }
 
       .bottom-left {
@@ -385,6 +541,7 @@
         left: 10px;
         border-top: none;
         border-right: none;
+        display: none;
       }
 
       .bottom-right {
@@ -407,10 +564,10 @@
       }
 
       ._section-event .details h1 {
-        font-family: "Great Vibes", cursive;
-        font-size: 3.1rem;
+        font-family: var(--font-GreatVibes);
+        font-size: 3.8rem;
         font-weight: bold;
-        color: var(--color-text-pink);
+        color: var(--color-dark-pink);
         margin: 0;
       }
 
@@ -421,17 +578,17 @@
       }
 
       ._section-event p.name {
-        font-family: "Great Vibes", cursive;
+        font-family: var(--font-DancingScript);
         font-size: 4rem;
         font-weight: bold;
-        color: var(--color-text-pink);
+        color: var(--color-dark-pink);
         margin: 0;
       }
 
       ._section-event .name::before,
       ._section-event .name::after {
         content: "❧";
-        color: var(--color_text-strong-pink);
+        color: var(--color-dark-pink);
         font-size: 1.5rem;
         margin: 0 10px;
       }
@@ -453,11 +610,11 @@
         ._section-event .details p,
         ._section-event .details ._ceremony-detail,
         ._section-event ._signed {
-          font-size: 1.2rem;
+          font-size: 1.3rem;
         }
 
         ._section-event .details h1 {
-          font-size: 3rem;
+          font-size: 3.5rem;
         }
 
         ._section-event p.name {
@@ -470,11 +627,11 @@
         ._section-event .details p,
         ._section-event .details ._ceremony-detail,
         ._section-event ._signed {
-          font-size: 1.1rem;
+          font-size: 1.2rem;
         }
 
         ._section-event .details h1 {
-          font-size: 2.7rem;
+          font-size: 2.9rem;
         }
 
         ._section-event p.name {
@@ -483,8 +640,19 @@
       }
 
       @media (max-width: 375.98px) {
+
+        ._section-event .details p,
+        ._section-event .details ._ceremony-detail,
+        ._section-event ._signed {
+          font-size: 1rem;
+        }
+
+        ._section-event .details h1 {
+          font-size: 2.7rem;
+        }
+
         ._section-event p.name {
-          font-size: 2.5rem;
+          font-size: 2.7rem;
         }
       }
 
@@ -516,12 +684,12 @@
       }
 
       ._section-thanks .title {
-        color: var(--color-text-pink);
-        border-bottom: 2px solid var(--color-line-pink);
-        font-family: "Dancing Script", cursive;
-        font-size: 30px;
+        color: var(--color-dark-pink);
+        border-bottom: 2px solid var(--color-dark-pink);
+        font-family: var(--font-DancingScript);
+        font-size: 2.5rem;
         font-weight: bold;
-        letter-spacing: 2px;
+        letter-spacing: 3px;
         margin: 0;
       }
 
@@ -541,11 +709,11 @@
         ._section-thanks ._text,
         ._section-thanks ._signed,
         ._section-thanks li {
-          font-size: 1.1rem;
+          font-size: 1.2rem;
         }
 
         ._section-thanks .title {
-          font-size: 1.3rem;
+          font-size: 2rem;
         }
       }
 
@@ -555,7 +723,7 @@
         }
 
         ._section-thanks .title {
-          font-size: 1.2rem;
+          font-size: 1.8rem;
           margin-bottom: 0;
         }
 
@@ -563,96 +731,139 @@
           list-style: none;
           margin-bottom: 1rem;
         }
+
+        ._section-thanks li {
+          padding: 0;
+        }
       }
 
       /* #endregion Thanks Section*/
       /* #region TimeLine Section*/
       .timeline {
-        margin: 50px auto;
-        max-width: 90%;
         position: relative;
+        width: 100%;
       }
 
       .timeline::after {
-        content: "";
+        content: '';
         position: absolute;
-        width: 3px;
-        background-color: var(--color-line-pink);
-        top: 50px;
-        bottom: 80px;
-        left: 10px;
-        height: 80%;
-      }
-
-      .timeline-item {
-        margin: 15px 0;
-        padding-left: 40px;
-        position: relative;
-      }
-
-      .icon {
-        position: absolute;
+        width: 4px;
+        background-color: var(--color-dark-pink);
         top: 0;
-        left: -15px;
-        width: 48px;
-        height: 48px;
-        background: #fbe3f0;
-        border: 3px solid var(--color-line-pink);
+        bottom: 0;
+        left: 50%;
+        margin-left: -2px;
+      }
+
+      .timeline .timeline-event {
+        position: relative;
+        width: 50%;
+        background-color: inherit;
+      }
+
+      .timeline .timeline-event::after {
+        content: '';
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        right: -10px;
+        background-color: #f48fb1;
+        border: 4px solid #fff;
+        top: 30px;
         border-radius: 50%;
-        font-size: 30px;
+        z-index: 1;
+        animation: _animation-pulse-1 1s infinite;
+      }
+
+      .timeline .left {
+        left: 0;
+      }
+
+      .timeline .right {
+        left: 50%;
+      }
+
+      .timeline .right::after {
+        left: -10px;
+      }
+
+      .timeline .content {
+        padding: 20px 0px 20px 10px;
+        background-color: rgba(255, 255, 255, 0.5);
+        position: relative;
+        border-radius: 6px;
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
         display: flex;
         align-items: center;
-        justify-content: center;
-        z-index: 2;
+        justify-content: space-between;
       }
 
-      .timeline-content {
-        background: rgba(255, 255, 255, 0.5);
-        padding: 10px 10px;
-        border-radius: 10px;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-        border-left: 4px solid var(--color-line-pink);
+      .timeline .content .location-maps {
+        width: 45px;
+        animation: _animation-pulse-3 0.4s infinite;
+        object-fit: cover;
+        border-radius: 50%;
       }
 
-      .timeline-content h3 {
-        color: var(--color-text-pink);
-        font-family: "Dancing Script", cursive;
+      .timeline .content h3 {
+        margin: 0;
+        color: var(--color-dark-pink);
+        font-family: var(--font-GreatVibes);
         font-weight: bold;
-        font-size: 30px;
-        margin: 0;
+        font-size: 2rem;
       }
 
-      .timeline-content p {
-        margin: 0;
-        font-size: 1rem;
-        font-family: "Outfit", serif;
+      @media screen and (max-width: 768px) {
+        .timeline::after {
+          left: 20px;
+        }
+
+        .timeline .timeline-event {
+          width: 100%;
+          padding-left: 40px;
+          padding-right: 10px;
+          margin-bottom: 20px;
+        }
+
+        .timeline .timeline-event.left,
+        .timeline .timeline-event.right {
+          left: 0;
+        }
+
+        .timeline .timeline-event::after {
+          left: 10px;
+          right: auto;
+        }
+
+        .timeline .content {
+          border-left: 4px solid var(--color-dark-pink);
+        }
+
+        .timeline .content .location-maps {
+          width: 40px;
+        }
       }
 
       @media (max-width: 575.98px) {
-        .timeline-item {
-          padding-left: 30px;
+        .timeline .timeline-event {
+          width: 100%;
+          padding-top: 20px;
+          padding-bottom: 0px;
+          margin-bottom: 0px;
         }
 
-        .icon {
-          left: -10px;
-          width: 38px;
-          height: 38px;
-          font-size: 20px;
-        }
-
-        .timeline-content h3 {
-          font-size: 25px;
-          letter-spacing: 0.2rem;
+        .timeline .content h3 {
+          font-size: 1.9rem;
         }
       }
 
       @media (max-width: 375.98px) {
-        .timeline-content h3 {
-          font-size: 20px;
+        .timeline .content {
+          padding: 12px 5px;
         }
 
-        ._hide-mobile-xxs {
-          display: none;
+        .timeline .content h3 {
+          font-size: 1.7rem;
         }
       }
 
@@ -696,74 +907,82 @@
       }
 
       /* #endregion Collage Section*/
-      /* #region Code Dress and Gift Table Section*/
-      ._section-codedress {
+      /* #region Code Dress Section*/
+      ._dresscode-section {
         display: flex;
-        flex-direction: column;
-        align-items: center;
         justify-content: center;
-        padding-bottom: 4rem;
+        gap: 24px;
+        margin: 60px 0px;
+        flex-wrap: wrap;
+        font-family: var(--font-DancingScript);
       }
 
-      ._section-codedress h3 {
-        font-family: "Outfit";
-        font-weight: bold;
+      ._dresscode-section ._details {
+        background: transparent;
+        padding: 10px 10px 20px 10px;
+        /* box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25); */
+        width: 440px;
+        text-align: center;
+        border-radius: 8px;
       }
 
-      ._section-codedress img {
-        width: 350px;
-      }
-
-      ._section-codedress ._details {
+      ._dresscode-section img {
         width: 100%;
-        padding-top: 1rem;
+        height: 540px;
+        border-radius: 4px;
       }
 
-      ._section-codedress ._details>p {
-        font-family: "Tenor Sans";
-        font-size: 1.1rem;
-        letter-spacing: 0.2px;
-        margin: 0;
+      ._dresscode-section ._title-caption {
+        font-size: 2rem;
+        color: var(--color-dark-pink);
+      }
+
+      ._dresscode-section .caption {
+        margin-top: 12px;
+        font-size: 1.7rem;
+      }
+
+      ._dresscode-section .caption strong {
+        color: var(--color-dark-pink);
       }
 
       @media (max-width: 575.98px) {
-        ._section-codedress {
-          padding-bottom: 2rem;
+        ._dresscode-section ._details {
+          width: 300px;
         }
 
-        ._section-codedress img {
-          width: 150px;
-        }
-
-        ._version-mobile {
-          display: flex;
-          justify-content: space-between;
-        }
-
-        ._version-mobile h3 {
-          margin: 0;
-          padding-bottom: 1rem;
-        }
-
-        ._version-mobile ._details {
-          padding-left: 1rem;
-          padding-top: 0px;
-        }
-
-        ._version-mobile ._details>p {
-          font-size: 13px;
+        ._dresscode-section img {
+          height: 340px;
         }
       }
 
       @media (max-width: 375.98px) {
-        ._section-codedress img{
-          width: 100px;
+        ._dresscode-section ._details {
+          padding: 0px 10px;
+          width: 200px;
+        }
+
+        ._dresscode-section .caption {
+          font-size: 1.3rem;
+        }
+
+        ._dresscode-section img {
+          height: 200px;
         }
       }
 
-      ._section-gifttable p {
-        font-family: "Tenor Sans";
-        font-size: 1.1rem;
+      /* #endregion Code Dress Section*/
+      /* #region Gift Section*/
+      ._section-gifttable p._title {
+        font-family: var(--font-DancingScript);
+        font-size: 3rem;
+        text-align: center;
+        font-weight: bold;
+        color: var(--color-dark-pink);
+      }
+
+      ._section-gifttable p._details {
+        font-size: 1.3rem;
         text-align: center;
       }
 
@@ -771,16 +990,18 @@
         display: flex;
         justify-content: center;
         gap: 1rem;
+        padding-top: 3rem;
       }
 
-      ._btn-gifttable {
-        background-color: rgba(255, 255, 255, 0.5);
-        border: 5px solid rgba(255, 255, 255, 0.1);;
+      ._btn-gift {
+        background-color: rgba(255, 255, 255, 0.2);
+        border: 5px solid rgba(255, 255, 255, 0.1);
+        ;
         border-radius: 8px;
         box-shadow: 0 4px 6px 0 #ccc;
         color: black;
         cursor: pointer;
-        font-family: "Tenor Sans";
+        font-family: var(--font-TenorSans);
         font-size: 2rem;
         padding: 10px;
         text-decoration: none;
@@ -789,16 +1010,16 @@
         justify-content: flex-start;
       }
 
-      ._btn-gifttable:hover {
+      ._btn-gift:hover {
         box-shadow: 4px 6px 12px 0px #545454;
       }
 
-      ._btn-gifttable a {
+      ._btn-gift a {
         width: 65px;
         margin-right: 1rem;
       }
 
-      ._btn-gifttable img {
+      ._btn-gift img {
         width: 65px;
         margin-right: 1rem;
       }
@@ -810,49 +1031,37 @@
           width: 100%;
         }
 
-        ._section-gifttable p {
-          font-size: 1rem;
+        ._section-gifttable p._details {
+          font-size: 1.2rem;
         }
 
         ._btn-brands {
           flex-direction: column;
         }
 
-        ._btn-gifttable {
-          font-size: 0.9rem;
+        ._btn-gift {
+          font-size: 1.2rem;
           font-weight: bold;
           padding: 5px 10px;
           width: 100%;
         }
 
-        ._btn-gifttable img {
+        ._btn-gift img {
           width: 30px;
         }
       }
 
       @media (max-width: 375.98px) {
-        ._section-gifttable p{
-          line-height: normal;
-        }
-
-        ._btn-brands{
+        ._btn-brands {
           padding-left: 1rem;
         }
-        ._btn-gifttable{
+
+        ._btn-gift {
           width: 90%;
         }
       }
 
-      /* #endregion Gift Table Section*/
-      /* #region Confirmation Section*/
-      ._section-confirmation{
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        gap: 2rem;
-      }
-       /* #endregion Confirmation Section*/
+      /* #endregion Gift Section*/
     </style>
   </head>
   <body>
@@ -871,16 +1080,17 @@
             <button type="button" data-bs-target="#_invitation-carousel" data-bs-slide-to="4" aria-label="Slide 5"></button>
             <button type="button" data-bs-target="#_invitation-carousel" data-bs-slide-to="5" aria-label="Slide 6"></button>
             <button type="button" data-bs-target="#_invitation-carousel" data-bs-slide-to="6" aria-label="Slide 7"></button>
+            <button type="button" data-bs-target="#_invitation-carousel" data-bs-slide-to="7" aria-label="Slide 8"></button>
           </div>
           <!-- Slides -->
           <div class="carousel-inner">
             <span id="audioButton" class="off">
-              <img src="#" data-replace="Image_AudioUrl" />
+              <img src="#" data-replace="Image_AudioUrl" aalt="Audio" />
             </span>
             <div class="carousel-item active">
               <!-- Front Cover -->
               <div class="card-face front">
-                <img src="#" data-replace="Image_FrontCard" />
+                <img src="#" data-replace="Image_FrontCard" alt="❧ Mis XV ❧" />
                 <div id="countdown">
                   <div class="time-box">
                     <span id="days">0</span> Días
@@ -918,7 +1128,8 @@
                   <p class="name" data-replace="EventName"></p>
                   <p class="ceremony _ceremony-detail"> La celebración será el <br />
                     <strong data-replace="EventDateString"></strong>
-                    <br /><strong data-replace="EventHourString"></strong>
+                    <br />
+                    <strong data-replace="EventHourString"></strong>
                   </p>
                   <p class="_signed">Esperando contar con tu presencia.</p>
                 </div>
@@ -953,37 +1164,38 @@
                 <div class="corner bottom-left"></div>
                 <div class="corner bottom-right"></div>
                 <div class="timeline">
-                  <div class="timeline-item">
-                    <div class="icon">⛪</div>
-                    <div class="timeline-content">
-                      <h3>Ceremonia</h3>
-                      <p> Se celebrará a <span data-replace="EventHourString"></span> en la Iglesia Santa María para agradecer por estos 15 años. </p>
-                      <a href="#" data-replace="EventChurchUrl" target="_blank">Cómo llegar...</a>
+                  <div class="timeline-event left">
+                    <div class="content">
+                      <h3>
+                        <span data-replace="EventOnlyHourString"></span> - Ceremonia
+                      </h3>
+                      <a href="#" data-replace="EventChurchUrl" target="_blank">
+                        <img class="location-maps" src="#" data-replace="Image_GoogleLocation" alt="Google Location">
+                      </a>
                     </div>
                   </div>
-                  <div class="timeline-item">
-                    <div class="icon">👑</div>
-                    <div class="timeline-content">
-                      <h3>Recepción</h3>
-                      <p class="_hide-mobile-xxs"> Una cálida bienvenida a todos los invitados a esta celebración tan especial. </p>
-                      <a href="#" data-replace="EventReceptionUrl" target="_blank">Cómo llegar...</a>
+                  <div class="timeline-event right">
+                    <div class="content">
+                      <h3>
+                        <span data-replace="EventReceptionHourString"></span> - Recepción
+                      </h3>
+                      <a href="#" data-replace="EventReceptionUrl" target="_blank">
+                        <img class="location-maps" src="#" data-replace="Image_GoogleLocation" alt="Google Location">
+                      </a>
                     </div>
                   </div>
-                  <div class="timeline-item">
-                    <div class="icon">📸</div>
-                    <div class="timeline-content">
-                      <h3>Sesión Fotográfica</h3>
+                  <div class="timeline-event left">
+                    <div class="content">
+                      <h3>Photo Session</h3>
                     </div>
                   </div>
-                  <div class="timeline-item">
-                    <div class="icon">🍽️</div>
-                    <div class="timeline-content">
+                  <div class="timeline-event right">
+                    <div class="content">
                       <h3>Banquete</h3>
                     </div>
                   </div>
-                  <div class="timeline-item">
-                    <div class="icon">💃</div>
-                    <div class="timeline-content">
+                  <div class="timeline-event left">
+                    <div class="content">
                       <h3>Vals</h3>
                     </div>
                   </div>
@@ -997,34 +1209,37 @@
                 <div class="corner top-right"></div>
                 <div class="corner bottom-left"></div>
                 <div class="corner bottom-right"></div>
-                <div class="_section-codedress">
-                  <div class="_version-mobile">
-                    <h3>Vestimenta</h3>
-                  </div>
-                  <div class="_version-mobile">
-                    <img src="#" data-replace="Image_CodeDressUrl"/>
-                    <div class="_details">
-                      <p class="text-center">
-                        <strong>FORMAL</strong>
-                      </p>
-                      <p>Colores reservados rojo, azul y dorado.</p>
-                      <p>
-                        <strong>Mujeres:</strong> Vestido Largo
-                      </p>
-                      <p>
-                        <strong>Hombres:</strong> Traje y Corbata
-                      </p>
+                <div class="_dresscode-section">
+                  <div class="_details">
+                    <div class="_title-caption">
+                      <strong>Dress Code</strong>
+                    </div>
+                    <img src="" data-replace="Image_DressCodeUrl" alt="Dress Code">
+                    <div class="caption">
+                      <strong>Formal</strong>
+                      <br> Colores reservados rojo, azul y dorado. <br>
+                      <strong>Mujeres:</strong> Vestido Largo <br>
+                      <strong>Hombres:</strong> Traje y Corbata
                     </div>
                   </div>
                 </div>
+              </div>
+            </div>
+            <div class="carousel-item _decoration-HF">
+              <!-- Inside -->
+              <div class="card-face back d-flex-center">
+                <div class="corner top-left"></div>
+                <div class="corner top-right"></div>
+                <div class="corner bottom-left"></div>
+                <div class="corner bottom-right"></div>
                 <div class="_section-gifttable">
-                  <p>
-                    <strong>REGALOS</strong>
-                    <br /> Para nosotros tu presencia es nuestro mejor regalo, pero si deseas hacernos llegar un obsequio, te sugerimos la siguiente opción:
-                  </p>
+                  <p class="_title">Regalos</p>
+                  <p class="_details"> Para nosotros tu presencia es nuestro mejor regalo, pero si deseas hacernos llegar un obsequio, te sugerimos la siguiente opción: </p>
                   <div class="_btn-brands">
-                    <a href="#" data-replace="EventAmazonGiftTableUrl" target="_blank" class="_btn-gifttable"><img src="#" data-replace="Image_AmazonUrl"/> Amazon </a>
-                    <a  href="#" data-replace="EventLiverpoolGiftTableUrl" target="_blank" class="_btn-gifttable"><img src="#" data-replace="Image_LiverpoolUrl"/> Liverpool </a>
+                    <a href="#" data-replace="EventAmazonGiftTableUrl" target="_blank" class="_btn-gift">
+                      <img src="#" data-replace="Image_AmazonUrl" /> Amazon </a>
+                    <a href="#" data-replace="EventLiverpoolGiftTableUrl" target="_blank" class="_btn-gift">
+                      <img src="#" data-replace="Image_LiverpoolUrl" /> Liverpool </a>
                   </div>
                 </div>
               </div>
@@ -1042,8 +1257,10 @@
                 <div class="corner bottom-left"></div>
                 <div class="corner bottom-right"></div>
                 <div class="_section-confirmation">
-                  <a href="#" data-replace="WhatsAppUrl" target="_blank" class="_btn-elegant-pink"><i class="fas fa-heart"></i> Confirmar asistencia</a>
-                  <a href="#" data-replace="GoogleCalendarUrl" target="_blank" class="_btn-elegant-pink"><i class="fas fa-calendar"></i> Agendar</a>
+                  <a href="#" data-replace="WhatsAppUrl" target="_blank" class="_btn-elegant-pink">
+                    <i class="fas fa-heart"></i> Confirmar asistencia </a>
+                  <a href="#" data-replace="GoogleCalendarUrl" target="_blank" class="_btn-elegant-pink">
+                    <i class="fas fa-calendar"></i> Agendar </a>
                 </div>
               </div>
             </div>
@@ -1063,7 +1280,7 @@
           <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
               <div class="modal-body p-0">
-                <img src="" id="modalCarouselImage" class="img-fluid w-100" />
+                <img src="" id="modalCarouselImage" class="img-fluid w-100" alt="Carousel" />
               </div>
             </div>
           </div>
@@ -1084,11 +1301,12 @@
           wrap: true, // Loop infinito
         });
         actions.onCarouselCheckItems();
-        $("#_invitation-carousel").on("slid.bs.carousel", () => {actions.onCarouselCheckItems();});
+        $("#_invitation-carousel").on("slid.bs.carousel", () => {
+          actions.onCarouselCheckItems();
+        });
       });
-
       var actions = {
-        onCounter: function(){
+        onCounter: function() {
           const now = new Date().getTime();
           const distance = EventDate - now;
           const days = Math.floor(distance / (1000 * 60 * 60 * 24));
@@ -1104,13 +1322,13 @@
             $("countdown").innerHTML = "¡Ha llegado el gran día!";
           }
         },
-        onHelperAddDigits: function(number){
+        onHelperAddDigits: function(number) {
           if (number.toString().length == 1) {
             return "0" + number.toString();
           }
           return number;
         },
-        onAudioPlayer: function(){
+        onAudioPlayer: function() {
           const audio = document.getElementById("audio");
           $("#audioButton").on("click", function() {
             if (audio.paused) {
@@ -1122,7 +1340,7 @@
             }
           });
         },
-        onCarouselCheckItems: function(){
+        onCarouselCheckItems: function() {
           var $this = $("#_invitation-carousel");
           if ($(".carousel-inner .carousel-item:first").hasClass("active")) {
             // Hide left arrow
@@ -1139,21 +1357,40 @@
             $this.children(".carousel-control-prev").addClass("d-md-block");
           }
         },
-        onCarouselModal: function(){
+        onCarouselModal: function() {
           document.addEventListener("DOMContentLoaded", () => {
             const modalImage = document.getElementById("modalCarouselImage");
             document.querySelectorAll(".collage img").forEach((img) => {
               img.addEventListener("click", function() {
                 const src = this.getAttribute("data-bs-image");
+                currentIndex = parseInt(this.getAttribute("data-index"));
                 modalImage.src = src;
               });
+            });
+            // Swipe detection
+            let touchStartX = 0;
+            let touchEndX = 0;
+            let currentIndex = 0;
+            modalImage.addEventListener("touchstart", (e) => {
+              touchStartX = e.changedTouches[0].screenX;
+            });
+            modalImage.addEventListener("touchend", (e) => {
+              touchEndX = e.changedTouches[0].screenX;
+              const delta = touchEndX - touchStartX;
+              if (Math.abs(delta) > 50) {
+                if (delta < 0) {
+                  currentIndex = (currentIndex + 1) % Resources.CollageImages.length;
+                } else {
+                  currentIndex = (currentIndex - 1 + Resources.CollageImages.length) % Resources.CollageImages.length;
+                }
+                modalImage.src = Resources.CollageImages[currentIndex];
+              }
             });
           });
         },
       };
-
-      var helpers= {
-        onGetDateYYYYMMDD: function(){
+      var helpers = {
+        onGetDateYYYYMMDD: function() {
           const format = (f) => f.toISOString().split("T")[0].replace(/-/g, "");
           return format(EventDate);
         },
@@ -1172,28 +1409,18 @@
           let hours = EventDate.getHours();
           const ampm = hours >= 12 ? "p.m." : "a.m.";
           const mins = EventDate.getMinutes().toString().padStart(2, "0");
-          const the = hours > 1 ? "las " : "la";
           hours = hours % 12 || 12;
+          const the = hours > 1 ? "a las " : "a la";
           const hourString = includeThe ? `${the} ${hours}:${mins} ${ampm}` : `${hours}:${mins} ${ampm}`;
           return hourString;
         },
-        onGetHoursString: function(EventDate){
-          let hours = EventDate.getHours();
-          const ampm = hours >= 12 ? "p.m." : "a.m.";
-          const mins = EventDate.getMinutes().toString().padStart(2, "0");
-          const the =  hours > 1 ? "las " : "la";
-          hours = hours % 12 || 12;
-          return `${the} ${hours}:${mins} ${ampm}`;
-        },
-        onGoogleCalendar: function(){
+        onGoogleCalendar: function() {
           const base = 'https://calendar.google.com/calendar/render';
           const details = `Acompáñanos a celebrar los XV de ${Resources.EventName}.
           📍 Lugar: ${Resources.GoogleCalendarLocation}
           🕒 Hora: ${Resources.EventHourString}
           ⏰ Recordatorio: Llega con 30 minutos de anticipación.
           ✨ ¡Te esperamos para compartir este momento tan especial!`;
-
-          
           const params = new URLSearchParams({
             action: "TEMPLATE",
             text: Resources.GoogleCalendarTitle + Resources.EventName,
@@ -1203,18 +1430,19 @@
           });
           return `${base}?${params.toString()}`;
         },
-        onLoad: function(){
-          $('body').css('background-image', 'url("'+Resources.Image_BodyBackground+'")');
-          $('.corner').css('background-image', 'url("'+Resources.Image_Corner+'")');
-          $("[data-replace=Image_FrontCard]").attr("src", Resources.Image_FrontCard);
+        onLoad: function() {
+          $('body').css('background-image', 'url("' + Resources.Image_BodyBackground + '")');
+          $('.corner').css('background-image', 'url("' + Resources.Image_Corner + '")');
           $("[data-replace=Image_AudioUrl]").attr("src", Resources.Image_AudioUrl);
           $("[data-replace=AudioUrl]").attr("src", Resources.AudioUrl);
-          $("[data-replace=Image_CodeDressUrl]").attr("src", Resources.Image_CodeDressUrl);
           $("[data-replace=Image_AmazonUrl]").attr("src", Resources.Image_AmazonUrl);
           $("[data-replace=Image_LiverpoolUrl]").attr("src", Resources.Image_LiverpoolUrl);
-
+          $("[data-replace=EventAmazonGiftTableUrl]").attr("href", Resources.EventAmazonGiftTableUrl);
+          $("[data-replace=EventLiverpoolGiftTableUrl]").attr("href", Resources.EventLiverpoolGiftTableUrl);
           $("[data-replace=EventDateString]").text(Resources.EventDateString);
           $("[data-replace=EventHourString]").text(Resources.EventHourString);
+          $("[data-replace=EventOnlyHourString]").text(Resources.EventOnlyHourString);
+          $("[data-replace=EventReceptionHourString]").text(Resources.EventReceptionHourString);
           $("[data-replace=EventName]").text(Resources.EventName);
           $("[data-replace=EventFather]").text(Resources.EventFather);
           $("[data-replace=EventMother]").text(Resources.EventMother);
@@ -1222,26 +1450,19 @@
           $("[data-replace=EventGodMother]").text(Resources.EventGodMother);
           $("[data-replace=EventChurchUrl]").attr("href", Resources.EventChurchUrl);
           $("[data-replace=EventReceptionUrl]").attr("href", Resources.EventReceptionUrl);
-          $("[data-replace=EventAmazonGiftTableUrl]").attr("href", Resources.EventAmazonGiftTableUrl);
-          $("[data-replace=EventLiverpoolGiftTableUrl]").attr("href", Resources.EventLiverpoolGiftTableUrl);
-
+          $("[data-replace=Image_FrontCard]").attr("src", Resources.Image_FrontCard);
+          $("[data-replace=Image_GoogleLocation]").attr("src", Resources.Image_GoogleLocation);
+          $("[data-replace=Image_DressCodeUrl]").attr("src", Resources.Image_DressCodeUrl);
           $("[data-replace=WhatsAppUrl]").attr("href", Resources.WhatsAppUrl);
           $("[data-replace=GoogleCalendarUrl]").attr("href", helpers.onGoogleCalendar());
-
           Resources.CollageImages.forEach(function(url, index) {
-            const imgElement = $('<img>', {
-              src: url,
-              class: index == 0 ? 'img-large' : '',
-              'data-bs-toggle': 'modal',
-              'data-bs-target': '#carouselModal',
-              'data-bs-image': url
-            });
-
-            $('.collage').append(imgElement);
+              const _class = index == 0 ? 'img-large' : '';
+              const imgElement = $('<img>', {
+                src: url, class: _class, 'data-bs-toggle': 'modal', 'data-bs-target': '#carouselModal', 'data-bs-image': url, 'data-index': index
+              }); $('.collage').append(imgElement);
           });
-        }
+      }
       };
-
       const EventDate = new Date("2025-11-25T13:00:00");
       const EventReception = new Date("2025-11-25T17:00:00");
       var Resources = {
@@ -1249,6 +1470,7 @@
         EventTime: EventDate.getTime(),
         EventDateString: helpers.onGetDateString(EventDate, true),
         EventHourString: helpers.onGetHoursString(EventDate, true),
+        EventOnlyHourString: helpers.onGetHoursString(EventDate),
         EventReceptionHourString: helpers.onGetHoursString(EventReception),
         EventName: "Nicole Gutiérrez",
         EventFather: "José Gutiérrez",
@@ -1267,28 +1489,23 @@
         Image_FrontCard: "https://img.freepik.com/foto-gratis/adolescente-celebrando-quinceanera_23-2148478038.jpg",
         Image_AudioUrl: "https://cdn-icons-png.freepik.com/512/13896/13896624.png?ga=GA1.1.1993030682.1745256637",
         Image_Corner: "https://static.vecteezy.com/system/resources/previews/033/494/904/large_2x/golden-thai-pattern-corners-decorate-the-corner-edges-png.png",
-        Image_MyParents:"https://img.freepik.com/fotos-premium/retrato-pareja-madura-feliz-abrazada-casa-conexion-amor-o-confianza-asociacion-juntos-cara-al-hombre-abrazar-mujer-compromiso-cuidado-relacion-saludable-apoyo-casa_590464-361056.jpg?ga=GA1.1.1993030682.1745256637&semt=ais_hybrid&w=740",
-        Image_MyGodParents:"https://img.freepik.com/fotos-premium/pareja-dia-san-valentin_772250-159.jpg?ga=GA1.1.1993030682.1745256637&w=740",
-        Image_CodeDressUrl: "https://img.freepik.com/vector-premium/diseno-silueta-danza-pareja_715413-725.jpg",
+        Image_MyParents: "https://img.freepik.com/fotos-premium/retrato-pareja-madura-feliz-abrazada-casa-conexion-amor-o-confianza-asociacion-juntos-cara-al-hombre-abrazar-mujer-compromiso-cuidado-relacion-saludable-apoyo-casa_590464-361056.jpg?ga=GA1.1.1993030682.1745256637&semt=ais_hybrid&w=740",
+        Image_MyGodParents: "https://img.freepik.com/fotos-premium/pareja-dia-san-valentin_772250-159.jpg?ga=GA1.1.1993030682.1745256637&w=740",
+        Image_DressCodeUrl: "https://img.freepik.com/foto-gratis/gente-elegante-bailando-tango_23-2149193458.jpg?ga=GA1.1.1993030682.1745256637&semt=ais_hybrid&w=740",
         Image_AmazonUrl: "https://static-00.iconduck.com/assets.00/amazon-icon-2048x2048-pqt2fe18.png",
         Image_LiverpoolUrl: "https://play-lh.googleusercontent.com/FwrxfHaknUKLneazGpPsjJvQ4mUYKJkccj-efHNeXQISwCwqC9ymNAnqlAY5J5oHIOc",
-        Image_GoogleLocation:"https://img.icons8.com/?size=512&id=DcygmpZqBEd9&format=png",
+        Image_GoogleLocation: "https://img.icons8.com/?size=512&id=DcygmpZqBEd9&format=png",
         AudioUrl: "https://invitameok.com/invitaciones/admin/imagenes/27433/MUSICAstyle-taylor.mp3",
         WhatsAppUrl: "https://wa.link/encb79",
-        CollageImages:[
-          'https://img.freepik.com/foto-gratis/adolescente-celebrando-quinceanera_23-2148478038.jpg',
-          'https://img.freepik.com/foto-gratis/adolescente-celebrando-quinceanera_23-2148478038.jpg',
-          'https://img.freepik.com/foto-gratis/adolescente-celebrando-quinceanera_23-2148478038.jpg',
-          'https://img.freepik.com/foto-gratis/adolescente-celebrando-quinceanera_23-2148478038.jpg',
-          'https://img.freepik.com/foto-gratis/adolescente-celebrando-quinceanera_23-2148478038.jpg',
-          'https://img.freepik.com/foto-gratis/adolescente-celebrando-quinceanera_23-2148478038.jpg'
-        ]
+        CollageImages: ['https://img.freepik.com/foto-gratis/adolescente-celebrando-quinceanera_23-2148478038.jpg', 'https://img.freepik.com/foto-gratis/chica-sonriente-tiro-medio-hermoso-vestido_52683-86468.jpg?t=st=1746555442~exp=1746559042~hmac=e8d5adc2117161bcd88377ab37d6e1358945489c42ac647e29fb996cf047ca4c&w=1800', 'https://lh3.googleusercontent.com/p/AF1QipMv-RExo0XkTU7eg8u-FelVsp1gd3u4XZyR3ipA=s3072-v1', 'https://lh3.googleusercontent.com/p/AF1QipNk9cctNeskTP2Zg2EEOQjV-aMFrSO5RRxWtx5N=s1024-v1', 'https://img.freepik.com/foto-gratis/adolescente-celebrando-quinceanera_23-2148478038.jpg', 'https://img.freepik.com/foto-gratis/chica-sonriente-tiro-medio-hermoso-vestido_52683-86468.jpg?t=st=1746555442~exp=1746559042~hmac=e8d5adc2117161bcd88377ab37d6e1358945489c42ac647e29fb996cf047ca4c&w=1800'],
       };
 
       function Init() {
         helpers.onLoad();
         actions.onCounter();
-        setInterval(() => {actions.onCounter();}, 1000);
+        setInterval(() => {
+          actions.onCounter();
+        }, 1000);
         actions.onAudioPlayer();
         actions.onCarouselModal();
       }
