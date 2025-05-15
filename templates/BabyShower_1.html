@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/png" href="https://cdn-icons-png.flaticon.com/512/6277/6277555.png">
-    <title>Invitación XV Años</title>
+    <title>Invitación Baby Shower</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Bad+Script&display=swap" rel="stylesheet">
@@ -15,15 +15,7 @@
     <style>
       /* #region ROOT*/
       :root {
-        --color_counter: #a14d74;
-        --color_text_1: #C2185B;
-        --color_text_2: #713b5f;
-        --color_text_3: #8E24AA;
-        --color_timeline_h3: white;
-        --color_timeline_p: white;
-        --color_family_bg: white;
-        --color_btnConfirmation: #ad1457;
-        --color_btnConfirmation-hover: rgba(173, 20, 87, 0.45);
+        --color_primary: #a14d74;
     
         --font-Primary: 'Bonheur Royale';
       }
@@ -49,20 +41,7 @@
         font-family: var(--font-Primary);
         min-height: 100%;
         width: 100%;
-        background-image: linear-gradient(0deg, #f5ecd9 0%, #e3d5b8 50%, #c8b898 100%),url('https://www.transparenttextures.com/patterns/rice-paper-2.png');
-        background-image: linear-gradient(0deg, #f1e1d2 0%, #d9b59c 50%, #b58362 100%),url('https://www.transparenttextures.com/patterns/rice-paper-2.png');
-        background-image: linear-gradient(0deg, #e7d4e8 0%, #cdb5d0 50%, #a88eae 100%),url('https://www.transparenttextures.com/patterns/rice-paper-2.png');
-        background-image: linear-gradient(0deg, #ccdce7 0%, #aab7c4 50%, #7e8894 100%),url('https://www.transparenttextures.com/patterns/rice-paper-2.png');
-        background-image: linear-gradient(0deg, #dfe5c7 0%, #d1c18c 50%, #b59b60 100%),url('https://www.transparenttextures.com/patterns/rice-paper-2.png');
-        background-image: linear-gradient(0deg, #f8e0e7 0%, #ecc3c3 50%, #d6a3a3 100%),url('https://www.transparenttextures.com/patterns/rice-paper-2.png');
 
-        background-image: linear-gradient(180deg, #f6f0e0 0%, #e5d7b7 50%, #d0b892 100%),url('https://www.transparenttextures.com/patterns/rice-paper-2.png');
-        background-image: linear-gradient(0deg, #f2e4c3 0%, #dbc39a 50%, #b89c74 100%),url('https://www.transparenttextures.com/patterns/rice-paper-2.png');
-        background-image: linear-gradient(to bottom, #fffaf0, #f1e5ca, #dbcbaa),url('https://www.transparenttextures.com/patterns/rice-paper-2.png');
-
-
-        
-        background-blend-mode: multiply;
         
       }
 
@@ -264,118 +243,9 @@
 
       /* #endregion Animations*/
       /* #region General*/
-      ._btn-brands {
-        display: none;
-        justify-content: center;
-        gap: 1rem;
-        width: 60%;
-      }
-
-      ._btn-brands.show {
-        display: flex;
-      }
-
-      ._btn-gifttable {
-        background-color: rgba(255, 255, 255, 0.5);
-        border: 5px solid rgba(255, 255, 255, 0.1);
-        border-radius: 8px;
-        box-shadow: 0 4px 6px 0 #ccc;
-        color: black;
-        cursor: pointer;
-        font-family: var(--font-Caveat);
-        font-size: 2rem;
-        font-weight: bold;
-        padding: 10px;
-        text-decoration: none;
-        display: flex;
-        align-items: center;
-        justify-content: flex-start;
-      }
-
-      ._btn-gifttable:hover {
-        box-shadow: 4px 6px 12px 0px #545454;
-      }
-
-      ._btn-gifttable a {
-        width: 65px;
-        margin-right: 1rem;
-      }
-
-      ._btn-gifttable img {
-        width: 65px;
-        margin-right: 1rem;
-      }
-
-      ._parent-confirmation {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-
-      ._confirmation-section {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 2rem;
-        padding: 2rem 0px;
-        border-radius: 15px;
-        box-shadow: 0 0px 25px rgba(0, 0, 0, 0.33);
-        margin: 2rem 0;
-        width: 90%;
-        transition: background-color 0.3s ease, box-shadow 0.3s ease;
-        animation: _animation-pulse-3 2s infinite;
-      }
-
-      ._btn-Confirmation {
-        background-color: var(--color_btnConfirmation);
-        color: #fff;
-        font-family: var(--font-Caveat);
-        font-size: 2rem;
-        border-radius: 25px;
-        cursor: pointer;
-        box-shadow: 0 4px 12px rgba(199, 123, 145, 0.4);
-        transition: background-color 0.3s ease, box-shadow 0.3s ease;
-        animation: _animation-pulse-3 2s infinite;
-        text-decoration: none;
-        width: 40%;
-        text-align: center;
-        padding: 12px 32px;
-      }
-
-      ._btn-Confirmation i {
-        margin-right: 8px;
-        transition: transform 0.3s ease;
-      }
-
-      ._btn-Confirmation:hover {
-        background-color: var(--color_btnConfirmation-hover);
-        box-shadow: 0 6px 18px rgba(173, 95, 125, 0.45);
-      }
-
-      ._btn-Confirmation:hover i {
-        animation: _animation-heartbeat 1s ease-in-out infinite;
-      }
-
       @media (max-width: 575.98px) {
-        ._btn-gifttable {
-          border: 0;
-        }
-
-        ._btn-gifttable img {
-          width: 40px;
-        }
-
-        ._confirmation-section {
-          padding: 2rem;
-        }
-
-        ._btn-Confirmation {
-          font-size: 1.7rem;
-          width: 80%;
-          padding: 12px 0px;
-        }
+       
       }
-
       /* #endregion General*/
       /* #region Audio*/
       #audioButton {
@@ -384,6 +254,7 @@
         right: 1%;
         top: 11%;
         z-index: 3;
+        display: none;
       }
 
       #audioButton.off {
@@ -408,167 +279,32 @@
 
       /* #endregion Audio*/
       /* #region Counter*/
-      ._counter-section {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-
-      #countdown {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 20px;
-        padding: 5px 0px;
-        border-radius: 15px;
-        box-shadow: 0 0px 25px rgba(0, 0, 0, 0.33);
-        margin: 2rem 0;
-        width: 90%;
-        transition: background-color 0.3s ease, box-shadow 0.3s ease;
-        animation: _animation-pulse-3 2s infinite;
-      }
-
-      .time-box {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        font-size: 22px;
-        color: var(--color_counter);
-      }
-
-      .time-box span {
-        font-size: 60px;
-        font-weight: 700;
-        letter-spacing: 2px;
-        animation: _animation-pulse-2 3s infinite;
-      }
+     
 
       @media (max-width: 575.98px) {
-        #countdown {
-          gap: 15px;
-        }
-
-        .time-box {
-          font-size: 1.2rem;
-        }
-
-        .time-box span {
-          font-size: 40px;
-        }
+       
       }
 
       @media (max-width: 375.98px) {
-        #countdown {
-          gap: 10px;
-        }
-
-        .time-box span {
-          font-size: 35px;
-        }
+       
       }
 
       /* #endregion Counter*/
       /* #region Main Section*/
-      ._main-section {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
-        position: relative;
-      }
-
-      ._main-section ._details{
-        position: absolute;
-        top: 10%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-      }
-      ._main-section ._details h1, ._main-section ._details h2{
-        font-weight: bold;
-        font-size: 60px;
-      }
       @media (max-width: 767.98px) {
         
       }
 
       @media (max-width: 575.98px) {
+       
+      }
+
+      @media (max-width: 375.98px) {
        
       }
 
       /* #endregion Main Section*/
-      /* #region TimeLine Section*/
-      ._timeline-section {
-  
-      }
 
-
-      @media (max-width: 767.98px) {
-    
-      }
-
-      @media (max-width: 575.98px) {
-
-      }
-
-      @media (max-width: 375.98px) {
-
-      }
-
-      /* #endregion TimeLine Section*/
-      /* #region Carousel Section*/
-      ._carousel-section {
-    
-      }
-
-     
-
-      @media (max-width: 1399.98px) {
-        
-      }
-
-      @media (max-width: 575.98px) {
-       
-      }
-
-      @media (max-width: 375.98px) {
-        
-      }
-
-      /* #endregion Carousel Section*/
-      /* #region Family Section*/
-      ._family-section {
-        display: flex;
-        justify-content: center;
-        gap: 24px;
-        margin: 60px 0px;
-        flex-wrap: wrap;
-      }
-
-      /* #endregion Family Section*/
-      /* #region Gift Section*/
-      ._gift-section {
-       
-      }
-
-      
-      @media (max-width: 575.98px) {
-       
-      }
-
-      /* #endregion Gift Section*/
-      /* #region DressCode Section*/
-      ._dresscode-section {
-        
-      }
-
-      
-
-      @media (max-width: 575.98px) {
-        
-      }
-
-      /* #endregion DressCode Section*/
     </style>
   </head>
   <body>
@@ -581,65 +317,8 @@
           <img src="#" data-replace="Image_AudioUrl" alt="Audio" />
         </span>
         <div class="_template">
-          <div id="_main" class="_main-section">
-            <img src="#" data-replace="Image_FrontCard" alt="❧ Mis XV ❧">
-           <div class="_details">
-            <h1>Mis XV</h1>
-            <h2 data-replace="EventName"></p>
-           </div>
-            
-          </div>
-          <div class="_counter-section">
-            <div id="countdown">
-              <div class="time-box">
-                <span id="days">0</span> Días
-              </div>
-              <div class="time-box">
-                <span id="hours">0</span> Horas
-              </div>
-              <div class="time-box">
-                <span id="days">:</span> &nbsp;
-              </div>
-              <div class="time-box">
-                <span id="minutes">0</span> Minutos
-              </div>
-              <div class="time-box">
-                <span id="days">:</span> &nbsp;
-              </div>
-              <div class="time-box">
-                <span id="seconds">0</span> Segundos
-              </div>
-            </div>
-          </div>
-          <div class="_family-section">
+          
 
-          </div>
-          <div class="_timeline-section">
-            
-          </div>
-          <div class="_dresscode-section">
-            
-          </div>
-          <div class="_gift-section">
-            
-            <div class="_btn-brands">
-              <a href="#" data-replace="EventAmazonGiftTableUrl" target="_blank" class="_btn-gifttable">
-                <img src="#" data-replace="Image_AmazonUrl" alt="Amazon" /> Amazon </a>
-              <a href="#" data-replace="EventLiverpoolGiftTableUrl" target="_blank" class="_btn-gifttable">
-                <img src="#" data-replace="Image_LiverpoolUrl" alt="Liverpool" /> Liverpool </a>
-            </div>
-          </div>
-          <div class="_carousel-section">
-            
-          </div>
-          <div class="_parent-confirmation">
-            <div class="_confirmation-section">
-              <a href="#" data-replace="WhatsAppUrl" target="_blank" class="_btn-Confirmation">
-                <i class="fas fa-heart"></i> Asistiré </a>
-              <a href="#" data-replace="GoogleCalendarUrl" target="_blank" class="_btn-Confirmation">
-                <i class="fas fa-calendar"></i> Agendar </a>
-            </div>
-          </div>
         </div>
       </main>
     </div>
@@ -727,25 +406,10 @@
         onLoad: function() {
           $("[data-replace=Image_AudioUrl]").attr("src", Resources.Image_AudioUrl);
           $("[data-replace=AudioUrl]").attr("src", Resources.AudioUrl);
-          $("[data-replace=Image_AmazonUrl]").attr("src", Resources.Image_AmazonUrl);
-          $("[data-replace=Image_LiverpoolUrl]").attr("src", Resources.Image_LiverpoolUrl);
-          $("[data-replace=EventAmazonGiftTableUrl]").attr("href", Resources.EventAmazonGiftTableUrl);
-          $("[data-replace=EventLiverpoolGiftTableUrl]").attr("href", Resources.EventLiverpoolGiftTableUrl);
           $("[data-replace=EventDateString]").text(Resources.EventDateString);
           $("[data-replace=EventHourString]").text(Resources.EventHourString);
-          $("[data-replace=EventReceptionHourString]").text(Resources.EventReceptionHourString);
           $("[data-replace=EventName]").text(Resources.EventName);
-          $("[data-replace=EventFather]").text(Resources.EventFather);
-          $("[data-replace=EventMother]").text(Resources.EventMother);
-          $("[data-replace=EventGodFather]").text(Resources.EventGodFather);
-          $("[data-replace=EventGodMother]").text(Resources.EventGodMother);
-          $("[data-replace=EventChurchUrl]").attr("href", Resources.EventChurchUrl);
-          $("[data-replace=EventReceptionUrl]").attr("href", Resources.EventReceptionUrl);
-          $("[data-replace=Image_FrontCard]").attr("src", Resources.Image_FrontCard);
           $("[data-replace=Image_GoogleLocation]").attr("src", Resources.Image_GoogleLocation);
-          $("[data-replace=Image_MyParents]").attr("src", Resources.Image_MyParents);
-          $("[data-replace=Image_MyGodParents]").attr("src", Resources.Image_MyGodParents);
-          $("[data-replace=Image_DressCodeUrl]").attr("src", Resources.Image_DressCodeUrl);
           $("[data-replace=WhatsAppUrl]").attr("href", Resources.WhatsAppUrl);
           $("[data-replace=GoogleCalendarUrl]").attr("href", helpers.onGoogleCalendar());
         }
