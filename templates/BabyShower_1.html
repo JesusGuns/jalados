@@ -252,7 +252,6 @@
         right: 1%;
         top: 11%;
         z-index: 3;
-        display: none;
       }
 
       #audioButton.off {
@@ -315,8 +314,32 @@
           <img src="#" data-replace="Image_AudioUrl" alt="Audio" />
         </span>
         <div class="_template">
-          
-
+          <div class="_main-section">
+            <h1 data-replace="EventName"></h1>
+          </div>
+          <div class="_counter-section">
+            <div id="countdown">
+              <div class="time-box">
+                <span id="days">0</span> Días
+              </div>
+              <div class="time-box">
+                <span id="hours">0</span> Horas
+              </div>
+              <div class="time-box">
+                <span id="days">:</span> &nbsp;
+              </div>
+              <div class="time-box">
+                <span id="minutes">0</span> Minutos
+              </div>
+              <div class="time-box">
+                <span id="days">:</span> &nbsp;
+              </div>
+              <div class="time-box">
+                <span id="seconds">0</span> Segundos
+              </div>
+            </div>
+          </div>
+          <div class="_event-section"></div>
         </div>
       </main>
     </div>
@@ -420,7 +443,7 @@
         EventDateString: helpers.onGetDateString(EventDate),
         EventHourString: helpers.onGetHoursString(EventDate),
         EventReceptionHourString: helpers.onGetHoursString(EventReception),
-        EventName: "Nicole Gutiérrez",
+        EventName: "Lucas",
         EventFather: "José Gutiérrez",
         EventMother: "Melissa Hurtado",
         EventGodFather: "Juan Fernández",
