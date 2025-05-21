@@ -3,19 +3,24 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/png" href="https://cdn-icons-png.flaticon.com/512/6277/6277555.png">
+    <link rel="icon" type="image/png" href="https://assets.stickpng.com/images/5a579a979538462e5a82d453.png">
     <title>Invitación Baby Shower</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
     <!-- Font Awesome-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Bonheur+Royale&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap" rel="stylesheet">
     <style>
       /* #region ROOT*/
       :root {
-        --color_primary: #a14d74;
-    
-        --font-Primary: 'Bonheur Royale';
+        --color_Primary: #368ecf;
+        --color_Secondary: #6d4c41;
+        --color_Tertiary: #ff6f61;
+        --color_Quaternary: #fdd835;
+
+        --font-Primary: 'Indie Flower';
+
+        --filter-AudioButton: 278deg;
       }
 
       /* #endregion ROOT*/
@@ -39,8 +44,265 @@
         font-family: var(--font-Primary);
         min-height: 100%;
         width: 100%;
+        color: var(--color_Secondary);
+      }
 
-        
+      .subcontainer {
+        background: rgba(255, 255, 255, 0.85);
+        border-radius: 20px;
+        padding: 1rem 2rem;
+        width: 100%;
+        max-width: 500px;
+        text-align: center;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        animation: _animation-fade-in 1s ease-in-out;
+      }
+
+      .imgMain {
+        width: 50%;
+        animation: _animation-float 3s ease-in-out infinite;
+      }
+
+      .box {
+        min-height: 10vh !important;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 1rem 2rem;
+      }
+
+      h1 {
+        font-size: 2rem;
+        color: var(--color_Primary);
+        margin-bottom: 1rem;
+      }
+      h1 span {
+        color: var(--color_Tertiary);
+      }
+
+      .detail-box {
+        min-height: 10vh !important;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 1rem 2rem;
+      }
+
+      .detail-box-text {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+      }
+
+      .block h3 {
+        font-size: 1.2rem;
+        margin-bottom: 0.3rem;
+        color: var(--color_Secondary);
+      }
+
+      .block p {
+        margin: 0.2rem 0;
+        font-size: 1rem;
+      }
+
+      .block a {
+        color: var(--color_Primary);
+        text-decoration: underline;
+      }
+
+      .confirm-attendance {
+        min-height: 10vh !important;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 2rem 2rem;
+      }
+
+      .detail-box h2,
+      .confirm-attendance h2 {
+        font-size: 1.5rem;
+        color: var(--color_Primary);
+        margin-bottom: 1rem;
+      }
+
+      .clock {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: nowrap;
+        gap: 0.5rem;
+        margin-top: 0.5rem;
+      }
+      .clock div {
+        flex: 1;
+        background: #ffffffcc;
+        padding: 10px;
+        border-radius: 10px;
+        box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+      }
+      .clock span {
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: var(--color_Primary);
+        display: block;
+      }
+      .clock small {
+        font-size: 0.75rem;
+        color: var(--color_Secondary);
+      }
+
+      .btn {
+        display: inline-block;
+        padding: 1rem 2rem;
+        background-color: var(--color_Quaternary);
+        text-decoration: none;
+        border-radius: 30px;
+        font-weight: bold;
+        transition: transform 0.3s ease;
+      }
+      .btn:hover {
+        transform: scale(1.05);
+      }
+
+      .confirm-attendance .mt {
+        margin-top: 1rem;
+      }
+
+      .subcontainerbook {
+        padding: 1rem 2rem;
+        width: 100%;
+        max-width: 500px;
+        animation: _animation-fade-in 1s ease-in-out;
+      }
+
+      .book-wrapper {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .book {
+        width: 100%;
+        max-width: 200px;
+        aspect-ratio: 3 / 4;
+        position: relative;
+        perspective: 2000px;
+      }
+
+      .book::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 49%;
+        width: 2%;
+        height: 100%;
+        background: radial-gradient(ellipse at center, rgba(0,0,0,0.1), transparent);
+        z-index: 0;
+      }
+
+      .book.shifted {
+        transform: translateX(50%);
+        transition: transform 1s ease;
+      }
+
+      .page {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        transform-origin: left center;
+        transform-style: preserve-3d;
+        transition: transform 1s ease, box-shadow 1s ease;
+        z-index: 100;
+        box-shadow: 5px 0 15px rgba(0, 0, 0, 0.1);
+        border-radius: 50px;
+      }
+
+      .page::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(to left, rgba(0,0,0,0.1), transparent);
+        opacity: 0.3;
+        pointer-events: none;
+        z-index: 2;
+        border-radius: 50px;
+      }
+
+      .page.flipped {
+        transform: rotateY(-180deg) skewY(1deg);
+        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+        animation: _animation-reordenar 0s linear 1s forwards;
+      }
+
+      .page.flipped::before {
+        background: linear-gradient(to right, rgba(0,0,0,0.1), transparent);
+        opacity: 0.15;
+      }
+
+      .page.hide-back .back {
+        opacity: 0;
+        transition: opacity 0s ease;
+      }
+
+      .face {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        backface-visibility: hidden;
+        overflow: hidden;
+        border-radius: 50px;
+      }
+
+      .face img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .back {
+        background: white;
+        transform: rotateY(180deg);
+        pointer-events: none;
+        opacity: 1;
+        transition: opacity 0.5s ease 0.4s;
+      }
+
+      .back.hidden {
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      .front {
+        background: white;
+        z-index: 3;
+      }
+
+      .imgTap {
+        width: 3%;
+        position: absolute;
+        margin-top: 8rem;
+      }
+
+      .imgTap.shifted {
+        transform: translateX(230%);
+        transition: transform 1s ease;
+      }
+
+      .hidden {
+        display: none;
+      }
+      .fade-in {
+        animation: _animation-fade-in 4s ease-in-out;
+      }
+
+      .location-maps {
+        width: 25px;
+        animation: _animation-pulse-3 0.4s infinite;
+        object-fit: cover;
+        border-radius: 50%;
       }
 
       @media (max-width: 575.98px) {
@@ -239,6 +501,21 @@
         }
       }
 
+      @keyframes _animation-float {
+        0%, 100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-10px);
+        }
+      }
+
+      @keyframes _animation-reordenar {
+        to {
+          z-index: 0;
+        }
+      }
+
       /* #endregion Animations*/
       /* #region General*/
       @media (max-width: 575.98px) {
@@ -247,6 +524,7 @@
       /* #endregion General*/
       /* #region Audio*/
       #audioButton {
+        filter: hue-rotate(var(--filter-AudioButton));
         animation: _animation-pulse-1 1.5s infinite;
         position: fixed;
         right: 1%;
@@ -255,7 +533,6 @@
       }
 
       #audioButton.off {
-        filter: hue-rotate(45deg);
         animation: _animation-vibrate 0.4s infinite;
       }
 
@@ -293,11 +570,31 @@
       }
 
       @media (max-width: 575.98px) {
-       
+        .imgMain {
+          width: 112%;
+        }
+        .subcontainerbook {
+          width: 63%;
+        }
+        .imgTap {
+          width: 10%;
+        }
       }
 
       @media (max-width: 375.98px) {
-       
+        .imgMain {
+          width: 77%;
+        }
+      }
+
+      @media (min-width: 600px) {
+        .detail-box-text {
+          flex-direction: row;
+          justify-content: space-between;
+        }
+        .block {
+          flex: 1;
+        }
       }
 
       /* #endregion Main Section*/
@@ -313,34 +610,79 @@
         <span id="audioButton" class="off">
           <img src="#" data-replace="Image_AudioUrl" alt="Audio" />
         </span>
-        <div class="_template">
-          <div class="_main-section">
-            <h1 data-replace="EventName"></h1>
-          </div>
-          <div class="_counter-section">
-            <div id="countdown">
-              <div class="time-box">
-                <span id="days">0</span> Días
-              </div>
-              <div class="time-box">
-                <span id="hours">0</span> Horas
-              </div>
-              <div class="time-box">
-                <span id="days">:</span> &nbsp;
-              </div>
-              <div class="time-box">
-                <span id="minutes">0</span> Minutos
-              </div>
-              <div class="time-box">
-                <span id="days">:</span> &nbsp;
-              </div>
-              <div class="time-box">
-                <span id="seconds">0</span> Segundos
+        <!-- Initial section -->
+        <section class="box">
+          <div class="subcontainer">
+            <img src="https://assets.stickpng.com/images/5a579a289538462e5a82d44a.png" alt="Pocoyó saludando" class="imgMain" />
+            <h1>¡Estás invitado <br> al Baby Shower de <br> <span data-replace="EventName"></span>!</h1>
+            <div class="mt">
+              <h2>Faltan:</h2>
+              <div id="countdown">
+                <div class="clock">
+                  <div class="time-box">
+                    <span id="days">0</span> <small>Días</small>
+                  </div>
+                  <div class="time-box">
+                    <span id="hours">0</span> <small>Horas</small>
+                  </div>
+                  <div class="time-box">
+                    <span id="minutes">0</span> <small>Minutos</small>
+                  </div>
+                  <div class="time-box">
+                    <span id="seconds">0</span> <small>Segundos</small>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-          <div class="_event-section"></div>
-        </div>
+        </section>
+
+        <!-- Event details section -->
+        <section class="detail-box">
+          <div class="subcontainer">
+            <h2>Detalles del evento</h2>
+            <div class="detail-box-text">
+              <div class="block">
+                <h3>Cuándo <span>🗓️</span></h3>
+                <p><strong data-replace="EventDateString"></strong></p>
+                <p>Desde <span data-replace="EventReceptionHourString"></span></p>
+
+                <h3 class="mt">
+                    Dónde
+                  <a href="#" data-replace="EventReceptionUrl" target="_blank">
+                    <img class="location-maps" src="#" data-replace="Image_GoogleLocation" alt="Google Location">
+                  </a>
+                </h3>
+                <p data-replace="GoogleCalendarLocation"></p>
+              </div>
+            </div>
+          </div>
+        </section>
+        
+        <!-- Album book section -->
+        <section class="box">
+          <div class="subcontainerbook">
+            <div class="book-wrapper">
+              <div class="book" id="book"></div>
+              <img src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExNWZ1MW80dTVkMzFrcXoxeG41OHo5NmdiemdvbnE5NW9seW1heXA5YiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/TPiig5QAVogA1po38k/giphy.gif" alt="Tap tap" class="imgTap" id="tapHint" />
+            </div>
+          </div>
+        </section>
+
+        <!-- Final section to confirm attendance  -->
+        <section class="confirm-attendance">
+          <div class="subcontainer">
+            <h2>¿Nos acompañas?</h2>
+            <a href="#" data-replace="WhatsAppUrl" target="_blank" class="btn">
+              <i class="fas fa-heart"></i>
+              Asistiré
+            </a>
+            <a href="#" data-replace="GoogleCalendarUrl" target="_blank" class="btn">
+              <i class="fas fa-calendar"></i>
+              Agendar
+            </a>
+          </div>
+        </section>
       </main>
     </div>
     <!-- Bootstrap JS Bundle (con soporte touch incluido) -->
@@ -410,14 +752,14 @@
         },
         onGoogleCalendar: function() {
           const base = 'https://calendar.google.com/calendar/render';
-          const details = `Acompáñanos a celebrar los XV de ${Resources.EventName}.
+          const details = `Acompáñanos a celebrar el Baby Shower de ${Resources.EventName}.
           📍 Lugar: ${Resources.GoogleCalendarLocation}
           🕒 Hora: ${Resources.EventHourString}
           ⏰ Recordatorio: Llega con 30 minutos de anticipación.
           ✨ ¡Te esperamos para compartir este momento tan especial!`;
           const params = new URLSearchParams({
             action: "TEMPLATE",
-            text: Resources.GoogleCalendarTitle + Resources.EventName,
+            text: `${Resources.GoogleCalendarTitle} de ${Resources.EventName}`,
             dates: `${Resources.GoogleCalendarStartDate}/${Resources.GoogleCalendarEndDate}`,
             details: details,
             location: Resources.GoogleCalendarLocation
@@ -425,14 +767,18 @@
           return `${base}?${params.toString()}`;
         },
         onLoad: function() {
+          $('body').css('background-image', 'url("' + Resources.Image_BodyBackground + '")');
           $("[data-replace=Image_AudioUrl]").attr("src", Resources.Image_AudioUrl);
           $("[data-replace=AudioUrl]").attr("src", Resources.AudioUrl);
           $("[data-replace=EventDateString]").text(Resources.EventDateString);
           $("[data-replace=EventHourString]").text(Resources.EventHourString);
+          $("[data-replace=EventReceptionHourString]").text(Resources.EventReceptionHourString);
           $("[data-replace=EventName]").text(Resources.EventName);
+          $("[data-replace=EventReceptionUrl]").attr("href", Resources.EventReceptionUrl);
           $("[data-replace=Image_GoogleLocation]").attr("src", Resources.Image_GoogleLocation);
           $("[data-replace=WhatsAppUrl]").attr("href", Resources.WhatsAppUrl);
           $("[data-replace=GoogleCalendarUrl]").attr("href", helpers.onGoogleCalendar());
+          $("[data-replace=GoogleCalendarLocation]").text(Resources.GoogleCalendarLocation);
         }
       };
       const EventDate = new Date("2025-11-25T13:00:00");
@@ -442,7 +788,7 @@
         EventTime: EventDate.getTime(),
         EventDateString: helpers.onGetDateString(EventDate),
         EventHourString: helpers.onGetHoursString(EventDate),
-        EventReceptionHourString: helpers.onGetHoursString(EventReception),
+        EventReceptionHourString: helpers.onGetHoursString(EventReception, true),
         EventName: "Lucas",
         EventFather: "José Gutiérrez",
         EventMother: "Melissa Hurtado",
@@ -452,11 +798,11 @@
         EventReceptionUrl: "https://maps.app.goo.gl/1wwmTSk84XA8pLMn8",
         EventAmazonGiftTableUrl: "https://www.amazon.com.mx/",
         EventLiverpoolGiftTableUrl: "https://www.liverpool.com.mx/tienda/home",
-        GoogleCalendarTitle: "Mis XV ",
+        GoogleCalendarTitle: "Baby Shower",
         GoogleCalendarStartDate: helpers.onGetDateYYYYMMDD(),
         GoogleCalendarEndDate: helpers.onGetDateYYYYMMDD(),
-        GoogleCalendarLocation: "Catedral de Guadalajara",
-        Image_BodyBackground: "",
+        GoogleCalendarLocation: "Salón Azul Calle Principal 123",
+        Image_BodyBackground: "https://www.transparenttextures.com/patterns/stardust.png",
         Image_FrontCard: "https://img.freepik.com/foto-gratis/mujer-tiro-medio-caminando-calle_23-2148703161.jpg?ga=GA1.1.1993030682.1745256637&semt=ais_hybrid&w=740",
         Image_AudioUrl: "https://cdn-icons-png.freepik.com/512/13896/13896624.png?ga=GA1.1.1993030682.1745256637",
         Image_Corner: "",
@@ -467,9 +813,27 @@
         Image_LiverpoolUrl: "https://play-lh.googleusercontent.com/FwrxfHaknUKLneazGpPsjJvQ4mUYKJkccj-efHNeXQISwCwqC9ymNAnqlAY5J5oHIOc",
         Image_GoogleLocation: "https://img.icons8.com/?size=512&id=DcygmpZqBEd9&format=png",
         AudioUrl: "https://invitameok.com/invitaciones/admin/imagenes/26931/MUSICAdont-start-now-traducida-al-espanol%20(mp3cut.net).mp3",
-        WhatsAppUrl: "https://wa.link/encb79",
-        CollageImages: ['https://img.freepik.com/foto-gratis/adolescente-celebrando-quinceanera_23-2148478038.jpg', 'https://img.freepik.com/foto-gratis/chica-sonriente-tiro-medio-hermoso-vestido_52683-86468.jpg?t=st=1746555442~exp=1746559042~hmac=e8d5adc2117161bcd88377ab37d6e1358945489c42ac647e29fb996cf047ca4c&w=1800', 'https://lh3.googleusercontent.com/p/AF1QipMv-RExo0XkTU7eg8u-FelVsp1gd3u4XZyR3ipA=s3072-v1', 'https://lh3.googleusercontent.com/p/AF1QipNk9cctNeskTP2Zg2EEOQjV-aMFrSO5RRxWtx5N=s1024-v1', 'https://img.freepik.com/foto-gratis/mujer-tiro-medio-caminando-calle_23-2148703161.jpg?ga=GA1.1.1993030682.1745256637&semt=ais_hybrid&w=740', 'https://img.freepik.com/fotos-premium/hermosa-novia-usa-vestido-blanco-exclusivo-jardin_769431-2.jpg?ga=GA1.1.1993030682.1745256637&semt=ais_hybrid&w=740'],
+        WhatsAppUrl: "https://tinyurl.com/3h8kmam7",
+        CollageImages: [
+          'https://img.freepik.com/vector-premium/es-invitacion-baby-shower-nino-mono-azul-plantilla-tarjeta-felicitacion-bebe-recien-nacido_647688-40.jpg',
+          'https://img.freepik.com/foto-gratis/mujer-embarazada-foto-su-futuro-bebe_1391-1419.jpg?ga=GA1.1.376195781.1747703452&semt=ais_hybrid&w=740',
+          'https://img.freepik.com/fotos-premium/feliz-pareja-embarazada-buscando-imagen-ultrasonido-su-bebe-nacer-aislado-fondo-azul_530697-83805.jpg?ga=GA1.1.376195781.1747703452&semt=ais_hybrid&w=740',
+          'https://img.freepik.com/foto-gratis/dos-manos-forma-corazon-estomago-madre-embarazada_181624-6985.jpg?ga=GA1.1.376195781.1747703452&semt=ais_hybrid&w=740',
+          'https://img.freepik.com/foto-gratis/mujer-embarazada-marido-zapatos-bebe_23-2147793312.jpg?ga=GA1.1.376195781.1747703452&semt=ais_hybrid&w=740',
+          'https://img.freepik.com/foto-gratis/imagen-ultrasonido-mujer-embarazada-cosas-bebe-madre-esta-esperando-bebe_169016-27477.jpg?ga=GA1.1.376195781.1747703452&semt=ais_hybrid&w=740'
+        ],
+        CollageImages2: [
+          'https://img.freepik.com/foto-gratis/mujer-embarazada-sujetando-corazon-mientras-toca-barriga_1220-849.jpg',
+          'https://img.freepik.com/fotos-premium/mujer-embarazada-sosteniendo-zapatillas-blancas-bebe-cerca-vientre-embarazada-concepto-familiar_1272242-393.jpg?ga=GA1.1.376195781.1747703452&semt=ais_hybrid&w=740',
+          'https://img.freepik.com/fotos-premium/manos-mujer-embarazada-primer-corazon-forman-su-panza_38678-4724.jpg?ga=GA1.1.376195781.1747703452&semt=ais_hybrid&w=740',
+          'https://img.freepik.com/fotos-premium/vientre-mujer-embarazada-primer-plano-vientre-mujer-embarazada_176445-10619.jpg?ga=GA1.1.376195781.1747703452&semt=ais_hybrid&w=740',
+          'https://img.freepik.com/foto-gratis/vista-frontal-mujer-embarazada-sosteniendo-su-vientre_23-2148352222.jpg?ga=GA1.1.376195781.1747703452&semt=ais_hybrid&w=740'
+        ]
       };
+      const book = document.getElementById('book');
+      const flipSound = document.getElementById('flipSound');
+      const tapHint = document.getElementById('tapHint');
+      const totalPages = Resources.CollageImages.length;
 
       function Init() {
         helpers.onLoad();
@@ -478,8 +842,88 @@
           actions.onCounter();
         }, 1000);
         actions.onAudioPlayer();
+        generateBook();
       }
       Init();
+
+      function generateBook() {
+        let currentPage = 0;
+        let isFlipping = false;
+        let tempBackCover = null;
+
+       
+
+        Resources.CollageImages.forEach((img, i) => {
+          const page = document.createElement('div');
+          page.className = 'page';
+          page.style.zIndex = Resources.CollageImages.length - i;
+
+          const backImg = Resources.CollageImages2[i] || '';
+
+          page.innerHTML = `
+            <div class="face front"><img src="${img}" alt="Frente ${i + 1}" /></div>
+            <div class="face back"><img src="${backImg}" alt="Reverso ${i + 1}" /></div>
+          `;
+
+          page.addEventListener('click', () => {
+            if (i === currentPage && !isFlipping) {
+              isFlipping = true;
+
+              page.classList.add('flipped');
+              currentPage++;
+
+              if (currentPage === 1) {
+                book.classList.add('shifted');
+                if (currentPage === 1 && tapHint) {
+                   tapHint.classList.add("shifted");
+                }
+              }
+
+              if (flipSound) {
+                flipSound.currentTime = 0;
+                flipSound.play();
+              }
+
+              // Block clicks while rotating
+              setTimeout(() => {
+                isFlipping = false;
+              }, 1000); // equal to the turning time
+
+
+
+              // Automatic closing at the end
+              if (currentPage === totalPages) {
+                const allPages = Array.from(document.querySelectorAll('.page')).reverse();
+
+                tapHint.classList.add("hidden");
+                tapHint.classList.remove("shifted");
+
+                allPages.forEach((page, index) => {
+                  setTimeout(() => {
+                    page.classList.remove('flipped');
+                  }, index * 400); // time between each sheet
+                });
+
+                // Restart after turning everything over
+                const totalDelay = (allPages.length - 1) * 400 + 750;
+                setTimeout(() => {
+                  currentPage = 0;
+                  book.style.transition = 'transform 1s ease';
+                  book.classList.remove('shifted');
+                  setTimeout(() => {
+                    if (tapHint) {
+                      tapHint.classList.add("fade-in");
+                      tapHint.classList.remove("hidden");
+                    }
+                  }, 1500);
+                }, totalDelay);
+              }
+            }
+          });
+
+          book.appendChild(page);
+        });
+      }
     </script>
   </body>
 </html>
