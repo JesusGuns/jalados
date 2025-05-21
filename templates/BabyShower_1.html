@@ -613,7 +613,7 @@
         <!-- Initial section -->
         <section class="box">
           <div class="subcontainer">
-            <img src="https://assets.stickpng.com/images/5a579a289538462e5a82d44a.png" alt="Pocoyó saludando" class="imgMain" />
+            <img class="imgMain" src="#" data-replace="Image_Main" alt="Pocoyó saludando">
             <h1>¡Estás invitado <br> al Baby Shower de <br> <span data-replace="EventName"></span>!</h1>
             <div class="mt">
               <h2>Faltan:</h2>
@@ -664,7 +664,7 @@
           <div class="subcontainerbook">
             <div class="book-wrapper">
               <div class="book" id="book"></div>
-              <img src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExNWZ1MW80dTVkMzFrcXoxeG41OHo5NmdiemdvbnE5NW9seW1heXA5YiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/TPiig5QAVogA1po38k/giphy.gif" alt="Tap tap" class="imgTap" id="tapHint" />
+              <img class="imgTap" id="tapHint" src="#" data-replace="Image_Tap" alt="Tap tap">
             </div>
           </div>
         </section>
@@ -776,6 +776,8 @@
           $("[data-replace=EventName]").text(Resources.EventName);
           $("[data-replace=EventReceptionUrl]").attr("href", Resources.EventReceptionUrl);
           $("[data-replace=Image_GoogleLocation]").attr("src", Resources.Image_GoogleLocation);
+          $("[data-replace=Image_Main]").attr("src", Resources.Image_Main);
+          $("[data-replace=Image_Tap]").attr("src", Resources.Image_Tap);
           $("[data-replace=WhatsAppUrl]").attr("href", Resources.WhatsAppUrl);
           $("[data-replace=GoogleCalendarUrl]").attr("href", helpers.onGoogleCalendar());
           $("[data-replace=GoogleCalendarLocation]").text(Resources.GoogleCalendarLocation);
@@ -812,6 +814,8 @@
         Image_AmazonUrl: "https://static-00.iconduck.com/assets.00/amazon-icon-2048x2048-pqt2fe18.png",
         Image_LiverpoolUrl: "https://play-lh.googleusercontent.com/FwrxfHaknUKLneazGpPsjJvQ4mUYKJkccj-efHNeXQISwCwqC9ymNAnqlAY5J5oHIOc",
         Image_GoogleLocation: "https://img.icons8.com/?size=512&id=DcygmpZqBEd9&format=png",
+        Image_Main: "https://assets.stickpng.com/images/5a579a289538462e5a82d44a.png",
+        Image_Tap: "https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExNWZ1MW80dTVkMzFrcXoxeG41OHo5NmdiemdvbnE5NW9seW1heXA5YiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/TPiig5QAVogA1po38k/giphy.gif",
         AudioUrl: "https://invitameok.com/invitaciones/admin/imagenes/26931/MUSICAdont-start-now-traducida-al-espanol%20(mp3cut.net).mp3",
         WhatsAppUrl: "https://tinyurl.com/3h8kmam7",
         CollageImages: [
@@ -875,7 +879,9 @@
               if (currentPage === 1) {
                 book.classList.add('shifted');
                 if (currentPage === 1 && tapHint) {
-                   tapHint.classList.add("shifted");
+                  // tapHint.classList.add("shifted");
+                  tapHint.classList.add("hidden");
+                  tapHint.classList.remove("shifted");
                 }
               }
 
@@ -885,18 +891,13 @@
               }
 
               // Block clicks while rotating
-              setTimeout(() => {
+              // setTimeout(() => {
                 isFlipping = false;
-              }, 1000); // equal to the turning time
-
-
+              // }, 1000); // equal to the turning time
 
               // Automatic closing at the end
               if (currentPage === totalPages) {
                 const allPages = Array.from(document.querySelectorAll('.page')).reverse();
-
-                tapHint.classList.add("hidden");
-                tapHint.classList.remove("shifted");
 
                 allPages.forEach((page, index) => {
                   setTimeout(() => {
