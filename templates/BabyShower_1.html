@@ -50,7 +50,7 @@
       .subcontainer {
         background: rgba(255, 255, 255, 0.85);
         border-radius: 20px;
-        padding: 1rem 2rem;
+        padding: 2rem 2rem;
         width: 100%;
         max-width: 500px;
         text-align: center;
@@ -68,11 +68,11 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        padding: 1rem 2rem;
+        padding: 2rem 2rem;
       }
 
       h1 {
-        font-size: 2rem;
+        font-size: 3rem;
         color: var(--color_Primary);
         margin-bottom: 1rem;
       }
@@ -85,7 +85,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        padding: 1rem 2rem;
+        padding: 2rem 2rem;
       }
 
       .detail-box-text {
@@ -95,14 +95,13 @@
       }
 
       .block h3 {
-        font-size: 1.2rem;
         margin-bottom: 0.3rem;
         color: var(--color_Secondary);
       }
 
       .block p {
         margin: 0.2rem 0;
-        font-size: 1rem;
+        font-size: 1.2rem;
       }
 
       .block a {
@@ -120,7 +119,6 @@
 
       .detail-box h2,
       .confirm-attendance h2 {
-        font-size: 1.5rem;
         color: var(--color_Primary);
         margin-bottom: 1rem;
       }
@@ -135,24 +133,24 @@
       .clock div {
         flex: 1;
         background: #ffffffcc;
-        padding: 10px;
+        padding: 5px;
         border-radius: 10px;
         box-shadow: 0 3px 10px rgba(0,0,0,0.1);
       }
       .clock span {
-        font-size: 1.5rem;
+        font-size: 1.8rem;
         font-weight: bold;
         color: var(--color_Primary);
         display: block;
       }
       .clock small {
-        font-size: 0.75rem;
+        font-size: 1rem;
         color: var(--color_Secondary);
       }
 
       .btn {
         display: inline-block;
-        padding: 1rem 2rem;
+        padding: 2rem 2rem;
         background-color: var(--color_Quaternary);
         text-decoration: none;
         border-radius: 30px;
@@ -168,7 +166,7 @@
       }
 
       .subcontainerbook {
-        padding: 1rem 2rem;
+        padding: 2rem 1.5rem;
         width: 100%;
         max-width: 500px;
         animation: _animation-fade-in 1s ease-in-out;
@@ -566,12 +564,12 @@
       /* #endregion Counter*/
       /* #region Main Section*/
       @media (max-width: 767.98px) {
-        
+
       }
 
       @media (max-width: 575.98px) {
         .imgMain {
-          width: 112%;
+          width: 101%;
         }
         .subcontainerbook {
           width: 63%;
@@ -579,11 +577,29 @@
         .imgTap {
           width: 10%;
         }
+        h1 {
+          font-size: 2.3rem;
+        }
       }
 
       @media (max-width: 375.98px) {
         .imgMain {
-          width: 77%;
+          width: 70%;
+        }
+        h1 {
+          font-size: 2.1rem;
+        }
+        .box {
+          padding: 1.2rem 2rem;
+        }
+      }
+
+      @media (max-width: 340px) {
+        .imgMain {
+          width: 70%;
+        }
+        h1 {
+          font-size: 1.5rem;
         }
       }
 
