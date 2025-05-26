@@ -1,0 +1,56 @@
+@import url("animations.css");
+
+
+/* #region Audio*/
+#audioButton {
+    animation: _animation-pulse-1 1.5s infinite;
+    position: fixed;
+    right: 1%;
+    top: 11%;
+    z-index: 3;
+}
+
+#audioButton.off {
+    filter: hue-rotate(45deg);
+    animation: _animation-vibrate 0.4s infinite;
+}
+
+#audioButton img {
+    width: 45px;
+    cursor: pointer;
+}
+
+@media (max-width: 575.98px) {
+    #audioButton {
+        top: 15%;
+    }
+
+    #audioButton img {
+        width: 40px;
+    }
+}
+
+/* #endregion Audio*/
+
+
+img.location-maps {
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+    border-radius: 50%;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    animation: _animation-pulse-3 0.4s infinite;
+}
+
+@media (max-width: 575.98px) {
+    img.location-maps {
+      width: 45px;
+      height: 45px;
+    }
+}
+@media (max-width: 375.98px) {
+    img.location-maps {
+        width: 40px;
+        height: 40px;
+    }
+}

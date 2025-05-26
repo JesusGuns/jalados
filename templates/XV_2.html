@@ -253,6 +253,27 @@
         }
       }
 
+      @keyframes _animation-gift-top-box {
+        20% {
+            transform: rotate(-7deg)
+        }
+
+        40% {
+            transform: rotate(10deg)
+        }
+
+        60% {
+            transform: rotate(-5deg)
+        }
+
+        80% {
+            transform: rotate(5deg)
+        }
+
+        to {
+            transform: rotate(0)
+        }
+      }
       /* #endregion Animations*/
       /* #region General*/
       .fireworks-container {
@@ -500,6 +521,16 @@
       ._main-section p._event-date {
         font-size: 3.5rem;
         font-weight: bold;
+      }
+
+      @media (max-width: 1599.98px) { 
+        ._main-section p {
+          font-size: 4rem;
+        }
+
+        ._main-section p._event-date {
+          font-size: 2.5rem;
+        }
       }
 
       @media (max-width: 767.98px) {
@@ -804,6 +835,7 @@
         z-index: 7;
         transition: transform 0.5s ease;
         transform-origin: left bottom;
+        animation: _animation-gift-top-box 2s both infinite;
       }
 
       .gift-top {
@@ -877,6 +909,7 @@
 
       .gift-wrapper.lifted {
         transform: translateY(-50px) rotate(-18deg);
+        animation: none;
       }
 
       .bow-wrapper.lifted {
