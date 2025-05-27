@@ -325,6 +325,30 @@
         transform: scale(1.2);
       }
 
+      #themeOverlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(255, 255, 255, 0.9);
+        z-index: 2000;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 2rem;
+        font-weight: bold;
+        color: var(--color_Primary, #333);
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s ease;
+      }
+
+      #themeOverlay.active {
+        opacity: 1;
+        pointer-events: all;
+      }
+
 
       @media (max-width: 575.98px) {
         .container {
@@ -740,6 +764,10 @@
       <button class="theme-btn" data-theme="themeNeutral" style="background-color:#bfa058"></button>
     </div>
 
+    <div id="themeOverlay">
+      <span>Cargando...</span>
+    </div>
+
     <!-- Bootstrap JS Bundle (con soporte touch incluido) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
@@ -903,7 +931,7 @@
           Image_BodyBackground: "url('https://www.transparenttextures.com/patterns/stardust.png')",
           Image_Main: "https://i.pinimg.com/736x/99/4d/fc/994dfc98f317551a8ba112f105d6058a.jpg",
           Image_CoverPage: "https://img.freepik.com/vector-premium/es-invitacion-baby-shower-nino-mono-azul-plantilla-tarjeta-felicitacion-bebe-recien-nacido_647688-40.jpg",
-          EventName: 'Lucas'
+          EventName: 'Thomas'
         },
         themeGirl: {
           '--color_Primary': '#f06292',
@@ -925,7 +953,7 @@
           Image_BodyBackground: "url('https://www.transparenttextures.com/patterns/food.png')",
           Image_Main: "https://i.gifer.com/4JzY.gif",
           Image_CoverPage: "https://img.freepik.com/vector-premium/tarjeta-felicitacion-dibujos-animados-su-tarjeta-nino-diseno-volantes-tarjeta-salud-cartel-cartel_506530-4301.jpg",
-          EventName: 'Alex y Sofi'
+          EventName: 'Alex y Alice'
         }
       };
 
@@ -1033,19 +1061,32 @@
               $("[data-replace=Image_Main]").attr("src", theme[variable]);
             } else if (variable === 'EventName') {
               $("[data-replace=EventName]").text(theme[variable]);
+              Resources.EventName = theme[variable];
             } else if (variable === 'Image_CoverPage') {
               Resources.CollageImages[0] = theme[variable];
             }
           }
         }
 
+        book.classList.remove('shifted');
         $('#book').empty();
+
+        $("[data-replace=GoogleCalendarUrl]").attr("href", helpers.onGoogleCalendar());
+
         generateBook();
       };
 
-      $('.theme-btn').on('click', function() {
+      $('.theme-btn').on('click', function () {
         const theme = $(this).data('theme');
-        applyTheme(theme);
+        $('#themeOverlay').addClass('active');
+
+        setTimeout(() => {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+          applyTheme(theme);
+          setTimeout(() => {
+            $('#themeOverlay').removeClass('active');
+          }, 500);
+        }, 2000);
       });
     </script>
   </body>
