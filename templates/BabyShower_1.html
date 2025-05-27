@@ -616,7 +616,7 @@
 
       @media (max-width: 575.98px) {
         .imgMain.themeBoy {
-          width: 78.5%;
+          width: 104%;
         }
         .imgMain.themeGirl {
           width: 101%;
@@ -637,7 +637,7 @@
 
       @media (max-width: 375.98px) {
         .imgMain.themeBoy {
-          width: 70%;
+          width: 93%;
         }
         .imgMain.themeGirl {
           width: 90%;
@@ -685,7 +685,7 @@
         <!-- Initial section -->
         <section class="box">
           <div class="subcontainer">
-            <img class="imgMain" src="#" data-replace="Image_Main" alt="Pocoyó saludando">
+            <img class="imgMain" src="#" data-replace="Image_Main" alt="Image Main">
             <h1>¡Estás invitado <br> al Baby Shower de <br> <span data-replace="EventName"></span>!</h1>
             <div class="mt">
               <h2>Faltan:</h2>
@@ -899,7 +899,7 @@
         Image_GoogleLocation: "https://img.icons8.com/?size=512&id=DcygmpZqBEd9&format=png",
         Image_Main: "",
         Image_Tap: "https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExNWZ1MW80dTVkMzFrcXoxeG41OHo5NmdiemdvbnE5NW9seW1heXA5YiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/TPiig5QAVogA1po38k/giphy.gif",
-        AudioUrl: "https://invitameok.com/invitaciones/admin/imagenes/26931/MUSICAdont-start-now-traducida-al-espanol%20(mp3cut.net).mp3",
+        AudioUrl: "../music/Here Comes The Sun.mp3",
         WhatsAppUrl: "https://tinyurl.com/3h8kmam7",
         CollageImages: [
           'https://img.freepik.com/vector-premium/es-invitacion-baby-shower-nino-mono-azul-plantilla-tarjeta-felicitacion-bebe-recien-nacido_647688-40.jpg',
@@ -926,34 +926,34 @@
           '--color_Primary': '#368ecf',
           '--color_Secondary': '#6d4c41',
           '--color_Tertiary': '#ff6f61',
-          '--color_Quaternary': '#fdd835',
+          '--color_Quaternary': '#99d5f06b',
           '--filter-AudioButton': '278deg',
-          Image_BodyBackground: "url('https://www.transparenttextures.com/patterns/stardust.png')",
-          Image_Main: "https://i.pinimg.com/736x/99/4d/fc/994dfc98f317551a8ba112f105d6058a.jpg",
+          Image_BodyBackground: "https://www.transparenttextures.com/patterns/stardust.png",
+          Image_Main: "https://i.etsystatic.com/41935531/r/il/22c68d/4904539325/il_570xN.4904539325_el50.jpg",
           Image_CoverPage: "https://img.freepik.com/vector-premium/es-invitacion-baby-shower-nino-mono-azul-plantilla-tarjeta-felicitacion-bebe-recien-nacido_647688-40.jpg",
           EventName: 'Thomas'
         },
         themeGirl: {
-          '--color_Primary': '#f06292',
+          '--color_Primary': '#f06292bd',
           '--color_Secondary': '#ad1457',
           '--color_Tertiary': '#e91e63',
           '--color_Quaternary': '#fce4ec',
           '--filter-AudioButton': '395deg',
-          Image_BodyBackground: "url('https://www.transparenttextures.com/patterns/stardust.png')",
+          Image_BodyBackground: "https://www.transparenttextures.com/patterns/stardust.png",
           Image_Main: "https://png.pngtree.com/png-clipart/20240301/original/pngtree-cute-unicorn-cartoon-on-heart-cloud-for-valentine-s-day-kawaii-png-image_14459513.png",
           Image_CoverPage: "https://img.freepik.com/vector-premium/es-invitacion-baby-shower-nina-letras_187548-622.jpg?ga=GA1.1.376195781.1747703452&semt=ais_hybrid&w=740",
           EventName: 'Valentina'
         },
         themeNeutral: {
-          '--color_Primary': '#bfa058',
+          '--color_Primary': '#bfa058a8',
           '--color_Secondary': '#7e6d4d',
-          '--color_Tertiary': '#dec58f',
+          '--color_Tertiary': '#957d4a',
           '--color_Quaternary': '#fff9c4',
           '--filter-AudioButton': '120deg',
-          Image_BodyBackground: "url('https://www.transparenttextures.com/patterns/food.png')",
-          Image_Main: "https://i.gifer.com/4JzY.gif",
+          Image_BodyBackground: "https://www.transparenttextures.com/patterns/food.png",
+          Image_Main: "https://i.pinimg.com/736x/31/35/4b/31354bcf4b1212f56ce992d4cb87dd20.jpg",
           Image_CoverPage: "https://img.freepik.com/vector-premium/tarjeta-felicitacion-dibujos-animados-su-tarjeta-nino-diseno-volantes-tarjeta-salud-cartel-cartel_506530-4301.jpg",
-          EventName: 'Alex y Alice'
+          EventName: 'Aitana y Alex'
         }
       };
 
@@ -1056,11 +1056,10 @@
             document.documentElement.style.setProperty(variable, theme[variable]);
           } else {
             if (variable === 'Image_BodyBackground') {
-              document.body.style.backgroundImage = theme[variable];
+               Resources.Image_BodyBackground = theme[variable];
             } else if (variable === 'Image_Main') {
-              $("[data-replace=Image_Main]").attr("src", theme[variable]);
+              Resources.Image_Main = theme[variable];
             } else if (variable === 'EventName') {
-              $("[data-replace=EventName]").text(theme[variable]);
               Resources.EventName = theme[variable];
             } else if (variable === 'Image_CoverPage') {
               Resources.CollageImages[0] = theme[variable];
@@ -1070,9 +1069,9 @@
 
         book.classList.remove('shifted');
         $('#book').empty();
+        tapHint.classList.remove("hidden");
 
-        $("[data-replace=GoogleCalendarUrl]").attr("href", helpers.onGoogleCalendar());
-
+        helpers.onLoad();
         generateBook();
       };
 
