@@ -733,66 +733,47 @@
         opacity: 1;
       }
 
-      #complete-image img {
-        width: 500px;
-        height: 500px;
-        object-fit: cover;
-        border: 2px solid #ccc;
-      }
-    
 
       @media (max-width: 575.98px) {
         #puzzle-container {
-          grid-template-columns: repeat(4, 100px);
-          grid-template-rows: repeat(4, 100px);
+          grid-template-columns: repeat(4, 75px);
+          grid-template-rows: repeat(4, 75px);
         }
 
         .piece {
-          width: 100px;
-          height: 100px;
-          background-size: 400px 400px;
+          width: 75px;
+          height: 75px;
+          background-size: 300px 300px;
         }
 
-        #complete-image img {
-          width: 400px;
-          height: 400px;
-        }
       }
 
       @media (max-width: 375.98px) {
         #puzzle-container {
-          grid-template-columns: repeat(4, 85px);
-          grid-template-rows: repeat(4, 85px);
+          grid-template-columns: repeat(4, 67.5px);
+          grid-template-rows: repeat(4, 67.5px);
         }
 
         .piece {
-          width: 85px;
-          height: 85px;
-          background-size: 340px 340px;
+          width: 67.5px;
+          height: 67.5px;
+          background-size: 270px 270px;
         }
 
-        #complete-image img {
-          width: 340px;
-          height: 340px;
-        }
       }
 
       @media (max-width: 325.98px) {
         #puzzle-container {
-          grid-template-columns: repeat(4, 70px);
-          grid-template-rows: repeat(4, 70px);
+          grid-template-columns: repeat(4, 60px);
+          grid-template-rows: repeat(4, 60px);
         }
 
         .piece {
-          width: 70px;
-          height: 70px;
-          background-size: 280px 280px;
+          width: 60px;
+          height: 60px;
+          background-size: 240px 240px;
         }
 
-        #complete-image img {
-          width: 280px;
-          height: 280px;
-        }
       }
 
       ._carousel-section .carousel {
@@ -857,22 +838,22 @@
 
       @media (max-width: 575.98px) {
         ._carousel-section .carousel {
-          width: 400px;
-          height: 400px;
+          width: 300px;
+          height: 300px;
         }
       }
 
       @media (max-width: 375.98px) {
         ._carousel-section .carousel {
-          width: 340px;
-          height: 340px;
+          width: 270px;
+          height: 270px;
         }
       }
 
-      @media (max-width: 375.98px) {
+      @media (max-width: 325.98px) {
         ._carousel-section .carousel {
-          width: 280px;
-          height: 280px;
+          width: 240px;
+          height: 240px;
         }
       }
 
@@ -1239,7 +1220,7 @@
         Image_AmazonUrl: "https://static-00.iconduck.com/assets.00/amazon-icon-2048x2048-pqt2fe18.png",
         Image_LiverpoolUrl: "https://play-lh.googleusercontent.com/FwrxfHaknUKLneazGpPsjJvQ4mUYKJkccj-efHNeXQISwCwqC9ymNAnqlAY5J5oHIOc",
         Image_GoogleLocation: "https://img.icons8.com/?size=512&id=DcygmpZqBEd9&format=png",
-        AudioUrl: "https://invitameok.com/invitaciones/admin/imagenes/26931/MUSICAdont-start-now-traducida-al-espanol%20(mp3cut.net).mp3",
+        AudioUrl: "../music/Ember Island - Umbrella.mp3",
         WhatsAppUrl: "https://wa.link/encb79",
         CollageImages: ['https://img.freepik.com/foto-gratis/adolescente-celebrando-quinceanera_23-2148478038.jpg', 'https://img.freepik.com/foto-gratis/chica-sonriente-tiro-medio-hermoso-vestido_52683-86468.jpg?t=st=1746555442~exp=1746559042~hmac=e8d5adc2117161bcd88377ab37d6e1358945489c42ac647e29fb996cf047ca4c&w=1800', 'https://lh3.googleusercontent.com/p/AF1QipMv-RExo0XkTU7eg8u-FelVsp1gd3u4XZyR3ipA=s3072-v1', 'https://lh3.googleusercontent.com/p/AF1QipNk9cctNeskTP2Zg2EEOQjV-aMFrSO5RRxWtx5N=s1024-v1', 'https://img.freepik.com/foto-gratis/mujer-tiro-medio-caminando-calle_23-2148703161.jpg?ga=GA1.1.1993030682.1745256637&semt=ais_hybrid&w=740', 'https://img.freepik.com/fotos-premium/hermosa-novia-usa-vestido-blanco-exclusivo-jardin_769431-2.jpg?ga=GA1.1.1993030682.1745256637&semt=ais_hybrid&w=740'],
         RandomCollageImage: 0
@@ -1353,11 +1334,11 @@
       const board = [];
 
       if(window.innerWidth < 325.98){
-        pieceSize = 70;
+        pieceSize = 60;
       }else if(window.innerWidth < 375.98){
-        pieceSize = 85;
+        pieceSize = 67.5;
       }else if(window.innerWidth < 575.98){
-        pieceSize = 100
+        pieceSize = 75
       }
       function createPuzzle() {
         const pieces = [];
