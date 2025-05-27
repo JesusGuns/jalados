@@ -1090,8 +1090,8 @@
         $('#themeOverlay').addClass('active');
 
         setTimeout(() => {
-          window.scrollTo({ top: 0, behavior: 'smooth' });
           applyTheme(theme);
+          window.scrollTo({ top: 0, behavior: 'smooth' });
           setTimeout(() => {
             $('#themeOverlay').removeClass('active');
           }, 2000);
