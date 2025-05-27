@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/png" href="https://assets.stickpng.com/images/5a579a979538462e5a82d453.png">
+    <link rel="icon" type="image/png" href="https://png.pngtree.com/png-clipart/20231003/original/pngtree-star-cartoon-character-element-png-image_13246303.png">
     <title>Invitación Baby Shower</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
@@ -13,14 +13,7 @@
     <style>
       /* #region ROOT*/
       :root {
-        --color_Primary: #368ecf;
-        --color_Secondary: #6d4c41;
-        --color_Tertiary: #ff6f61;
-        --color_Quaternary: #fdd835;
-
         --font-Primary: 'Indie Flower';
-
-        --filter-AudioButton: 278deg;
       }
 
       /* #endregion ROOT*/
@@ -185,6 +178,7 @@
         aspect-ratio: 3 / 4;
         position: relative;
         perspective: 2000px;
+        cursor: pointer;
       }
 
       .book::before {
@@ -281,7 +275,8 @@
       .imgTap {
         width: 3%;
         position: absolute;
-        margin-top: 8rem;
+        margin-top: 10rem;
+        margin-left: 8rem;
       }
 
       .imgTap.shifted {
@@ -302,6 +297,34 @@
         object-fit: cover;
         border-radius: 50%;
       }
+
+      #themeSwitcher {
+        position: fixed;
+        top: 50%;
+        transform: translateY(-50%);
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        background: white;
+        padding: 10px;
+        border-radius: 20px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        z-index: 999;
+      }
+
+      .theme-btn {
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        border: none;
+        cursor: pointer;
+        transition: transform 0.3s;
+      }
+
+      .theme-btn:hover {
+        transform: scale(1.2);
+      }
+
 
       @media (max-width: 575.98px) {
         .container {
@@ -568,7 +591,13 @@
       }
 
       @media (max-width: 575.98px) {
-        .imgMain {
+        .imgMain.themeBoy {
+          width: 78.5%;
+        }
+        .imgMain.themeGirl {
+          width: 101%;
+        }
+        .imgMain.themeNeutral {
           width: 101%;
         }
         .subcontainerbook {
@@ -583,8 +612,14 @@
       }
 
       @media (max-width: 375.98px) {
-        .imgMain {
+        .imgMain.themeBoy {
           width: 70%;
+        }
+        .imgMain.themeGirl {
+          width: 90%;
+        }
+        .imgMain.themeNeutral {
+          width: 90%;
         }
         h1 {
           font-size: 2.1rem;
@@ -595,9 +630,6 @@
       }
 
       @media (max-width: 340px) {
-        .imgMain {
-          width: 70%;
-        }
         h1 {
           font-size: 1.5rem;
         }
@@ -701,6 +733,13 @@
         </section>
       </main>
     </div>
+
+    <div id="themeSwitcher">
+      <button class="theme-btn" data-theme="themeBoy" style="background-color:#368ecf"></button>
+      <button class="theme-btn" data-theme="themeGirl" style="background-color:#f06292"></button>
+      <button class="theme-btn" data-theme="themeNeutral" style="background-color:#bfa058"></button>
+    </div>
+
     <!-- Bootstrap JS Bundle (con soporte touch incluido) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
@@ -807,7 +846,7 @@
         EventDateString: helpers.onGetDateString(EventDate),
         EventHourString: helpers.onGetHoursString(EventDate),
         EventReceptionHourString: helpers.onGetHoursString(EventReception, true),
-        EventName: "Lucas",
+        EventName: "",
         EventFather: "José Gutiérrez",
         EventMother: "Melissa Hurtado",
         EventGodFather: "Juan Fernández",
@@ -820,7 +859,7 @@
         GoogleCalendarStartDate: helpers.onGetDateYYYYMMDD(),
         GoogleCalendarEndDate: helpers.onGetDateYYYYMMDD(),
         GoogleCalendarLocation: "Salón Azul Calle Principal 123",
-        Image_BodyBackground: "https://www.transparenttextures.com/patterns/stardust.png",
+        Image_BodyBackground: "",
         Image_FrontCard: "https://img.freepik.com/foto-gratis/mujer-tiro-medio-caminando-calle_23-2148703161.jpg?ga=GA1.1.1993030682.1745256637&semt=ais_hybrid&w=740",
         Image_AudioUrl: "https://cdn-icons-png.freepik.com/512/13896/13896624.png?ga=GA1.1.1993030682.1745256637",
         Image_Corner: "",
@@ -830,7 +869,7 @@
         Image_AmazonUrl: "https://static-00.iconduck.com/assets.00/amazon-icon-2048x2048-pqt2fe18.png",
         Image_LiverpoolUrl: "https://play-lh.googleusercontent.com/FwrxfHaknUKLneazGpPsjJvQ4mUYKJkccj-efHNeXQISwCwqC9ymNAnqlAY5J5oHIOc",
         Image_GoogleLocation: "https://img.icons8.com/?size=512&id=DcygmpZqBEd9&format=png",
-        Image_Main: "https://i.pinimg.com/736x/99/4d/fc/994dfc98f317551a8ba112f105d6058a.jpg",
+        Image_Main: "",
         Image_Tap: "https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExNWZ1MW80dTVkMzFrcXoxeG41OHo5NmdiemdvbnE5NW9seW1heXA5YiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/TPiig5QAVogA1po38k/giphy.gif",
         AudioUrl: "https://invitameok.com/invitaciones/admin/imagenes/26931/MUSICAdont-start-now-traducida-al-espanol%20(mp3cut.net).mp3",
         WhatsAppUrl: "https://tinyurl.com/3h8kmam7",
@@ -854,6 +893,41 @@
       const flipSound = document.getElementById('flipSound');
       const tapHint = document.getElementById('tapHint');
       const totalPages = Resources.CollageImages.length;
+      const Themes = {
+        themeBoy: {
+          '--color_Primary': '#368ecf',
+          '--color_Secondary': '#6d4c41',
+          '--color_Tertiary': '#ff6f61',
+          '--color_Quaternary': '#fdd835',
+          '--filter-AudioButton': '278deg',
+          Image_BodyBackground: "url('https://www.transparenttextures.com/patterns/stardust.png')",
+          Image_Main: "https://i.pinimg.com/736x/99/4d/fc/994dfc98f317551a8ba112f105d6058a.jpg",
+          Image_CoverPage: "https://img.freepik.com/vector-premium/es-invitacion-baby-shower-nino-mono-azul-plantilla-tarjeta-felicitacion-bebe-recien-nacido_647688-40.jpg",
+          EventName: 'Lucas'
+        },
+        themeGirl: {
+          '--color_Primary': '#f06292',
+          '--color_Secondary': '#ad1457',
+          '--color_Tertiary': '#e91e63',
+          '--color_Quaternary': '#fce4ec',
+          '--filter-AudioButton': '395deg',
+          Image_BodyBackground: "url('https://www.transparenttextures.com/patterns/stardust.png')",
+          Image_Main: "https://png.pngtree.com/png-clipart/20240301/original/pngtree-cute-unicorn-cartoon-on-heart-cloud-for-valentine-s-day-kawaii-png-image_14459513.png",
+          Image_CoverPage: "https://img.freepik.com/vector-premium/es-invitacion-baby-shower-nina-letras_187548-622.jpg?ga=GA1.1.376195781.1747703452&semt=ais_hybrid&w=740",
+          EventName: 'Valentina'
+        },
+        themeNeutral: {
+          '--color_Primary': '#bfa058',
+          '--color_Secondary': '#7e6d4d',
+          '--color_Tertiary': '#dec58f',
+          '--color_Quaternary': '#fff9c4',
+          '--filter-AudioButton': '120deg',
+          Image_BodyBackground: "url('https://www.transparenttextures.com/patterns/food.png')",
+          Image_Main: "https://i.gifer.com/4JzY.gif",
+          Image_CoverPage: "https://img.freepik.com/vector-premium/tarjeta-felicitacion-dibujos-animados-su-tarjeta-nino-diseno-volantes-tarjeta-salud-cartel-cartel_506530-4301.jpg",
+          EventName: 'Alex y Sofi'
+        }
+      };
 
       function Init() {
         helpers.onLoad();
@@ -863,15 +937,15 @@
         }, 1000);
         actions.onAudioPlayer();
         generateBook();
-      }
+        applyTheme('themeBoy');
+      };
+
       Init();
 
       function generateBook() {
         let currentPage = 0;
         let isFlipping = false;
         let tempBackCover = null;
-
-       
 
         Resources.CollageImages.forEach((img, i) => {
           const page = document.createElement('div');
@@ -940,7 +1014,39 @@
 
           book.appendChild(page);
         });
-      }
+      };
+
+      function applyTheme(themeName) {
+        const theme = Themes[themeName];
+
+        const imgMain = document.querySelector('.imgMain');
+        imgMain.classList.remove('themeBoy', 'themeGirl', 'themeNeutral');
+        imgMain.classList.add(`${themeName}`);
+
+        for (let variable in theme) {
+          if (variable.startsWith('--')) {
+            document.documentElement.style.setProperty(variable, theme[variable]);
+          } else {
+            if (variable === 'Image_BodyBackground') {
+              document.body.style.backgroundImage = theme[variable];
+            } else if (variable === 'Image_Main') {
+              $("[data-replace=Image_Main]").attr("src", theme[variable]);
+            } else if (variable === 'EventName') {
+              $("[data-replace=EventName]").text(theme[variable]);
+            } else if (variable === 'Image_CoverPage') {
+              Resources.CollageImages[0] = theme[variable];
+            }
+          }
+        }
+
+        $('#book').empty();
+        generateBook();
+      };
+
+      $('.theme-btn').on('click', function() {
+        const theme = $(this).data('theme');
+        applyTheme(theme);
+      });
     </script>
   </body>
 </html>
