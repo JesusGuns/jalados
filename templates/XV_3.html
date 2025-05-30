@@ -7,504 +7,412 @@
     <title>Invitación XV Años</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Bad+Script&display=swap" rel="stylesheet">
     <!-- Font Awesome-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Bad+Script&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Kalam&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Bonheur+Royale&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Charm&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="../css/templates.css">
     <style>
-      /* #region ROOT*/
-      :root {
-  
-        --color-primary: black;
-        --color-secondary: #b59b60;
-        --font-Primary: 'Bonheur Royale';
+    /* #region ROOT*/
+    :root {
+      --color-primary: black;
+      --color-secondary: #b59b60;
+      --color-third: #232323;
+      --color-fourth: white;
+
+      --font-primary: "Bonheur Royale";
+      --font-secondary: "Kalam";
+      --font-third: "Charm";
+    }
+
+    /* #endregion ROOT*/
+    /* #region HTML*/
+    body {
+      font-family: var(--font-primary);
+      background-image: linear-gradient(to bottom, #fffaf0, #f1e5ca, #dbcbaa), url("https://www.transparenttextures.com/patterns/rice-paper-2.png");
+      background-blend-mode: multiply;
+    }
+
+    /* #endregion HTML*/
+    /* #region General*/
+    ._border-container {
+      border-radius: 20px;
+      background-color: white;
+      padding: 5px;
+    }
+
+    ._border-container ._box {
+      padding: 10px;
+      border-radius: 20px;
+      background-image: linear-gradient(to bottom, #cbb393), url(https://www.transparenttextures.com/patterns/rice-paper-2.png);
+      background-blend-mode: multiply;
+    }
+
+    ._btn-brands {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+    }
+
+    ._btn-brands.show {
+      display: flex;
+    }
+
+    ._btn-gifttable {
+      background-color: rgba(255, 255, 255, 0.5);
+      border: 5px solid rgba(255, 255, 255, 0.1);
+      border-radius: 8px;
+      box-shadow: 0 4px 6px 0 #ccc;
+      color: var(--color-primary);
+      cursor: pointer;
+      font-family: var(--font-Caveat);
+      font-size: 2rem;
+      font-weight: bold;
+      padding: 0px 35px;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      text-shadow: 4px 4px 2px var(--color-secondary);
+    }
+
+    ._btn-gifttable:hover {
+      box-shadow: 4px 6px 12px 0px #545454;
+    }
+
+    ._btn-gifttable a {
+      width: 65px;
+      margin-right: 1rem;
+    }
+
+    ._btn-gifttable img {
+      width: 65px;
+      margin-right: 1rem;
+    }
+
+    ._confirmation-section {
+      display: flex;
+      justify-content: end;
+      align-items: center;
+      gap: 2rem;
+      padding: 20px 20px;
+    }
+
+    ._btn-Confirmation {
+      background-color: rgba(255, 255, 255, 0.5);
+      color: var(--color-primary);
+      font-family: var(--font-primary);
+      font-size: 2rem;
+      font-weight: bold;
+      border-radius: 8px;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(199, 123, 145, 0.4);
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+      animation: _animation-pulse-3 2s infinite;
+      text-decoration: none;
+      padding: 10px 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-shadow: 4px 4px 2px var(--color-secondary);
+    }
+
+    ._btn-Confirmation i {
+      margin-right: 8px;
+      transition: transform 0.3s ease;
+    }
+
+    ._btn-Confirmation:hover {
+      box-shadow: 4px 6px 12px 0px #545454;
+    }
+
+    @media (max-width: 575.98px) {
+      ._border-container {
+        border-radius: 0px;
+        background-color: none;
+        padding: 0px;
       }
 
-      /* #endregion ROOT*/
-      /* #region HTML*/
-      html {
-        font-size: 14px;
-      }
-
-      @media (min-width: 768px) {
-        html {
-          font-size: 16px;
-        }
-      }
-
-      html {
-        position: relative;
-        min-height: 100%;
-      }
-
-      body {
-        font-family: var(--font-Primary);
-        min-height: 100%;
-        width: 100%;
-        
-        background-image: linear-gradient(0deg, #f5ecd9 0%, #e3d5b8 50%, #c8b898 100%),url('https://www.transparenttextures.com/patterns/rice-paper-2.png');
-        background-image: linear-gradient(0deg, #f1e1d2 0%, #d9b59c 50%, #b58362 100%),url('https://www.transparenttextures.com/patterns/rice-paper-2.png');
-        background-image: linear-gradient(0deg, #e7d4e8 0%, #cdb5d0 50%, #a88eae 100%),url('https://www.transparenttextures.com/patterns/rice-paper-2.png');
-        background-image: linear-gradient(0deg, #ccdce7 0%, #aab7c4 50%, #7e8894 100%),url('https://www.transparenttextures.com/patterns/rice-paper-2.png');
-        background-image: linear-gradient(0deg, #dfe5c7 0%, #d1c18c 50%, #b59b60 100%),url('https://www.transparenttextures.com/patterns/rice-paper-2.png');
-        background-image: linear-gradient(0deg, #f8e0e7 0%, #ecc3c3 50%, #d6a3a3 100%),url('https://www.transparenttextures.com/patterns/rice-paper-2.png');
-
-        background-image: linear-gradient(180deg, #f6f0e0 0%, #e5d7b7 50%, #d0b892 100%),url('https://www.transparenttextures.com/patterns/rice-paper-2.png');
-        background-image: linear-gradient(0deg, #f2e4c3 0%, #dbc39a 50%, #b89c74 100%),url('https://www.transparenttextures.com/patterns/rice-paper-2.png');
-        background-image: linear-gradient(to bottom, #fffaf0, #f1e5ca, #dbcbaa),url('https://www.transparenttextures.com/patterns/rice-paper-2.png');
-
-
-        
-        background-blend-mode: multiply;
-      }
-
-      main {
-        width: 100%;
-      }
-
-      @media (max-width: 575.98px) {
-        .container {
-          margin: 0;
-          padding: 0;
-        }
-      }
-
-      /* #endregion HTML*/
-      /* #region General*/
-      
-      ._border-container{
-        border-radius: 20px;
-        background-color: white;
-        padding: 5px;
-      }
-
-      ._border-container ._box{
+      ._border-container ._box {
         padding: 10px;
-        border-radius: 20px;
-        background-image: linear-gradient(to bottom, #cbb393), url(https://www.transparenttextures.com/patterns/rice-paper-2.png);
-        background-blend-mode: multiply;
+        border-radius: 0px;
       }
 
       ._btn-brands {
-        display: flex;
-        justify-content: center;
-        gap: 1rem;
+        flex-direction: column;
       }
-
-      ._btn-brands.show {
-        display: flex;
-      }
-
       ._btn-gifttable {
-        background-color: rgba(255, 255, 255, 0.5);
-        border: 5px solid rgba(255, 255, 255, 0.1);
-        border-radius: 8px;
-        box-shadow: 0 4px 6px 0 #ccc;
-        color: black;
-        cursor: pointer;
-        font-family: var(--font-Caveat);
-        font-size: 2rem;
-        font-weight: bold;
-        padding: 0px 35px;
-        text-decoration: none;
-        display: flex;
-        align-items: center;
-        justify-content: flex-start;
-        text-shadow: 4px 4px 2px var(--color-secondary);
-      }
-
-      ._btn-gifttable:hover {
-        box-shadow: 4px 6px 12px 0px #545454;
-      }
-
-      ._btn-gifttable a {
-        width: 65px;
-        margin-right: 1rem;
+        border: 0;
+        padding: 10px 35px;
       }
 
       ._btn-gifttable img {
-        width: 65px;
-        margin-right: 1rem;
+        width: 40px;
       }
 
- 
-
       ._confirmation-section {
-        display: flex;
-        justify-content: end;
-        align-items: center;
-        gap: 2rem;
-        padding: 20px 20px
+        padding: 2rem;
       }
 
       ._btn-Confirmation {
-        background-color: rgba(255, 255, 255, 0.5);
-        color: black;
-        font-family: var(--font-Primary);
-        font-size: 2rem;
-        font-weight: bold;
-        border-radius: 8px;
-        cursor: pointer;
-        box-shadow: 0 4px 12px rgba(199, 123, 145, 0.4);
-        transition: background-color 0.3s ease, box-shadow 0.3s ease;
-        animation: _animation-pulse-3 2s infinite;
-        text-decoration: none;
-        padding: 10px 32px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        text-shadow: 4px 4px 2px var(--color-secondary);
+        font-size: 1.7rem;
+        width: 80%;
+        padding: 12px 0px;
       }
+    }
 
-      ._btn-Confirmation i {
-        margin-right: 8px;
-        transition: transform 0.3s ease;
+    /* #endregion General*/
+    /* #region Audio*/
+    ._template-Audio-Button.off {
+      filter: hue-rotate(45deg);
+    }
+    /* #endregion Audio*/
+    /* #region Counter*/
+    ._template-Counter-Section ._counter-Timebox {
+      color: var(--color-primary);
+      text-shadow: 4px 4px 2px var(--color-secondary);
+    }
+
+    /* #endregion Counter*/
+    /* #region Main Section*/
+    ._main-section {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      position: relative;
+    }
+    ._main-section img {
+      width: fit-content;
+      height: 100svh;
+      border: 15px solid white;
+      border-radius: 10px;
+    }
+    ._main-section ._details {
+      position: absolute;
+      top: 1%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    ._main-section ._details h1,
+    ._main-section ._details h2 {
+      color: var(--color-primary);
+      font-weight: bold;
+      font-size: 3.75rem;
+      margin: 0;
+      text-shadow: 4px 4px 2px var(--color-secondary);
+    }
+
+    @media (max-width: 1599.98px) {
+      ._main-section ._details h1,
+      ._main-section ._details h2 {
+        font-size: 3.4rem;
       }
+    }
 
-      ._btn-Confirmation:hover {
-        box-shadow: 4px 6px 12px 0px #545454;
-      }
-
-      @media (max-width: 575.98px) {
-
-        ._border-container{
-          border-radius: 0px;
-          background-color: none;
-          padding: 0px;
-        }
-
-        ._border-container ._box{
-          padding: 10px;
-          border-radius: 0px;
-        }
-
-        ._btn-brands {
-          flex-direction: column;
-        }
-        ._btn-gifttable {
-          border: 0;
-          padding: 10px 35px;
-        }
-
-        ._btn-gifttable img {
-          width: 40px;
-        }
-
-        ._confirmation-section {
-          padding: 2rem;
-        }
-
-        ._btn-Confirmation {
-          font-size: 1.7rem;
-          width: 80%;
-          padding: 12px 0px;
-        }
-      }
-
-      /* #endregion General*/
-      /* #region Audio*/
-      #audioButton.off {
-        filter: hue-rotate(45deg);
-      }
-      /* #endregion Audio*/
-      /* #region Counter*/
-      ._counter-section {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-
-      #countdown {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 20px;
-        padding: 5px 0px;
-        margin: 2rem 0;
-        width: 100%;
-      }
-
-      .time-box {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        font-size: 45px;
-        color: var(--color-primary);
-        text-shadow: 4px 4px 2px var(--color-secondary);
-        animation: _animation-pulse-1 2s infinite;
-      }
-
-      .time-box span {
-        font-size: 60px;
-        font-weight: 700;
-        letter-spacing: 2px;
-        animation: _animation-pulse-2 3s infinite;
-        height: 70px;
-      }
-
-      @media (max-width: 575.98px) {
-        #countdown {
-          gap: 15px;
-          margin: 1rem 0;
-        }
-
-        .time-box {
-          font-size: 27px;
-        }
-
-        .time-box span {
-          font-size: 40px;
-          height: 45px;
-        }
-      }
-
-      @media (max-width: 375.98px) {
-        #countdown {
-          gap: 10px;
-        }
-
-        .time-box span {
-          font-size: 35px;
-        }
-      }
-
-      /* #endregion Counter*/
-      /* #region Main Section*/
-      ._main-section {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
-        position: relative;
-      }
+    @media (max-width: 575.98px) {
       ._main-section img {
-        width: fit-content;
-        height: 100svh;
-        border: 15px solid white;
-        border-radius: 10px;
-      }
-      ._main-section ._details{
-        position: absolute;
-        top: 1%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-      }
-      ._main-section ._details h1, ._main-section ._details h2{
-        color: var(--color-primary);
-        font-weight: bold;
-        font-size: 3.75rem;
-        margin: 0;
-        text-shadow: 4px 4px 2px var(--color-secondary);
-      }
-      
-      @media (max-width: 1599.98px) { 
-        ._main-section ._details h1, ._main-section ._details h2{
-          font-size: 3.4rem;
-        }
+        width: 100%;
+        height: auto;
+        max-width: 100%;
+        display: block;
+        border: 0;
+        border-radius: 0;
       }
 
-      @media (max-width: 575.98px) {
+      ._main-section ._details h1,
+      ._main-section ._details h2 {
+        font-size: 2.75rem;
+      }
+    }
 
-        ._main-section img {
-          width: 100%;
-          height: auto;
-          max-width: 100%;
-          display: block;
-          border: 0;
-          border-radius: 0;
-        }
+    @media (max-width: 375.98px) {
+      ._main-section ._details h1,
+      ._main-section ._details h2 {
+        font-size: 2.3rem;
+      }
+    }
 
-        ._main-section ._details h1, ._main-section ._details h2{
-          font-size: 2.75rem;
-        }
+    /* #endregion Main Section*/
+    /* #region Event Section*/
+    ._event-section h1 {
+      text-align: center;
+      margin: 0;
+    }
+
+    ._event-section h3 {
+      padding: 20px 20px;
+      text-align: center;
+      margin: 0;
+      font-weight: bold;
+      font-size: 2.1rem;
+      letter-spacing: 3px;
+      color: var(--color-third);
+      text-shadow: 4px 4px 2px var(--color-secondary);
+    }
+
+    ._event-section ._details {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    ._event-section ._details p {
+      margin: 0;
+      text-shadow: 4px 4px 2px var(--color-secondary);
+    }
+
+    ._event-section ._details ._date {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    ._event-section ._details ._border {
+      border-top: 2px solid var(--color-primary);
+      border-bottom: 2px solid var(--color-primary);
+    }
+    ._event-section ._details ._padding-lr {
+      padding: 0 20px;
+    }
+
+    ._event-section ._details ._weekday-time {
+      font-size: 25px;
+      font-family: var(--font-secondary);
+      letter-spacing: 2px;
+    }
+    ._event-section ._details ._day {
+      font-size: 100px;
+      font-weight: bold;
+      font-family: var(--font-third);
+      padding: 0px 1rem;
+      letter-spacing: 5px;
+    }
+
+    ._event-section ._details ._month,
+    ._event-section ._details ._year {
+      font-size: 20px;
+      font-family: var(--font-secondary);
+    }
+
+    ._event-section ._details ._month {
+      position: absolute;
+      top: 0;
+      letter-spacing: 2px;
+    }
+
+    ._event-section ._details ._year {
+      position: absolute;
+      bottom: 0;
+      left: 45%;
+      letter-spacing: 2px;
+    }
+
+    @media (max-width: 575.98px) {
+      ._event-section ._box {
+        padding: 0px 40px;
       }
 
-      @media (max-width: 375.98px) {
-        ._main-section ._details h1, ._main-section ._details h2{
-          font-size: 2.3rem;
-        }
-      }
-
-      /* #endregion Main Section*/
-      /* #region Event Section*/
-      ._event-section h1{
-        text-align: center;
-        margin: 0;
-      }
-
-      ._event-section h3{
-        padding: 20px 20px;
-        text-align: center;
-        margin: 0;
-        font-weight: bold;
-        font-size: 2.1rem;
-        letter-spacing: 3px;
-        color: #232323;
-        text-shadow: 4px 4px 2px var(--color-secondary);
-      }
-
-      ._event-section ._details{
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        position: relative;
-      }
-
-      ._event-section ._details p{
-        margin: 0;
-        text-shadow: 4px 4px 2px var(--color-secondary);
-      }
-
-      ._event-section ._details ._date{
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-
-      ._event-section ._details ._border{
-        border-top: 2px solid black;
-        border-bottom: 2px solid black;
-      }
-      ._event-section ._details ._padding-lr{
-        padding: 0 20px;
-      }
-
-      ._event-section ._details ._weekday-time{
-        font-size: 25px;
-        font-family: 'Kalam';
-        letter-spacing: 2px;
-      }
-      ._event-section ._details ._day{
-        font-size: 100px;
-        font-weight: bold;
-        font-family: 'Charm';
-        padding: 0px 1rem;
-        letter-spacing: 5px;
-      }
-
-      ._event-section ._details ._month, ._event-section ._details ._year{
-        font-size: 20px;
-        font-family: 'Kalam';
-      }
-
-      ._event-section ._details ._month{
-        position: absolute;
-        top: 0;
-        letter-spacing: 2px;
-      }
-
-      ._event-section ._details ._year{
-        position: absolute;
-        bottom: 0;
-        left: 45%;
-        letter-spacing: 2px;
-      }
-
-
-      @media (max-width: 575.98px) {
-        ._event-section ._box{
-          padding: 0px 40px;
-        }
-
-        ._event-section h3{
-          font-size: 2rem;
-          padding: 20px 0px;
-        }
-
-        ._event-section ._details ._day{
-          font-size: 90px;
-        }
-
-        ._event-section ._details ._weekday-time{
-          font-size: 20px;
-        }
-        ._event-section ._details ._month, ._event-section ._details ._year{
-          font-size: 15px;
-        }
-        ._event-section ._details ._padding-lr{
-          padding: 0 10px;
-        }
-      }
-
-      @media (max-width: 375.98px) {
-        ._event-section ._box{
-          padding: 0px 10px;
-        }
-        ._event-section h3{
-          font-size: 2rem;
-        }
-        ._event-section ._details ._weekday-time{
-          font-size: 17px;
-        }
-        ._event-section ._details ._padding-lr{
-          padding: 1px 5px;
-        }
-      }
-      /* #endregion Event Section*/      
-      /* #region Family Section*/
-      ._family-section {
-        display: flex;
-        justify-content: center;
-        gap: 24px;
-        margin: 60px 0px;
-        flex-wrap: wrap;
-      }
-
-      ._family-section ._details {
-        text-align: center;
-      }
-
-      ._family-section ._title-caption {
+      ._event-section h3 {
         font-size: 2rem;
-        letter-spacing: 3px;
-        font-weight: bold;
-        text-shadow: 4px 4px 2px var(--color-secondary);
+        padding: 20px 0px;
       }
 
-      ._family-section img{
-        border-radius: 100%;
-        object-fit: cover;
-        width: 350px;
-        height: 350px;
-        border: 5px solid white;
-        box-shadow: 3px 2px 10px 0 var(--color-secondary);
+      ._event-section ._details ._day {
+        font-size: 90px;
       }
 
-      ._family-section .caption  {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
+      ._event-section ._details ._weekday-time {
+        font-size: 20px;
       }
-
-      ._family-section .caption span {
-        font-size: 1.8rem;
-        letter-spacing: 3px;
-        font-weight: bold;
-        text-shadow: 4px 4px 2px var(--color-secondary);
+      ._event-section ._details ._month,
+      ._event-section ._details ._year {
+        font-size: 15px;
       }
-
-      @media (max-width: 575.98px) {
-        ._family-section img{
-          width: 200px;
-          height: 200px;
-        }
+      ._event-section ._details ._padding-lr {
+        padding: 0 10px;
       }
+    }
 
-      @media (max-width: 375.98px) {
-        ._family-section {
-          gap:40px;
-        }
+    @media (max-width: 375.98px) {
+      ._event-section ._box {
+        padding: 0px 10px;
       }
-      /* #endregion Family Section*/
-      /* #region TimeLine Section*/
+      ._event-section h3 {
+        font-size: 2rem;
+      }
+      ._event-section ._details ._weekday-time {
+        font-size: 17px;
+      }
+      ._event-section ._details ._padding-lr {
+        padding: 1px 5px;
+      }
+    }
+    /* #endregion Event Section*/
+    /* #region Family Section*/
+    ._family-section {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      margin: 60px 0px;
+      flex-wrap: wrap;
+    }
 
+    ._family-section ._details {
+      text-align: center;
+    }
+
+    ._family-section ._title-caption {
+      font-size: 2rem;
+      letter-spacing: 3px;
+      font-weight: bold;
+      text-shadow: 4px 4px 2px var(--color-secondary);
+    }
+
+    ._family-section img {
+      border-radius: 100%;
+      object-fit: cover;
+      width: 350px;
+      height: 350px;
+      border: 5px solid var(--color-fourth);
+      box-shadow: 3px 2px 10px 0 var(--color-secondary);
+    }
+
+    ._family-section .caption {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    ._family-section .caption span {
+      font-size: 1.8rem;
+      letter-spacing: 3px;
+      font-weight: bold;
+      text-shadow: 4px 4px 2px var(--color-secondary);
+    }
+
+    @media (max-width: 575.98px) {
+      ._family-section img {
+        width: 200px;
+        height: 200px;
+      }
+    }
+
+    @media (max-width: 375.98px) {
+      ._family-section {
+        gap: 40px;
+      }
+    }
+    /* #endregion Family Section*/
+    /* #region TimeLine Section*/
     ._timeline-section #box {
       position: relative;
       width: 100%;
@@ -513,7 +421,7 @@
       touch-action: pan-y;
       cursor: grab;
     }
-    
+
     #box:active {
       cursor: grabbing;
     }
@@ -531,8 +439,8 @@
       left: 40%;
       width: 250px;
       height: 350px;
-      background: white;
-      color: black;
+      background: var(--color-fourth);
+      color: var(--color-primary);
       border-radius: 10px;
       box-shadow: 10px 8px 20px var(--color-secondary);
       transition: transform 0.8s ease, opacity 0.8s ease;
@@ -581,283 +489,114 @@
       text-align: center;
     }
 
-    @media (max-width: 991.98px) { 
-      #_timeline-detail ._item{
-          left: 30%;
-        }
-     }
-      @media (max-width: 767.98px) {
-        #_timeline-detail ._item{
-          left: 26%;
-        }
+    @media (max-width: 991.98px) {
+      #_timeline-detail ._item {
+        left: 30%;
+      }
+    }
+    @media (max-width: 767.98px) {
+      #_timeline-detail ._item {
+        left: 26%;
+      }
+    }
+
+    @media (max-width: 575.98px) {
+      #_timeline-detail ._item {
+        left: 30%;
+        width: 190px;
+        height: 310px;
       }
 
-      @media (max-width: 575.98px) {
-        #_timeline-detail ._item{
-          left: 30%;
-          width: 190px;
-          height: 310px;
-        }
+      #_timeline-detail ._item img._activity-icon {
+        width: 80px;
+      }
+    }
 
-        #_timeline-detail ._item img._activity-icon{
-          width: 80px;
-        }
-        
+    @media (max-width: 375.98px) {
+      #_timeline-detail ._item {
+        left: 24%;
       }
 
-      @media (max-width: 375.98px) {
-        #_timeline-detail ._item{
-          left: 24%;
-        }
-
-        #_timeline-detail ._item h3{
-          text-shadow: none;
-        }
+      #_timeline-detail ._item h3 {
+        text-shadow: none;
       }
+    }
 
-      @media (max-width: 320.98px) {
-        #_timeline-detail ._item{
-          left: 18%;
-        }
+    @media (max-width: 320.98px) {
+      #_timeline-detail ._item {
+        left: 18%;
       }
+    }
 
-      /* #endregion TimeLine Section*/
-      /* #region DressCode Section*/
-      ._dresscode-section {
-        margin: 60px 0px;
-      }
+    /* #endregion TimeLine Section*/
+    /* #region DressCode Section*/
+    ._dresscode-section {
+      margin: 60px 0px;
+    }
 
-      ._dresscode-section ._box {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        padding: 20px;
-      }
+    ._dresscode-section ._box {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
 
-      ._dresscode-section ._box h1 {
-        font-size: 2.8rem;
-        letter-spacing: 3px;
-        font-weight: bold;
-        text-shadow: 4px 4px 2px var(--color-secondary);
-      }
+    ._dresscode-section ._box h1 {
+      font-size: 2.8rem;
+      letter-spacing: 3px;
+      font-weight: bold;
+      text-shadow: 4px 4px 2px var(--color-secondary);
+    }
 
-      ._dresscode-section ._box h2 {
-        font-size: 2.5rem;
-        letter-spacing: 2px;
-        font-weight: bold;
-        text-shadow: 0px 3px 2px var(--color-secondary);
-        padding-top: 1.2rem;
-      }
+    ._dresscode-section ._box h2 {
+      font-size: 2.5rem;
+      letter-spacing: 2px;
+      font-weight: bold;
+      text-shadow: 0px 3px 2px var(--color-secondary);
+      padding-top: 1.2rem;
+    }
 
-      
+    /* #endregion DressCode Section*/
+    /* #region Gift Section*/
+    ._gift-section {
+      margin: 60px 0px;
+    }
 
-      @media (max-width: 575.98px) {
-        
-      }
+    ._gift-section ._box {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
 
-      /* #endregion DressCode Section*/
-      
-      /* #region Gift Section*/
-      ._gift-section {
-        margin: 60px 0px;
-      }
+    ._gift-section ._box h1 {
+      font-size: 2.8rem;
+      letter-spacing: 3px;
+      font-weight: bold;
+      text-shadow: 4px 4px 2px var(--color-secondary);
+      margin: 0;
+    }
 
-      ._gift-section ._box {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        padding: 20px;
-      }
-      
-      ._gift-section ._box h1 {
-        font-size: 2.8rem;
-        letter-spacing: 3px;
-        font-weight: bold;
-        text-shadow: 4px 4px 2px var(--color-secondary);
-        margin: 0;
-      }
+    ._gift-section ._box h2 {
+      font-size: 2rem;
+      letter-spacing: 2px;
+      font-weight: bold;
+      text-shadow: 0px 3px 2px var(--color-secondary);
+      margin-bottom: 2rem;
+      text-align: center;
+    }
 
-      ._gift-section ._box h2 {
-        font-size: 2rem;
-        letter-spacing: 2px;
-        font-weight: bold;
-        text-shadow: 0px 3px 2px var(--color-secondary);
-        margin-bottom: 2rem;
-        text-align: center;
-      }
-
-      @media (max-width: 575.98px) {
-       
-      }
-
-      /* #endregion Gift Section*/
-
-      /* #region Carousel Section*/
-      ._carousel-section {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin: 60px 0px;
-      }
-
-      #puzzle-container {
-        display: grid;
-        grid-template-columns: repeat(4, 125px);
-        grid-template-rows: repeat(4, 125px);
-        margin: 2rem 0;
-      }
-
-      .piece {
-        width: 125px;
-        height: 125px;
-        background-size: 500px 500px;
-        cursor: pointer;
-        position: relative;
-        border: 1px solid #ccc;
-      }
-
-      .piece.dragging {
-        opacity: 0.5;
-        z-index: 2;
-      }
-
-      #complete-image {
-        display: none;
-        opacity: 0;
-        transition: opacity 1s ease-in-out;
-      }
-
-      #complete-image.visible {
-        opacity: 1;
-      }
-
-
-      @media (max-width: 575.98px) {
-        #puzzle-container {
-          grid-template-columns: repeat(4, 75px);
-          grid-template-rows: repeat(4, 75px);
-        }
-
-        .piece {
-          width: 75px;
-          height: 75px;
-          background-size: 300px 300px;
-        }
-
-      }
-
-      @media (max-width: 375.98px) {
-        #puzzle-container {
-          grid-template-columns: repeat(4, 67.5px);
-          grid-template-rows: repeat(4, 67.5px);
-        }
-
-        .piece {
-          width: 67.5px;
-          height: 67.5px;
-          background-size: 270px 270px;
-        }
-
-      }
-
-      @media (max-width: 325.98px) {
-        #puzzle-container {
-          grid-template-columns: repeat(4, 60px);
-          grid-template-rows: repeat(4, 60px);
-        }
-
-        .piece {
-          width: 60px;
-          height: 60px;
-          background-size: 240px 240px;
-        }
-
-      }
-
-      ._carousel-section .carousel {
-        position: relative;
-        width: 500px;
-        height: 500px;
-        overflow: visible;
-        user-select: none;
-        margin: 2rem 0;
-      }
-
-      .carousel .image-wrapper {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: 5;
-      }
-
-      .image-wrapper .rotated-box {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        box-sizing: border-box;
-        background-color: white;
-        transition: transform 0.5s ease;
-      }
-
-      .image-wrapper .box1 {
-        transform: rotate(12deg);
-        z-index: 1;
-        pointer-events: none;
-      }
-
-      .image-wrapper .box2 {
-        transform: rotate(8deg);
-        z-index: 2;
-        pointer-events: none;
-      }
-
-      .image-wrapper .box3 {
-        transform: rotate(4deg);
-        z-index: 3;
-        pointer-events: none;
-      }
-
-      .image-wrapper .box4 {
-        transform: rotate(0deg);
-        z-index: 4;
-        cursor: pointer;
-      }
-
-      .image-wrapper .rotated-box img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        animation: _animation-fade-in 0.5s ease;
-      }
-
-      @media (max-width: 575.98px) {
-        ._carousel-section .carousel {
-          width: 300px;
-          height: 300px;
-        }
-      }
-
-      @media (max-width: 375.98px) {
-        ._carousel-section .carousel {
-          width: 270px;
-          height: 270px;
-        }
-      }
-
-      @media (max-width: 325.98px) {
-        ._carousel-section .carousel {
-          width: 240px;
-          height: 240px;
-        }
-      }
-
-      /* #endregion Carousel Section*/
+    /* #endregion Gift Section*/
+    /* #region Carousel Section*/
+    ._carousel-section {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 60px 0px;
+    }
+    /* #endregion Carousel Section*/
     </style>
   </head>
   <body>
@@ -866,44 +605,43 @@
         <div id="player">
           <audio id="audio" src="#" data-replace="AudioUrl" loop></audio>
         </div>
-        <span id="audioButton" class="off">
+        <span id="audioButton" class="_template-Audio-Button off">
           <img src="#" data-replace="Image_AudioUrl" alt="Audio" />
         </span>
         <div class="_template">
           <div id="_main" class="_main-section">
             <img src="#" data-replace="Image_FrontCard" alt="❧ Mis XV ❧">
-           <div class="_details">
-            <h1>Mis XV</h1>
-            <h2 data-replace="EventName"></p>
-           </div>
-            
+            <div class="_details">
+              <h1>Mis XV</h1>
+              <h2 data-replace="EventName">
+                </p>
+            </div>
           </div>
-          <div class="_counter-section">
-            <div id="countdown">
-              <div class="time-box">
+          <div class="_template-Counter-Section">
+            <div id="countdown" class="_counter-Countdown">
+              <div class="_counter-Timebox">
                 <span id="days">0</span> Días
               </div>
-              <div class="time-box">
+              <div class="_counter-Timebox">
                 <span id="hours">0</span> Horas
               </div>
-              <div class="time-box">
+              <div class="_counter-Timebox">
                 <span id="days">:</span> &nbsp;
               </div>
-              <div class="time-box">
+              <div class="_counter-Timebox">
                 <span id="minutes">0</span> Minutos
               </div>
-              <div class="time-box">
+              <div class="_counter-Timebox">
                 <span id="days">:</span> &nbsp;
               </div>
-              <div class="time-box">
+              <div class="_counter-Timebox">
                 <span id="seconds">0</span> Segundos
               </div>
             </div>
           </div>
           <div class="_event-section _border-container">
             <div class="_box">
-              <h3>Los momentos más esperados se sueñan, se imaginan, se construyen y cuando llegue ese día tan especial, lo más importante es que estés a mi lado.  </h3>
-              
+              <h3>Los momentos más esperados se sueñan, se imaginan, se construyen y cuando llegue ese día tan especial, lo más importante es que estés a mi lado. </h3>
               <div class="_details">
                 <div class="_date">
                   <p class="_month">Noviembre</p>
@@ -917,16 +655,12 @@
                   <p class="_year">2025</p>
                 </div>
               </div>
-
-              
-              
-                <div class="_confirmation-section">
-                  <a href="#" data-replace="WhatsAppUrl" target="_blank" class="_btn-Confirmation">
-                    <i class="fas fa-heart"></i> Asistiré </a>
-                  <a href="#" data-replace="GoogleCalendarUrl" target="_blank" class="_btn-Confirmation">
-                    <i class="fas fa-calendar"></i> Agendar </a>
-                </div>
-              
+              <div class="_confirmation-section">
+                <a href="#" data-replace="WhatsAppUrl" target="_blank" class="_btn-Confirmation">
+                  <i class="fas fa-heart"></i> Asistiré </a>
+                <a href="#" data-replace="GoogleCalendarUrl" target="_blank" class="_btn-Confirmation">
+                  <i class="fas fa-calendar"></i> Agendar </a>
+              </div>
             </div>
           </div>
           <div class="_family-section">
@@ -952,7 +686,7 @@
               <div id="_timeline-detail">
                 <div class="_item">
                   <div class="_block">
-                    <img class="_activity-icon" src="https://cdn-icons-png.flaticon.com/128/4186/4186011.png">
+                    <img class="_activity-icon" src="https://cdn-icons-png.flaticon.com/128/4186/4186011.png" alt="Ceremonia Religiosa">
                     <h3>Ceremonia Religiosa</h3>
                     <h4 data-replace="EventHourString"></h4>
                     <h5>Av. Fray Antonio Alcalde 10, Zona Centro, 44100 Guadalajara, Jal.</h5>
@@ -963,7 +697,7 @@
                 </div>
                 <div class="_item">
                   <div class="_block">
-                    <img class="_activity-icon" src="https://cdn-icons-png.flaticon.com/128/887/887345.png">
+                    <img class="_activity-icon" src="https://cdn-icons-png.flaticon.com/128/887/887345.png" alt="Recepción">
                     <h3>Recepción</h3>
                     <h4 data-replace="EventReceptionHourString"></h4>
                     <h5>Av. Fray Antonio Alcalde 10, Zona Centro, 44100 Guadalajara, Jal.</h5>
@@ -974,19 +708,19 @@
                 </div>
                 <div class="_item">
                   <div class="_block">
-                    <img class="_activity-icon" src="https://cdn-icons-png.flaticon.com/128/3004/3004613.png">
+                    <img class="_activity-icon" src="https://cdn-icons-png.flaticon.com/128/3004/3004613.png" alt="Photo Session">
                     <h3>Photo Session</h3>
                   </div>
                 </div>
                 <div class="_item">
                   <div class="_block">
-                    <img class="_activity-icon" src="https://cdn-icons-png.flaticon.com/128/4156/4156252.png">
+                    <img class="_activity-icon" src="https://cdn-icons-png.flaticon.com/128/4156/4156252.png" alt="Banquete">
                     <h3>Banquete</h3>
                   </div>
                 </div>
                 <div class="_item">
                   <div class="_block">
-                    <img class="_activity-icon" src="https://cdn-icons-png.flaticon.com/128/1483/1483389.png">
+                    <img class="_activity-icon" src="https://cdn-icons-png.flaticon.com/128/1483/1483389.png" alt="Vals">
                     <h3>Vals</h3>
                   </div>
                 </div>
@@ -997,40 +731,39 @@
             <div class="_box">
               <h1>Dress Code</h1>
               <div>
-                <img src="https://cdn-icons-png.flaticon.com/128/389/389573.png">
-                <img src="https://cdn-icons-png.flaticon.com/128/3507/3507059.png">
+                <img src="https://cdn-icons-png.flaticon.com/128/389/389573.png" alt="Suit">
+                <img src="https://cdn-icons-png.flaticon.com/128/3507/3507059.png" alt="Dress">
               </div>
               <h2>Formal</h2>
             </div>
           </div>
           <div class="_gift-section _border-container">
-           <div class="_box">
-            <h1>Regalos</h1>
-            <h2> Para nosotros tu presencia es nuestro mejor regalo, pero si deseas hacernos llegar un obsequio, te sugerimos la siguiente opción: </h2>
-            <div class="_btn-brands">
-              <a href="#" data-replace="EventAmazonGiftTableUrl" target="_blank" class="_btn-gifttable">
-                <img src="#" data-replace="Image_AmazonUrl" alt="Amazon" /> Amazon </a>
-              <a href="#" data-replace="EventLiverpoolGiftTableUrl" target="_blank" class="_btn-gifttable">
-                <img src="#" data-replace="Image_LiverpoolUrl" alt="Liverpool" /> Liverpool </a>
+            <div class="_box">
+              <h1>Regalos</h1>
+              <h2> Para nosotros tu presencia es nuestro mejor regalo, pero si deseas hacernos llegar un obsequio, te sugerimos la siguiente opción: </h2>
+              <div class="_btn-brands">
+                <a href="#" data-replace="EventAmazonGiftTableUrl" target="_blank" class="_btn-gifttable">
+                  <img src="#" data-replace="Image_AmazonUrl" alt="Amazon" /> Amazon </a>
+                <a href="#" data-replace="EventLiverpoolGiftTableUrl" target="_blank" class="_btn-gifttable">
+                  <img src="#" data-replace="Image_LiverpoolUrl" alt="Liverpool" /> Liverpool </a>
+              </div>
             </div>
-           </div>
           </div>
           <div class="_carousel-section">
-            <div id="puzzle-container"></div>
-            <div id="complete-image">
-              <div class="carousel" id="carousel">
-                <div class="image-wrapper">
-                  <div class="rotated-box box1"></div>
-                  <div class="rotated-box box2"></div>
-                  <div class="rotated-box box3"></div>
-                  <div class="rotated-box box4"></div>
+            <div id="_template-puzzle-container" class="_template-Puzzle"></div>
+            <div id="_template-Puzzle-Completed" class="_template-Puzzle-Completed">
+              <div class="_template-Stack-Gallery" id="carousel">
+                <div class="_image-wrapper">
+                  <div class="_rotated-box _box1"></div>
+                  <div class="_rotated-box _box2"></div>
+                  <div class="_rotated-box _box3"></div>
+                  <div class="_rotated-box _box4"></div>
                 </div>
               </div>
             </div>
-           </div>
+          </div>
         </div>
       </main>
-      
     </div>
     <!-- Bootstrap JS Bundle (con soporte touch incluido) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
@@ -1049,8 +782,7 @@
           $("#minutes").text(actions.onHelperAddDigits(minutes));
           $("#seconds").text(actions.onHelperAddDigits(seconds));
           if (distance < 0) {
-            clearInterval(interval);
-            $("countdown").innerHTML = "¡Ha llegado el gran día!";
+            // Call Confetti
           }
         },
         onHelperAddDigits: function(number) {
@@ -1072,29 +804,25 @@
           });
         },
         onUpdateImages: function() {
-          // Function to update the images in the boxes
-          const wrapper = carousel.querySelector('.image-wrapper');
-          const boxes = wrapper.querySelectorAll('.rotated-box');
+          const wrapper = carousel.querySelector('._image-wrapper');
+          const boxes = wrapper.querySelectorAll('._rotated-box');
           boxes.forEach((box, i) => {
             const img = document.createElement('img');
             img.src = Resources.CollageImages[i];
-            box.innerHTML = ''; // Clear any existing content in the box
-            box.appendChild(img); // Add the image to the box
+            box.innerHTML = '';
+            box.appendChild(img); 
           });
         },
         onMoveImageToFront: function() {
-          // Function to move the image of box4 to the first position in the list
-          const movedImage = Resources.CollageImages.pop(); // Remove the image from box4
-          Resources.CollageImages.unshift(movedImage); // Add the image to the beginning of the list
-          actions.onUpdateImages(); // Update the images in the boxes
+          const movedImage = Resources.CollageImages.pop(); 
+          Resources.CollageImages.unshift(movedImage); 
+          actions.onUpdateImages();
         },
         onCarousel: function() {
           const carousel = document.getElementById('carousel');
-          // Add click event to box4
-          document.querySelector('.box4').addEventListener('click', actions.onMoveImageToFront);
-          // Initialize images on page load
+          document.querySelector('._box4').addEventListener('click', actions.onMoveImageToFront);
           actions.onUpdateImages();
-          // Mobile swipe events
+
           let startX = 0;
           let endX = 0;
           carousel.addEventListener('touchstart', (e) => {
@@ -1103,7 +831,6 @@
           carousel.addEventListener('touchend', (e) => {
             endX = e.changedTouches[0].screenX;
             if (Math.abs(endX - startX) > 50) {
-              // If swipe is large enough, move the image from box4
               actions.onMoveImageToFront();
             }
           });
@@ -1325,7 +1052,7 @@
     </script>
 
     <script>
-      const puzzleContainer = document.getElementById('puzzle-container');
+      const puzzleContainer = document.getElementById('_template-puzzle-container');
       const imageUrl = Resources.CollageImages[3];
       const puzzleSize = 4;
       let pieceSize = 125;
@@ -1347,7 +1074,7 @@
           board[row] = [];
           for (let col = 0; col < puzzleSize; col++) {
             const piece = document.createElement('div');
-            piece.classList.add('piece');
+            piece.classList.add('_piece');
             piece.setAttribute('draggable', true);
             piece.style.backgroundImage = `url(${imageUrl})`;
             piece.style.backgroundPosition = `-${col * pieceSize}px -${row * pieceSize}px`;
@@ -1473,8 +1200,8 @@
           }
         }
 
-        document.getElementById('puzzle-container').style.display = 'none';
-        const completeImage = document.getElementById('complete-image');
+        document.getElementById('_template-puzzle-container').style.display = 'none';
+        const completeImage = document.getElementById('_template-Puzzle-Completed');
         completeImage.classList.add('visible');
         completeImage.style.display = 'block';
         return true;
