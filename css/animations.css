@@ -184,3 +184,39 @@
       transform: scale(0.8);
     }
   }
+
+  @keyframes _animation-gift-top-box {
+    20% {
+        transform: rotate(-7deg)
+    }
+
+    40% {
+        transform: rotate(10deg)
+    }
+
+    60% {
+        transform: rotate(-5deg)
+    }
+
+    80% {
+        transform: rotate(5deg)
+    }
+
+    to {
+        transform: rotate(0)
+    }
+  }
+
+  @keyframes _animation-twinkle {
+
+    0%,
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    50% {
+      opacity: 0.3;
+      transform: scale(1.5);
+    }
+  }

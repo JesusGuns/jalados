@@ -1,57 +1,308 @@
 @import url("animations.css");
 
-
-/* #region Audio*/
-#audioButton {
-    animation: _animation-pulse-1 1.5s infinite;
-    position: fixed;
-    right: 1%;
-    top: 11%;
-    z-index: 3;
+/* #region HTML*/
+html {
+  font-size: 14px;
 }
 
-#audioButton.off {
-    filter: hue-rotate(45deg);
-    animation: _animation-vibrate 0.4s infinite;
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
 }
 
-#audioButton img {
-    width: 45px;
-    cursor: pointer;
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  min-height: 100%;
+  width: 100%;
+}
+
+main {
+  width: 100%;
 }
 
 @media (max-width: 575.98px) {
-    #audioButton {
-        top: 15%;
-    }
+  .container {
+    margin: 0;
+    padding: 0;
+  }
+}
 
-    #audioButton img {
-        width: 40px;
-    }
+/* #endregion HTML*/
+
+/* #region Audio*/
+._template-Audio-Button {
+  animation: _animation-pulse-1 1.5s infinite;
+  position: fixed;
+  right: 1%;
+  top: 11%;
+  z-index: 10;
+}
+
+._template-Audio-Button.off {
+  filter: hue-rotate(45deg);
+  animation: _animation-vibrate 0.4s infinite;
+}
+
+._template-Audio-Button img {
+  width: 45px;
+  cursor: pointer;
+}
+
+@media (max-width: 575.98px) {
+  ._template-Audio-Button {
+    top: 15%;
+  }
+
+  ._template-Audio-Button img {
+    width: 40px;
+  }
 }
 
 /* #endregion Audio*/
 
-/* #region Google Location Icon*/
-img.location-maps {
-    width: 40px;
-    height: 40px;
-    object-fit: cover;
-    border-radius: 50%;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-    animation: _animation-pulse-3 0.4s infinite;
+/* #region Counter*/
+
+._template-Counter-Section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+._template-Counter-Section ._counter-Countdown {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  padding: 5px 0px;
+  margin: 2rem 0;
+  width: 100%;
+}
+
+._template-Counter-Section ._counter-Timebox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 45px;
+  animation: _animation-pulse-1 2s infinite;
+}
+
+._template-Counter-Section ._counter-Timebox span {
+  font-size: 60px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  animation: _animation-pulse-2 3s infinite;
+  height: 70px;
 }
 
 @media (max-width: 575.98px) {
-    img.location-maps {
-      width: 45px;
-      height: 45px;
-    }
+  ._template-Counter-Section ._counter-Countdown {
+    gap: 15px;
+    margin: 1rem 0;
+  }
+
+  ._template-Counter-Section ._counter-Timebox {
+    font-size: 27px;
+  }
+
+  ._template-Counter-Section ._counter-Timebox span {
+    font-size: 40px;
+    height: 45px;
+  }
+}
+
+@media (max-width: 375.98px) {
+  ._template-Counter-Section ._counter-Countdown {
+    gap: 10px;
+  }
+
+  ._template-Counter-Section ._counter-Timebox span {
+    font-size: 35px;
+  }
+}
+
+/* #endregion Counter*/
+
+/* #region Google Location Icon*/
+img.location-maps {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+  border-radius: 50%;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  animation: _animation-pulse-3 0.4s infinite;
+}
+
+@media (max-width: 575.98px) {
+  img.location-maps {
+    width: 45px;
+    height: 45px;
+  }
 }
 @media (max-width: 375.98px) {
-    img.location-maps {
-        width: 40px;
-        height: 40px;
-    }
+  img.location-maps {
+    width: 40px;
+    height: 40px;
+  }
 }
 /* #endregion Google Location Icon*/
+
+/* #region Puzzle*/
+._template-Puzzle {
+  display: grid;
+  grid-template-columns: repeat(4, 125px);
+  grid-template-rows: repeat(4, 125px);
+  margin: 2rem 0;
+}
+
+._template-Puzzle ._piece {
+  width: 125px;
+  height: 125px;
+  background-size: 500px 500px;
+  cursor: pointer;
+  position: relative;
+  border: 1px solid #ccc;
+}
+
+._template-Puzzle ._piece.dragging {
+  opacity: 0.5;
+  z-index: 2;
+}
+
+._template-Puzzle-Completed {
+  display: none;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+._template-Puzzle-Completed.visible {
+  opacity: 1;
+}
+
+@media (max-width: 575.98px) {
+  ._template-Puzzle {
+    grid-template-columns: repeat(4, 75px);
+    grid-template-rows: repeat(4, 75px);
+  }
+
+  ._template-Puzzle ._piece {
+    width: 75px;
+    height: 75px;
+    background-size: 300px 300px;
+  }
+}
+
+@media (max-width: 375.98px) {
+  ._template-Puzzle {
+    grid-template-columns: repeat(4, 67.5px);
+    grid-template-rows: repeat(4, 67.5px);
+  }
+
+  ._template-Puzzle ._piece {
+    width: 67.5px;
+    height: 67.5px;
+    background-size: 270px 270px;
+  }
+}
+
+@media (max-width: 325.98px) {
+  ._template-Puzzle {
+    grid-template-columns: repeat(4, 60px);
+    grid-template-rows: repeat(4, 60px);
+  }
+
+  ._template-Puzzle ._piece {
+    width: 60px;
+    height: 60px;
+    background-size: 240px 240px;
+  }
+}
+/* #endregion Puzzle*/
+
+/* #region Image Stack Gallery */
+._template-Stack-Gallery {
+  position: relative;
+  width: 500px;
+  height: 500px;
+  overflow: visible;
+  user-select: none;
+  margin: 2rem 0;
+}
+
+._template-Stack-Gallery ._image-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 5;
+}
+
+._template-Stack-Gallery ._image-wrapper ._rotated-box {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  background-color: white;
+  transition: transform 0.5s ease;
+}
+
+._template-Stack-Gallery ._image-wrapper ._box1 {
+  transform: rotate(12deg);
+  z-index: 1;
+  pointer-events: none;
+}
+
+._template-Stack-Gallery ._image-wrapper ._box2 {
+  transform: rotate(8deg);
+  z-index: 2;
+  pointer-events: none;
+}
+
+._template-Stack-Gallery ._image-wrapper ._box3 {
+  transform: rotate(4deg);
+  z-index: 3;
+  pointer-events: none;
+}
+
+._template-Stack-Gallery ._image-wrapper ._box4 {
+  transform: rotate(0deg);
+  z-index: 4;
+  cursor: pointer;
+}
+
+._template-Stack-Gallery ._image-wrapper ._rotated-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  animation: _animation-fade-in 0.5s ease;
+}
+
+@media (max-width: 575.98px) {
+  ._template-Stack-Gallery {
+    width: 300px !important;
+    height: 300px !important;
+  }
+}
+
+@media (max-width: 375.98px) {
+  ._template-Stack-Gallery {
+    width: 270px !important;
+    height: 270px !important;
+  }
+}
+
+@media (max-width: 325.98px) {
+  ._template-Stack-Gallery {
+    width: 240px !important;
+    height: 240px !important;
+  }
+}
+
+/* #endregion Image Stack Gallery  */
