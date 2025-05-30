@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="styles.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 
 </head>
 <body>
@@ -23,229 +25,262 @@
         </button>
     </div>
 
-    <!-- Templates -->
-    <div class="template-cards-container mt-5">
-        <h2 class="text-center mb-4">Templates</h2>
-        <div class="template-cards-container-wrapper">
-            <div class="template-cards">
-                <!-- Card para Template Cumpleaños -->
-                <div class="card">
-                    <img src="images/cumple.jpg" class="card-img-top" alt="Template Cumpleaños">
-                    <div class="card-body">
-                        <h5 class="card-title">Cumpleaños</h5>
-                        <p class="card-text">Descripción breve del template de cumpleaños.</p>
-                    </div>
-                </div>
-                <!-- Card para Bautismo  -->
-                <div class="card">
-                    <img src="images/bau.jpg" class="card-img-top" alt="Template Bautismo 1">
-                    <div class="card-body">
-                        <a href="./templates/BabyShower_1.html"><h5 class="card-title">Bautismo 1</h5></a>
-                        <p class="card-text">Descripción breve del template de bautismo 1.</p>
-                    </div>
-                </div>
-                <div class="card">
-                    <img src="images/bau.jpg" class="card-img-top" alt="Template Bautismo 2">
-                    <div class="card-body">
-                        <h5 class="card-title">Bautismo 2</h5>
-                        <p class="card-text">Descripción breve del template de bautismo 1.</p>
-                    </div>
-                </div>
-                <div class="card">
-                    <img src="images/bau.jpg" class="card-img-top" alt="Template Bautismo 3">
-                    <div class="card-body">
-                        <h5 class="card-title">Bautismo 3</h5>
-                        <p class="card-text">Descripción breve del template de bautismo 1.</p>
-                    </div>
-                </div>
-                <!-- Card para XV Años  -->
-                <div class="card">
-                    <img src="images/quince.jpg" class="card-img-top" alt="Template XV Años 1">
-                    <div class="card-body">
-                        <a href="./templates/XV_1.html"><h5 class="card-title">XV Años 1</h5></a>
-                        <p class="card-text">Descripción breve del template de XV años 1.</p>
-                    </div>
-                </div>
-                <div class="card">
-                    <img src="images/quince.jpg" class="card-img-top" alt="Template XV Años 2">
-                    <div class="card-body">
-                        <a href="./templates/XV_2.html"><h5 class="card-title">XV Años 2</h5></a>
-                        <p class="card-text">Descripción breve del template de XV años 1.</p>
-                    </div>
-                </div>
-                <div class="card">
-                    <img src="images/quince.jpg" class="card-img-top" alt="Template XV Años 3">
-                    <div class="card-body">
-                        <a href="./templates/XV_3.html"><h5 class="card-title">XV Años 3</h5></a>
-                        <p class="card-text">Descripción breve del template de XV años 1.</p>
-                    </div>
-                </div>
-                <!-- Card para Bodas  -->
-                <div class="card">
-                    <img src="images/boda.jpg" class="card-img-top" alt="Template Bodas 1">
-                    <div class="card-body">
-                        <h5 class="card-title">Bodas 1</h5>
-                        <p class="card-text">Descripción breve del template de bodas 1.</p>
-                    </div>
-                </div>
-                <div class="card">
-                    <img src="images/boda.jpg" class="card-img-top" alt="Template Bodas 2">
-                    <div class="card-body">
-                        <h5 class="card-title">Bodas 2</h5>
-                        <p class="card-text">Descripción breve del template de bodas 1.</p>
-                    </div>
-                </div>
-                <div class="card">
-                    <img src="images/boda.jpg" class="card-img-top" alt="Template Bodas 3">
-                    <div class="card-body">
-                        <h5 class="card-title">Bodas 3</h5>
-                        <p class="card-text">Descripción breve del template de bodas 1.</p>
-                    </div>
-                </div>
-            </div>
+    <!-- Template -->
+    <div class="swiper-sections-container">
+    <!-- Cumpleaños -->
+    <section>
+        <h2>Cumpleaños</h2>
+        <div class="swiper cumpleanosSwiper">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide"><img src="images/cumple.jpg" alt="Cumpleaños 1" /></div>
+            <div class="swiper-slide"><img src="images/cumple.jpg" alt="Cumpleaños 2" /></div>
+            <div class="swiper-slide"><img src="images/cumple.jpg" alt="Cumpleaños 3" /></div>
         </div>
-
-        <!-- Puntos de navegación -->
-        <div class="template-pagination mt-3 text-center">
-            <span class="dot active"></span>
-            <span class="dot"></span>
-            <span class="dot"></span>
         </div>
+        <div id="cumpleCaption" class="slide-caption">Cumpleaños 1</div>
+    </section>
+
+    <!-- Baby Shower -->
+    <section>
+        <h2>Baby Shower</h2>
+        <div class="swiper babyshowerSwiper">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide"><img src="images/bau.jpg" alt="Baby Shower 1" /></div>
+            <div class="swiper-slide"><img src="images/bau.jpg" alt="Baby Shower 2" /></div>
+            <div class="swiper-slide"><img src="images/bau.jpg" alt="Baby Shower 3" /></div>
+        </div>
+        </div>
+        <div id="babyshowerCaption" class="slide-caption"><a href="./templates/BabyShower_1.html">Baby Shower 1</a></div>
+    </section>
+
+    <!-- XV Años -->
+    <section>
+        <h2>XV Años</h2>
+        <div class="swiper xvanosSwiper">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide"><img src="images/quince.jpg" alt="XV Años 1" /></div>
+            <div class="swiper-slide"><img src="images/quince.jpg" alt="XV Años 2" /></div>
+            <div class="swiper-slide"><img src="images/quince.jpg" alt="XV Años 3" /></div>
+        </div>
+        </div>
+        <div id="xvanosCaption" class="slide-caption"><a href="./templates/XV_1.html">XV Años 1</a></div>
+    </section>
+
+    <!-- Bodas -->
+    <section>
+        <h2>Bodas</h2>
+        <div class="swiper bodasSwiper">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide"><img src="images/boda.jpg" alt="Bodas 1" /></div>
+            <div class="swiper-slide"><img src="images/boda.jpg" alt="Bodas 2" /></div>
+            <div class="swiper-slide"><img src="images/boda.jpg" alt="Bodas 3" /></div>
+        </div>
+        </div>
+        <div id="bodasCaption" class="slide-caption">Bodas 1</div>
+    </section>
+    </div>
 
 
-    <!-- Planes  -->
+    <!-- Planes -->
+    <h2 class="display-6 text-center mb-4">Planes</h2>
+
+    <div class="container">
+    <div class="table-responsive">
+        <table class="table text-center">
+        <thead>
+            <tr>
+            <th style="width: 34%;"></th>
+            <th style="width: 22%;">Estándar</th>
+            <th style="width: 22%;">Premium</th>
+            <th style="width: 22%;">Platinum QR</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+            <th scope="row" class="text-start">Cuenta regresiva</th>
+            <td>✔︎</td>
+            <td>✔︎</td>
+            <td>✔︎</td>
+            </tr>
+            <tr>
+            <th scope="row" class="text-start">Ubicación</th>
+            <td>✔︎</td>
+            <td>✔︎</td>
+            <td>✔︎</td>
+            </tr>
+            <tr>
+            <th scope="row" class="text-start">Calendario</th>
+            <td>✔︎</td>
+            <td>✔︎</td>
+            <td>✔︎</td>
+            </tr>
+            <tr>
+            <th scope="row" class="text-start">Itinerario</th>
+            <td>✔︎</td>
+            <td>✔︎</td>
+            <td>✔︎</td>
+            </tr>
+            <tr>
+            <th scope="row" class="text-start">Hospedaje</th>
+            <td>✔︎</td>
+            <td>✔︎</td>
+            <td>✔︎</td>
+            </tr>
+            <tr>
+            <th scope="row" class="text-start">Desscode</th>
+            <td>✔︎</td>
+            <td>✔︎</td>
+            <td>✔︎</td>
+            </tr>
+            <tr>
+            <th scope="row" class="text-start">Galería de fotos</th>
+            <td>✔︎</td>
+            <td>✔︎</td>
+            <td>✔︎</td>
+            </tr>
+            <tr>
+            <th scope="row" class="text-start">Mesa de regalos</th>
+            <td>✔︎</td>
+            <td>✔︎</td>
+            <td>✔︎</td>
+            </tr>
+            <tr>
+            <th scope="row" class="text-start">#Instagram</th>
+            <td>✔︎</td>
+            <td>✔︎</td>
+            <td>✔︎</td>
+            </tr>
+            <tr>
+            <th scope="row" class="text-start">Confirmación de asistencia</th>
+            <td>✔︎</td>
+            <td>✔︎</td>
+            <td>✔︎</td>
+            </tr>
+            <tr>
+            <th scope="row" class="text-start">Envíos ilimitados</th>
+            <td>✔︎</td>
+            <td>✔︎</td>
+            <td>✔︎</td>
+            </tr>
+            <tr>
+            <th scope="row" class="text-start">Vigencia por 3 meses</th>
+            <td>✔︎</td>
+            <td>✔︎</td>
+            <td>✔︎</td>
+            </tr>
+            <tr>
+            <th scope="row" class="text-start">Pases</th>
+            <td>✖︎</td>
+            <td>✔︎</td>
+            <td>✔︎</td>
+            </tr>
+            <tr>
+            <th scope="row" class="text-start">Pases personalizados ❓</th>
+            <td>✖︎</td>
+            <td>✖︎</td>
+            <td>✔︎</td>
+            </tr>
+            <tr>
+            <th scope="row" class="text-start">Música ❓</th>
+            <td>✖︎</td>
+            <td>✔︎</td>
+            <td>✔︎</td>
+            </tr>
+            <tr>
+            <th scope="row" class="text-start">Preguntame! ❓</th>
+            <td>✖︎</td>
+            <td>✖︎</td>
+            <td>✔︎</td>
+            </tr>
+            <tr>
+            <th scope="row" class="text-start">Control de acceso QR ❓</th>
+            <td>✖︎</td>
+            <td>✖︎</td>
+            <td>✔︎</td>
+            </tr>
+        </tbody>
+        </table>
+    </div>
+    </div>
+
+    <!-- Precios -->
     <div class="container mt-5">
-        <h2 class="text-center mb-4">Planes</h2>
-        <div class="table-container">
-            <table class="comparison-table">
-                <thead>
-                    <tr>
-                        <th>Características</th>
-                        <th>Estándar</th>
-                        <th>Premium</th>
-                        <th>Platinum QR</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Cuenta regresiva</td>
-                        <td>✓</td>
-                        <td>✓</td>
-                        <td>✓</td>
-                    </tr>
-                    <tr>
-                        <td>Ubicación</td>
-                        <td>✓</td>
-                        <td>✓</td>
-                        <td>✓</td>
-                    </tr>
-                    <tr>
-                        <td>Calendario</td>
-                        <td>✓</td>
-                        <td>✓</td>
-                        <td>✓</td>
-                    </tr>
-                    <tr>
-                        <td>Itinerario</td>
-                        <td>✓</td>
-                        <td>✓</td>
-                        <td>✓</td>
-                    </tr>
-                    <tr>
-                        <td>Hospedaje</td>
-                        <td>✓</td>
-                        <td>✓</td>
-                        <td>✓</td>
-                    </tr>
-                    <tr>
-                        <td>Dresscode</td>
-                        <td>✓</td>
-                        <td>✓</td>
-                        <td>✓</td>
-                    </tr>
-                    <tr>
-                        <td>Galería de fotos</td>
-                        <td>✓</td>
-                        <td>✓</td>
-                        <td>✓</td>
-                    </tr>
-                    <tr>
-                        <td>Mesa de regalos</td>
-                        <td>✓</td>
-                        <td>✓</td>
-                        <td>✓</td>
-                    </tr>
-                    <tr>
-                        <td>#Instagram</td>
-                        <td>✓</td>
-                        <td>✓</td>
-                        <td>✓</td>
-                    </tr>
-                    <tr>
-                        <td>Confirmación de asistencia</td>
-                        <td>✓</td>
-                        <td>✓</td>
-                        <td>✓</td>
-                    </tr>
-                    <tr>
-                        <td>Envíos ilimitados</td>
-                        <td>✓</td>
-                        <td>✓</td>
-                        <td>✓</td>
-                    </tr>
-                    <tr>
-                        <td>Vigencia por 3 meses</td>
-                        <td>✓</td>
-                        <td>✓</td>
-                        <td>✓</td>
-                    </tr>
-                    <tr>
-                        <td>Pases</td>
-                        <td>✗</td>
-                        <td>✓</td>
-                        <td>✓</td>
-                    </tr>
-                    <tr>
-                        <td><span class="feature-icon">❓</span> Pases personalizados</td>
-                        <td>✗</td>
-                        <td>✗</td>
-                        <td>✓</td>
-                    </tr>
-                    <tr>
-                        <td><span class="feature-icon">❓</span> Música</td>
-                        <td>✗</td>
-                        <td>✗</td>
-                        <td>✓</td>
-                    </tr>
-                    <tr>
-                        <td><span class="feature-icon">❓</span> Pregúntame!</td>
-                        <td>✗</td>
-                        <td>✗</td>
-                        <td>✓</td>
-                    </tr>
-                    <tr>
-                        <td><span class="feature-icon">❓</span> Control de acceso QR</td>
-                        <td>✗</td>
-                        <td>✗</td>
-                        <td>✓</td>
-                    </tr>
-                </tbody>
-            </table>
-            <div class="price-section">
-                <div>Precio con descuento</div>
-                <div>Precio con descuento</div>
-                <div>Precio con descuento</div>
+    <h2 class="text-center mb-4">Precios</h2>
+    <div class="row row-cols-1 row-cols-md-3 g-4 mb-3 text-center row-equal">
+        <!-- Plan Estándar -->
+        <div class="col">
+        <div class="card shadow-sm">
+            <div class="card-header py-3">
+            <h4 class="my-0 fw-normal">Estándar</h4>
+            </div>
+            <div class="card-body d-flex flex-column">
+            <h1 class="card-title pricing-card-title">$1200</h1>
+            <ul class="list-unstyled mt-3 mb-4 flex-grow-1">
+                <li>Cuenta regresiva</li>
+                <li>Ubicación</li>
+                <li>Calendario</li>
+                <li>Itinerario</li>
+                <li>Hospedaje</li>
+            </ul>
+            <button class="btn btn-outline-primary w-100 mt-auto">Seleccionar</button>
             </div>
         </div>
+        </div>
+
+        <!-- Plan Premium -->
+        <div class="col">
+        <div class="card shadow-sm">
+            <div class="card-header py-3">
+            <h4 class="my-0 fw-normal">Premium</h4>
+            </div>
+            <div class="card-body d-flex flex-column">
+            <h1 class="card-title pricing-card-title">$2240</h1>
+            <ul class="list-unstyled mt-3 mb-4 flex-grow-1">
+                <li>Cuenta regresiva</li>
+                <li>Ubicación</li>
+                <li>Calendario</li>
+                <li>Itinerario</li>
+                <li>Hospedaje</li>
+                <li>Mesa de regalos</li>
+                <li>Envíos ilimitados</li>
+            </ul>
+            <button class="btn btn-primary w-100 mt-auto">Seleccionar</button>
+            </div>
+        </div>
+        </div>
+
+        <!-- Plan Platinum QR -->
+        <div class="col">
+        <div class="card shadow-sm border-primary">
+            <div class="card-header py-3 text-bg-primary border-primary">
+            <h4 class="my-0 fw-normal">Platinum QR</h4>
+            </div>
+            <div class="card-body d-flex flex-column">
+            <h1 class="card-title pricing-card-title">$2800</h1>
+            <ul class="list-unstyled mt-3 mb-4 flex-grow-1">
+                <li>Cuenta regresiva</li>
+                <li>Ubicación</li>
+                <li>Calendario</li>
+                <li>Itinerario</li>
+                <li>Hospedaje</li>
+                <li>Mesa de regalos</li>
+                <li>Envíos ilimitados</li>
+                <li>Pases personalizados</li>
+                <li>Música</li>
+                <li>Control de acceso QR</li>
+            </ul>
+            <button class="btn btn-primary w-100 mt-auto">Seleccionar</button>
+            </div>
+        </div>
+        </div>
     </div>
-        
-        
-        
-
     </div>
 
 
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="script.js"></script>
+
 </body>
 </html>
