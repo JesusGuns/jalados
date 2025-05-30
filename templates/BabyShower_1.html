@@ -331,12 +331,13 @@
         left: 0;
         width: 100%;
         height: 100%;
-        background: rgba(255, 255, 255, 0.9);
+        background: rgba(255, 255, 255, 1);
         z-index: 2000;
         display: flex;
+        flex-direction: column;
         justify-content: center;
         align-items: center;
-        font-size: 2rem;
+        font-size: 1.7rem;
         font-weight: bold;
         color: var(--color_Primary, #333);
         opacity: 0;
@@ -349,6 +350,11 @@
         pointer-events: all;
       }
 
+      .loader-img {
+        width: 50%;
+        height: 50%;
+        object-fit: contain;
+      }
 
       @media (max-width: 575.98px) {
         .container {
@@ -765,7 +771,8 @@
     </div>
 
     <div id="themeOverlay">
-      <span>Cargando...</span>
+      <img class="loader-img" src="#" data-replace="Image_Loading" alt="Loading">
+      <span>Cambiando tema...</span>
     </div>
 
     <!-- Bootstrap JS Bundle (con soporte touch incluido) -->
@@ -861,6 +868,7 @@
           $("[data-replace=Image_GoogleLocation]").attr("src", Resources.Image_GoogleLocation);
           $("[data-replace=Image_Main]").attr("src", Resources.Image_Main);
           $("[data-replace=Image_Tap]").attr("src", Resources.Image_Tap);
+          $("[data-replace=Image_Loading]").attr("src", Resources.Image_Loading);
           $("[data-replace=WhatsAppUrl]").attr("href", Resources.WhatsAppUrl);
           $("[data-replace=GoogleCalendarUrl]").attr("href", helpers.onGoogleCalendar());
           $("[data-replace=GoogleCalendarLocation]").text(Resources.GoogleCalendarLocation);
@@ -899,6 +907,7 @@
         Image_GoogleLocation: "https://img.icons8.com/?size=512&id=DcygmpZqBEd9&format=png",
         Image_Main: "",
         Image_Tap: "https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExNWZ1MW80dTVkMzFrcXoxeG41OHo5NmdiemdvbnE5NW9seW1heXA5YiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/TPiig5QAVogA1po38k/giphy.gif",
+        Image_Loading: "https://www.boredpanda.es/blog/wp-content/uploads/2016/07/gifs-totoro-ejercicio-cl-terry-6.gif",
         AudioUrl: "../music/Here Comes The Sun.mp3",
         WhatsAppUrl: "https://tinyurl.com/3h8kmam7",
         CollageImages: [
@@ -1070,6 +1079,7 @@
         book.classList.remove('shifted');
         $('#book').empty();
         tapHint.classList.remove("hidden");
+        $("#audioButton").addClass("off");
 
         helpers.onLoad();
         generateBook();
@@ -1080,12 +1090,12 @@
         $('#themeOverlay').addClass('active');
 
         setTimeout(() => {
-          window.scrollTo({ top: 0, behavior: 'smooth' });
           applyTheme(theme);
+          window.scrollTo({ top: 0, behavior: 'smooth' });
           setTimeout(() => {
             $('#themeOverlay').removeClass('active');
-          }, 500);
-        }, 2000);
+          }, 2000);
+        }, 500);
       });
     </script>
   </body>
