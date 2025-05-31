@@ -309,17 +309,37 @@
         border-radius: 3.5px;
       }
       .timeline::before {
+        content: '';
+        position: absolute;
+        left: 12px;
         top: 18px;
+        width: 7px; 
         height: calc(100% - 36px);
-        background: repeating-linear-gradient(to bottom, #e3caff, #e3caff 10px, #fff 10px, #fff 20px);
-        z-index: 0;
+        background: linear-gradient(
+          180deg,
+          #f9c5d1 0%,   /* rosa pastel claro */
+          #e0bbe4 50%,  /* lila pastel */
+          #c9f0ff 100%  /* azul pastel */
+        );
+        border-radius: 3.5px;
+        box-shadow: 0 0 8px rgba(232, 203, 225, 0.6); 
+        z-index: 1; /* debe quedar detrás de los puntos */
       }
       .timeline-progress {
+        content: '';
+        position: absolute;
+        left: 12px;
         top: 18px;
-        height: 0;
-        background: linear-gradient(180deg, #b07fcb 30%, #81b8df 100%);
-        box-shadow: 0 0 0 3px #e3caff66;
-        z-index: 1;
+        width: 7px;
+        background: linear-gradient(
+          180deg,
+          rgba(249, 197, 209, 0.9) 0%,   /* rosa pastel ligeramente más saturado */
+          rgba(224, 187, 228, 0.9) 60%,  /* lila pastel suave */
+          rgba(201, 240, 255, 0.9) 100%  /* azul pastel suave */
+        );
+        box-shadow: 0 0 6px rgba(224, 187, 228, 0.6);
+        border-radius: 3.5px;
+        z-index: 2; /* entre la línea base (1) y los puntos (2 o 3) */
         transition: height 0.38s cubic-bezier(.62,1.17,.53,1.04);
         pointer-events: none;
       }
@@ -347,10 +367,9 @@
         top: 0;
         width: 31px;
         height: 31px;
-        background: var(--timeline-dot-bg);
+        background: #f0edfc;
         border: 4px solid #f9a5b7;
         border-radius: 50%;
-        box-shadow: var(--timeline-dot-shadow);
         z-index: 3;
         display: flex;
         align-items: center;
@@ -1079,7 +1098,7 @@
               <div class="stories-progress"></div>
               <div class="stories-photo-frame">
                 <div class="stories-caption" id="stories-caption"></div>
-                <img id="stories-image" src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?fit=crop&w=500&q=80" alt="Historia">
+                <img id="stories-image" src="" alt="Historia">
               </div>
             </div>
           </div>
@@ -1453,11 +1472,7 @@
 
                   const remainingTime = intervalMs;
 
-                  if (isTap) {
-                      fill.style.transition = 'width 0.18s';
-                  } else {
-                      fill.style.transition = `width ${remainingTime}ms linear`;
-                  }
+                  fill.style.transition = `width ${remainingTime}ms linear`;
                   fill.style.width = '100%';
 
                   lastTransitionHandler = () => {
@@ -1530,6 +1545,7 @@
       window.addEventListener('resize', animateTimeline);
       window.addEventListener('load', () => {
           setupStories();
+          showStory(0, false);
 
           const storiesSection = document.querySelector('.gallery-section');
           observer.observe(storiesSection);
