@@ -73,7 +73,7 @@ document.addEventListener('DOMContentLoaded', function () {
     cumpleanos: ["Cumpleaños 1", "Cumpleaños 2", "Cumpleaños 3"],
     babyshower: ['<a href="./templates/BabyShower_1.html">Baby Shower 1</a>', "Baby Shower 2", "Baby Shower 3"],
     xvanos: ['<a href="./templates/XV_1.html">XV Años 1</a>', '<a href="./templates/XV_2.html">XV Años 2</a>', '<a href="./templates/XV_3.html">XV Años 3</a>'],
-    bodas: ["Bodas 1", "Bodas 2", "Bodas 3"]
+    bodas: ['<a href="./templates/Boda_1.html">Boda 1</a>', "Bodas 2", "Bodas 3"]
     };
 
     function createSwiper(selector, captionsId, captionsArr) {
