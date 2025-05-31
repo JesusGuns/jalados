@@ -155,7 +155,7 @@
       }
       .parent-card {
         width: 95%;
-        max-width: 270px;
+        max-width: 420px;
         background: var(--glass-bg);
         backdrop-filter: blur(var(--glass-blur));
         border-radius: 18px;
@@ -172,8 +172,8 @@
         margin-bottom: 1.1rem;
       }
       .parent-photo-unique {
-        width: 78px;
-        height: 78px;
+        width: 150px;
+        height: 150px;
         border-radius: 18px;
         object-fit: cover;
         margin-bottom: 0.7rem;
@@ -183,7 +183,7 @@
       }
       .parent-title {
         font-family: var(--font-Primary);
-        color: var(--color_Secondary);
+        color: var(--color_Tertiary);
         font-size: 1.10rem;
         margin-bottom: 0.12rem;
         margin-top: 0.5em;
@@ -280,7 +280,7 @@
       }
       .godparent-emoji {
         position: absolute;
-        bottom: 0.8rem;
+        bottom: 2.5rem;
         right: 1.1rem;
         font-size: 2.15em;
         filter: drop-shadow(0 2px 6px #f9a5b7a2);
@@ -883,6 +883,10 @@
           max-width: 100%;
           padding: 1rem;
         }
+
+        .godparent-emoji {
+          bottom: 6rem;
+        }
       }
 
       @media (max-width: 375.98px) {
@@ -897,6 +901,10 @@
           height: auto;
           width: 100%;
           max-height: 85%;
+        }
+
+        .godparent-emoji {
+          bottom: 6rem;
         }
       }
 
@@ -931,7 +939,7 @@
         .stories-photo-frame img {height: 82%;}
       }
       @media (max-width: 550px) {
-        .parents-section { flex-direction: column; gap:0.7rem;}
+        /* .parents-section { flex-direction: column; gap:0.7rem;} */
         .parent-card { max-width:99vw;}
       }
       @media (max-width: 400px) {
@@ -966,12 +974,12 @@
             <div class="couple-card">
               <img src="https://randomuser.me/api/portraits/women/65.jpg" class="couple-photo" alt="Novia">
               <div class="couple-name">Camila Torres</div>
-              <div class="couple-desc">Romántica, soñadora y la mejor compañera de aventuras.</div>
+              <!-- <div class="couple-desc">Romántica, soñadora y la mejor compañera de aventuras.</div> -->
             </div>
             <div class="couple-card">
               <img src="https://randomuser.me/api/portraits/men/47.jpg" class="couple-photo" alt="Novio">
               <div class="couple-name">Iván Méndez</div>
-              <div class="couple-desc">Apasionado, divertido y el cómplice perfecto de Camila.</div>
+              <!-- <div class="couple-desc">Apasionado, divertido y el cómplice perfecto de Camila.</div> -->
             </div>
           </div>
           
@@ -979,14 +987,14 @@
           <div class="section-title">Padres de la Novia</div>
           <div class="parents-section">
             <div class="parent-card">
-              <img src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?fit=crop&w=400&q=80" class="parent-photo-unique" alt="Padres novia">
+              <img src="https://i.pinimg.com/736x/dd/b7/17/ddb71718c8daaac4b0111e4882d1627d.jpg" class="parent-photo-unique" alt="Padres novia">
               <div class="parent-title">María Elena García &amp; Alfonso Torres</div>
             </div>
           </div>
           <div class="section-title">Padres del Novio</div>
           <div class="parents-section">
             <div class="parent-card">
-              <img src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?fit=crop&w=400&q=80" class="parent-photo-unique" alt="Padres novio">
+              <img src="https://i.pinimg.com/736x/27/96/c5/2796c57f77bd7b9bc98d8475952f540a.jpg" class="parent-photo-unique" alt="Padres novio">
               <div class="parent-title">Ana Rodríguez &amp; Carlos Méndez</div>
             </div>
           </div>
@@ -998,42 +1006,37 @@
               <div class="godparent-card-cute">
                 <img src="https://randomuser.me/api/portraits/men/68.jpg" class="godparent-avatar" alt="Carlos Ramírez">
                 <div class="godparent-details-cute">
-                  <div class="godparent-role-cute">Padrinos de Anillos</div>
+                  <div class="godparent-role-cute">Padrinos de Anillos<span class="godparent-emoji">💍</span></div>
                   <div class="godparent-names-cute">Carlos Ramírez &amp; Sofía Morales</div>
                 </div>
-                <span class="godparent-emoji">💍</span>
               </div>
               <div class="godparent-card-cute">
                 <img src="https://randomuser.me/api/portraits/women/78.jpg" class="godparent-avatar" alt="Marina Díaz">
                 <div class="godparent-details-cute">
-                  <div class="godparent-role-cute">Padrinos de Lazo</div>
+                  <div class="godparent-role-cute">Padrinos de Lazo<span class="godparent-emoji">🔗</span></div>
                   <div class="godparent-names-cute">Marina Díaz &amp; Raúl Romero</div>
                 </div>
-                <span class="godparent-emoji">🔗</span>
               </div>
               <div class="godparent-card-cute">
                 <img src="https://randomuser.me/api/portraits/men/44.jpg" class="godparent-avatar" alt="Esteban León">
                 <div class="godparent-details-cute">
-                  <div class="godparent-role-cute">Padrinos de Arras</div>
+                  <div class="godparent-role-cute">Padrinos de Arras<span class="godparent-emoji">💰</span></div>
                   <div class="godparent-names-cute">Esteban León &amp; Paula Sosa</div>
                 </div>
-                <span class="godparent-emoji">💰</span>
               </div>
               <div class="godparent-card-cute">
                 <img src="https://randomuser.me/api/portraits/women/54.jpg" class="godparent-avatar" alt="Julio Vargas">
                 <div class="godparent-details-cute">
-                  <div class="godparent-role-cute">Biblia y Rosario</div>
+                  <div class="godparent-role-cute">Biblia y Rosario<span class="godparent-emoji">📖</span></div>
                   <div class="godparent-names-cute">Julio Vargas &amp; Lucía Peña</div>
                 </div>
-                <span class="godparent-emoji">📖</span>
               </div>
               <div class="godparent-card-cute">
                 <img src="https://randomuser.me/api/portraits/men/36.jpg" class="godparent-avatar" alt="Patricia Muñoz">
                 <div class="godparent-details-cute">
-                  <div class="godparent-role-cute">Brindis</div>
+                  <div class="godparent-role-cute">Brindis<span class="godparent-emoji">🥂</span></div>
                   <div class="godparent-names-cute">Patricia Muñoz &amp; Daniel Ponce</div>
                 </div>
-                <span class="godparent-emoji">🥂</span>
               </div>
             </div>
           </div>
@@ -1250,7 +1253,7 @@
         Image_Main: "",
         Image_Tap: "https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExNWZ1MW80dTVkMzFrcXoxeG41OHo5NmdiemdvbnE5NW9seW1heXA5YiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/TPiig5QAVogA1po38k/giphy.gif",
         Image_Loading: "https://images.vexels.com/media/users/3/190566/isolated/preview/e20509414b44a4b9388e9309c50031d1-parejas-casadas-silueta-boda.png",
-        AudioUrl: "../music/Here Comes The Sun.mp3",
+        AudioUrl: "../music/Perfect.mp3",
         WhatsAppUrl: "https://tinyurl.com/3h8kmam7",
         CollageImages: [],
       };
