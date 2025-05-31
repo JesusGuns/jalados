@@ -1200,7 +1200,6 @@
           return `${base}?${params.toString()}`;
         },
         onLoad: function() {
-          $('body').css('background-image', 'url("' + Resources.Image_BodyBackground + '")');
           $("[data-replace=Image_AudioUrl]").attr("src", Resources.Image_AudioUrl);
           $("[data-replace=AudioUrl]").attr("src", Resources.AudioUrl);
           $("[data-replace=EventDateString]").text(Resources.EventDateString);
@@ -1238,7 +1237,7 @@
         GoogleCalendarStartDate: helpers.onGetDateYYYYMMDD(),
         GoogleCalendarEndDate: helpers.onGetDateYYYYMMDD(),
         GoogleCalendarLocation: "Salón Azul Calle Principal 123",
-        Image_BodyBackground: "",
+        Image_BodyBackground: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80",
         Image_FrontCard: "https://img.freepik.com/foto-gratis/mujer-tiro-medio-caminando-calle_23-2148703161.jpg?ga=GA1.1.1993030682.1745256637&semt=ais_hybrid&w=740",
         Image_AudioUrl: "https://cdn-icons-png.freepik.com/512/13896/13896624.png?ga=GA1.1.1993030682.1745256637",
         Image_Corner: "",
@@ -1264,7 +1263,6 @@
           '--timeline-bg': '#fffafd',
           '--card-shadow': '0 4px 18px #b07fcb25',
           '--border-soft': '1.8px solid #f9a5b7bb',
-          Image_BodyBackground: "https://www.transparenttextures.com/patterns/stardust.png",
           Image_Main: "https://i.pinimg.com/736x/f8/c7/db/f8c7db2c14f30a20d27daa328b681684.jpg",
           EventName: 'Thomas'
         },
@@ -1276,7 +1274,6 @@
           '--timeline-bg': '#fbfcf7',
           '--card-shadow': '0 4px 18px #8dc8b935',
           '--border-soft': '1.8px solid #faabafbb',
-          Image_BodyBackground: "https://www.transparenttextures.com/patterns/stardust.png",
           Image_Main: "https://i.pinimg.com/736x/f8/c7/db/f8c7db2c14f30a20d27daa328b681684.jpg",
           EventName: 'Thomas'
         }
@@ -1330,6 +1327,28 @@
 
       Init();
 
+      function updateBodyBackground() {
+        const bgUrl = Resources.Image_BodyBackground;
+        let styleEl = document.getElementById('dynamicBodyBg');
+        if (!styleEl) {
+          styleEl = document.createElement('style');
+          styleEl.id = 'dynamicBodyBg';
+          document.head.appendChild(styleEl);
+        }
+        styleEl.innerHTML = `
+          body::before {
+            content: "";
+            position: fixed;
+            z-index: 0;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: url('${bgUrl}') center center/cover no-repeat;
+            opacity: 0.16;
+            filter: blur(3px) brightness(1.1);
+            pointer-events: none;
+          }
+        `;
+      }
+
       function applyTheme(themeName) {
         const theme = Themes[themeName];
 
@@ -1337,9 +1356,7 @@
           if (variable.startsWith('--')) {
             document.documentElement.style.setProperty(variable, theme[variable]);
           } else {
-            if (variable === 'Image_BodyBackground') {
-               Resources.Image_BodyBackground = theme[variable];
-            } else if (variable === 'Image_Main') {
+            if (variable === 'Image_Main') {
               Resources.Image_Main = theme[variable];
             } else if (variable === 'EventName') {
               Resources.EventName = theme[variable];
@@ -1350,6 +1367,7 @@
         $("#audioButton").addClass("off");
 
         helpers.onLoad();
+        updateBodyBackground();
       };
 
       $('.theme-btn').on('click', function () {
