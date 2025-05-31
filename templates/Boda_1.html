@@ -820,20 +820,86 @@
       /* #endregion Counter*/
       /* #region Main Section*/
       @media (max-width: 767.98px) {
+        .hero-title {
+          font-size: 1.8rem;
+          line-height: 1.2;
+        }
 
+        .timeline {
+          margin-left: 20px;
+        }
+
+        .timeline::before,
+        .timeline-progress {
+          left: 8px;
+          width: 5px;
+          border-radius: 2.5px;
+        }
+
+        .timeline-event-content {
+          margin-left: 36px;
+          padding: 8px 12px;
+          font-size: 0.95rem;
+        }
       }
 
       @media (max-width: 575.98px) {
+        .godparent-card-cute {
+          flex-direction: column;
+          align-items: center;
+          padding: 1rem;
+          gap: 0.8rem;
+          text-align: center;
+        }
 
+        .godparent-details-cute {
+          text-align: center;
+        }
+
+        .godparent-avatar {
+          margin: 0 auto;
+        }
+
+        .parent-card {
+          max-width: 100%;
+          padding: 1rem;
+        }
       }
 
       @media (max-width: 375.98px) {
+        .stories-photo-frame {
+          max-width: 100%;
+          aspect-ratio: 3/4;
+          min-height: auto;
+          padding-bottom: 1rem;
+        }
 
+        .stories-photo-frame img {
+          height: auto;
+          width: 100%;
+          max-height: 85%;
+        }
       }
 
       @media (max-width: 340px) {
-        
+        .hero-title {
+          font-size: 1.3rem;
+          letter-spacing: 1px;
+        }
+
+        .section-title {
+          font-size: 1.1rem;
+        }
+
+        .timeline-time {
+          font-size: 0.95rem;
+        }
+
+        .timeline-desc {
+          font-size: 0.9rem;
+        }
       }
+
 
       /* Responsive */
       @media (max-width: 700px) {
@@ -1223,13 +1289,15 @@
         }
       ];
       let currentStory = 0;
-      let timer = null;
       let progressBars = [];
+      let progressFills = [];
+      let timer = null;
+      let storyStartTime = 0;
+      let elapsedTime = 0;
+      let isPaused = false;
       const intervalMs = 3200;
-      window.addEventListener('scroll', animateTimeline, {passive: true});
-      window.addEventListener('load', animateTimeline);
-      window.addEventListener('resize', animateTimeline);
-      window.addEventListener('load', setupStories);
+      let lastTransitionHandler = null;
+      let isAdvancing = false;
 
       function Init() {
         helpers.onLoad();
@@ -1317,71 +1385,155 @@
           progress.style.height = "0px";
         }
       }
-      function showStory(idx, isTap) {
-        if(idx >= stories.length) idx = 0;
-        if(idx < 0) idx = stories.length-1;
 
-        // Llenar inmediatamente el bar activo al tap, sin animación
-        if (isTap && progressBars.length > 0) {
-            const bar = progressBars[currentStory];
-            if (bar) {
-            bar.style.transition = 'none';
-            bar.style.width = "100%";
-            // Forzar reflow para que transition se aplique bien en el siguiente
-            void bar.offsetWidth;
-            }
-        }
-
-        currentStory = idx;
-        document.getElementById('stories-image').src = stories[idx].img;
-        document.getElementById('stories-caption').textContent = stories[idx].caption;
-
-        progressBars.forEach((bar, i) => {
-            if(i < idx) {
-            bar.style.transition = 'none';
-            bar.style.width = "100%";
-            } else if(i > idx) {
-            bar.style.transition = 'none';
-            bar.style.width = "0%";
-            } else {
-            // Bar en curso: al tap sin animación, después del tap con animación normal
-            if (isTap) {
-                bar.style.transition = 'none';
-                bar.style.width = "0%";
-                void bar.offsetWidth;
-                bar.style.transition = 'width 0.18s';
-                bar.style.width = "100%";
-            } else {
-                bar.style.transition = `width ${intervalMs-200}ms linear`;
-                bar.style.width = "100%";
-            }
-            }
-        });
-
-        clearTimeout(timer);
-        timer = setTimeout(() => {
-            showStory(idx+1, false);
-        }, intervalMs);
-      }
       function setupStories() {
-        const progressContainer = document.querySelector('.stories-progress');
-        progressContainer.innerHTML = '';
-        progressBars = [];
-        for(let i=0; i<stories.length; i++) {
-            const bar = document.createElement('div');
-            bar.className = "stories-progress-bar";
-            const fill = document.createElement('div');
-            fill.className = "stories-progress-bar-fill";
-            bar.appendChild(fill);
-            progressContainer.appendChild(bar);
-            progressBars.push(fill);
-        }
-        document.querySelector('.stories-photo-frame').onclick = function() {
-            showStory(currentStory+1, true);
-        };
-        showStory(0, false);
+          const progressContainer = document.querySelector('.stories-progress');
+          progressContainer.innerHTML = '';
+          progressBars = [];
+          progressFills = [];
+
+          for (let i = 0; i < stories.length; i++) {
+              const bar = document.createElement('div');
+              bar.className = "stories-progress-bar";
+
+              const fill = document.createElement('div');
+              fill.className = "stories-progress-bar-fill";
+
+              bar.appendChild(fill);
+              progressContainer.appendChild(bar);
+
+              progressBars.push(bar);
+              progressFills.push(fill);
+          }
+
+          document.querySelector('.stories-photo-frame').onclick = function () {
+              if (isAdvancing) return;
+              isAdvancing = true;
+
+              elapsedTime = 0;
+              showStory(currentStory + 1, true);
+
+              setTimeout(() => {
+                  isAdvancing = false;
+              }, 200);
+          };
       }
-      
+
+      function showStory(idx, isTap) {
+          if (idx >= stories.length) {
+              idx = 0;
+          }
+          if (idx < 0) idx = stories.length - 1;
+
+          elapsedTime = 0;
+          storyStartTime = performance.now();
+
+          currentStory = idx;
+          document.getElementById('stories-image').src = stories[idx].img;
+          document.getElementById('stories-caption').textContent = stories[idx].caption;
+
+          progressFills.forEach((fill, i) => {
+              if (lastTransitionHandler) {
+                  fill.removeEventListener('transitionend', lastTransitionHandler);
+              }
+          });
+          lastTransitionHandler = null;
+
+          progressFills.forEach((fill, i) => {
+              if (i < idx) {
+                  fill.style.transition = 'none';
+                  fill.style.width = '100%';
+              } else if (i > idx) {
+                  fill.style.transition = 'none';
+                  fill.style.width = '0%';
+              } else {
+                  fill.style.transition = 'none';
+                  fill.style.width = '0%';
+                  void fill.offsetWidth;
+
+                  const remainingTime = intervalMs;
+
+                  if (isTap) {
+                      fill.style.transition = 'width 0.18s';
+                  } else {
+                      fill.style.transition = `width ${remainingTime}ms linear`;
+                  }
+                  fill.style.width = '100%';
+
+                  lastTransitionHandler = () => {
+                      if (!isPaused) {
+                          showStory(currentStory + 1, false);
+                      }
+                  };
+
+                  fill.addEventListener('transitionend', lastTransitionHandler, { once: true });
+              }
+          });
+      }
+
+      function startStories() {
+          if (progressFills.length === 0) return;
+
+          if (timer == null && currentStory === 0 && progressFills[0].style.width === '0%') {
+              showStory(0, false);
+          }
+
+          if (!timer) {
+              const fill = progressFills[currentStory];
+              const remainingTime = intervalMs - elapsedTime;
+
+              fill.style.transition = `width ${remainingTime}ms linear`;
+              fill.style.width = '100%';
+
+              storyStartTime = performance.now() - elapsedTime;
+
+              timer = setTimeout(() => {
+                  timer = null;
+              }, remainingTime);
+
+              console.log('Stories reanudados');
+          }
+      }
+
+      const observer = new IntersectionObserver(entries => {
+          entries.forEach(entry => {
+              if (progressFills.length === 0) return;
+
+              if (entry.isIntersecting) {
+                  isPaused = false;
+                  startStories();
+              } else {
+                  isPaused = true;
+                  clearTimeout(timer);
+                  timer = null;
+
+                  elapsedTime = performance.now() - storyStartTime;
+
+                  const fill = progressFills[currentStory];
+                  const computedStyle = window.getComputedStyle(fill);
+                  const width = computedStyle.getPropertyValue('width');
+                  const parentWidth = fill.parentElement.offsetWidth;
+                  const percent = (parseFloat(width) / parentWidth) * 100;
+
+                  fill.style.transition = 'none';
+                  fill.style.width = `${percent}%`;
+
+                  console.log('Stories pausados en', percent.toFixed(1), '%');
+              }
+          });
+      }, {
+          threshold: 0.5
+      });
+
+      window.addEventListener('scroll', animateTimeline, {passive: true});
+      window.addEventListener('load', animateTimeline);
+      window.addEventListener('resize', animateTimeline);
+      window.addEventListener('load', () => {
+          setupStories();
+
+          const storiesSection = document.querySelector('.gallery-section');
+          observer.observe(storiesSection);
+      });
     </script>
   </body>
 </html>
