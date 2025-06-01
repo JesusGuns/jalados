@@ -1151,7 +1151,7 @@
           const targetPiece = document.elementFromPoint(touch.clientX, touch.clientY);
           draggedPiece.style.visibility = 'visible';
 
-          if (targetPiece && targetPiece !== draggedPiece && targetPiece.classList.contains('piece')) {
+          if (targetPiece && targetPiece !== draggedPiece && targetPiece.classList.contains('_piece')) {
             swapPieces(draggedPiece, targetPiece);
           }
 
