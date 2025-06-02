@@ -718,13 +718,15 @@
 
       function generateBook() {
         let currentPage = 0;
-        let isFlipping = false;
-        let tempBackCover = null;
+
+        $('#book').empty();
+
+        const pages = [];
 
         Resources.CollageImages.forEach((img, i) => {
           const page = document.createElement('div');
           page.className = 'page';
-          page.style.zIndex = Resources.CollageImages.length - i;
+          page.style.zIndex = totalPages - i;
 
           const backImg = Resources.CollageImages2[i] || '';
 
@@ -733,56 +735,66 @@
             <div class="face back"><img src="${backImg}" alt="Reverso ${i + 1}" /></div>
           `;
 
+          pages.push(page);
+
           page.addEventListener('click', () => {
-            if (i === currentPage && !isFlipping) {
-              isFlipping = true;
+            if (i !== currentPage) return;
 
-              page.classList.add('flipped');
-              currentPage++;
+            page.classList.add('flipped');
+            if (flipSound) {
+              flipSound.currentTime = 0;
+              flipSound.play();
+            }
 
-              if (currentPage === 1) {
-                book.classList.add('shifted');
-                if (currentPage === 1 && tapHint) {
-                  // tapHint.classList.add("shifted");
-                  tapHint.classList.add("hidden");
-                  tapHint.classList.remove("shifted");
+            currentPage++;
+            const esUltima = (currentPage === totalPages);
+            if (esUltima) {
+              currentPage = 0;
+
+              pages.forEach((p, idx) => {
+                p.style.zIndex = totalPages - idx;
+              });
+            }
+
+            if (!esUltima) {
+              setTimeout(() => {
+                if (page.classList.contains('flipped')) {
+                  page.style.zIndex = i;
                 }
+              }, 300);
+            }
+
+            if (i === 0) {
+              book.classList.add('shifted');
+              if (tapHint) {
+                tapHint.classList.add('hidden');
+                tapHint.classList.remove('shifted');
               }
+            }
 
-              if (flipSound) {
-                flipSound.currentTime = 0;
-                flipSound.play();
-              }
+            if (esUltima) {
+              for (let j = totalPages - 1; j >= 0; j--) {
+                const delay = (totalPages - 1 - j) * 400;
+                const p = pages[j];
 
-              // Block clicks while rotating
-              // setTimeout(() => {
-                isFlipping = false;
-              // }, 1000); // equal to the turning time
-
-              // Automatic closing at the end
-              if (currentPage === totalPages) {
-                const allPages = Array.from(document.querySelectorAll('.page')).reverse();
-
-                allPages.forEach((page, index) => {
-                  setTimeout(() => {
-                    page.classList.remove('flipped');
-                  }, index * 400); // time between each sheet
-                });
-
-                // Restart after turning everything over
-                const totalDelay = (allPages.length - 1) * 400 + 750;
                 setTimeout(() => {
-                  currentPage = 0;
-                  book.style.transition = 'transform 1s ease';
-                  book.classList.remove('shifted');
-                  setTimeout(() => {
-                    if (tapHint) {
-                      tapHint.classList.add("fade-in");
-                      tapHint.classList.remove("hidden");
-                    }
-                  }, 1500);
-                }, totalDelay);
+                  p.style.zIndex = totalPages - j;
+                  void p.offsetHeight;
+                  p.classList.remove('flipped');
+                }, delay);
               }
+
+              const totalDelay = (totalPages - 1) * 400 + 750;
+              setTimeout(() => {
+                book.style.transition = 'transform 1s ease';
+                book.classList.remove('shifted');
+                setTimeout(() => {
+                  if (tapHint) {
+                    tapHint.classList.add('fade-in');
+                    tapHint.classList.remove('hidden');
+                  }
+                }, 1500);
+              }, totalDelay);
             }
           });
 
