@@ -9,7 +9,10 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
     <!-- Font Awesome-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
     <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="../css/templates.css">
     <style>
       /* #region ROOT*/
       :root {
@@ -18,26 +21,19 @@
 
       /* #endregion ROOT*/
       /* #region HTML*/
-      html {
-        font-size: 14px;
-      }
-
-      @media (min-width: 768px) {
-        html {
-          font-size: 16px;
-        }
-      }
-
-      html {
-        position: relative;
-        min-height: 100%;
-      }
-
       body {
         font-family: var(--font-Primary);
         min-height: 100%;
         width: 100%;
         color: var(--color_Secondary);
+      }
+
+      /* #endregion HTML*/
+      /* #region General*/
+      img.location-maps {
+        width: 25px;
+        height: 25px;
+        margin-top: -7px;
       }
 
       .subcontainer {
@@ -144,8 +140,9 @@
       .btn {
         display: inline-block;
         padding: 2rem 2rem;
-        background-color: var(--color_Quaternary);
-        text-decoration: none;
+        background-color: var(--color_Quaternary) !important;
+        color: #090703 !important;
+        text-decoration: none !important;
         border-radius: 30px;
         font-weight: bold;
         transition: transform 0.3s ease;
@@ -291,13 +288,6 @@
         animation: _animation-fade-in 4s ease-in-out;
       }
 
-      .location-maps {
-        width: 25px;
-        animation: _animation-pulse-3 0.4s infinite;
-        object-fit: cover;
-        border-radius: 50%;
-      }
-
       #themeSwitcher {
         position: fixed;
         top: 50%;
@@ -356,270 +346,18 @@
         object-fit: contain;
       }
 
-      @media (max-width: 575.98px) {
-        .container {
-          margin: 0;
-          padding: 0;
-        }
-      }
-
-      /* #endregion HTML*/
-      /* #region Animations*/
-      @keyframes _animation-vibrate {
-        0% {
-          transform: translate(0);
-        }
-
-        25% {
-          transform: translate(-1px, 1px);
-        }
-
-        50% {
-          transform: translate(1px, -1px);
-        }
-
-        75% {
-          transform: translate(-1px, -1px);
-        }
-
-        100% {
-          transform: translate(1px, 1px);
-        }
-      }
-
-      @keyframes _animation-shake {
-        0% {
-          transform: translateX(0);
-        }
-
-        15% {
-          transform: translateX(-5px);
-        }
-
-        30% {
-          transform: translateX(5px);
-        }
-
-        45% {
-          transform: translateX(-4px);
-        }
-
-        60% {
-          transform: translateX(4px);
-        }
-
-        75% {
-          transform: translateX(-2px);
-        }
-
-        90% {
-          transform: translateX(2px);
-        }
-
-        100% {
-          transform: translateX(0);
-        }
-      }
-
-      @keyframes _animation-heartbeat {
-        0% {
-          transform: scale(1);
-        }
-
-        30% {
-          transform: scale(1.3);
-        }
-
-        50% {
-          transform: scale(1);
-        }
-
-        70% {
-          transform: scale(1.2);
-        }
-
-        100% {
-          transform: scale(1);
-        }
-      }
-
-      @keyframes _animation-pulse-1 {
-        0% {
-          transform: scale(1);
-        }
-
-        50% {
-          transform: scale(1.1);
-        }
-
-        100% {
-          transform: scale(1);
-        }
-      }
-
-      @keyframes _animation-pulse-2 {
-        0% {
-          transform: scale(1);
-        }
-
-        50% {
-          transform: scale(1.03);
-        }
-
-        100% {
-          transform: scale(1);
-        }
-      }
-
-      @keyframes _animation-pulse-3 {
-        0% {
-          transform: scale(1);
-          box-shadow: 0 0 0 0 rgba(199, 123, 145, 0.4);
-        }
-
-        70% {
-          transform: scale(1.05);
-          box-shadow: 0 0 0 10px rgba(199, 123, 145, 0);
-        }
-
-        100% {
-          transform: scale(1);
-          box-shadow: 0 0 0 0 rgba(199, 123, 145, 0);
-        }
-      }
-
-      @keyframes _animation-fade-in {
-        from {
-          opacity: 0.7;
-          transform: scale(0.95);
-        }
-
-        to {
-          opacity: 1;
-          transform: scale(1);
-        }
-      }
-
-      @keyframes _animation-bounceIn {
-        0% {
-          opacity: 0;
-          transform: scale(0.3);
-        }
-
-        50% {
-          opacity: 1;
-          transform: scale(1.05);
-        }
-
-        70% {
-          transform: scale(0.9);
-        }
-
-        100% {
-          transform: scale(1);
-        }
-      }
-
-      @keyframes _animation-surprise-Bounce {
-        0% {
-          transform: scale(0.3);
-          opacity: 0;
-        }
-
-        60% {
-          transform: scale(1.2);
-          opacity: 1;
-        }
-
-        80% {
-          transform: scale(0.95);
-        }
-
-        100% {
-          transform: scale(1);
-        }
-      }
-
-      @keyframes _animation-hide-Fade-Shrink {
-        0% {
-          opacity: 1;
-          transform: scale(1);
-        }
-
-        100% {
-          opacity: 0;
-          transform: scale(0.8);
-        }
-      }
-
-      @keyframes _animation-float {
-        0%, 100% {
-          transform: translateY(0);
-        }
-        50% {
-          transform: translateY(-10px);
-        }
-      }
-
-      @keyframes _animation-reordenar {
-        to {
-          z-index: 0;
-        }
-      }
-
-      /* #endregion Animations*/
-      /* #region General*/
-      @media (max-width: 575.98px) {
-       
-      }
       /* #endregion General*/
       /* #region Audio*/
-      #audioButton {
-        filter: hue-rotate(var(--filter-AudioButton));
-        animation: _animation-pulse-1 1.5s infinite;
-        position: fixed;
-        right: 1%;
-        top: 11%;
-        z-index: 3;
+      ._template-Audio-Button.on {
+        filter: hue-rotate(var(--filter-AudioButton)) !important;
       }
 
-      #audioButton.off {
-        animation: _animation-vibrate 0.4s infinite;
-      }
-
-      #audioButton img {
-        width: 45px;
-        cursor: pointer;
-      }
-
-      @media (max-width: 575.98px) {
-        #audioButton {
-          top: 15%;
-        }
-
-        #audioButton img {
-          width: 40px;
-        }
+      ._template-Audio-Button.off {
+        filter: hue-rotate(var(--filter-AudioButton)) !important;
       }
 
       /* #endregion Audio*/
-      /* #region Counter*/
-     
-
-      @media (max-width: 575.98px) {
-       
-      }
-
-      @media (max-width: 375.98px) {
-       
-      }
-
-      /* #endregion Counter*/
       /* #region Main Section*/
-      @media (max-width: 767.98px) {
-
-      }
-
       @media (max-width: 575.98px) {
         .imgMain.themeBoy {
           width: 104%;
@@ -676,7 +414,6 @@
       }
 
       /* #endregion Main Section*/
-
     </style>
   </head>
   <body>
@@ -685,7 +422,7 @@
         <div id="player">
           <audio id="audio" src="#" data-replace="AudioUrl" loop></audio>
         </div>
-        <span id="audioButton" class="off">
+        <span id="audioButton" class="_template-Audio-Button on off">
           <img src="#" data-replace="Image_AudioUrl" alt="Audio" />
         </span>
         <!-- Initial section -->
