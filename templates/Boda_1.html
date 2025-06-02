@@ -9,7 +9,10 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
     <!-- Font Awesome-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
     <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="../css/templates.css">
     <style>
       /* #region ROOT*/
       :root {
@@ -21,27 +24,24 @@
 
       /* #endregion ROOT*/
       /* #region HTML*/
-      html {
-        font-size: 14px;
-      }
-
-      @media (min-width: 768px) {
-        html {
-          font-size: 16px;
-        }
-      }
-
-      html {
-        position: relative;
-        min-height: 100%;
-      }
-
       body {
         background: var(--main-bg);
         font-family: var(--font-Primary);
         margin: 0;
         min-height: 100vh;
       }
+
+      /* #endregion HTML*/
+      /* #region Animations*/
+      @keyframes heroTitle {
+        0% {opacity:0; transform:translate(-50%,30px);}
+        100%{opacity:1; transform:translate(-50%,-50%);}
+      }
+
+      @keyframes fadein { from { opacity: 0; transform: translateY(30px);} to { opacity:1; transform: none; } }
+
+      /* #endregion Animations*/
+      /* #region General*/
       .hero-novios {
         position: relative;
         width: 100%;
@@ -52,6 +52,7 @@
         margin-bottom: 1.5rem;
         min-height: 210px;
       }
+
       .hero-novios img {
         width: 100%;
         height: 100%;
@@ -59,6 +60,7 @@
         object-fit: cover; /* la imagen se adapta a la caja */
         filter: brightness(0.57) blur(0.1px);
       }
+
       .hero-title {
         position: absolute;
         top: 49%;
@@ -75,6 +77,7 @@
         width: 92%;
         animation: heroTitle 1.4s both;
       }
+
       .invitation-container {
         max-width: 610px;
         background: var(--timeline-bg);
@@ -85,12 +88,14 @@
         position: relative;
         text-align: center;
       }
+
       .floral-header {
         width: 100px;
         margin: 0 auto 1.2rem auto;
         display: block;
         filter: drop-shadow(0 5px 18px #b07fcb28);
       }
+
       .section-title {
         font-family: var(--font-Primary);
         color: var(--color_Secondary);
@@ -98,7 +103,8 @@
         margin: 2.2rem 0 1.4rem 0;
         letter-spacing: 1px;
       }
-      /* Novios individuales */
+
+      /* Couple */
       .couple-section {
         display: flex;
         align-items: flex-end;
@@ -107,6 +113,7 @@
         flex-wrap: wrap;
         margin-bottom: 2.3rem;
       }
+
       .couple-card {
         background: var(--glass-bg);
         backdrop-filter: blur(var(--glass-blur));
@@ -122,6 +129,7 @@
         margin-bottom: 1.2rem;
         animation: fadein 1.1s;
       }
+
       .couple-photo {
         width: 74px;
         height: 74px;
@@ -132,6 +140,7 @@
         box-shadow: 0 2px 12px #b07fcb17;
         background: #fff;
       }
+
       .couple-name {
         font-family: var(--font-Primary);
         color: var(--color_Tertiary);
@@ -140,12 +149,14 @@
         margin-bottom: 0.15rem;
         margin-top: 0;
       }
+
       .couple-desc {
         color: #a9a0b3;
         font-size: 1.02rem;
         margin-bottom: 0.2rem;
       }
-      /* Padres (separados) */
+
+      /* Parents */
       .parents-section {
         display: flex;
         justify-content: center;
@@ -153,6 +164,7 @@
         margin-bottom: 2.1rem;
         flex-wrap: wrap;
       }
+
       .parent-card {
         width: 95%;
         max-width: 420px;
@@ -171,6 +183,7 @@
         gap: 0.1rem;
         margin-bottom: 1.1rem;
       }
+
       .parent-photo-unique {
         width: 150px;
         height: 150px;
@@ -181,6 +194,7 @@
         box-shadow: 0 3px 13px #b07fcb22;
         background: #fff;
       }
+
       .parent-title {
         font-family: var(--font-Primary);
         color: var(--color_Tertiary);
@@ -188,17 +202,20 @@
         margin-bottom: 0.12rem;
         margin-top: 0.5em;
       }
+
       .parent-names {
         color: var(--color_Tertiary);
         font-size: 1.02rem;
         margin-bottom: 0.05rem;
         line-height: 1.27;
       }
-      /* Padrinos cute tipo FaceTime/Instagram */
+
+      /* Godparents */
       .godparents-section {
         margin: 2.5rem 0 2.1rem 0;
         text-align: center;
       }
+
       .godparents-title {
         font-family: var(--font-Primary);
         color: var(--color_Tertiary);
@@ -213,6 +230,7 @@
         text-shadow: 0 1px 13px #b07fcb13;
         animation: padrinosFade 1.6s both;
       }
+
       .godparents-list {
         display: flex;
         flex-direction: column;
@@ -220,6 +238,7 @@
         align-items: center;
         justify-content: center;
       }
+
       .godparent-card-cute {
         width: 99%;
         max-width: 420px;
@@ -238,13 +257,14 @@
         transition: transform 0.19s, box-shadow 0.25s;
         overflow: hidden;
       }
+
       .godparent-card-cute:hover {
-        /* transform: scale(1.035) rotate(-1.5deg); */
         box-shadow: 0 9px 30px #b07fcb48, 0 4px 13px #81b8df22;
         border-color: #b07fcbcc;
         background: rgba(255,255,255,0.95);
         z-index: 2;
       }
+
       .godparent-avatar {
         width: 67px;
         height: 67px;
@@ -257,10 +277,12 @@
         flex-shrink: 0;
         margin-right: 0.4rem;
       }
+
       .godparent-details-cute {
         flex: 1;
         text-align: left;
       }
+
       .godparent-role-cute {
         color: var(--color_Secondary);
         font-size: 1.11rem;
@@ -269,6 +291,7 @@
         letter-spacing: 0.6px;
         font-family: var(--font-Primary);
       }
+
       .godparent-names-cute {
         color: var(--color_Primary);
         font-size: 1.14rem;
@@ -278,6 +301,7 @@
         margin-top: 0;
         font-weight: 400;
       }
+
       .godparent-emoji {
         position: absolute;
         bottom: 2.5rem;
@@ -288,7 +312,8 @@
         opacity: 0.86;
         z-index: 3;
       }
-      /* Timeline pastel (igual que antes) */
+
+      /* Timeline */
       .timeline-section {
         margin: 2.6rem 0 2rem 0;
         padding: 0 0.2rem;
@@ -317,13 +342,13 @@
         height: calc(100% - 36px);
         background: linear-gradient(
           180deg,
-          #f9c5d1 0%,   /* rosa pastel claro */
-          #e0bbe4 50%,  /* lila pastel */
-          #c9f0ff 100%  /* azul pastel */
+          #f9c5d1 0%,
+          #e0bbe4 50%,
+          #c9f0ff 100%
         );
         border-radius: 3.5px;
         box-shadow: 0 0 8px rgba(232, 203, 225, 0.6); 
-        z-index: 1; /* debe quedar detrás de los puntos */
+        z-index: 1;
       }
       .timeline-progress {
         content: '';
@@ -333,13 +358,13 @@
         width: 7px;
         background: linear-gradient(
           180deg,
-          rgba(249, 197, 209, 0.9) 0%,   /* rosa pastel ligeramente más saturado */
-          rgba(224, 187, 228, 0.9) 60%,  /* lila pastel suave */
-          rgba(201, 240, 255, 0.9) 100%  /* azul pastel suave */
+          rgba(249, 197, 209, 0.9) 0%,
+          rgba(224, 187, 228, 0.9) 60%,
+          rgba(201, 240, 255, 0.9) 100%
         );
         box-shadow: 0 0 6px rgba(224, 187, 228, 0.6);
         border-radius: 3.5px;
-        z-index: 2; /* entre la línea base (1) y los puntos (2 o 3) */
+        z-index: 2;
         transition: height 0.38s cubic-bezier(.62,1.17,.53,1.04);
         pointer-events: none;
       }
@@ -418,7 +443,8 @@
         margin-left: 3px;
         margin-bottom: 0;
       }
-      /* Galería tipo historias Instagram */
+
+      /* Gallery Instagram */
       .gallery-section {
         margin: 2.8rem 0 2.1rem 0;
         padding: 0;
@@ -484,7 +510,6 @@
       }
       .stories-photo-frame:hover {
         box-shadow: 0 9px 40px #b07fcb44, 0 5px 20px #f9a5b739;
-        /* transform: scale(1.03) rotate(-1deg); */
       }
       .stories-photo-frame img {
         width: 99%;
@@ -570,273 +595,17 @@
         object-fit: contain;
       }
 
-      @media (max-width: 575.98px) {
-        .container {
-          margin: 0;
-          padding: 0;
-        }
-      }
-
-      /* #endregion HTML*/
-      /* #region Animations*/
-      @keyframes _animation-vibrate {
-        0% {
-          transform: translate(0);
-        }
-
-        25% {
-          transform: translate(-1px, 1px);
-        }
-
-        50% {
-          transform: translate(1px, -1px);
-        }
-
-        75% {
-          transform: translate(-1px, -1px);
-        }
-
-        100% {
-          transform: translate(1px, 1px);
-        }
-      }
-
-      @keyframes _animation-shake {
-        0% {
-          transform: translateX(0);
-        }
-
-        15% {
-          transform: translateX(-5px);
-        }
-
-        30% {
-          transform: translateX(5px);
-        }
-
-        45% {
-          transform: translateX(-4px);
-        }
-
-        60% {
-          transform: translateX(4px);
-        }
-
-        75% {
-          transform: translateX(-2px);
-        }
-
-        90% {
-          transform: translateX(2px);
-        }
-
-        100% {
-          transform: translateX(0);
-        }
-      }
-
-      @keyframes _animation-heartbeat {
-        0% {
-          transform: scale(1);
-        }
-
-        30% {
-          transform: scale(1.3);
-        }
-
-        50% {
-          transform: scale(1);
-        }
-
-        70% {
-          transform: scale(1.2);
-        }
-
-        100% {
-          transform: scale(1);
-        }
-      }
-
-      @keyframes _animation-pulse-1 {
-        0% {
-          transform: scale(1);
-        }
-
-        50% {
-          transform: scale(1.1);
-        }
-
-        100% {
-          transform: scale(1);
-        }
-      }
-
-      @keyframes _animation-pulse-2 {
-        0% {
-          transform: scale(1);
-        }
-
-        50% {
-          transform: scale(1.03);
-        }
-
-        100% {
-          transform: scale(1);
-        }
-      }
-
-      @keyframes _animation-pulse-3 {
-        0% {
-          transform: scale(1);
-          box-shadow: 0 0 0 0 rgba(199, 123, 145, 0.4);
-        }
-
-        70% {
-          transform: scale(1.05);
-          box-shadow: 0 0 0 10px rgba(199, 123, 145, 0);
-        }
-
-        100% {
-          transform: scale(1);
-          box-shadow: 0 0 0 0 rgba(199, 123, 145, 0);
-        }
-      }
-
-      @keyframes _animation-fade-in {
-        from {
-          opacity: 0.7;
-          transform: scale(0.95);
-        }
-
-        to {
-          opacity: 1;
-          transform: scale(1);
-        }
-      }
-
-      @keyframes _animation-bounceIn {
-        0% {
-          opacity: 0;
-          transform: scale(0.3);
-        }
-
-        50% {
-          opacity: 1;
-          transform: scale(1.05);
-        }
-
-        70% {
-          transform: scale(0.9);
-        }
-
-        100% {
-          transform: scale(1);
-        }
-      }
-
-      @keyframes _animation-surprise-Bounce {
-        0% {
-          transform: scale(0.3);
-          opacity: 0;
-        }
-
-        60% {
-          transform: scale(1.2);
-          opacity: 1;
-        }
-
-        80% {
-          transform: scale(0.95);
-        }
-
-        100% {
-          transform: scale(1);
-        }
-      }
-
-      @keyframes _animation-hide-Fade-Shrink {
-        0% {
-          opacity: 1;
-          transform: scale(1);
-        }
-
-        100% {
-          opacity: 0;
-          transform: scale(0.8);
-        }
-      }
-
-      @keyframes _animation-float {
-        0%, 100% {
-          transform: translateY(0);
-        }
-        50% {
-          transform: translateY(-10px);
-        }
-      }
-
-      @keyframes _animation-reordenar {
-        to {
-          z-index: 0;
-        }
-      }
-
-      @keyframes heroTitle {
-        0% {opacity:0; transform:translate(-50%,30px);}
-        100%{opacity:1; transform:translate(-50%,-50%);}
-      }
-      
-      /* Animaciones suaves */
-      @keyframes fadein { from { opacity: 0; transform: translateY(30px);} to { opacity:1; transform: none; } }
-
-      /* #endregion Animations*/
-      /* #region General*/
-      @media (max-width: 575.98px) {
-       
-      }
       /* #endregion General*/
       /* #region Audio*/
-      #audioButton {
-        filter: hue-rotate(var(--filter-AudioButton));
-        animation: _animation-pulse-1 1.5s infinite;
-        position: fixed;
-        right: 1%;
-        top: 11%;
-        z-index: 3;
+      ._template-Audio-Button.on {
+        filter: hue-rotate(var(--filter-AudioButton)) !important;
       }
 
-      #audioButton.off {
-        animation: _animation-vibrate 0.4s infinite;
-      }
-
-      #audioButton img {
-        width: 45px;
-        cursor: pointer;
-      }
-
-      @media (max-width: 575.98px) {
-        #audioButton {
-          top: 15%;
-        }
-
-        #audioButton img {
-          width: 40px;
-        }
+      ._template-Audio-Button.off {
+        filter: hue-rotate(var(--filter-AudioButton)) !important;
       }
 
       /* #endregion Audio*/
-      /* #region Counter*/
-     
-
-      @media (max-width: 575.98px) {
-       
-      }
-
-      @media (max-width: 375.98px) {
-       
-      }
-
-      /* #endregion Counter*/
       /* #region Main Section*/
       @media (max-width: 767.98px) {
         .hero-title {
@@ -927,8 +696,6 @@
         }
       }
 
-
-      /* Responsive */
       @media (max-width: 700px) {
         .invitation-container { max-width: 80vw;}
         .hero-title { font-size: 1.45rem;}
@@ -939,16 +706,13 @@
         .stories-photo-frame img {height: 82%;}
       }
       @media (max-width: 550px) {
-        /* .parents-section { flex-direction: column; gap:0.7rem;} */
         .parent-card { max-width:99vw;}
       }
       @media (max-width: 400px) {
         .parent-card, .godparent-card-cute { padding:0.7rem;}
       }
 
-
       /* #endregion Main Section*/
-
     </style>
   </head>
   <body>
@@ -957,7 +721,7 @@
         <div id="player">
           <audio id="audio" src="#" data-replace="AudioUrl" loop></audio>
         </div>
-        <span id="audioButton" class="off">
+        <span id="audioButton" class="_template-Audio-Button on off">
           <img src="#" data-replace="Image_AudioUrl" alt="Audio" />
         </span>
         <!-- Initial section -->
@@ -968,22 +732,18 @@
         <div class="invitation-container">
           <img src="https://images.vexels.com/media/users/3/127731/isolated/preview/2b70133359ee29fa8d69d5f5f4998e27-adorno-floral-linea-pin.png" class="floral-header" alt="Decoración floral">
 
-          <!-- Novios individuales -->
           <div class="section-title">Los Novios</div>
           <div class="couple-section">
             <div class="couple-card">
               <img src="https://randomuser.me/api/portraits/women/65.jpg" class="couple-photo" alt="Novia">
               <div class="couple-name">Camila Torres</div>
-              <!-- <div class="couple-desc">Romántica, soñadora y la mejor compañera de aventuras.</div> -->
             </div>
             <div class="couple-card">
               <img src="https://randomuser.me/api/portraits/men/47.jpg" class="couple-photo" alt="Novio">
               <div class="couple-name">Iván Méndez</div>
-              <!-- <div class="couple-desc">Apasionado, divertido y el cómplice perfecto de Camila.</div> -->
             </div>
           </div>
-          
-          <!-- Padres separados -->
+
           <div class="section-title">Padres de la Novia</div>
           <div class="parents-section">
             <div class="parent-card">
@@ -999,7 +759,6 @@
             </div>
           </div>
 
-          <!-- Padrinos cute tipo perfil Instagram/Facetime -->
           <div class="godparents-section">
             <div class="godparents-title">Nuestros Padrinos</div>
             <div class="godparents-list">
@@ -1094,7 +853,7 @@
             </div>
           </section>
 
-          <!-- Galería tipo historias Instagram -->
+          <!-- Gallery Instagram -->
           <div class="gallery-section">
             <div class="gallery-title">¡Nuestros recuerdos más bonitos!</div>
             <div class="stories-gallery">
@@ -1106,7 +865,7 @@
             </div>
           </div>
 
-          <!-- Confirmar -->
+          <!-- Confirm -->
         </div>
       </main>
     </div>

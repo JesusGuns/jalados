@@ -722,6 +722,7 @@
         $('#book').empty();
 
         const pages = [];
+        const flipTimeouts = new Array(totalPages).fill(null);
 
         Resources.CollageImages.forEach((img, i) => {
           const page = document.createElement('div');
@@ -757,10 +758,14 @@
             }
 
             if (!esUltima) {
-              setTimeout(() => {
+              if (flipTimeouts[i] !== null) {
+                clearTimeout(flipTimeouts[i]);
+              }
+              flipTimeouts[i] = setTimeout(() => {
                 if (page.classList.contains('flipped')) {
                   page.style.zIndex = i;
                 }
+                flipTimeouts[i] = null;
               }, 300);
             }
 
@@ -781,6 +786,10 @@
                   p.style.zIndex = totalPages - j;
                   void p.offsetHeight;
                   p.classList.remove('flipped');
+                  if (flipTimeouts[j] !== null) {
+                    clearTimeout(flipTimeouts[j]);
+                    flipTimeouts[j] = null;
+                  }
                 }, delay);
               }
 
