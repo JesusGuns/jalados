@@ -68,7 +68,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const captions = {
         cumpleanos: [
-            '<a href="./templates/Cumpleaños_1.html">Boda 1</a>',
+            '<a href="./templates/Birthday_1.html">Boda 1</a>',
             "Cumpleaños 2",
             "Cumpleaños 3"
         ],
@@ -83,7 +83,7 @@ document.addEventListener('DOMContentLoaded', function () {
             '<a href="./templates/XV_3.html">XV Años 3</a>'
         ],
         bodas: [
-            '<a href="./templates/Boda_1.html">Boda 1</a>',
+            '<a href="./templates/Wedding_1.html">Boda 1</a>',
             "Bodas 2",
             "Bodas 3"
         ]
