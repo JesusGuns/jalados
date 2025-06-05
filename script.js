@@ -4,7 +4,6 @@ document.addEventListener('DOMContentLoaded', function () {
     const imageNames = ['a.jpg', 'b.jpg', 'c.jpg', 'd.jpg'];
     let isFirst = true;
 
-
     imageNames.forEach(name => {
         const div = document.createElement('div');
         div.className = 'carousel-item' + (isFirst ? ' active' : '');
@@ -67,13 +66,27 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-
-  
     const captions = {
-    cumpleanos: ["Cumpleaños 1", "Cumpleaños 2", "Cumpleaños 3"],
-    babyshower: ['<a href="./templates/BabyShower_1.html">Baby Shower 1</a>', "Baby Shower 2", "Baby Shower 3"],
-    xvanos: ['<a href="./templates/XV_1.html">XV Años 1</a>', '<a href="./templates/XV_2.html">XV Años 2</a>', '<a href="./templates/XV_3.html">XV Años 3</a>'],
-    bodas: ['<a href="./templates/Boda_1.html">Boda 1</a>', "Bodas 2", "Bodas 3"]
+        cumpleanos: [
+            '<a href="./templates/Birthday_1.html">Boda 1</a>',
+            "Cumpleaños 2",
+            "Cumpleaños 3"
+        ],
+        babyshower: [
+            '<a href="./templates/BabyShower_1.html">Baby Shower 1</a>',
+            "Baby Shower 2",
+            "Baby Shower 3"
+        ],
+        xvanos: [
+            '<a href="./templates/XV_1.html">XV Años 1</a>',
+            '<a href="./templates/XV_2.html">XV Años 2</a>',
+            '<a href="./templates/XV_3.html">XV Años 3</a>'
+        ],
+        bodas: [
+            '<a href="./templates/Wedding_1.html">Boda 1</a>',
+            "Bodas 2",
+            "Bodas 3"
+        ]
     };
 
     function createSwiper(selector, captionsId, captionsArr) {
@@ -95,5 +108,3 @@ document.addEventListener('DOMContentLoaded', function () {
     createSwiper(".xvanosSwiper", "xvanosCaption", captions.xvanos);
     createSwiper(".bodasSwiper", "bodasCaption", captions.bodas);
 });
-
-

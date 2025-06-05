@@ -1,0 +1,1335 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" href="https://genesistoxical.com/wp-content/uploads/2023/02/Corazon_png_vector.png">
+    <title>Invitación Boda</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- Font Awesome-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="../css/templates.css">
+    <style>
+      /* #region ROOT*/
+      :root {
+        --main-bg: linear-gradient(135deg, #fff6fc 0%, #f2f8ff 100%);
+        --glass-bg: rgba(255, 255, 255, 0.87);
+        --glass-blur: 14px;
+        --font-Primary: 'Indie Flower';
+      }
+
+      /* #endregion ROOT*/
+      /* #region HTML*/
+      body {
+        background: var(--main-bg);
+        font-family: var(--font-Primary);
+        margin: 0;
+        min-height: 100vh;
+      }
+
+      /* #endregion HTML*/
+      /* #region Animations*/
+      @keyframes heroTitle {
+        0% {opacity:0; transform:translate(-50%,30px);}
+        100%{opacity:1; transform:translate(-50%,-50%);}
+      }
+
+      @keyframes fadein { from { opacity: 0; transform: translateY(30px);} to { opacity:1; transform: none; } }
+
+      /* #endregion Animations*/
+      /* #region General*/
+      .hero-novios {
+        position: relative;
+        width: 100%;
+        max-width: 700px;
+        margin: 0 auto;
+        overflow: hidden;
+        box-shadow: 0 6px 30px #b07fcb27;
+        margin-bottom: 1.5rem;
+        min-height: 210px;
+      }
+
+      .hero-novios img {
+        width: 100%;
+        height: 100%;
+        display: block;
+        object-fit: cover; /* la imagen se adapta a la caja */
+        filter: brightness(0.57) blur(0.1px);
+      }
+
+      .hero-title {
+        position: absolute;
+        top: 49%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        color: #fff;
+        text-shadow: 0 3px 14px #b07fcb60, 0 1px 7px #0008;
+        font-size: 2.6rem;
+        font-family: var(--font-Primary);
+        letter-spacing: 2px;
+        z-index: 2;
+        text-align: center;
+        line-height: 1.15;
+        width: 92%;
+        animation: heroTitle 1.4s both;
+      }
+
+      .invitation-container {
+        max-width: 610px;
+        background: var(--timeline-bg);
+        border-radius: 26px;
+        box-shadow: 0 6px 30px #b07fcb24;
+        margin: 0 auto 2rem auto;
+        padding: 2.2rem 1.1rem 2.2rem 1.1rem;
+        position: relative;
+        text-align: center;
+      }
+
+      .floral-header {
+        width: 100px;
+        margin: 0 auto 1.2rem auto;
+        display: block;
+        filter: drop-shadow(0 5px 18px #b07fcb28);
+      }
+
+      .section-title {
+        font-family: var(--font-Primary);
+        color: var(--color_Secondary);
+        font-size: 1.28rem;
+        margin: 2.2rem 0 1.4rem 0;
+        letter-spacing: 1px;
+      }
+
+      /* Couple */
+      .couple-section {
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+        gap: 2.1rem;
+        flex-wrap: wrap;
+        margin-bottom: 2.3rem;
+      }
+
+      .couple-card {
+        background: var(--glass-bg);
+        backdrop-filter: blur(var(--glass-blur));
+        border-radius: 18px;
+        box-shadow: var(--card-shadow);
+        padding: 1.1rem 1.2rem 1.3rem 1.2rem;
+        min-width: 135px;
+        max-width: 220px;
+        flex: 1 1 120px;
+        border: var(--border-soft);
+        text-align: center;
+        position: relative;
+        margin-bottom: 1.2rem;
+        animation: fadein 1.1s;
+      }
+
+      .couple-photo {
+        width: 74px;
+        height: 74px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin-bottom: 0.7rem;
+        border: 3px solid #e3caff;
+        box-shadow: 0 2px 12px #b07fcb17;
+        background: #fff;
+      }
+
+      .couple-name {
+        font-family: var(--font-Primary);
+        color: var(--color_Tertiary);
+        font-size: 1.22rem;
+        font-weight: 400;
+        margin-bottom: 0.15rem;
+        margin-top: 0;
+      }
+
+      .couple-desc {
+        color: #a9a0b3;
+        font-size: 1.02rem;
+        margin-bottom: 0.2rem;
+      }
+
+      /* Parents */
+      .parents-section {
+        display: flex;
+        justify-content: center;
+        gap: 1.8rem;
+        margin-bottom: 2.1rem;
+        flex-wrap: wrap;
+      }
+
+      .parent-card {
+        width: 95%;
+        max-width: 420px;
+        background: var(--glass-bg);
+        backdrop-filter: blur(var(--glass-blur));
+        border-radius: 18px;
+        box-shadow: var(--card-shadow);
+        border: var(--border-soft);
+        padding: 1.1rem 1.2rem 1.2rem 1.2rem;
+        text-align: center;
+        animation: fadein 1.3s;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.1rem;
+        margin-bottom: 1.1rem;
+      }
+
+      .parent-photo-unique {
+        width: 150px;
+        height: 150px;
+        border-radius: 18px;
+        object-fit: cover;
+        margin-bottom: 0.7rem;
+        border: 3px solid #b07fcb77;
+        box-shadow: 0 3px 13px #b07fcb22;
+        background: #fff;
+      }
+
+      .parent-title {
+        font-family: var(--font-Primary);
+        color: var(--color_Tertiary);
+        font-size: 1.10rem;
+        margin-bottom: 0.12rem;
+        margin-top: 0.5em;
+      }
+
+      .parent-names {
+        color: var(--color_Tertiary);
+        font-size: 1.02rem;
+        margin-bottom: 0.05rem;
+        line-height: 1.27;
+      }
+
+      /* Godparents */
+      .godparents-section {
+        margin: 2.5rem 0 2.1rem 0;
+        text-align: center;
+      }
+
+      .godparents-title {
+        font-family: var(--font-Primary);
+        color: var(--color_Tertiary);
+        font-size: 1.25rem;
+        margin-bottom: 1.2rem;
+        letter-spacing: 0.7px;
+        text-align: center;
+        background: linear-gradient(90deg, #b07fcb22 60%, #81b8df19 100%);
+        padding: 0.6em 0;
+        border-radius: 18px;
+        font-weight: 400;
+        text-shadow: 0 1px 13px #b07fcb13;
+        animation: padrinosFade 1.6s both;
+      }
+
+      .godparents-list {
+        display: flex;
+        flex-direction: column;
+        gap: 1.35rem;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .godparent-card-cute {
+        width: 99%;
+        max-width: 420px;
+        min-height: 100px;
+        background: var(--glass-bg);
+        backdrop-filter: blur(17px);
+        border-radius: 32px;
+        box-shadow: 0 7px 22px #b07fcb17, 0 2px 8px #81b8df13;
+        border: 3.2px solid #f9a5b7a0;
+        display: flex;
+        align-items: center;
+        padding: 1.1rem 1.2rem;
+        gap: 1.35rem;
+        animation: fadein 0.9s;
+        position: relative;
+        transition: transform 0.19s, box-shadow 0.25s;
+        overflow: hidden;
+      }
+
+      .godparent-card-cute:hover {
+        box-shadow: 0 9px 30px #b07fcb48, 0 4px 13px #81b8df22;
+        border-color: #b07fcbcc;
+        background: rgba(255,255,255,0.95);
+        z-index: 2;
+      }
+
+      .godparent-avatar {
+        width: 67px;
+        height: 67px;
+        border-radius: 50%;
+        background: #fff;
+        object-fit: cover;
+        box-shadow: 0 5px 25px #f9a5b722, 0 1px 7px #81b8df17;
+        border: 3px solid #b07fcb55;
+        position: relative;
+        flex-shrink: 0;
+        margin-right: 0.4rem;
+      }
+
+      .godparent-details-cute {
+        flex: 1;
+        text-align: left;
+      }
+
+      .godparent-role-cute {
+        color: var(--color_Secondary);
+        font-size: 1.11rem;
+        font-weight: bold;
+        margin-bottom: 0.21em;
+        letter-spacing: 0.6px;
+        font-family: var(--font-Primary);
+      }
+
+      .godparent-names-cute {
+        color: var(--color_Primary);
+        font-size: 1.14rem;
+        font-family: var(--font-Primary);
+        letter-spacing: 1.2px;
+        margin-bottom: 0.06rem;
+        margin-top: 0;
+        font-weight: 400;
+      }
+
+      .godparent-emoji {
+        position: absolute;
+        bottom: 2.5rem;
+        right: 1.1rem;
+        font-size: 2.15em;
+        filter: drop-shadow(0 2px 6px #f9a5b7a2);
+        pointer-events: none;
+        opacity: 0.86;
+        z-index: 3;
+      }
+
+      /* Timeline */
+      .timeline-section {
+        margin: 2.6rem 0 2rem 0;
+        padding: 0 0.2rem;
+        text-align: left;
+      }
+      .timeline {
+        position: relative;
+        margin-left: 38px;
+        padding-left: 0px;
+        min-height: 260px;
+      }
+      .timeline::before,
+      .timeline-progress {
+        content: '';
+        position: absolute;
+        left: 12px;
+        width: 7px;
+        border-radius: 3.5px;
+      }
+      .timeline::before {
+        content: '';
+        position: absolute;
+        left: 12px;
+        top: 18px;
+        width: 7px; 
+        height: calc(100% - 36px);
+        background: linear-gradient(
+          180deg,
+          #f9c5d1 0%,
+          #e0bbe4 50%,
+          #c9f0ff 100%
+        );
+        border-radius: 3.5px;
+        box-shadow: 0 0 8px rgba(232, 203, 225, 0.6); 
+        z-index: 1;
+      }
+      .timeline-progress {
+        content: '';
+        position: absolute;
+        left: 12px;
+        top: 18px;
+        width: 7px;
+        background: linear-gradient(
+          180deg,
+          rgba(249, 197, 209, 0.9) 0%,
+          rgba(224, 187, 228, 0.9) 60%,
+          rgba(201, 240, 255, 0.9) 100%
+        );
+        box-shadow: 0 0 6px rgba(224, 187, 228, 0.6);
+        border-radius: 3.5px;
+        z-index: 2;
+        transition: height 0.38s cubic-bezier(.62,1.17,.53,1.04);
+        pointer-events: none;
+      }
+      .timeline-event {
+        position: relative;
+        margin-bottom: 44px;
+        opacity: 0;
+        transform: translateY(56px) scale(0.96);
+        transition: all 0.65s cubic-bezier(.46,1.48,.56,1);
+        z-index: 2;
+        display: flex;
+        align-items: flex-start;
+        min-height: 66px;
+        padding-top: 0;
+        padding-bottom: 2px;
+      }
+      .timeline-event:last-child { margin-bottom: 0; }
+      .timeline-event.visible {
+        opacity: 1;
+        transform: translateY(0) scale(1.0);
+      }
+      .timeline-dot {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 31px;
+        height: 31px;
+        background: #f0edfc;
+        border: 4px solid #f9a5b7;
+        border-radius: 50%;
+        z-index: 3;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: border-color 0.4s, background 0.4s, box-shadow 0.33s;
+      }
+      .timeline-event.active .timeline-dot {
+        border-color: #81b8df;
+        background: #f0edfc;
+        box-shadow: 0 0 0 8px #b07fcb26, 0 3px 18px #b07fcb18;
+      }
+      .timeline-event.visible .timeline-dot {
+        border-color: #b07fcb;
+      }
+      .timeline-dot svg {
+        width: 17px; height: 17px; display: block;
+      }
+      .timeline-event-content {
+        margin-left: 46px;
+        flex: 1;
+        background: #fff6fcdd;
+        border-radius: 10px;
+        padding: 10px 16px 6px 16px;
+        box-shadow: 0 1px 11px #b07fcb17;
+        transition: box-shadow 0.18s;
+        border: 1.7px solid #f9a5b73b;
+        position: relative;
+      }
+      .timeline-event.active .timeline-event-content {
+        border: 1.7px solid #81b8df;
+        box-shadow: 0 3px 24px #81b8df25;
+      }
+      .timeline-time {
+        font-family: var(--font-Primary);
+        font-size: 1.05rem;
+        color: var(--color_Primary);
+        font-weight: 700;
+        margin-bottom: 2px;
+        margin-left: 3px;
+        letter-spacing: 1px;
+      }
+      .timeline-desc {
+        color: #965a8d;
+        font-size: 1.01rem;
+        font-weight: 400;
+        margin-left: 3px;
+        margin-bottom: 0;
+      }
+
+      /* Gallery Instagram */
+      .gallery-section {
+        margin: 2.8rem 0 2.1rem 0;
+        padding: 0;
+      }
+      .gallery-title {
+        font-family: var(--font-Primary);
+        color: var(--color_Tertiary);
+        font-size: 1.23rem;
+        margin-bottom: 1.3rem;
+        text-align: center;
+        letter-spacing: 0.7px;
+      }
+      .stories-gallery {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: relative;
+        width: 100%;
+        max-width: 340px;
+        margin: 0 auto;
+      }
+      .stories-progress {
+        width: 100%;
+        height: 6px;
+        display: flex;
+        gap: 5px;
+        margin-bottom: 0.7em;
+        position: relative;
+        z-index: 5;
+      }
+      .stories-progress-bar {
+        flex: 1;
+        background: #e3caff;
+        border-radius: 5px;
+        overflow: hidden;
+        position: relative;
+        height: 100%;
+      }
+      .stories-progress-bar-fill {
+        background: linear-gradient(90deg, #b07fcb, #81b8df 70%);
+        height: 100%;
+        width: 0%;
+        transition: width 0.21s;
+      }
+      .stories-photo-frame {
+        background: #fff;
+        border-radius: 22px;
+        box-shadow: 0 5px 32px #b07fcb22, 0 1px 9px #f9a5b720;
+        padding: 0.5em 0.5em 2em 0.5em;
+        width: 100%;
+        max-width: 320px;
+        min-height: 430px;
+        aspect-ratio: 4/5;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-end;
+        position: relative;
+        cursor: pointer;
+        user-select: none;
+        overflow: hidden;
+        transition: box-shadow 0.18s, transform 0.16s;
+      }
+      .stories-photo-frame:hover {
+        box-shadow: 0 9px 40px #b07fcb44, 0 5px 20px #f9a5b739;
+      }
+      .stories-photo-frame img {
+        width: 99%;
+        height: 89%;
+        object-fit: cover;
+        border-radius: 15px;
+        box-shadow: 0 2px 16px #81b8df17;
+        background: #faf7fc;
+        display: block;
+        margin-top: 6px;
+      }
+      .stories-caption {
+        font-family: var(--font-Primary);
+        color: #b07fcb;
+        font-size: 1rem;
+        letter-spacing: 0.4px;
+        background: linear-gradient(90deg, #b07fcb44 70%, #f9a5b7 100%);
+        border-radius: 13px;
+        padding: 0.22em 0.5em;
+        margin-top: 1.1em;
+        text-align: center;
+        box-shadow: 0 2px 10px #b07fcb14;
+        position: relative;
+        bottom: 0.2em;
+        opacity: 0.97;
+      }
+
+      #themeSwitcher {
+        position: fixed;
+        top: 50%;
+        transform: translateY(-50%);
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        background: white;
+        padding: 10px;
+        border-radius: 20px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        z-index: 999;
+      }
+
+      .theme-btn {
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        border: none;
+        cursor: pointer;
+        transition: transform 0.3s;
+      }
+
+      .theme-btn:hover {
+        transform: scale(1.2);
+      }
+
+      #themeOverlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(255, 255, 255, 1);
+        z-index: 2000;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        font-size: 1.7rem;
+        font-weight: bold;
+        color: var(--color_Primary, #333);
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s ease;
+      }
+
+      #themeOverlay.active {
+        opacity: 1;
+        pointer-events: all;
+      }
+
+      .loader-img {
+        width: 50%;
+        height: 50%;
+        object-fit: contain;
+      }
+
+      /* #endregion General*/
+      /* #region Audio*/
+      ._template-Audio-Button.on {
+        filter: hue-rotate(var(--filter-AudioButton)) !important;
+      }
+
+      ._template-Audio-Button.off {
+        filter: hue-rotate(var(--filter-AudioButton)) !important;
+      }
+
+      /* #endregion Audio*/
+      /* #region Main Section*/
+      @media (max-width: 767.98px) {
+        .hero-title {
+          font-size: 1.8rem;
+          line-height: 1.2;
+        }
+
+        .timeline {
+          margin-left: 20px;
+        }
+
+        .timeline::before,
+        .timeline-progress {
+          left: 8px;
+          width: 5px;
+          border-radius: 2.5px;
+        }
+
+        .timeline-event-content {
+          margin-left: 36px;
+          padding: 8px 12px;
+          font-size: 0.95rem;
+        }
+      }
+
+      @media (max-width: 575.98px) {
+        .godparent-card-cute {
+          flex-direction: column;
+          align-items: center;
+          padding: 1rem;
+          gap: 0.8rem;
+          text-align: center;
+        }
+
+        .godparent-details-cute {
+          text-align: center;
+        }
+
+        .godparent-avatar {
+          margin: 0 auto;
+        }
+
+        .parent-card {
+          max-width: 100%;
+          padding: 1rem;
+        }
+
+        .godparent-emoji {
+          bottom: 6rem;
+        }
+      }
+
+      @media (max-width: 375.98px) {
+        .stories-photo-frame {
+          max-width: 100%;
+          aspect-ratio: 3/4;
+          min-height: auto;
+          padding-bottom: 1rem;
+        }
+
+        .stories-photo-frame img {
+          height: auto;
+          width: 100%;
+          max-height: 85%;
+        }
+
+        .godparent-emoji {
+          bottom: 6rem;
+        }
+      }
+
+      @media (max-width: 340px) {
+        .hero-title {
+          font-size: 1.3rem;
+          letter-spacing: 1px;
+        }
+
+        .section-title {
+          font-size: 1.1rem;
+        }
+
+        .timeline-time {
+          font-size: 0.95rem;
+        }
+
+        .timeline-desc {
+          font-size: 0.9rem;
+        }
+      }
+
+      @media (max-width: 700px) {
+        .invitation-container { max-width: 80vw;}
+        .hero-title { font-size: 1.45rem;}
+      }
+      @media (max-width: 600px) {
+        .stories-gallery {max-width: 98vw;}
+        .stories-photo-frame {max-width: 98vw; min-height:270px; padding-bottom:1.3em;}
+        .stories-photo-frame img {height: 82%;}
+      }
+      @media (max-width: 550px) {
+        .parent-card { max-width:99vw;}
+      }
+      @media (max-width: 400px) {
+        .parent-card, .godparent-card-cute { padding:0.7rem;}
+      }
+
+      /* #endregion Main Section*/
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <main role="main" class="w-100">
+        <div id="player">
+          <audio id="audio" src="#" data-replace="AudioUrl" loop></audio>
+        </div>
+        <span id="audioButton" class="_template-Audio-Button on off">
+          <img src="#" data-replace="Image_AudioUrl" alt="Audio" />
+        </span>
+        <!-- Initial section -->
+        <div class="hero-novios">
+          <img src="#" data-replace="Image_Main" alt="Image Main">
+          <div class="hero-title">¡Nos casamos!<br>Camila &amp; Iván</div>
+        </div>
+        <div class="invitation-container">
+          <img src="https://images.vexels.com/media/users/3/127731/isolated/preview/2b70133359ee29fa8d69d5f5f4998e27-adorno-floral-linea-pin.png" class="floral-header" alt="Decoración floral">
+
+          <div class="section-title">Los Novios</div>
+          <div class="couple-section">
+            <div class="couple-card">
+              <img src="https://randomuser.me/api/portraits/women/65.jpg" class="couple-photo" alt="Novia">
+              <div class="couple-name">Camila Torres</div>
+            </div>
+            <div class="couple-card">
+              <img src="https://randomuser.me/api/portraits/men/47.jpg" class="couple-photo" alt="Novio">
+              <div class="couple-name">Iván Méndez</div>
+            </div>
+          </div>
+
+          <div class="section-title">Padres de la Novia</div>
+          <div class="parents-section">
+            <div class="parent-card">
+              <img src="https://i.pinimg.com/736x/dd/b7/17/ddb71718c8daaac4b0111e4882d1627d.jpg" class="parent-photo-unique" alt="Padres novia">
+              <div class="parent-title">María Elena García &amp; Alfonso Torres</div>
+            </div>
+          </div>
+          <div class="section-title">Padres del Novio</div>
+          <div class="parents-section">
+            <div class="parent-card">
+              <img src="https://i.pinimg.com/736x/27/96/c5/2796c57f77bd7b9bc98d8475952f540a.jpg" class="parent-photo-unique" alt="Padres novio">
+              <div class="parent-title">Ana Rodríguez &amp; Carlos Méndez</div>
+            </div>
+          </div>
+
+          <div class="godparents-section">
+            <div class="godparents-title">Nuestros Padrinos</div>
+            <div class="godparents-list">
+              <div class="godparent-card-cute">
+                <img src="https://randomuser.me/api/portraits/men/68.jpg" class="godparent-avatar" alt="Carlos Ramírez">
+                <div class="godparent-details-cute">
+                  <div class="godparent-role-cute">Padrinos de Anillos<span class="godparent-emoji">💍</span></div>
+                  <div class="godparent-names-cute">Carlos Ramírez &amp; Sofía Morales</div>
+                </div>
+              </div>
+              <div class="godparent-card-cute">
+                <img src="https://randomuser.me/api/portraits/women/78.jpg" class="godparent-avatar" alt="Marina Díaz">
+                <div class="godparent-details-cute">
+                  <div class="godparent-role-cute">Padrinos de Lazo<span class="godparent-emoji">🔗</span></div>
+                  <div class="godparent-names-cute">Marina Díaz &amp; Raúl Romero</div>
+                </div>
+              </div>
+              <div class="godparent-card-cute">
+                <img src="https://randomuser.me/api/portraits/men/44.jpg" class="godparent-avatar" alt="Esteban León">
+                <div class="godparent-details-cute">
+                  <div class="godparent-role-cute">Padrinos de Arras<span class="godparent-emoji">💰</span></div>
+                  <div class="godparent-names-cute">Esteban León &amp; Paula Sosa</div>
+                </div>
+              </div>
+              <div class="godparent-card-cute">
+                <img src="https://randomuser.me/api/portraits/women/54.jpg" class="godparent-avatar" alt="Julio Vargas">
+                <div class="godparent-details-cute">
+                  <div class="godparent-role-cute">Biblia y Rosario<span class="godparent-emoji">📖</span></div>
+                  <div class="godparent-names-cute">Julio Vargas &amp; Lucía Peña</div>
+                </div>
+              </div>
+              <div class="godparent-card-cute">
+                <img src="https://randomuser.me/api/portraits/men/36.jpg" class="godparent-avatar" alt="Patricia Muñoz">
+                <div class="godparent-details-cute">
+                  <div class="godparent-role-cute">Brindis<span class="godparent-emoji">🥂</span></div>
+                  <div class="godparent-names-cute">Patricia Muñoz &amp; Daniel Ponce</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Timeline -->
+          <div class="section-title">Cronología romántica</div>
+          <section class="timeline-section">
+            <div class="timeline">
+              <div class="timeline-progress"></div>
+              <div class="timeline-event">
+                <span class="timeline-dot">
+                  <svg viewBox="0 0 22 22" fill="none"><ellipse cx="7" cy="14" rx="5" ry="5" fill="#b07fcb" opacity="0.13"/><ellipse cx="15" cy="12.5" rx="4" ry="4.5" fill="#81b8df" opacity="0.12"/><path d="M6 14c0 1.1.9 2 2 2s2-.9 2-2a2 2 0 1 0-4 0z" fill="#b07fcb"/><path d="M14 12.5c0 1.38 1.12 2.5 2.5 2.5s2.5-1.12 2.5-2.5a2.5 2.5 0 1 0-5 0z" fill="#81b8df"/><circle cx="7.8" cy="14" r="0.7" fill="#965a8d"/><circle cx="16.3" cy="13" r="0.5" fill="#3272a8"/></svg>
+                </span>
+                <div class="timeline-event-content">
+                  <div class="timeline-time">16:30</div>
+                  <div class="timeline-desc">Llegada y bienvenida</div>
+                </div>
+              </div>
+              <div class="timeline-event">
+                <span class="timeline-dot">
+                  <svg viewBox="0 0 24 24"><path d="M12 21V9m0 0l-4 4M12 9l4 4" stroke="#b07fcb" stroke-width="1.6"/><circle cx="12" cy="7" r="3" fill="#f9a5b7"/><circle cx="8" cy="8" r="2" fill="#81b8df"/><circle cx="16" cy="8" r="2" fill="#b07fcb"/></svg>
+                </span>
+                <div class="timeline-event-content">
+                  <div class="timeline-time">17:00</div>
+                  <div class="timeline-desc">Ceremonia romántica</div>
+                </div>
+              </div>
+              <div class="timeline-event">
+                <span class="timeline-dot">
+                  <svg viewBox="0 0 22 22"><ellipse cx="11" cy="18" rx="6" ry="2.3" fill="#f9a5b7"/><rect x="5" y="11" width="12" height="7" rx="3.5" fill="#fff"/><rect x="7" y="14" width="8" height="3" rx="1.5" fill="#b07fcb"/><rect x="8.3" y="9" width="5.4" height="2" rx="1" fill="#81b8df"/><rect x="10.5" y="7" width="1" height="2" rx="0.5" fill="#f9a5b7"/></svg>
+                </span>
+                <div class="timeline-event-content">
+                  <div class="timeline-time">18:00</div>
+                  <div class="timeline-desc">Corte de pastel y brindis</div>
+                </div>
+              </div>
+              <div class="timeline-event">
+                <span class="timeline-dot">
+                  <svg viewBox="0 0 22 22"><ellipse cx="7" cy="11" rx="4" ry="5" fill="#f9a5b7"/><ellipse cx="15" cy="12.5" rx="3" ry="4.5" fill="#81b8df"/><ellipse cx="11" cy="10" rx="2" ry="3.5" fill="#b07fcb"/><path d="M7 16l1.5 3M15 17.5l-1 2" stroke="#b07fcb" stroke-width="1.1"/></svg>
+                </span>
+                <div class="timeline-event-content">
+                  <div class="timeline-time">18:30</div>
+                  <div class="timeline-desc">Fotos y globos de deseos</div>
+                </div>
+              </div>
+              <div class="timeline-event">
+                <span class="timeline-dot">
+                  <svg viewBox="0 0 22 22"><path d="M7 17l3-7m5 7l-3-7" stroke="#81b8df" stroke-width="1.5"/><ellipse cx="7" cy="10" rx="2" ry="3" fill="#b07fcb"/><ellipse cx="15" cy="10" rx="2" ry="3" fill="#f9a5b7"/><ellipse cx="11" cy="10" rx="2" ry="3" fill="#81b8df"/><path d="M9 20h4" stroke="#b07fcb" stroke-width="1.5" stroke-linecap="round"/></svg>
+                </span>
+                <div class="timeline-event-content">
+                  <div class="timeline-time">19:30</div>
+                  <div class="timeline-desc">Fiesta y brindis final</div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Gallery Instagram -->
+          <div class="gallery-section">
+            <div class="gallery-title">¡Nuestros recuerdos más bonitos!</div>
+            <div class="stories-gallery">
+              <div class="stories-progress"></div>
+              <div class="stories-photo-frame">
+                <div class="stories-caption" id="stories-caption"></div>
+                <img id="stories-image" src="" alt="Historia">
+              </div>
+            </div>
+          </div>
+
+          <!-- Confirm -->
+        </div>
+      </main>
+    </div>
+
+    <div id="themeSwitcher">
+      <button class="theme-btn" data-theme="themeViolet" style="background-color:#b07fcb"></button>
+      <button class="theme-btn" data-theme="themeX" style="background-color:#8dc8b9"></button>
+    </div>
+
+    <div id="themeOverlay">
+      <img class="loader-img" src="#" data-replace="Image_Loading" alt="Loading">
+      <span>Cambiando tema...</span>
+    </div>
+
+    <!-- Bootstrap JS Bundle (con soporte touch incluido) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      var actions = {
+        onCounter: function() {
+          const now = new Date().getTime();
+          const distance = EventDate - now;
+          const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+          const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+          const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+          const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+          $("#days").text(actions.onHelperAddDigits(days));
+          $("#hours").text(actions.onHelperAddDigits(hours));
+          $("#minutes").text(actions.onHelperAddDigits(minutes));
+          $("#seconds").text(actions.onHelperAddDigits(seconds));
+          if (distance < 0) {
+            clearInterval(interval);
+            $("countdown").innerHTML = "¡Ha llegado el gran día!";
+          }
+        },
+        onHelperAddDigits: function(number) {
+          if (number.toString().length == 1) {
+            return "0" + number.toString();
+          }
+          return number;
+        },
+        onAudioPlayer: function() {
+          const audio = document.getElementById("audio");
+          $("#audioButton").on("click", function() {
+            if (audio.paused) {
+              audio.play();
+              $("#audioButton").removeClass("off");
+            } else {
+              audio.pause();
+              $("#audioButton").addClass("off");
+            }
+          });
+        },
+      };
+      var helpers = {
+        onGetDateYYYYMMDD: function() {
+          const format = (f) => f.toISOString().split("T")[0].replace(/-/g, "");
+          return format(EventDate);
+        },
+        onGetDateString: function(EventDate, includeDayName) {
+          const months = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
+          const days = ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"];
+          const day = EventDate.getDate();
+          const dayOfWeek = EventDate.getDay();
+          const dayName = days[dayOfWeek];
+          const month = months[EventDate.getMonth()];
+          const year = EventDate.getFullYear();
+          const dateString = includeDayName ? `${dayName} ${day} de ${month} del ${year}` : `${day} de ${month} del ${year}`;
+          return dateString;
+        },
+        onGetHoursString: function(EventDate, includeThe) {
+          let hours = EventDate.getHours();
+          const ampm = hours >= 12 ? "p.m." : "a.m.";
+          const mins = EventDate.getMinutes().toString().padStart(2, "0");
+          const the = hours > 1 ? "las " : "la";
+          hours = hours % 12 || 12;
+          const hourString = includeThe ? `${the} ${hours}:${mins} ${ampm}` : `${hours}:${mins} ${ampm}`;
+          return hourString;
+        },
+        onGoogleCalendar: function() {
+          const base = 'https://calendar.google.com/calendar/render';
+          const details = `Acompáñanos a celebrar el Baby Shower de ${Resources.EventName}.
+          📍 Lugar: ${Resources.GoogleCalendarLocation}
+          🕒 Hora: ${Resources.EventHourString}
+          ⏰ Recordatorio: Llega con 30 minutos de anticipación.
+          ✨ ¡Te esperamos para compartir este momento tan especial!`;
+          const params = new URLSearchParams({
+            action: "TEMPLATE",
+            text: `${Resources.GoogleCalendarTitle} de ${Resources.EventName}`,
+            dates: `${Resources.GoogleCalendarStartDate}/${Resources.GoogleCalendarEndDate}`,
+            details: details,
+            location: Resources.GoogleCalendarLocation
+          });
+          return `${base}?${params.toString()}`;
+        },
+        onLoad: function() {
+          $("[data-replace=Image_AudioUrl]").attr("src", Resources.Image_AudioUrl);
+          $("[data-replace=AudioUrl]").attr("src", Resources.AudioUrl);
+          $("[data-replace=EventDateString]").text(Resources.EventDateString);
+          $("[data-replace=EventHourString]").text(Resources.EventHourString);
+          $("[data-replace=EventReceptionHourString]").text(Resources.EventReceptionHourString);
+          $("[data-replace=EventName]").text(Resources.EventName);
+          $("[data-replace=EventReceptionUrl]").attr("href", Resources.EventReceptionUrl);
+          $("[data-replace=Image_GoogleLocation]").attr("src", Resources.Image_GoogleLocation);
+          $("[data-replace=Image_Main]").attr("src", Resources.Image_Main);
+          $("[data-replace=Image_Tap]").attr("src", Resources.Image_Tap);
+          $("[data-replace=Image_Loading]").attr("src", Resources.Image_Loading);
+          $("[data-replace=WhatsAppUrl]").attr("href", Resources.WhatsAppUrl);
+          $("[data-replace=GoogleCalendarUrl]").attr("href", helpers.onGoogleCalendar());
+          $("[data-replace=GoogleCalendarLocation]").text(Resources.GoogleCalendarLocation);
+        }
+      };
+      const EventDate = new Date("2025-11-25T13:00:00");
+      const EventReception = new Date("2025-11-25T17:00:00");
+      const Resources = {
+        EventDate: EventDate,
+        EventTime: EventDate.getTime(),
+        EventDateString: helpers.onGetDateString(EventDate),
+        EventHourString: helpers.onGetHoursString(EventDate),
+        EventReceptionHourString: helpers.onGetHoursString(EventReception, true),
+        EventName: "",
+        EventFather: "José Gutiérrez",
+        EventMother: "Melissa Hurtado",
+        EventGodFather: "Juan Fernández",
+        EventGodMother: "Laura Jimenez",
+        EventChurchUrl: "https://maps.app.goo.gl/hBdb191LiXzkPRfR8",
+        EventReceptionUrl: "https://maps.app.goo.gl/1wwmTSk84XA8pLMn8",
+        EventAmazonGiftTableUrl: "https://www.amazon.com.mx/",
+        EventLiverpoolGiftTableUrl: "https://www.liverpool.com.mx/tienda/home",
+        GoogleCalendarTitle: "Baby Shower",
+        GoogleCalendarStartDate: helpers.onGetDateYYYYMMDD(),
+        GoogleCalendarEndDate: helpers.onGetDateYYYYMMDD(),
+        GoogleCalendarLocation: "Salón Azul Calle Principal 123",
+        Image_BodyBackground: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80",
+        Image_FrontCard: "https://img.freepik.com/foto-gratis/mujer-tiro-medio-caminando-calle_23-2148703161.jpg?ga=GA1.1.1993030682.1745256637&semt=ais_hybrid&w=740",
+        Image_AudioUrl: "https://cdn-icons-png.freepik.com/512/13896/13896624.png?ga=GA1.1.1993030682.1745256637",
+        Image_Corner: "",
+        Image_MyParents: "https://img.freepik.com/fotos-premium/retrato-pareja-madura-feliz-abrazada-casa-conexion-amor-o-confianza-asociacion-juntos-cara-al-hombre-abrazar-mujer-compromiso-cuidado-relacion-saludable-apoyo-casa_590464-361056.jpg?ga=GA1.1.1993030682.1745256637&semt=ais_hybrid&w=740",
+        Image_MyGodParents: "https://img.freepik.com/fotos-premium/pareja-dia-san-valentin_772250-159.jpg?ga=GA1.1.1993030682.1745256637&w=740",
+        Image_DressCodeUrl: "https://img.freepik.com/foto-gratis/gente-elegante-bailando-tango_23-2149193458.jpg?ga=GA1.1.1993030682.1745256637&semt=ais_hybrid&w=740",
+        Image_AmazonUrl: "https://static-00.iconduck.com/assets.00/amazon-icon-2048x2048-pqt2fe18.png",
+        Image_LiverpoolUrl: "https://play-lh.googleusercontent.com/FwrxfHaknUKLneazGpPsjJvQ4mUYKJkccj-efHNeXQISwCwqC9ymNAnqlAY5J5oHIOc",
+        Image_GoogleLocation: "https://img.icons8.com/?size=512&id=DcygmpZqBEd9&format=png",
+        Image_Main: "",
+        Image_Tap: "https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExNWZ1MW80dTVkMzFrcXoxeG41OHo5NmdiemdvbnE5NW9seW1heXA5YiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/TPiig5QAVogA1po38k/giphy.gif",
+        Image_Loading: "https://images.vexels.com/media/users/3/190566/isolated/preview/e20509414b44a4b9388e9309c50031d1-parejas-casadas-silueta-boda.png",
+        AudioUrl: "../music/Perfect.mp3",
+        WhatsAppUrl: "https://tinyurl.com/3h8kmam7",
+        CollageImages: [],
+      };
+      const Themes = {
+        themeViolet: {
+          '--color_Primary': '#b07fcb',
+          '--color_Secondary': '#81b8df',
+          '--color_Tertiary': '#f9a5b7',
+          '--filter-AudioButton': '0deg',
+          '--timeline-bg': '#fffafd',
+          '--card-shadow': '0 4px 18px #b07fcb25',
+          '--border-soft': '1.8px solid #f9a5b7bb',
+          Image_Main: "https://i.pinimg.com/736x/f8/c7/db/f8c7db2c14f30a20d27daa328b681684.jpg",
+          EventName: 'Thomas'
+        },
+        themeX: {
+          '--color_Primary': '#8dc8b9',
+          '--color_Secondary': '#f6c867',
+          '--color_Tertiary': '#faabaf',
+          '--filter-AudioButton': '260deg',
+          '--timeline-bg': '#fbfcf7',
+          '--card-shadow': '0 4px 18px #8dc8b935',
+          '--border-soft': '1.8px solid #faabafbb',
+          Image_Main: "https://i.pinimg.com/736x/f8/c7/db/f8c7db2c14f30a20d27daa328b681684.jpg",
+          EventName: 'Thomas'
+        }
+      };
+      const stories = [
+        {
+          img: "https://i.pinimg.com/736x/cc/fa/d5/ccfad55fa13f3126131e479f260c2c2a.jpg",
+          caption: "El gran día"
+        },
+        {
+          img: "https://i.pinimg.com/736x/02/0b/98/020b98b54441df5551e5c12b53761881.jpg",
+          caption: "Momentos mágicos"
+        },
+        {
+          img: "https://i.pinimg.com/736x/c1/b1/2d/c1b12d4787d714f18f3d92a849c7d1ae.jpg",
+          caption: "Juntos siempre"
+        },
+        {
+          img: "https://i.pinimg.com/736x/89/fb/d5/89fbd581a3f7c849d40a17abfec1a388.jpg",
+          caption: "Nuestra aventura"
+        },
+        {
+          img: "https://i.pinimg.com/736x/41/c4/8b/41c48b0902ac1716fc651fcbb78c496a.jpg",
+          caption: "Diversión y amor"
+        },
+        {
+          img: "https://i.pinimg.com/736x/30/35/57/303557688e3cd1ce15f6f66181bce236.jpg",
+          caption: "Nuestro viaje"
+        }
+      ];
+      let currentStory = 0;
+      let progressBars = [];
+      let progressFills = [];
+      let timer = null;
+      let storyStartTime = 0;
+      let elapsedTime = 0;
+      let isPaused = false;
+      const intervalMs = 3200;
+      let lastTransitionHandler = null;
+      let isAdvancing = false;
+
+      function Init() {
+        helpers.onLoad();
+        actions.onCounter();
+        setInterval(() => {
+          actions.onCounter();
+        }, 1000);
+        actions.onAudioPlayer();
+        applyTheme('themeViolet');
+      };
+
+      Init();
+
+      function updateBodyBackground() {
+        const bgUrl = Resources.Image_BodyBackground;
+        let styleEl = document.getElementById('dynamicBodyBg');
+        if (!styleEl) {
+          styleEl = document.createElement('style');
+          styleEl.id = 'dynamicBodyBg';
+          document.head.appendChild(styleEl);
+        }
+        styleEl.innerHTML = `
+          body::before {
+            content: "";
+            position: fixed;
+            z-index: 0;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: url('${bgUrl}') center center/cover no-repeat;
+            opacity: 0.16;
+            filter: blur(3px) brightness(1.1);
+            pointer-events: none;
+          }
+        `;
+      }
+
+      function applyTheme(themeName) {
+        const theme = Themes[themeName];
+
+        for (let variable in theme) {
+          if (variable.startsWith('--')) {
+            document.documentElement.style.setProperty(variable, theme[variable]);
+          } else {
+            if (variable === 'Image_Main') {
+              Resources.Image_Main = theme[variable];
+            } else if (variable === 'EventName') {
+              Resources.EventName = theme[variable];
+            }
+          }
+        }
+
+        $("#audioButton").addClass("off");
+
+        helpers.onLoad();
+        updateBodyBackground();
+      };
+
+      $('.theme-btn').on('click', function () {
+        const theme = $(this).data('theme');
+        $('#themeOverlay').addClass('active');
+
+        setTimeout(() => {
+          applyTheme(theme);
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+          setTimeout(() => {
+            $('#themeOverlay').removeClass('active');
+          }, 2000);
+        }, 500);
+      });
+
+      function animateTimeline() {
+        const timeline = document.querySelector('.timeline');
+        const progress = document.querySelector('.timeline-progress');
+        const events = document.querySelectorAll('.timeline-event');
+        const windowHeight = window.innerHeight;
+        let lastVisibleIdx = -1;
+        let closestIdx = -1;
+        let closestDistance = Number.POSITIVE_INFINITY;
+        events.forEach((event, idx) => {
+          const rect = event.getBoundingClientRect();
+          if (rect.top < windowHeight * 0.88) {
+            event.classList.add('visible');
+            lastVisibleIdx = idx;
+            const dist = Math.abs(rect.top + rect.height/2 - windowHeight/2);
+            if(dist < closestDistance){
+              closestDistance = dist;
+              closestIdx = idx;
+            }
+          } else {
+            event.classList.remove('visible');
+          }
+          event.classList.remove('active');
+        });
+        if (closestIdx >= 0) events[closestIdx].classList.add('active');
+        if (lastVisibleIdx >= 0) {
+          const firstDot = events[0].querySelector('.timeline-dot');
+          const lastDot = events[lastVisibleIdx].querySelector('.timeline-dot');
+          const timelineRect = timeline.getBoundingClientRect();
+          const firstDotRect = firstDot.getBoundingClientRect();
+          const lastDotRect = lastDot.getBoundingClientRect();
+          const offsetStart = firstDotRect.top + firstDotRect.height / 2 - timelineRect.top;
+          const offsetEnd = lastDotRect.top + lastDotRect.height / 2 - timelineRect.top;
+          const height = Math.max(0, offsetEnd - offsetStart);
+          progress.style.top = offsetStart + "px";
+          progress.style.height = height + "px";
+        } else {
+          progress.style.height = "0px";
+        }
+      }
+
+      function setupStories() {
+          const progressContainer = document.querySelector('.stories-progress');
+          progressContainer.innerHTML = '';
+          progressBars = [];
+          progressFills = [];
+
+          for (let i = 0; i < stories.length; i++) {
+              const bar = document.createElement('div');
+              bar.className = "stories-progress-bar";
+
+              const fill = document.createElement('div');
+              fill.className = "stories-progress-bar-fill";
+
+              bar.appendChild(fill);
+              progressContainer.appendChild(bar);
+
+              progressBars.push(bar);
+              progressFills.push(fill);
+          }
+
+          document.querySelector('.stories-photo-frame').onclick = function () {
+              if (isAdvancing) return;
+              isAdvancing = true;
+
+              elapsedTime = 0;
+              showStory(currentStory + 1, true);
+
+              setTimeout(() => {
+                  isAdvancing = false;
+              }, 200);
+          };
+      }
+
+      function showStory(idx, isTap) {
+          if (idx >= stories.length) {
+              idx = 0;
+          }
+          if (idx < 0) idx = stories.length - 1;
+
+          elapsedTime = 0;
+          storyStartTime = performance.now();
+
+          currentStory = idx;
+          document.getElementById('stories-image').src = stories[idx].img;
+          document.getElementById('stories-caption').textContent = stories[idx].caption;
+
+          progressFills.forEach((fill, i) => {
+              if (lastTransitionHandler) {
+                  fill.removeEventListener('transitionend', lastTransitionHandler);
+              }
+          });
+          lastTransitionHandler = null;
+
+          progressFills.forEach((fill, i) => {
+              if (i < idx) {
+                  fill.style.transition = 'none';
+                  fill.style.width = '100%';
+              } else if (i > idx) {
+                  fill.style.transition = 'none';
+                  fill.style.width = '0%';
+              } else {
+                  fill.style.transition = 'none';
+                  fill.style.width = '0%';
+                  void fill.offsetWidth;
+
+                  const remainingTime = intervalMs;
+
+                  fill.style.transition = `width ${remainingTime}ms linear`;
+                  fill.style.width = '100%';
+
+                  lastTransitionHandler = () => {
+                      if (!isPaused) {
+                          showStory(currentStory + 1, false);
+                      }
+                  };
+
+                  fill.addEventListener('transitionend', lastTransitionHandler, { once: true });
+              }
+          });
+      }
+
+      function startStories() {
+          if (progressFills.length === 0) return;
+
+          if (timer == null && currentStory === 0 && progressFills[0].style.width === '0%') {
+              showStory(0, false);
+          }
+
+          if (!timer) {
+              const fill = progressFills[currentStory];
+              const remainingTime = intervalMs - elapsedTime;
+
+              fill.style.transition = `width ${remainingTime}ms linear`;
+              fill.style.width = '100%';
+
+              storyStartTime = performance.now() - elapsedTime;
+
+              timer = setTimeout(() => {
+                  timer = null;
+              }, remainingTime);
+
+              console.log('Stories reanudados');
+          }
+      }
+
+      const observer = new IntersectionObserver(entries => {
+          entries.forEach(entry => {
+              if (progressFills.length === 0) return;
+
+              if (entry.isIntersecting) {
+                  isPaused = false;
+                  startStories();
+              } else {
+                  isPaused = true;
+                  clearTimeout(timer);
+                  timer = null;
+
+                  elapsedTime = performance.now() - storyStartTime;
+
+                  const fill = progressFills[currentStory];
+                  const computedStyle = window.getComputedStyle(fill);
+                  const width = computedStyle.getPropertyValue('width');
+                  const parentWidth = fill.parentElement.offsetWidth;
+                  const percent = (parseFloat(width) / parentWidth) * 100;
+
+                  fill.style.transition = 'none';
+                  fill.style.width = `${percent}%`;
+
+                  console.log('Stories pausados en', percent.toFixed(1), '%');
+              }
+          });
+      }, {
+          threshold: 0.5
+      });
+
+      window.addEventListener('scroll', animateTimeline, {passive: true});
+      window.addEventListener('load', animateTimeline);
+      window.addEventListener('resize', animateTimeline);
+      window.addEventListener('load', () => {
+          setupStories();
+          showStory(0, false);
+
+          const storiesSection = document.querySelector('.gallery-section');
+          observer.observe(storiesSection);
+      });
+    </script>
+  </body>
+</html>
