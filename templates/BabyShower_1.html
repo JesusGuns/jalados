@@ -348,6 +348,98 @@
       }
 
       /* #endregion General*/
+      /* #region Gift Section*/
+      ._section-gifttable p._title {
+        font-family: var(--font-Primary);
+        font-size: 3rem;
+        text-align: center;
+        font-weight: bold;
+        color: var(--color_Tertiary);
+      }
+
+      ._section-gifttable p._details {
+        font-size: 1.3rem;
+        text-align: center;
+      }
+
+      ._btn-brands {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        padding-top: 0rem;
+        padding-bottom: 1rem;
+      }
+
+      ._btn-gift {
+        background-color: rgba(255, 255, 255, 0.2);
+        border: 5px solid rgba(255, 255, 255, 0.1);
+        border-radius: 8px;
+        box-shadow: 0 4px 6px 0 #ccc;
+        color: black;
+        cursor: pointer;
+        font-family: var(--font-TenorSans);
+        font-size: 2rem;
+        padding: 10px;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+      }
+
+      ._btn-gift:hover {
+        box-shadow: 4px 6px 12px 0px #545454;
+      }
+
+      ._btn-gift a {
+        width: 65px;
+        margin-right: 1rem;
+      }
+
+      ._btn-gift img {
+        width: 65px;
+        margin-right: 1rem;
+      }
+
+      @media (max-width: 575.98px) {
+        ._section-gifttable {
+          display: flex;
+          flex-direction: column;
+          width: 100%;
+          padding: 2rem 3rem;
+        }
+
+        ._section-gifttable p._details {
+          font-size: 1.2rem;
+        }
+
+        ._btn-brands {
+          flex-direction: column;
+        }
+
+        ._btn-gift {
+          font-size: 1.2rem;
+          font-weight: bold;
+          padding: 5px 10px;
+          width: 100%;
+          background: var(--color_Quaternary);
+        }
+
+        ._btn-gift img {
+          width: 30px;
+        }
+      }
+
+      @media (max-width: 375.98px) {
+        ._btn-brands {
+          padding-left: 1rem;
+        }
+
+        ._btn-gift {
+          width: 90%;
+        }
+      }
+
+      /* #endregion Gift Section*/
       /* #region Audio*/
       ._template-Audio-Button.on {
         filter: hue-rotate(var(--filter-AudioButton)) !important;
@@ -481,6 +573,19 @@
             <div class="book-wrapper">
               <div class="book" id="book"></div>
               <img class="imgTap" id="tapHint" src="#" data-replace="Image_Tap" alt="Tap tap">
+            </div>
+          </div>
+        </section>
+
+        <section class="detail-box">
+          <div class="subcontainer _section-gifttable">
+            <p class="_title">Regalos</p>
+            <p class="_details"> Para nosotros tu presencia es nuestro mejor regalo, pero si deseas hacernos llegar un obsequio, te sugerimos la siguiente opción: </p>
+            <div class="_btn-brands">
+              <a href="#" data-replace="EventAmazonGiftTableUrl" target="_blank" class="_btn-gift">
+                <img src="#" data-replace="Image_AmazonUrl" /> Amazon </a>
+              <a href="#" data-replace="EventLiverpoolGiftTableUrl" target="_blank" class="_btn-gift">
+                <img src="#" data-replace="Image_LiverpoolUrl" /> Liverpool </a>
             </div>
           </div>
         </section>
