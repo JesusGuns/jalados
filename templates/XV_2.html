@@ -15,6 +15,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet" />
 
     <link rel="stylesheet" href="../css/templates.css">
+    <script src="../js/require.js"></script>
     <style>
       /* #region ROOT*/
       :root {
@@ -888,247 +889,97 @@
         </div>
       </main>
     </div>
-    <!-- Bootstrap JS Bundle (con soporte touch incluido) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- jsDelivr  -->
-    <script src="https://cdn.jsdelivr.net/npm/fireworks-js@2.x/dist/index.umd.js"></script>
-    <!-- UNPKG -->
-    <script src="https://unpkg.com/fireworks-js@2.x/dist/index.umd.js"></script>
-    <!-- Confetti.js desde CDN -->
-    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+    <script src="../js/main.js"></script>
     
     <script>
-      var actions = {
-        onCounter: function() {
-          const now = new Date().getTime();
-          const distance = EventDate - now;
-          const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-          const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-          const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-          const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-          $("#days").text(actions.onHelperAddDigits(days));
-          $("#hours").text(actions.onHelperAddDigits(hours));
-          $("#minutes").text(actions.onHelperAddDigits(minutes));
-          $("#seconds").text(actions.onHelperAddDigits(seconds));
-          if (distance < 0) {
-            clearInterval(interval);
-            $("countdown").innerHTML = "¡Ha llegado el gran día!";
-          }
-        },
-        onHelperAddDigits: function(number) {
-          if (number.toString().length == 1) {
-            return "0" + number.toString();
-          }
-          return number;
-        },
-        onAudioPlayer: function() {
-          const audio = document.getElementById("audio");
-          $("#audioButton").on("click", function() {
-            if (audio.paused) {
-              audio.play();
-              $("#audioButton").removeClass("off");
-            } else {
-              audio.pause();
-              $("#audioButton").addClass("off");
-            }
-          });
-        },
-        onFireworks: function() {
-          const container = document.querySelector('.fireworks-container')
-          const fireworks = new Fireworks.default(container, {
-            hue: {
-              min: 240,
-              max: 360
-            },
-            rocketsPoint: {
-              min: 20,
-              max: 80
-            },
-            lineWidth: {
-              explosion: {
-                min: 1,
-                max: 3
-              },
-              trace: {
-                min: 1,
-                max: 1
+      requirejs(["jquery","helpers","fireworks", "gallery","confetti","bs","extended"],function($,helpers,Fireworks,gallery){
+        var actions = {
+          onConfetti: function() {
+            $("._gift-box").on("click", function() {
+              if (!$("#giftWrapper").hasClass('lifted')) {
+                $("#giftWrapper").addClass('lifted');
+                $("._btn-brands").css("animation", "_animation-surprise-Bounce 0.6s ease-out");
+                $("._btn-brands").addClass("show");
+                $(this).OnConfettiStart();
+              } else {
+                $("#giftWrapper").removeClass('lifted');
+                $("._btn-brands").css("animation", "_animation-hide-Fade-Shrink 0.4s ease-out");
+                setTimeout(() => {
+                  $("._btn-brands").removeClass("show");
+                }, 400);
               }
-            },
-            intensity: 10, //speed
-            explosion: 3, //explosion size
-            traceLength: 1 // trace line from origin
-          });
-          fireworks.start()
-        },
-        onUpdateImages: function() {
-          const wrapper = carousel.querySelector('._image-wrapper');
-          const boxes = wrapper.querySelectorAll('._rotated-box');
-          boxes.forEach((box, i) => {
-            const img = document.createElement('img');
-            img.src = Resources.CollageImages[i];
-            box.innerHTML = '';
-            box.appendChild(img); 
-          });
-        },
-        onMoveImageToFront: function() {
-          const movedImage = Resources.CollageImages.pop(); 
-          Resources.CollageImages.unshift(movedImage);
-          actions.onUpdateImages(); 
-        },
-        onCarousel: function() {
-          const carousel = document.getElementById('carousel');
-          document.querySelector('._box4').addEventListener('click', actions.onMoveImageToFront);
-          actions.onUpdateImages();
+            });
+          }
+        };
+        
+        const EventDate = new Date("2025-11-25T13:00:00");
+        const EventReception = new Date("2025-11-25T17:00:00");
 
-          let startX = 0;
-          let endX = 0;
-          carousel.addEventListener('touchstart', (e) => {
-            startX = e.changedTouches[0].screenX;
-          });
-          carousel.addEventListener('touchend', (e) => {
-            endX = e.changedTouches[0].screenX;
-            if (Math.abs(endX - startX) > 50) {
-              actions.onMoveImageToFront();
-            }
-          });
-        },
-        onConfetti: function() {
-          $("._gift-box").on("click", function() {
-            if (!$("#giftWrapper").hasClass('lifted')) {
-              $("#giftWrapper").addClass('lifted');
-              $("._btn-brands").css("animation", "_animation-surprise-Bounce 0.6s ease-out");
-              $("._btn-brands").addClass("show");
-              confetti({
-                particleCount: 300,
-                startVelocity: 30,
-                spread: 360
-              });
-            } else {
-              $("#giftWrapper").removeClass('lifted');
-              $("._btn-brands").css("animation", "_animation-hide-Fade-Shrink 0.4s ease-out");
-              setTimeout(() => {
-                $("._btn-brands").removeClass("show");
-              }, 400);
-            }
-          });
-        }
-      };
-      var helpers = {
-        onGetDateYYYYMMDD: function() {
-          const format = (f) => f.toISOString().split("T")[0].replace(/-/g, "");
-          return format(EventDate);
-        },
-        onGetDateString: function(EventDate, includeDayName) {
-          const months = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
-          const days = ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"];
-          const day = EventDate.getDate();
-          const dayOfWeek = EventDate.getDay();
-          const dayName = days[dayOfWeek];
-          const month = months[EventDate.getMonth()];
-          const year = EventDate.getFullYear();
-          const dateString = includeDayName ? `${dayName} ${day} de ${month} del ${year}` : `${day} de ${month} del ${year}`;
-          return dateString;
-        },
-        onGetHoursString: function(EventDate, includeThe) {
-          let hours = EventDate.getHours();
-          const ampm = hours >= 12 ? "p.m." : "a.m.";
-          const mins = EventDate.getMinutes().toString().padStart(2, "0");
-          const the = hours > 1 ? "las " : "la";
-          hours = hours % 12 || 12;
-          const hourString = includeThe ? `${the} ${hours}:${mins} ${ampm}` : `${hours}:${mins} ${ampm}`;
-          return hourString;
-        },
-        onGoogleCalendar: function() {
-          const base = 'https://calendar.google.com/calendar/render';
-          const details = `Acompáñanos a celebrar los XV de ${Resources.EventName}.
-          📍 Lugar: ${Resources.GoogleCalendarLocation}
-          🕒 Hora: ${Resources.EventHourString}
-          ⏰ Recordatorio: Llega con 30 minutos de anticipación.
-          ✨ ¡Te esperamos para compartir este momento tan especial!`;
-          const params = new URLSearchParams({
-            action: "TEMPLATE",
-            text: Resources.GoogleCalendarTitle + Resources.EventName,
-            dates: `${Resources.GoogleCalendarStartDate}/${Resources.GoogleCalendarEndDate}`,
-            details: details,
-            location: Resources.GoogleCalendarLocation
-          });
-          return `${base}?${params.toString()}`;
-        },
-        onLoad: function() {
-          $("[data-replace=Image_AudioUrl]").attr("src", Resources.Image_AudioUrl);
-          $("[data-replace=AudioUrl]").attr("src", Resources.AudioUrl);
-          $("[data-replace=Image_AmazonUrl]").attr("src", Resources.Image_AmazonUrl);
-          $("[data-replace=Image_LiverpoolUrl]").attr("src", Resources.Image_LiverpoolUrl);
-          $("[data-replace=EventAmazonGiftTableUrl]").attr("href", Resources.EventAmazonGiftTableUrl);
-          $("[data-replace=EventLiverpoolGiftTableUrl]").attr("href", Resources.EventLiverpoolGiftTableUrl);
-          $("[data-replace=EventDateString]").text(Resources.EventDateString);
-          $("[data-replace=EventHourString]").text(Resources.EventHourString);
-          $("[data-replace=EventReceptionHourString]").text(Resources.EventReceptionHourString);
-          $("[data-replace=EventName]").text(Resources.EventName);
-          $("[data-replace=EventFather]").text(Resources.EventFather);
-          $("[data-replace=EventMother]").text(Resources.EventMother);
-          $("[data-replace=EventGodFather]").text(Resources.EventGodFather);
-          $("[data-replace=EventGodMother]").text(Resources.EventGodMother);
-          $("[data-replace=EventChurchUrl]").attr("href", Resources.EventChurchUrl);
-          $("[data-replace=EventReceptionUrl]").attr("href", Resources.EventReceptionUrl);
-          $("[data-replace=Image_FrontCard]").attr("src", Resources.Image_FrontCard);
-          $("[data-replace=Image_GoogleLocation]").attr("src", Resources.Image_GoogleLocation);
-          $("[data-replace=Image_MyParents]").attr("src", Resources.Image_MyParents);
-          $("[data-replace=Image_MyGodParents]").attr("src", Resources.Image_MyGodParents);
-          $("[data-replace=Image_DressCodeUrl]").attr("src", Resources.Image_DressCodeUrl);
-          $("[data-replace=WhatsAppUrl]").attr("href", Resources.WhatsAppUrl);
-          $("[data-replace=GoogleCalendarUrl]").attr("href", helpers.onGoogleCalendar());
-        }
-      };
-      const EventDate = new Date("2025-11-25T13:00:00");
-      const EventReception = new Date("2025-11-25T17:00:00");
-      const Resources = {
-        EventDate: EventDate,
-        EventTime: EventDate.getTime(),
-        EventDateString: helpers.onGetDateString(EventDate),
-        EventHourString: helpers.onGetHoursString(EventDate),
-        EventReceptionHourString: helpers.onGetHoursString(EventReception),
-        EventName: "Nicole",
-        EventFather: "José Gutiérrez",
-        EventMother: "Melissa Hurtado",
-        EventGodFather: "Juan Fernández",
-        EventGodMother: "Laura Jimenez",
-        EventChurchUrl: "https://maps.app.goo.gl/hBdb191LiXzkPRfR8",
-        EventReceptionUrl: "https://maps.app.goo.gl/1wwmTSk84XA8pLMn8",
-        EventAmazonGiftTableUrl: "https://www.amazon.com.mx/",
-        EventLiverpoolGiftTableUrl: "https://www.liverpool.com.mx/tienda/home",
-        GoogleCalendarTitle: "Mis XV ",
-        GoogleCalendarStartDate: helpers.onGetDateYYYYMMDD(),
-        GoogleCalendarEndDate: helpers.onGetDateYYYYMMDD(),
-        GoogleCalendarLocation: "Catedral de Guadalajara",
-        Image_BodyBackground: "",
-        Image_FrontCard: "https://img.freepik.com/foto-gratis/chica-sonriente-tiro-medio-hermoso-vestido_52683-86468.jpg?t=st=1746555442~exp=1746559042~hmac=e8d5adc2117161bcd88377ab37d6e1358945489c42ac647e29fb996cf047ca4c&w=1800",
-        Image_AudioUrl: "https://cdn-icons-png.freepik.com/512/13896/13896624.png?ga=GA1.1.1993030682.1745256637",
-        Image_Corner: "",
-        Image_MyParents: "https://img.freepik.com/fotos-premium/retrato-pareja-madura-feliz-abrazada-casa-conexion-amor-o-confianza-asociacion-juntos-cara-al-hombre-abrazar-mujer-compromiso-cuidado-relacion-saludable-apoyo-casa_590464-361056.jpg?ga=GA1.1.1993030682.1745256637&semt=ais_hybrid&w=740",
-        Image_MyGodParents: "https://img.freepik.com/fotos-premium/pareja-dia-san-valentin_772250-159.jpg?ga=GA1.1.1993030682.1745256637&w=740",
-        Image_DressCodeUrl: "https://img.freepik.com/foto-gratis/gente-elegante-bailando-tango_23-2149193458.jpg?ga=GA1.1.1993030682.1745256637&semt=ais_hybrid&w=740",
-        Image_AmazonUrl: "https://static-00.iconduck.com/assets.00/amazon-icon-2048x2048-pqt2fe18.png",
-        Image_LiverpoolUrl: "https://play-lh.googleusercontent.com/FwrxfHaknUKLneazGpPsjJvQ4mUYKJkccj-efHNeXQISwCwqC9ymNAnqlAY5J5oHIOc",
-        Image_GoogleLocation: "https://img.icons8.com/?size=512&id=DcygmpZqBEd9&format=png",
-        AudioUrl: "https://invitameok.com/invitaciones/admin/imagenes/26931/MUSICAdont-start-now-traducida-al-espanol%20(mp3cut.net).mp3",
-        WhatsAppUrl: "https://wa.link/encb79",
-        CollageImages: ['https://img.freepik.com/foto-gratis/adolescente-celebrando-quinceanera_23-2148478038.jpg', 'https://img.freepik.com/foto-gratis/chica-sonriente-tiro-medio-hermoso-vestido_52683-86468.jpg?t=st=1746555442~exp=1746559042~hmac=e8d5adc2117161bcd88377ab37d6e1358945489c42ac647e29fb996cf047ca4c&w=1800', 'https://lh3.googleusercontent.com/p/AF1QipMv-RExo0XkTU7eg8u-FelVsp1gd3u4XZyR3ipA=s3072-v1', 'https://lh3.googleusercontent.com/p/AF1QipNk9cctNeskTP2Zg2EEOQjV-aMFrSO5RRxWtx5N=s1024-v1'],
-      };
+        const mainEvent = {
+          Name: "Nicole",
+          Date: EventDate,
+          Description: `Acompáñanos a celebrar los XV de `,      
+          LocationDescription: "Catedral de Guadalajara",
+          Address: "Av. Fray Antonio Alcalde 10, Zona Centro, 44100 Guadalajara, Jal.",
+          Father: "José Gutiérrez",
+          Mother: "Melissa Hurtado",
+          GodFather: "Juan Fernández",
+          GodMother: "Laura Jimenez",
+          GoogleMapsUrl: "https://maps.app.goo.gl/hBdb191LiXzkPRfR8",
+          AmazonGiftTableUrl: "https://www.amazon.com.mx/",
+          LiverpoolGiftTableUrl: "https://www.liverpool.com.mx/tienda/home",
+          CollageImages: ['https://img.freepik.com/foto-gratis/adolescente-celebrando-quinceanera_23-2148478038.jpg', 'https://img.freepik.com/foto-gratis/chica-sonriente-tiro-medio-hermoso-vestido_52683-86468.jpg?t=st=1746555442~exp=1746559042~hmac=e8d5adc2117161bcd88377ab37d6e1358945489c42ac647e29fb996cf047ca4c&w=1800', 'https://lh3.googleusercontent.com/p/AF1QipMv-RExo0XkTU7eg8u-FelVsp1gd3u4XZyR3ipA=s3072-v1', 'https://lh3.googleusercontent.com/p/AF1QipNk9cctNeskTP2Zg2EEOQjV-aMFrSO5RRxWtx5N=s1024-v1'],
+          ImageMyParents: "https://img.freepik.com/fotos-premium/retrato-pareja-madura-feliz-abrazada-casa-conexion-amor-o-confianza-asociacion-juntos-cara-al-hombre-abrazar-mujer-compromiso-cuidado-relacion-saludable-apoyo-casa_590464-361056.jpg?ga=GA1.1.1993030682.1745256637&semt=ais_hybrid&w=740",
+          ImageMyGodParents: "https://img.freepik.com/fotos-premium/pareja-dia-san-valentin_772250-159.jpg?ga=GA1.1.1993030682.1745256637&w=740",
+          ImageDressCodeUrl: "https://img.freepik.com/foto-gratis/gente-elegante-bailando-tango_23-2149193458.jpg?ga=GA1.1.1993030682.1745256637&semt=ais_hybrid&w=740",
+        };
 
-      function Init() {
-        helpers.onLoad();
-        actions.onCounter();
-        setInterval(() => {
-          actions.onCounter();
-        }, 1000);
-        actions.onAudioPlayer();
-        actions.onFireworks();
-        actions.onCarousel();
-        actions.onConfetti();
-      }
-      Init();
+        const secondaryEvent = {
+          Date: EventReception,
+          LocationDescription: "Salón de Eventos Quinta el Eden",
+          Address: "C. Morelos 670, González Ortega, 45190 Zapopan, Jal.",
+          GoogleMapsUrl: "https://maps.app.goo.gl/1wwmTSk84XA8pLMn8",
+        }
+
+        const googleCalendar = {
+          Text: "Mis XV "+ mainEvent.Name,
+          Location: mainEvent.Address,
+          Detail : `
+                    [0]
+                📍 Lugar: [1]
+                🕒 Hora: [2]
+                ⏰ Recordatorio: Llega con 30 minutos de anticipación.
+                ✨ ¡Te esperamos para compartir este momento tan especial!`
+        }
+
+        const additionalInformation = {
+          ImageBodyBackground: "",
+          ImageCorner: "",
+          ImageFrontCard: "https://img.freepik.com/foto-gratis/chica-sonriente-tiro-medio-hermoso-vestido_52683-86468.jpg?t=st=1746555442~exp=1746559042~hmac=e8d5adc2117161bcd88377ab37d6e1358945489c42ac647e29fb996cf047ca4c&w=1800",
+          AudioUrl: "https://invitameok.com/invitaciones/admin/imagenes/26931/MUSICAdont-start-now-traducida-al-espanol%20(mp3cut.net).mp3",
+          WhatsAppUrl: "https://wa.link/encb79"
+        }
+
+        const Resources = {
+          MainEvent : mainEvent,
+          SecondaryEvent: secondaryEvent,
+          GoogleCalendar: googleCalendar, 
+          AdditionalInformation : additionalInformation
+        };
+
+        function Init() {          
+          $('.fireworks-container').onFireworksStart();
+          helpers.init(Resources);
+          helpers.onCounterStart(EventDate);
+          setInterval(() => {
+            helpers.onCounterStart(EventDate);
+          }, 1000);
+          helpers.onAudioPlayer();
+          gallery.onCreateGallery();
+          actions.onConfetti();
+        }
+        Init();
+      });
     </script>
   </body>
 </html>

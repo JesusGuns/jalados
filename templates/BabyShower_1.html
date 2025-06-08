@@ -13,6 +13,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="../css/templates.css">
+    <script src="../js/require.js"></script>
     <style>
       /* #region ROOT*/
       :root {
@@ -428,7 +429,7 @@
         <!-- Initial section -->
         <section class="box">
           <div class="subcontainer">
-            <img class="imgMain" src="#" data-replace="Image_Main" alt="Image Main">
+            <img class="imgMain" src="#" data-replace="ImageMain" alt="Image Main">
             <h1>¡Estás invitado <br> al Baby Shower de <br> <span data-replace="EventName"></span>!</h1>
             <div class="mt">
               <h2>Faltan:</h2>
@@ -460,15 +461,15 @@
               <div class="block">
                 <h3>Cuándo <span>🗓️</span></h3>
                 <p><strong data-replace="EventDateString"></strong></p>
-                <p>Desde <span data-replace="EventReceptionHourString"></span></p>
+                <p>Desde <span data-replace="EventHourString"></span></p>
 
                 <h3 class="mt">
                     Dónde
-                  <a href="#" data-replace="EventReceptionUrl" target="_blank">
+                  <a href="#" data-replace="MainEventUrl" target="_blank">
                     <img class="location-maps" src="#" data-replace="Image_GoogleLocation" alt="Google Location">
                   </a>
                 </h3>
-                <p data-replace="GoogleCalendarLocation"></p>
+                <p data-replace="MainEventAddress"></p>
               </div>
             </div>
           </div>
@@ -511,349 +512,280 @@
       <img class="loader-img" src="#" data-replace="Image_Loading" alt="Loading">
       <span>Cambiando tema...</span>
     </div>
-
-    <!-- Bootstrap JS Bundle (con soporte touch incluido) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/main.js"></script>
     <script>
-      var actions = {
-        onCounter: function() {
-          const now = new Date().getTime();
-          const distance = EventDate - now;
-          const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-          const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-          const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-          const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-          $("#days").text(actions.onHelperAddDigits(days));
-          $("#hours").text(actions.onHelperAddDigits(hours));
-          $("#minutes").text(actions.onHelperAddDigits(minutes));
-          $("#seconds").text(actions.onHelperAddDigits(seconds));
-          if (distance < 0) {
-            clearInterval(interval);
-            $("countdown").innerHTML = "¡Ha llegado el gran día!";
-          }
-        },
-        onHelperAddDigits: function(number) {
-          if (number.toString().length == 1) {
-            return "0" + number.toString();
-          }
-          return number;
-        },
-        onAudioPlayer: function() {
-          const audio = document.getElementById("audio");
-          $("#audioButton").on("click", function() {
-            if (audio.paused) {
-              audio.play();
-              $("#audioButton").removeClass("off");
-            } else {
-              audio.pause();
-              $("#audioButton").addClass("off");
-            }
-          });
-        },
-      };
-      var helpers = {
-        onGetDateYYYYMMDD: function() {
-          const format = (f) => f.toISOString().split("T")[0].replace(/-/g, "");
-          return format(EventDate);
-        },
-        onGetDateString: function(EventDate, includeDayName) {
-          const months = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
-          const days = ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"];
-          const day = EventDate.getDate();
-          const dayOfWeek = EventDate.getDay();
-          const dayName = days[dayOfWeek];
-          const month = months[EventDate.getMonth()];
-          const year = EventDate.getFullYear();
-          const dateString = includeDayName ? `${dayName} ${day} de ${month} del ${year}` : `${day} de ${month} del ${year}`;
-          return dateString;
-        },
-        onGetHoursString: function(EventDate, includeThe) {
-          let hours = EventDate.getHours();
-          const ampm = hours >= 12 ? "p.m." : "a.m.";
-          const mins = EventDate.getMinutes().toString().padStart(2, "0");
-          const the = hours > 1 ? "las " : "la";
-          hours = hours % 12 || 12;
-          const hourString = includeThe ? `${the} ${hours}:${mins} ${ampm}` : `${hours}:${mins} ${ampm}`;
-          return hourString;
-        },
-        onGoogleCalendar: function() {
-          const base = 'https://calendar.google.com/calendar/render';
-          const details = `Acompáñanos a celebrar el Baby Shower de ${Resources.EventName}.
-          📍 Lugar: ${Resources.GoogleCalendarLocation}
-          🕒 Hora: ${Resources.EventHourString}
-          ⏰ Recordatorio: Llega con 30 minutos de anticipación.
-          ✨ ¡Te esperamos para compartir este momento tan especial!`;
-          const params = new URLSearchParams({
-            action: "TEMPLATE",
-            text: `${Resources.GoogleCalendarTitle} de ${Resources.EventName}`,
-            dates: `${Resources.GoogleCalendarStartDate}/${Resources.GoogleCalendarEndDate}`,
-            details: details,
-            location: Resources.GoogleCalendarLocation
-          });
-          return `${base}?${params.toString()}`;
-        },
-        onLoad: function() {
-          $('body').css('background-image', 'url("' + Resources.Image_BodyBackground + '")');
-          $("[data-replace=Image_AudioUrl]").attr("src", Resources.Image_AudioUrl);
-          $("[data-replace=AudioUrl]").attr("src", Resources.AudioUrl);
-          $("[data-replace=EventDateString]").text(Resources.EventDateString);
-          $("[data-replace=EventHourString]").text(Resources.EventHourString);
-          $("[data-replace=EventReceptionHourString]").text(Resources.EventReceptionHourString);
-          $("[data-replace=EventName]").text(Resources.EventName);
-          $("[data-replace=EventReceptionUrl]").attr("href", Resources.EventReceptionUrl);
-          $("[data-replace=Image_GoogleLocation]").attr("src", Resources.Image_GoogleLocation);
-          $("[data-replace=Image_Main]").attr("src", Resources.Image_Main);
-          $("[data-replace=Image_Tap]").attr("src", Resources.Image_Tap);
-          $("[data-replace=Image_Loading]").attr("src", Resources.Image_Loading);
-          $("[data-replace=WhatsAppUrl]").attr("href", Resources.WhatsAppUrl);
-          $("[data-replace=GoogleCalendarUrl]").attr("href", helpers.onGoogleCalendar());
-          $("[data-replace=GoogleCalendarLocation]").text(Resources.GoogleCalendarLocation);
+      requirejs(["jquery","helpers"],function($,helpers){
+        const EventDate = new Date("2025-11-25T13:00:00");
+        const EventReception = new Date("2025-11-25T17:00:00");
+        const mainEvent = {
+          Name: "",
+          Date: EventDate,
+          Description: `Acompáñanos a celebrar el Baby Shower de `,      
+          LocationDescription: "Salón de Eventos Quinta el Eden",
+          Address: "C. Morelos 670, González Ortega, 45190 Zapopan, Jal.",
+          Father: "José Gutiérrez",
+          Mother: "Melissa Hurtado",
+          GodFather: "Juan Fernández",
+          GodMother: "Laura Jimenez",
+          GoogleMapsUrl: "https://maps.app.goo.gl/1wwmTSk84XA8pLMn8",
+          AmazonGiftTableUrl: "https://www.amazon.com.mx/",
+          LiverpoolGiftTableUrl: "https://www.liverpool.com.mx/tienda/home",
+          CollageImages: [
+            'https://img.freepik.com/vector-premium/es-invitacion-baby-shower-nino-mono-azul-plantilla-tarjeta-felicitacion-bebe-recien-nacido_647688-40.jpg',
+            'https://img.freepik.com/foto-gratis/mujer-embarazada-foto-su-futuro-bebe_1391-1419.jpg?ga=GA1.1.376195781.1747703452&semt=ais_hybrid&w=740',
+            'https://img.freepik.com/fotos-premium/feliz-pareja-embarazada-buscando-imagen-ultrasonido-su-bebe-nacer-aislado-fondo-azul_530697-83805.jpg?ga=GA1.1.376195781.1747703452&semt=ais_hybrid&w=740',
+            'https://img.freepik.com/foto-gratis/dos-manos-forma-corazon-estomago-madre-embarazada_181624-6985.jpg?ga=GA1.1.376195781.1747703452&semt=ais_hybrid&w=740',
+            'https://img.freepik.com/foto-gratis/mujer-embarazada-marido-zapatos-bebe_23-2147793312.jpg?ga=GA1.1.376195781.1747703452&semt=ais_hybrid&w=740',
+            'https://img.freepik.com/foto-gratis/imagen-ultrasonido-mujer-embarazada-cosas-bebe-madre-esta-esperando-bebe_169016-27477.jpg?ga=GA1.1.376195781.1747703452&semt=ais_hybrid&w=740'
+          ],
+          CollageImages2: [
+            'https://img.freepik.com/foto-gratis/mujer-embarazada-sujetando-corazon-mientras-toca-barriga_1220-849.jpg',
+            'https://img.freepik.com/fotos-premium/mujer-embarazada-sosteniendo-zapatillas-blancas-bebe-cerca-vientre-embarazada-concepto-familiar_1272242-393.jpg?ga=GA1.1.376195781.1747703452&semt=ais_hybrid&w=740',
+            'https://img.freepik.com/fotos-premium/manos-mujer-embarazada-primer-corazon-forman-su-panza_38678-4724.jpg?ga=GA1.1.376195781.1747703452&semt=ais_hybrid&w=740',
+            'https://img.freepik.com/fotos-premium/vientre-mujer-embarazada-primer-plano-vientre-mujer-embarazada_176445-10619.jpg?ga=GA1.1.376195781.1747703452&semt=ais_hybrid&w=740',
+            'https://img.freepik.com/foto-gratis/vista-frontal-mujer-embarazada-sosteniendo-su-vientre_23-2148352222.jpg?ga=GA1.1.376195781.1747703452&semt=ais_hybrid&w=740'
+          ],
+          ImageMyParents: "https://img.freepik.com/fotos-premium/retrato-pareja-madura-feliz-abrazada-casa-conexion-amor-o-confianza-asociacion-juntos-cara-al-hombre-abrazar-mujer-compromiso-cuidado-relacion-saludable-apoyo-casa_590464-361056.jpg?ga=GA1.1.1993030682.1745256637&semt=ais_hybrid&w=740",
+          ImageMyGodParents: "https://img.freepik.com/fotos-premium/pareja-dia-san-valentin_772250-159.jpg?ga=GA1.1.1993030682.1745256637&w=740",
+          ImageDressCodeUrl: "https://img.freepik.com/foto-gratis/gente-elegante-bailando-tango_23-2149193458.jpg?ga=GA1.1.1993030682.1745256637&semt=ais_hybrid&w=740",
+        };
+
+        const secondaryEvent = {
+          Date: EventReception,
+          LocationDescription: "",
+          Address: "",
+          GoogleMapsUrl: "",
         }
-      };
-      const EventDate = new Date("2025-11-25T13:00:00");
-      const EventReception = new Date("2025-11-25T17:00:00");
-      const Resources = {
-        EventDate: EventDate,
-        EventTime: EventDate.getTime(),
-        EventDateString: helpers.onGetDateString(EventDate),
-        EventHourString: helpers.onGetHoursString(EventDate),
-        EventReceptionHourString: helpers.onGetHoursString(EventReception, true),
-        EventName: "",
-        EventFather: "José Gutiérrez",
-        EventMother: "Melissa Hurtado",
-        EventGodFather: "Juan Fernández",
-        EventGodMother: "Laura Jimenez",
-        EventChurchUrl: "https://maps.app.goo.gl/hBdb191LiXzkPRfR8",
-        EventReceptionUrl: "https://maps.app.goo.gl/1wwmTSk84XA8pLMn8",
-        EventAmazonGiftTableUrl: "https://www.amazon.com.mx/",
-        EventLiverpoolGiftTableUrl: "https://www.liverpool.com.mx/tienda/home",
-        GoogleCalendarTitle: "Baby Shower",
-        GoogleCalendarStartDate: helpers.onGetDateYYYYMMDD(),
-        GoogleCalendarEndDate: helpers.onGetDateYYYYMMDD(),
-        GoogleCalendarLocation: "Salón Azul Calle Principal 123",
-        Image_BodyBackground: "",
-        Image_FrontCard: "https://img.freepik.com/foto-gratis/mujer-tiro-medio-caminando-calle_23-2148703161.jpg?ga=GA1.1.1993030682.1745256637&semt=ais_hybrid&w=740",
-        Image_AudioUrl: "https://cdn-icons-png.freepik.com/512/13896/13896624.png?ga=GA1.1.1993030682.1745256637",
-        Image_Corner: "",
-        Image_MyParents: "https://img.freepik.com/fotos-premium/retrato-pareja-madura-feliz-abrazada-casa-conexion-amor-o-confianza-asociacion-juntos-cara-al-hombre-abrazar-mujer-compromiso-cuidado-relacion-saludable-apoyo-casa_590464-361056.jpg?ga=GA1.1.1993030682.1745256637&semt=ais_hybrid&w=740",
-        Image_MyGodParents: "https://img.freepik.com/fotos-premium/pareja-dia-san-valentin_772250-159.jpg?ga=GA1.1.1993030682.1745256637&w=740",
-        Image_DressCodeUrl: "https://img.freepik.com/foto-gratis/gente-elegante-bailando-tango_23-2149193458.jpg?ga=GA1.1.1993030682.1745256637&semt=ais_hybrid&w=740",
-        Image_AmazonUrl: "https://static-00.iconduck.com/assets.00/amazon-icon-2048x2048-pqt2fe18.png",
-        Image_LiverpoolUrl: "https://play-lh.googleusercontent.com/FwrxfHaknUKLneazGpPsjJvQ4mUYKJkccj-efHNeXQISwCwqC9ymNAnqlAY5J5oHIOc",
-        Image_GoogleLocation: "https://img.icons8.com/?size=512&id=DcygmpZqBEd9&format=png",
-        Image_Main: "",
-        Image_Tap: "https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExNWZ1MW80dTVkMzFrcXoxeG41OHo5NmdiemdvbnE5NW9seW1heXA5YiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/TPiig5QAVogA1po38k/giphy.gif",
-        Image_Loading: "https://www.boredpanda.es/blog/wp-content/uploads/2016/07/gifs-totoro-ejercicio-cl-terry-6.gif",
-        AudioUrl: "../music/Here Comes The Sun.mp3",
-        WhatsAppUrl: "https://tinyurl.com/3h8kmam7",
-        CollageImages: [
-          'https://img.freepik.com/vector-premium/es-invitacion-baby-shower-nino-mono-azul-plantilla-tarjeta-felicitacion-bebe-recien-nacido_647688-40.jpg',
-          'https://img.freepik.com/foto-gratis/mujer-embarazada-foto-su-futuro-bebe_1391-1419.jpg?ga=GA1.1.376195781.1747703452&semt=ais_hybrid&w=740',
-          'https://img.freepik.com/fotos-premium/feliz-pareja-embarazada-buscando-imagen-ultrasonido-su-bebe-nacer-aislado-fondo-azul_530697-83805.jpg?ga=GA1.1.376195781.1747703452&semt=ais_hybrid&w=740',
-          'https://img.freepik.com/foto-gratis/dos-manos-forma-corazon-estomago-madre-embarazada_181624-6985.jpg?ga=GA1.1.376195781.1747703452&semt=ais_hybrid&w=740',
-          'https://img.freepik.com/foto-gratis/mujer-embarazada-marido-zapatos-bebe_23-2147793312.jpg?ga=GA1.1.376195781.1747703452&semt=ais_hybrid&w=740',
-          'https://img.freepik.com/foto-gratis/imagen-ultrasonido-mujer-embarazada-cosas-bebe-madre-esta-esperando-bebe_169016-27477.jpg?ga=GA1.1.376195781.1747703452&semt=ais_hybrid&w=740'
-        ],
-        CollageImages2: [
-          'https://img.freepik.com/foto-gratis/mujer-embarazada-sujetando-corazon-mientras-toca-barriga_1220-849.jpg',
-          'https://img.freepik.com/fotos-premium/mujer-embarazada-sosteniendo-zapatillas-blancas-bebe-cerca-vientre-embarazada-concepto-familiar_1272242-393.jpg?ga=GA1.1.376195781.1747703452&semt=ais_hybrid&w=740',
-          'https://img.freepik.com/fotos-premium/manos-mujer-embarazada-primer-corazon-forman-su-panza_38678-4724.jpg?ga=GA1.1.376195781.1747703452&semt=ais_hybrid&w=740',
-          'https://img.freepik.com/fotos-premium/vientre-mujer-embarazada-primer-plano-vientre-mujer-embarazada_176445-10619.jpg?ga=GA1.1.376195781.1747703452&semt=ais_hybrid&w=740',
-          'https://img.freepik.com/foto-gratis/vista-frontal-mujer-embarazada-sosteniendo-su-vientre_23-2148352222.jpg?ga=GA1.1.376195781.1747703452&semt=ais_hybrid&w=740'
-        ]
-      };
-      const book = document.getElementById('book');
-      const flipSound = document.getElementById('flipSound');
-      const tapHint = document.getElementById('tapHint');
-      const totalPages = Resources.CollageImages.length;
-      const Themes = {
-        themeBoy: {
-          '--color_Primary': '#368ecf',
-          '--color_Secondary': '#6d4c41',
-          '--color_Tertiary': '#ff6f61',
-          '--color_Quaternary': '#99d5f06b',
-          '--filter-AudioButton': '278deg',
-          Image_BodyBackground: "https://www.transparenttextures.com/patterns/stardust.png",
-          Image_Main: "https://i.etsystatic.com/41935531/r/il/22c68d/4904539325/il_570xN.4904539325_el50.jpg",
-          Image_CoverPage: "https://img.freepik.com/vector-premium/es-invitacion-baby-shower-nino-mono-azul-plantilla-tarjeta-felicitacion-bebe-recien-nacido_647688-40.jpg",
-          EventName: 'Thomas'
-        },
-        themeGirl: {
-          '--color_Primary': '#f06292bd',
-          '--color_Secondary': '#ad1457',
-          '--color_Tertiary': '#e91e63',
-          '--color_Quaternary': '#fce4ec',
-          '--filter-AudioButton': '395deg',
-          Image_BodyBackground: "https://www.transparenttextures.com/patterns/stardust.png",
-          Image_Main: "https://png.pngtree.com/png-clipart/20240301/original/pngtree-cute-unicorn-cartoon-on-heart-cloud-for-valentine-s-day-kawaii-png-image_14459513.png",
-          Image_CoverPage: "https://img.freepik.com/vector-premium/es-invitacion-baby-shower-nina-letras_187548-622.jpg?ga=GA1.1.376195781.1747703452&semt=ais_hybrid&w=740",
-          EventName: 'Valentina'
-        },
-        themeNeutral: {
-          '--color_Primary': '#bfa058a8',
-          '--color_Secondary': '#7e6d4d',
-          '--color_Tertiary': '#957d4a',
-          '--color_Quaternary': '#fff9c4',
-          '--filter-AudioButton': '120deg',
-          Image_BodyBackground: "https://www.transparenttextures.com/patterns/food.png",
-          Image_Main: "https://i.pinimg.com/736x/31/35/4b/31354bcf4b1212f56ce992d4cb87dd20.jpg",
-          Image_CoverPage: "https://img.freepik.com/vector-premium/tarjeta-felicitacion-dibujos-animados-su-tarjeta-nino-diseno-volantes-tarjeta-salud-cartel-cartel_506530-4301.jpg",
-          EventName: 'Aitana y Alex'
+
+        const googleCalendar = {
+          Text: "Baby Shower ",
+          Location: mainEvent.Address,
+          Detail : `
+                    [0]
+                📍 Lugar: [1]
+                🕒 Hora: [2]
+                ⏰ Recordatorio: Llega con 30 minutos de anticipación.
+                ✨ ¡Te esperamos para compartir este momento tan especial!`
         }
-      };
 
-      function Init() {
-        helpers.onLoad();
-        actions.onCounter();
-        setInterval(() => {
-          actions.onCounter();
-        }, 1000);
-        actions.onAudioPlayer();
-        generateBook();
-        applyTheme('themeBoy');
-      };
+        const additionalInformation = {
+          ImageBodyBackground: "",
+          ImageCorner: "",
+          ImageFrontCard: "https://img.freepik.com/foto-gratis/mujer-tiro-medio-caminando-calle_23-2148703161.jpg?ga=GA1.1.1993030682.1745256637&semt=ais_hybrid&w=740",
+          ImageMain: "",
+          ImageTap: "https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExNWZ1MW80dTVkMzFrcXoxeG41OHo5NmdiemdvbnE5NW9seW1heXA5YiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/TPiig5QAVogA1po38k/giphy.gif",
+          ImageLoading: "https://www.boredpanda.es/blog/wp-content/uploads/2016/07/gifs-totoro-ejercicio-cl-terry-6.gif",
+          AudioUrl: "../music/Here Comes The Sun.mp3",
+          WhatsAppUrl: "https://tinyurl.com/3h8kmam7",
+        }
 
-      Init();
+        const Resources = {
+          MainEvent : mainEvent,
+          SecondaryEvent: secondaryEvent,
+          GoogleCalendar: googleCalendar,
+          AdditionalInformation : additionalInformation
+        };
 
-      function generateBook() {
-        let currentPage = 0;
+        function onLoad(){
 
-        $('#book').empty();
+          $('body').css('background-image', 'url("' + Resources.AdditionalInformation.ImageBodyBackground + '")');
+          $("[data-replace=ImageMain]").attr("src", Resources.AdditionalInformation.ImageMain);
+          $("[data-replace=Image_Tap]").attr("src", Resources.AdditionalInformation.ImageTap);
+          $("[data-replace=Image_Loading]").attr("src", Resources.AdditionalInformation.ImageLoading);
+        }
 
-        const pages = [];
-        const flipTimeouts = new Array(totalPages).fill(null);
+        const book = document.getElementById('book');
+        const flipSound = document.getElementById('flipSound');
+        const tapHint = document.getElementById('tapHint');
+        const totalPages = Resources.MainEvent.CollageImages.length;
+        const Themes = {
+          themeBoy: {
+            '--color_Primary': '#368ecf',
+            '--color_Secondary': '#6d4c41',
+            '--color_Tertiary': '#ff6f61',
+            '--color_Quaternary': '#99d5f06b',
+            '--filter-AudioButton': '278deg',
+            ImageBodyBackground: "https://www.transparenttextures.com/patterns/stardust.png",
+            ImageMain: "https://i.etsystatic.com/41935531/r/il/22c68d/4904539325/il_570xN.4904539325_el50.jpg",
+            ImageCoverPage: "https://img.freepik.com/vector-premium/es-invitacion-baby-shower-nino-mono-azul-plantilla-tarjeta-felicitacion-bebe-recien-nacido_647688-40.jpg",
+            Name: 'Thomas'
+          },
+          themeGirl: {
+            '--color_Primary': '#f06292bd',
+            '--color_Secondary': '#ad1457',
+            '--color_Tertiary': '#e91e63',
+            '--color_Quaternary': '#fce4ec',
+            '--filter-AudioButton': '395deg',
+            ImageBodyBackground: "https://www.transparenttextures.com/patterns/stardust.png",
+            ImageMain: "https://png.pngtree.com/png-clipart/20240301/original/pngtree-cute-unicorn-cartoon-on-heart-cloud-for-valentine-s-day-kawaii-png-image_14459513.png",
+            ImageCoverPage: "https://img.freepik.com/vector-premium/es-invitacion-baby-shower-nina-letras_187548-622.jpg?ga=GA1.1.376195781.1747703452&semt=ais_hybrid&w=740",
+            Name: 'Valentina'
+          },
+          themeNeutral: {
+            '--color_Primary': '#bfa058a8',
+            '--color_Secondary': '#7e6d4d',
+            '--color_Tertiary': '#957d4a',
+            '--color_Quaternary': '#fff9c4',
+            '--filter-AudioButton': '120deg',
+            ImageBodyBackground: "https://www.transparenttextures.com/patterns/food.png",
+            ImageMain: "https://i.pinimg.com/736x/31/35/4b/31354bcf4b1212f56ce992d4cb87dd20.jpg",
+            ImageCoverPage: "https://img.freepik.com/vector-premium/tarjeta-felicitacion-dibujos-animados-su-tarjeta-nino-diseno-volantes-tarjeta-salud-cartel-cartel_506530-4301.jpg",
+            Name: 'Aitana y Alex'
+          }
+        };
+        
+        function generateBook() {
+          let currentPage = 0;
 
-        Resources.CollageImages.forEach((img, i) => {
-          const page = document.createElement('div');
-          page.className = 'page';
-          page.style.zIndex = totalPages - i;
+          $('#book').empty();
 
-          const backImg = Resources.CollageImages2[i] || '';
+          const pages = [];
+          const flipTimeouts = new Array(totalPages).fill(null);
 
-          page.innerHTML = `
-            <div class="face front"><img src="${img}" alt="Frente ${i + 1}" /></div>
-            <div class="face back"><img src="${backImg}" alt="Reverso ${i + 1}" /></div>
-          `;
+          Resources.MainEvent.CollageImages.forEach((img, i) => {
+            const page = document.createElement('div');
+            page.className = 'page';
+            page.style.zIndex = totalPages - i;
 
-          pages.push(page);
+            const backImg = Resources.MainEvent.CollageImages2[i] || '';
 
-          page.addEventListener('click', () => {
-            if (i !== currentPage) return;
+            page.innerHTML = `
+              <div class="face front"><img src="${img}" alt="Frente ${i + 1}" /></div>
+              <div class="face back"><img src="${backImg}" alt="Reverso ${i + 1}" /></div>
+            `;
 
-            page.classList.add('flipped');
-            if (flipSound) {
-              flipSound.currentTime = 0;
-              flipSound.play();
-            }
+            pages.push(page);
 
-            currentPage++;
-            const esUltima = (currentPage === totalPages);
-            if (esUltima) {
-              currentPage = 0;
+            page.addEventListener('click', () => {
+              if (i !== currentPage) return;
 
-              pages.forEach((p, idx) => {
-                p.style.zIndex = totalPages - idx;
-              });
-            }
-
-            if (!esUltima) {
-              if (flipTimeouts[i] !== null) {
-                clearTimeout(flipTimeouts[i]);
+              page.classList.add('flipped');
+              if (flipSound) {
+                flipSound.currentTime = 0;
+                flipSound.play();
               }
-              flipTimeouts[i] = setTimeout(() => {
-                if (page.classList.contains('flipped')) {
-                  page.style.zIndex = i;
+
+              currentPage++;
+              const esUltima = (currentPage === totalPages);
+              if (esUltima) {
+                currentPage = 0;
+
+                pages.forEach((p, idx) => {
+                  p.style.zIndex = totalPages - idx;
+                });
+              }
+
+              if (!esUltima) {
+                if (flipTimeouts[i] !== null) {
+                  clearTimeout(flipTimeouts[i]);
                 }
-                flipTimeouts[i] = null;
-              }, 300);
-            }
-
-            if (i === 0) {
-              book.classList.add('shifted');
-              if (tapHint) {
-                tapHint.classList.add('hidden');
-                tapHint.classList.remove('shifted');
-              }
-            }
-
-            if (esUltima) {
-              for (let j = totalPages - 1; j >= 0; j--) {
-                const delay = (totalPages - 1 - j) * 400;
-                const p = pages[j];
-
-                setTimeout(() => {
-                  p.style.zIndex = totalPages - j;
-                  void p.offsetHeight;
-                  p.classList.remove('flipped');
-                  if (flipTimeouts[j] !== null) {
-                    clearTimeout(flipTimeouts[j]);
-                    flipTimeouts[j] = null;
+                flipTimeouts[i] = setTimeout(() => {
+                  if (page.classList.contains('flipped')) {
+                    page.style.zIndex = i;
                   }
-                }, delay);
+                  flipTimeouts[i] = null;
+                }, 300);
               }
 
-              const totalDelay = (totalPages - 1) * 400 + 750;
-              setTimeout(() => {
-                book.style.transition = 'transform 1s ease';
-                book.classList.remove('shifted');
+              if (i === 0) {
+                book.classList.add('shifted');
+                if (tapHint) {
+                  tapHint.classList.add('hidden');
+                  tapHint.classList.remove('shifted');
+                }
+              }
+
+              if (esUltima) {
+                for (let j = totalPages - 1; j >= 0; j--) {
+                  const delay = (totalPages - 1 - j) * 400;
+                  const p = pages[j];
+
+                  setTimeout(() => {
+                    p.style.zIndex = totalPages - j;
+                    void p.offsetHeight;
+                    p.classList.remove('flipped');
+                    if (flipTimeouts[j] !== null) {
+                      clearTimeout(flipTimeouts[j]);
+                      flipTimeouts[j] = null;
+                    }
+                  }, delay);
+                }
+
+                const totalDelay = (totalPages - 1) * 400 + 750;
                 setTimeout(() => {
-                  if (tapHint) {
-                    tapHint.classList.add('fade-in');
-                    tapHint.classList.remove('hidden');
-                  }
-                }, 1500);
-              }, totalDelay);
-            }
+                  book.style.transition = 'transform 1s ease';
+                  book.classList.remove('shifted');
+                  setTimeout(() => {
+                    if (tapHint) {
+                      tapHint.classList.add('fade-in');
+                      tapHint.classList.remove('hidden');
+                    }
+                  }, 1500);
+                }, totalDelay);
+              }
+            });
+
+            book.appendChild(page);
           });
+        };
 
-          book.appendChild(page);
-        });
-      };
+        function applyTheme(themeName) {
+          const theme = Themes[themeName];
+          const imgMain = document.querySelector('.imgMain');
+          imgMain.classList.remove('themeBoy', 'themeGirl', 'themeNeutral');
+          imgMain.classList.add(`${themeName}`);
 
-      function applyTheme(themeName) {
-        const theme = Themes[themeName];
-
-        const imgMain = document.querySelector('.imgMain');
-        imgMain.classList.remove('themeBoy', 'themeGirl', 'themeNeutral');
-        imgMain.classList.add(`${themeName}`);
-
-        for (let variable in theme) {
-          if (variable.startsWith('--')) {
-            document.documentElement.style.setProperty(variable, theme[variable]);
-          } else {
-            if (variable === 'Image_BodyBackground') {
-               Resources.Image_BodyBackground = theme[variable];
-            } else if (variable === 'Image_Main') {
-              Resources.Image_Main = theme[variable];
-            } else if (variable === 'EventName') {
-              Resources.EventName = theme[variable];
-            } else if (variable === 'Image_CoverPage') {
-              Resources.CollageImages[0] = theme[variable];
+          for (let variable in theme) {
+            if (variable.startsWith('--')) {
+              document.documentElement.style.setProperty(variable, theme[variable]);
+            } else {
+              if (variable === 'ImageBodyBackground') {
+                Resources.AdditionalInformation.ImageBodyBackground = theme[variable];
+              } else if (variable === 'ImageMain') {
+                Resources.AdditionalInformation.ImageMain = theme[variable];
+              } else if (variable === 'Name') {
+                Resources.MainEvent.Name = theme[variable];
+              } else if (variable === 'ImageCoverPage') {
+                Resources.MainEvent.CollageImages[0] = theme[variable];
+              }
             }
           }
-        }
 
-        book.classList.remove('shifted');
-        $('#book').empty();
-        tapHint.classList.remove("hidden");
-        $("#audioButton").addClass("off");
+          book.classList.remove('shifted');
+          $('#book').empty();
+          tapHint.classList.remove("hidden");
+          $("#audioButton").addClass("off");
+          Resources.GoogleCalendar = googleCalendar;
+          helpers.init(Resources);
+          onLoad();
+          generateBook();
+        };
 
-        helpers.onLoad();
-        generateBook();
-      };
+        $('.theme-btn').on('click', function () {
+          const theme = $(this).data('theme');
+          $('#themeOverlay').addClass('active');
 
-      $('.theme-btn').on('click', function () {
-        const theme = $(this).data('theme');
-        $('#themeOverlay').addClass('active');
-
-        setTimeout(() => {
-          applyTheme(theme);
-          window.scrollTo({ top: 0, behavior: 'smooth' });
           setTimeout(() => {
-            $('#themeOverlay').removeClass('active');
-          }, 2000);
-        }, 500);
+            applyTheme(theme);
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            setTimeout(() => {
+              $('#themeOverlay').removeClass('active');
+            }, 2000);
+          }, 500);
+        });
+
+        function Init() {
+          helpers.init(Resources);
+          helpers.onCounterStart(EventDate);
+          setInterval(() => {
+            helpers.onCounterStart(EventDate);
+          }, 1000);
+          helpers.onAudioPlayer();
+          generateBook();
+          applyTheme('themeBoy');
+        }
+        Init();
+
       });
     </script>
   </body>

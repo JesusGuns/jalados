@@ -2,13 +2,57 @@
 
 //@ts-ignore
 define(["jquery", "extended"], function ($) {
-  var Resources;
+  
+  const staticLinks = {
+    ImageAudioUrl: "https://cdn-icons-png.freepik.com/512/13896/13896624.png?ga=GA1.1.1993030682.1745256637",
+    ImageAmazonUrl: "https://static-00.iconduck.com/assets.00/amazon-icon-2048x2048-pqt2fe18.png",
+    ImageLiverpoolUrl: "https://play-lh.googleusercontent.com/FwrxfHaknUKLneazGpPsjJvQ4mUYKJkccj-efHNeXQISwCwqC9ymNAnqlAY5J5oHIOc",
+    ImageGoogleLocation: "https://img.icons8.com/?size=512&id=DcygmpZqBEd9&format=png",
+    IconChurch: "https://cdn-icons-png.flaticon.com/128/4186/4186011.png",
+    IconReception: "https://cdn-icons-png.flaticon.com/128/887/887345.png",
+    IconPhotSession: "https://cdn-icons-png.flaticon.com/128/3004/3004613.png",
+    IconFeast: "https://cdn-icons-png.flaticon.com/128/4156/4156252.png",
+    IconVals: "https://cdn-icons-png.flaticon.com/128/1483/1483389.png",
+    IconSuit: "https://cdn-icons-png.flaticon.com/128/389/389573.png",
+    IconDress: "https://cdn-icons-png.flaticon.com/128/3507/3507059.png"
+  }
+
+  var Resources = {
+    MainEvent : {},
+    SecondaryEvent: {},
+    GoogleCalendar: {},
+    AdditionalInformation : {},
+    StaticLinks: staticLinks
+  };
   var module = {
     init: function (resources) {
-      console.log("initt");
-      Resources = resources;
-      console.log(Resources);
+      Resources.MainEvent = resources.MainEvent;
+      Resources.MainEvent.Time =  Resources.MainEvent.Date.getTime();
+      Resources.MainEvent.DateString =  module.onGetDateString(Resources.MainEvent.Date);
+      Resources.MainEvent.HourString =  module.onGetHoursString(Resources.MainEvent.Date);
+      Resources.MainEvent.WeekDay =  module.onGetWeekDay(Resources.MainEvent.Date);
+      Resources.MainEvent.Day =  module.onGetDay(Resources.MainEvent.Date);
+      Resources.MainEvent.Month =  module.onGetMonth(Resources.MainEvent.Date);
+      Resources.MainEvent.Year =  module.onGetYear(Resources.MainEvent.Date);
+      Resources.MainEvent.YYYYMMDD =  module.onGetDateYYYYMMDD(Resources.MainEvent.Date);
+      Resources.MainEvent.RandomCollageImage= 0;
+
+      Resources.SecondaryEvent = resources.SecondaryEvent;
+      Resources.SecondaryEvent.Time= Resources.SecondaryEvent.Date.getTime();
+      Resources.SecondaryEvent.DateString= module.onGetDateString(Resources.SecondaryEvent.Date);
+      Resources.SecondaryEvent.HourString= module.onGetHoursString(Resources.SecondaryEvent.Date);
+      Resources.SecondaryEvent.WeekDay= module.onGetWeekDay(Resources.SecondaryEvent.Date);
+      Resources.SecondaryEvent.Day= module.onGetDay(Resources.SecondaryEvent.Date);
+      Resources.SecondaryEvent.Month= module.onGetMonth(Resources.SecondaryEvent.Date);
+      Resources.SecondaryEvent.Year= module.onGetYear(Resources.SecondaryEvent.Date);
+      Resources.SecondaryEvent.YYYYMMDD= module.onGetDateYYYYMMDD(Resources.SecondaryEvent.Date);
+
+      Resources.GoogleCalendar = resources.GoogleCalendar;
+      Resources.AdditionalInformation = resources.AdditionalInformation;
       module.onLoad();
+    },
+    onGetResources:function(){
+      return Resources;
     },
     onGetWeekDay: function (eventDate) {
       const days = ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"];
@@ -73,10 +117,19 @@ define(["jquery", "extended"], function ($) {
     },
     onGoogleCalendar: function (googleCalendar) {
       const base = "https://calendar.google.com/calendar/render";
+      const calendarDate = module.onGetDateYYYYMMDD(Resources.MainEvent.Date);
+      const title = Resources.MainEvent.Description + " " + Resources.MainEvent.Name;
+      const location = Resources.MainEvent.LocationDescription;
+      const hour = Resources.MainEvent.HourString;
+
+      googleCalendar.Detail = googleCalendar.Detail.replace("[0]", title);
+      googleCalendar.Detail = googleCalendar.Detail.replace("[1]", location);
+      googleCalendar.Detail = googleCalendar.Detail.replace("[2]", hour);
+
       const params = new URLSearchParams({
         action: "TEMPLATE",
         text: googleCalendar.Text,
-        dates: `${googleCalendar.StartDate}/${googleCalendar.EndDate}`,
+        dates: `${calendarDate}/${calendarDate}`,
         details: googleCalendar.Detail,
         location: googleCalendar.Location,
       });
@@ -88,7 +141,18 @@ define(["jquery", "extended"], function ($) {
         $("#audio").OnAudioPlayerClick($audioButton);
       });
     },
+    onMoveElementFromArray: function(array, oldIndex, newIndex){
+      if (newIndex >= array.length) {
+        newIndex = array.length - 1;
+      } else if (newIndex < 0) {
+        newIndex = 0
+      }
+      array.splice(newIndex, 0, array.splice(oldIndex, 1)[0]);
+      return array;
+    },
     onLoad: function () {
+      Resources.MainEvent.RandomCollageImage = Math.floor(Math.random() * Resources.MainEvent.CollageImages.length);
+      Resources.MainEvent.CollageImages = module.onMoveElementFromArray(Resources.MainEvent.CollageImages, Resources.MainEvent.RandomCollageImage, 3 );
       //Main Event
       $("[data-replace=EventDateString]").text(Resources.MainEvent.DateString);
       $("[data-replace=EventHourString]").text(Resources.MainEvent.HourString);
@@ -104,9 +168,21 @@ define(["jquery", "extended"], function ($) {
       $("[data-replace=EventAmazonGiftTableUrl]").attr("href", Resources.MainEvent.AmazonGiftTableUrl);
       $("[data-replace=EventLiverpoolGiftTableUrl]").attr("href", Resources.MainEvent.LiverpoolGiftTableUrl);
 
+      $("[data-replace=MainEventUrl]").attr("href", Resources.MainEvent.GoogleMapsUrl);
+      $("[data-replace=MainEventHourString]").text(Resources.MainEvent.HourString);
+      $("[data-replace=MainEventDay]").text(Resources.MainEvent.Day);
+      $("[data-replace=MainEventWeekDay]").text(Resources.MainEvent.WeekDay);
+      $("[data-replace=MainEventMonth]").text(Resources.MainEvent.Month);
+      $("[data-replace=MainEventYear]").text(Resources.MainEvent.Year);
+
+      $("[data-replace=MainEventLocationDescription]").text(Resources.MainEvent.LocationDescription);
+      $("[data-replace=MainEventAddress]").text(Resources.MainEvent.Address);
+
       //Secondary Event
       $("[data-replace=EventReceptionHourString]").text(Resources.SecondaryEvent.HourString);
       $("[data-replace=EventReceptionUrl]").attr("href", Resources.SecondaryEvent.GoogleMapsUrl);
+      $("[data-replace=SecondaryEventLocationDescription]").text(Resources.SecondaryEvent.LocationDescription);
+      $("[data-replace=SecondaryEventAddress]").text(Resources.SecondaryEvent.Address);
 
       //Google calendar
       $("[data-replace=GoogleCalendarUrl]").attr("href", module.onGoogleCalendar(Resources.GoogleCalendar));
@@ -121,6 +197,13 @@ define(["jquery", "extended"], function ($) {
       $("[data-replace=Image_AmazonUrl]").attr("src", Resources.StaticLinks.ImageAmazonUrl);
       $("[data-replace=Image_LiverpoolUrl]").attr("src", Resources.StaticLinks.ImageLiverpoolUrl);
       $("[data-replace=Image_GoogleLocation]").attr("src", Resources.StaticLinks.ImageGoogleLocation);
+      $("[data-replace=ActivityIconChurch]").attr("src", Resources.StaticLinks.IconChurch);
+      $("[data-replace=ActivityIconReception]").attr("src", Resources.StaticLinks.IconReception);
+      $("[data-replace=ActivityIconPhotSession]").attr("src", Resources.StaticLinks.IconPhotSession);
+      $("[data-replace=ActivityIconFeast]").attr("src", Resources.StaticLinks.IconFeast);
+      $("[data-replace=ActivityIconVals]").attr("src", Resources.StaticLinks.IconVals);
+      $("[data-replace=ActivityIconSuit]").attr("src", Resources.StaticLinks.IconSuit);
+      $("[data-replace=ActivityIconDress]").attr("src", Resources.StaticLinks.IconDress);
     },
   };
   return module;

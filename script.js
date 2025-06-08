@@ -67,9 +67,9 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     const captions = {
-        cumpleanos: [
-            '<a href="./templates/Birthday_1.html">Boda 1</a>',
-            "Cumpleaños 2",
+        birthday: [
+            '<a href="./templates/Birthday_1.html">Cumpleaños 1</a>',
+            '<a href="./templates/Birthday_2.html">Cumpleaños 2</a>',
             "Cumpleaños 3"
         ],
         babyshower: [
@@ -77,15 +77,15 @@ document.addEventListener('DOMContentLoaded', function () {
             "Baby Shower 2",
             "Baby Shower 3"
         ],
-        xvanos: [
+        xv: [
             '<a href="./templates/XV_1.html">XV Años 1</a>',
             '<a href="./templates/XV_2.html">XV Años 2</a>',
             '<a href="./templates/XV_3.html">XV Años 3</a>'
         ],
-        bodas: [
+        wedding: [
             '<a href="./templates/Wedding_1.html">Boda 1</a>',
-            "Bodas 2",
-            "Bodas 3"
+            '',
+            ''
         ]
     };
 
@@ -103,8 +103,8 @@ document.addEventListener('DOMContentLoaded', function () {
         return swiper;
     }
 
-    createSwiper(".cumpleanosSwiper", "cumpleCaption", captions.cumpleanos);
+    createSwiper(".birthdaySwiper", "birthdayCaption", captions.birthday);
     createSwiper(".babyshowerSwiper", "babyshowerCaption", captions.babyshower);
-    createSwiper(".xvanosSwiper", "xvanosCaption", captions.xvanos);
-    createSwiper(".bodasSwiper", "bodasCaption", captions.bodas);
+    createSwiper(".xvSwiper", "xvCaption", captions.xv);
+    createSwiper(".weddingSwiper", "weddingCaption", captions.wedding);
 });

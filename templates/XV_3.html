@@ -16,6 +16,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Charm&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="../css/templates.css">
+    <script src="../js/require.js"></script>
     <style>
     /* #region ROOT*/
     :root {
@@ -644,15 +645,15 @@
               <h3>Los momentos más esperados se sueñan, se imaginan, se construyen y cuando llegue ese día tan especial, lo más importante es que estés a mi lado. </h3>
               <div class="_details">
                 <div class="_date">
-                  <p class="_month">Noviembre</p>
+                  <p class="_month" data-replace="MainEventMonth"></p>
                 </div>
                 <div class="_date">
-                  <p class="_weekday-time _border _padding-lr">Sabado</p>
-                  <p class="_day _padding ">25</p>
-                  <p class="_weekday-time _border _padding-lr">1:00 p.m.</p>
+                  <p class="_weekday-time _border _padding-lr" data-replace="MainEventWeekDay"></p>
+                  <p class="_day _padding " data-replace="MainEventDay"></p>
+                  <p class="_weekday-time _border _padding-lr" data-replace="MainEventHourString"></p>
                 </div>
                 <div class="_date">
-                  <p class="_year">2025</p>
+                  <p class="_year" data-replace="MainEventYear"></p>
                 </div>
               </div>
               <div class="_confirmation-section">
@@ -686,10 +687,10 @@
               <div id="_timeline-detail">
                 <div class="_item">
                   <div class="_block">
-                    <img class="_activity-icon" src="https://cdn-icons-png.flaticon.com/128/4186/4186011.png" alt="Ceremonia Religiosa">
+                    <img class="_activity-icon" src="#" data-replace="ActivityIconChurch" alt="Ceremonia Religiosa">
                     <h3>Ceremonia Religiosa</h3>
                     <h4 data-replace="EventHourString"></h4>
-                    <h5>Av. Fray Antonio Alcalde 10, Zona Centro, 44100 Guadalajara, Jal.</h5>
+                    <h5 data-replace="MainEventLocationDescription"></h5>
                     <a href="#" data-replace="EventChurchUrl" target="_blank">
                       <img class="location-maps" src="#" data-replace="Image_GoogleLocation" alt="Google Location">
                     </a>
@@ -697,10 +698,10 @@
                 </div>
                 <div class="_item">
                   <div class="_block">
-                    <img class="_activity-icon" src="https://cdn-icons-png.flaticon.com/128/887/887345.png" alt="Recepción">
+                    <img class="_activity-icon" src="#" data-replace="ActivityIconReception" alt="Recepción">
                     <h3>Recepción</h3>
                     <h4 data-replace="EventReceptionHourString"></h4>
-                    <h5>Av. Fray Antonio Alcalde 10, Zona Centro, 44100 Guadalajara, Jal.</h5>
+                    <h5 data-replace="SecondaryEventLocationDescription"></h5>
                     <a href="#" data-replace="EventReceptionUrl" target="_blank">
                       <img class="location-maps" src="#" data-replace="Image_GoogleLocation" alt="Google Location">
                     </a>
@@ -708,19 +709,19 @@
                 </div>
                 <div class="_item">
                   <div class="_block">
-                    <img class="_activity-icon" src="https://cdn-icons-png.flaticon.com/128/3004/3004613.png" alt="Photo Session">
+                    <img class="_activity-icon" src="#" data-replace="ActivityIconPhotSession" alt="Photo Session">
                     <h3>Photo Session</h3>
                   </div>
                 </div>
                 <div class="_item">
                   <div class="_block">
-                    <img class="_activity-icon" src="https://cdn-icons-png.flaticon.com/128/4156/4156252.png" alt="Banquete">
+                    <img class="_activity-icon" src="#" data-replace="ActivityIconFeast" alt="Banquete">
                     <h3>Banquete</h3>
                   </div>
                 </div>
                 <div class="_item">
                   <div class="_block">
-                    <img class="_activity-icon" src="https://cdn-icons-png.flaticon.com/128/1483/1483389.png" alt="Vals">
+                    <img class="_activity-icon" src="#" data-replace="ActivityIconVals" alt="Vals">
                     <h3>Vals</h3>
                   </div>
                 </div>
@@ -731,8 +732,8 @@
             <div class="_box">
               <h1>Dress Code</h1>
               <div>
-                <img src="https://cdn-icons-png.flaticon.com/128/389/389573.png" alt="Suit">
-                <img src="https://cdn-icons-png.flaticon.com/128/3507/3507059.png" alt="Dress">
+                <img src="#" data-replace="ActivityIconSuit" alt="Suit">
+                <img src="#" data-replace="ActivityIconDress" alt="Dress">
               </div>
               <h2>Formal</h2>
             </div>
@@ -765,449 +766,166 @@
         </div>
       </main>
     </div>
-    <!-- Bootstrap JS Bundle (con soporte touch incluido) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/main.js"></script>
     <script>
-      var actions = {
-        onCounter: function() {
-          const now = new Date().getTime();
-          const distance = EventDate - now;
-          const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-          const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-          const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-          const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-          $("#days").text(actions.onHelperAddDigits(days));
-          $("#hours").text(actions.onHelperAddDigits(hours));
-          $("#minutes").text(actions.onHelperAddDigits(minutes));
-          $("#seconds").text(actions.onHelperAddDigits(seconds));
-          if (distance < 0) {
-            // Call Confetti
+      requirejs(["jquery","helpers", "puzzle", "gallery","fireworks","confetti","bs","extended"],function($,helpers, puzzle, gallery){
+
+        const EventDate = new Date("2025-11-25T13:00:00");
+        const EventReception = new Date("2025-11-25T17:00:00");
+        
+        const mainEvent = {
+          Name: "Nicole Gutiérrez",
+          Date: EventDate,
+          Description: `Acompáñanos a celebrar los XV de `,      
+          LocationDescription: "Catedral de Guadalajara (Catedral Basílica de la Asunción de María Santísima)",
+          Address: "Av. Fray Antonio Alcalde 10, Zona Centro, 44100 Guadalajara, Jal.",
+          Father: "José Gutiérrez",
+          Mother: "Melissa Hurtado",
+          GodFather: "Juan Fernández",
+          GodMother: "Laura Jimenez",
+          GoogleMapsUrl: "https://maps.app.goo.gl/hBdb191LiXzkPRfR8",
+          AmazonGiftTableUrl: "https://www.amazon.com.mx/",
+          LiverpoolGiftTableUrl: "https://www.liverpool.com.mx/tienda/home",
+          CollageImages: ['https://img.freepik.com/foto-gratis/adolescente-celebrando-quinceanera_23-2148478038.jpg', 'https://img.freepik.com/foto-gratis/chica-sonriente-tiro-medio-hermoso-vestido_52683-86468.jpg?t=st=1746555442~exp=1746559042~hmac=e8d5adc2117161bcd88377ab37d6e1358945489c42ac647e29fb996cf047ca4c&w=1800', 'https://lh3.googleusercontent.com/p/AF1QipMv-RExo0XkTU7eg8u-FelVsp1gd3u4XZyR3ipA=s3072-v1', 'https://lh3.googleusercontent.com/p/AF1QipNk9cctNeskTP2Zg2EEOQjV-aMFrSO5RRxWtx5N=s1024-v1', 'https://img.freepik.com/foto-gratis/mujer-tiro-medio-caminando-calle_23-2148703161.jpg?ga=GA1.1.1993030682.1745256637&semt=ais_hybrid&w=740', 'https://img.freepik.com/fotos-premium/hermosa-novia-usa-vestido-blanco-exclusivo-jardin_769431-2.jpg?ga=GA1.1.1993030682.1745256637&semt=ais_hybrid&w=740'],
+          ImageMyParents: "https://img.freepik.com/fotos-premium/retrato-pareja-madura-feliz-abrazada-casa-conexion-amor-o-confianza-asociacion-juntos-cara-al-hombre-abrazar-mujer-compromiso-cuidado-relacion-saludable-apoyo-casa_590464-361056.jpg?ga=GA1.1.1993030682.1745256637&semt=ais_hybrid&w=740",
+          ImageMyGodParents: "https://img.freepik.com/fotos-premium/pareja-dia-san-valentin_772250-159.jpg?ga=GA1.1.1993030682.1745256637&w=740",
+          ImageDressCodeUrl: "https://img.freepik.com/foto-gratis/gente-elegante-bailando-tango_23-2149193458.jpg?ga=GA1.1.1993030682.1745256637&semt=ais_hybrid&w=740",
+        };
+
+        const secondaryEvent = {
+          Date: EventReception,
+          LocationDescription: "Salón de Eventos Quinta el Eden",
+          Address: "C. Morelos 670, González Ortega, 45190 Zapopan, Jal.",
+          GoogleMapsUrl: "https://maps.app.goo.gl/1wwmTSk84XA8pLMn8",
+        }
+
+        const googleCalendar = {
+          Text: "Mis XV "+ mainEvent.Name,
+          Location: mainEvent.Address,
+          Detail : `
+                    [0]
+                📍 Lugar: [1]
+                🕒 Hora: [2]
+                ⏰ Recordatorio: Llega con 30 minutos de anticipación.
+                ✨ ¡Te esperamos para compartir este momento tan especial!`
+        }
+
+        const additionalInformation = {
+          ImageBodyBackground: "",
+          ImageCorner: "",
+          ImageFrontCard: "https://img.freepik.com/foto-gratis/mujer-tiro-medio-caminando-calle_23-2148703161.jpg?ga=GA1.1.1993030682.1745256637&semt=ais_hybrid&w=740",
+          AudioUrl: "../music/Ember Island - Umbrella.mp3",
+          WhatsAppUrl: "https://wa.link/encb79",
+        }
+    
+        const Resources = {
+          MainEvent : mainEvent,
+          SecondaryEvent: secondaryEvent,
+          GoogleCalendar: googleCalendar,
+          AdditionalInformation : additionalInformation
+        };
+        
+
+        function Init() {
+          helpers.init(Resources);
+          helpers.onCounterStart(EventDate);
+          setInterval(() => {
+            helpers.onCounterStart(EventDate);
+          }, 1000);
+          helpers.onAudioPlayer();
+          puzzle.onCreatePuzzle();
+          gallery.onCreateGallery();
+        }
+        Init();
+      });
+      
+
+    </script>
+    <script>
+      requirejs(["jquery"],function($){
+        const _timeline = document.getElementById('_timeline-detail');
+        const container = document.getElementById('box');
+        const items = Array.from(_timeline.children);
+        const itemCount = items.length;
+        const radius = 100;
+        let currentIndex = 0;
+    
+        function onTimeline() {
+          const theta = 360 / itemCount;
+          items.forEach((item, i) => {
+            let relativeIndex = (i - currentIndex + itemCount) % itemCount;
+            const angle = theta * relativeIndex;
+            const rad = angle * Math.PI / 180;
+            let x = Math.sin(rad) * radius;
+            const z = Math.cos(rad) * radius;
+
+            if(window.innerWidth > 375.98 && window.innerWidth <= 475.98){
+              const r = 40;
+              x = relativeIndex > 0 ? (x > 0 ? x - r : x + r) : 0;
+            }else  if(window.innerWidth <= 375.98){
+              const r = 50;
+              x = relativeIndex > 0 ? (x > 0 ? x - r : x + r) : 0;
+            }
+
+            item.style.transform = `translateX(${x}px) translateZ(${z}px)`;
+    
+            item.classList.remove('front');
+            item.style.zIndex = 1;
+    
+            if (relativeIndex === 0) {
+              item.classList.add('front');
+              item.style.zIndex = 10;
+            }
+          });
+        }
+    
+        function rotateTimeline(dir) {
+          currentIndex = (currentIndex + dir + itemCount) % itemCount;
+          onTimeline();
+        }
+    
+        items.forEach((item, index) => {
+          item.addEventListener('click', () => {
+            let relativeIndex = (index - currentIndex + itemCount) % itemCount;
+            if (relativeIndex === 1) {
+              rotateTimeline(1);
+            } else if (relativeIndex === itemCount - 1) {
+              rotateTimeline(-1);
+            }
+          });
+        });
+    
+        let startX = 0;
+        let isSwiping = false;
+    
+        container.addEventListener('touchstart', (e) => {
+          if (e.touches.length === 1) {
+            startX = e.touches[0].clientX;
+            isSwiping = true;
           }
-        },
-        onHelperAddDigits: function(number) {
-          if (number.toString().length == 1) {
-            return "0" + number.toString();
-          }
-          return number;
-        },
-        onAudioPlayer: function() {
-          const audio = document.getElementById("audio");
-          $("#audioButton").on("click", function() {
-            if (audio.paused) {
-              audio.play();
-              $("#audioButton").removeClass("off");
+        });
+    
+        container.addEventListener('touchmove', (e) => {
+          if (!isSwiping) return;
+          const currentX = e.touches[0].clientX;
+          const diffX = currentX - startX;
+    
+          if (Math.abs(diffX) > 30) {
+            if (diffX > 0) {
+              rotateTimeline(-1);
             } else {
-              audio.pause();
-              $("#audioButton").addClass("off");
+              rotateTimeline(1);
             }
-          });
-        },
-        onUpdateImages: function() {
-          const wrapper = carousel.querySelector('._image-wrapper');
-          const boxes = wrapper.querySelectorAll('._rotated-box');
-          boxes.forEach((box, i) => {
-            const img = document.createElement('img');
-            img.src = Resources.CollageImages[i];
-            box.innerHTML = '';
-            box.appendChild(img); 
-          });
-        },
-        onMoveImageToFront: function() {
-          const movedImage = Resources.CollageImages.pop(); 
-          Resources.CollageImages.unshift(movedImage); 
-          actions.onUpdateImages();
-        },
-        onCarousel: function() {
-          const carousel = document.getElementById('carousel');
-          document.querySelector('._box4').addEventListener('click', actions.onMoveImageToFront);
-          actions.onUpdateImages();
-
-          let startX = 0;
-          let endX = 0;
-          carousel.addEventListener('touchstart', (e) => {
-            startX = e.changedTouches[0].screenX;
-          });
-          carousel.addEventListener('touchend', (e) => {
-            endX = e.changedTouches[0].screenX;
-            if (Math.abs(endX - startX) > 50) {
-              actions.onMoveImageToFront();
-            }
-          });
-        },
-      };
-      var helpers = {
-        onGetDateYYYYMMDD: function() {
-          const format = (f) => f.toISOString().split("T")[0].replace(/-/g, "");
-          return format(EventDate);
-        },
-        onGetDateString: function(EventDate, includeDayName) {
-          const months = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
-          const days = ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"];
-          const day = EventDate.getDate();
-          const dayOfWeek = EventDate.getDay();
-          const dayName = days[dayOfWeek];
-          const month = months[EventDate.getMonth()];
-          const year = EventDate.getFullYear();
-          const dateString = includeDayName ? `${dayName} ${day} de ${month} del ${year}` : `${day} de ${month} del ${year}`;
-          return dateString;
-        },
-        onGetHoursString: function(EventDate, includeThe) {
-          let hours = EventDate.getHours();
-          const ampm = hours >= 12 ? "p.m." : "a.m.";
-          const mins = EventDate.getMinutes().toString().padStart(2, "0");
-          const the = hours > 1 ? "las " : "la";
-          hours = hours % 12 || 12;
-          const hourString = includeThe ? `${the} ${hours}:${mins} ${ampm}` : `${hours}:${mins} ${ampm}`;
-          return hourString;
-        },
-        onGoogleCalendar: function() {
-          const base = 'https://calendar.google.com/calendar/render';
-          const details = `Acompáñanos a celebrar los XV de ${Resources.EventName}.
-          📍 Lugar: ${Resources.GoogleCalendarLocation}
-          🕒 Hora: ${Resources.EventHourString}
-          ⏰ Recordatorio: Llega con 30 minutos de anticipación.
-          ✨ ¡Te esperamos para compartir este momento tan especial!`;
-          const params = new URLSearchParams({
-            action: "TEMPLATE",
-            text: Resources.GoogleCalendarTitle + Resources.EventName,
-            dates: `${Resources.GoogleCalendarStartDate}/${Resources.GoogleCalendarEndDate}`,
-            details: details,
-            location: Resources.GoogleCalendarLocation
-          });
-          return `${base}?${params.toString()}`;
-        },
-        onMoveElement: function(arr, oldIndex, newIndex){
-          if (newIndex >= arr.length) {
-            newIndex = arr.length - 1;
-          } else if (newIndex < 0) {
-            newIndex = 0
-          }
-          arr.splice(newIndex, 0, arr.splice(oldIndex, 1)[0]);
-          return arr;
-        },
-        onLoad: function() {
-          Resources.RandomCollageImage = Math.floor(Math.random() * Resources.CollageImages.length);
-          console.log(Resources.RandomCollageImage)
-          console.log(Resources.CollageImages)
-          Resources.CollageImages = helpers.onMoveElement(Resources.CollageImages, Resources.RandomCollageImage, 3 );
-          $("[data-replace=Image_AudioUrl]").attr("src", Resources.Image_AudioUrl);
-          $("[data-replace=AudioUrl]").attr("src", Resources.AudioUrl);
-          $("[data-replace=Image_AmazonUrl]").attr("src", Resources.Image_AmazonUrl);
-          $("[data-replace=Image_LiverpoolUrl]").attr("src", Resources.Image_LiverpoolUrl);
-          $("[data-replace=EventAmazonGiftTableUrl]").attr("href", Resources.EventAmazonGiftTableUrl);
-          $("[data-replace=EventLiverpoolGiftTableUrl]").attr("href", Resources.EventLiverpoolGiftTableUrl);
-          $("[data-replace=EventDateString]").text(Resources.EventDateString);
-          $("[data-replace=EventHourString]").text(Resources.EventHourString);
-          $("[data-replace=EventReceptionHourString]").text(Resources.EventReceptionHourString);
-          $("[data-replace=EventName]").text(Resources.EventName);
-          $("[data-replace=EventFather]").text(Resources.EventFather);
-          $("[data-replace=EventMother]").text(Resources.EventMother);
-          $("[data-replace=EventGodFather]").text(Resources.EventGodFather);
-          $("[data-replace=EventGodMother]").text(Resources.EventGodMother);
-          $("[data-replace=EventChurchUrl]").attr("href", Resources.EventChurchUrl);
-          $("[data-replace=EventReceptionUrl]").attr("href", Resources.EventReceptionUrl);
-          $("[data-replace=Image_FrontCard]").attr("src", Resources.Image_FrontCard);
-          $("[data-replace=Image_GoogleLocation]").attr("src", Resources.Image_GoogleLocation);
-          $("[data-replace=Image_MyParents]").attr("src", Resources.Image_MyParents);
-          $("[data-replace=Image_MyGodParents]").attr("src", Resources.Image_MyGodParents);
-          $("[data-replace=Image_DressCodeUrl]").attr("src", Resources.Image_DressCodeUrl);
-          $("[data-replace=WhatsAppUrl]").attr("href", Resources.WhatsAppUrl);
-          $("[data-replace=GoogleCalendarUrl]").attr("href", helpers.onGoogleCalendar());
-        }
-      };
-      const EventDate = new Date("2025-11-25T13:00:00");
-      const EventReception = new Date("2025-11-25T17:00:00");
-      const Resources = {
-        EventDate: EventDate,
-        EventTime: EventDate.getTime(),
-        EventDateString: helpers.onGetDateString(EventDate),
-        EventHourString: helpers.onGetHoursString(EventDate),
-        EventReceptionHourString: helpers.onGetHoursString(EventReception),
-        EventName: "Nicole Gutiérrez",
-        EventFather: "José Gutiérrez",
-        EventMother: "Melissa Hurtado",
-        EventGodFather: "Juan Fernández",
-        EventGodMother: "Laura Jimenez",
-        EventChurchUrl: "https://maps.app.goo.gl/hBdb191LiXzkPRfR8",
-        EventReceptionUrl: "https://maps.app.goo.gl/1wwmTSk84XA8pLMn8",
-        EventAmazonGiftTableUrl: "https://www.amazon.com.mx/",
-        EventLiverpoolGiftTableUrl: "https://www.liverpool.com.mx/tienda/home",
-        GoogleCalendarTitle: "Mis XV ",
-        GoogleCalendarStartDate: helpers.onGetDateYYYYMMDD(),
-        GoogleCalendarEndDate: helpers.onGetDateYYYYMMDD(),
-        GoogleCalendarLocation: "Catedral de Guadalajara",
-        Image_BodyBackground: "",
-        Image_FrontCard: "https://img.freepik.com/foto-gratis/mujer-tiro-medio-caminando-calle_23-2148703161.jpg?ga=GA1.1.1993030682.1745256637&semt=ais_hybrid&w=740",
-        Image_AudioUrl: "https://cdn-icons-png.freepik.com/512/13896/13896624.png?ga=GA1.1.1993030682.1745256637",
-        Image_Corner: "",
-        Image_MyParents: "https://img.freepik.com/fotos-premium/retrato-pareja-madura-feliz-abrazada-casa-conexion-amor-o-confianza-asociacion-juntos-cara-al-hombre-abrazar-mujer-compromiso-cuidado-relacion-saludable-apoyo-casa_590464-361056.jpg?ga=GA1.1.1993030682.1745256637&semt=ais_hybrid&w=740",
-        Image_MyGodParents: "https://img.freepik.com/fotos-premium/pareja-dia-san-valentin_772250-159.jpg?ga=GA1.1.1993030682.1745256637&w=740",
-        Image_DressCodeUrl: "https://img.freepik.com/foto-gratis/gente-elegante-bailando-tango_23-2149193458.jpg?ga=GA1.1.1993030682.1745256637&semt=ais_hybrid&w=740",
-        Image_AmazonUrl: "https://static-00.iconduck.com/assets.00/amazon-icon-2048x2048-pqt2fe18.png",
-        Image_LiverpoolUrl: "https://play-lh.googleusercontent.com/FwrxfHaknUKLneazGpPsjJvQ4mUYKJkccj-efHNeXQISwCwqC9ymNAnqlAY5J5oHIOc",
-        Image_GoogleLocation: "https://img.icons8.com/?size=512&id=DcygmpZqBEd9&format=png",
-        AudioUrl: "../music/Ember Island - Umbrella.mp3",
-        WhatsAppUrl: "https://wa.link/encb79",
-        CollageImages: ['https://img.freepik.com/foto-gratis/adolescente-celebrando-quinceanera_23-2148478038.jpg', 'https://img.freepik.com/foto-gratis/chica-sonriente-tiro-medio-hermoso-vestido_52683-86468.jpg?t=st=1746555442~exp=1746559042~hmac=e8d5adc2117161bcd88377ab37d6e1358945489c42ac647e29fb996cf047ca4c&w=1800', 'https://lh3.googleusercontent.com/p/AF1QipMv-RExo0XkTU7eg8u-FelVsp1gd3u4XZyR3ipA=s3072-v1', 'https://lh3.googleusercontent.com/p/AF1QipNk9cctNeskTP2Zg2EEOQjV-aMFrSO5RRxWtx5N=s1024-v1', 'https://img.freepik.com/foto-gratis/mujer-tiro-medio-caminando-calle_23-2148703161.jpg?ga=GA1.1.1993030682.1745256637&semt=ais_hybrid&w=740', 'https://img.freepik.com/fotos-premium/hermosa-novia-usa-vestido-blanco-exclusivo-jardin_769431-2.jpg?ga=GA1.1.1993030682.1745256637&semt=ais_hybrid&w=740'],
-        RandomCollageImage: 0
-      };
-
-      function Init() {
-        helpers.onLoad();
-        actions.onCounter();
-        setInterval(() => {
-          actions.onCounter();
-        }, 1000);
-        actions.onAudioPlayer();
-        actions.onCarousel();
-      }
-      Init();
-    </script>
-    <script>
-      const _timeline = document.getElementById('_timeline-detail');
-      const container = document.getElementById('box');
-      const items = Array.from(_timeline.children);
-      const itemCount = items.length;
-      const radius = 100;
-      let currentIndex = 0;
-  
-      function positionItems() {
-        const theta = 360 / itemCount;
-        items.forEach((item, i) => {
-          let relativeIndex = (i - currentIndex + itemCount) % itemCount;
-          const angle = theta * relativeIndex;
-          const rad = angle * Math.PI / 180;
-          let x = Math.sin(rad) * radius;
-          const z = Math.cos(rad) * radius;
-
-          if(window.innerWidth > 375.98 && window.innerWidth <= 475.98){
-            const r = 40;
-             x = relativeIndex > 0 ? (x > 0 ? x - r : x + r) : 0;
-          }else  if(window.innerWidth <= 375.98){
-            const r = 50;
-             x = relativeIndex > 0 ? (x > 0 ? x - r : x + r) : 0;
-          }
-
-          item.style.transform = `translateX(${x}px) translateZ(${z}px)`;
-  
-          item.classList.remove('front');
-          item.style.zIndex = 1;
-  
-          if (relativeIndex === 0) {
-            item.classList.add('front');
-            item.style.zIndex = 10;
+            isSwiping = false;
           }
         });
-      }
-  
-      function rotateTimeline(dir) {
-        currentIndex = (currentIndex + dir + itemCount) % itemCount;
-        positionItems();
-      }
-  
-      // Click en elementos para rotar solo si es vecino derecho o izquierdo
-      items.forEach((item, index) => {
-        item.addEventListener('click', () => {
-          let relativeIndex = (index - currentIndex + itemCount) % itemCount;
-          if (relativeIndex === 1) {
-            rotateTimeline(1);
-          } else if (relativeIndex === itemCount - 1) {
-            rotateTimeline(-1);
-          }
-        });
-      });
-  
-      // Swipe para móviles
-      let startX = 0;
-      let isSwiping = false;
-  
-      container.addEventListener('touchstart', (e) => {
-        if (e.touches.length === 1) {
-          startX = e.touches[0].clientX;
-          isSwiping = true;
-        }
-      });
-  
-      container.addEventListener('touchmove', (e) => {
-        if (!isSwiping) return;
-        const currentX = e.touches[0].clientX;
-        const diffX = currentX - startX;
-  
-        if (Math.abs(diffX) > 30) {
-          if (diffX > 0) {
-            rotateTimeline(-1);
-          } else {
-            rotateTimeline(1);
-          }
+    
+        container.addEventListener('touchend', () => {
           isSwiping = false;
-        }
-      });
-  
-      container.addEventListener('touchend', () => {
-        isSwiping = false;
-      });
-  
-      positionItems();
-    </script>
-
-    <script>
-      const puzzleContainer = document.getElementById('_template-puzzle-container');
-      const imageUrl = Resources.CollageImages[3];
-      const puzzleSize = 4;
-      let pieceSize = 125;
-      let draggedPiece = null;
-      let initialPosition = {};
-      const board = [];
-
-      if(window.innerWidth < 325.98){
-        pieceSize = 60;
-      }else if(window.innerWidth < 375.98){
-        pieceSize = 67.5;
-      }else if(window.innerWidth < 575.98){
-        pieceSize = 75
-      }
-      function createPuzzle() {
-        const pieces = [];
-
-        for (let row = 0; row < puzzleSize; row++) {
-          board[row] = [];
-          for (let col = 0; col < puzzleSize; col++) {
-            const piece = document.createElement('div');
-            piece.classList.add('_piece');
-            piece.setAttribute('draggable', true);
-            piece.style.backgroundImage = `url(${imageUrl})`;
-            piece.style.backgroundPosition = `-${col * pieceSize}px -${row * pieceSize}px`;
-            piece.dataset.correctIndex = row * puzzleSize + col;
-
-            piece.addEventListener('dragstart', dragStart);
-            piece.addEventListener('dragover', dragOver);
-            piece.addEventListener('drop', drop);
-            piece.addEventListener('dragend', dragEnd);
-
-            piece.addEventListener('touchstart', touchStart);
-            piece.addEventListener('touchmove', touchMove);
-            piece.addEventListener('touchend', touchEnd);
-
-            pieces.push(piece);
-          }
-        }
-
-        shufflePieces(pieces);
-      }
-
-      function shufflePieces(pieces) {
-        pieces.sort(() => Math.random() - 0.5);
-
-        for (let i = 0; i < pieces.length; i++) {
-          const row = Math.floor(i / puzzleSize);
-          const col = i % puzzleSize;
-          board[row][col] = pieces[i];
-          puzzleContainer.appendChild(pieces[i]);
-        }
-      }
-
-      function dragStart(e) {
-        draggedPiece = e.target;
-        draggedPiece.classList.add('dragging');
-      }
-
-      function dragOver(e) {
-        e.preventDefault();
-      }
-
-      function drop(e) {
-        if (draggedPiece !== e.target) {
-          swapPieces(draggedPiece, e.target);
-        }
-      }
-
-      function dragEnd() {
-        if (draggedPiece) draggedPiece.classList.remove('dragging');
-        draggedPiece = null;
-      }
-
-      function touchStart(e) {
-        e.preventDefault();
-        draggedPiece = e.target;
-        initialPosition = { x: e.touches[0].clientX, y: e.touches[0].clientY };
-        draggedPiece.classList.add('dragging');
-      }
-
-      function touchMove(e) {
-        e.preventDefault();
-        if (draggedPiece) {
-          const deltaX = e.touches[0].clientX - initialPosition.x;
-          const deltaY = e.touches[0].clientY - initialPosition.y;
-          draggedPiece.style.transform = `translate(${deltaX}px, ${deltaY}px)`;
-        }
-      }
-
-      function touchEnd(e) {
-        e.preventDefault();
-        if (draggedPiece) {
-          draggedPiece.style.visibility = 'hidden';
-          const touch = e.changedTouches[0];
-          const targetPiece = document.elementFromPoint(touch.clientX, touch.clientY);
-          draggedPiece.style.visibility = 'visible';
-
-          if (targetPiece && targetPiece !== draggedPiece && targetPiece.classList.contains('_piece')) {
-            swapPieces(draggedPiece, targetPiece);
-          }
-
-          draggedPiece.style.transform = '';
-          draggedPiece.classList.remove('dragging');
-          draggedPiece = null;
-        }
-      }
-
-      function swapPieces(piece1, piece2) {
-        const index1 = getPieceIndex(piece1);
-        const index2 = getPieceIndex(piece2);
-
-        if (index1 && index2) {
-          const temp = board[index1.row][index1.col];
-          board[index1.row][index1.col] = board[index2.row][index2.col];
-          board[index2.row][index2.col] = temp;
-
-          puzzleContainer.innerHTML = '';
-          board.flat().forEach(piece => puzzleContainer.appendChild(piece));
-
-          checkWin();
-        }
-      }
-
-      function getPieceIndex(piece) {
-        for (let row = 0; row < puzzleSize; row++) {
-          for (let col = 0; col < puzzleSize; col++) {
-            if (board[row][col] === piece) {
-              return { row, col };
-            }
-          }
-        }
-        return null;
-      }
-
-      function checkWin() {
-        let count = 0;
-        for (let row = 0; row < puzzleSize; row++) {
-          for (let col = 0; col < puzzleSize; col++) {
-            const correctIndex = row * puzzleSize + col;
-            if (parseInt(board[row][col].dataset.correctIndex) !== correctIndex) {
-              return false;
-            }
-            count++;
-          }
-        }
-
-        document.getElementById('_template-puzzle-container').style.display = 'none';
-        const completeImage = document.getElementById('_template-Puzzle-Completed');
-        completeImage.classList.add('visible');
-        completeImage.style.display = 'block';
-        return true;
-      }
-
-      createPuzzle();
+        });
+    
+        onTimeline();
+    });
     </script>
   </body>
 </html>
