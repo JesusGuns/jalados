@@ -555,7 +555,7 @@
           LocationDescription: "",
           Address: "",
           GoogleMapsUrl: "",
-        }
+        };
 
         const googleCalendar = {
           Text: "Baby Shower ",
@@ -566,7 +566,7 @@
                 🕒 Hora: [2]
                 ⏰ Recordatorio: Llega con 30 minutos de anticipación.
                 ✨ ¡Te esperamos para compartir este momento tan especial!`
-        }
+        };
 
         const additionalInformation = {
           ImageBodyBackground: "",
@@ -577,7 +577,7 @@
           ImageLoading: "https://www.boredpanda.es/blog/wp-content/uploads/2016/07/gifs-totoro-ejercicio-cl-terry-6.gif",
           AudioUrl: "../music/Here Comes The Sun.mp3",
           WhatsAppUrl: "https://tinyurl.com/3h8kmam7",
-        }
+        };
 
         const Resources = {
           MainEvent : mainEvent,
@@ -587,12 +587,11 @@
         };
 
         function onLoad(){
-
           $('body').css('background-image', 'url("' + Resources.AdditionalInformation.ImageBodyBackground + '")');
           $("[data-replace=ImageMain]").attr("src", Resources.AdditionalInformation.ImageMain);
           $("[data-replace=Image_Tap]").attr("src", Resources.AdditionalInformation.ImageTap);
           $("[data-replace=Image_Loading]").attr("src", Resources.AdditionalInformation.ImageLoading);
-        }
+        };
 
         const book = document.getElementById('book');
         const flipSound = document.getElementById('flipSound');
@@ -666,7 +665,7 @@
               }
 
               currentPage++;
-              const esUltima = (currentPage === totalPages);
+              const esUltima = (currentPage == totalPages);
               if (esUltima) {
                 currentPage = 0;
 
@@ -687,12 +686,10 @@
                 }, 300);
               }
 
-              if (i === 0) {
+              if (i == 0) {
                 book.classList.add('shifted');
-                if (tapHint) {
-                  tapHint.classList.add('hidden');
-                  tapHint.classList.remove('shifted');
-                }
+                tapHint.classList.add('hidden');
+                tapHint.classList.remove('shifted');
               }
 
               if (esUltima) {
@@ -716,10 +713,8 @@
                   book.style.transition = 'transform 1s ease';
                   book.classList.remove('shifted');
                   setTimeout(() => {
-                    if (tapHint) {
-                      tapHint.classList.add('fade-in');
-                      tapHint.classList.remove('hidden');
-                    }
+                    tapHint.classList.add('fade-in');
+                    tapHint.classList.remove('hidden');
                   }, 1500);
                 }, totalDelay);
               }
@@ -731,33 +726,43 @@
 
         function applyTheme(themeName) {
           const theme = Themes[themeName];
+
           const imgMain = document.querySelector('.imgMain');
           imgMain.classList.remove('themeBoy', 'themeGirl', 'themeNeutral');
           imgMain.classList.add(`${themeName}`);
+
+          $("#audioButton").addClass("off");
+
+          tapHint.classList.remove("hidden");
+          
+          book.classList.remove('shifted');
+          $('#book').empty();
 
           for (let variable in theme) {
             if (variable.startsWith('--')) {
               document.documentElement.style.setProperty(variable, theme[variable]);
             } else {
-              if (variable === 'ImageBodyBackground') {
+              if (variable == 'ImageBodyBackground') {
                 Resources.AdditionalInformation.ImageBodyBackground = theme[variable];
-              } else if (variable === 'ImageMain') {
+              } else if (variable == 'ImageMain') {
                 Resources.AdditionalInformation.ImageMain = theme[variable];
-              } else if (variable === 'Name') {
+              } else if (variable == 'Name') {
                 Resources.MainEvent.Name = theme[variable];
-              } else if (variable === 'ImageCoverPage') {
+              } else if (variable == 'ImageCoverPage') {
                 Resources.MainEvent.CollageImages[0] = theme[variable];
               }
             }
           }
 
-          book.classList.remove('shifted');
-          $('#book').empty();
-          tapHint.classList.remove("hidden");
-          $("#audioButton").addClass("off");
+          const imgs = JSON.parse(JSON.stringify(Resources.MainEvent.CollageImages));
+          const imgs2 = JSON.parse(JSON.stringify(Resources.MainEvent.CollageImages2));
+
           Resources.GoogleCalendar = Object.create(googleCalendar);
-          helpers.init(Resources);
           onLoad();
+          helpers.init(Resources);
+          Resources.MainEvent.CollageImages = imgs;
+          Resources.MainEvent.CollageImages2 = imgs2;
+
           generateBook();
         };
 
