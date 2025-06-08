@@ -582,7 +582,7 @@
         const Resources = {
           MainEvent : mainEvent,
           SecondaryEvent: secondaryEvent,
-          GoogleCalendar: googleCalendar,
+          GoogleCalendar: Object.create(googleCalendar),
           AdditionalInformation : additionalInformation
         };
 
@@ -755,7 +755,7 @@
           $('#book').empty();
           tapHint.classList.remove("hidden");
           $("#audioButton").addClass("off");
-          Resources.GoogleCalendar = googleCalendar;
+          Resources.GoogleCalendar = Object.create(googleCalendar);
           helpers.init(Resources);
           onLoad();
           generateBook();
