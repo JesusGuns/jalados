@@ -16,6 +16,6 @@ requirejs.config({
     helpers: ["jquery"],
     fireworks: ["jquery"],
     puzzle: ["jquery"],
-    puzzle: ["jquery"]
+    gallery: ["jquery"]
   },
 });
