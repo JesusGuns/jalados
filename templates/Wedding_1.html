@@ -13,12 +13,18 @@
     <link href="https://fonts.googleapis.com/css2?family=Delius&family=Pacifico&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="../css/templates.css">
+    <script src="../js/require.js"></script>
     <style>
       /* #region ROOT*/
       :root {
         --main-bg: linear-gradient(135deg, #fff6fc 0%, #f2f8ff 100%);
         --glass-blur: 14px;
         --font-Primary: 'Delius';
+        --color_Primary: #b07fcb;
+        --color_Secondary: #81b8df;
+        --color_Tertiary: #f9a5b7;
+        --filter-AudioButton: 1deg;
+        --timeline-bg: #fffafd;
       }
 
       /* #endregion ROOT*/
@@ -47,9 +53,7 @@
         max-width: 580px;
         margin: 0 auto;
         overflow: hidden;
-        box-shadow: 0 6px 30px #b07fcb27;
-        margin-bottom: 1.5rem;
-        min-height: 548px;
+        margin-bottom: 0rem;
       }
 
       .hero-novios img {
@@ -81,7 +85,7 @@
         max-width: 610px;
         border-radius: 26px;
         margin: 0 auto 2rem auto;
-        padding: 2.2rem 1.1rem 2.2rem 1.1rem;
+        padding: 0rem 1.1rem 2.2rem 1.1rem;
         position: relative;
         text-align: center;
       }
@@ -510,64 +514,6 @@
         opacity: 0.97;
       }
 
-      #themeSwitcher {
-        position: fixed;
-        top: 50%;
-        transform: translateY(-50%);
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-        background: white;
-        padding: 10px;
-        border-radius: 20px;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-        z-index: 999;
-      }
-
-      .theme-btn {
-        width: 20px;
-        height: 20px;
-        border-radius: 50%;
-        border: none;
-        cursor: pointer;
-        transition: transform 0.3s;
-      }
-
-      .theme-btn:hover {
-        transform: scale(1.2);
-      }
-
-      #themeOverlay {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(255, 255, 255, 1);
-        z-index: 2000;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        font-size: 1.7rem;
-        font-weight: bold;
-        color: var(--color_Primary, #333);
-        opacity: 0;
-        pointer-events: none;
-        transition: opacity 0.3s ease;
-      }
-
-      #themeOverlay.active {
-        opacity: 1;
-        pointer-events: all;
-      }
-
-      .loader-img {
-        width: 50%;
-        height: 50%;
-        object-fit: contain;
-      }
-
       /* #endregion General*/
       /* #region Audio*/
       ._template-Audio-Button.on {
@@ -579,6 +525,32 @@
       }
 
       /* #endregion Audio*/
+      /* #region Counter*/
+      ._template-Counter-Section ._counter-Timebox {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        font-size: 20px;
+        color: var(--color_Primary);
+        animation: none;
+      }
+
+      ._template-Counter-Section ._counter-Timebox span {
+        height: auto;
+      }
+
+      @media (max-width: 575.98px) {
+        ._template-Counter-Section ._counter-Timebox {
+          font-size: 1rem;
+        }
+
+        ._template-Counter-Section ._counter-Timebox span{
+          font-size: 2.5rem;
+          height: auto;
+        }
+      }
+
+      /* #endregion Counter*/
       /* #region Main Section*/
       @media (max-width: 767.98px) {
         .hero-title {
@@ -699,10 +671,33 @@
         </span>
         <!-- Initial section -->
         <div class="hero-novios">
-          <img src="#" data-replace="Image_Main" alt="Image Main">
+          <img src="#" data-replace="ImageMain" alt="Image Main">
           <div class="hero-title">¡Nos casamos!<br>Camila &amp; Iván</div>
         </div>
         <div class="invitation-container">
+          <div class="_template-Counter-Section">
+            <div id="countdown" class="_counter-Countdown">
+              <div class="_counter-Timebox">
+                <span id="days">0</span> Días
+              </div>
+              <div class="_counter-Timebox">
+                <span id="hours">0</span> Horas
+              </div>
+              <div class="_counter-Timebox">
+                <span id="days">:</span> &nbsp;
+              </div>
+              <div class="_counter-Timebox">
+                <span id="minutes">0</span> Minutos
+              </div>
+              <div class="_counter-Timebox">
+                <span id="days">:</span> &nbsp;
+              </div>
+              <div class="_counter-Timebox">
+                <span id="seconds">0</span> Segundos
+              </div>
+            </div>
+          </div>
+
           <img src="https://images.vexels.com/media/users/3/127731/isolated/preview/2b70133359ee29fa8d69d5f5f4998e27-adorno-floral-linea-pin.png" class="floral-header" alt="Decoración floral">
 
           <div class="section-title">Los Novios</div>
@@ -857,457 +852,330 @@
       </main>
     </div>
 
-    <div id="themeSwitcher">
-      <button class="theme-btn" data-theme="themeViolet" style="background-color:#b07fcb"></button>
-      <button class="theme-btn" data-theme="themeX" style="background-color:#8dc8b9"></button>
-    </div>
-
-    <div id="themeOverlay">
-      <img class="loader-img" src="#" data-replace="Image_Loading" alt="Loading">
-      <span>Cambiando tema...</span>
-    </div>
-
-    <!-- Bootstrap JS Bundle (con soporte touch incluido) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/main.js"></script>
     <script>
-      var actions = {
-        onCounter: function() {
-          const now = new Date().getTime();
-          const distance = EventDate - now;
-          const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-          const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-          const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-          const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-          $("#days").text(actions.onHelperAddDigits(days));
-          $("#hours").text(actions.onHelperAddDigits(hours));
-          $("#minutes").text(actions.onHelperAddDigits(minutes));
-          $("#seconds").text(actions.onHelperAddDigits(seconds));
-          if (distance < 0) {
-            clearInterval(interval);
-            $("countdown").innerHTML = "¡Ha llegado el gran día!";
+      requirejs(["jquery","helpers", "bs"],function($,helpers){
+        const EventDate = new Date("2025-11-25T13:00:00");
+        const EventReception = new Date("2025-11-25T17:00:00");
+        const mainEvent = {
+          Name: "",
+          Date: EventDate,
+          Description: `Acompáñanos a celebrar nuestra unión `,      
+          LocationDescription: "Salón de Eventos Quinta el Eden",
+          Address: "C. Morelos 670, González Ortega, 45190 Zapopan, Jal.",
+          Father: "José Gutiérrez",
+          Mother: "Melissa Hurtado",
+          GodFather: "Juan Fernández",
+          GodMother: "Laura Jimenez",
+          GoogleMapsUrl: "https://maps.app.goo.gl/1wwmTSk84XA8pLMn8",
+          AmazonGiftTableUrl: "https://www.amazon.com.mx/",
+          LiverpoolGiftTableUrl: "https://www.liverpool.com.mx/tienda/home",
+          CollageImages: [],
+          ImageMyParents: "https://img.freepik.com/fotos-premium/retrato-pareja-madura-feliz-abrazada-casa-conexion-amor-o-confianza-asociacion-juntos-cara-al-hombre-abrazar-mujer-compromiso-cuidado-relacion-saludable-apoyo-casa_590464-361056.jpg?ga=GA1.1.1993030682.1745256637&semt=ais_hybrid&w=740",
+          ImageMyGodParents: "https://img.freepik.com/fotos-premium/pareja-dia-san-valentin_772250-159.jpg?ga=GA1.1.1993030682.1745256637&w=740",
+          ImageDressCodeUrl: "https://img.freepik.com/foto-gratis/gente-elegante-bailando-tango_23-2149193458.jpg?ga=GA1.1.1993030682.1745256637&semt=ais_hybrid&w=740",
+        };
+
+        const secondaryEvent = {
+          Date: EventReception,
+          LocationDescription: "",
+          Address: "",
+          GoogleMapsUrl: "",
+        };
+
+        const googleCalendar = {
+          Text: "Boda ",
+          Location: mainEvent.Address,
+          Detail : `
+                    [0]
+                📍 Lugar: [1]
+                🕒 Hora: [2]
+                ⏰ Recordatorio: Llega con 30 minutos de anticipación.
+                ✨ ¡Te esperamos para compartir este momento tan especial!`
+        };
+
+        const additionalInformation = {
+          ImageBodyBackground: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80",
+          ImageCorner: "",
+          ImageFrontCard: "",
+          ImageMain: "https://i.pinimg.com/736x/76/86/8d/76868d470ea6cd8319f7958b92bde6d7.jpg",
+          ImageTap: "",
+          ImageLoading: "https://images.vexels.com/media/users/3/190566/isolated/preview/e20509414b44a4b9388e9309c50031d1-parejas-casadas-silueta-boda.png",
+          AudioUrl: "../music/Perfect.mp3",
+          WhatsAppUrl: "https://tinyurl.com/3h8kmam7",
+        };
+
+        const Resources = {
+          MainEvent : mainEvent,
+          SecondaryEvent: secondaryEvent,
+          GoogleCalendar: Object.create(googleCalendar),
+          AdditionalInformation : additionalInformation
+        };
+
+        function onLoad(){
+          $("[data-replace=ImageMain]").attr("src", Resources.AdditionalInformation.ImageMain);
+        };
+
+        function Init() {
+          helpers.init(Resources);
+          helpers.onCounterStart(EventDate);
+          setInterval(() => {
+            helpers.onCounterStart(EventDate);
+          }, 1000);
+          helpers.onAudioPlayer();
+          updateBodyBackground();
+          onLoad();
+        };
+        Init();
+
+        function updateBodyBackground() {
+          const bgUrl = Resources.AdditionalInformation.ImageBodyBackground;
+          let styleEl = document.getElementById('dynamicBodyBg');
+          if (!styleEl) {
+            styleEl = document.createElement('style');
+            styleEl.id = 'dynamicBodyBg';
+            document.head.appendChild(styleEl);
           }
-        },
-        onHelperAddDigits: function(number) {
-          if (number.toString().length == 1) {
-            return "0" + number.toString();
+          styleEl.innerHTML = `
+            body::before {
+              content: "";
+              position: fixed;
+              z-index: 0;
+              top: 0; left: 0; right: 0; bottom: 0;
+              background: url('${bgUrl}') center center/cover no-repeat;
+              opacity: 0.16;
+              filter: blur(3px) brightness(1.1);
+              pointer-events: none;
+            }
+          `;
+        };
+      });
+    </script>
+    <script>
+      requirejs(["jquery", "bs"],function($){
+        const stories = [
+          {
+            img: "https://i.pinimg.com/736x/cc/fa/d5/ccfad55fa13f3126131e479f260c2c2a.jpg",
+            caption: "El gran día"
+          },
+          {
+            img: "https://i.pinimg.com/736x/02/0b/98/020b98b54441df5551e5c12b53761881.jpg",
+            caption: "Momentos mágicos"
+          },
+          {
+            img: "https://i.pinimg.com/736x/c1/b1/2d/c1b12d4787d714f18f3d92a849c7d1ae.jpg",
+            caption: "Juntos siempre"
+          },
+          {
+            img: "https://i.pinimg.com/736x/89/fb/d5/89fbd581a3f7c849d40a17abfec1a388.jpg",
+            caption: "Nuestra aventura"
+          },
+          {
+            img: "https://i.pinimg.com/736x/41/c4/8b/41c48b0902ac1716fc651fcbb78c496a.jpg",
+            caption: "Diversión y amor"
+          },
+          {
+            img: "https://i.pinimg.com/736x/30/35/57/303557688e3cd1ce15f6f66181bce236.jpg",
+            caption: "Nuestro viaje"
           }
-          return number;
-        },
-        onAudioPlayer: function() {
-          const audio = document.getElementById("audio");
-          $("#audioButton").on("click", function() {
-            if (audio.paused) {
-              audio.play();
-              $("#audioButton").removeClass("off");
+        ];
+
+        let currentStory = 0;
+        let progressBars = [];
+        let progressFills = [];
+        let timer = null;
+        let storyStartTime = 0;
+        let elapsedTime = 0;
+        let isPaused = false;
+        const intervalMs = 3200;
+        let lastTransitionHandler = null;
+        let isAdvancing = false;
+
+        function animateTimeline() {
+          const timeline = document.querySelector('.timeline');
+          const progress = document.querySelector('.timeline-progress');
+          const events = document.querySelectorAll('.timeline-event');
+          const windowHeight = window.innerHeight;
+          let lastVisibleIdx = -1;
+          let closestIdx = -1;
+          let closestDistance = Number.POSITIVE_INFINITY;
+          events.forEach((event, idx) => {
+            const rect = event.getBoundingClientRect();
+            if (rect.top < windowHeight * 0.88) {
+              event.classList.add('visible');
+              lastVisibleIdx = idx;
+              const dist = Math.abs(rect.top + rect.height/2 - windowHeight/2);
+              if(dist < closestDistance){
+                closestDistance = dist;
+                closestIdx = idx;
+              }
             } else {
-              audio.pause();
-              $("#audioButton").addClass("off");
+              event.classList.remove('visible');
             }
+            event.classList.remove('active');
           });
-        },
-      };
-      var helpers = {
-        onGetDateYYYYMMDD: function() {
-          const format = (f) => f.toISOString().split("T")[0].replace(/-/g, "");
-          return format(EventDate);
-        },
-        onGetDateString: function(EventDate, includeDayName) {
-          const months = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
-          const days = ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"];
-          const day = EventDate.getDate();
-          const dayOfWeek = EventDate.getDay();
-          const dayName = days[dayOfWeek];
-          const month = months[EventDate.getMonth()];
-          const year = EventDate.getFullYear();
-          const dateString = includeDayName ? `${dayName} ${day} de ${month} del ${year}` : `${day} de ${month} del ${year}`;
-          return dateString;
-        },
-        onGetHoursString: function(EventDate, includeThe) {
-          let hours = EventDate.getHours();
-          const ampm = hours >= 12 ? "p.m." : "a.m.";
-          const mins = EventDate.getMinutes().toString().padStart(2, "0");
-          const the = hours > 1 ? "las " : "la";
-          hours = hours % 12 || 12;
-          const hourString = includeThe ? `${the} ${hours}:${mins} ${ampm}` : `${hours}:${mins} ${ampm}`;
-          return hourString;
-        },
-        onGoogleCalendar: function() {
-          const base = 'https://calendar.google.com/calendar/render';
-          const details = `Acompáñanos a celebrar el Baby Shower de ${Resources.EventName}.
-          📍 Lugar: ${Resources.GoogleCalendarLocation}
-          🕒 Hora: ${Resources.EventHourString}
-          ⏰ Recordatorio: Llega con 30 minutos de anticipación.
-          ✨ ¡Te esperamos para compartir este momento tan especial!`;
-          const params = new URLSearchParams({
-            action: "TEMPLATE",
-            text: `${Resources.GoogleCalendarTitle} de ${Resources.EventName}`,
-            dates: `${Resources.GoogleCalendarStartDate}/${Resources.GoogleCalendarEndDate}`,
-            details: details,
-            location: Resources.GoogleCalendarLocation
-          });
-          return `${base}?${params.toString()}`;
-        },
-        onLoad: function() {
-          $("[data-replace=Image_AudioUrl]").attr("src", Resources.Image_AudioUrl);
-          $("[data-replace=AudioUrl]").attr("src", Resources.AudioUrl);
-          $("[data-replace=EventDateString]").text(Resources.EventDateString);
-          $("[data-replace=EventHourString]").text(Resources.EventHourString);
-          $("[data-replace=EventReceptionHourString]").text(Resources.EventReceptionHourString);
-          $("[data-replace=EventName]").text(Resources.EventName);
-          $("[data-replace=EventReceptionUrl]").attr("href", Resources.EventReceptionUrl);
-          $("[data-replace=Image_GoogleLocation]").attr("src", Resources.Image_GoogleLocation);
-          $("[data-replace=Image_Main]").attr("src", Resources.Image_Main);
-          $("[data-replace=Image_Tap]").attr("src", Resources.Image_Tap);
-          $("[data-replace=Image_Loading]").attr("src", Resources.Image_Loading);
-          $("[data-replace=WhatsAppUrl]").attr("href", Resources.WhatsAppUrl);
-          $("[data-replace=GoogleCalendarUrl]").attr("href", helpers.onGoogleCalendar());
-          $("[data-replace=GoogleCalendarLocation]").text(Resources.GoogleCalendarLocation);
-        }
-      };
-      const EventDate = new Date("2025-11-25T13:00:00");
-      const EventReception = new Date("2025-11-25T17:00:00");
-      const Resources = {
-        EventDate: EventDate,
-        EventTime: EventDate.getTime(),
-        EventDateString: helpers.onGetDateString(EventDate),
-        EventHourString: helpers.onGetHoursString(EventDate),
-        EventReceptionHourString: helpers.onGetHoursString(EventReception, true),
-        EventName: "",
-        EventFather: "José Gutiérrez",
-        EventMother: "Melissa Hurtado",
-        EventGodFather: "Juan Fernández",
-        EventGodMother: "Laura Jimenez",
-        EventChurchUrl: "https://maps.app.goo.gl/hBdb191LiXzkPRfR8",
-        EventReceptionUrl: "https://maps.app.goo.gl/1wwmTSk84XA8pLMn8",
-        EventAmazonGiftTableUrl: "https://www.amazon.com.mx/",
-        EventLiverpoolGiftTableUrl: "https://www.liverpool.com.mx/tienda/home",
-        GoogleCalendarTitle: "Baby Shower",
-        GoogleCalendarStartDate: helpers.onGetDateYYYYMMDD(),
-        GoogleCalendarEndDate: helpers.onGetDateYYYYMMDD(),
-        GoogleCalendarLocation: "Salón Azul Calle Principal 123",
-        Image_BodyBackground: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80",
-        Image_FrontCard: "https://img.freepik.com/foto-gratis/mujer-tiro-medio-caminando-calle_23-2148703161.jpg?ga=GA1.1.1993030682.1745256637&semt=ais_hybrid&w=740",
-        Image_AudioUrl: "https://cdn-icons-png.freepik.com/512/13896/13896624.png?ga=GA1.1.1993030682.1745256637",
-        Image_Corner: "",
-        Image_MyParents: "https://img.freepik.com/fotos-premium/retrato-pareja-madura-feliz-abrazada-casa-conexion-amor-o-confianza-asociacion-juntos-cara-al-hombre-abrazar-mujer-compromiso-cuidado-relacion-saludable-apoyo-casa_590464-361056.jpg?ga=GA1.1.1993030682.1745256637&semt=ais_hybrid&w=740",
-        Image_MyGodParents: "https://img.freepik.com/fotos-premium/pareja-dia-san-valentin_772250-159.jpg?ga=GA1.1.1993030682.1745256637&w=740",
-        Image_DressCodeUrl: "https://img.freepik.com/foto-gratis/gente-elegante-bailando-tango_23-2149193458.jpg?ga=GA1.1.1993030682.1745256637&semt=ais_hybrid&w=740",
-        Image_AmazonUrl: "https://static-00.iconduck.com/assets.00/amazon-icon-2048x2048-pqt2fe18.png",
-        Image_LiverpoolUrl: "https://play-lh.googleusercontent.com/FwrxfHaknUKLneazGpPsjJvQ4mUYKJkccj-efHNeXQISwCwqC9ymNAnqlAY5J5oHIOc",
-        Image_GoogleLocation: "https://img.icons8.com/?size=512&id=DcygmpZqBEd9&format=png",
-        Image_Main: "https://i.pinimg.com/736x/76/86/8d/76868d470ea6cd8319f7958b92bde6d7.jpg",
-        Image_Tap: "https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExNWZ1MW80dTVkMzFrcXoxeG41OHo5NmdiemdvbnE5NW9seW1heXA5YiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/TPiig5QAVogA1po38k/giphy.gif",
-        Image_Loading: "https://images.vexels.com/media/users/3/190566/isolated/preview/e20509414b44a4b9388e9309c50031d1-parejas-casadas-silueta-boda.png",
-        AudioUrl: "../music/Perfect.mp3",
-        WhatsAppUrl: "https://tinyurl.com/3h8kmam7",
-        CollageImages: [],
-      };
-      const Themes = {
-        themeViolet: {
-          '--color_Primary': '#b07fcb',
-          '--color_Secondary': '#81b8df',
-          '--color_Tertiary': '#f9a5b7',
-          '--filter-AudioButton': '0deg',
-          '--timeline-bg': '#fffafd',
-          EventName: 'Thomas'
-        },
-        themeX: {
-          '--color_Primary': '#8dc8b9',
-          '--color_Secondary': '#f6c867',
-          '--color_Tertiary': '#faabaf',
-          '--filter-AudioButton': '260deg',
-          '--timeline-bg': '#fbfcf7',
-          EventName: 'Thomas'
-        }
-      };
-      const stories = [
-        {
-          img: "https://i.pinimg.com/736x/cc/fa/d5/ccfad55fa13f3126131e479f260c2c2a.jpg",
-          caption: "El gran día"
-        },
-        {
-          img: "https://i.pinimg.com/736x/02/0b/98/020b98b54441df5551e5c12b53761881.jpg",
-          caption: "Momentos mágicos"
-        },
-        {
-          img: "https://i.pinimg.com/736x/c1/b1/2d/c1b12d4787d714f18f3d92a849c7d1ae.jpg",
-          caption: "Juntos siempre"
-        },
-        {
-          img: "https://i.pinimg.com/736x/89/fb/d5/89fbd581a3f7c849d40a17abfec1a388.jpg",
-          caption: "Nuestra aventura"
-        },
-        {
-          img: "https://i.pinimg.com/736x/41/c4/8b/41c48b0902ac1716fc651fcbb78c496a.jpg",
-          caption: "Diversión y amor"
-        },
-        {
-          img: "https://i.pinimg.com/736x/30/35/57/303557688e3cd1ce15f6f66181bce236.jpg",
-          caption: "Nuestro viaje"
-        }
-      ];
-      let currentStory = 0;
-      let progressBars = [];
-      let progressFills = [];
-      let timer = null;
-      let storyStartTime = 0;
-      let elapsedTime = 0;
-      let isPaused = false;
-      const intervalMs = 3200;
-      let lastTransitionHandler = null;
-      let isAdvancing = false;
-
-      function Init() {
-        helpers.onLoad();
-        actions.onCounter();
-        setInterval(() => {
-          actions.onCounter();
-        }, 1000);
-        actions.onAudioPlayer();
-        applyTheme('themeViolet');
-      };
-
-      Init();
-
-      function updateBodyBackground() {
-        const bgUrl = Resources.Image_BodyBackground;
-        let styleEl = document.getElementById('dynamicBodyBg');
-        if (!styleEl) {
-          styleEl = document.createElement('style');
-          styleEl.id = 'dynamicBodyBg';
-          document.head.appendChild(styleEl);
-        }
-        styleEl.innerHTML = `
-          body::before {
-            content: "";
-            position: fixed;
-            z-index: 0;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: url('${bgUrl}') center center/cover no-repeat;
-            opacity: 0.16;
-            filter: blur(3px) brightness(1.1);
-            pointer-events: none;
-          }
-        `;
-      }
-
-      function applyTheme(themeName) {
-        const theme = Themes[themeName];
-
-        for (let variable in theme) {
-          if (variable.startsWith('--')) {
-            document.documentElement.style.setProperty(variable, theme[variable]);
+          if (closestIdx >= 0) events[closestIdx].classList.add('active');
+          if (lastVisibleIdx >= 0) {
+            const firstDot = events[0].querySelector('.timeline-dot');
+            const lastDot = events[lastVisibleIdx].querySelector('.timeline-dot');
+            const timelineRect = timeline.getBoundingClientRect();
+            const firstDotRect = firstDot.getBoundingClientRect();
+            const lastDotRect = lastDot.getBoundingClientRect();
+            const offsetStart = firstDotRect.top + firstDotRect.height / 2 - timelineRect.top;
+            const offsetEnd = lastDotRect.top + lastDotRect.height / 2 - timelineRect.top;
+            const height = Math.max(0, offsetEnd - offsetStart);
+            progress.style.top = offsetStart + "px";
+            progress.style.height = height + "px";
           } else {
-            if (variable === 'EventName') {
-              Resources.EventName = theme[variable];
-            }
+            progress.style.height = "0px";
           }
-        }
+        };
 
-        $("#audioButton").addClass("off");
+        function setupStories() {
+            const progressContainer = document.querySelector('.stories-progress');
+            progressContainer.innerHTML = '';
+            progressBars = [];
+            progressFills = [];
 
-        helpers.onLoad();
-        updateBodyBackground();
-      };
+            for (let i = 0; i < stories.length; i++) {
+                const bar = document.createElement('div');
+                bar.className = "stories-progress-bar";
 
-      $('.theme-btn').on('click', function () {
-        const theme = $(this).data('theme');
-        $('#themeOverlay').addClass('active');
+                const fill = document.createElement('div');
+                fill.className = "stories-progress-bar-fill";
 
-        setTimeout(() => {
-          applyTheme(theme);
-          window.scrollTo({ top: 0, behavior: 'smooth' });
-          setTimeout(() => {
-            $('#themeOverlay').removeClass('active');
-          }, 2000);
-        }, 500);
-      });
+                bar.appendChild(fill);
+                progressContainer.appendChild(bar);
 
-      function animateTimeline() {
-        const timeline = document.querySelector('.timeline');
-        const progress = document.querySelector('.timeline-progress');
-        const events = document.querySelectorAll('.timeline-event');
-        const windowHeight = window.innerHeight;
-        let lastVisibleIdx = -1;
-        let closestIdx = -1;
-        let closestDistance = Number.POSITIVE_INFINITY;
-        events.forEach((event, idx) => {
-          const rect = event.getBoundingClientRect();
-          if (rect.top < windowHeight * 0.88) {
-            event.classList.add('visible');
-            lastVisibleIdx = idx;
-            const dist = Math.abs(rect.top + rect.height/2 - windowHeight/2);
-            if(dist < closestDistance){
-              closestDistance = dist;
-              closestIdx = idx;
+                progressBars.push(bar);
+                progressFills.push(fill);
             }
-          } else {
-            event.classList.remove('visible');
-          }
-          event.classList.remove('active');
+
+            document.querySelector('.stories-photo-frame').onclick = function () {
+                if (isAdvancing) return;
+                isAdvancing = true;
+
+                elapsedTime = 0;
+                showStory(currentStory + 1, true);
+
+                setTimeout(() => {
+                    isAdvancing = false;
+                }, 200);
+            };
+        };
+
+        function showStory(idx, isTap) {
+            if (idx >= stories.length) {
+                idx = 0;
+            }
+            if (idx < 0) idx = stories.length - 1;
+
+            elapsedTime = 0;
+            storyStartTime = performance.now();
+
+            currentStory = idx;
+            document.getElementById('stories-image').src = stories[idx].img;
+            document.getElementById('stories-caption').textContent = stories[idx].caption;
+
+            progressFills.forEach((fill, i) => {
+                if (lastTransitionHandler) {
+                    fill.removeEventListener('transitionend', lastTransitionHandler);
+                }
+            });
+            lastTransitionHandler = null;
+
+            progressFills.forEach((fill, i) => {
+                if (i < idx) {
+                    fill.style.transition = 'none';
+                    fill.style.width = '100%';
+                } else if (i > idx) {
+                    fill.style.transition = 'none';
+                    fill.style.width = '0%';
+                } else {
+                    fill.style.transition = 'none';
+                    fill.style.width = '0%';
+                    void fill.offsetWidth;
+
+                    const remainingTime = intervalMs;
+
+                    fill.style.transition = `width ${remainingTime}ms linear`;
+                    fill.style.width = '100%';
+
+                    lastTransitionHandler = () => {
+                        if (!isPaused) {
+                            showStory(currentStory + 1, false);
+                        }
+                    };
+
+                    fill.addEventListener('transitionend', lastTransitionHandler, { once: true });
+                }
+            });
+        };
+
+        function startStories() {
+            if (progressFills.length === 0) return;
+
+            if (timer == null && currentStory === 0 && progressFills[0].style.width === '0%') {
+                showStory(0, false);
+            }
+
+            if (!timer) {
+                const fill = progressFills[currentStory];
+                const remainingTime = intervalMs - elapsedTime;
+
+                fill.style.transition = `width ${remainingTime}ms linear`;
+                fill.style.width = '100%';
+
+                storyStartTime = performance.now() - elapsedTime;
+
+                timer = setTimeout(() => {
+                    timer = null;
+                }, remainingTime);
+
+                console.log('Stories reanudados');
+            }
+        };
+
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (progressFills.length === 0) return;
+
+                if (entry.isIntersecting) {
+                    isPaused = false;
+                    startStories();
+                } else {
+                    isPaused = true;
+                    clearTimeout(timer);
+                    timer = null;
+
+                    elapsedTime = performance.now() - storyStartTime;
+
+                    const fill = progressFills[currentStory];
+                    const computedStyle = window.getComputedStyle(fill);
+                    const width = computedStyle.getPropertyValue('width');
+                    const parentWidth = fill.parentElement.offsetWidth;
+                    const percent = (parseFloat(width) / parentWidth) * 100;
+
+                    fill.style.transition = 'none';
+                    fill.style.width = `${percent}%`;
+
+                    console.log('Stories pausados en', percent.toFixed(1), '%');
+                }
+            });
+        }, {
+            threshold: 0.5
         });
-        if (closestIdx >= 0) events[closestIdx].classList.add('active');
-        if (lastVisibleIdx >= 0) {
-          const firstDot = events[0].querySelector('.timeline-dot');
-          const lastDot = events[lastVisibleIdx].querySelector('.timeline-dot');
-          const timelineRect = timeline.getBoundingClientRect();
-          const firstDotRect = firstDot.getBoundingClientRect();
-          const lastDotRect = lastDot.getBoundingClientRect();
-          const offsetStart = firstDotRect.top + firstDotRect.height / 2 - timelineRect.top;
-          const offsetEnd = lastDotRect.top + lastDotRect.height / 2 - timelineRect.top;
-          const height = Math.max(0, offsetEnd - offsetStart);
-          progress.style.top = offsetStart + "px";
-          progress.style.height = height + "px";
-        } else {
-          progress.style.height = "0px";
-        }
-      }
 
-      function setupStories() {
-          const progressContainer = document.querySelector('.stories-progress');
-          progressContainer.innerHTML = '';
-          progressBars = [];
-          progressFills = [];
+        window.addEventListener('scroll', animateTimeline, {passive: true});
+        window.addEventListener('load', animateTimeline);
+        window.addEventListener('resize', animateTimeline);
+        window.addEventListener('load', () => {
+            setupStories();
+            showStory(0, false);
 
-          for (let i = 0; i < stories.length; i++) {
-              const bar = document.createElement('div');
-              bar.className = "stories-progress-bar";
-
-              const fill = document.createElement('div');
-              fill.className = "stories-progress-bar-fill";
-
-              bar.appendChild(fill);
-              progressContainer.appendChild(bar);
-
-              progressBars.push(bar);
-              progressFills.push(fill);
-          }
-
-          document.querySelector('.stories-photo-frame').onclick = function () {
-              if (isAdvancing) return;
-              isAdvancing = true;
-
-              elapsedTime = 0;
-              showStory(currentStory + 1, true);
-
-              setTimeout(() => {
-                  isAdvancing = false;
-              }, 200);
-          };
-      }
-
-      function showStory(idx, isTap) {
-          if (idx >= stories.length) {
-              idx = 0;
-          }
-          if (idx < 0) idx = stories.length - 1;
-
-          elapsedTime = 0;
-          storyStartTime = performance.now();
-
-          currentStory = idx;
-          document.getElementById('stories-image').src = stories[idx].img;
-          document.getElementById('stories-caption').textContent = stories[idx].caption;
-
-          progressFills.forEach((fill, i) => {
-              if (lastTransitionHandler) {
-                  fill.removeEventListener('transitionend', lastTransitionHandler);
-              }
-          });
-          lastTransitionHandler = null;
-
-          progressFills.forEach((fill, i) => {
-              if (i < idx) {
-                  fill.style.transition = 'none';
-                  fill.style.width = '100%';
-              } else if (i > idx) {
-                  fill.style.transition = 'none';
-                  fill.style.width = '0%';
-              } else {
-                  fill.style.transition = 'none';
-                  fill.style.width = '0%';
-                  void fill.offsetWidth;
-
-                  const remainingTime = intervalMs;
-
-                  fill.style.transition = `width ${remainingTime}ms linear`;
-                  fill.style.width = '100%';
-
-                  lastTransitionHandler = () => {
-                      if (!isPaused) {
-                          showStory(currentStory + 1, false);
-                      }
-                  };
-
-                  fill.addEventListener('transitionend', lastTransitionHandler, { once: true });
-              }
-          });
-      }
-
-      function startStories() {
-          if (progressFills.length === 0) return;
-
-          if (timer == null && currentStory === 0 && progressFills[0].style.width === '0%') {
-              showStory(0, false);
-          }
-
-          if (!timer) {
-              const fill = progressFills[currentStory];
-              const remainingTime = intervalMs - elapsedTime;
-
-              fill.style.transition = `width ${remainingTime}ms linear`;
-              fill.style.width = '100%';
-
-              storyStartTime = performance.now() - elapsedTime;
-
-              timer = setTimeout(() => {
-                  timer = null;
-              }, remainingTime);
-
-              console.log('Stories reanudados');
-          }
-      }
-
-      const observer = new IntersectionObserver(entries => {
-          entries.forEach(entry => {
-              if (progressFills.length === 0) return;
-
-              if (entry.isIntersecting) {
-                  isPaused = false;
-                  startStories();
-              } else {
-                  isPaused = true;
-                  clearTimeout(timer);
-                  timer = null;
-
-                  elapsedTime = performance.now() - storyStartTime;
-
-                  const fill = progressFills[currentStory];
-                  const computedStyle = window.getComputedStyle(fill);
-                  const width = computedStyle.getPropertyValue('width');
-                  const parentWidth = fill.parentElement.offsetWidth;
-                  const percent = (parseFloat(width) / parentWidth) * 100;
-
-                  fill.style.transition = 'none';
-                  fill.style.width = `${percent}%`;
-
-                  console.log('Stories pausados en', percent.toFixed(1), '%');
-              }
-          });
-      }, {
-          threshold: 0.5
-      });
-
-      window.addEventListener('scroll', animateTimeline, {passive: true});
-      window.addEventListener('load', animateTimeline);
-      window.addEventListener('resize', animateTimeline);
-      window.addEventListener('load', () => {
-          setupStories();
-          showStory(0, false);
-
-          const storiesSection = document.querySelector('.gallery-section');
-          observer.observe(storiesSection);
+            const storiesSection = document.querySelector('.gallery-section');
+            observer.observe(storiesSection);
+        });
       });
     </script>
   </body>
