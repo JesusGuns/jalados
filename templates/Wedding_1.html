@@ -10,16 +10,15 @@
     <!-- Font Awesome-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Delius&family=Pacifico&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="../css/templates.css">
     <style>
       /* #region ROOT*/
       :root {
         --main-bg: linear-gradient(135deg, #fff6fc 0%, #f2f8ff 100%);
-        --glass-bg: rgba(255, 255, 255, 0.87);
         --glass-blur: 14px;
-        --font-Primary: 'Indie Flower';
+        --font-Primary: 'Delius';
       }
 
       /* #endregion ROOT*/
@@ -105,15 +104,12 @@
       }
 
       .couple-card {
-        background: var(--glass-bg);
         backdrop-filter: blur(var(--glass-blur));
         border-radius: 18px;
-        box-shadow: var(--card-shadow);
         padding: 1.1rem 1.2rem 1.3rem 1.2rem;
         min-width: 135px;
         max-width: 220px;
         flex: 1 1 120px;
-        border: var(--border-soft);
         text-align: center;
         position: relative;
         margin-bottom: 1.2rem;
@@ -121,8 +117,8 @@
       }
 
       .couple-photo {
-        width: 74px;
-        height: 74px;
+        width: 100px;
+        height: 100px;
         border-radius: 50%;
         object-fit: cover;
         margin-bottom: 0.7rem;
@@ -158,11 +154,8 @@
       .parent-card {
         width: 95%;
         max-width: 420px;
-        background: var(--glass-bg);
         backdrop-filter: blur(var(--glass-blur));
         border-radius: 18px;
-        box-shadow: var(--card-shadow);
-        border: var(--border-soft);
         padding: 1.1rem 1.2rem 1.2rem 1.2rem;
         text-align: center;
         animation: fadein 1.3s;
@@ -233,7 +226,6 @@
         width: 99%;
         max-width: 420px;
         min-height: 100px;
-        background: var(--glass-bg);
         backdrop-filter: blur(17px);
         border-radius: 32px;
         box-shadow: 0 7px 22px #b07fcb17, 0 2px 8px #81b8df13;
@@ -256,8 +248,8 @@
       }
 
       .godparent-avatar {
-        width: 67px;
-        height: 67px;
+        width: 100px;
+        height: 100px;
         border-radius: 50%;
         background: #fff;
         object-fit: cover;
@@ -284,7 +276,7 @@
 
       .godparent-names-cute {
         color: var(--color_Primary);
-        font-size: 1.14rem;
+        font-size: 0.9rem;
         font-family: var(--font-Primary);
         letter-spacing: 1.2px;
         margin-bottom: 0.06rem;
@@ -854,7 +846,7 @@
           </section>
 
           <!-- Gallery Instagram -->
-          <div class="section-title">¡Recuerdos más bonitos!</div>
+          <div class="section-title">¡Recuerdos bonitos!</div>
           <div class="gallery-section">
             <div class="stories-gallery">
               <div class="stories-progress"></div>
@@ -1023,8 +1015,6 @@
           '--color_Tertiary': '#f9a5b7',
           '--filter-AudioButton': '0deg',
           '--timeline-bg': '#fffafd',
-          '--card-shadow': '0 4px 18px #b07fcb25',
-          '--border-soft': '1.8px solid #f9a5b7bb',
           EventName: 'Thomas'
         },
         themeX: {
@@ -1033,8 +1023,6 @@
           '--color_Tertiary': '#faabaf',
           '--filter-AudioButton': '260deg',
           '--timeline-bg': '#fbfcf7',
-          '--card-shadow': '0 4px 18px #8dc8b935',
-          '--border-soft': '1.8px solid #faabafbb',
           EventName: 'Thomas'
         }
       };
