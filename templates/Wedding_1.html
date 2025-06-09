@@ -66,7 +66,7 @@
 
       .hero-title {
         position: absolute;
-        top: 49%;
+        top: 20%;
         left: 50%;
         transform: translate(-50%,-50%);
         color: #fff;
@@ -108,7 +108,6 @@
       }
 
       .couple-card {
-        backdrop-filter: blur(var(--glass-blur));
         border-radius: 18px;
         min-width: 135px;
         max-width: 220px;
@@ -134,7 +133,7 @@
         font-family: var(--font-Primary);
         color: var(--color_Tertiary);
         font-size: 1.22rem;
-        font-weight: 400;
+        font-weight: 800;
         margin-bottom: 0.15rem;
         margin-top: 0;
       }
@@ -157,7 +156,6 @@
       .parent-card {
         width: 95%;
         max-width: 420px;
-        backdrop-filter: blur(var(--glass-blur));
         border-radius: 50%;
         padding: 1.1rem 1.2rem 1.2rem 1.2rem;
         text-align: center;
@@ -212,7 +210,7 @@
         background: linear-gradient(90deg, #b07fcb22 60%, #81b8df19 100%);
         padding: 0.6em 0;
         border-radius: 18px;
-        font-weight: bold;
+        font-weight: 800;
         text-shadow: 0 1px 13px #b07fcb13;
         animation: padrinosFade 1.6s both;
       }
@@ -271,10 +269,11 @@
       .godparent-role-cute {
         color: var(--color_Secondary);
         font-size: 1.11rem;
-        font-weight: bold;
+        font-weight: 800;
         margin-bottom: 0.21em;
         letter-spacing: 0.6px;
         font-family: var(--font-Primary);
+        text-align: center;
       }
 
       .godparent-names-cute {
@@ -284,7 +283,8 @@
         letter-spacing: 1.2px;
         margin-bottom: 0.06rem;
         margin-top: 0;
-        font-weight: 400;
+        font-weight: 800;
+        text-align: center;
       }
 
       .godparent-emoji {
@@ -394,8 +394,10 @@
       .timeline-event.visible .timeline-dot {
         border-color: #b07fcb;
       }
-      .timeline-dot svg {
-        width: 17px; height: 17px; display: block;
+      .timeline-dot i {
+        width: 10px; height: 10px; display: block;
+        margin-top: -5px !important;
+        color: var(--color_Primary);
       }
       .timeline-event-content {
         margin-left: 46px;
@@ -416,7 +418,7 @@
         font-family: var(--font-Primary);
         font-size: 1.05rem;
         color: var(--color_Primary);
-        font-weight: 700;
+        font-weight: 800;
         margin-bottom: 2px;
         margin-left: 3px;
         letter-spacing: 1px;
@@ -424,7 +426,7 @@
       .timeline-desc {
         color: #965a8d;
         font-size: 1.01rem;
-        font-weight: 400;
+        font-weight: 800;
         margin-left: 3px;
         margin-bottom: 0;
       }
@@ -545,7 +547,7 @@
         }
 
         ._template-Counter-Section ._counter-Timebox span{
-          font-size: 2.5rem;
+          font-size: 1.8rem;
           height: auto;
         }
       }
@@ -672,12 +674,18 @@
         <!-- Initial section -->
         <div class="hero-novios">
           <img src="#" data-replace="ImageMain" alt="Image Main">
-          <div class="hero-title">¡Nos casamos!<br>Camila &amp; Iván</div>
+          <div class="hero-title">
+            ¡Nos casamos!
+            <br>
+            <span data-replace="BrideShortName"></span>
+            &amp;
+            <span data-replace="GroomShortName"></span>
+          </div>
         </div>
         <div class="invitation-container">
           <div class="_template-Counter-Section">
             <div id="countdown" class="_counter-Countdown">
-              <div class="_counter-Timebox">
+              <div class="_counter-Timebox" style="margin-right: 15px !important;">
                 <span id="days">0</span> Días
               </div>
               <div class="_counter-Timebox">
@@ -704,7 +712,13 @@
           <div class="couple-section">
             <div class="couple-card">
               <img src="https://i.pinimg.com/736x/06/84/c6/0684c6819cddf8a5c450c1fa83e64773.jpg" class="couple-photo" alt="Novio">
-              <div class="couple-name">Camila Torres <br> &amp; <br> Iván Méndez</div>
+              <div class="couple-name">
+                <span data-replace="BrideName"></span>
+                <br>
+                &amp;
+                <br>
+                <span data-replace="GroomName"></span>
+              </div>
             </div>
           </div>
 
@@ -712,127 +726,38 @@
           <div class="parents-section">
             <div class="parent-card">
               <img src="https://i.pinimg.com/736x/dd/b7/17/ddb71718c8daaac4b0111e4882d1627d.jpg" class="parent-photo-unique" alt="Padres novia">
-              <div class="parent-title">Elena García &amp; Alfonso Torres</div>
+              <div class="parent-title">
+                <span data-replace="MotherBride"></span>
+                <br>
+                &amp;
+                <br>
+                <span data-replace="FatherBride"></span>
+              </div>
             </div>
           </div>
           <div class="section-title">Padres del Novio</div>
           <div class="parents-section">
             <div class="parent-card">
               <img src="https://i.pinimg.com/736x/27/96/c5/2796c57f77bd7b9bc98d8475952f540a.jpg" class="parent-photo-unique" alt="Padres novio">
-              <div class="parent-title">Ana Rodríguez &amp; Carlos Méndez</div>
+              <div class="parent-title">
+                <span data-replace="MotherGroom"></span>
+                <br>
+                &amp;
+                <br>
+                <span data-replace="FatherGroom"></span>
+              </div>
             </div>
           </div>
 
           <div class="godparents-section">
             <div class="section-title">Padrinos</div>
-            <div class="godparents-list">
-              <div class="godparent-card-cute">
-                <img src="https://i.pinimg.com/736x/47/79/04/477904ac5fc3a09e840a78a202d12799.jpg" class="godparent-avatar" alt="Carlos Ramírez">
-                <div class="godparent-details-cute">
-                  <div class="godparent-role-cute">Padrinos de Anillos<span class="godparent-emoji"></span></div>
-                  <div class="godparent-names-cute">Carlos Ramírez &amp; Sofía Morales</div>
-                </div>
-              </div>
-              <div class="godparent-card-cute">
-                <img src="https://i.pinimg.com/736x/0c/14/c8/0c14c80f4d432162ef001bf381a62f65.jpg" class="godparent-avatar" alt="Marina Díaz">
-                <div class="godparent-details-cute">
-                  <div class="godparent-role-cute">Padrinos de Lazo<span class="godparent-emoji"></span></div>
-                  <div class="godparent-names-cute">Marina Díaz &amp; Raúl Romero</div>
-                </div>
-              </div>
-              <div class="godparent-card-cute">
-                <img src="https://i.pinimg.com/736x/84/8c/03/848c032a8fd4e5b9d9d23e7b8334351b.jpg" class="godparent-avatar" alt="Esteban León">
-                <div class="godparent-details-cute">
-                  <div class="godparent-role-cute">Padrinos de Arras<span class="godparent-emoji"></span></div>
-                  <div class="godparent-names-cute">Esteban León &amp; Paula Sosa</div>
-                </div>
-              </div>
-              <div class="godparent-card-cute">
-                <img src="https://i.pinimg.com/736x/10/28/be/1028beba69d2b76da28f88e54435ef81.jpg" class="godparent-avatar" alt="Julio Vargas">
-                <div class="godparent-details-cute">
-                  <div class="godparent-role-cute">Biblia y Rosario<span class="godparent-emoji"></span></div>
-                  <div class="godparent-names-cute">Julio Vargas &amp; Lucía Peña</div>
-                </div>
-              </div>
-              <div class="godparent-card-cute">
-                <img src="https://i.pinimg.com/736x/0a/cf/41/0acf41786bb22fc2002e54ccc42cfbb3.jpg" class="godparent-avatar" alt="Patricia Muñoz">
-                <div class="godparent-details-cute">
-                  <div class="godparent-role-cute">Brindis<span class="godparent-emoji"></span></div>
-                  <div class="godparent-names-cute">Patricia Muñoz &amp; Daniel Ponce</div>
-                </div>
-              </div>
-            </div>
+            <div class="godparents-list" id="godparents-list"></div>
           </div>
 
           <!-- Timeline -->
           <div class="section-title">Itinerario</div>
           <section class="timeline-section">
-            <div class="timeline">
-              <div class="timeline-progress"></div>
-              <div class="timeline-event">
-                <span class="timeline-dot">
-                  <svg viewBox="0 0 22 22" fill="none"><ellipse cx="7" cy="14" rx="5" ry="5" fill="#b07fcb" opacity="0.13"/><ellipse cx="15" cy="12.5" rx="4" ry="4.5" fill="#81b8df" opacity="0.12"/><path d="M6 14c0 1.1.9 2 2 2s2-.9 2-2a2 2 0 1 0-4 0z" fill="#b07fcb"/><path d="M14 12.5c0 1.38 1.12 2.5 2.5 2.5s2.5-1.12 2.5-2.5a2.5 2.5 0 1 0-5 0z" fill="#81b8df"/><circle cx="7.8" cy="14" r="0.7" fill="#965a8d"/><circle cx="16.3" cy="13" r="0.5" fill="#3272a8"/></svg>
-                </span>
-                <div class="timeline-event-content">
-                  <div class="timeline-time">16:00 hrs</div>
-                  <div class="timeline-desc">Ceremonia religiosa</div>
-                </div>
-              </div>
-              <div class="timeline-event">
-                <span class="timeline-dot">
-                  <svg viewBox="0 0 24 24"><path d="M12 21V9m0 0l-4 4M12 9l4 4" stroke="#b07fcb" stroke-width="1.6"/><circle cx="12" cy="7" r="3" fill="#f9a5b7"/><circle cx="8" cy="8" r="2" fill="#81b8df"/><circle cx="16" cy="8" r="2" fill="#b07fcb"/></svg>
-                </span>
-                <div class="timeline-event-content">
-                  <div class="timeline-time">17:00 hrs</div>
-                  <div class="timeline-desc">Sesión fotográfica</div>
-                </div>
-              </div>
-              <div class="timeline-event">
-                <span class="timeline-dot">
-                  <svg viewBox="0 0 22 22"><ellipse cx="11" cy="18" rx="6" ry="2.3" fill="#f9a5b7"/><rect x="5" y="11" width="12" height="7" rx="3.5" fill="#fff"/><rect x="7" y="14" width="8" height="3" rx="1.5" fill="#b07fcb"/><rect x="8.3" y="9" width="5.4" height="2" rx="1" fill="#81b8df"/><rect x="10.5" y="7" width="1" height="2" rx="0.5" fill="#f9a5b7"/></svg>
-                </span>
-                <div class="timeline-event-content">
-                  <div class="timeline-time">18:00 hrs</div>
-                  <div class="timeline-desc">Recepción</div>
-                </div>
-              </div>
-              <div class="timeline-event">
-                <span class="timeline-dot">
-                  <svg viewBox="0 0 22 22"><ellipse cx="7" cy="11" rx="4" ry="5" fill="#f9a5b7"/><ellipse cx="15" cy="12.5" rx="3" ry="4.5" fill="#81b8df"/><ellipse cx="11" cy="10" rx="2" ry="3.5" fill="#b07fcb"/><path d="M7 16l1.5 3M15 17.5l-1 2" stroke="#b07fcb" stroke-width="1.1"/></svg>
-                </span>
-                <div class="timeline-event-content">
-                  <div class="timeline-time">18:30 hrs</div>
-                  <div class="timeline-desc">Cocktail</div>
-                </div>
-              </div>
-              <div class="timeline-event">
-                <span class="timeline-dot">
-                  <svg viewBox="0 0 22 22"><path d="M7 17l3-7m5 7l-3-7" stroke="#81b8df" stroke-width="1.5"/><ellipse cx="7" cy="10" rx="2" ry="3" fill="#b07fcb"/><ellipse cx="15" cy="10" rx="2" ry="3" fill="#f9a5b7"/><ellipse cx="11" cy="10" rx="2" ry="3" fill="#81b8df"/><path d="M9 20h4" stroke="#b07fcb" stroke-width="1.5" stroke-linecap="round"/></svg>
-                </span>
-                <div class="timeline-event-content">
-                  <div class="timeline-time">19:00 hrs</div>
-                  <div class="timeline-desc">Banquete</div>
-                </div>
-              </div>
-              <div class="timeline-event">
-                <span class="timeline-dot">
-                  <svg viewBox="0 0 22 22"><path d="M7 17l3-7m5 7l-3-7" stroke="#81b8df" stroke-width="1.5"/><ellipse cx="7" cy="10" rx="2" ry="3" fill="#b07fcb"/><ellipse cx="15" cy="10" rx="2" ry="3" fill="#f9a5b7"/><ellipse cx="11" cy="10" rx="2" ry="3" fill="#81b8df"/><path d="M9 20h4" stroke="#b07fcb" stroke-width="1.5" stroke-linecap="round"/></svg>
-                </span>
-                <div class="timeline-event-content">
-                  <div class="timeline-time">20:00 hrs</div>
-                  <div class="timeline-desc">Brindis</div>
-                </div>
-              </div>
-              <div class="timeline-event">
-                <span class="timeline-dot">
-                  <svg viewBox="0 0 22 22"><path d="M7 17l3-7m5 7l-3-7" stroke="#81b8df" stroke-width="1.5"/><ellipse cx="7" cy="10" rx="2" ry="3" fill="#b07fcb"/><ellipse cx="15" cy="10" rx="2" ry="3" fill="#f9a5b7"/><ellipse cx="11" cy="10" rx="2" ry="3" fill="#81b8df"/><path d="M9 20h4" stroke="#b07fcb" stroke-width="1.5" stroke-linecap="round"/></svg>
-                </span>
-                <div class="timeline-event-content">
-                  <div class="timeline-time">20:20 hrs</div>
-                  <div class="timeline-desc">Baile</div>
-                </div>
-              </div>
-            </div>
+            <div class="timeline" id="timeline-list"></div>
           </section>
 
           <!-- Gallery Instagram -->
@@ -858,15 +783,74 @@
         const EventDate = new Date("2025-11-25T13:00:00");
         const EventReception = new Date("2025-11-25T17:00:00");
         const mainEvent = {
-          Name: "",
+          BrideName: "Camila Torres",
+          GroomName: "Iván Méndez",
+          BrideShortName: "Camila",
+          GroomShortName: "Iván",
           Date: EventDate,
           Description: `Acompáñanos a celebrar nuestra unión `,      
           LocationDescription: "Salón de Eventos Quinta el Eden",
           Address: "C. Morelos 670, González Ortega, 45190 Zapopan, Jal.",
-          Father: "José Gutiérrez",
-          Mother: "Melissa Hurtado",
-          GodFather: "Juan Fernández",
-          GodMother: "Laura Jimenez",
+          FatherBride: "Alfonso Torres",
+          MotherBride: "Elena García",
+          FatherGroom: "Carlos Méndez",
+          MotherGroom: "Ana Rodríguez",
+          GodParents: [
+            {
+              type: "Padrinos de Anillos",
+              GodFather: "Carlos Ramírez",
+              GodMother: "Sofía Morales",
+              img: "https://i.pinimg.com/736x/47/79/04/477904ac5fc3a09e840a78a202d12799.jpg"
+            },
+            {
+              type: "Padrinos de Lazo",
+              GodFather: "Raúl Romero",
+              GodMother: "Marina Díaz",
+              img: "https://i.pinimg.com/736x/0c/14/c8/0c14c80f4d432162ef001bf381a62f65.jpg"
+            },
+            {
+              type: "Padrinos de Arras",
+              GodFather: "Esteban León",
+              GodMother: "Paula Sosa",
+              img: "https://i.pinimg.com/736x/84/8c/03/848c032a8fd4e5b9d9d23e7b8334351b.jpg"
+            },
+            {
+              type: "Biblia y Rosario",
+              GodFather: "Julio Vargas",
+              GodMother: "Lucía Peña",
+              img: "https://i.pinimg.com/736x/10/28/be/1028beba69d2b76da28f88e54435ef81.jpg"
+            },
+            {
+              type: "Padrinos de Ramo",
+              GodFather: "Daniel Ponce",
+              GodMother: "Alejandra Luna",
+              img: "https://i.pinimg.com/736x/0a/cf/41/0acf41786bb22fc2002e54ccc42cfbb3.jpg"
+            },
+            {
+              type: "Copas / Brindis",
+              GodFather: "Andrés Castillo",
+              GodMother: "Valentina Lozano",
+              img: "https://i.pinimg.com/736x/dd/a0/d2/dda0d21c2ade71c47faa7b3f40d432e4.jpg"
+            },
+            {
+              type: "Banquete",
+              GodFather: "Mateo Rivas",
+              GodMother: "Gabriela Paredes",
+              img: "https://i.pinimg.com/736x/92/95/42/929542722660c9dd892a389f037debc9.jpg"
+            },
+            {
+              type: "Pastel",
+              GodFather: "Leonardo Méndez",
+              GodMother: "Renata Salazar",
+              img: "https://i.pinimg.com/736x/a7/3c/9c/a73c9c6bd85e62ce63f3552f957158e1.jpg"
+            },
+            {
+              type: "Recuerdos",
+              GodFather: "Sebastián Cruz",
+              GodMother: "Isabel Cortés",
+              img: "https://i.pinimg.com/736x/90/97/61/909761f2733c432add664f3cc307a170.jpg"
+            }
+          ],
           GoogleMapsUrl: "https://maps.app.goo.gl/1wwmTSk84XA8pLMn8",
           AmazonGiftTableUrl: "https://www.amazon.com.mx/",
           LiverpoolGiftTableUrl: "https://www.liverpool.com.mx/tienda/home",
@@ -914,6 +898,14 @@
 
         function onLoad(){
           $("[data-replace=ImageMain]").attr("src", Resources.AdditionalInformation.ImageMain);
+          $("[data-replace=BrideName]").text(Resources.MainEvent.BrideName);
+          $("[data-replace=GroomName]").text(Resources.MainEvent.GroomName);
+          $("[data-replace=BrideShortName]").text(Resources.MainEvent.BrideShortName);
+          $("[data-replace=GroomShortName]").text(Resources.MainEvent.GroomShortName);
+          $("[data-replace=FatherBride]").text(Resources.MainEvent.FatherBride);
+          $("[data-replace=MotherBride]").text(Resources.MainEvent.MotherBride);
+          $("[data-replace=FatherGroom]").text(Resources.MainEvent.FatherGroom);
+          $("[data-replace=MotherGroom]").text(Resources.MainEvent.MotherGroom);
         };
 
         function Init() {
@@ -924,6 +916,7 @@
           }, 1000);
           helpers.onAudioPlayer();
           updateBodyBackground();
+          renderGodParents(Resources.MainEvent.GodParents, 'godparents-list');
           onLoad();
         };
         Init();
@@ -949,47 +942,72 @@
             }
           `;
         };
+
+        function renderGodParents(godParentsArray, containerId) {
+          const listContainer = document.getElementById(containerId);
+          listContainer.innerHTML = '';
+
+          godParentsArray.forEach(parent => {
+            const card = document.createElement('div');
+            card.className = 'godparent-card-cute';
+
+            card.innerHTML = `
+              <img src="${parent.img}" class="godparent-avatar" alt="${parent.GodFather} y ${parent.GodMother}">
+              <div class="godparent-details-cute">
+                <div class="godparent-role-cute">${parent.type}<span class="godparent-emoji"></span></div>
+                <div class="godparent-names-cute">${parent.GodFather} <br> &amp; <br> ${parent.GodMother}</div>
+              </div>
+            `;
+
+            listContainer.appendChild(card);
+          });
+        };
       });
     </script>
     <script>
       requirejs(["jquery", "bs"],function($){
-        const stories = [
-          {
-            img: "https://i.pinimg.com/736x/cc/fa/d5/ccfad55fa13f3126131e479f260c2c2a.jpg",
-            caption: "El gran día"
-          },
-          {
-            img: "https://i.pinimg.com/736x/02/0b/98/020b98b54441df5551e5c12b53761881.jpg",
-            caption: "Momentos mágicos"
-          },
-          {
-            img: "https://i.pinimg.com/736x/c1/b1/2d/c1b12d4787d714f18f3d92a849c7d1ae.jpg",
-            caption: "Juntos siempre"
-          },
-          {
-            img: "https://i.pinimg.com/736x/89/fb/d5/89fbd581a3f7c849d40a17abfec1a388.jpg",
-            caption: "Nuestra aventura"
-          },
-          {
-            img: "https://i.pinimg.com/736x/41/c4/8b/41c48b0902ac1716fc651fcbb78c496a.jpg",
-            caption: "Diversión y amor"
-          },
-          {
-            img: "https://i.pinimg.com/736x/30/35/57/303557688e3cd1ce15f6f66181bce236.jpg",
-            caption: "Nuestro viaje"
-          }
+        const Itinerary = [
+          { time: "16:00", description: "Ceremonia religiosa", icon: "fa-solid fa-church", ml:"-8" },
+          { time: "17:00", description: "Sesión fotográfica", icon: "fa-solid fa-camera", ml:"-5" },
+          { time: "18:00", description: "Recepción", icon: "fa-solid fa-bell-concierge", ml:"-6" },
+          { time: "18:30", description: "Cocktail", icon: "fa-solid fa-cocktail", ml:"-8" },
+          { time: "19:00", description: "Banquete", icon: "fa-solid fa-utensils", ml:"-5" },
+          { time: "20:00", description: "Brindis", icon: "fa-solid fa-wine-glass", ml:"-1" },
+          { time: "20:20", description: "Baile", icon: "fa-solid fa-music", ml:"-6.5" },
         ];
 
-        let currentStory = 0;
-        let progressBars = [];
-        let progressFills = [];
-        let timer = null;
-        let storyStartTime = 0;
-        let elapsedTime = 0;
-        let isPaused = false;
-        const intervalMs = 3200;
-        let lastTransitionHandler = null;
-        let isAdvancing = false;
+        function renderItinerary(itineraryArray, containerId) {
+          const timelineContainer = document.getElementById(containerId);
+          timelineContainer.innerHTML = '';
+
+          // Agregar la barra de progreso
+          const progress = document.createElement('div');
+          progress.className = 'timeline-progress';
+          timelineContainer.appendChild(progress);
+
+          itineraryArray.forEach(event => {
+            const timelineEvent = document.createElement('div');
+            timelineEvent.className = 'timeline-event';
+
+            timelineEvent.innerHTML = `
+              <span class="timeline-dot">
+                <i class="${event.icon}" style="margin-left: ${event.ml}px !important;"></i>
+              </span>
+              <div class="timeline-event-content">
+                <div class="timeline-time">${event.time} hrs</div>
+                <div class="timeline-desc">${event.description}</div>
+              </div>
+            `;
+
+            timelineContainer.appendChild(timelineEvent);
+          });
+        };
+
+        renderItinerary(Itinerary, 'timeline-list');
+
+        window.addEventListener('scroll', animateTimeline, {passive: true});
+        window.addEventListener('load', animateTimeline);
+        window.addEventListener('resize', animateTimeline);
 
         function animateTimeline() {
           const timeline = document.querySelector('.timeline');
@@ -1030,6 +1048,44 @@
             progress.style.height = "0px";
           }
         };
+
+        const stories = [
+          {
+            img: "https://i.pinimg.com/736x/cc/fa/d5/ccfad55fa13f3126131e479f260c2c2a.jpg",
+            caption: "El gran día"
+          },
+          {
+            img: "https://i.pinimg.com/736x/02/0b/98/020b98b54441df5551e5c12b53761881.jpg",
+            caption: "Momentos mágicos"
+          },
+          {
+            img: "https://i.pinimg.com/736x/c1/b1/2d/c1b12d4787d714f18f3d92a849c7d1ae.jpg",
+            caption: "Juntos siempre"
+          },
+          {
+            img: "https://i.pinimg.com/736x/89/fb/d5/89fbd581a3f7c849d40a17abfec1a388.jpg",
+            caption: "Nuestra aventura"
+          },
+          {
+            img: "https://i.pinimg.com/736x/41/c4/8b/41c48b0902ac1716fc651fcbb78c496a.jpg",
+            caption: "Diversión y amor"
+          },
+          {
+            img: "https://i.pinimg.com/736x/30/35/57/303557688e3cd1ce15f6f66181bce236.jpg",
+            caption: "Nuestro viaje"
+          }
+        ];
+
+        let currentStory = 0;
+        let progressBars = [];
+        let progressFills = [];
+        let timer = null;
+        let storyStartTime = 0;
+        let elapsedTime = 0;
+        let isPaused = false;
+        const intervalMs = 3200;
+        let lastTransitionHandler = null;
+        let isAdvancing = false;
 
         function setupStories() {
             const progressContainer = document.querySelector('.stories-progress');
@@ -1166,9 +1222,6 @@
             threshold: 0.5
         });
 
-        window.addEventListener('scroll', animateTimeline, {passive: true});
-        window.addEventListener('load', animateTimeline);
-        window.addEventListener('resize', animateTimeline);
         window.addEventListener('load', () => {
             setupStories();
             showStory(0, false);
