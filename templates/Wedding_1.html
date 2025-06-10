@@ -205,6 +205,7 @@
         font-family: var(--font-Primary);
         color: var(--color_Primary);
         font-size: 1.5rem;
+        margin-top: 5rem;
         margin-bottom: 1.2rem;
         letter-spacing: 0.7px;
         text-align: center;
@@ -519,7 +520,7 @@
 
       .btn {
         display: inline-block;
-        padding: 1rem 2rem;
+        padding: 1rem 1rem;
         box-shadow: 0 2px 10px var(--color-Quaternary);
         background-color: #f2f8ff !important;
         color: var(--color_Primary) !important;
@@ -535,6 +536,106 @@
       }
 
       /* #endregion General*/
+      /* #region Event Section*/
+      .evento-clean-magic {
+        margin: 2.7em auto 2.7em auto;
+        display: flex;
+        flex-direction: column;
+        gap: 1.9em;
+        align-items: stretch;
+        padding: 0 0.4em;
+      }
+      .evento-magic-card {
+        border-radius: 32px;
+        box-shadow: 0 10px 40px #b07fcb18, 0 2px 8px #faabaf15;
+        border: 1.8px solid #f9a5b736;
+        display: flex;
+        align-items: center;
+        gap: 1.33em;
+        padding: 1.35em 1.18em 1.35em 1.18em;
+        position: relative;
+        overflow: visible;
+        transition: box-shadow 0.18s, border-color 0.18s;
+      }
+      .evento-magic-card:hover {
+        box-shadow: 0 18px 44px #b07fcb29, 0 2px 12px #faabaf17;
+        border-color: #b07fcbbb;
+        background: rgba(255,255,255,0.95);
+      }
+      .evento-magic-icon {
+        min-width: 62px; min-height: 62px;
+        background: rgba(249,165,183,0.14);
+        border-radius: 50%;
+        display: flex; align-items: center; justify-content: center;
+        box-shadow: 0 3px 18px #b07fcb19;
+        border: 2.5px solid #b07fcb21;
+        position: relative;
+      }
+      .evento-magic-icon img {
+        width: 36px; height: 36px;
+        object-fit: contain;
+        filter: drop-shadow(0 2px 8px #faabaf30);
+        opacity: 0.95;
+      }
+      .evento-magic-fecha { background: linear-gradient(120deg,#fff6fc 65%,#faabaf29 100%);}
+      .evento-magic-ceremonia { background: linear-gradient(120deg,#fff6fc 65%,#81b8df22 100%);}
+      .evento-magic-recepcion { background: linear-gradient(120deg,#fff6fc 60%,#b07fcb19 100%);}
+
+      .evento-magic-content {
+        flex: 1;
+        display: flex; flex-direction: column; align-items: flex-start;
+        padding-left: 0.1em;
+        text-align: left !important;
+      }
+      .evento-magic-label {
+        font-family: var(--font-Primary);
+        color: #b07fcb;
+        font-size: 1.16em;
+        margin-bottom: 0.09em;
+        letter-spacing: 0.7px;
+      }
+      .evento-magic-title {
+        color: #faabaf;
+        font-family: var(--font-Primary);
+        font-size: 1.18em;
+        font-weight: 700;
+        margin-bottom: 0.09em;
+      }
+      .evento-magic-detail {
+        color: #81b8df;
+        font-size: 1.05em;
+        font-family: var(--font-Primary);
+        font-weight: 500;
+        margin-bottom: 0.1em;
+      }
+      .evento-magic-address {
+        color: #b07fcb;
+        font-size: 0.98em;
+        opacity: 0.82;
+        font-family: var(--font-Primary);
+        margin-top: 0.13em;
+        font-weight: 400;
+        letter-spacing: 0.02em;
+      }
+      .evento-magic-heart {
+        color: #faabaf;
+        font-size: 1.11em;
+        margin-top: 0.2em;
+        opacity: 0.80;
+        font-family: 'Pacifico', cursive;
+        user-select: none;
+        pointer-events: none;
+      }
+
+      @media (max-width: 600px) {
+        .evento-clean-magic { max-width: 99vw; padding:0 0.1em;}
+        .evento-magic-card { padding: 1.1em 0.7em; gap: 0.9em; }
+        .evento-magic-icon { min-width: 41px; min-height: 41px;}
+        .evento-magic-icon img { width: 23px; height: 23px;}
+        .evento-magic-content { padding-left: 0;}
+      }
+
+      /* #endregion Event Section*/
       /* #region DressCode Section*/
       ._dresscode-section {
         margin: 40px 0;
@@ -830,6 +931,7 @@
           </div>
         </div>
         <div class="invitation-container">
+          <div class="section-title" style="margin-top: 3rem !important;">¡Ya queda menos!</div>
           <div class="_template-Counter-Section">
             <div id="countdown" class="_counter-Countdown">
               <div class="_counter-Timebox" style="margin-right: 15px !important;">
@@ -854,6 +956,48 @@
           </div>
 
           <img src="https://images.vexels.com/media/users/3/127731/isolated/preview/2b70133359ee29fa8d69d5f5f4998e27-adorno-floral-linea-pin.png" class="floral-header" alt="Decoración floral">
+
+          <div class="section-title" style="margin-top: 0rem !important;">Detalles del evento</div>
+          <section class="evento-clean-magic">
+            <div class="evento-magic-card">
+              <div class="evento-magic-icon evento-magic-fecha">
+                <img src="https://cdn-icons-png.flaticon.com/512/747/747310.png" alt="Calendario">
+              </div>
+              <div class="evento-magic-content">
+                <div class="evento-magic-label">Fecha</div>
+                <div class="evento-magic-title" data-replace="EventDateString"></div>
+                <div class="evento-magic-heart">✧ ˚₊‧₊♡₊‧₊˚✧</div>
+              </div>
+            </div>
+
+            <div class="evento-magic-card">
+              <div class="evento-magic-icon evento-magic-ceremonia">
+                <a href="#" class="evento-magic-address" data-replace="MainEventUrl" target="_blank">
+                  <img class="location-maps" src="#" data-replace="Image_GoogleLocation" alt="Google Location">
+                </a>
+              </div>
+              <div class="evento-magic-content">
+                <div class="evento-magic-label">Ceremonia</div>
+                <div class="evento-magic-title" data-replace="MainEventLocationDescription"></div>
+                <div class="evento-magic-detail" data-replace="EventHourString"></div>
+                <div class="evento-magic-address" data-replace="MainEventAddress"></div>
+              </div>
+            </div>
+
+            <div class="evento-magic-card">
+              <div class="evento-magic-icon evento-magic-recepcion">
+                <a href="#" class="evento-magic-address" data-replace="MainEventUrl" target="_blank">
+                  <img class="location-maps" src="#" data-replace="Image_GoogleLocation" alt="Google Location">
+                </a>
+              </div>
+              <div class="evento-magic-content">
+                <div class="evento-magic-label">Recepción</div>
+                <div class="evento-magic-title" data-replace="MainEventLocationDescription"></div>
+                <div class="evento-magic-detail" data-replace="EventReceptionHourString"></div>
+                <div class="evento-magic-address" data-replace="MainEventAddress"></div>
+              </div>
+            </div>
+          </section>
 
           <div class="section-title">Los Novios</div>
           <div class="couple-section">
@@ -908,7 +1052,7 @@
           </section>
 
           <!-- Dress Code -->
-          <div class="section-title">Dress Code</div>
+          <div class="section-title" style="margin-top: 6rem !important;">Dress Code</div>
           <div class="_dresscode-section">
             <div class="_box">
               <div class="icons">
