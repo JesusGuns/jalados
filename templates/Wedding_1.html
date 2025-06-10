@@ -23,6 +23,7 @@
         --color_Primary: #b07fcb;
         --color_Secondary: #81b8df;
         --color_Tertiary: #f9a5b7;
+        --color-Quaternary: #965a8d;
         --filter-AudioButton: 1deg;
         --timeline-bg: #fffafd;
       }
@@ -424,7 +425,7 @@
         letter-spacing: 1px;
       }
       .timeline-desc {
-        color: #965a8d;
+        color: var(--color-Quaternary);
         font-size: 1.01rem;
         font-weight: 800;
         margin-left: 3px;
@@ -516,7 +517,109 @@
         opacity: 0.97;
       }
 
+      .btn {
+        display: inline-block;
+        padding: 1rem 2rem;
+        box-shadow: 0 2px 10px var(--color-Quaternary);
+        background-color: #f2f8ff !important;
+        color: var(--color_Primary) !important;
+        text-decoration: none !important;
+        border-radius: 30px;
+        font-weight: 800;
+        transition: transform 0.3s ease;
+        margin-top: 0.5rem;
+        margin-bottom: 0.5rem
+      }
+      .btn:hover {
+        transform: scale(1.05);
+      }
+
       /* #endregion General*/
+      /* #region Gift Section*/
+      ._section-gifttable p._details {
+        font-size: 1rem;
+        text-align: center;
+        color: var(--color-Quaternary);
+      }
+
+      ._btn-brands {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        padding-top: 0rem;
+        padding-bottom: 1rem;
+      }
+
+      ._btn-gift {
+        border: 5px solid rgba(255, 255, 255, 0.1);
+        border-radius: 8px;
+        box-shadow: 0 2px 10px var(--color-Quaternary);
+        background-color: #f2f8ff !important;
+        color: var(--color_Primary) !important;
+        cursor: pointer;
+        font-family: var(--font-TenorSans);
+        font-size: 1.2rem;
+        padding: 10px;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+      }
+
+      ._btn-gift:hover {
+        transform: scale(1.05);
+      }
+
+      ._btn-gift a {
+        width: 65px;
+        margin-right: 1rem;
+      }
+
+      ._btn-gift img {
+        width: 30px;
+        margin-right: 1rem;
+      }
+
+      @media (max-width: 575.98px) {
+        ._section-gifttable {
+          display: flex;
+          flex-direction: column;
+          width: 100%;
+          padding: 2rem 2rem;
+        }
+
+        ._section-gifttable p._details {
+          font-size: 1.2rem;
+        }
+
+        ._btn-brands {
+          flex-direction: column;
+        }
+
+        ._btn-gift {
+          font-size: 1.2rem;
+          font-weight: bold;
+          padding: 5px 10px;
+          width: 100%;
+          background: var(--color_Quaternary);
+        }
+
+        ._btn-gift img {
+          width: 30px;
+        }
+      }
+
+      @media (max-width: 375.98px) {
+        ._btn-brands {
+          padding-left: 1rem;
+        }
+
+        ._btn-gift {
+          width: 90%;
+        }
+      }
+
+      /* #endregion Gift Section*/
       /* #region Audio*/
       ._template-Audio-Button.on {
         filter: hue-rotate(var(--filter-AudioButton)) !important;
@@ -772,7 +875,35 @@
             </div>
           </div>
 
+          <!-- Gifts -->
+          <div class="section-title">Regalos</div>
+          <section>
+            <div class="_section-gifttable">
+              <p class="_details"> Para nosotros tu presencia es nuestro mejor regalo, pero si deseas hacernos llegar un obsequio, te sugerimos la siguiente opción: </p>
+              <div class="_btn-brands">
+                <a href="#" data-replace="EventAmazonGiftTableUrl" target="_blank" class="_btn-gift">
+                  <img src="#" data-replace="Image_AmazonUrl" /> Amazon </a>
+                <a href="#" data-replace="EventLiverpoolGiftTableUrl" target="_blank" class="_btn-gift">
+                  <img src="#" data-replace="Image_LiverpoolUrl" /> Liverpool </a>
+              </div>
+            </div>
+          </section>
+
           <!-- Confirm -->
+          <div class="section-title" style="margin-top: 3rem;">¿Nos acompañas?</div>
+          <section style="margin-bottom: 5rem;">
+            <div>
+              <a href="#" data-replace="WhatsAppUrl" target="_blank" class="btn">
+                <i class="fas fa-heart"></i>
+                Asistiré
+              </a>
+              &nbsp;&nbsp;
+              <a href="#" data-replace="GoogleCalendarUrl" target="_blank" class="btn">
+                <i class="fas fa-calendar"></i>
+                Agendar
+              </a>
+            </div>
+          </section>
         </div>
       </main>
     </div>
@@ -783,6 +914,7 @@
         const EventDate = new Date("2025-11-25T13:00:00");
         const EventReception = new Date("2025-11-25T17:00:00");
         const mainEvent = {
+          Name: "",
           BrideName: "Camila Torres",
           GroomName: "Iván Méndez",
           BrideShortName: "Camila",
@@ -909,6 +1041,7 @@
         };
 
         function Init() {
+          Resources.MainEvent.Name = `${Resources.MainEvent.BrideShortName} & ${Resources.MainEvent.GroomShortName}`;
           helpers.init(Resources);
           helpers.onCounterStart(EventDate);
           setInterval(() => {
