@@ -535,6 +535,50 @@
       }
 
       /* #endregion General*/
+      /* #region DressCode Section*/
+      ._dresscode-section {
+        margin: 40px 0;
+      }
+
+      ._dresscode-section h2 {
+        color: var(--color_Tertiary);
+        margin-top: 10px;
+        margin-bottom: 15px;
+      }
+
+      ._dresscode-section p {
+        color: var(--color-Quaternary);
+      }
+
+      ._dresscode-section p span {
+        font-weight: 800;
+      }
+
+      .icon {
+        display: inline-block;
+        width: 120px;
+        height: 120px;
+        background-image: linear-gradient(
+          to right,
+          #f9a5b7,
+          #a5b7f9
+        );
+        mask-repeat: no-repeat;
+        mask-size: contain;
+        mask-position: center;
+        mask-image: var(--mask);
+        mask-type: alpha;
+        -webkit-mask-repeat: no-repeat;
+        -webkit-mask-size: contain;
+        -webkit-mask-position: center;
+        -webkit-mask-image: var(--mask);
+        -webkit-mask-type: alpha;
+      }
+
+      .icon--suit  { --mask: url('https://cdn-icons-png.flaticon.com/128/389/389573.png'); }
+      .icon--dress { --mask: url('https://cdn-icons-png.flaticon.com/128/3507/3507059.png'); }
+
+      /* #endregion DressCode Section*/
       /* #region Gift Section*/
       ._section-gifttable p._details {
         font-size: 1rem;
@@ -863,6 +907,20 @@
             <div class="timeline" id="timeline-list"></div>
           </section>
 
+          <!-- Dress Code -->
+          <div class="section-title">Dress Code</div>
+          <div class="_dresscode-section">
+            <div class="_box">
+              <div class="icons">
+                <span class="icon icon--suit"   aria-label="Suit"></span>
+                <span class="icon icon--dress"  aria-label="Dress"></span>
+              </div>
+              <h2>Formal / Elegante</h2>
+              <p><span>Mujeres</span> <br> Vestido Largo <br> Se reserva el color blanco para la novia</p>
+              <p><span>Hombres</span> <br> Traje y Corbata</p>
+            </div>
+          </div>
+
           <!-- Gallery Instagram -->
           <div class="section-title">¡Recuerdos bonitos!</div>
           <div class="gallery-section">
@@ -890,7 +948,7 @@
           </section>
 
           <!-- Confirm -->
-          <div class="section-title" style="margin-top: 3rem;">¿Nos acompañas?</div>
+          <div class="section-title">¿Nos acompañas?</div>
           <section style="margin-bottom: 5rem;">
             <div>
               <a href="#" data-replace="WhatsAppUrl" target="_blank" class="btn">
