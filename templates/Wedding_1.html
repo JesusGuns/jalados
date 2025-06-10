@@ -633,7 +633,7 @@
         }
 
         ._section-gifttable p._details {
-          font-size: 1.2rem;
+          font-size: 1rem;
         }
 
         ._btn-brands {
@@ -1158,13 +1158,77 @@
     <script>
       requirejs(["jquery", "bs"],function($){
         const Itinerary = [
-          { time: "16:00", description: "Ceremonia religiosa", icon: "fa-solid fa-church", ml:"-8" },
-          { time: "17:00", description: "Sesión fotográfica", icon: "fa-solid fa-camera", ml:"-5" },
-          { time: "18:00", description: "Recepción", icon: "fa-solid fa-bell-concierge", ml:"-6" },
-          { time: "18:30", description: "Cocktail", icon: "fa-solid fa-cocktail", ml:"-8" },
-          { time: "19:00", description: "Banquete", icon: "fa-solid fa-utensils", ml:"-5" },
-          { time: "20:00", description: "Brindis", icon: "fa-solid fa-wine-glass", ml:"-1" },
-          { time: "20:20", description: "Baile", icon: "fa-solid fa-music", ml:"-6.5" },
+          {
+            time: "16:00",
+            description: "Ceremonia religiosa",
+            icon: "fa-solid fa-church",
+            ml: "-7.5"
+          },
+          {
+            time: "17:00",
+            description: "Sesión fotográfica",
+            icon: "fa-solid fa-camera",
+            ml: "-4.5"
+          },
+          {
+            time: "18:00",
+            description: "Recepción y bienvenida",
+            icon: "fa-solid fa-bell-concierge",
+            ml: "-4"
+          },
+          {
+            time: "18:30",
+            description: "Cóctel",
+            icon: "fa-solid fa-cocktail",
+            ml: "-7.5"
+          },
+          {
+            time: "19:00",
+            description: "Banquete",
+            icon: "fa-solid fa-utensils",
+            ml: "-4.5"
+          },
+          {
+            time: "20:00",
+            description: "Brindis y discursos",
+            icon: "fa-solid fa-champagne-glasses",
+            ml: "-7"
+          },
+          {
+            time: "20:15",
+            description: "Corte de pastel",
+            icon: "fa-solid fa-birthday-cake",
+            ml: "-2.5"
+          },
+          {
+            time: "20:30",
+            description: "Vals nupcial",
+            icon: "fas fa-heart",
+            ml: "-3.5"
+          },
+          {
+            time: "20:45",
+            description: "Lanzamiento del ramo",
+            icon: "fas fa-spa",
+            ml: "-5"
+          },
+          {
+            time: "21:00",
+            description: "Baile libre",
+            icon: "fa-solid fa-music",
+            ml: "-6" },
+          {
+            time: "22:30",
+            description: "After party",
+            icon: "fa-solid fa-face-smile-wink",
+            ml: "-3.5"
+          },
+          {
+            time: "00:00",
+            description: "Despedida de los novios",
+            icon: "fa-solid fa-door-open",
+            ml: "-6"
+          },
         ];
 
         function renderItinerary(itineraryArray, containerId) {
