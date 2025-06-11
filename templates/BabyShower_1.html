@@ -693,7 +693,7 @@
               <div class="block">
                 <h3>Cuándo <span>🗓️</span></h3>
                 <p><strong data-replace="EventDateString"></strong></p>
-                <p><span data-replace="EventHourString"></span></p>
+                <p data-replace="EventHourString"></p>
 
                 <h3 class="mt">
                     Dónde
@@ -701,6 +701,7 @@
                     <img class="location-maps" src="#" data-replace="Image_GoogleLocation" alt="Google Location">
                   </a>
                 </h3>
+                <p data-replace="MainEventLocationDescription"></p>
                 <p data-replace="MainEventAddress"></p>
               </div>
             </div>
@@ -805,7 +806,7 @@
     <script src="../js/main.js"></script>
     <script>
       requirejs(["jquery","helpers"],function($,helpers){
-        const EventDate = new Date("2025-11-25T13:00:00");
+        const EventDate = new Date("2025-11-25T17:00:00");
         const EventReception = new Date("2025-11-25T17:00:00");
         const mainEvent = {
           Name: "",

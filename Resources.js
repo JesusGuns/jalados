@@ -25,7 +25,7 @@ const Common = {
         const dayName = helpers.onGetWeekDay();
         const month = helpers.onGetMonth();
         const year = helpers.onGetYear();
-        const dateString = includeDayName ? `${dayName} ${day} de ${month} del ${year}` : `${day} de ${month} del ${year}`;
+        const dateString = includeDayName ? `${dayName} ${day} de ${month} de ${year}` : `${day} de ${month} de ${year}`;
         return dateString;
     },
     onGetHoursString: function(eventDate, includeThe) {

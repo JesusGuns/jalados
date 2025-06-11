@@ -76,7 +76,7 @@ define(["jquery", "extended"], function ($) {
       const dayName = module.onGetWeekDay(eventDate);
       const month = module.onGetMonth(eventDate);
       const year = module.onGetYear(eventDate);
-      const dateString = includeDayName ? `${dayName} ${day} de ${month} del ${year}` : `${day} de ${month} del ${year}`;
+      const dateString = includeDayName ? `${dayName} ${day} de ${month} de ${year}` : `${day} de ${month} de ${year}`;
       return dateString;
     },
     onGetHoursString: function (eventDate, includeThe) {

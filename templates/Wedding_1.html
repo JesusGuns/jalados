@@ -86,7 +86,7 @@
         max-width: 610px;
         border-radius: 26px;
         margin: 0 auto 2rem auto;
-        padding: 0rem 1.1rem 2.2rem 1.1rem;
+        padding: 0rem 1rem 10rem 1rem;
         position: relative;
         text-align: center;
       }
@@ -564,7 +564,6 @@
       }
       .evento-magic-icon {
         min-width: 62px; min-height: 62px;
-        background: rgba(249,165,183,0.14);
         border-radius: 50%;
         display: flex; align-items: center; justify-content: center;
         box-shadow: 0 3px 18px #b07fcb19;
@@ -575,11 +574,7 @@
         width: 36px; height: 36px;
         object-fit: contain;
         filter: drop-shadow(0 2px 8px #faabaf30);
-        opacity: 0.95;
       }
-      .evento-magic-fecha { background: linear-gradient(120deg,#fff6fc 65%,#faabaf29 100%);}
-      .evento-magic-ceremonia { background: linear-gradient(120deg,#fff6fc 65%,#81b8df22 100%);}
-      .evento-magic-recepcion { background: linear-gradient(120deg,#fff6fc 60%,#b07fcb19 100%);}
 
       .evento-magic-content {
         flex: 1;
@@ -892,7 +887,7 @@
       }
 
       @media (max-width: 700px) {
-        .invitation-container { max-width: 80vw;}
+        .invitation-container { max-width: 90vw;}
         .hero-title { font-size: 1.45rem;}
       }
       @media (max-width: 600px) {
@@ -961,18 +956,18 @@
           <section class="evento-clean-magic">
             <div class="evento-magic-card">
               <div class="evento-magic-icon evento-magic-fecha">
-                <img src="https://cdn-icons-png.flaticon.com/512/747/747310.png" alt="Calendario">
+                <img src="https://cdn-icons-png.flaticon.com/512/1513/1513520.png" alt="Calendario">
               </div>
               <div class="evento-magic-content">
                 <div class="evento-magic-label">Fecha</div>
                 <div class="evento-magic-title" data-replace="EventDateString"></div>
-                <div class="evento-magic-heart">✧ ˚₊‧₊♡₊‧₊˚✧</div>
+                <!-- <div class="evento-magic-heart">✧ ˚₊‧₊♡₊‧₊˚✧</div> -->
               </div>
             </div>
 
             <div class="evento-magic-card">
               <div class="evento-magic-icon evento-magic-ceremonia">
-                <a href="#" class="evento-magic-address" data-replace="MainEventUrl" target="_blank">
+                <a href="#" class="evento-magic-address" data-replace="EventChurchUrl" target="_blank">
                   <img class="location-maps" src="#" data-replace="Image_GoogleLocation" alt="Google Location">
                 </a>
               </div>
@@ -986,15 +981,15 @@
 
             <div class="evento-magic-card">
               <div class="evento-magic-icon evento-magic-recepcion">
-                <a href="#" class="evento-magic-address" data-replace="MainEventUrl" target="_blank">
+                <a href="#" class="evento-magic-address" data-replace="EventReceptionUrl" target="_blank">
                   <img class="location-maps" src="#" data-replace="Image_GoogleLocation" alt="Google Location">
                 </a>
               </div>
               <div class="evento-magic-content">
                 <div class="evento-magic-label">Recepción</div>
-                <div class="evento-magic-title" data-replace="MainEventLocationDescription"></div>
+                <div class="evento-magic-title" data-replace="SecondaryEventLocationDescription"></div>
                 <div class="evento-magic-detail" data-replace="EventReceptionHourString"></div>
-                <div class="evento-magic-address" data-replace="MainEventAddress"></div>
+                <div class="evento-magic-address" data-replace="SecondaryEventAddress"></div>
               </div>
             </div>
           </section>
@@ -1093,7 +1088,7 @@
 
           <!-- Confirm -->
           <div class="section-title">¿Nos acompañas?</div>
-          <section style="margin-bottom: 5rem;">
+          <section>
             <div>
               <a href="#" data-replace="WhatsAppUrl" target="_blank" class="btn">
                 <i class="fas fa-heart"></i>
@@ -1113,8 +1108,8 @@
     <script src="../js/main.js"></script>
     <script>
       requirejs(["jquery","helpers", "bs"],function($,helpers){
-        const EventDate = new Date("2025-11-25T13:00:00");
-        const EventReception = new Date("2025-11-25T17:00:00");
+        const EventDate = new Date("2025-11-25T16:00:00");
+        const EventReception = new Date("2025-11-25T18:00:00");
         const mainEvent = {
           Name: "",
           BrideName: "Camila Torres",
@@ -1123,8 +1118,8 @@
           GroomShortName: "Iván",
           Date: EventDate,
           Description: `Acompáñanos a celebrar nuestra unión `,      
-          LocationDescription: "Salón de Eventos Quinta el Eden",
-          Address: "C. Morelos 670, González Ortega, 45190 Zapopan, Jal.",
+          LocationDescription: "Catedral de Guadalajara (Catedral Basílica de la Asunción de María Santísima)",
+          Address: "Av. Fray Antonio Alcalde 10, Zona Centro, 44100 Guadalajara, Jal.",
           FatherBride: "Alfonso Torres",
           MotherBride: "Elena García",
           FatherGroom: "Carlos Méndez",
@@ -1185,7 +1180,7 @@
               img: "https://i.pinimg.com/736x/90/97/61/909761f2733c432add664f3cc307a170.jpg"
             }
           ],
-          GoogleMapsUrl: "https://maps.app.goo.gl/1wwmTSk84XA8pLMn8",
+          GoogleMapsUrl: "https://maps.app.goo.gl/1iUcW6P1QxFhBrJg8",
           AmazonGiftTableUrl: "https://www.amazon.com.mx/",
           LiverpoolGiftTableUrl: "https://www.liverpool.com.mx/tienda/home",
           CollageImages: [],
@@ -1196,9 +1191,9 @@
 
         const secondaryEvent = {
           Date: EventReception,
-          LocationDescription: "",
-          Address: "",
-          GoogleMapsUrl: "",
+          LocationDescription: "Salón de Eventos Quinta el Eden",
+          Address: "C. Morelos 670, González Ortega, 45190 Zapopan, Jal.",
+          GoogleMapsUrl: "https://maps.app.goo.gl/1wwmTSk84XA8pLMn8",
         };
 
         const googleCalendar = {
@@ -1393,7 +1388,7 @@
                 <i class="${event.icon}" style="margin-left: ${event.ml}px !important;"></i>
               </span>
               <div class="timeline-event-content">
-                <div class="timeline-time">${event.time} hrs</div>
+                <!-- <div class="timeline-time">${event.time} hrs</div> -->
                 <div class="timeline-desc">${event.description}</div>
               </div>
             `;
