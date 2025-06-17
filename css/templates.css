@@ -45,7 +45,7 @@ main {
 
 ._template-Audio-Button.off {
   filter: hue-rotate(45deg);
-  animation: _animation-vibrate 0.4s infinite;
+  /* animation: _animation-vibrate 0.4s infinite; */
 }
 
 ._template-Audio-Button img {
