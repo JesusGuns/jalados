@@ -40,6 +40,7 @@
       body {
         background-size: cover;
         background-repeat: no-repeat;
+        background-position: 50% 50%;
         min-height: 100%;
         overflow: hidden;
       }
@@ -203,7 +204,7 @@
       }
 
       .back {
-        background: rgba(255, 255, 255, 0.3);
+        background: rgba(255, 255, 255, 0.6);
         backdrop-filter: blur(5px);
         padding: 30px;
         box-sizing: border-box;
@@ -1155,7 +1156,7 @@
         }
 
         const additionalInformation = {
-          ImageBodyBackground: "../images/2151918305.jpg",
+          ImageBodyBackground: "../images/bg-1.jpeg",
           ImageCorner: "https://static.vecteezy.com/system/resources/previews/033/494/904/large_2x/golden-thai-pattern-corners-decorate-the-corner-edges-png.png",
           ImageFrontCard: "https://img.freepik.com/foto-gratis/adolescente-celebrando-quinceanera_23-2148478038.jpg",
           AudioUrl: "https://invitameok.com/invitaciones/admin/imagenes/27433/MUSICAstyle-taylor.mp3",
@@ -1256,6 +1257,16 @@
 
           actions.onCarouselCheckItems();
           actions.onCarouselModal();
+          var counter = 0;
+          debugger
+          var bgImages=["bg-1.jpeg", "bg-2.jpg", "bg-3.jpg", "bg-4.jpeg", "bg-5.jpeg", "bg-6.jpeg", "bg-7.jpeg", "bg-8.jpeg", "bg-9.jpg", "bg-10.jpg", "bg-11.jpg", "bg-12.jpg", "bg-13.jpg", "bg-14.jpg"]
+          setInterval(function () { 
+            $('body').attr('style', 'background-image:url(../images/' + bgImages[counter] + ')');
+            counter++;
+            if(counter > 13){
+              counter = 0;
+            }
+          }, 10000);
         }
         Init();
       });
