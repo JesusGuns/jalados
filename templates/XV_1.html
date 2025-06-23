@@ -1130,6 +1130,7 @@
       <button class="theme-btn" data-theme="theme1" style="background-color:#f06292"></button>
       <button class="theme-btn" data-theme="theme2" style="background-color:#333c43"></button>
       <button class="theme-btn" data-theme="theme3" style="background-color:#702345"></button>
+      <button class="theme-btn" data-theme="theme4" style="background-color:#2d5029"></button>
     </div>
     <script src="../js/main.js"></script>
 
@@ -1291,6 +1292,18 @@
                 root.style.setProperty('--color_fifth', 'rgba(159, 88, 115, 0.4)');
                 root.style.setProperty('--color_fifth_1', 'rgba(159, 88, 115, 0)');
                 break;
+
+              case "theme4":
+                $('body').attr('style', 'background-image:url(../images/bg-17.png)');
+                $("[data-replace=Image_FrontCard]").attr("src", 'https://img.freepik.com/free-photo/portrait-beautiful-smiling-girl-green-dress-showing-camera-candy-like-panda-stick-hand-stylish-woman-with-red-lips-long-earrings-holding-hand-pocket-posing-outdoor_132075-12267.jpg?ga=GA1.1.2025410118.1747418198&w=740');
+                root.style.setProperty('--color_primary', '#2d5029');
+                root.style.setProperty('--color_counter', 'white');
+                root.style.setProperty('--color_secondary', '#587350');
+                root.style.setProperty('--color_third', '#506345');
+                root.style.setProperty('--color_fourth', '#A2C2A0');
+                root.style.setProperty('--color_fifth', 'rgba(111, 120, 110, 0.4)');
+                root.style.setProperty('--color_fifth_1', 'rgba(111, 120, 110, 0)');
+              break;
             }
           })
 

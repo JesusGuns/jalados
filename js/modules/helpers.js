@@ -5,8 +5,8 @@ define(["jquery", "extended"], function ($) {
   
   const staticLinks = {
     ImageAudioUrl: "../images/audio.png",
-    ImageAmazonUrl: "https://static-00.iconduck.com/assets.00/amazon-icon-2048x2048-pqt2fe18.png",
-    ImageLiverpoolUrl: "https://play-lh.googleusercontent.com/FwrxfHaknUKLneazGpPsjJvQ4mUYKJkccj-efHNeXQISwCwqC9ymNAnqlAY5J5oHIOc",
+    ImageAmazonUrl: "../images/amazon.png",
+    ImageLiverpoolUrl: "../images/liverpool.jpeg",
     ImageGoogleLocation: "https://img.icons8.com/?size=512&id=DcygmpZqBEd9&format=png",
     IconChurch: "https://cdn-icons-png.flaticon.com/128/4186/4186011.png",
     IconReception: "https://cdn-icons-png.flaticon.com/128/887/887345.png",
