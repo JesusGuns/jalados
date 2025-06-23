@@ -34,6 +34,31 @@ main {
 
 /* #endregion HTML*/
 
+/* #region Theme Switcher*/
+#themeSwitcher {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background: white;
+  padding: 10px;
+  border-radius: 20px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  z-index: 999;
+}
+
+#themeSwitcher .theme-btn {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+/* #endregion Theme Switcher*/
+
 /* #region Audio*/
 ._template-Audio-Button {
   animation: _animation-pulse-1 1.5s infinite;
@@ -41,11 +66,11 @@ main {
   right: 1%;
   top: 11%;
   z-index: 10;
+  filter: drop-shadow(2px 2px 2px grey);
 }
 
 ._template-Audio-Button.off {
   filter: hue-rotate(45deg);
-  /* animation: _animation-vibrate 0.4s infinite; */
 }
 
 ._template-Audio-Button img {
@@ -59,7 +84,8 @@ main {
   }
 
   ._template-Audio-Button img {
-    width: 40px;
+    width: 30px;
+    height: 40px;
   }
 }
 
