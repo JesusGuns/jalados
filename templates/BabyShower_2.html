@@ -18,7 +18,7 @@
   }
 
   html, body {
-    margin: 0; padding: 0; height: 100vh; width: 100vw;
+    margin: 0; padding: 0; height: 100%; width: 100%;
     background: var(--color-bg);
     overflow: hidden;
     font-family: var(--font-mono);
@@ -31,12 +31,12 @@
     z-index: 0;
   }
 
-  /* Marco ventana futurista (75% altura) */
+  /* Marco ventana futurista (ocupa el espacio restante, 75% altura) */
   #window-frame {
-    position: fixed;
+    position: absolute; /* absolute para no superponer fixed */
     top: 0; left: 0;
     width: 100vw;
-    height: 75vh;
+    height: calc(100vh - 25vh); /* 75vh dinámico según panel */
     box-sizing: border-box;
     padding: 1.2rem 2rem;
     background: transparent; /* transparente para ver estrellas */
@@ -44,6 +44,7 @@
       0 0 20px var(--color-neon-cyan),
       inset 0 0 40px var(--frame-shadow-color);
     z-index: 5;
+    overflow: hidden;
   }
 
   /* Líneas internas del marco */
@@ -272,7 +273,7 @@
 <body>
 <div id="starfield"></div>
 
-<div id="window-frame"></div> <!-- Ventana espacio arriba -->
+<div id="window-frame" aria-label="Ventana holográfica de espacio"></div>
 
 <div id="panel" role="region" aria-label="Panel futurista de navegación espacial">
   <div id="screen" aria-label="Pantalla holográfica futurista"></div>
