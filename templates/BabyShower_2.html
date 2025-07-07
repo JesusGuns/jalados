@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Panel Futurista con Fondo Estelar y Marco</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+
+  :root {
+    --color-bg: #0f0026;
+    --color-neon-blue: #00ffc3;
+    --color-neon-pink: #ff00e0;
+    --color-neon-cyan: #00f0ff;
+    --color-panel-bg: rgba(10, 20, 60, 0.75);
+    --font-mono: 'Share Tech Mono', monospace;
+    --frame-shadow-color: #004466;
+  }
+
+  html, body {
+    margin: 0; padding: 0; height: 100vh; width: 100vw;
+    background: var(--color-bg);
+    overflow: hidden;
+    font-family: var(--font-mono);
+  }
+
+  /* Fondo animado espacio */
+  #starfield {
+    position: fixed; top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    z-index: 0;
+  }
+
+  /* Marco ventana futurista (75% altura) */
+  #window-frame {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw;
+    height: 75vh;
+    box-sizing: border-box;
+    padding: 1.2rem 2rem;
+    background: transparent; /* transparente para ver estrellas */
+    box-shadow:
+      0 0 20px var(--color-neon-cyan),
+      inset 0 0 40px var(--frame-shadow-color);
+    z-index: 5;
+  }
+
+  /* Líneas internas del marco */
+  #window-frame::before {
+    content: '';
+    position: absolute;
+    top: 2rem; left: 2rem; right: 2rem; bottom: 2rem;
+    border: 2px solid var(--color-neon-cyan);
+    border-radius: 14px;
+    pointer-events: none;
+    box-shadow: 0 0 10px var(--color-neon-cyan);
+  }
+
+  /* Panel joystick inferior (25% altura) */
+  #panel {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100vw;
+    height: 25vh;
+    background: var(--color-panel-bg);
+    backdrop-filter: blur(12px);
+    border-top: 2px solid var(--color-neon-cyan);
+    box-shadow:
+      inset 0 0 40px var(--color-neon-cyan),
+      0 -2px 30px var(--color-neon-cyan);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 15px 2vw;
+    box-sizing: border-box;
+    gap: 1rem;
+    z-index: 10;
+    overflow: hidden;
+  }
+
+  #screen {
+    position: relative;
+    width: 90vw;
+    max-width: 600px;
+    height: 20%;
+    background: linear-gradient(135deg, #003354cc, #006688cc);
+    border-radius: 24px;
+    box-shadow:
+      0 0 15px var(--color-neon-cyan),
+      inset 0 0 35px #004466aa;
+    border: 1.5px solid var(--color-neon-cyan);
+    overflow: hidden;
+    backdrop-filter: brightness(1.2);
+  }
+
+  #screen::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background:
+      repeating-linear-gradient(
+        180deg,
+        rgba(0, 255, 255, 0.15) 0,
+        rgba(0, 255, 255, 0.15) 2px,
+        transparent 3px,
+        transparent 6px
+      );
+    animation: scrollLines 5s linear infinite;
+    pointer-events: none;
+  }
+
+  @keyframes scrollLines {
+    0% { background-position: 0 0; }
+    100% { background-position: 0 30px; }
+  }
+
+  #controls {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 0.5rem;
+    align-items: center;
+    padding: 0 3vw;
+    box-sizing: border-box;
+  }
+
+  .btn-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+  }
+
+  .btn-small {
+    width: 28px;
+    height: 28px;
+    border-radius: 6px;
+    background: var(--color-neon-pink);
+    box-shadow: 0 0 12px var(--color-neon-pink);
+    border: 1.5px solid #ff00d2;
+    cursor: pointer;
+    transition: filter 0.3s;
+  }
+  .btn-small.red {
+    background: #ff0055;
+    box-shadow: 0 0 16px #ff0044;
+    border-color: #ff3366;
+  }
+  .btn-small.green {
+    background: #00ff88;
+    box-shadow: 0 0 16px #00cc66;
+    border-color: #33ffbb;
+  }
+  .btn-small.yellow {
+    background: #ffee00;
+    box-shadow: 0 0 14px #ddcc00;
+    border-color: #ffff55;
+  }
+  .btn-small:hover, .btn-small:focus {
+    filter: brightness(1.3);
+    outline: none;
+  }
+
+  #joystick {
+    position: relative;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background:
+      radial-gradient(circle at center, #005577, #002233);
+    box-shadow:
+      0 0 40px var(--color-neon-cyan),
+      inset 0 0 30px #003355;
+    cursor: pointer;
+    touch-action: manipulation;
+  }
+
+  #joystick::before {
+    content: '';
+    position: absolute;
+    inset: 15px;
+    border-radius: 50%;
+    border: 5px solid var(--color-neon-cyan);
+    box-shadow: 0 0 15px var(--color-neon-cyan) inset;
+    pointer-events: none;
+  }
+
+  #handle {
+    position: absolute;
+    width: 55px;
+    height: 55px;
+    background: radial-gradient(circle at center, #00ffc3, #006662);
+    border-radius: 50%;
+    box-shadow:
+      inset 0 8px 20px #33ffdd,
+      0 0 25px #00ffcc;
+    border: 2px solid var(--color-neon-cyan);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 3;
+    cursor: pointer;
+    touch-action: manipulation;
+  }
+
+  #handle:active {
+    box-shadow:
+      inset 0 8px 30px #66ffee,
+      0 0 40px #33ffdd;
+  }
+
+  /* Responsivo */
+
+  @media (max-width: 600px) {
+    #panel {
+      height: 25vh;
+      padding: 10px 15px;
+    }
+    #screen {
+      width: 90vw;
+      height: 20%;
+    }
+    #controls {
+      flex-wrap: wrap;
+      gap: 10px;
+      padding: 0 10px;
+    }
+    .btn-panel {
+      flex-direction: row;
+      gap: 12px;
+    }
+    #joystick {
+      width: 80px;
+      height: 80px;
+    }
+    #handle {
+      width: 40px;
+      height: 40px;
+    }
+    .btn-small {
+      width: 22px;
+      height: 22px;
+    }
+  }
+
+  @media (max-width: 400px) {
+    #panel {
+      height: 25vh;
+      padding: 10px 10px;
+    }
+    #screen {
+      width: 100%;
+      height: 20%;
+    }
+    #joystick {
+      width: 70px;
+      height: 70px;
+    }
+    #handle {
+      width: 35px;
+      height: 35px;
+    }
+    .btn-small {
+      width: 18px;
+      height: 18px;
+    }
+  }
+</style>
+</head>
+<body>
+<div id="starfield"></div>
+
+<div id="window-frame"></div> <!-- Ventana espacio arriba -->
+
+<div id="panel" role="region" aria-label="Panel futurista de navegación espacial">
+  <div id="screen" aria-label="Pantalla holográfica futurista"></div>
+  <div id="controls">
+    <div class="btn-panel" aria-label="Panel de botones izquierdo">
+      <div class="btn-small red" tabindex="0" role="button" aria-pressed="false" aria-label="Botón rojo"></div>
+      <div class="btn-small green" tabindex="0" role="button" aria-pressed="false" aria-label="Botón verde"></div>
+      <div class="btn-small yellow" tabindex="0" role="button" aria-pressed="false" aria-label="Botón amarillo"></div>
+    </div>
+
+    <div id="joystick" aria-label="Joystick de navegación espacial" tabindex="0" role="button" aria-label="Joystick">
+      <div id="handle" tabindex="0" role="button" aria-label="Botón joystick"></div>
+    </div>
+
+    <div class="btn-panel" aria-label="Panel de botones derecho">
+      <div class="btn-small yellow"></div>
+      <div class="btn-small green"></div>
+      <div class="btn-small red"></div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/three@0.148.0/build/three.min.js"></script>
+<script>
+  const starfield = document.getElementById('starfield');
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 1, 2000);
+  camera.position.z = 1000;
+
+  const renderer = new THREE.WebGLRenderer({antialias:true, alpha:true});
+  renderer.setSize(window.innerWidth, window.innerHeight);
+  starfield.appendChild(renderer.domElement);
+
+  const starCount = 1200;
+  const geometry = new THREE.BufferGeometry();
+  const positions = new Float32Array(starCount * 3);
+  for(let i=0; i<starCount; i++) {
+    positions[i*3] = (Math.random() - 0.5) * 3000;
+    positions[i*3 + 1] = (Math.random() - 0.5) * 3000;
+    positions[i*3 + 2] = (Math.random() - 0.5) * 3000;
+  }
+  geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+
+  const material = new THREE.PointsMaterial({color: '#00ffc3', size: 2});
+  const stars = new THREE.Points(geometry, material);
+  scene.add(stars);
+
+  function animate() {
+    requestAnimationFrame(animate);
+    stars.rotation.y += 0.0006;
+    stars.rotation.x += 0.0004;
+    renderer.render(scene, camera);
+  }
+  animate();
+
+  window.addEventListener('resize', () => {
+    camera.aspect = window.innerWidth/window.innerHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+  });
+
+  // Eventos tap/click en joystick
+  const handle = document.getElementById('handle');
+  handle.addEventListener('click', () => {
+    alert('Joystick pulsado!');
+  });
+</script>
+</body>
+</html>

@@ -74,7 +74,7 @@ document.addEventListener('DOMContentLoaded', function () {
         ],
         babyshower: [
             '<a href="./templates/BabyShower_1.html">Baby Shower 1</a>',
-            "Baby Shower 2",
+            '<a href="./templates/BabyShower_2.html">Baby Shower 2</a>',
             "Baby Shower 3"
         ],
         xv: [
