@@ -169,10 +169,17 @@
       #controls {
         width: 100%;
         display: flex;
+        flex-direction: row;
         justify-content: space-between;
         align-items: center;
         padding: 0 3%;
         box-sizing: border-box;
+      }
+
+      #center-group {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
       }
 
       .btn-panel {
@@ -182,28 +189,28 @@
       }
 
       .btn-small {
-        width: 28px;
-        height: 28px;
+        width: 10px;
+        height: 10px;
         border-radius: 6px;
         background: var(--color-neon-pink);
-        box-shadow: 0 0 16px var(--color-neon-pink);
+        box-shadow: 0 0 10px var(--color-neon-pink);
         border: 1.5px solid #ff00d2;
         cursor: pointer;
         transition: filter 0.3s;
       }
       .btn-small.red {
         background: #ff0055;
-        box-shadow: 0 0 16px #ff0044;
+        box-shadow: 0 0 10px #ff0044;
         border-color: #ff3366;
       }
       .btn-small.green {
         background: #00ff88;
-        box-shadow: 0 0 16px #00cc66;
+        box-shadow: 0 0 10px #00cc66;
         border-color: #33ffbb;
       }
       .btn-small.yellow {
         background: #ffee00;
-        box-shadow: 0 0 16px #ddcc00;
+        box-shadow: 0 0 10px #ddcc00;
         border-color: #ffff55;
       }
       .btn-small:hover, .btn-small:focus {
@@ -211,52 +218,33 @@
         outline: none;
       }
 
-      #joystick {
-        position: relative;
-        width: 120px;
-        height: 120px;
-        border-radius: 50%;
-        background:
-          radial-gradient(circle at center, #005577, #002233);
-        box-shadow:
-          0 0 10px var(--color-neon-cyan),
-          inset 0 0 10px #003355;
+      .holo-button {
+        padding: 0.6rem 1.2rem;
+        border: 1px solid var(--color-neon-cyan);
+        background: rgba(0,255,255,0.1);
+        backdrop-filter: blur(8px);
+        color: var(--color-neon-cyan);
+        font-family: var(--font-Primary);
+        border-radius: 12px;
+        box-shadow: 0 0 10px var(--color-neon-cyan), inset 0 0 5px var(--color-neon-cyan);
         cursor: pointer;
-        touch-action: manipulation;
+        transition: transform 0.2s, box-shadow 0.2s;
       }
-
-      #joystick::before {
-        content: '';
-        position: absolute;
-        inset: 15px;
-        border-radius: 50%;
-        border: 5px solid var(--color-neon-cyan);
-        box-shadow: 0 0 10px var(--color-neon-cyan) inset;
-        pointer-events: none;
+      .holo-button:hover {
+        transform: scale(1.05);
+        box-shadow: 0 0 20px var(--color-neon-cyan), inset 0 0 10px var(--color-neon-cyan);
       }
-
-      #handle {
-        position: absolute;
-        width: 55px;
-        height: 55px;
-        background: radial-gradient(circle at center, #00ffc3, #006662);
-        border-radius: 50%;
-        box-shadow:
-          inset 0 8px 10px #33ffdd,
-          0 0 10px #00ffcc;
-        border: 2px solid var(--color-neon-cyan);
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        z-index: 3;
-        cursor: pointer;
-        touch-action: manipulation;
+      #action-buttons {
+        display: flex;
+        gap: 1rem;
       }
-
-      #handle:active {
-        box-shadow:
-          inset 0 8px 50px #66ffee,
-          0 0 15px #33ffdd;
+      #mission-msg {
+        font-family: var(--font-Primary);
+        color: var(--color-neon-pink);
+        text-shadow: 0 0 8px var(--color-neon-pink);
+        margin-bottom: 0.5rem;
+        font-size: 1.1rem;
+        text-align: center;
       }
 
       /* Responsivo */
@@ -270,26 +258,9 @@
           width: 90%;
           height: 20%;
         }
-        #controls {
-          flex-wrap: wrap;
-          gap: 10px;
-          padding: 0 10px;
-        }
-        .btn-panel {
-          flex-direction: row;
-          gap: 12px;
-        }
-        #joystick {
-          width: 80px;
-          height: 80px;
-        }
-        #handle {
-          width: 40px;
-          height: 40px;
-        }
         .btn-small {
-          width: 22px;
-          height: 22px;
+          width: 10px;
+          height: 10px;
         }
       }
 
@@ -302,17 +273,9 @@
           width: 100%;
           height: 20%;
         }
-        #joystick {
-          width: 70px;
-          height: 70px;
-        }
-        #handle {
-          width: 35px;
-          height: 35px;
-        }
         .btn-small {
-          width: 18px;
-          height: 18px;
+          width: 10px;
+          height: 10px;
         }
       }
 
@@ -361,8 +324,12 @@
                 <div class="btn-small yellow" tabindex="0" role="button" aria-pressed="false" aria-label="Botón amarillo"></div>
               </div>
 
-              <div id="joystick" aria-label="Joystick de navegación espacial" tabindex="0" role="button" aria-label="Joystick">
-                <div id="handle" tabindex="0" role="button" aria-label="Botón joystick"></div>
+              <div id="center-group">
+                <div id="mission-msg">¿Aceptar misión?</div>
+                <div id="action-buttons">
+                  <button class="holo-button" id="btn-aceptar">Aceptar</button>
+                  <button class="holo-button" id="btn-agendar">Agendar</button>
+                </div>
               </div>
 
               <div class="btn-panel" aria-label="Panel de botones derecho">
@@ -476,11 +443,6 @@
           renderer.setSize(window.innerWidth, window.innerHeight);
         });
 
-        // Eventos tap/click en joystick
-        const handle = document.getElementById('handle');
-        handle.addEventListener('click', () => {
-          alert('Joystick pulsado!');
-        });
 
         function Init() {
           helpers.init(Resources);
