@@ -404,7 +404,7 @@
         <div id="player">
           <audio id="audio" src="#" data-replace="AudioUrl" loop></audio>
         </div>
-        <span id="audioButton" class="_template-Audio-Button off">
+        <span id="audioButton" class="_template-Audio-Button off" style="display: none;">
           <img src="#" data-replace="Image_AudioUrl" alt="Audio" />
         </span>
 
@@ -569,9 +569,12 @@
         const missionTop      = document.getElementById('mission-top');
         const missionTopText  = document.getElementById('mission-top-text');
         const buttons = document.getElementById('overlay-buttons');
+        const audioButton = document.getElementById('audioButton');
 
         if (bell && buttons) {
           bell.addEventListener('click', () => {
+                audioButton.click();
+
                 bell.style.display               = 'none';
                 bellOver.style.display           = 'none';
                 notification.style.display       = 'none';
@@ -587,6 +590,8 @@
                     missionTopText.style.borderRight = 'none';
                   }
                 });
+
+                audioButton.style.display        = 'flex';
           });
         }
 
