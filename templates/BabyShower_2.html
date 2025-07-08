@@ -424,6 +424,17 @@
 
       /* #endregion Main Section*/
       /* #region Counter*/
+      ._template-Counter-Section {
+        position: fixed;
+        bottom: 25%;
+        left: 0;
+        width: 100%;
+        display: none;
+        justify-content: center;
+        z-index: 11;
+        pointer-events: none;
+      }
+
       ._template-Counter-Section ._counter-Timebox {
         display: flex;
         flex-direction: column;
@@ -485,7 +496,7 @@
             <button class="holo-button icono"><i class="fas fa-box-open"></i></button>
           </div>
 
-          <div class="_template-Counter-Section">
+          <div id="counter-section" class="_template-Counter-Section">
             <div id="countdown" class="_counter-Countdown">
               <div class="_counter-Timebox" style="margin-right: 15px !important;">
                 <span id="days">0</span> Días
@@ -649,6 +660,7 @@
         const mission = document.getElementById('mission-container');
         const missionTop      = document.getElementById('mission-top');
         const missionTopText  = document.getElementById('mission-top-text');
+        const clock = document.getElementById('counter-section');
         const buttons = document.getElementById('overlay-buttons');
         const audioButton = document.getElementById('audioButton');
 
@@ -665,6 +677,7 @@
                 missionTopText.classList.add('typing');
 
                 buttons.style.display            = 'flex';
+                clock.style.display              = 'flex';
 
                 missionTopText.addEventListener('animationend', (e) => {
                   if (e.animationName === 'typing') {
