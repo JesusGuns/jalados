@@ -317,7 +317,7 @@
       }
 
       #bell-overlay img {
-        width: 100px;
+        width: 300px;
         cursor: pointer;
         animation: ring 1.2s infinite ease-in-out;
       }
@@ -330,6 +330,33 @@
         60%      { transform: rotate(-6deg); }
         75%      { transform: rotate(4deg); }
       }
+
+      .spark {
+        position: absolute;
+        width: 20px; height: 20px;
+        border-radius: 50%;
+        background: var(--color-neon-cyan);
+        box-shadow: 0 0 6px var(--color-neon-cyan);
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      .spark1 { top: 20%;  left: 50%; }
+      .spark2 { top: 40%;  right: 25%; }
+      .spark3 { bottom: 25%; left: 35%; }
+      .spark4 { bottom: 15%; right: 40%; }
+
+      @keyframes spark {
+        0%,  12% { opacity: 0; transform: scale(0.5) translate(0,0); }
+        15%      { opacity: 1; transform: scale(1.3) translate(0,0); }
+        18%      { opacity: 0; transform: scale(0.5) translate(0,0); }
+        100%     { opacity: 0; }
+      }
+
+      .spark1 { animation: spark 1.2s ease-in-out infinite 0s;   }
+      .spark2 { animation: spark 1.2s ease-in-out infinite 0.15s; }
+      .spark3 { animation: spark 1.2s ease-in-out infinite 0.30s; }
+      .spark4 { animation: spark 1.2s ease-in-out infinite 0.45s; }
 
       #overlay-buttons {
         display: none;
@@ -396,6 +423,33 @@
 
 
       /* #endregion Main Section*/
+      /* #region Counter*/
+      ._template-Counter-Section ._counter-Timebox {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        font-size: 15px;
+        color: var(--color-neon-cyan);
+        animation: none;
+      }
+
+      ._template-Counter-Section ._counter-Timebox span {
+        font-size: 25px;
+        height: auto;
+      }
+
+      @media (max-width: 575.98px) {
+        ._template-Counter-Section ._counter-Timebox {
+          font-size: 1rem;
+        }
+
+        ._template-Counter-Section ._counter-Timebox span{
+          font-size: 1.8rem;
+          height: auto;
+        }
+      }
+
+      /* #endregion Counter*/
     </style>
   </head>
   <body>
@@ -417,6 +471,10 @@
           </div>
 
           <div id="bell-overlay">
+            <span class="spark spark1"></span>
+            <span class="spark spark2"></span>
+            <span class="spark spark3"></span>
+            <span class="spark spark4"></span>
             <img id="bell-overlay-img" src="../images/babyShower/bell.png" alt="Notificación" />
           </div>
 
@@ -425,6 +483,29 @@
             <button class="holo-button icono"><i class="fas fa-route"></i></button>
             <button class="holo-button icono"><i class="fas fa-images"></i></button>
             <button class="holo-button icono"><i class="fas fa-box-open"></i></button>
+          </div>
+
+          <div class="_template-Counter-Section">
+            <div id="countdown" class="_counter-Countdown">
+              <div class="_counter-Timebox" style="margin-right: 15px !important;">
+                <span id="days">0</span> Días
+              </div>
+              <div class="_counter-Timebox">
+                <span id="hours">0</span> Horas
+              </div>
+              <div class="_counter-Timebox">
+                <span id="days">:</span> &nbsp;
+              </div>
+              <div class="_counter-Timebox">
+                <span id="minutes">0</span> Minutos
+              </div>
+              <div class="_counter-Timebox">
+                <span id="days">:</span> &nbsp;
+              </div>
+              <div class="_counter-Timebox">
+                <span id="seconds">0</span> Segundos
+              </div>
+            </div>
           </div>
 
           <div id="panel" role="region" aria-label="Panel futurista de navegación espacial">
