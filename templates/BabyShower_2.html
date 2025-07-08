@@ -337,7 +337,37 @@
 
       /* #endregion bell-notification Section*/
       /* #region MissionTop Section*/
-
+      #mission-top {
+        position: absolute;
+        top: 1rem;
+        left: 50%;
+        transform: translateX(-50%);
+        display: none;
+        text-align: center;
+        white-space: nowrap;
+        overflow: hidden;
+        z-index: 20;
+      }
+      #mission-top-text {
+        display: inline-block;
+        font-family: var(--font-Primary);
+        font-size: 1.5rem;
+        color: var(--color-neon-pink);
+        border-right: .15em solid var(--color-neon-pink);
+        width: 0;
+      }
+      @keyframes typing {
+        from { width: 0 }
+        to   { width: 28ch }
+      }
+      @keyframes blink-caret {
+        50% { border-color: transparent }
+      }
+      .typing {
+        animation:
+          typing 2s steps(28,end) forwards,
+          blink-caret .75s step-end infinite;
+      }
 
       /* #endregion MissionTop Section*/
       /* #region TimeLine Section*/
@@ -379,14 +409,17 @@
 
           <div id="starfield"></div>
 
-          <div id="window-frame" aria-label="Ventana holográfica de espacio"></div>
+          <div id="window-frame" aria-label="Ventana holográfica de espacio">
+            <div id="mission-top">
+              <span id="mission-top-text">Misión: Little Star</span>
+            </div>
+          </div>
 
           <div id="bell-overlay">
             <img id="bell-overlay-img" src="../images/babyShower/bell.png" alt="Notificación" />
           </div>
 
           <div id="overlay-buttons">
-            <div id="mission-title">Misión: Operación pequeña estrella</div>
             <button class="holo-button">Detalles</button>
             <button class="holo-button">Itinerario</button>
             <button class="holo-button">Evidencias</button>
@@ -488,10 +521,6 @@
           AdditionalInformation : additionalInformation
         };
 
-        function onLoad(){
-          $("[data-replace=ImageMain]").attr("src", Resources.AdditionalInformation.ImageMain);
-        };
-
         const starfield = document.getElementById('starfield');
         const scene = new THREE.Scene();
         const camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 1, 2000);
@@ -532,15 +561,27 @@
         const bellOver = document.getElementById('bell-overlay');
         const notification = document.getElementById('notification');
         const mission = document.getElementById('mission-container');
+        const missionTop      = document.getElementById('mission-top');
+        const missionTopText  = document.getElementById('mission-top-text');
         const buttons = document.getElementById('overlay-buttons');
 
         if (bell && buttons) {
           bell.addEventListener('click', () => {
-            bell.style.display               = 'none';
-            bellOver.style.display           = 'none';
-            notification.style.display       = 'none';
-            mission.style.display            = 'flex';
-            buttons.style.display            = 'flex';
+                bell.style.display               = 'none';
+                bellOver.style.display           = 'none';
+                notification.style.display       = 'none';
+
+                mission.style.display            = 'flex';
+                missionTop.style.display         = 'block';
+                missionTopText.classList.add('typing');
+
+                buttons.style.display            = 'flex';
+
+                missionTopText.addEventListener('animationend', (e) => {
+                  if (e.animationName === 'typing') {
+                    missionTopText.style.borderRight = 'none';
+                  }
+                });
           });
         }
 
