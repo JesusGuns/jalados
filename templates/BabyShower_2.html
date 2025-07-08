@@ -424,7 +424,7 @@
         display: none;
         position: fixed;
         top: 8rem;
-        bottom: 38%;
+        bottom: 35%;
         left: 50%;
         transform: translateX(-50%);
         width: 85%;
@@ -443,9 +443,19 @@
           bottom: 35%;
         }
       }
+      @media (max-height: 871px) {
+        .mid-container {
+          bottom: 37%;
+        }
+      }
       @media (max-height: 800px) {
         .mid-container {
           bottom: 38%;
+        }
+      }
+      @media (max-height: 720px) {
+        .mid-container {
+          bottom: 39%;
         }
       }
       @media (max-height: 650px) {
@@ -463,9 +473,14 @@
           bottom: 41%;
         }
       }
-      @media (max-height: 470px) {
+      @media (max-height: 500px) {
         .mid-container {
           bottom: 43%;
+        }
+      }
+      @media (max-height: 450px) {
+        .mid-container {
+          bottom: 45%;
         }
       }
 
@@ -498,6 +513,11 @@
       ._template-Counter-Section ._counter-Timebox span {
         font-size: 25px;
         height: auto;
+      }
+
+      ._counter-Countdown {
+        padding: 0px !important;
+        margin: 1.5rem 0 !important;
       }
 
       @media (max-width: 575.98px) {
