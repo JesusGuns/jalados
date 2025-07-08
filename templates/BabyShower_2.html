@@ -1,353 +1,499 @@
 <!DOCTYPE html>
-<html lang="es">
-<head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Panel Futurista con Fondo Estelar y Marco</title>
-<style>
-  @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+<!--[if lt IE 7]>      <html lang="en" class="lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html lang="en" class="lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html lang="en" class="lt-ie9"> <![endif]-->
+<!--[if IE 9]>         <html lang="en" class="ie9"> <![endif]-->
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" sizes="196x196" href="https://jesusguns.github.io/jalados/images/_favicon-BabyShower.png">
+    <!-- Primary Meta Tags -->
+    <title>Baby Shower</title>
+    <meta name="title" content="Baby Shower" />
+    <meta name="description" content="Los momentos más esperados se sueñan, se imaginan, se construyen y cuando llegue ese día tan especial, lo más importante es que estés a nuestro lado." />
 
-  :root {
-    --color-bg: #0f0026;
-    --color-neon-blue: #00ffc3;
-    --color-neon-pink: #ff00e0;
-    --color-neon-cyan: #00f0ff;
-    --color-panel-bg: rgba(10, 20, 60, 0.75);
-    --font-mono: 'Share Tech Mono', monospace;
-    --frame-shadow-color: #004466;
-  }
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://jesusguns.github.io/jalados/templates/BabyShower_2.html" />
+    <meta property="og:title" content="Baby Shower" />
+    <meta property="og:description" content="Los momentos más esperados se sueñan, se imaginan, se construyen y cuando llegue ese día tan especial, lo más importante es que estés a nuestro lado." />
+    <meta property="og:image" content="https://jesusguns.github.io/jalados/images/_favicon-BabyShower.png" />
 
-  html, body {
-    margin: 0; padding: 0; height: 100%; width: 100%;
-    background: var(--color-bg);
-    overflow: hidden;
-    font-family: var(--font-mono);
-  }
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://jesusguns.github.io/jalados/templates/BabyShower_2.html" />
+    <meta property="twitter:title" content="Baby Shower" />
+    <meta property="twitter:description" content="Los momentos más esperados se sueñan, se imaginan, se construyen y cuando llegue ese día tan especial, lo más importante es que estés a nuestro lado." />
+    <meta property="twitter:image" content="https://jesusguns.github.io/jalados/images/_favicon-BabyShower.png" />
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- Font Awesome-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-  /* Fondo animado espacio */
-  #starfield {
-    position: fixed; top: 0; left: 0;
-    width: 100%; height: 100%;
-    z-index: 0;
-  }
+    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
 
-  /* Marco ventana futurista */
-  #window-frame {
-    position: absolute;
-    top: 0; left: 0;
-    width: 100%;
-    height: 75%;
-    box-sizing: border-box;
-    padding: 0;
-    background: transparent;
-    box-shadow:
-      0 0 20px var(--color-neon-cyan),
-      inset 0 0 40px var(--frame-shadow-color);
-    z-index: 5;
-    overflow: visible;
-  }
+    <link rel="stylesheet" href="../css/templates.css">
+    <script src="../js/require.js"></script>
+    <style>
+      /* #region ROOT*/
+      :root {
+        --filter-AudioButton: 50deg;
+        --font-Primary: 'Share Tech Mono', monospace;
+        --color-bg: #0f0026;
+        --color-neon-blue: #00ffc3;
+        --color-neon-pink: #ff00e0;
+        --color-neon-cyan: #00f0ff;
+        --color-panel-bg: rgba(10, 20, 60, 0.75);
+        --frame-shadow-color: #004466;
+      }
 
-  #window-frame::before {
-    content: '';
-    position: absolute;
-    top: 1.2rem; left: 2rem; right: 2rem; bottom: 1.2rem;
-    box-sizing: content-box;
-    border: 2px solid var(--color-neon-cyan);
-    border-radius: 14px;
-    pointer-events: none;
-    box-shadow: 0 0 10px var(--color-neon-cyan);
-  }
+      /* #endregion ROOT*/
+      /* #region HTML*/
+      body {
+        font-family: var(--font-Primary);
+        min-height: 100%;
+        width: 100%;
+        color: var(--color_Secondary);
+        margin: 0; padding: 0; height: 100%; width: 100%;
+        background: var(--color-bg);
+        overflow: hidden;
+      }
 
-  @media (max-width: 575.98px) {
-    #window-frame::before {
-      top: 0.8rem; left: 1rem; right: 1rem; bottom: 0.8rem;
-      border-width: 1.5px;
-      border-radius: 10px;
-      box-shadow: 0 0 7px var(--color-neon-cyan);
-    }
-  }
+      /* #endregion HTML*/
+      /* #region General*/
 
-  #panel {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 25%;
-    background: var(--color-panel-bg);
-    backdrop-filter: blur(12px);
-    border-top: 2px solid var(--color-neon-cyan);
-    box-shadow:
-      inset 0 0 40px var(--color-neon-cyan),
-      0 -2px 30px var(--color-neon-cyan);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 15px 2%;
-    box-sizing: border-box;
-    gap: 1rem;
-    z-index: 10;
-    overflow: hidden;
-  }
+      /* Fondo animado espacio */
+      #starfield {
+        position: fixed; top: 0; left: 0;
+        width: 100%; height: 100%;
+        z-index: 0;
+      }
 
-  #screen {
-    position: relative;
-    width: 90%;
-    max-width: 600px;
-    height: 20%;
-    background: linear-gradient(135deg, #003354cc, #006688cc);
-    border-radius: 24px;
-    box-shadow:
-      0 0 15px var(--color-neon-cyan),
-      inset 0 0 35px #004466aa;
-    border: 1.5px solid var(--color-neon-cyan);
-    overflow: hidden;
-    backdrop-filter: brightness(1.2);
-  }
+      /* Marco ventana futurista */
+      #window-frame {
+        position: absolute;
+        top: 0; left: 0;
+        width: 100%;
+        height: 75%;
+        box-sizing: border-box;
+        padding: 0;
+        background: transparent;
+        box-shadow:
+          0 0 20px var(--color-neon-cyan),
+          inset 0 0 40px var(--frame-shadow-color);
+        z-index: 5;
+        overflow: visible;
+      }
 
-  #screen::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background:
-      repeating-linear-gradient(
-        180deg,
-        rgba(0, 255, 255, 0.15) 0,
-        rgba(0, 255, 255, 0.15) 2px,
-        transparent 3px,
-        transparent 6px
-      );
-    animation: scrollLines 5s linear infinite;
-    pointer-events: none;
-  }
+      #window-frame::before {
+        content: '';
+        position: absolute;
+        top: 1.2rem; left: 2rem; right: 2rem; bottom: 1.2rem;
+        box-sizing: content-box;
+        border: 2px solid var(--color-neon-cyan);
+        border-radius: 14px;
+        pointer-events: none;
+        box-shadow: 0 0 10px var(--color-neon-cyan);
+      }
 
-  @keyframes scrollLines {
-    0% { background-position: 0 0; }
-    100% { background-position: 0 30px; }
-  }
+      @media (max-width: 575.98px) {
+        #window-frame::before {
+          top: 0.8rem; left: 1rem; right: 1rem; bottom: 0.8rem;
+          border-width: 1.5px;
+          border-radius: 10px;
+          box-shadow: 0 0 7px var(--color-neon-cyan);
+        }
+      }
 
-  #controls {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    margin-top: 0.5rem;
-    align-items: center;
-    padding: 0 3%;
-    box-sizing: border-box;
-  }
+      #panel {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 25%;
+        background: var(--color-panel-bg);
+        backdrop-filter: blur(12px);
+        border-top: 2px solid var(--color-neon-cyan);
+        box-shadow:
+          inset 0 0 10px var(--color-neon-cyan),
+          0 -2px 10px var(--color-neon-cyan);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 15px 2%;
+        box-sizing: border-box;
+        gap: 1rem;
+        z-index: 10;
+        overflow: hidden;
+      }
 
-  .btn-panel {
-    display: flex;
-    flex-direction: column;
-    gap: 1.2rem;
-  }
+      #screen {
+        position: relative;
+        width: 90%;
+        max-width: 600px;
+        height: 20%;
+        background: linear-gradient(135deg, #003354cc, #006688cc);
+        border-radius: 24px;
+        box-shadow:
+          0 0 10px var(--color-neon-cyan),
+          inset 0 0 10px #004466aa;
+        border: 1.5px solid var(--color-neon-cyan);
+        overflow: hidden;
+        backdrop-filter: brightness(1.2);
+      }
 
-  .btn-small {
-    width: 28px;
-    height: 28px;
-    border-radius: 6px;
-    background: var(--color-neon-pink);
-    box-shadow: 0 0 12px var(--color-neon-pink);
-    border: 1.5px solid #ff00d2;
-    cursor: pointer;
-    transition: filter 0.3s;
-  }
-  .btn-small.red {
-    background: #ff0055;
-    box-shadow: 0 0 16px #ff0044;
-    border-color: #ff3366;
-  }
-  .btn-small.green {
-    background: #00ff88;
-    box-shadow: 0 0 16px #00cc66;
-    border-color: #33ffbb;
-  }
-  .btn-small.yellow {
-    background: #ffee00;
-    box-shadow: 0 0 14px #ddcc00;
-    border-color: #ffff55;
-  }
-  .btn-small:hover, .btn-small:focus {
-    filter: brightness(1.3);
-    outline: none;
-  }
+      #screen::before {
+        content: '';
+        position: absolute;
+        top: 0; left: 0; right: 0; bottom: 0;
+        background:
+          repeating-linear-gradient(
+            180deg,
+            rgba(0, 255, 255, 0.15) 0,
+            rgba(0, 255, 255, 0.15) 2px,
+            transparent 3px,
+            transparent 6px
+          );
+        animation: scrollLines 5s linear infinite;
+        pointer-events: none;
+      }
 
-  #joystick {
-    position: relative;
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
-    background:
-      radial-gradient(circle at center, #005577, #002233);
-    box-shadow:
-      0 0 40px var(--color-neon-cyan),
-      inset 0 0 30px #003355;
-    cursor: pointer;
-    touch-action: manipulation;
-  }
+      @keyframes scrollLines {
+        0% { background-position: 0 0; }
+        100% { background-position: 0 30px; }
+      }
 
-  #joystick::before {
-    content: '';
-    position: absolute;
-    inset: 15px;
-    border-radius: 50%;
-    border: 5px solid var(--color-neon-cyan);
-    box-shadow: 0 0 15px var(--color-neon-cyan) inset;
-    pointer-events: none;
-  }
+      #controls {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 3%;
+        box-sizing: border-box;
+      }
 
-  #handle {
-    position: absolute;
-    width: 55px;
-    height: 55px;
-    background: radial-gradient(circle at center, #00ffc3, #006662);
-    border-radius: 50%;
-    box-shadow:
-      inset 0 8px 20px #33ffdd,
-      0 0 25px #00ffcc;
-    border: 2px solid var(--color-neon-cyan);
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 3;
-    cursor: pointer;
-    touch-action: manipulation;
-  }
+      .btn-panel {
+        display: flex;
+        flex-direction: column;
+        gap: 1.2rem;
+      }
 
-  #handle:active {
-    box-shadow:
-      inset 0 8px 30px #66ffee,
-      0 0 40px #33ffdd;
-  }
+      .btn-small {
+        width: 28px;
+        height: 28px;
+        border-radius: 6px;
+        background: var(--color-neon-pink);
+        box-shadow: 0 0 16px var(--color-neon-pink);
+        border: 1.5px solid #ff00d2;
+        cursor: pointer;
+        transition: filter 0.3s;
+      }
+      .btn-small.red {
+        background: #ff0055;
+        box-shadow: 0 0 16px #ff0044;
+        border-color: #ff3366;
+      }
+      .btn-small.green {
+        background: #00ff88;
+        box-shadow: 0 0 16px #00cc66;
+        border-color: #33ffbb;
+      }
+      .btn-small.yellow {
+        background: #ffee00;
+        box-shadow: 0 0 16px #ddcc00;
+        border-color: #ffff55;
+      }
+      .btn-small:hover, .btn-small:focus {
+        filter: brightness(1.3);
+        outline: none;
+      }
 
-  /* Responsivo */
+      #joystick {
+        position: relative;
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        background:
+          radial-gradient(circle at center, #005577, #002233);
+        box-shadow:
+          0 0 10px var(--color-neon-cyan),
+          inset 0 0 10px #003355;
+        cursor: pointer;
+        touch-action: manipulation;
+      }
 
-  @media (max-width: 575.98px) {
-    #panel {
-      height: 25%;
-      padding: 10px 15px;
-    }
-    #screen {
-      width: 90%;
-      height: 20%;
-    }
-    #controls {
-      flex-wrap: wrap;
-      gap: 10px;
-      padding: 0 10px;
-    }
-    .btn-panel {
-      flex-direction: row;
-      gap: 12px;
-    }
-    #joystick {
-      width: 80px;
-      height: 80px;
-    }
-    #handle {
-      width: 40px;
-      height: 40px;
-    }
-    .btn-small {
-      width: 22px;
-      height: 22px;
-    }
-  }
+      #joystick::before {
+        content: '';
+        position: absolute;
+        inset: 15px;
+        border-radius: 50%;
+        border: 5px solid var(--color-neon-cyan);
+        box-shadow: 0 0 10px var(--color-neon-cyan) inset;
+        pointer-events: none;
+      }
 
-  @media (max-width: 375.98px) {
-    #panel {
-      height: 25%;
-      padding: 10px 10px;
-    }
-    #screen {
-      width: 100%;
-      height: 20%;
-    }
-    #joystick {
-      width: 70px;
-      height: 70px;
-    }
-    #handle {
-      width: 35px;
-      height: 35px;
-    }
-    .btn-small {
-      width: 18px;
-      height: 18px;
-    }
-  }
-</style>
-</head>
-<body>
-<div id="starfield"></div>
+      #handle {
+        position: absolute;
+        width: 55px;
+        height: 55px;
+        background: radial-gradient(circle at center, #00ffc3, #006662);
+        border-radius: 50%;
+        box-shadow:
+          inset 0 8px 10px #33ffdd,
+          0 0 10px #00ffcc;
+        border: 2px solid var(--color-neon-cyan);
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 3;
+        cursor: pointer;
+        touch-action: manipulation;
+      }
 
-<div id="window-frame" aria-label="Ventana holográfica de espacio"></div>
+      #handle:active {
+        box-shadow:
+          inset 0 8px 50px #66ffee,
+          0 0 15px #33ffdd;
+      }
 
-<div id="panel" role="region" aria-label="Panel futurista de navegación espacial">
-  <div id="screen" aria-label="Pantalla holográfica futurista"></div>
-  <div id="controls">
-    <div class="btn-panel" aria-label="Panel de botones izquierdo">
-      <div class="btn-small red" tabindex="0" role="button" aria-pressed="false" aria-label="Botón rojo"></div>
-      <div class="btn-small green" tabindex="0" role="button" aria-pressed="false" aria-label="Botón verde"></div>
-      <div class="btn-small yellow" tabindex="0" role="button" aria-pressed="false" aria-label="Botón amarillo"></div>
+      /* Responsivo */
+
+      @media (max-width: 575.98px) {
+        #panel {
+          height: 25%;
+          padding: 10px 15px;
+        }
+        #screen {
+          width: 90%;
+          height: 20%;
+        }
+        #controls {
+          flex-wrap: wrap;
+          gap: 10px;
+          padding: 0 10px;
+        }
+        .btn-panel {
+          flex-direction: row;
+          gap: 12px;
+        }
+        #joystick {
+          width: 80px;
+          height: 80px;
+        }
+        #handle {
+          width: 40px;
+          height: 40px;
+        }
+        .btn-small {
+          width: 22px;
+          height: 22px;
+        }
+      }
+
+      @media (max-width: 375.98px) {
+        #panel {
+          height: 25%;
+          padding: 10px 10px;
+        }
+        #screen {
+          width: 100%;
+          height: 20%;
+        }
+        #joystick {
+          width: 70px;
+          height: 70px;
+        }
+        #handle {
+          width: 35px;
+          height: 35px;
+        }
+        .btn-small {
+          width: 18px;
+          height: 18px;
+        }
+      }
+
+      /* #endregion General*/
+      /* #region TimeLine Section*/
+
+
+      /* #endregion TimeLine Section*/
+      /* #region Gift Section*/
+
+
+      /* #endregion Gift Section*/
+      /* #region Audio*/
+      ._template-Audio-Button {
+        filter: hue-rotate(var(--filter-AudioButton)) !important;
+        right: 3% !important;
+      }
+
+      /* #endregion Audio*/
+      /* #region Main Section*/
+
+
+      /* #endregion Main Section*/
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <main role="main" class="w-100">
+        <div id="player">
+          <audio id="audio" src="#" data-replace="AudioUrl" loop></audio>
+        </div>
+        <span id="audioButton" class="_template-Audio-Button off">
+          <img src="#" data-replace="Image_AudioUrl" alt="Audio" />
+        </span>
+
+          <div id="starfield"></div>
+
+          <div id="window-frame" aria-label="Ventana holográfica de espacio"></div>
+
+          <div id="panel" role="region" aria-label="Panel futurista de navegación espacial">
+            <div id="screen" aria-label="Pantalla holográfica futurista"></div>
+            <div id="controls">
+              <div class="btn-panel" aria-label="Panel de botones izquierdo">
+                <div class="btn-small red" tabindex="0" role="button" aria-pressed="false" aria-label="Botón rojo"></div>
+                <div class="btn-small green" tabindex="0" role="button" aria-pressed="false" aria-label="Botón verde"></div>
+                <div class="btn-small yellow" tabindex="0" role="button" aria-pressed="false" aria-label="Botón amarillo"></div>
+              </div>
+
+              <div id="joystick" aria-label="Joystick de navegación espacial" tabindex="0" role="button" aria-label="Joystick">
+                <div id="handle" tabindex="0" role="button" aria-label="Botón joystick"></div>
+              </div>
+
+              <div class="btn-panel" aria-label="Panel de botones derecho">
+                <div class="btn-small yellow"></div>
+                <div class="btn-small green"></div>
+                <div class="btn-small red"></div>
+              </div>
+            </div>
+          </div>
+
+      </main>
     </div>
 
-    <div id="joystick" aria-label="Joystick de navegación espacial" tabindex="0" role="button" aria-label="Joystick">
-      <div id="handle" tabindex="0" role="button" aria-label="Botón joystick"></div>
-    </div>
+    <script src="../js/main.js"></script>
+    <script>
+      requirejs(["jquery","helpers","three"],function($,helpers,THREE){
+        const EventDate = new Date("2025-11-25T17:00:00");
+        const EventReception = new Date("2025-11-25T17:00:00");
+        const mainEvent = {
+          Name: "",
+          Date: EventDate,
+          Description: `Acompáñanos a celebrar el Baby Shower de `,      
+          LocationDescription: "Salón de Eventos Quinta el Eden",
+          Address: "C. Morelos 670, González Ortega, 45190 Zapopan, Jal.",
+          Father: "José Gutiérrez",
+          Mother: "Melissa Hurtado",
+          GodFather: "Juan Fernández",
+          GodMother: "Laura Jimenez",
+          GoogleMapsUrl: "https://maps.app.goo.gl/1wwmTSk84XA8pLMn8",
+          AmazonGiftTableUrl: "https://www.amazon.com.mx/",
+          LiverpoolGiftTableUrl: "https://www.liverpool.com.mx/tienda/home",
+          CollageImages: [],
+          ImageMyParents: "https://img.freepik.com/fotos-premium/retrato-pareja-madura-feliz-abrazada-casa-conexion-amor-o-confianza-asociacion-juntos-cara-al-hombre-abrazar-mujer-compromiso-cuidado-relacion-saludable-apoyo-casa_590464-361056.jpg?ga=GA1.1.1993030682.1745256637&semt=ais_hybrid&w=740",
+          ImageMyGodParents: "https://img.freepik.com/fotos-premium/pareja-dia-san-valentin_772250-159.jpg?ga=GA1.1.1993030682.1745256637&w=740",
+          ImageDressCodeUrl: "https://img.freepik.com/foto-gratis/gente-elegante-bailando-tango_23-2149193458.jpg?ga=GA1.1.1993030682.1745256637&semt=ais_hybrid&w=740",
+        };
 
-    <div class="btn-panel" aria-label="Panel de botones derecho">
-      <div class="btn-small yellow"></div>
-      <div class="btn-small green"></div>
-      <div class="btn-small red"></div>
-    </div>
-  </div>
-</div>
+        const secondaryEvent = {
+          Date: EventReception,
+          LocationDescription: "",
+          Address: "",
+          GoogleMapsUrl: "",
+        };
 
-<script src="https://cdn.jsdelivr.net/npm/three@0.148.0/build/three.min.js"></script>
-<script>
-  const starfield = document.getElementById('starfield');
-  const scene = new THREE.Scene();
-  const camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 1, 2000);
-  camera.position.z = 1000;
+        const googleCalendar = {
+          Text: "Baby Shower ",
+          Location: mainEvent.Address,
+          Detail : `
+                    [0]
+                📍 Lugar: [1]
+                🕒 Hora: [2]
+                ⏰ Recordatorio: Llega con 30 minutos de anticipación.
+                ✨ ¡Te esperamos para compartir este momento tan especial!`
+        };
 
-  const renderer = new THREE.WebGLRenderer({antialias:true, alpha:true});
-  renderer.setSize(window.innerWidth, window.innerHeight);
-  starfield.appendChild(renderer.domElement);
+        const additionalInformation = {
+          ImageBodyBackground: "",
+          ImageCorner: "",
+          ImageFrontCard: "",
+          ImageMain: "",
+          ImageTap: "",
+          ImageLoading: "",
+          AudioUrl: "../music/Here Comes The Sun.mp3",
+          WhatsAppUrl: "https://tinyurl.com/3h8kmam7",
+        };
 
-  const starCount = 1200;
-  const geometry = new THREE.BufferGeometry();
-  const positions = new Float32Array(starCount * 3);
-  for(let i=0; i<starCount; i++) {
-    positions[i*3] = (Math.random() - 0.5) * 3000;
-    positions[i*3 + 1] = (Math.random() - 0.5) * 3000;
-    positions[i*3 + 2] = (Math.random() - 0.5) * 3000;
-  }
-  geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+        const Resources = {
+          MainEvent : mainEvent,
+          SecondaryEvent: secondaryEvent,
+          GoogleCalendar: Object.create(googleCalendar),
+          AdditionalInformation : additionalInformation
+        };
 
-  const material = new THREE.PointsMaterial({color: '#00ffc3', size: 2});
-  const stars = new THREE.Points(geometry, material);
-  scene.add(stars);
+        function onLoad(){
+          $("[data-replace=ImageMain]").attr("src", Resources.AdditionalInformation.ImageMain);
+        };
 
-  function animate() {
-    requestAnimationFrame(animate);
-    stars.rotation.y += 0.0006;
-    stars.rotation.x += 0.0004;
-    renderer.render(scene, camera);
-  }
-  animate();
+        const starfield = document.getElementById('starfield');
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 1, 2000);
+        camera.position.z = 1000;
 
-  window.addEventListener('resize', () => {
-    camera.aspect = window.innerWidth/window.innerHeight;
-    camera.updateProjectionMatrix();
-    renderer.setSize(window.innerWidth, window.innerHeight);
-  });
+        const renderer = new THREE.WebGLRenderer({antialias:true, alpha:true});
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        starfield.appendChild(renderer.domElement);
 
-  // Eventos tap/click en joystick
-  const handle = document.getElementById('handle');
-  handle.addEventListener('click', () => {
-    alert('Joystick pulsado!');
-  });
-</script>
-</body>
+        const starCount = 1200;
+        const geometry = new THREE.BufferGeometry();
+        const positions = new Float32Array(starCount * 3);
+        for(let i=0; i<starCount; i++) {
+          positions[i*3] = (Math.random() - 0.5) * 3000;
+          positions[i*3 + 1] = (Math.random() - 0.5) * 3000;
+          positions[i*3 + 2] = (Math.random() - 0.5) * 3000;
+        }
+        geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+
+        const material = new THREE.PointsMaterial({color: '#00ffc3', size: 2});
+        const stars = new THREE.Points(geometry, material);
+        scene.add(stars);
+
+        function animate() {
+          requestAnimationFrame(animate);
+          stars.rotation.y += 0.0006;
+          stars.rotation.x += 0.0004;
+          renderer.render(scene, camera);
+        }
+
+        window.addEventListener('resize', () => {
+          camera.aspect = window.innerWidth/window.innerHeight;
+          camera.updateProjectionMatrix();
+          renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+
+        // Eventos tap/click en joystick
+        const handle = document.getElementById('handle');
+        handle.addEventListener('click', () => {
+          alert('Joystick pulsado!');
+        });
+
+        function Init() {
+          helpers.init(Resources);
+          helpers.onCounterStart(EventDate);
+          setInterval(() => {
+            helpers.onCounterStart(EventDate);
+          }, 1000);
+          helpers.onAudioPlayer();
+          animate();
+        };
+        Init();
+
+      });
+    </script>
+  </body>
 </html>

@@ -10,12 +10,14 @@ requirejs.config({
     confetti: "https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min",
     puzzle: "./puzzle",
     gallery: "./gallery",
+    three: "https://cdn.jsdelivr.net/npm/three@0.148.0/build/three.min",
   },
   shim: {
     bs: ["jquery"],
     helpers: ["jquery"],
     fireworks: ["jquery"],
     puzzle: ["jquery"],
-    gallery: ["jquery"]
+    gallery: ["jquery"],
+    three: ["jquery"],
   },
 });
