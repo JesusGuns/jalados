@@ -280,6 +280,49 @@
       }
 
       /* #endregion General*/
+      /* #region bell-notification Section*/
+      #bell-overlay {
+        position: fixed;
+        top: 0; left: 0;
+        width: 100%; height: 80%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 9999;
+      }
+
+      #overlay-buttons {
+        position: fixed;
+        top: 0; left: 0;
+        width: 100%; height: 80%;
+        display: flex;
+        align-items: start;
+        justify-content: center;
+        z-index: 20;
+      }
+
+      #bell-overlay img {
+        width: 100px;
+        cursor: pointer;
+        animation: ring 1.2s infinite ease-in-out;
+      }
+
+      @keyframes ring {
+        0%, 100% { transform: rotate(0deg); }
+        15%      { transform: rotate(15deg); }
+        30%      { transform: rotate(-10deg); }
+        45%      { transform: rotate(8deg); }
+        60%      { transform: rotate(-6deg); }
+        75%      { transform: rotate(4deg); }
+      }
+
+      #overlay-buttons {
+        display: none;
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+
+      /* #endregion bell-notification Section*/
       /* #region TimeLine Section*/
 
 
@@ -320,6 +363,18 @@
           <div id="starfield"></div>
 
           <div id="window-frame" aria-label="Ventana holográfica de espacio"></div>
+
+          <div id="bell-overlay">
+            <img id="bell-overlay-img" src="../images/babyShower/bell.png" alt="Notificación" />
+          </div>
+
+          <div id="overlay-buttons">
+            <div id="mission-msg">Misión: Operación pequeña estrella</div>
+            <button class="holo-button">Detalles</button>
+            <button class="holo-button">Itinerario</button>
+            <button class="holo-button">Evidencias</button>
+            <button class="holo-button">Suministros</button>
+          </div>
 
           <div id="panel" role="region" aria-label="Panel futurista de navegación espacial">
             <div id="screen" aria-label="Pantalla holográfica futurista"></div>
@@ -449,6 +504,15 @@
           renderer.setSize(window.innerWidth, window.innerHeight);
         });
 
+        const bell    = document.getElementById('bell-overlay-img');
+        const buttons = document.getElementById('overlay-buttons');
+
+        if (bell && buttons) {
+          bell.addEventListener('click', () => {
+            bell.style.display    = 'none';
+            buttons.style.display = 'flex';
+          });
+        }
 
         function Init() {
           helpers.init(Resources);
