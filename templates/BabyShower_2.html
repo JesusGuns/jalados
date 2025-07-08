@@ -31,34 +31,42 @@
     z-index: 0;
   }
 
-  /* Marco ventana futurista (ocupa el espacio restante, 75% altura) */
+  /* Marco ventana futurista */
   #window-frame {
-    position: absolute; /* absolute para no superponer fixed */
+    position: absolute;
     top: 0; left: 0;
     width: 100vw;
-    height: calc(100vh - 25vh); /* 75vh dinámico según panel */
+    height: calc(100vh - 25vh);
     box-sizing: border-box;
-    padding: 1.2rem 2rem;
-    background: transparent; /* transparente para ver estrellas */
+    padding: 0;
+    background: transparent;
     box-shadow:
       0 0 20px var(--color-neon-cyan),
       inset 0 0 40px var(--frame-shadow-color);
     z-index: 5;
-    overflow: hidden;
+    overflow: visible;
   }
 
-  /* Líneas internas del marco */
   #window-frame::before {
     content: '';
     position: absolute;
-    top: 2rem; left: 2rem; right: 2rem; bottom: 2rem;
+    top: 1.2rem; left: 2rem; right: 2rem; bottom: 1.2rem;
+    box-sizing: content-box;
     border: 2px solid var(--color-neon-cyan);
     border-radius: 14px;
     pointer-events: none;
     box-shadow: 0 0 10px var(--color-neon-cyan);
   }
 
-  /* Panel joystick inferior (25% altura) */
+  @media (max-width: 575.98px) {
+    #window-frame::before {
+      top: 0.8rem; left: 1rem; right: 1rem; bottom: 0.8rem;
+      border-width: 1.5px;
+      border-radius: 10px;
+      box-shadow: 0 0 7px var(--color-neon-cyan);
+    }
+  }
+
   #panel {
     position: fixed;
     bottom: 0;
