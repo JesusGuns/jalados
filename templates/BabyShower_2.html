@@ -238,10 +238,23 @@
         display: flex;
         gap: 1rem;
       }
-      #mission-msg {
+      #mission-container {
+        display: none;
+        flex-direction: column;
+        align-items: center;
+      }
+      #mission-title {
         font-family: var(--font-Primary);
         color: var(--color-neon-pink);
         text-shadow: 0 0 8px var(--color-neon-pink);
+        margin-bottom: 0.5rem;
+        font-size: 1.1rem;
+        text-align: center;
+      }
+      #mission-msg {
+        font-family: var(--font-Primary);
+        color: var(--color-neon-cyan);
+        text-shadow: 0 0 8px var(--color-neon-cyan);
         margin-bottom: 0.5rem;
         font-size: 1.1rem;
         text-align: center;
@@ -323,6 +336,10 @@
       }
 
       /* #endregion bell-notification Section*/
+      /* #region MissionTop Section*/
+
+
+      /* #endregion MissionTop Section*/
       /* #region TimeLine Section*/
 
 
@@ -369,7 +386,7 @@
           </div>
 
           <div id="overlay-buttons">
-            <div id="mission-msg">Misión: Operación pequeña estrella</div>
+            <div id="mission-title">Misión: Operación pequeña estrella</div>
             <button class="holo-button">Detalles</button>
             <button class="holo-button">Itinerario</button>
             <button class="holo-button">Evidencias</button>
@@ -386,10 +403,17 @@
               </div>
 
               <div id="center-group">
-                <div id="mission-msg">¿Aceptar misión?</div>
-                <div id="action-buttons">
-                  <button class="holo-button" id="btn-aceptar">Aceptar</button>
-                  <button class="holo-button" id="btn-agendar">Agendar</button>
+                <div id="notification">
+                  <div id="mission-title">Mensaje del Comando Espacial</div>
+                  <div id="mission-msg">Tienes una nueva misión pendiente. <br> Accede al sistema, revisa la instrucción y confirma.</div>
+                </div>
+
+                <div id="mission-container">
+                  <div id="mission-title">¿Aceptar misión?</div>
+                  <div id="action-buttons">
+                    <button class="holo-button" id="btn-aceptar">Aceptar</button>
+                    <button class="holo-button" id="btn-agendar">Agendar</button>
+                  </div>
                 </div>
               </div>
 
@@ -504,13 +528,19 @@
           renderer.setSize(window.innerWidth, window.innerHeight);
         });
 
-        const bell    = document.getElementById('bell-overlay-img');
+        const bell = document.getElementById('bell-overlay-img');
+        const bellOver = document.getElementById('bell-overlay');
+        const notification = document.getElementById('notification');
+        const mission = document.getElementById('mission-container');
         const buttons = document.getElementById('overlay-buttons');
 
         if (bell && buttons) {
           bell.addEventListener('click', () => {
-            bell.style.display    = 'none';
-            buttons.style.display = 'flex';
+            bell.style.display               = 'none';
+            bellOver.style.display           = 'none';
+            notification.style.display       = 'none';
+            mission.style.display            = 'flex';
+            buttons.style.display            = 'flex';
           });
         }
 
