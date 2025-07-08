@@ -534,9 +534,9 @@
         const geometry = new THREE.BufferGeometry();
         const positions = new Float32Array(starCount * 3);
         for(let i=0; i<starCount; i++) {
-          positions[i*3] = (Math.random() - 0.5) * 3000;
-          positions[i*3 + 1] = (Math.random() - 0.5) * 3000;
-          positions[i*3 + 2] = (Math.random() - 0.5) * 3000;
+          positions[i*3] = (Math.random() - 0.5) * 2000;
+          positions[i*3 + 1] = (Math.random() - 0.5) * 2000;
+          positions[i*3 + 2] = (Math.random() - 0.5) * 2000;
         }
         geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
 
