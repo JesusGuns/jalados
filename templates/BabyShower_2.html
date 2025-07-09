@@ -487,6 +487,33 @@
         }
       }
 
+      .scroll-indicator {
+        position: absolute;
+        bottom: 2%;
+        right: 3%;
+        transform: translateY(0);
+        display: none;
+        pointer-events: none;
+        z-index: 20;
+        animation: bounce-indicator 1.5s infinite ease-in-out;
+      }
+
+      .scroll-indicator-img {
+        display: block;
+        width: clamp(2rem, 8vw, 4rem);
+        height: auto;
+        filter: drop-shadow(0 0 8px var(--color-neon-cyan));
+      }
+
+      @keyframes bounce-indicator {
+        0%, 100% {
+          transform: translateY(0) scale(1);
+        }
+        50% {
+          transform: translateY(-10%) scale(0.5);
+        }
+      }
+
       .mid-tab-content {
         display: none;
         color: var(--color-neon-cyan);
@@ -625,11 +652,8 @@
                 <br> 
                 <span data-replace="MainEventAddress"></span>
                 <br><br>
-                Para el <strong data-replace="EventDateString"></strong> 
+                Para el <span data-replace="EventDateString"></span> 
                 a las <span data-replace="EventHourString"></span>
-                <br><br>
-                Sincronicen sus sistemas de navegación, calibren sus escudos y prepárense 
-                para una celebración cósmica que desafiará toda gravedad.
                 <br><br>
                 Consulta el enlace de aterrizaje en el Geo-Mapa cósmico.
                 <br>
@@ -656,6 +680,10 @@
               <p class="mission-text">
                 <span>📦 Lista de regalos y suministros.</span>
               </p>
+            </div>
+
+            <div class="scroll-indicator">
+              <img src="../images/babyShower/down.png" class="scroll-indicator-img"  alt="Desliza hacia abajo" />
             </div>
           </div>
 
@@ -825,6 +853,7 @@
         const missionTopText  = document.getElementById('mission-top-text');
         const clock = document.getElementById('counter-section');
         const midContainer = document.getElementById('mid-container');
+        const scrollIndicator   = midContainer.querySelector('.scroll-indicator');
         const buttons = document.getElementById('overlay-buttons');
         const audioButton = document.getElementById('audioButton');
 
@@ -844,15 +873,31 @@
                 clock.style.display              = 'flex';
                 midContainer.style.display       = 'flex';
 
+                updateScrollHint();
+
                 missionTopText.addEventListener('animationend', (e) => {
                   if (e.animationName === 'typing') {
                     missionTopText.style.borderRight = 'none';
                   }
                 });
 
+                midContainer.addEventListener('scroll', () => {
+                  if (midContainer.scrollTop > 0) {
+                    scrollIndicator.style.display = 'none';
+                  }
+                });
+
                 // audioButton.style.display        = 'flex';
           });
         }
+
+        function updateScrollHint() {
+          if (midContainer.scrollHeight > midContainer.clientHeight) {
+            scrollIndicator.style.display = 'block';
+          } else {
+            scrollIndicator.style.display = 'none';
+          }
+        };
 
         const tabButtons = document.querySelectorAll('#overlay-buttons .holo-button.icono');
         const tabContents = document.querySelectorAll('.mid-tab-content');
@@ -883,6 +928,9 @@
           activateTab(0);
         };
         Init();
+
+
+        window.addEventListener('resize', updateScrollHint);
 
       });
     </script>
