@@ -909,6 +909,9 @@
           tabContents.forEach((c,i) => {
             c.classList.toggle('active', i === index);
           });
+
+          midContainer.scrollTop = 0;
+          updateScrollHint();
         };
 
         tabButtons.forEach((btn, i) => {
@@ -930,7 +933,10 @@
         Init();
 
 
-        window.addEventListener('resize', updateScrollHint);
+        window.addEventListener('resize', () => {
+          midContainer.scrollTop = 0;
+          updateScrollHint();
+        });
 
       });
     </script>
