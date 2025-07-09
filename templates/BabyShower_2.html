@@ -487,6 +487,50 @@
         }
       }
 
+      .mid-tab-content {
+        display: none;
+        color: var(--color-neon-cyan);
+        text-shadow: 0 0 8px var(--color-neon-cyan);
+        padding: 0.5rem;
+      }
+      .mid-tab-content.active {
+        display: block;
+      }
+
+      .mission-text {
+        display: block;
+        white-space: normal;
+        margin: 1rem 0;
+        font-size: 1rem;
+        line-height: 1.4;
+        color: white;
+        text-shadow: 0 0 8px var(--color-neon-cyan);
+        text-align: justify;
+      }
+      .mission-text span {
+        all: unset;
+        display: inline;
+        color: inherit;
+        font-family: inherit;
+      }
+      .mission-description p {
+        color: var(--color-neon-blue);
+        text-shadow: 0 0 8px var(--color-neon-blue);
+        margin: 0.5rem 0;
+        font-size: 1rem;
+        font-family: var(--font-Primary);
+        text-align: center;
+      }
+      .map-link {
+        display: block;
+        width: fit-content;
+        margin: 1rem auto;
+      }
+
+      #overlay-buttons .holo-button.icono.active {
+        box-shadow: inset 0 0 15px var(--color-neon-cyan), 0 0 10px var(--color-neon-cyan);
+      }
+
       /* #endregion Mid Section*/
       /* #region Main Section*/
 
@@ -571,6 +615,48 @@
           </div>
 
           <div id="mid-container" class="mid-container">
+            <div class="mid-tab-content active" data-tab="1">
+              <div class="mission-description">
+                <p>! Atención tripulación !</p>
+              </div>
+              <p class="mission-text">
+                Establezcan curso a la Base Estelar 
+                <span data-replace="MainEventLocationDescription"></span>
+                <br> 
+                <span data-replace="MainEventAddress"></span>
+                <br><br>
+                Para el <strong data-replace="EventDateString"></strong> 
+                a las <span data-replace="EventHourString"></span>
+                <br><br>
+                Sincronicen sus sistemas de navegación, calibren sus escudos y prepárense 
+                para una celebración cósmica que desafiará toda gravedad.
+                <br><br>
+                Consulta el enlace de aterrizaje en el Geo-Mapa cósmico.
+                <br>
+                <a href="#" data-replace="MainEventUrl" target="_blank" class="map-link">
+                  <img class="location-maps" src="#" data-replace="Image_GoogleLocation" alt="Google Location">
+                </a>
+                <br>
+              </p>
+            </div>
+
+            <div class="mid-tab-content" data-tab="2">
+              <p class="mission-text">  
+                <span>😉 Ruta y actividades próximamente…</span>
+              </p>
+            </div>
+
+            <div class="mid-tab-content" data-tab="3">
+              <p class="mission-text">
+                <span>📂 Fotos y recuerdos aquí.</span>
+              </p>
+            </div>
+
+            <div class="mid-tab-content" data-tab="4">
+              <p class="mission-text">
+                <span>📦 Lista de regalos y suministros.</span>
+              </p>
+            </div>
           </div>
 
           <div id="counter-section" class="_template-Counter-Section">
@@ -723,7 +809,7 @@
           stars.rotation.y += 0.0006;
           stars.rotation.x += 0.0004;
           renderer.render(scene, camera);
-        }
+        };
 
         window.addEventListener('resize', () => {
           camera.aspect = window.innerWidth/window.innerHeight;
@@ -768,6 +854,24 @@
           });
         }
 
+        const tabButtons = document.querySelectorAll('#overlay-buttons .holo-button.icono');
+        const tabContents = document.querySelectorAll('.mid-tab-content');
+
+        function activateTab(index) {
+          tabButtons.forEach((b,i) => {
+            b.classList.toggle('active', i === index);
+          });
+          tabContents.forEach((c,i) => {
+            c.classList.toggle('active', i === index);
+          });
+        };
+
+        tabButtons.forEach((btn, i) => {
+          btn.addEventListener('click', () => {
+            activateTab(i);
+          });
+        });
+
         function Init() {
           helpers.init(Resources);
           helpers.onCounterStart(EventDate);
@@ -776,6 +880,7 @@
           }, 1000);
           helpers.onAudioPlayer();
           animate();
+          activateTab(0);
         };
         Init();
 
