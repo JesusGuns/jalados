@@ -219,7 +219,7 @@
       }
 
       .holo-button {
-        padding: 0.6rem 1.2rem;
+        padding: 0.5rem 0.5rem;
         border: 1px solid var(--color-neon-cyan);
         background: rgba(0,255,255,0.1);
         backdrop-filter: blur(8px);
@@ -235,7 +235,7 @@
         box-shadow: 0 0 20px var(--color-neon-cyan), inset 0 0 10px var(--color-neon-cyan);
       }
       .holo-button.icono {
-        width: 60px;
+        width: 50px;
       }
       #action-buttons {
         display: flex;
@@ -460,8 +460,8 @@
         position: relative;
         border-radius: 6px;
         box-shadow:
-          0px  -5px  8px -4px var(--color-neon-blue),
-          0px   5px  8px -4px var(--color-neon-blue),
+          0px  -5px  8px -4px var(--color-neon-cyan),
+          0px   5px  8px -4px var(--color-neon-cyan),
           0px   0px  0px  0px transparent,
           0px   0px  0px  0px transparent;
         display: flex;
@@ -730,6 +730,7 @@
         color: var(--color-neon-cyan);
         text-shadow: 0 0 8px var(--color-neon-cyan);
         padding: 0.5rem;
+        width: 100%;
       }
       .mid-tab-content.active {
         display: block;
@@ -762,7 +763,7 @@
       .map-link {
         display: block;
         width: fit-content;
-        margin: 1rem auto;
+        margin: 0.5rem auto 2rem auto;
       }
 
       #overlay-buttons .holo-button.icono.active {
@@ -847,6 +848,7 @@
 
           <div id="overlay-buttons">
             <button class="holo-button icono"><i class="fas fa-info-circle"></i></button>
+            <button class="holo-button icono"><i class="fa-solid fa-location-dot"></i></button>
             <button class="holo-button icono"><i class="fas fa-route"></i></button>
             <button class="holo-button icono"><i class="fas fa-images"></i></button>
             <button class="holo-button icono"><i class="fas fa-box-open"></i></button>
@@ -858,30 +860,24 @@
                 <p>! Atención tripulación !</p>
               </div>
               <p class="mission-text">
-                Establezcan curso a la Base Estelar 
-                <span data-replace="MainEventLocationDescription"></span>
-                <br> 
-                <span data-replace="MainEventAddress"></span>
-                <br><br>
-                Para el <span data-replace="EventDateString"></span> 
-                a las <span data-replace="EventHourString"></span>
-                <br><br>
-                Consulta el enlace de aterrizaje en el Geo-Mapa cósmico.
-                <br>
-                <a href="#" data-replace="MainEventUrl" target="_blank" class="map-link">
-                  <img class="location-maps" src="#" data-replace="Image_GoogleLocation" alt="Google Location">
-                </a>
-                <br>
               </p>
             </div>
 
             <div class="mid-tab-content" data-tab="2">
-              <div class="mission-description">
-                <p>Itinerario</p>
-              </div>
               <p class="mission-text">
-                Sincronícense y ajusten sus sistemas de navegación:
-                a continuación presentamos el itinerario programado para nuestra misión.
+                Establezcan curso para el <span data-replace="EventDateString"></span> 
+                a las <span data-replace="EventHourString"></span>
+                <br><br>
+                Consulten el enlace de aterrizaje en el Geo-Mapa cósmico.
+                <a href="#" data-replace="MainEventUrl" target="_blank" class="map-link">
+                  <img class="location-maps" src="#" data-replace="Image_GoogleLocation" alt="Google Location">
+                </a>
+              </p>
+            </div>
+
+            <div class="mid-tab-content" data-tab="3">
+              <p class="mission-text" style="text-align: center !important;">
+                Itinerario programado.
               </p>
               <div class="subcontainerTimeline">
                 <div class="timeline">
@@ -923,16 +919,16 @@
               </div>
             </div>
 
-            <div class="mid-tab-content" data-tab="3">
+            <div class="mid-tab-content" data-tab="4">
               <p class="mission-text">
-                <span>📂 Fotos y recuerdos aquí.</span>
+                📂 Fotos y recuerdos aquí.
               </p>
             </div>
 
-            <div class="mid-tab-content" data-tab="4">
+            <div class="mid-tab-content" data-tab="5">
               <p class="mission-text">
-                Tripulación: su presencia es la clave del éxito de esta misión,
-                pero si desean aportar suministros estelares,
+                Su presencia es la clave del éxito de esta misión,
+                pero si desean aportar con suministros estelares,
                 les sugerimos las siguientes opciones:
               </p>
               <div class="_btn-brands">
