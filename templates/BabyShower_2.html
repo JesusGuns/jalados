@@ -367,7 +367,7 @@
       /* #region MissionTop Section*/
       #mission-top {
         position: absolute;
-        top: 1.3rem;
+        top: 1rem;
         left: 50%;
         transform: translateX(-50%);
         display: none;
@@ -1105,16 +1105,16 @@
         const bell = document.getElementById('bell-overlay-img');
         const bellOver = document.getElementById('bell-overlay');
         const notification = document.getElementById('notification');
-        const mission = document.getElementById('mission-container');
         const missionTop      = document.getElementById('mission-top');
         const missionTopText  = document.getElementById('mission-top-text');
-        const clock = document.getElementById('counter-section');
-        const midContainer = document.getElementById('mid-container');
-        const scrollIndicator   = midContainer.querySelector('.scroll-indicator');
+        const mission = document.getElementById('mission-container');
         const buttons = document.getElementById('overlay-buttons');
         const audioButton = document.getElementById('audioButton');
+        const midContainer = document.getElementById('mid-container');
+        const scrollIndicator   = midContainer.querySelector('.scroll-indicator');
+        const clock = document.getElementById('counter-section');
 
-        if (bell && buttons) {
+        if (bell) {
           bell.addEventListener('click', () => {
                 audioButton.click();
 
@@ -1122,19 +1122,22 @@
                 bellOver.style.display           = 'none';
                 notification.style.display       = 'none';
 
-                mission.style.display            = 'flex';
                 missionTop.style.display         = 'block';
                 missionTopText.classList.add('typing');
 
-                buttons.style.display            = 'flex';
-                clock.style.display              = 'flex';
-                midContainer.style.display       = 'flex';
-
-                updateScrollHint();
-
                 missionTopText.addEventListener('animationend', (e) => {
                   if (e.animationName === 'typing') {
-                    missionTopText.style.borderRight = 'none';
+                    missionTopText.style.borderRight     = 'none';
+
+                    setTimeout(() => {
+                        buttons.style.display            = 'flex';
+                        midContainer.style.display       = 'flex';
+                        clock.style.display              = 'flex';
+                        mission.style.display            = 'flex';
+
+                        updateScrollHint();
+                    }, 500);
+
                   }
                 });
 
