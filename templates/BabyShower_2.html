@@ -702,27 +702,32 @@
       .scroll-indicator {
         position: absolute;
         bottom: 2%;
-        right: 3%;
-        transform: translateY(0);
-        display: none;
+        right: 4%;
+        width: fit-content;
         pointer-events: none;
         z-index: 20;
         animation: bounce-indicator 1.5s infinite ease-in-out;
       }
 
-      .scroll-indicator-img {
+      .scroll-indicator::before {
+        font-family: 'Font Awesome 6 Free';
+        font-weight: 900;
+        content: '\f054';
         display: block;
-        width: clamp(2rem, 8vw, 4rem);
-        height: auto;
-        filter: drop-shadow(0 0 8px var(--color-neon-cyan));
+        font-size: 2rem;
+        color: var(--color-neon-pink);
+        text-shadow:
+          0 0 12px  var(--color-neon-cyan),
+          0 0 12px var(--color-neon-purple),
+          0 0 12px var(--color-neon-pink);
       }
 
       @keyframes bounce-indicator {
         0%, 100% {
-          transform: translateY(0) scale(1);
+          transform: translateY(0) scale(1) rotate(90deg);
         }
         50% {
-          transform: translateY(-10%) scale(0.5);
+          transform: translateY(-10%) scale(0.5) rotate(90deg);
         }
       }
 
@@ -1032,9 +1037,10 @@
               </div>
             </div>
 
-            <div class="scroll-indicator">
+            <!-- <div class="scroll-indicator">
               <img src="../images/babyShower/down.png" class="scroll-indicator-img"  alt="Desliza hacia abajo" />
-            </div>
+            </div> -->
+            <div class="scroll-indicator"></div>
           </div>
 
           <div id="counter-section" class="_template-Counter-Section">
