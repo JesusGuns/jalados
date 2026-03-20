@@ -1,5 +1,13 @@
 @import url("animations.css");
 
+@font-face {
+  font-family: "monallesia";
+  src: url("../fonts/monallesiascript.woff2") format("woff2"),
+    url("../fonts/monallesiascript.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
 /* #region HTML*/
 html {
   font-size: 14px;
@@ -45,7 +53,7 @@ main {
   background: white;
   padding: 10px;
   border-radius: 20px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
   z-index: 999;
 }
 
@@ -176,6 +184,27 @@ img.location-maps {
   }
 }
 /* #endregion Google Location Icon*/
+
+/* #region Icons*/
+img._common-icon {
+  width: 30px;
+  height: 30px;
+  object-fit: cover;
+}
+
+@media (max-width: 575.98px) {
+  img._common-icon {
+    width: 45px;
+    height: 45px;
+  }
+}
+@media (max-width: 375.98px) {
+  img._common-icon {
+    width: 40px;
+    height: 40px;
+  }
+}
+/* #endregion Icons*/
 
 /* #region Puzzle*/
 ._template-Puzzle {
@@ -332,3 +361,67 @@ img.location-maps {
 }
 
 /* #endregion Image Stack Gallery  */
+
+/* #region General*/
+._common-d-flex {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+._common-flex-column {
+  flex-direction: column;
+}
+
+._btn-brands {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+._btn-brands.show {
+  display: flex;
+}
+._btn-gifttable {
+  background-color: rgba(255, 255, 255, 0.5);
+  border: 5px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  box-shadow: 0 4px 6px 0 #ccc;
+  cursor: pointer;
+  font-size: 2rem;
+  font-weight: bold;
+  padding: 0px 35px;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+._btn-gifttable:hover {
+  box-shadow: 4px 6px 12px 0px #545454;
+}
+
+._btn-gifttable a {
+  width: 65px;
+  margin-right: 1rem;
+}
+
+._btn-gifttable img {
+  width: 65px;
+  margin-right: 1rem;
+}
+
+@media (max-width: 575.98px) {
+  ._btn-brands {
+    flex-direction: column;
+  }
+  ._btn-gifttable {
+    border: 0;
+    padding: 10px 35px;
+  }
+
+  ._btn-gifttable img {
+    width: 40px;
+  }
+}
+/* #endregion General*/

@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html lang="en" class="lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html lang="en" class="lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html lang="en" class="lt-ie9"> <![endif]-->
+<!--[if IE 9]>         <html lang="en" class="ie9"> <![endif]-->
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/png" sizes="196x196"
+    href="https://jesusguns.github.io/jalados/images/_favicon-Wedding.png">
+  <!-- Primary Meta Tags -->
+  <title>Wedding</title>
+  <meta name="title" content="Wedding" />
+  <meta name="description"
+    content="Los momentos más esperados se sueñan, se imaginan, se construyen y cuando llegue ese día tan especial, lo más importante es que estés a nuestro lado." />
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://jesusguns.github.io/jalados/templates/Wedding_2.html" />
+  <meta property="og:title" content="Wedding" />
+  <meta property="og:description"
+    content="Los momentos más esperados se sueñan, se imaginan, se construyen y cuando llegue ese día tan especial, lo más importante es que estés a nuestro lado." />
+  <meta property="og:image" content="https://jesusguns.github.io/jalados/images/_favicon-Wedding.png" />
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image" />
+  <meta property="twitter:url" content="https://jesusguns.github.io/jalados/templates/Wedding_2.html" />
+  <meta property="twitter:title" content="Wedding" />
+  <meta property="twitter:description"
+    content="Los momentos más esperados se sueñan, se imaginan, se construyen y cuando llegue ese día tan especial, lo más importante es que estés a nuestro lado." />
+  <meta property="twitter:image" content="https://jesusguns.github.io/jalados/images/_favicon-Wedding.png" />
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <!-- Font Awesome-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <link href="https://fonts.googleapis.com/css2?family=Bad+Script&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Thai:wght@100..900&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="../css/templates.css">
+  <script src="../js/require.js"></script>
+  <style>
+    /* #region ROOT*/
+    :root {
+      --color-primary: black;
+      --color-secondary: #b59b60;
+      --color-third: #232323;
+      --color-fourth: white;
+
+      --font-primary: "Bonheur Royale";
+      --font-secondary: "Noto Serif Thai";
+      --font-third: "Google Sans";
+
+    }
+
+    /* #endregion ROOT*/
+    /* #region HTML*/
+    body {
+      font-family: var(--font-primary);
+      background-image: linear-gradient(to bottom, #f5f0ea), url("https://www.transparenttextures.com/patterns/rice-paper-2.png");
+      background-blend-mode: multiply;
+    }
+
+    /* #endregion HTML*/
+
+    /* #region Audio*/
+    ._template-Audio-Button.off {
+      filter: hue-rotate(45deg);
+    }
+
+    /* #endregion Audio*/
+
+
+    #spirit-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 10;
+      pointer-events: none;
+    }
+
+    .content {
+      position: relative;
+      z-index: 1;
+    }
+  </style>
+  <style>
+    ._template {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+    }
+  </style>
+  <style>
+    /* #region Counter*/
+    ._template-Counter-Section {
+      flex-direction: column;
+      position: absolute;
+      bottom: 0;
+      width: 90%;
+    }
+
+    ._template-Counter-Section ._counter-date {
+      font-family: var(--font-third);
+      font-size: 40px;
+      font-style: italic;
+      font-weight: bold;
+      color: var(--color-fourth);
+      text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
+    }
+
+    ._template-Counter-Section ._counter-Countdown {
+      border-radius: 15px;
+      background: rgba(190, 178, 154, 0.53);
+      gap: 0;
+      margin: 0 0 1.5rem 0;
+    }
+
+    ._template-Counter-Section ._counter-Timebox {
+      animation: none;
+      font-family: var(--font-third);
+      text-transform: uppercase;
+      font-size: 20px;
+      letter-spacing: 2.5px;
+      flex: 1;
+      color: var(--color-fourth);
+      text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
+    }
+
+    ._template-Counter-Section ._counter-Timebox span {
+      font-family: var(--font-secondary);
+      font-weight: normal;
+      font-size: 80px;
+      height: 90px;
+    }
+
+    @media (max-width: 1599.98px) {}
+
+    @media (max-width: 767.98px) {
+      ._template-Counter-Section {
+        width: 80%;
+      }
+    }
+
+    @media (max-width: 575.98px) {
+      ._template-Counter-Section {
+        width: 90%;
+      }
+
+      ._template-Counter-Section ._counter-date {
+        font-size: 30px;
+      }
+
+      ._template-Counter-Section ._counter-Timebox span {
+        font-size: 50px;
+        height: 60px;
+      }
+    }
+
+    @media (max-width: 375.98px) {
+      ._template-Counter-Section ._counter-date {
+        font-size: 20px;
+      }
+
+      ._template-Counter-Section ._counter-Timebox {
+        font-size: 12px;
+      }
+
+      ._template-Counter-Section ._counter-Timebox span {
+        font-size: 25px;
+        height: 30px;
+      }
+    }
+
+    /* #endregion Counter*/
+  </style>
+  <style>
+    ._main-section {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      position: relative;
+      width: fit-content;
+    }
+
+    ._main-section img._main-image {
+      width: fit-content;
+      height: 100svh;
+      border: 15px solid white;
+      border-radius: 10px;
+    }
+
+    ._main-section img._main-mono {
+      position: absolute;
+      top: 5%;
+      height: auto;
+      width: 25%;
+    }
+
+    @media (max-width: 1599.98px) {}
+
+    @media (max-width: 767.98px) {
+      ._main-section img._main-image {
+        border: 0;
+        border-radius: 0;
+        width: 100%;
+        height: auto;
+        max-width: 100%;
+        display: block;
+      }
+    }
+
+    @media (max-width: 575.98px) {
+      ._main-section img._main-mono {
+        width: 30%;
+      }
+    }
+
+    @media (max-width: 375.98px) {}
+  </style>
+  <style>
+    ._rings-section {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      position: relative;
+      width: 100%;
+      padding: 2.5rem;
+    }
+
+    ._rings-section::before {
+      content: "";
+      position: absolute;
+      width: clamp(180px, 25vw, 260px);
+      height: clamp(180px, 25vw, 260px);
+      background: radial-gradient(circle, rgba(181, 155, 96, 0.25) 0%, transparent 70%);
+      border-radius: 50%;
+      z-index: 0;
+    }
+
+    ._rings-section img {
+      animation: _animation-heartbeat-elegant 4s ease-in-out infinite,
+        glow 4s ease-in-out infinite,
+        float 6s ease-in-out infinite;
+      opacity: 0.9;
+      z-index: 1;
+      width: clamp(140px, 20vw, 200px);
+    }
+
+    @media (max-width: 1070.98px) {}
+
+    @media (max-width: 575.98px) {}
+  </style>
+  <style>
+    ._secondary-section {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      position: relative;
+      width: fit-content;
+    }
+
+    ._secondary-section img._main-image {
+      width: auto;
+      height: 100svh;
+      border-radius: 10px;
+    }
+
+    ._secondary-section ._details {
+      position: absolute;
+      left: 0;
+      right: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      background: rgba(190, 178, 154, 0.53);
+      padding: 10px 5px;
+      border-radius: 5px;
+    }
+
+    ._secondary-section ._details h2 {
+      font-family: var(--font-third);
+      letter-spacing: 2px;
+      margin: 0;
+      text-align: center;
+      color: var(--color-fourth);
+      text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
+    }
+
+    @media (max-width: 767.98px) {
+      ._secondary-section img._main-image {
+        width: 100%;
+        height: auto;
+        max-width: 100%;
+        display: block;
+      }
+    }
+  </style>
+  <style>
+    ._timeline-section {
+          display: flex;
+    align-items: center;
+    justify-content: center;
+      width: 100%;
+      padding: 2.5rem;
+    }
+
+    ._timeline-section img.desktop {
+      opacity: 0.9;
+      width: clamp(700px, 30vw, 700px);
+    }
+
+    ._timeline-section img.mobile {
+      width: 100%;
+      height: auto;
+      max-width: 100%;
+    }
+  </style>
+</head>
+
+<body>
+  <canvas id="spirit-canvas"></canvas>
+  <div class="content">
+    <main role="main" class="w-100">
+      <div id="player">
+        <audio id="audio" src="#" data-replace="AudioUrl" loop></audio>
+      </div>
+      <span id="audioButton" class="_template-Audio-Button off">
+        <img src="#" data-replace="Image_AudioUrl" alt="Audio" />
+      </span>
+      <div class="_template">
+
+        <div class="_main-section">
+          <img class="_main-mono" src="../images/wedding2-monoJJ.png">
+          <img class="_main-image" src="../images/wedding2-1.jpg">
+
+          <div class="_template-Counter-Section">
+            <div class="_counter-date"> 17 . 10 . 2026 </div>
+            <div id="countdown" class="_counter-Countdown">
+              <div class="_counter-Timebox">
+                <span id="days">0</span> Días
+              </div>
+              <div class="_counter-Timebox">
+                <span id="hours">0</span> Horas
+              </div>
+              <div class="_counter-Timebox">
+                <span id="minutes">0</span> Minutos
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <div class="_rings-section">
+          <img class="" src="../images/wedding2-rings.png">
+        </div>
+        <div class="_secondary-section">
+          <img class="_main-image" src="../images/wedding2-2.png">
+          <div class="_details">
+            <h2>¡Nos casamos!</h2>
+            <h2>Y queremos compartir este día contigo.</h2>
+          </div>
+        </div>
+
+        <div class="_timeline-section">
+          <img class="desktop d-none d-md-block" src="../images/wedding2-timeline-h.png">
+          <img class="mobile d-md-none" src="../images/wedding2-timeline-v.png">
+        </div>
+
+
+      </div>
+    </main>
+  </div>
+
+  <script src="../js/main.js"></script>
+
+  <script>
+    requirejs(["jquery", "helpers"], function ($, helpers) {
+      const EventDate = new Date("2026-10-17T17:30:00");
+      const EventReception = new Date("2026-10-17T18:00:00");
+
+      const mainEvent = {
+        Name: "Nicole Gutiérrez",
+        Date: EventDate,
+        Description: `Acompáñanos a celebrar los XV de `,
+        LocationDescription: "Catedral de Guadalajara (Catedral Basílica de la Asunción de María Santísima)",
+        Address: "Av. Fray Antonio Alcalde 10, Zona Centro, 44100 Guadalajara, Jal.",
+        Father: "José Gutiérrez",
+        Mother: "Melissa Hurtado",
+        GodFather: "Juan Fernández",
+        GodMother: "Laura Jimenez",
+        GoogleMapsUrl: "https://maps.app.goo.gl/hBdb191LiXzkPRfR8",
+        AmazonGiftTableUrl: "https://www.amazon.com.mx/",
+        LiverpoolGiftTableUrl: "https://www.liverpool.com.mx/tienda/home",
+        CollageImages: ['https://img.freepik.com/foto-gratis/adolescente-celebrando-quinceanera_23-2148478038.jpg', 'https://img.freepik.com/foto-gratis/chica-sonriente-tiro-medio-hermoso-vestido_52683-86468.jpg?t=st=1746555442~exp=1746559042~hmac=e8d5adc2117161bcd88377ab37d6e1358945489c42ac647e29fb996cf047ca4c&w=1800', 'https://lh3.googleusercontent.com/p/AF1QipMv-RExo0XkTU7eg8u-FelVsp1gd3u4XZyR3ipA=s3072-v1', 'https://lh3.googleusercontent.com/p/AF1QipNk9cctNeskTP2Zg2EEOQjV-aMFrSO5RRxWtx5N=s1024-v1', 'https://img.freepik.com/foto-gratis/mujer-tiro-medio-caminando-calle_23-2148703161.jpg?ga=GA1.1.1993030682.1745256637&semt=ais_hybrid&w=740', 'https://img.freepik.com/fotos-premium/hermosa-novia-usa-vestido-blanco-exclusivo-jardin_769431-2.jpg?ga=GA1.1.1993030682.1745256637&semt=ais_hybrid&w=740'],
+        ImageMyParents: "https://img.freepik.com/fotos-premium/retrato-pareja-madura-feliz-abrazada-casa-conexion-amor-o-confianza-asociacion-juntos-cara-al-hombre-abrazar-mujer-compromiso-cuidado-relacion-saludable-apoyo-casa_590464-361056.jpg?ga=GA1.1.1993030682.1745256637&semt=ais_hybrid&w=740",
+        ImageMyGodParents: "https://img.freepik.com/fotos-premium/pareja-dia-san-valentin_772250-159.jpg?ga=GA1.1.1993030682.1745256637&w=740",
+        ImageDressCodeUrl: "https://img.freepik.com/foto-gratis/gente-elegante-bailando-tango_23-2149193458.jpg?ga=GA1.1.1993030682.1745256637&semt=ais_hybrid&w=740",
+      };
+
+      const secondaryEvent = {
+        Date: EventReception,
+        LocationDescription: "Salón de Eventos Quinta el Eden",
+        Address: "C. Morelos 670, González Ortega, 45190 Zapopan, Jal.",
+        GoogleMapsUrl: "https://maps.app.goo.gl/1wwmTSk84XA8pLMn8",
+      }
+
+      const googleCalendar = {
+        Text: "Mis XV " + mainEvent.Name,
+        Location: mainEvent.Address,
+        Detail: `
+                    ${mainEvent.Description}${mainEvent.Name}.
+                📍 Lugar: ${mainEvent.LocationDescription}
+                🕒 Hora: ${mainEvent.HourString}
+                ⏰ Recordatorio: Llega con 30 minutos de anticipación.
+                ✨ ¡Te esperamos para compartir este momento tan especial!`
+      }
+
+      const additionalInformation = {
+        ImageBodyBackground: "https://img.freepik.com/foto-gratis/vista-arriba-anillos-bodas-plata-forma-corazon-sobre-fondo-madera_23-2148187525.jpg?ga=GA1.1.1993030682.1745256637&semt=ais_hybrid&w=740&q=80",
+        ImageCorner: "",
+        ImageFrontCard: "https://img.freepik.com/foto-gratis/mujer-tiro-medio-caminando-calle_23-2148703161.jpg?ga=GA1.1.1993030682.1745256637&semt=ais_hybrid&w=740",
+        AudioUrl: "../music/Ember Island - Umbrella.mp3",
+        WhatsAppUrl: "https://wa.link/encb79",
+      }
+
+      const staticLinks = {
+        ImageAudioUrl: "https://cdn-icons-png.freepik.com/512/13896/13896624.png?ga=GA1.1.1993030682.1745256637",
+        ImageAmazonUrl: "https://static-00.iconduck.com/assets.00/amazon-icon-2048x2048-pqt2fe18.png",
+        ImageLiverpoolUrl: "https://play-lh.googleusercontent.com/FwrxfHaknUKLneazGpPsjJvQ4mUYKJkccj-efHNeXQISwCwqC9ymNAnqlAY5J5oHIOc",
+        ImageGoogleLocation: "https://img.icons8.com/?size=512&id=DcygmpZqBEd9&format=png",
+      }
+
+      const Resources = {
+        MainEvent: mainEvent,
+        SecondaryEvent: secondaryEvent,
+        GoogleCalendar: googleCalendar,
+        StaticLinks: staticLinks,
+        AdditionalInformation: additionalInformation
+      };
+
+      function onLoad() {
+        const isMobile = window.innerWidth <= 992;
+        $('._templat').css('background-image', 'url("' + Resources.AdditionalInformation.ImageBodyBackground + '")');
+      }
+
+      function Init() {
+        onLoad();
+        helpers.init(Resources);
+        helpers.onCounterStart(EventDate);
+        setInterval(() => {
+          helpers.onCounterStart(EventDate);
+        }, 1000);
+        helpers.onAudioPlayer();
+      }
+      Init();
+    });
+
+
+
+  </script>
+  <script>
+    requirejs(["jquery"], function ($) {
+      let width, height, canvas, ctx, particles = [];
+
+      $(document).ready(function () {
+        initCanvas();
+        $(window).on('resize', resize);
+      });
+
+      function initCanvas() {
+        canvas = document.getElementById('spirit-canvas');
+        ctx = canvas.getContext('2d');
+        resize();
+
+        const particleCount = Math.floor(width * 0.08); // menos partículas, más elegancia
+        for (let i = 0; i < particleCount; i++) {
+          particles.push(new Particle(true));
+        }
+
+        animate();
+      }
+
+      function resize() {
+        width = window.innerWidth;
+        height = window.innerHeight;
+        canvas.width = width;
+        canvas.height = height;
+      }
+
+      function animate() {
+        ctx.clearRect(0, 0, width, height);
+
+        for (let i = 0; i < particles.length; i++) {
+          particles[i].update();
+          particles[i].draw();
+        }
+
+        requestAnimationFrame(animate);
+      }
+
+      function Particle(startRandom = false) {
+        let _this = this;
+
+        function init() {
+          _this.pos = {
+            x: Math.random() * width,
+            y: startRandom ? Math.random() * height : Math.random() * -50
+          };
+          _this.alpha = 0.2 + Math.random() * 0.6; // transparencia inicial
+          _this.scale = 0.05 + Math.random() * 0.4; // tamaño de la partícula
+          _this.velocity = 0.2 + Math.random() * 0.5; // velocidad vertical
+          _this.drift = Math.random() * 0.5 - 0.25; // movimiento horizontal suave
+          _this.color = ["255,255,255", "255,240,200", "255,220,150"][Math.floor(Math.random() * 3)];
+          _this.sparkleSpeed = Math.random() * 0.05 + 0.02; // velocidad del parpadeo
+        }
+
+        init();
+
+        this.update = function () {
+          // Movimiento vertical y horizontal suave
+          _this.pos.y += _this.velocity;
+          _this.pos.x += _this.drift;
+
+          // Parpadeo suave (sparkle)
+          _this.alpha += Math.sin(Date.now() * _this.sparkleSpeed) * 0.02;
+
+          // Reinicia si sale de la pantalla
+          if (_this.pos.y > height || _this.alpha <= 0) {
+            init();
+            _this.pos.y = 0;
+          }
+        };
+
+        this.draw = function () {
+          const gradient = ctx.createRadialGradient(
+            _this.pos.x,
+            _this.pos.y,
+            0,
+            _this.pos.x,
+            _this.pos.y,
+            _this.scale * 12
+          );
+          gradient.addColorStop(0, `rgba(${_this.color},${Math.min(Math.max(_this.alpha, 0), 1)})`);
+          gradient.addColorStop(1, `rgba(${_this.color},0)`);
+
+          ctx.fillStyle = gradient;
+          ctx.beginPath();
+          ctx.arc(_this.pos.x, _this.pos.y, _this.scale * 12, 0, Math.PI * 2);
+          ctx.fill();
+        };
+      }
+    });
+  </script>
+
+</body>
+
+</html>
