@@ -381,85 +381,77 @@
   <!-- TimeLine -->
   <style>
     ._timeline-section {
-  padding: 2.5rem;
-}
 
-.timeline-columns {
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  gap: 3rem;
-  position: relative;
-}
+      padding: 2.5rem;
+    }
 
-/* Columnas izquierda y derecha */
-.timeline-left,
-.timeline-right {
-  display: flex;
-  flex-direction: column;
-  gap: 2.5rem;
-  flex: 1;
-  align-items: center;
-}
+    .timeline-columns {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 3rem;
+      /* más espacio entre columnas */
+      position: relative;
+      /* para central flotante */
+    }
 
-/* Imágenes de eventos */
-.timeline-event img {
-  width: 100%;
-  max-width: 180px;
-  height: auto;
-  display: block;
-  object-fit: contain;
-}
+    /* Columnas izquierda y derecha */
+    .timeline-left,
+    .timeline-right {
+      display: flex;
+      flex-direction: column;
+      /* siempre vertical */
+      gap: 2.5rem;
+      flex: 1;
+      align-items: center;
+    }
 
-/* Centro */
-.timeline-center {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 10;
-}
+    /* Cada evento */
+    .timeline-event img {
+      width: 100%;
+      max-width: 180px;
+      /* más grande para desktop */
+      height: auto;
+      display: block;
+    }
 
-.timeline-center img {
-  max-width: 220px;
-  width: 100%;
-  height: auto;
-  display: block;
-  object-fit: contain;
-}
+    /* Imagen central flotante */
+    .timeline-center {
+      position: absolute;
+      top: 50%;
+      /* verticalmente entre columnas */
+      left: 50%;
+      /* horizontalmente entre columnas */
+      transform: translate(-50%, -50%);
+      z-index: 10;
+      /* encima de columnas */
+    }
 
-/* Responsivo */
-@media (max-width: 768px) {
-  .timeline-columns {
-    flex-direction: column;
-    align-items: center;
-    gap: 1.5rem;
-  }
+    .timeline-center img {
+      max-width: 220px;
+      /* más grande para destacar */
+      width: 100%;
+      height: auto;
+      display: block;
+    }
 
-  /* Columnas se vuelven apiladas */
-  .timeline-left,
-  .timeline-right {
-    flex-direction: column;
-    gap: 1.5rem;
-    width: 100%;
-  }
+    /* Responsivo: solo escalado de imágenes y gaps, layout igual */
+    @media (max-width: 768px) {
+      .timeline-event img {
+        max-width: 150px;
+        /* escala los eventos */
+      }
 
-  /* Centro se vuelve estático */
-  .timeline-center {
-    position: static;
-    transform: none;
-    margin: 1rem 0;
-  }
+      .timeline-center img {
+        max-width: 180px;
+        /* escala la central */
+      }
 
-  /* Ajuste de tamaño de imágenes */
-  .timeline-event img {
-    max-width: 150px;
-  }
-
-  .timeline-center img {
-    max-width: 180px;
-  }
-}
+      .timeline-columns {
+        gap: 2rem;
+        /* menor espacio en mobile */
+      }
+    }
   </style>
   <!--Third section-->
   <style>
