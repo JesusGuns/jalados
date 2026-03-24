@@ -2,7 +2,8 @@
 
 @font-face {
   font-family: "monallesia";
-  src: url("../fonts/monallesiascript.woff2") format("woff2"),
+  src:
+    url("../fonts/monallesiascript.woff2") format("woff2"),
     url("../fonts/monallesiascript.woff") format("woff");
   font-weight: normal;
   font-style: normal;
@@ -425,3 +426,73 @@ img._common-icon {
   }
 }
 /* #endregion General*/
+
+/* #region Play Button*/
+._play-button {
+  width: clamp(70px, 10vw, 100px);
+  height: clamp(70px, 10vw, 100px);
+  background: rgba(190, 178, 154, 0.53);
+  border-radius: 50%;
+  position: relative;
+  cursor: pointer;
+  animation: _animation-pulse-4 1.8s infinite;
+  transition: transform 0.2s ease;
+}
+
+._play-button:hover {
+  transform: scale(1.1);
+}
+
+._play-button:active {
+  transform: scale(0.95);
+}
+
+/* Triángulo (icono play) */
+._play-button::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-40%, -50%);
+  width: 0;
+  height: 0;
+  border-left: 30px solid black;
+  border-top: 20px solid transparent;
+  border-bottom: 20px solid transparent;
+}
+
+/* #endregion Play Button*/
+
+/* #region Text style*/
+.slide-right {
+  animation: slideInRight 1s ease forwards;
+}
+
+.slide-left {
+  animation: slideInLeft 1s ease forwards;
+}
+
+.slide-down {
+  animation: slideDown 1s ease forwards;
+}
+
+.slide-up h2 {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+  will-change: transform, opacity;
+}
+
+.slide-up p {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 1.2s ease, transform 1.2s ease; /* más lenta que h2 */
+  will-change: transform, opacity;
+}
+
+.slide-up > h2.visible,
+.slide-up > p.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+/* #endregion Text style*/

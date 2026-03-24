@@ -42,6 +42,8 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&display=swap"
     rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Handlee&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../css/templates.css">
   <script src="../js/require.js"></script>
   <style>
@@ -55,7 +57,8 @@
       --font-primary: "Bonheur Royale";
       --font-secondary: "Noto Serif Thai";
       --font-third: "Google Sans";
-
+      --font-fourth: "Rock Salt";
+      --font-five: "Handlee";
     }
 
     /* #endregion ROOT*/
@@ -89,6 +92,7 @@
       z-index: 1;
     }
   </style>
+  <!--Template-->
   <style>
     ._template {
       display: flex;
@@ -96,30 +100,29 @@
       justify-content: center;
       flex-direction: column;
     }
+
+    ._hide-section {
+      display: none !important;
+    }
   </style>
+  <!-- Counter -->
   <style>
     /* #region Counter*/
     ._template-Counter-Section {
       flex-direction: column;
-      position: absolute;
+      position: relative;
       bottom: 0;
-      width: 90%;
-    }
-
-    ._template-Counter-Section ._counter-date {
-      font-family: var(--font-third);
-      font-size: 40px;
-      font-style: italic;
-      font-weight: bold;
-      color: var(--color-fourth);
-      text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
+      width: 100%;
     }
 
     ._template-Counter-Section ._counter-Countdown {
       border-radius: 15px;
-      background: rgba(190, 178, 154, 0.53);
       gap: 0;
-      margin: 0 0 1.5rem 0;
+      margin: 1.5rem;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+      background: rgba(255, 255, 255, 0.1);
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+      animation: _animation-pulse-3 2s infinite;
     }
 
     ._template-Counter-Section ._counter-Timebox {
@@ -144,30 +147,13 @@
 
     @media (max-width: 767.98px) {
       ._template-Counter-Section {
-        width: 80%;
+        width: 95%;
       }
     }
 
-    @media (max-width: 575.98px) {
-      ._template-Counter-Section {
-        width: 90%;
-      }
-
-      ._template-Counter-Section ._counter-date {
-        font-size: 30px;
-      }
-
-      ._template-Counter-Section ._counter-Timebox span {
-        font-size: 50px;
-        height: 60px;
-      }
-    }
+    @media (max-width: 575.98px) {}
 
     @media (max-width: 375.98px) {
-      ._template-Counter-Section ._counter-date {
-        font-size: 20px;
-      }
-
       ._template-Counter-Section ._counter-Timebox {
         font-size: 12px;
       }
@@ -180,6 +166,7 @@
 
     /* #endregion Counter*/
   </style>
+  <!-- Main -->
   <style>
     ._main-section {
       display: flex;
@@ -187,12 +174,13 @@
       justify-content: center;
       flex-direction: column;
       position: relative;
-      width: fit-content;
+      width: 100%;
+      max-width: 100%;
     }
 
     ._main-section img._main-image {
       width: fit-content;
-      height: 100svh;
+      height: 100vh;
       border: 15px solid white;
       border-radius: 10px;
     }
@@ -201,30 +189,101 @@
       position: absolute;
       top: 5%;
       height: auto;
-      width: 25%;
+      width: 20%;
     }
+
+    ._main-section ._details {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      padding: 10px 5px;
+    }
+
+    ._main-section ._details h1 {
+      font-family: var(--font-primary);
+      font-size: 5rem;
+      letter-spacing: 2px;
+      margin: 0;
+      text-align: center;
+      color: var(--color-fourth);
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.7);
+    }
+
+    ._main-section ._details h2 {
+      font-family: var(--font-third);
+      font-style: italic;
+      font-weight: bold;
+      color: var(--color-fourth);
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.7);
+      letter-spacing: 2px;
+      margin: 0;
+      text-align: center;
+    }
+
 
     @media (max-width: 1599.98px) {}
 
     @media (max-width: 767.98px) {
+      ._main-section {
+        width: 100%;
+        height: 100svh;
+        overflow: hidden;
+      }
+
       ._main-section img._main-image {
         border: 0;
         border-radius: 0;
         width: 100%;
-        height: auto;
-        max-width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
         display: block;
+      }
+
+      ._main-section img._main-mono {
+        width: 30%;
+      }
+
+      ._main-section ._details h1 {
+        font-size: 4rem;
+      }
+
+      ._main-section ._details h2 {
+        font-size: 1.8rem;
       }
     }
 
     @media (max-width: 575.98px) {
       ._main-section img._main-mono {
-        width: 30%;
+        width: 40%;
+      }
+
+      ._main-section ._details h1 {
+        font-size: 3rem;
+      }
+
+      ._main-section ._details h2 {
+        font-size: 1.5rem;
       }
     }
 
-    @media (max-width: 375.98px) {}
+    @media (max-width: 375.98px) {
+
+      ._main-section ._details h1 {
+        font-size: 2rem;
+      }
+
+      ._main-section ._details h2 {
+        font-size: 1.2rem;
+      }
+    }
   </style>
+  <!-- Rings -->
   <style>
     ._rings-section {
       display: flex;
@@ -233,32 +292,45 @@
       flex-direction: column;
       position: relative;
       width: 100%;
-      padding: 2.5rem;
+      padding: 2.5rem 0 0;
     }
 
     ._rings-section::before {
       content: "";
       position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
       width: clamp(180px, 25vw, 260px);
       height: clamp(180px, 25vw, 260px);
       background: radial-gradient(circle, rgba(181, 155, 96, 0.25) 0%, transparent 70%);
       border-radius: 50%;
       z-index: 0;
+      animation: halo-pulse 6s ease-in-out infinite;
     }
 
     ._rings-section img {
-      animation: _animation-heartbeat-elegant 4s ease-in-out infinite,
-        glow 4s ease-in-out infinite,
-        float 6s ease-in-out infinite;
-      opacity: 0.9;
+      position: relative;
       z-index: 1;
       width: clamp(140px, 20vw, 200px);
+      opacity: 0.95;
+      animation: heartbeat-float 5s ease-in-out infinite,
+        glow 4s ease-in-out infinite;
+      transform-origin: center;
     }
 
-    @media (max-width: 1070.98px) {}
+    @media (max-width: 575.98px) {
+      ._rings-section::before {
+        width: 150px;
+        height: 150px;
+      }
 
-    @media (max-width: 575.98px) {}
+      ._rings-section img {
+        width: 120px;
+      }
+    }
   </style>
+  <!-- Secondary -->
   <style>
     ._secondary-section {
       display: flex;
@@ -271,7 +343,7 @@
 
     ._secondary-section img._main-image {
       width: auto;
-      height: 100svh;
+      height: 100vh;
       border-radius: 10px;
     }
 
@@ -306,24 +378,256 @@
       }
     }
   </style>
+  <!-- TimeLine -->
   <style>
-    ._timeline-section {
-          display: flex;
+   .timeline {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 2rem;
+  padding: 2.5rem;
+  width: 100%;
+  flex-wrap: wrap; /* permite que las columnas bajen en pantallas pequeñas */
+}
+
+.timeline-left,
+.timeline-right,
+.timeline-center {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  flex: 1 1 200px; /* cada columna ocupa al menos 200px, pero crece según el espacio */
+  align-items: center;
+}
+
+.timeline img {
+  width: 100%; /* ocupa todo el ancho disponible de su contenedor */
+  max-width: 150px; /* evita que se haga gigante en pantallas grandes */
+  height: auto;
+  display: block;
+}
+
+/* Líneas conectores opcionales */
+.timeline-center {
+  position: relative;
+}
+.timeline-center::before,
+.timeline-center::after {
+  content: "";
+  position: absolute;
+  width: 2px;
+  height: 100%;
+  background: #ccc;
+}
+
+.timeline-center::before {
+  left: -50%;
+  top: 0;
+}
+
+.timeline-center::after {
+  right: -50%;
+  top: 0;
+}
+
+/* Media query para pantallas pequeñas */
+@media (max-width: 768px) {
+  .timeline {
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
-      width: 100%;
-      padding: 2.5rem;
+  }
+
+  .timeline-left,
+  .timeline-right,
+  .timeline-center {
+    flex: unset;
+    width: 80%; /* ajusta al tamaño de la pantalla */
+  }
+
+  .timeline-center::before,
+  .timeline-center::after {
+    display: none; /* opcional: quitar líneas en móvil */
+  }
+}
+  </style>
+  <!--Third section-->
+  <style>
+    ._third-section {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      position: relative;
     }
 
-    ._timeline-section img.desktop {
-      opacity: 0.9;
-      width: clamp(700px, 30vw, 700px);
+    ._third-section img._main-image {
+      width: 100%;
+      height: 100vh;
+      object-fit: cover;
+      border-radius: 10px;
     }
 
-    ._timeline-section img.mobile {
-      width: 100%;
+    ._third-section ._details {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+
+      background: rgba(190, 178, 154, 0.53);
+      backdrop-filter: blur(5px);
+
+      padding: 15px 10px;
+      border-radius: 2rem;
+      width: 65%;
+      max-width: 600px;
+    }
+
+    ._third-section ._details p {
+      font-family: var(--font-third);
+      letter-spacing: 1px;
+      line-height: 1.6;
+      margin: 0;
+      text-align: center;
+      color: var(--color-fourth);
+      text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
+      font-size: 1.3rem;
+      padding: 1rem;
+    }
+
+    @media (max-width: 767.98px) {
+      ._third-section img._main-image {
+        height: auto;
+        max-height: 100vh;
+      }
+
+      ._third-section ._details {
+        width: 80%;
+      }
+    }
+
+    @media (max-width: 575.98px) {
+      ._third-section ._details {
+        width: 95%;
+        padding: 10px;
+      }
+
+      ._third-section ._details p {
+        font-size: 1rem;
+        padding: 5px;
+      }
+    }
+
+    @media (max-width: 375.98px) {
+      ._third-section ._details p {
+        font-size: 0.9rem;
+      }
+    }
+  </style>
+  <!--Gift table-->
+  <style>
+    /* Contenedor principal */
+    ._section-gifttable {
+      border-radius: 15px;
+      margin: 1.5rem auto;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+      width: 70%;
+      background: rgba(190, 178, 154, 0.3);
+      backdrop-filter: blur(6px);
+      padding: 2rem 1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* Título */
+    ._section-gifttable ._title {
+      font-family: var(--font-third);
+      font-size: clamp(2rem, 5vw, 3rem);
+      text-align: center;
+      font-weight: bold;
+      color: var(--color-fourth);
+      text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
+      margin-bottom: 1rem;
+    }
+
+    /* Detalles */
+    ._section-gifttable ._details {
+      font-family: var(--font-third);
+      font-size: clamp(1rem, 3vw, 1.6rem);
+      text-align: center;
+      color: var(--color-fourth);
+      text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
+      margin-bottom: 2rem;
+    }
+
+    /* Botones contenedor */
+    ._btn-brands {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      justify-content: center;
+    }
+
+    /* Botón de regalo */
+    ._btn-gift {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background-color: rgba(255, 255, 255, 0.2);
+      /* Transparencia */
+      color: var(--color-primary);
+      /* Color del texto con contraste */
+      font-family: var(--font-third);
+      font-size: 1.6rem;
+      font-weight: bold;
+      padding: 10px 20px;
+      border-radius: 10px;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      cursor: pointer;
+      text-decoration: none;
+      transition: transform 0.2s, background-color 0.2s;
+      animation: _pulse-btn 1.5s infinite alternate;
+    }
+
+    ._btn-gift img {
+      width: 65px;
       height: auto;
-      max-width: 100%;
+    }
+
+    /* Hover del botón */
+    ._btn-gift:hover {
+      transform: scale(1.05);
+      background-color: rgba(255, 255, 255, 0.3);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+    }
+
+
+    /* Responsividad para móviles pequeños */
+    @media (max-width: 575.98px) {
+      ._section-gifttable {
+        width: 90%;
+        padding: 1.5rem 1rem;
+      }
+
+      ._section-gifttable ._details {
+        font-size: 1.2rem;
+      }
+
+      ._btn-gift {
+        font-size: 1.2rem;
+        padding: 8px 15px;
+      }
+
+      ._btn-gift img {
+        width: 40px;
+      }
+    }
+
+    @media (max-width: 375.98px) {
+      ._btn-brands {
+        gap: 8px;
+        padding-left: 0.5rem;
+      }
     }
   </style>
 </head>
@@ -335,17 +639,26 @@
       <div id="player">
         <audio id="audio" src="#" data-replace="AudioUrl" loop></audio>
       </div>
-      <span id="audioButton" class="_template-Audio-Button off">
+      <span id="audioButton" class="_template-Audio-Button off _hide-section">
         <img src="#" data-replace="Image_AudioUrl" alt="Audio" />
       </span>
       <div class="_template">
-
         <div class="_main-section">
           <img class="_main-mono" src="../images/wedding2-monoJJ.png">
           <img class="_main-image" src="../images/wedding2-1.jpg">
 
+          <div class="_details">
+            <div class="_play-button"></div>
+            <h2 class="slide-right">17 • 10 • 2026</h2>
+            <div class="_common-d-flex _common-flex-column">
+              <h1 class="slide-left">JACQUELINE</h1>
+              <h1 class="slide-left">&</h1>
+              <h1 class="slide-left">JESUS</h1>
+            </div>
+          </div>
+        </div>
+        <div class="_secondary-section _hide-section">
           <div class="_template-Counter-Section">
-            <div class="_counter-date"> 17 . 10 . 2026 </div>
             <div id="countdown" class="_counter-Countdown">
               <div class="_counter-Timebox">
                 <span id="days">0</span> Días
@@ -358,25 +671,74 @@
               </div>
             </div>
           </div>
-
-        </div>
-        <div class="_rings-section">
-          <img class="" src="../images/wedding2-rings.png">
-        </div>
-        <div class="_secondary-section">
           <img class="_main-image" src="../images/wedding2-2.png">
-          <div class="_details">
+          <div class="_details slide-up">
             <h2>¡Nos casamos!</h2>
             <h2>Y queremos compartir este día contigo.</h2>
           </div>
         </div>
-
-        <div class="_timeline-section">
-          <img class="desktop d-none d-md-block" src="../images/wedding2-timeline-h.png">
-          <img class="mobile d-md-none" src="../images/wedding2-timeline-v.png">
+        <div class="_rings-section _hide-section">
+          <img src="../images/wedding2-rings.png" alt="Anillos de boda">
         </div>
+        <div class="_timeline _hide-section">
+          <!-- Sección izquierda -->
+          <div class="timeline-left">
+            <img src="../images/wedding2-timeline-1.png" alt="Evento 1">
+            <img src="../images/wedding2-timeline-3.png" alt="Evento 3">
+            <img src="../images/wedding2-timeline-5.png" alt="Evento 5">
+          </div>
 
+          <!-- Imagen central con líneas -->
+          <div class="timeline-center">
+            <img src="../images/wedding2-timeline-6.png" alt="Centro">
+          </div>
 
+          <!-- Sección derecha -->
+          <div class="timeline-right">
+            <img src="../images/wedding2-timeline-2.png" alt="Evento 2">
+            <img src="../images/wedding2-timeline-4.png" alt="Evento 4">
+          </div>
+        </div>
+        <div class="_third-section _hide-section">
+          <img class="_main-image" src="../images/wedding2-4.jpg">
+          <div class="_details slide-up">
+            <p>
+              En nuestros momentos más solitarios,
+              cuando menos buscábamos el amor, fue
+              donde el destino decidió encontrarnos.
+              Aún no sabemos en qué instante exácto
+              comenzó a nacer algo tan bonito, pero sí
+              sabemos que, sin darnos cuenta, se
+              transformó en un amor profundo, sincero y
+              eterno.<br><br>
+              Entre miles de probabilidades en nuestra
+              rutina diaria, todo tuvo que alinearse de
+              manera perfecta para que lo nuestro fuera
+              único y especial. Como si la vida, con
+              paciencia, hubiera preparado cada paso
+              hasta llevarnos el uno al otro.
+              <br><br>
+              Hoy después de 3 años compartiéndolo
+              todo-- risas, aprendizajes y sueños. Tomamos la decisión más importante de
+              nuestras vidas:
+              elegirnos todos los días, para siempre, y
+              caminar juntos el resto de nuestros días.
+            </p>
+          </div>
+        </div>
+        <div class="_section-gifttable _hide-section">
+          <h2 class="_title">Regalos</h2>
+          <p class="_details">
+            Para nosotros tu presencia es nuestro mejor regalo, pero si deseas hacernos llegar un
+            obsequio, te sugerimos la siguiente opción:
+          </p>
+          <div class="_btn-brands">
+            <a href="#" data-replace="EventLiverpoolGiftTableUrl" target="_blank" class="_btn-gift">
+              <img src="#" data-replace="Image_LiverpoolUrl" alt="Liverpool Logo" />
+              Liverpool
+            </a>
+          </div>
+        </div>
       </div>
     </main>
   </div>
@@ -400,7 +762,7 @@
         GodMother: "Laura Jimenez",
         GoogleMapsUrl: "https://maps.app.goo.gl/hBdb191LiXzkPRfR8",
         AmazonGiftTableUrl: "https://www.amazon.com.mx/",
-        LiverpoolGiftTableUrl: "https://www.liverpool.com.mx/tienda/home",
+        LiverpoolGiftTableUrl: "https://mesaderegalos.liverpool.com.mx/milistaderegalos/51963844",
         CollageImages: ['https://img.freepik.com/foto-gratis/adolescente-celebrando-quinceanera_23-2148478038.jpg', 'https://img.freepik.com/foto-gratis/chica-sonriente-tiro-medio-hermoso-vestido_52683-86468.jpg?t=st=1746555442~exp=1746559042~hmac=e8d5adc2117161bcd88377ab37d6e1358945489c42ac647e29fb996cf047ca4c&w=1800', 'https://lh3.googleusercontent.com/p/AF1QipMv-RExo0XkTU7eg8u-FelVsp1gd3u4XZyR3ipA=s3072-v1', 'https://lh3.googleusercontent.com/p/AF1QipNk9cctNeskTP2Zg2EEOQjV-aMFrSO5RRxWtx5N=s1024-v1', 'https://img.freepik.com/foto-gratis/mujer-tiro-medio-caminando-calle_23-2148703161.jpg?ga=GA1.1.1993030682.1745256637&semt=ais_hybrid&w=740', 'https://img.freepik.com/fotos-premium/hermosa-novia-usa-vestido-blanco-exclusivo-jardin_769431-2.jpg?ga=GA1.1.1993030682.1745256637&semt=ais_hybrid&w=740'],
         ImageMyParents: "https://img.freepik.com/fotos-premium/retrato-pareja-madura-feliz-abrazada-casa-conexion-amor-o-confianza-asociacion-juntos-cara-al-hombre-abrazar-mujer-compromiso-cuidado-relacion-saludable-apoyo-casa_590464-361056.jpg?ga=GA1.1.1993030682.1745256637&semt=ais_hybrid&w=740",
         ImageMyGodParents: "https://img.freepik.com/fotos-premium/pareja-dia-san-valentin_772250-159.jpg?ga=GA1.1.1993030682.1745256637&w=740",
@@ -453,6 +815,23 @@
         $('._templat').css('background-image', 'url("' + Resources.AdditionalInformation.ImageBodyBackground + '")');
       }
 
+      function checkVisibility() {
+        var windowTop = $(window).scrollTop();
+        var windowBottom = windowTop + $(window).height();
+
+        $(".slide-up > h2, .slide-up > p").each(function () {
+          var elementTop = $(this).offset().top;
+          var elementBottom = elementTop + $(this).outerHeight();
+
+          if (elementBottom > windowTop && elementTop < windowBottom) {
+            $(this).addClass("visible");
+          } else {
+            $(this).removeClass("visible");
+          }
+        });
+      }
+
+
       function Init() {
         onLoad();
         helpers.init(Resources);
@@ -461,6 +840,23 @@
           helpers.onCounterStart(EventDate);
         }, 1000);
         helpers.onAudioPlayer();
+
+        $("._play-button").on("click", function () {
+          $("._play-button").hide();
+          $("body").find("._hide-section").removeClass("_hide-section");
+          helpers.onPlay();
+
+        })
+
+        let scrollTimeout;
+        $(window).on("scroll", function () {
+          if (!scrollTimeout) {
+            scrollTimeout = setTimeout(function () {
+              checkVisibility();
+              scrollTimeout = null;
+            }, 100);
+          }
+        });
       }
       Init();
     });

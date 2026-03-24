@@ -141,6 +141,9 @@ define(["jquery", "extended"], function ($) {
         $("#audio").OnAudioPlayerClick($audioButton);
       });
     },
+    onPlay: function () {
+      $("#audioButton").click();
+    },
     onMoveElementFromArray: function(array, oldIndex, newIndex){
       if (newIndex >= array.length) {
         newIndex = array.length - 1;
