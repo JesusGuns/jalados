@@ -112,7 +112,7 @@
       flex-direction: column;
       position: relative;
       bottom: 0;
-      width: 100%;
+      width: 70%;
     }
 
     ._template-Counter-Section ._counter-Countdown {
@@ -151,7 +151,12 @@
       }
     }
 
-    @media (max-width: 575.98px) {}
+    @media (max-width: 575.98px) {
+      ._template-Counter-Section ._counter-Timebox span {
+        font-size: 40px;
+        height: 45px;
+      }
+    }
 
     @media (max-width: 375.98px) {
       ._template-Counter-Section ._counter-Timebox {
@@ -386,75 +391,67 @@
   <!-- TimeLine -->
   <style>
     ._timeline-section {
-
-      padding: 2.5rem;
+      padding: 2.5rem 0;
     }
 
     .timeline-columns {
       display: flex;
       justify-content: center;
-      align-items: flex-start;
+      align-items: stretch;
       gap: 3rem;
-      /* más espacio entre columnas */
       position: relative;
-      /* para central flotante */
     }
 
-    /* Columnas izquierda y derecha */
+
     .timeline-left,
     .timeline-right {
       display: flex;
       flex-direction: column;
-      /* siempre vertical */
       gap: 2.5rem;
       flex: 1;
       align-items: center;
+      justify-content: center;
     }
 
-    /* Cada evento */
+
     .timeline-event img {
       width: 100%;
       max-width: 180px;
-      /* más grande para desktop */
       height: auto;
       display: block;
     }
 
-    /* Imagen central flotante */
+
     .timeline-center {
       position: absolute;
-      top: 50%;
-      /* verticalmente entre columnas */
+      top: 0;
+      bottom: 0;
       left: 50%;
-      /* horizontalmente entre columnas */
-      transform: translate(-50%, -50%);
+      transform: translateX(-50%);
+      display: flex;
+      align-items: center;
       z-index: 10;
-      /* encima de columnas */
     }
 
     .timeline-center img {
-      max-width: 220px;
-      /* más grande para destacar */
       width: 100%;
-      height: auto;
-      display: block;
+      height: 100%;
+      object-fit: contain;
+      max-width: 220px;
     }
 
-    /* Responsivo: solo escalado de imágenes y gaps, layout igual */
+
     @media (max-width: 768px) {
       .timeline-event img {
         max-width: 150px;
-        /* escala los eventos */
       }
 
       .timeline-center img {
         max-width: 180px;
-        /* escala la central */
       }
 
       .timeline-columns {
         gap: 2rem;
-        /* menor espacio en mobile */
       }
     }
   </style>
@@ -557,6 +554,18 @@
     @media (max-width: 767.98px) {
       ._family-section h1 {
         font-size: 1.4rem;
+      }
+    }
+
+    @media (max-width: 575.98px) {
+      ._family-section {
+        width: 90%;
+        padding: 1.5rem 1rem;
+        gap: 1rem;
+      }
+
+      ._family-section h1 {
+        font-size: 1.2rem;
       }
     }
   </style>
@@ -670,7 +679,7 @@
 </head>
 
 <body>
-  <!-- <canvas id="spirit-canvas"></canvas> -->
+
   <div class="content">
     <main role="main" class="w-100">
       <div id="player">
@@ -694,20 +703,21 @@
             </div>
           </div>
         </div>
-        <div class="_secondary-section _hide-section">
-          <div class="_template-Counter-Section">
-            <div id="countdown" class="_counter-Countdown">
-              <div class="_counter-Timebox">
-                <span id="days">0</span> Días
-              </div>
-              <div class="_counter-Timebox">
-                <span id="hours">0</span> Horas
-              </div>
-              <div class="_counter-Timebox">
-                <span id="minutes">0</span> Minutos
-              </div>
+        <div class="_template-Counter-Section _hide-section">
+          <div id="countdown" class="_counter-Countdown">
+            <div class="_counter-Timebox">
+              <span id="days">0</span> Días
+            </div>
+            <div class="_counter-Timebox">
+              <span id="hours">0</span> Horas
+            </div>
+            <div class="_counter-Timebox">
+              <span id="minutes">0</span> Minutos
             </div>
           </div>
+        </div>
+        <div class="_secondary-section _hide-section">
+
           <img class="_main-image" src="../images/wedding2-2.png">
           <div class="_details slide-up">
             <h2>
@@ -727,29 +737,18 @@
         <div class="_timeline-section _hide-section">
           <div class="timeline-columns">
             <div class="timeline-left">
-              <div class="timeline-event">
-                <img src="../images/wedding2-timeline-1.png" alt="Evento 1">
-              </div>
-              <div class="timeline-event">
-                <img src="../images/wedding2-timeline-3.png" alt="Evento 3">
-              </div>
-              <div class="timeline-event">
-                <img src="../images/wedding2-timeline-5.png" alt="Evento 5">
-              </div>
+              <div class="timeline-event"> <img src="../images/wedding2-timeline-1.png" alt="Evento 1"> </div>
+              <div class="timeline-event"> <img src="../images/wedding2-timeline-3.png" alt="Evento 3"> </div>
+              <div class="timeline-event"> <img src="../images/wedding2-timeline-5.png" alt="Evento 5"> </div>
             </div>
-            <div class="timeline-center">
-              <img src="../images/wedding2-timeline-6.png" alt="Centro">
-            </div>
+            <div class="timeline-center"> <img src="../images/wedding2-timeline-6.png" alt="Centro"> </div>
             <div class="timeline-right">
-              <div class="timeline-event">
-                <img src="../images/wedding2-timeline-2.png" alt="Evento 2">
-              </div>
-              <div class="timeline-event">
-                <img src="../images/wedding2-timeline-4.png" alt="Evento 4">
-              </div>
+              <div class="timeline-event"> <img src="../images/wedding2-timeline-2.png" alt="Evento 2"> </div>
+              <div class="timeline-event"> <img src="../images/wedding2-timeline-4.png" alt="Evento 4"> </div>
             </div>
           </div>
         </div>
+
         <div class="_third-section _hide-section">
           <img class="_main-image" src="../images/wedding2-4.jpg">
           <div class="_details slide-up">
@@ -929,99 +928,6 @@
 
 
 
-  </script>
-  <script>
-    requirejs(["jquery"], function ($) {
-      let width, height, canvas, ctx, particles = [];
-
-      $(document).ready(function () {
-        initCanvas();
-        $(window).on('resize', resize);
-      });
-
-      function initCanvas() {
-        canvas = document.getElementById('spirit-canvas');
-        ctx = canvas.getContext('2d');
-        resize();
-
-        const particleCount = Math.floor(width * 0.08); // menos partículas, más elegancia
-        for (let i = 0; i < particleCount; i++) {
-          particles.push(new Particle(true));
-        }
-
-        animate();
-      }
-
-      function resize() {
-        width = window.innerWidth;
-        height = window.innerHeight;
-        canvas.width = width;
-        canvas.height = height;
-      }
-
-      function animate() {
-        ctx.clearRect(0, 0, width, height);
-
-        for (let i = 0; i < particles.length; i++) {
-          particles[i].update();
-          particles[i].draw();
-        }
-
-        requestAnimationFrame(animate);
-      }
-
-      function Particle(startRandom = false) {
-        let _this = this;
-
-        function init() {
-          _this.pos = {
-            x: Math.random() * width,
-            y: startRandom ? Math.random() * height : Math.random() * -50
-          };
-          _this.alpha = 0.2 + Math.random() * 0.6; // transparencia inicial
-          _this.scale = 0.05 + Math.random() * 0.4; // tamaño de la partícula
-          _this.velocity = 0.2 + Math.random() * 0.5; // velocidad vertical
-          _this.drift = Math.random() * 0.5 - 0.25; // movimiento horizontal suave
-          _this.color = ["255,255,255", "255,240,200", "255,220,150"][Math.floor(Math.random() * 3)];
-          _this.sparkleSpeed = Math.random() * 0.05 + 0.02; // velocidad del parpadeo
-        }
-
-        init();
-
-        this.update = function () {
-          // Movimiento vertical y horizontal suave
-          _this.pos.y += _this.velocity;
-          _this.pos.x += _this.drift;
-
-          // Parpadeo suave (sparkle)
-          _this.alpha += Math.sin(Date.now() * _this.sparkleSpeed) * 0.02;
-
-          // Reinicia si sale de la pantalla
-          if (_this.pos.y > height || _this.alpha <= 0) {
-            init();
-            _this.pos.y = 0;
-          }
-        };
-
-        this.draw = function () {
-          const gradient = ctx.createRadialGradient(
-            _this.pos.x,
-            _this.pos.y,
-            0,
-            _this.pos.x,
-            _this.pos.y,
-            _this.scale * 12
-          );
-          gradient.addColorStop(0, `rgba(${_this.color},${Math.min(Math.max(_this.alpha, 0), 1)})`);
-          gradient.addColorStop(1, `rgba(${_this.color},0)`);
-
-          ctx.fillStyle = gradient;
-          ctx.beginPath();
-          ctx.arc(_this.pos.x, _this.pos.y, _this.scale * 12, 0, Math.PI * 2);
-          ctx.fill();
-        };
-      }
-    });
   </script>
 
 </body>
