@@ -392,6 +392,7 @@
   <style>
     ._timeline-section {
       padding: 2.5rem 0;
+      overflow-x: hidden;
     }
 
     .timeline-columns {
@@ -400,6 +401,7 @@
       align-items: stretch;
       gap: 3rem;
       position: relative;
+        overflow: hidden;
     }
 
 
@@ -440,14 +442,45 @@
       max-width: 220px;
     }
 
+    .timeline-event img,
+    .timeline-center img {
+      opacity: 0;
+      transition: all 0.8s ease;
+    }
+
+    
+    .timeline-left .timeline-event img {
+      transform: translateX(-80px);
+    }
+
+    .timeline-left .timeline-event img.show {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    
+    .timeline-right .timeline-event img {
+      transform: translateX(80px);
+    }
+
+    .timeline-right .timeline-event img.show {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    
+    .timeline-center img {
+      transform: translate(-60px, 60px);
+    }
+
+    .timeline-center img.show {
+      opacity: 1;
+      transform: translate(0, 0);
+    }
 
     @media (max-width: 768px) {
-      .timeline-event img {
-        max-width: 150px;
-      }
-
       .timeline-center img {
-        max-width: 180px;
+        max-width: 160px;
       }
 
       .timeline-columns {
@@ -539,6 +572,9 @@
       margin: 1.5rem auto;
       width: 70%;
       padding: 2rem 1rem;
+      background: rgba(255, 255, 255, 0.1);
+          backdrop-filter: blur(10px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
     }
 
     ._family-section h1 {
@@ -551,6 +587,15 @@
       text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
     }
 
+     ._family-section small {
+      font-family: var(--font-third);
+      letter-spacing: 2px;
+      padding-top: 1rem;
+      text-align: center;
+      color: var(--color-third);
+      text-shadow: 0 2px 6px rgba(255, 255, 255, 0.6);
+    }
+
     @media (max-width: 767.98px) {
       ._family-section h1 {
         font-size: 1.4rem;
@@ -561,7 +606,8 @@
       ._family-section {
         width: 90%;
         padding: 1.5rem 1rem;
-        gap: 1rem;
+        gap: 5rem;
+        flex-direction: column;
       }
 
       ._family-section h1 {
@@ -782,11 +828,13 @@
             <h1>Sirina Esquivias Esquivias</h1>
             <h1>&</h1>
             <h1>Gerardo González Navarro</h1>
+            <small>Padres de la Novia</small>
           </div>
           <div class="_common-d-flex _common-flex-column">
             <h1>Sara Ávila García</h1>
             <h1>&</h1>
             <h1>J. Refugio Ramírez González</h1>
+            <small>Padres del Novio</small>
           </div>
         </div>
         <div class="_section-gifttable _hide-section">
@@ -892,6 +940,17 @@
             $(this).addClass("visible");
           } else {
             $(this).removeClass("visible");
+          }
+        });
+
+        $(".timeline-event img, .timeline-center img").each(function () {
+          var elementTop = $(this).offset().top;
+          var elementBottom = elementTop + $(this).outerHeight();
+
+          if (elementBottom > windowTop && elementTop < windowBottom) {
+            $(this).addClass("show");
+          } else {
+            $(this).removeClass("show");
           }
         });
       }
