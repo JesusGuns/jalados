@@ -55,10 +55,7 @@
       --color-fourth: white;
 
       --font-primary: "Bonheur Royale";
-      --font-secondary: "Noto Serif Thai";
       --font-third: "Google Sans";
-      --font-fourth: "Rock Salt";
-      --font-five: "Handlee";
     }
 
     /* #endregion ROOT*/
@@ -118,7 +115,7 @@
       position: absolute;
       top: 5%;
       height: auto;
-      width: 20%;
+      width: 10%;
     }
 
     ._main-section ._details {
@@ -135,7 +132,7 @@
 
     ._main-section ._details h1 {
       font-family: var(--font-primary);
-      font-size: 5rem;
+      font-size: 4rem;
       letter-spacing: 2px;
       margin: 0;
       text-align: center;
@@ -149,17 +146,13 @@
       font-weight: bold;
       color: var(--color-fourth);
       text-shadow: 0 2px 8px rgba(0, 0, 0, 0.7);
-      letter-spacing: 2px;
+      letter-spacing: 3px;
       margin: 0;
       text-align: center;
     }
 
 
     @media (max-width: 1399.98px) {
-      ._main-section img._main-mono {
-        width: 10%;
-      }
-
       ._main-section ._details h1 {
         font-size: 2.5rem;
       }
@@ -231,7 +224,7 @@
       flex-direction: column;
       position: relative;
       bottom: 0;
-      width: 70%;
+      width: 35%;
     }
 
     ._template-Counter-Section ._counter-Countdown {
@@ -248,7 +241,7 @@
       animation: none;
       font-family: var(--font-third);
       text-transform: uppercase;
-      font-size: 20px;
+      font-size: 15px;
       letter-spacing: 2.5px;
       flex: 1;
       color: var(--color-fourth);
@@ -256,9 +249,9 @@
     }
 
     ._template-Counter-Section ._counter-Timebox span {
-      font-family: var(--font-secondary);
+      font-family: var(--font-third);
       font-weight: normal;
-      font-size: 80px;
+      font-size: 70px;
       height: 90px;
     }
 
@@ -316,20 +309,6 @@
       padding: 2.5rem 0 0;
     }
 
-    ._rings-section::before {
-      content: "";
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: clamp(180px, 25vw, 260px);
-      height: clamp(180px, 25vw, 260px);
-      background: radial-gradient(circle, rgba(181, 155, 96, 0.25) 0%, transparent 70%);
-      border-radius: 50%;
-      z-index: 0;
-      animation: halo-pulse 6s ease-in-out infinite;
-    }
-
     ._rings-section img {
       position: relative;
       z-index: 1;
@@ -383,9 +362,12 @@
       align-items: center;
       justify-content: center;
       flex-direction: column;
-      background: rgba(190, 178, 154, 0.53);
+      /* background: rgba(190, 178, 154, 0.53); */
       padding: 10px 5px;
       border-radius: 5px;
+
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(8px);
     }
 
     ._secondary-section ._details h2 {
@@ -538,31 +520,30 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      background: rgba(190, 178, 154, 0.53);
-      backdrop-filter: blur(5px);
+      /* background: rgba(190, 178, 154, 0.53);
+      backdrop-filter: blur(5px); */
       padding: 15px 10px;
       border-radius: 2rem;
-      width: 65%;
+      width: 90%;
       max-width: 600px;
+
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(8px);
     }
 
     ._third-section ._details p {
       font-family: var(--font-third);
       letter-spacing: 1px;
-      line-height: 1.6;
+      line-height: 1.3;
       margin: 0;
       text-align: center;
       color: var(--color-fourth);
       text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
-      font-size: 1.3rem;
+      font-size: 1.2rem;
       padding: 1rem;
     }
 
     @media (max-width: 1399.98px) {
-      ._third-section ._details {
-        width: 90%;
-      }
-
       ._third-section ._details p {
         font-size: 1rem;
         line-height: 1.3;
@@ -607,17 +588,21 @@
       gap: 2rem;
       border-radius: 15px;
       margin: 1.5rem auto;
-      width: 70%;
+      width: 35%;
       padding: 2rem 1rem;
-      background: rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(10px);
+      /* background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px); */
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(8px);
+
     }
 
     ._family-section h1 {
       font-family: var(--font-third);
       font-weight: 400;
-      font-size: 1.8rem;
+      font-size: 1.4rem;
       letter-spacing: 2px;
       margin: 0;
       text-align: center;
@@ -635,6 +620,10 @@
     }
 
     @media (max-width: 1399.98px) {
+      ._family-section {
+        width: 55%;
+      }
+
       ._family-section h1 {
         font-size: 1.4rem;
       }
@@ -665,18 +654,21 @@
       border-radius: 15px;
       margin: 1.5rem auto;
       box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-      width: 70%;
-      background: rgba(190, 178, 154, 0.3);
-      backdrop-filter: blur(6px);
+      width: 35%;
+      /* background: rgba(190, 178, 154, 0.3);
+      backdrop-filter: blur(6px); */
       padding: 2rem 1rem;
       display: flex;
       flex-direction: column;
       align-items: center;
+
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(8px);
     }
 
     ._section-gifttable ._title {
       font-family: var(--font-third);
-      font-size: clamp(2rem, 5vw, 3rem);
+      font-size: clamp(2rem, 5vw, 2.5rem);
       text-align: center;
       font-weight: bold;
       color: var(--color-fourth);
@@ -686,7 +678,7 @@
 
     ._section-gifttable ._details {
       font-family: var(--font-third);
-      font-size: clamp(1rem, 3vw, 1.6rem);
+      font-size: clamp(1rem, 3vw, 1.5rem);
       text-align: center;
       color: var(--color-fourth);
       text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
@@ -729,6 +721,12 @@
       box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
     }
 
+    @media (max-width: 1399.98px) {
+      ._section-gifttable {
+        width: 55%;
+      }
+    }
+
     @media (max-width: 575.98px) {
       ._section-gifttable {
         width: 90%;
@@ -759,7 +757,6 @@
 </head>
 
 <body>
-
   <div class="content">
     <main role="main" class="w-100">
       <div id="player">
