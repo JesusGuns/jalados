@@ -401,7 +401,7 @@
       align-items: stretch;
       gap: 3rem;
       position: relative;
-        overflow: hidden;
+      overflow: hidden;
     }
 
 
@@ -448,7 +448,7 @@
       transition: all 0.8s ease;
     }
 
-    
+
     .timeline-left .timeline-event img {
       transform: translateX(-80px);
     }
@@ -458,7 +458,7 @@
       transform: translateX(0);
     }
 
-    
+
     .timeline-right .timeline-event img {
       transform: translateX(80px);
     }
@@ -468,7 +468,7 @@
       transform: translateX(0);
     }
 
-    
+
     .timeline-center img {
       transform: translate(-60px, 60px);
     }
@@ -485,6 +485,15 @@
 
       .timeline-columns {
         gap: 2rem;
+      }
+    }
+
+     @media (max-width: 575.98px) {
+      .timeline-center img {
+        max-width: 140px;
+      }
+       .timeline-event img {
+        max-width: 150px;
       }
     }
   </style>
@@ -573,8 +582,8 @@
       width: 70%;
       padding: 2rem 1rem;
       background: rgba(255, 255, 255, 0.1);
-          backdrop-filter: blur(10px);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
     }
 
     ._family-section h1 {
@@ -587,7 +596,7 @@
       text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
     }
 
-     ._family-section small {
+    ._family-section small {
       font-family: var(--font-third);
       letter-spacing: 2px;
       padding-top: 1rem;
@@ -614,10 +623,10 @@
         font-size: 1.2rem;
       }
     }
+    
   </style>
   <!--Gift table-->
   <style>
-    /* Contenedor principal */
     ._section-gifttable {
       border-radius: 15px;
       margin: 1.5rem auto;
@@ -631,7 +640,6 @@
       align-items: center;
     }
 
-    /* Título */
     ._section-gifttable ._title {
       font-family: var(--font-third);
       font-size: clamp(2rem, 5vw, 3rem);
@@ -642,7 +650,6 @@
       margin-bottom: 1rem;
     }
 
-    /* Detalles */
     ._section-gifttable ._details {
       font-family: var(--font-third);
       font-size: clamp(1rem, 3vw, 1.6rem);
@@ -652,7 +659,6 @@
       margin-bottom: 2rem;
     }
 
-    /* Botones contenedor */
     ._btn-brands {
       display: flex;
       flex-wrap: wrap;
@@ -660,15 +666,12 @@
       justify-content: center;
     }
 
-    /* Botón de regalo */
     ._btn-gift {
       display: flex;
       align-items: center;
       gap: 10px;
       background-color: rgba(255, 255, 255, 0.2);
-      /* Transparencia */
       color: var(--color-primary);
-      /* Color del texto con contraste */
       font-family: var(--font-third);
       font-size: 1.6rem;
       font-weight: bold;
@@ -686,15 +689,12 @@
       height: auto;
     }
 
-    /* Hover del botón */
     ._btn-gift:hover {
       transform: scale(1.05);
       background-color: rgba(255, 255, 255, 0.3);
       box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
     }
 
-
-    /* Responsividad para móviles pequeños */
     @media (max-width: 575.98px) {
       ._section-gifttable {
         width: 90%;
