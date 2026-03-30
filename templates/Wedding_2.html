@@ -754,6 +754,92 @@
       }
     }
   </style>
+  <!--Place section-->
+  <style>
+    ._place-section {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+      border-radius: 15px;
+      margin: 1.5rem auto;
+      width: 55%;
+      padding: 2rem 1rem;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(8px);
+    }
+
+    ._place-section img._main-image {
+      width: 200px;
+      height: auto;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+
+    ._place-section h1 {
+      font-family: var(--font-third);
+      font-weight: 400;
+      font-size: 1.4rem;
+      letter-spacing: 2px;
+      text-align: center;
+      color: var(--color-primary);
+      text-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+    }
+
+    ._place-section label {
+      font-family: var(--font-third);
+      opacity: 0.7;
+      letter-spacing: 2px;
+      color: var(--color-primary);
+      text-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+    }
+
+    ._place-section h2 {
+      font-family: var(--font-third);
+      font-weight: 400;
+      font-size: 1.2rem;
+      letter-spacing: 2px;
+      text-align: center;
+      color: var(--color-primary);
+      text-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+    }
+
+    ._place-section small {
+      font-family: var(--font-third);
+      letter-spacing: 2px;
+      text-align: center;
+      color: var(--color-third);
+      text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
+      margin-bottom: 1rem;
+    }
+
+    @media (max-width: 1399.98px) {
+      ._place-section {
+        width: 55%;
+      }
+    }
+
+    @media (max-width: 767.98px) {
+      ._place-section {
+        width: 90%;
+      }
+    }
+
+    @media (max-width: 575.98px) {
+      ._place-section {
+        width: 90%;
+        padding: 1.5rem 1rem;
+
+      }
+    }
+
+    @media (max-width: 375.98px) {
+      ._place-section {
+        flex-direction: column;
+      }
+    }
+  </style>
 </head>
 
 <body>
@@ -810,6 +896,22 @@
 
         </div>
 
+        <div class="_place-section _hide-section">
+          <div class="_common-d-flex _common-flex-column">
+            <h1>Recepción</h1>
+            <label>17:30 p.m.</label>
+            <h2>La Terraza Clouthier</h2>
+            <small>
+              Av Manuel J. Clouthier 480, Lomas de Guadalupe, 45038 Guadalajara, Jal.
+            </small>
+            <a href="#" data-replace="EventReceptionUrl" target="_blank">
+              <img class="location-maps" src="#" data-replace="Image_GoogleLocation" alt="Google Location">
+            </a>
+          </div>
+          <div>
+            <img class="_main-image" src="../images/wedding2-savethedate.jpg">
+          </div>
+        </div>
 
         <div class="_timeline-section _hide-section">
           <div class="timeline-columns">
@@ -825,6 +927,8 @@
             </div>
           </div>
         </div>
+
+
 
         <div class="_third-section _hide-section">
           <img class="_main-image" src="../images/wedding2-4.jpg">
@@ -868,6 +972,7 @@
             <small>Padres del Novio</small>
           </div>
         </div>
+
         <div class="_section-gifttable _hide-section">
           <h2 class="_title">Regalos</h2>
           <p class="_details">
@@ -888,7 +993,6 @@
   </div>
 
   <script src="../js/main.js"></script>
-
   <script>
     requirejs(["jquery", "helpers"], function ($, helpers) {
       const EventDate = new Date("2026-10-17T17:30:00");
