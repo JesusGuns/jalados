@@ -206,7 +206,7 @@ define(["jquery", "extended"], function ($) {
     onValidateToken: function (sheetWebAppURL, token) {
       if (!token) return;
       
-      fetch(sheetWebAppURL + "?token=" + token)
+      fetch(`/api/sheet?token=${token}`)
         .then((resp) => resp.json())
         .then((data) => {
           debugger
