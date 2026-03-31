@@ -5,7 +5,7 @@ export default async function handler(req, res) {
   const sheetWebAppURL = "https://script.google.com/macros/s/AKfycbxhzj9hQbOtUJXyeGJgylt8S2LK2bslKQ6iWVGRkGBgiIGw1LYRviBKnL8h648NC9wP/exec";
   // Tu URL de Apps Script
   const url = `${sheetWebAppURL}?token=${token}`;
-
+debugger
   try {
     const response = await fetch(url);
     const data = await response.json();
