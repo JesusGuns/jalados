@@ -2,12 +2,12 @@
 
 //@ts-ignore
 define(["jquery", "extended"], function ($) {
-  
   const staticLinks = {
     ImageAudioUrl: "../images/audio.png",
     ImageAmazonUrl: "../images/amazon.png",
     ImageLiverpoolUrl: "../images/liverpool.jpeg",
-    ImageGoogleLocation: "https://img.icons8.com/?size=512&id=DcygmpZqBEd9&format=png",
+    ImageGoogleLocation:
+      "https://img.icons8.com/?size=512&id=DcygmpZqBEd9&format=png",
     IconChurch: "https://cdn-icons-png.flaticon.com/128/4186/4186011.png",
     IconReception: "https://cdn-icons-png.flaticon.com/128/887/887345.png",
     IconPhotSession: "https://cdn-icons-png.flaticon.com/128/3004/3004613.png",
@@ -205,15 +205,16 @@ define(["jquery", "extended"], function ($) {
     },
     onValidateToken: function (sheetWebAppURL, token) {
       if (!token) return;
-      
+
       fetch(`/api/sheet?token=${token}`)
-        .then((resp) => resp.json())
-        .then((data) => {
-          debugger
-          if (data.exists) {
-          }
+        .then((resp) => {
+          if (!resp.ok) throw new Error(`HTTP error ${resp.status}`);
+          return resp.json();
         })
-      .catch((err) => {});
+        .then((data) => {
+          console.log("Datos:", data);
+        })
+        .catch((err) => console.error("Error:", err));
     },
     onSendConfirmation: function (sheetWebAppURL, confirm) {
       const params = new URLSearchParams(window.location.search);
