@@ -1,4 +1,4 @@
-//@ts-check
+// @ts-nocheck
 
 //@ts-ignore
 define(["jquery", "extended"], function ($) {
@@ -203,7 +203,7 @@ define(["jquery", "extended"], function ($) {
       array.splice(newIndex, 0, array.splice(oldIndex, 1)[0]);
       return array;
     },
-    onValidateToken: function (sheetWebAppURL, token) {
+    onValidateToken: function (token) {
       if (!token) return;
 
       fetch(`/api/sheet?token=${token}`)
@@ -212,27 +212,42 @@ define(["jquery", "extended"], function ($) {
           return resp.json();
         })
         .then((data) => {
-          console.log("Datos:", data);
+          console.log("Data:", data);
+          if (data.success) {
+            $("#_btn-ConfirmButtons").show();
+          } else {
+            $("#_btn-ConfirmButtons").hide();
+          }
         })
         .catch((err) => console.error("Error:", err));
     },
-    onSendConfirmation: function (sheetWebAppURL, confirm) {
+    onSendConfirmation: function (confirmation) {
       const params = new URLSearchParams(window.location.search);
       const token = params.get("token") || "";
       if (!token) return;
 
-      fetch(sheetWebAppURL, {
+      fetch(`/api/sheet`, {
         method: "POST",
-        body: JSON.stringify({ token: token, confirmado: confirm }),
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          token: token,
+          confirmed: confirmation,
+        }),
       })
-        .then((resp) => resp.json())
+        .then((resp) => {
+          if (!resp.ok) throw new Error(`HTTP error ${resp.status}`);
+          return resp.json();
+        })
         .then((data) => {
+          console.log("POST response:", data);
+
           if (data.status === "ok") {
             debugger;
           }
         })
-        .catch((err) => {});
+        .catch((err) => console.error("Error:", err));
     },
     onLoad: function () {
       Resources.MainEvent.RandomCollageImage = Math.floor(

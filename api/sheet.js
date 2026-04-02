@@ -1,25 +1,64 @@
-// /api/sheet.js
 export default async function handler(req, res) {
-  const token = req.query.token;
+  // CORS (mejor ponerlo arriba para todos los casos)
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader("Access-Control-Allow-Methods", "GET,POST,OPTIONS");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
 
-  // URL de tu Web App de Google Apps Script
-  const url = `https://script.google.com/macros/s/AKfycby3MZPuiZ8I9P2X8ixE4pN_3-VYJexntueGhhOTGc3UUL317G4128SIUWBzw-kFaZXg/exec?token=${token}`;
+  // Manejar preflight (IMPORTANTE para POST)
+  if (req.method === "OPTIONS") {
+    return res.status(200).end();
+  }
+
+  const token = req.method === "GET" ? req.query.token : req.body.token;
+
+  if (!token) {
+    return res.status(400).json({ error: "Token is required" });
+  }
+
+  const baseUrl = "https://script.google.com/macros/s/AKfycbzHxyhpVJbnluZkPquzdGdREuSwYc5yXAejV287Rt_6oHjBVPQkAW0yUHLnCRhjP6nS/exec";
 
   try {
-    const response = await fetch(url);
+    if (req.method === "GET") {
+      const urlGet = `${baseUrl}?token=${token}`;
 
-    // Validar que la respuesta sea OK
-    if (!response.ok) {
-      throw new Error(`Apps Script respondió con ${response.status}`);
+      const response = await fetch(urlGet);
+
+      if (!response.ok) {
+        throw new Error(`Apps Script respondió con ${response.status}`);
+      }
+
+      const data = await response.json();
+      return res.status(200).json(data);
     }
 
-    const data = await response.json(); // JSON de doGet
+    if (req.method === "POST") {
+      const { confirmed } = req.body;
 
-    // Header CORS para que frontend lo pueda leer
-    res.setHeader("Access-Control-Allow-Origin", "*");
+      const response = await fetch(baseUrl, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ token, confirmed }),
+      });
 
-    res.status(200).json(data);
+      const text = await response.text();
+      console.log("Raw response:", text);
+
+      let data;
+      try {
+        data = JSON.parse(text);
+      } catch (err) {
+        throw new Error("Respuesta no es JSON válido");
+      }
+
+      return res.status(200).json(data);
+    }
+
+    return res.status(405).json({ error: "Method not allowed" });
+
   } catch (error) {
-    res.status(500).json({ error: error.message });
+    console.error("Error:", error.message);
+    return res.status(500).json({ error: error.message });
   }
 }

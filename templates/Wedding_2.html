@@ -38,7 +38,7 @@
   <!-- Font Awesome-->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-<link href="https://fonts.googleapis.com/css2?family=Bonheur+Royale&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bonheur+Royale&display=swap" rel="stylesheet">
   <link
     href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&display=swap"
     rel="stylesheet">
@@ -907,8 +907,8 @@
             <a href="#" data-replace="EventReceptionUrl" target="_blank">
               <img class="location-maps" src="#" data-replace="Image_GoogleLocation" alt="Google Location">
             </a>
-            <button id="confirmar" style="display:none;">Confirmar</button>
-            <button id="rechazar" style="display:none;">Rechazar</button>
+            <button id="_btnConfirm" class="_btn-ConfirmButtons d-none">Confirmar</button>
+            <button id="_btnReject" class="_btn-ConfirmButtons d-none">Rechazar</button>
           </div>
           <div>
             <img class="_main-image" src="../images/wedding2-savethedate.jpg">
@@ -937,25 +937,25 @@
           <div class="_details slide-up">
             <p>
               En nuestros momentos más solitarios,
-cuando menos buscábamos el amor, fue
-donde el destino decidió encontrarnos.
-Aún no sabemos en qué instante exácto
-comenzó a nacer algo tan bonito, pero sí
-sabemos que, sin darnos cuenta, se
-transformó en un amor profundo, sincero y
-eterno.<br><br>
-Entre miles de probabilidades en nuestra
-rutina diaria, todo tuvo que alinearse de
-manera perfecta para que lo nuestro fuera
-único y especial. Como si la vida, con
-paciencia, hubiera preparado cada paso
-hasta llevarnos el uno al otro.
-<br><br>
-Hoy después de 3 años compartiéndolo
-todo-- risas, aprendizajes y sueños. Tomamos la decisión más importante de
-nuestras vidas:
-elegirnos todos los días, para siempre, y
-caminar juntos el resto de nuestros días.
+              cuando menos buscábamos el amor, fue
+              donde el destino decidió encontrarnos.
+              Aún no sabemos en qué instante exácto
+              comenzó a nacer algo tan bonito, pero sí
+              sabemos que, sin darnos cuenta, se
+              transformó en un amor profundo, sincero y
+              eterno.<br><br>
+              Entre miles de probabilidades en nuestra
+              rutina diaria, todo tuvo que alinearse de
+              manera perfecta para que lo nuestro fuera
+              único y especial. Como si la vida, con
+              paciencia, hubiera preparado cada paso
+              hasta llevarnos el uno al otro.
+              <br><br>
+              Hoy después de 3 años compartiéndolo
+              todo-- risas, aprendizajes y sueños. Tomamos la decisión más importante de
+              nuestras vidas:
+              elegirnos todos los días, para siempre, y
+              caminar juntos el resto de nuestros días.
             </p>
           </div>
         </div>
@@ -1067,10 +1067,17 @@ caminar juntos el resto de nuestros días.
       };
 
       function onLoad() {
-        debugger
         const params = new URLSearchParams(window.location.search);
         const token = params.get("token") || "";
         helpers.onValidateToken(sheetWebAppURL, token);
+
+        $("#_btnConfirm").on('click', function () {
+          helpers.onSendConfirmation(true);
+        });
+
+        $("#_btnReject").on('click', function () {
+          helpers.onSendConfirmation(false);
+        });
       }
 
       function checkVisibility() {
