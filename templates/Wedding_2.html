@@ -998,7 +998,7 @@
 
   <script>
     requirejs(["jquery", "helpers"], function ($, helpers) {
-      const sheetWebAppURL = "https://script.google.com/macros/s/AKfycbxhzj9hQbOtUJXyeGJgylt8S2LK2bslKQ6iWVGRkGBgiIGw1LYRviBKnL8h648NC9wP/exec";
+
       const EventDate = new Date("2026-10-17T17:30:00");
       const EventReception = new Date("2026-10-17T18:00:00");
 
@@ -1069,7 +1069,7 @@
       function onLoad() {
         const params = new URLSearchParams(window.location.search);
         const token = params.get("token") || "";
-        helpers.onValidateToken(sheetWebAppURL, token);
+        helpers.onValidateToken(token);
 
         $("#_btnConfirm").on('click', function () {
           helpers.onSendConfirmation(true);
@@ -1136,9 +1136,6 @@
       }
       Init();
     });
-
-
-
   </script>
 
 </body>
