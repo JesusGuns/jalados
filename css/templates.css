@@ -9,6 +9,14 @@
   font-style: normal;
 }
 
+@font-face {
+    font-family: 'HelloHoney';
+    font-style: normal;
+    font-weight: normal;
+    font-display: auto;
+    src: url('../fonts/hellohoney.ttf') format('truetype');
+}
+
 /* #region HTML*/
 html {
   font-size: 14px;
@@ -431,7 +439,7 @@ img._common-icon {
 ._play-button {
   width: clamp(70px, 10vw, 100px);
   height: clamp(70px, 10vw, 100px);
-  background: rgba(190, 178, 154, 0.53);
+  background: rgba(255, 255, 255, 0.63);
   border-radius: 50%;
   position: relative;
   cursor: pointer;

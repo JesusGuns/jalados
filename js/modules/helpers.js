@@ -214,9 +214,9 @@ define(["jquery", "extended"], function ($) {
         .then((data) => {
           console.log("Data:", data);
           if (data.success) {
-            $("#_btn-ConfirmButtons").show();
+            $("._btn-ConfirmButtons").show();
           } else {
-            $("#_btn-ConfirmButtons").hide();
+            $("._btn-ConfirmButtons").hide();
           }
         })
         .catch((err) => console.error("Error:", err));
