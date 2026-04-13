@@ -473,11 +473,11 @@ img._common-icon {
 
 /* #region Text style*/
 .slide-right {
-  animation: slideInRight 1s ease forwards;
+  animation: slideInRight 1s  ease-out forwards;
 }
 
 .slide-left {
-  animation: slideInLeft 1s ease forwards;
+  animation: slideInLeft 1s  ease-out forwards;
 }
 
 .slide-down {

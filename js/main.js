@@ -11,6 +11,7 @@ requirejs.config({
     puzzle: "./puzzle",
     gallery: "./gallery",
     three: "https://cdn.jsdelivr.net/npm/three@0.148.0/build/three.min",
+    fotorama: "https://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.min"
   },
   shim: {
     bs: ["jquery"],
@@ -19,5 +20,6 @@ requirejs.config({
     puzzle: ["jquery"],
     gallery: ["jquery"],
     three: ["jquery"],
+    fotorama: ["jquery"],
   },
 });

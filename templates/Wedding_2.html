@@ -42,28 +42,42 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&display=swap"
     rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair:ital,opsz,wght@0,5..1200,300..900;1,5..1200,300..900&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="../css/templates.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.css" />
+
   <script src="../js/require.js"></script>
+
   <style>
     /* #region ROOT*/
     :root {
-      --color-primary: #000;
-      --color-secondary: #b59b60;
-      --color-third: #232323;
-      --color-fourth: white;
+      --color-primary: #2D2D2D;
+      --color-secondary: #FAF5EF;
+      --color-accent: #A68966;
+      --color-white: #FFFFFF;
+
+      --color-h1: #1F1F1F;
+      --color-h2: #A68966;
+      --color-p: #4A4A4A;
+      --color-small: #8C867E;
 
       --font-primary: "HelloHoney", Sans-serif;
+      --font-secondary: "Playfair Display", serif;
       --font-third: "Google Sans", sans-serif;
+
+      --fs-base: 16px;
+      --fs-h1: clamp(2.5rem, 8vw, 5rem);
+      --fs-h2: clamp(1.2rem, 4vw, 2rem);
+      --fs-body: clamp(1rem, 2.5vw, 1.2rem);
     }
 
     /* #endregion ROOT*/
     /* #region HTML*/
     body {
-      background-image:
-        linear-gradient(#FDF6F0, #FDF6F0),
-        url("https://www.transparenttextures.com/patterns/rice-paper-2.png");
-
-      background-blend-mode: multiply;
+      background: linear-gradient(180deg, var(--color-secondary) 0%, #EFE8DE 100%);
+  color: var(--color-p);
     }
 
     /* #endregion HTML*/
@@ -79,6 +93,7 @@
       z-index: 1;
     }
   </style>
+
   <!--Template-->
   <style>
     ._template {
@@ -86,12 +101,14 @@
       align-items: center;
       justify-content: center;
       flex-direction: column;
+
     }
 
-    ._hide-section {
+    /* ._hide-section {
       display: none !important;
-    }
+    } */
   </style>
+
   <!-- Main -->
   <style>
     ._main-section {
@@ -106,7 +123,7 @@
 
     ._main-section img._main-image {
       width: fit-content;
-      height: 100vh;
+      height: 100dvh;
       border: 15px solid white;
       border-radius: 10px;
     }
@@ -114,8 +131,12 @@
     ._main-section img._main-mono {
       position: absolute;
       top: 5%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: clamp(120px, 12vw, 160px);
       height: auto;
-      width: 10%;
+      z-index: 2;
+      filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.3));
     }
 
     ._main-section ._details {
@@ -129,39 +150,32 @@
       flex-direction: column;
       padding: 2rem 5px;
 
+
     }
 
     ._main-section ._details h1 {
       font-family: var(--font-primary);
-      font-size: 8rem;
-      letter-spacing: 2px;
-      line-height: 0.7;
+      font-size: var(--fs-h1);
+      line-height: 0.9;
+      /* Evita que las letras cursivas se encimen */
+      padding: 0 10px;
       margin: 0;
       text-align: center;
-      color: var(--color-fourth);
-      text-shadow: 0px 0px 10px rgba(255, 255, 255, 0.3);
+      color: var(--color-secondary);
+      text-shadow: 2px 2px 10px var(--color-shadow);
     }
 
     ._main-section ._details h2 {
       font-family: var(--font-third);
       font-style: italic;
       font-weight: bold;
-      color: var(--color-fourth);
-      text-shadow: 0px 0px 10px rgba(255, 255, 255, 0.3);
-      letter-spacing: 3px;
-      margin: 0;
+      font-size: clamp(1rem, 3vw, 1.5rem);
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      text-shadow: 2px 2px 10px var(--color-shadow);
+      margin: 0.5rem 0;
       text-align: center;
-    }
-
-
-    @media (max-width: 1399.98px) {
-      ._main-section ._details h1 {
-        font-size: 7.5rem;
-      }
-
-      ._main-section ._details h2 {
-        font-size: 1.2rem;
-      }
+      color: var(--color-secondary);
     }
 
     @media (max-width: 767.98px) {
@@ -181,85 +195,48 @@
         display: block;
       }
 
-      ._main-section img._main-mono {
-        width: 30%;
-      }
-
-      ._main-section ._details h1 {
-        font-size: 6rem;
-      }
-
-      ._main-section ._details h2 {
-        font-size: 1.8rem;
-      }
-    }
-
-    @media (max-width: 575.98px) {
-      ._main-section img._main-mono {
-        width: 40%;
-      }
-
-      ._main-section ._details h1 {
-        font-size: 4rem;
-      }
-
-      ._main-section ._details h2 {
-        font-size: 1.5rem;
-      }
-    }
-
-    @media (max-width: 375.98px) {
-
-      ._main-section ._details h1 {
-        font-size: 4rem;
-      }
-
-      ._main-section ._details h2 {
-        font-size: 1.2rem;
-      }
     }
   </style>
+
   <!-- Counter -->
   <style>
-    /* #region Counter*/
     ._template-Counter-Section {
-      flex-direction: column;
-      position: relative;
-      bottom: 0;
-      width: 35%;
+      width: 100%;
+      max-width: 350px;
     }
 
     ._template-Counter-Section ._counter-Countdown {
       border-radius: 15px;
-      gap: 0;
       margin: 1.5rem;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+      box-shadow: none !important;
       background: rgba(255, 255, 255, 0.1);
       transition: background-color 0.3s ease, box-shadow 0.3s ease;
-      animation: _animation-pulse-3 2s infinite;
     }
 
     ._template-Counter-Section ._counter-Timebox {
-      animation: none;
       font-family: var(--font-third);
-      text-transform: uppercase;
-      font-size: 15px;
+      font-size: clamp(0.7rem, 2vw, 0.9rem);
       letter-spacing: 2.5px;
       flex: 1;
-      color: var(--color-fourth);
+      color: var(--color-white);
       text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
+      border: 1px solid var(--color-white);
+      border-radius: 5px;
+      padding: 10px;
+      gap: 10px;
     }
 
     ._template-Counter-Section ._counter-Timebox span {
       font-family: var(--font-third);
       font-weight: normal;
-      font-size: 70px;
-      height: 90px;
+      font-size: clamp(1.5rem, 5vw, 3rem);
+      height: auto;
+      display: block;
     }
 
     @media (max-width: 1399.98px) {
       ._template-Counter-Section {
-        width: 45%;
+        max-width: 600px;
       }
 
       ._template-Counter-Section ._counter-Timebox {
@@ -273,11 +250,7 @@
     }
 
 
-    @media (max-width: 767.98px) {
-      ._template-Counter-Section {
-        width: 95%;
-      }
-    }
+    @media (max-width: 767.98px) {}
 
     @media (max-width: 575.98px) {
       ._template-Counter-Section ._counter-Timebox span {
@@ -296,49 +269,8 @@
         height: 30px;
       }
     }
-
-    /* #endregion Counter*/
   </style>
-  <!-- Rings -->
-  <style>
-    ._rings-section {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-      position: relative;
-      width: 100%;
-      padding: 2.5rem 0 0;
-    }
 
-    ._rings-section img {
-      position: relative;
-      z-index: 1;
-      width: clamp(140px, 20vw, 200px);
-      opacity: 0.95;
-      animation: heartbeat-float 5s ease-in-out infinite,
-        glow 4s ease-in-out infinite;
-      transform-origin: center;
-    }
-
-
-    @media (max-width: 1399.98px) {
-      ._rings-section img {
-        width: clamp(140px, 20vw, 100px);
-      }
-    }
-
-    @media (max-width: 575.98px) {
-      ._rings-section::before {
-        width: 150px;
-        height: 150px;
-      }
-
-      ._rings-section img {
-        width: 120px;
-      }
-    }
-  </style>
   <!-- Secondary -->
   <style>
     ._secondary-section {
@@ -352,7 +284,7 @@
 
     ._secondary-section img._main-image {
       width: auto;
-      height: 100vh;
+      height: 100dvh;
       border-radius: 10px;
     }
 
@@ -364,11 +296,9 @@
       align-items: center;
       justify-content: center;
       flex-direction: column;
-      /* background: rgba(190, 178, 154, 0.53); */
       padding: 10px 5px;
       border-radius: 5px;
-
-      background: rgba(255, 255, 255, 0.15);
+      background: rgba(255, 255, 255, 0.05);
       backdrop-filter: blur(8px);
     }
 
@@ -377,9 +307,9 @@
       letter-spacing: 2px;
       margin: 0;
       text-align: center;
-      color: var(--color-fourth);
-      text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
-      font-size: 1.8rem;
+      color: var(--color-secondary);
+      text-shadow: 2px 2px 10px var(--color-shadow);
+      font-size: clamp(1.4rem, 3vw, 1.8rem);
     }
 
     @media (max-width: 767.98px) {
@@ -389,12 +319,143 @@
         max-width: 100%;
         display: block;
       }
+    }
+  </style>
 
-      ._secondary-section ._details h2 {
-        font-size: 1.4rem;
+  <!--Family-->
+  <style>
+    ._family-section {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      text-align: center;
+      margin: 1.5rem 0 0 0;
+    }
+
+    ._family-section>div {
+      flex: 1;
+      background: rgba(250, 245, 239, 0.75);
+      padding: 1.5rem;
+      border-radius: 12px;
+    }
+
+    ._family-section h1 {
+      font-family: var(--font-secondary);
+      font-style: italic;
+      font-size: clamp(1.1rem, 3vw, 1.6rem);
+      line-height: 1.4;
+      letter-spacing: 1px;
+      margin: 0;
+      text-align: center;
+      color: var(--color-h1);
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+
+    }
+
+    ._family-section small {
+      font-family: var(--font-secondary);
+      font-style: italic;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      display: block;
+      margin-top: 5px;
+      text-align: center;
+      color: var(--color-accent);
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    }
+
+    @media (max-width: 575.98px) {
+      ._family-section {
+        flex-direction: column;
+        gap: 2rem;
+        text-align: center;
       }
     }
   </style>
+
+  <!--Place section-->
+  <style>
+    ._place-section {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+      border-radius: 15px;
+      margin: 1.5rem auto;
+      width: 100%;
+      max-width: 900px;
+      padding: 2rem;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+      background: rgba(255, 255, 255, 0.4);
+      backdrop-filter: blur(8px);
+    }
+
+    ._place-section img._main-image {
+      width: 200px;
+      height: auto;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+
+    ._place-section h1 {
+      font-family: var(--font-third);
+      font-weight: 400;
+      font-size: clamp(1.3rem, 4vw, 1.8rem);
+      letter-spacing: 2px;
+      text-align: center;
+      color: var(--color-h1);
+      text-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+    }
+
+    ._place-section h2 {
+      font-family: var(--font-third);
+      font-weight: 400;
+      font-size: clamp(1.1rem, 3vw, 1.4rem);
+      letter-spacing: 2px;
+      text-align: center;
+      color: var(--color-accent);
+      text-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+    }
+
+    ._place-section small {
+      font-family: var(--font-third);
+      font-size: 0.9rem;
+      line-height: 1.5;
+      text-align: center;
+      color: var(--color-small);
+      text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
+      margin-bottom: 1rem;
+      max-width: 300px;
+    }
+
+    @media (max-width: 1399.98px) {
+      ._place-section {
+        width: 55%;
+      }
+    }
+
+    @media (max-width: 767.98px) {
+      ._place-section {
+        width: 90%;
+      }
+    }
+
+    @media (max-width: 575.98px) {
+      ._place-section {
+        width: 90%;
+        padding: 1.5rem 1rem;
+
+      }
+    }
+
+    @media (max-width: 375.98px) {
+      ._place-section {
+        flex-direction: column;
+      }
+    }
+  </style>
+
   <!-- TimeLine -->
   <style>
     ._timeline-section {
@@ -500,6 +561,18 @@
       }
     }
   </style>
+
+  <!-- Gallery -->
+  <style>
+    ._gallery-section {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      padding: 2.5rem 0;
+    }
+  </style>
+
   <!--Third section-->
   <style>
     ._third-section {
@@ -512,7 +585,7 @@
 
     ._third-section img._main-image {
       width: 100%;
-      height: 100vh;
+      height: 100dvh;
       object-fit: cover;
       border-radius: 10px;
     }
@@ -522,13 +595,10 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      /* background: rgba(190, 178, 154, 0.53);
-      backdrop-filter: blur(5px); */
       padding: 15px 10px;
       border-radius: 2rem;
       width: 90%;
       max-width: 600px;
-
       background: rgba(255, 255, 255, 0.15);
       backdrop-filter: blur(8px);
     }
@@ -538,13 +608,13 @@
       font-variant-ligatures: none;
       font-feature-settings: "liga" 0;
       letter-spacing: 1px;
-      line-height: 1.3;
-      margin: 0;
+      font-size: var(--fs-body);
+      line-height: 1.6;
       text-align: center;
-      color: var(--color-fourth);
-      text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
-      font-size: 1.2rem;
-      padding: 1rem;
+      padding: 1.5rem;
+      margin: 0;
+      color: var(--color-secondary);
+      text-shadow: 2px 2px 10px var(--color-shadow);
     }
 
     @media (max-width: 1399.98px) {
@@ -557,7 +627,7 @@
     @media (max-width: 767.98px) {
       ._third-section img._main-image {
         height: auto;
-        max-height: 100vh;
+        max-height: 100dvh;
       }
 
       ._third-section ._details {
@@ -584,69 +654,97 @@
     }
   </style>
 
+  <!--Video-->
   <style>
-    ._family-section {
+    ._video-section {
+      width: 100vw;
+      padding: 2rem 0;
+    }
+
+    ._video-section iframe {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      height: auto;
+    }
+  </style>
+
+  <!--DressCode-->
+  <style>
+    ._dresscode-section {
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 2rem;
-  
-      margin: 1.5rem auto;
-  
-      padding: 2rem 1rem;
-   
-
+      flex-direction: column;
     }
 
-    ._family-section h1 {
+    ._dresscode-section img._main-image {
+      width: 200px;
+      height: auto;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+
+    ._dresscode-section h1 {
       font-family: var(--font-third);
-      font-weight: 400;
+      font-weight: bold;
       font-size: 1.4rem;
       letter-spacing: 2px;
-      margin: 0;
+      text-align: center;
+      color: var(--color-h1);
+      text-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+      margin-top: 1rem;
+    }
+
+    ._dresscode-section h2 {
+      font-family: var(--font-third);
+      font-weight: 400;
+      font-size: 1.2rem;
+      letter-spacing: 2px;
       text-align: center;
       color: var(--color-primary);
       text-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
     }
+  </style>
 
-    ._family-section small {
+  <!--Confirmation-->
+  <style>
+    ._confirmation-section {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+    }
+
+    ._confirmation-section h1 {
       font-family: var(--font-third);
-      letter-spacing: 2px;
-      padding-top: 1rem;
+      font-weight: bold;
+      font-size: clamp(1.2rem, 4vw, 1.6rem);
       text-align: center;
-      color: var(--color-third);
-      text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
+      color: var(--color-h1);
+      text-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+      margin-top: 1rem;
     }
 
-    @media (max-width: 1399.98px) {
-      ._family-section {
-        width: 55%;
-      }
-
-      ._family-section h1 {
-        font-size: 1.4rem;
-      }
-    }
-
-    @media (max-width: 767.98px) {
-      ._family-section h1 {
-        font-size: 1.4rem;
-      }
-    }
-
-    @media (max-width: 575.98px) {
-      ._family-section {
-        width: 90%;
-        padding: 1.5rem 1rem;
-        gap: 5rem;
-        flex-direction: column;
-      }
-
-      ._family-section h1 {
-        font-size: 1.2rem;
-      }
+    ._confirmation-section button {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background-color: rgba(255, 255, 255, 0.2);
+      color: var(--color-primary);
+      font-family: var(--font-third);
+      font-weight: bold;
+      font-size: 1.1rem;
+      padding: 12px 25px;
+      min-width: 200px;
+      border-radius: 10px;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      cursor: pointer;
+      text-decoration: none;
+      transition: transform 0.2s, background-color 0.2s;
+      animation: _pulse-btn 1.5s infinite alternate;
     }
   </style>
+
   <!--Gift table-->
   <style>
     ._section-gifttable {
@@ -654,55 +752,51 @@
       margin: 1.5rem auto;
       box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
       width: 35%;
-      /* background: rgba(190, 178, 154, 0.3);
-      backdrop-filter: blur(6px); */
       padding: 2rem 1rem;
       display: flex;
       flex-direction: column;
       align-items: center;
-
       background: rgba(255, 255, 255, 0.15);
       backdrop-filter: blur(8px);
     }
 
-    ._section-gifttable ._title {
+    ._section-gifttable h1 {
       font-family: var(--font-third);
-      font-size: clamp(2rem, 5vw, 2.5rem);
-      text-align: center;
       font-weight: bold;
-      color: var(--color-primary);
-      text-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-      margin-bottom: 1rem;
-    }
-
-    ._section-gifttable ._details {
-      font-family: var(--font-third);
-      font-size: clamp(1rem, 3vw, 1.5rem);
+      font-size: 1.4rem;
       text-align: center;
-      color: var(--color-primary);
+      color: var(--color-h1);
       text-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-      margin-bottom: 2rem;
+      margin-top: 1rem;
     }
 
-    ._btn-brands {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 15px;
-      justify-content: center;
+    ._section-gifttable p {
+      font-family: var(--font-third);
+      font-weight: 400;
+      font-size: 1.2rem;
+      text-align: center;
+      color: var(--color-p);
+      text-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
     }
+
+
 
     ._btn-gift {
+      min-height: 50px;
       display: flex;
+      justify-content: center;
       align-items: center;
+      width: 90%;
+      max-width: 300px;
       gap: 10px;
-      background-color: rgba(255, 255, 255, 0.2);
+      background-color: rgba(255, 255, 255, 0.6);
       color: var(--color-primary);
       font-family: var(--font-third);
-      font-size: 1.6rem;
       font-weight: bold;
-      padding: 10px 20px;
+      font-size: 1.1rem;
+      padding: 12px 25px;
+
       border-radius: 10px;
-      border: 2px solid rgba(255, 255, 255, 0.3);
       cursor: pointer;
       text-decoration: none;
       transition: transform 0.2s, background-color 0.2s;
@@ -753,110 +847,6 @@
       }
     }
   </style>
-  <!--Place section-->
-  <style>
-    ._place-section {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 2rem;
-      border-radius: 15px;
-      margin: 1.5rem auto;
-      width: 55%;
-      padding: 2rem 1rem;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-      background: rgba(255, 255, 255, 0.15);
-      backdrop-filter: blur(8px);
-    }
-
-    ._place-section img._main-image {
-      width: 200px;
-      height: auto;
-      object-fit: cover;
-      border-radius: 10px;
-    }
-
-    ._place-section h1 {
-      font-family: var(--font-third);
-      font-weight: 400;
-      font-size: 1.4rem;
-      letter-spacing: 2px;
-      text-align: center;
-      color: var(--color-primary);
-      text-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-    }
-
-    ._place-section label {
-      font-family: var(--font-third);
-      opacity: 0.7;
-      letter-spacing: 2px;
-      color: var(--color-primary);
-      text-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-    }
-
-    ._place-section h2 {
-      font-family: var(--font-third);
-      font-weight: 400;
-      font-size: 1.2rem;
-      letter-spacing: 2px;
-      text-align: center;
-      color: var(--color-primary);
-      text-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-    }
-
-    ._place-section small {
-      font-family: var(--font-third);
-      letter-spacing: 2px;
-      text-align: center;
-      color: var(--color-third);
-      text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
-      margin-bottom: 1rem;
-    }
-
-    ._place-section button {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      background-color: rgba(255, 255, 255, 0.2);
-      color: var(--color-fourth);
-      font-family: var(--font-third);
-      font-size: 1.6rem;
-      font-weight: bold;
-      padding: 10px 20px;
-      border-radius: 10px;
-      border: 2px solid rgba(255, 255, 255, 0.3);
-      cursor: pointer;
-      text-decoration: none;
-      transition: transform 0.2s, background-color 0.2s;
-      animation: _pulse-btn 1.5s infinite alternate;
-    }
-
-    @media (max-width: 1399.98px) {
-      ._place-section {
-        width: 55%;
-      }
-    }
-
-    @media (max-width: 767.98px) {
-      ._place-section {
-        width: 90%;
-      }
-    }
-
-    @media (max-width: 575.98px) {
-      ._place-section {
-        width: 90%;
-        padding: 1.5rem 1rem;
-
-      }
-    }
-
-    @media (max-width: 375.98px) {
-      ._place-section {
-        flex-direction: column;
-      }
-    }
-  </style>
 </head>
 
 <body>
@@ -866,7 +856,7 @@
         <audio id="audio" src="#" data-replace="AudioUrl" loop></audio>
       </div>
       <span id="audioButton" class="_template-Audio-Button off _hide-section">
-        <img src="#" data-replace="Image_AudioUrl" alt="Audio" />
+        <img src="#" data-replace="Image_AudioUrl" alt="Reproducir música de fondo" />
       </span>
       <div class="_template">
         <div class="_main-section">
@@ -883,67 +873,69 @@
             </div>
           </div>
         </div>
+
         <div class="_template-Counter-Section _hide-section">
           <div id="countdown" class="_counter-Countdown">
             <div class="_counter-Timebox">
               <span id="days">0</span> Días
             </div>
             <div class="_counter-Timebox">
-              <span id="hours">0</span> Horas
+              <span id="hours">0</span> Hrs.
             </div>
             <div class="_counter-Timebox">
-              <span id="minutes">0</span> Minutos
+              <span id="minutes">0</span> Min.
+            </div>
+            <div class="_counter-Timebox">
+              <span id="seconds">0</span> Seg.
             </div>
           </div>
         </div>
         <div class="_secondary-section _hide-section">
-
           <img class="_main-image" src="../images/wedding2-2.png">
           <div class="_details slide-up">
             <h2>
               Que todas las noches sean noches de boda y que todas las lunas
               sean lunas de miel.
+              <br>
+              Los esperamos!!!
             </h2>
-            <br>
-            <h2>Los esperamos!!!</h2>
-            <div class="_rings-section _hide-section">
-              <img src="../images/wedding2-rings.png" alt="Anillos de boda">
-            </div>
-          </div>
 
+            <!-- <div class="_rings-section _hide-section">
+              <img src="../images/wedding2-rings.png" alt="Anillos de boda">
+            </div> -->
+          </div>
         </div>
 
         <div class="_family-section _hide-section">
           <div class="_common-d-flex _common-flex-column">
-            <h1 class="slide-left">Sirina Esquivias Esquivias</h1>
-            <h1 class="slide-left">&</h1>
-            <h1 class="slide-left">Gerardo González Navarro</h1>
+            <h1 class="slide-left">
+              Sirina Esquivias Esquivias <br>
+              & <br>
+              Gerardo González Navarro
+            </h1>
             <small>Padres de la Novia</small>
           </div>
           <div class="_common-d-flex _common-flex-column">
-            <h1 class="slide-right">Sara Ávila García</h1>
-            <h1 class="slide-right">&</h1>
-            <h1 class="slide-right">J. Refugio Ramírez González</h1>
+            <h1 class="slide-right">
+              Sara Ávila García <br>
+              & <br>
+              J. Refugio Ramírez González
+            </h1>
             <small>Padres del Novio</small>
           </div>
         </div>
 
-
         <div class="_place-section _hide-section">
           <div class="_common-d-flex _common-flex-column">
             <h1>Recepción</h1>
-            <label>17:30 p.m.</label>
             <h2>La Terraza Clouthier</h2>
+            <small>17:30 p.m.</small>
             <small>
               Av Manuel J. Clouthier 480, Lomas de Guadalupe, 45038 Guadalajara, Jal.
             </small>
             <a href="#" data-replace="EventReceptionUrl" target="_blank">
               <img class="location-maps" src="#" data-replace="Image_GoogleLocation" alt="Google Location">
             </a>
-            <div>
-              <button id="_btnConfirm" class="_btn-ConfirmButtons "><i class="fas fa-heart"></i> Asistiré </a></button>
-              <!-- <button id="_btnReject" class="_btn-ConfirmButtons ">Rechazar</button> -->
-            </div>
           </div>
           <div>
             <img class="_main-image" src="../images/wedding2-savethedate.jpg">
@@ -965,7 +957,14 @@
           </div>
         </div>
 
-
+        <div class="_gallery-section">
+          <div class="fotorama" data-nav="thumbs" data-ratio="3/4" data-allowfullscreen="true">
+            <a href="../images/wedding2-1.jpg"><img src="../images/wedding2-1.jpg"></a>
+            <a href="../images/wedding2-2.png"><img src="../images/wedding2-2.png"></a>
+            <a href="../images/wedding2-3.png"><img src="../images/wedding2-3.png"></a>
+            <a href="../images/wedding2-4.jpg"><img src="../images/wedding2-4.jpg"></a>
+          </div>
+        </div>
 
         <div class="_third-section _hide-section">
           <img class="_main-image" src="../images/wedding2-4.jpg">
@@ -995,21 +994,40 @@
           </div>
         </div>
 
-        
-        <div class="_section-gifttable _hide-section">
-          <h2 class="_title">Regalos</h2>
-          <p class="_details">
-            Para nosotros tu presencia es nuestro mejor regalo, pero si deseas hacernos llegar un
-            obsequio, te sugerimos la siguiente opción:
-          </p>
-          <div class="_btn-brands">
-            <a href="#" data-replace="EventLiverpoolGiftTableUrl" target="_blank" class="_btn-gift">
-              <img src="#" data-replace="Image_LiverpoolUrl" alt="Liverpool Logo" />
-              Liverpool
-            </a>
+        <div class="_video-section">
+          <iframe src="https://www.youtube.com/embed/UqK14btTz8U?si=2JFZkDojxMx4sA7-" title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+
+        <div class="_dresscode-section">
+          <img class="_main-image" src="../images/Wedding2-DressCode.png">
+          <h1>DRESSCODE - Formal</h1>
+          <h2>Blanco exclusivo para la novia</h2>
+        </div>
+
+        <div class="_confirmation-section">
+          <h1>Confirmación</h1>
+          <div>
+            <button id="_btnConfirm" class="_btn-ConfirmButtons "><i class="fas fa-heart"></i> Asistiré </a></button>
+            <!-- <button id="_btnReject" class="_btn-ConfirmButtons ">Rechazar</button> -->
           </div>
         </div>
 
+        <div class="_section-gifttable _hide-section">
+          <h1>Regalos</h2>
+            <p>
+              Para nosotros tu presencia es nuestro mejor regalo, pero si deseas hacernos llegar un
+              obsequio, te sugerimos la siguiente opción:
+            </p>
+            <div class="_btn-brands">
+              <a href="#" data-replace="EventLiverpoolGiftTableUrl" target="_blank" class="_btn-gift">
+                <img src="#" data-replace="Image_LiverpoolUrl" alt="Liverpool Logo" />
+                Liverpool
+              </a>
+            </div>
+        </div>
 
       </div>
     </main>
@@ -1017,8 +1035,9 @@
 
   <script src="../js/main.js"></script>
 
+
   <script>
-    requirejs(["jquery", "helpers"], function ($, helpers) {
+    requirejs(["jquery", "helpers", "fotorama"], function ($, helpers, fotorama) {
 
       const EventDate = new Date("2026-10-17T17:30:00");
       const EventReception = new Date("2026-10-17T18:00:00");
@@ -1154,10 +1173,15 @@
             }, 100);
           }
         });
+
+
+        $('.fotorama').fotorama();
+
       }
       Init();
     });
   </script>
+
 
 </body>
 
