@@ -45,6 +45,7 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Playfair:ital,opsz,wght@0,5..1200,300..900;1,5..1200,300..900&display=swap"
     rel="stylesheet">
+  
   <link rel="stylesheet" href="../css/templates.css">
 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css">
@@ -70,6 +71,7 @@
       --font-secondary: "Playfair Display", serif;
       --font-third: "Google Sans", sans-serif;
 
+      
       --fs-base: 16px;
       --fs-h1: clamp(2.5rem, 8vw, 5rem);
       --fs-h2: clamp(1.2rem, 4vw, 2rem);
@@ -105,6 +107,15 @@
       justify-content: center;
       flex-direction: column;
 
+    }
+
+    ._gap-10 {
+      gap: 10px;
+    }
+
+    .vr {
+      border-left: 2px solid #000;
+      margin: 0 20px;
     }
 
     /* ._hide-section {
@@ -735,24 +746,24 @@
 
   <!--DressCode-->
   <style>
-    ._dresscode-section {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
+    
+
+    ._dresscode-section ._main-image-suit {
+      max-width: 140px;
+      padding-top: 1rem;
+      margin-right: 1rem;
     }
 
-    ._dresscode-section img._main-image {
-      width: 200px;
-      height: auto;
-      object-fit: cover;
-      border-radius: 10px;
+    ._dresscode-section ._main-image-dress {
+      max-width: 200px;
+      padding-top: 2rem;
     }
 
-    ._dresscode-section h1 {
+    ._dresscode-section h1,
+    ._dresscode-section h2,
+    ._dresscode-section h3 {
       font-family: var(--font-third);
       font-weight: bold;
-      font-size: 1.4rem;
       letter-spacing: 2px;
       text-align: center;
       color: var(--color-h1);
@@ -760,14 +771,27 @@
       margin-top: 1rem;
     }
 
+    ._dresscode-section h1 {
+      font-size: 2rem;
+    }
+
     ._dresscode-section h2 {
-      font-family: var(--font-third);
-      font-weight: 400;
-      font-size: 1.2rem;
-      letter-spacing: 2px;
-      text-align: center;
-      color: var(--color-primary);
-      text-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+      
+      font-size: clamp(1rem, 4vw, 1.4rem);
+    }
+
+    ._dresscode-section h3 {
+      font-size: clamp(1rem, 4vw, 1.4rem);
+    }
+
+    @media (max-width:  575.98px) {
+      ._dresscode-section ._main-image-suit {
+        width: 65%;
+      }
+
+      ._dresscode-section ._main-image-dress {
+        width: 70%;
+      }
     }
   </style>
 
@@ -1067,9 +1091,23 @@
         </div>
 
         <div class="_dresscode-section">
-          <img class="_main-image" src="../images/Wedding2-DressCode.png">
-          <h1>DRESSCODE - Formal</h1>
-          <h2>Blanco exclusivo para la novia</h2>
+          <div class="text-center mb-4">
+            <h1>DRESS - CODE</h1>
+          </div>
+          <div class="_common-d-flex _gap-10">
+            <div class="_common-d-flex _common-flex-column">
+              <img class="_main-image-suit" src="../images/wedding2-suit.png">
+              <h2>ELLOS</h2>
+              <h3>FORMAL</h3>
+            </div>
+            <div class="vr"></div>
+            <div class="_common-d-flex _common-flex-column">
+              <img class="_main-image-dress" src="../images/wedding2-dress.png">
+              <h2>ELLAS</h2>
+              <h3>VESTIDO</h3>
+            </div>
+          </div>
+
         </div>
 
         <div class="_confirmation-section">
@@ -1251,10 +1289,8 @@
           entries.forEach(entry => {
 
             if (entry.isIntersecting) {
-              // entra en pantalla → animar
               entry.target.classList.add("show");
             } else {
-              // sale de pantalla → reset para volver a animar
               entry.target.classList.remove("show");
             }
 
@@ -1269,7 +1305,7 @@
           img.addEventListener("click", () => {
             modalImg.src = img.src;
             modal.classList.add("show");
-
+            document.body.style.overflow = "hidden";
           });
         });
 
@@ -1282,14 +1318,16 @@
             }
           });
         });
-        /* cerrar modal */
+
         closeBtn.addEventListener("click", () => {
           modal.classList.remove("show");
+          document.body.style.overflow = "";
         });
 
         modal.addEventListener("click", (e) => {
           if (e.target === modal) {
             modal.classList.remove("show");
+            document.body.style.overflow = "";
           }
         });
       }
