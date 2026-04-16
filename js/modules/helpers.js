@@ -3,7 +3,8 @@
 //@ts-ignore
 define(["jquery", "extended"], function ($) {
   const staticLinks = {
-    ImageAudioUrl: "../images/audio.png",
+    ImageAudioUrl: "../images/icons/play.png",
+    ImageAudioPauseUrl: "../images/icons/pause.png",
     ImageAmazonUrl: "../images/amazon.png",
     ImageLiverpoolUrl: "../images/liverpool.jpeg",
     ImageGoogleLocation:
@@ -189,6 +190,17 @@ define(["jquery", "extended"], function ($) {
       var $audioButton = $("#audioButton");
       $audioButton.on("click", function () {
         $("#audio").OnAudioPlayerClick($audioButton);
+        if ($("#audioButton").hasClass("off")) {
+          $("[data-replace=Image_AudioUrl]").attr(
+            "src",
+            Resources.StaticLinks.ImageAudioUrl,
+          );
+        } else {
+          $("[data-replace=Image_AudioUrl]").attr(
+            "src",
+            Resources.StaticLinks.ImageAudioPauseUrl,
+          );
+        }
       });
     },
     onPlay: function () {

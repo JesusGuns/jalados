@@ -17,6 +17,14 @@
     src: url('../fonts/hellohoney.ttf') format('truetype');
 }
 
+@font-face {
+    font-family: 'PlayFair Italica';
+    font-style: normal;
+    font-weight: normal;
+    font-display: auto;
+    src: url('../fonts/PlayfairDisplay.ttf') format('truetype');
+}
+
 /* #region HTML*/
 html {
   font-size: 14px;
