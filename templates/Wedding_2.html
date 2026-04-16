@@ -45,7 +45,7 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Playfair:ital,opsz,wght@0,5..1200,300..900;1,5..1200,300..900&display=swap"
     rel="stylesheet">
-  
+
   <link rel="stylesheet" href="../css/templates.css">
 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css">
@@ -71,9 +71,9 @@
       --font-secondary: "Playfair Display", serif;
       --font-third: "Google Sans", sans-serif;
 
-      
+
       --fs-base: 16px;
-      --fs-h1: clamp(2.5rem, 8vw, 5rem);
+      --fs-h1: clamp(4rem, 9vw, 5rem);
       --fs-h2: clamp(1.2rem, 4vw, 2rem);
       --fs-body: clamp(1rem, 2.5vw, 1.2rem);
     }
@@ -167,7 +167,6 @@
       font-family: var(--font-primary);
       font-size: var(--fs-h1);
       line-height: 0.9;
-      /* Evita que las letras cursivas se encimen */
       padding: 0 10px;
       margin: 0;
       text-align: center;
@@ -742,7 +741,6 @@
 
   <!--DressCode-->
   <style>
-    
     ._dresscode-section .vr {
       border-left: 2px solid #000;
       margin: 0 0 0 20px;
@@ -776,7 +774,7 @@
     }
 
     ._dresscode-section h2 {
-      
+
       font-size: clamp(1rem, 4vw, 1.4rem);
     }
 
@@ -784,7 +782,7 @@
       font-size: clamp(1rem, 4vw, 1.4rem);
     }
 
-    @media (max-width:  575.98px) {
+    @media (max-width: 575.98px) {
       ._dresscode-section ._main-image-suit {
         width: 65%;
       }
@@ -801,7 +799,25 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      flex-direction: column;
+      background-image: url('../images/Wedding2-Confirmation.png');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      min-height: 100vh;
+      padding: 20px;
+      width: 100%;
+    }
+
+    ._confirmation-section>div {
+      width: 100%;
+      border-radius: 15px;
+      max-width: 600px;
+      padding: 2rem;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+      background: rgba(255, 255, 255, 0.45);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+
     }
 
     ._confirmation-section h1 {
@@ -814,6 +830,42 @@
       margin-top: 1rem;
     }
 
+    ._confirmation-section h2 {
+      font-family: var(--font-third);
+      font-size: clamp(1.1rem, 3vw, 1.4rem);
+      text-align: justify;
+      color: var(--color-h1);
+      text-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+      margin: 2rem 0;
+    }
+
+
+
+    ._confirmation-section .form-fields {
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      margin-bottom: 1rem;
+    }
+
+    ._confirmation-section label {
+      font-weight: bold;
+      color: var(--color-primary);
+      font-family: var(--font-third);
+    }
+
+    ._confirmation-section textarea {
+      width: 100%;
+      resize: none;
+      border-radius: 8px;
+      height: 50px;
+    }
+
+    ._confirmation-section textarea[name="wish"] {
+      min-height: 80px;
+    }
+
+
     ._confirmation-section button {
       display: flex;
       align-items: center;
@@ -824,13 +876,12 @@
       font-weight: bold;
       font-size: 1.1rem;
       padding: 12px 25px;
-      min-width: 200px;
       border-radius: 10px;
       border: 2px solid rgba(255, 255, 255, 0.3);
       cursor: pointer;
       text-decoration: none;
-      transition: transform 0.2s, background-color 0.2s;
-      animation: _pulse-btn 1.5s infinite alternate;
+      transition: transform 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease;
+      will-change: transform;
     }
   </style>
 
@@ -1111,10 +1162,27 @@
         </div>
 
         <div class="_confirmation-section">
-          <h1>Confirmación</h1>
           <div>
-            <button id="_btnConfirm" class="_btn-ConfirmButtons "><i class="fas fa-heart"></i> Asistiré </a></button>
-            <!-- <button id="_btnReject" class="_btn-ConfirmButtons ">Rechazar</button> -->
+            <h1>Confirmación</h1>
+            <h2>
+              Tu compañía haría este momento aún más significativo para nosotros.
+              <br><br>
+              Te agradeceremos confirmar tu asistencia a la celebración.
+            </h2>
+
+            <div class="form-fields">
+              <label>Nombre(s) de acompañante(s)</label>
+              <textarea></textarea>
+            </div>
+
+            <div class="form-fields">
+              <label>Deseo</label>
+              <textarea name="wish"></textarea>
+            </div>
+            <div class="d-flex justify-content-between">
+              <button id="_btnNo" class="_btn-ConfirmButtons ">No Asistiré</button>
+              <button id="_btnYes" class="_btn-ConfirmButtons ">Asistiré</button>
+            </div>
           </div>
         </div>
 
