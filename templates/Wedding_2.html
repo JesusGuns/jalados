@@ -636,26 +636,42 @@
       justify-content: center;
       flex-direction: column;
       position: relative;
+      width: 100%;
+      max-width: 100%;
+    }
+
+    ._third-section ._wrapper {
+      position: relative;
+    }
+
+    ._third-section ._wrapper::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.4);
+      z-index: 1;
     }
 
     ._third-section img._main-image {
       width: 100%;
       height: 100dvh;
       object-fit: cover;
-      border-radius: 10px;
+      display: block;
     }
 
     ._third-section ._details {
       position: absolute;
+      inset: 0;
+      z-index: 2;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
       padding: 15px 10px;
-      border-radius: 2rem;
       width: 90%;
       max-width: 600px;
-      background: rgba(255, 255, 255, 0.15);
-      backdrop-filter: blur(8px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     ._third-section ._details p {
@@ -989,18 +1005,8 @@
       max-width: 100%;
     }
 
-    ._wrapper {
+    ._end-section ._wrapper {
       position: relative;
-    }
-
-
-
-
-    ._end-section img._main-image {
-      width: 100%;
-      height: 100dvh;
-      object-fit: cover;
-      display: block;
     }
 
     ._end-section ._wrapper::before {
@@ -1009,7 +1015,13 @@
       inset: 0;
       background: rgba(0, 0, 0, 0.4);
       z-index: 1;
+    }
 
+    ._end-section img._main-image {
+      width: 100%;
+      height: 100dvh;
+      object-fit: cover;
+      display: block;
     }
 
     ._end-section ._details {
@@ -1181,7 +1193,9 @@
         </div>
 
         <div class="_third-section _hide-section">
-          <img class="_main-image" src="../images/wedding2-4.jpg">
+          <div class="_wrapper">
+            <img class="_main-image" src="../images/wedding2-4.jpg">
+          </div>
           <div class="_details slide-up">
             <p>
               En nuestros momentos más solitarios,
