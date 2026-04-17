@@ -57,7 +57,7 @@
       --color-h1: #1F1F1F;
       --color-h2: #A68966;
       --color-p: #4A4A4A;
-      --color-small: #8C867E;
+      --color-small: #4A4A4A;
 
       --font-a: "HelloHoney", Sans-serif;
       --font-b: "monallesia";
@@ -121,7 +121,7 @@
   <!-- Main -->
   <style>
     ._main-section {
-      display: flex;
+       display: flex;
       align-items: center;
       justify-content: center;
       flex-direction: column;
@@ -130,11 +130,23 @@
       max-width: 100%;
     }
 
+    ._main-section ._wrapper {
+      position: relative;
+    }
+
+    ._main-section ._wrapper::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.04);
+      z-index: 1;
+    }
+
     ._main-section img._main-image {
-      width: fit-content;
+      width: 100%;
       height: 100dvh;
-      border: 15px solid white;
-      border-radius: 10px;
+      object-fit: cover;
+      display: block;
     }
 
     ._main-section img._main-mono {
@@ -158,6 +170,7 @@
       justify-content: center;
       flex-direction: column;
       padding: 2rem 5px;
+      z-index: 2;
     }
 
     ._main-section ._details h1 {
@@ -187,7 +200,6 @@
     @media (max-width: 767.98px) {
       ._main-section {
         width: 100%;
-        height: 100svh;
         overflow: hidden;
       }
 
@@ -285,27 +297,42 @@
       justify-content: center;
       flex-direction: column;
       position: relative;
-      width: fit-content;
+      width: 100%;
+      max-width: 100%;
+    }
+
+    ._secondary-section ._wrapper {
+      position: relative;
+    }
+
+    ._secondary-section ._wrapper::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.4);
+      z-index: 1;
     }
 
     ._secondary-section img._main-image {
-      width: auto;
+      width: 100%;
       height: 100dvh;
-      border-radius: 10px;
+      object-fit: cover;
+      display: block;
     }
 
     ._secondary-section ._details {
       position: absolute;
-      left: 0;
-      right: 0;
+      inset: 0;
+      z-index: 2;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      padding: 15px 10px;
+      width: 90%;
+      max-width: 600px;
       display: flex;
       align-items: center;
       justify-content: center;
-      flex-direction: column;
-      padding: 15px 10px;
-      border-radius: 5px;
-      background: rgba(255, 255, 255, 0.15);
-      backdrop-filter: blur(8px);
     }
 
     ._secondary-section ._details h2 {
@@ -348,24 +375,25 @@
     ._family-section h1 {
       font-family: var(--font-b);
       font-style: italic;
-      font-size: clamp(1.1rem, 3vw, 1.6rem);
+      font-size: clamp(1.3rem, 3vw, 1.6rem);
+      font-weight: 600;
       line-height: 1.4;
       letter-spacing: 1px;
       margin: 0;
       text-align: center;
       color: var(--color-h1);
       text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
-
     }
 
     ._family-section small {
       font-family: var(--font-c);
       font-style: italic;
       font-size: 0.85rem;
+      font-weight: 600;
       text-transform: uppercase;
       letter-spacing: 2px;
       display: block;
-      margin-top: 5px;
+      margin-top: 1rem;
       text-align: center;
       color: var(--color-accent);
       text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
@@ -408,6 +436,7 @@
       font-family: var(--font-c);
       font-weight: 400;
       font-size: clamp(1.1rem, 3vw, 1.4rem);
+      font-weight: 600;
       letter-spacing: 2px;
       text-align: center;
       color: var(--color-accent);
@@ -417,10 +446,11 @@
     ._place-section small {
       font-family: var(--font-c);
       font-size: 0.9rem;
+      font-weight: 600;
       line-height: 1.5;
       text-align: center;
       color: var(--color-small);
-      text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
       margin-bottom: 1rem;
       max-width: 300px;
     }
@@ -1087,8 +1117,11 @@
       </span>
       <div class="_template">
         <div class="_main-section">
-          <img class="_main-mono" src="../images/wedding2-monoJJ.png">
-          <img class="_main-image" src="../images/wedding2-1.jpg">
+          <div class="_wrapper">
+            <img class="_main-mono" src="../images/wedding2-monoJJ.png">
+            <img class="_main-image" src="../images/wedding2-1.jpg">
+          </div>
+
 
           <div class="_details">
             <div class="_play-button"></div>
@@ -1119,7 +1152,9 @@
         </div>
 
         <div class="_secondary-section _hide-section">
-          <img class="_main-image" src="../images/wedding2-2.png">
+          <div class="_wrapper">
+            <img class="_main-image" src="../images/wedding2-2.png">
+          </div>
           <div class="_details slide-up">
             <h2>
               Que todas las noches sean noches de boda y que todas las lunas
