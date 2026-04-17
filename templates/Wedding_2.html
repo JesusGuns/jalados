@@ -38,12 +38,9 @@
   <!-- Font Awesome-->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-
   <link
     href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&display=swap"
     rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Aguafina+Script&display=swap" rel="stylesheet">
-
 
   <link rel="stylesheet" href="../css/templates.css">
 
@@ -66,11 +63,10 @@
       --color-p: #4A4A4A;
       --color-small: #8C867E;
 
-      --font-primary: "HelloHoney", Sans-serif;
-      --font-secondary: "PlayFair Italica", serif;
-      --font-third: "Google Sans", sans-serif;
-      --font-c: "Aguafina Script", cursive;
-      --font-d: "monallesia";
+      --font-a: "HelloHoney", Sans-serif;
+      --font-b: "monallesia";
+      --font-c: "PlayFair Italica", serif;
+      --font-d: "Google Sans", sans-serif;
 
       --fs-base: 16px;
       --fs-h1: clamp(4rem, 9vw, 5rem);
@@ -112,13 +108,14 @@
     ._gap-10 {
       gap: 10px;
     }
-@media (max-width: 575.98px) {
 
-  ._template-Audio-Button img {
-    
-    height: auto;
-  }
-}
+    @media (max-width: 575.98px) {
+
+      ._template-Audio-Button img {
+
+        height: auto;
+      }
+    }
 
     /* ._hide-section {
       display: none !important;
@@ -165,12 +162,10 @@
       justify-content: center;
       flex-direction: column;
       padding: 2rem 5px;
-
-
     }
 
     ._main-section ._details h1 {
-      font-family: var(--font-primary);
+      font-family: var(--font-a);
       font-size: var(--fs-h1);
       line-height: 0.9;
       padding: 0 10px;
@@ -181,7 +176,7 @@
     }
 
     ._main-section ._details h2 {
-      font-family: var(--font-third);
+      font-family: var(--font-d);
       font-style: italic;
       font-weight: bold;
       font-size: clamp(1rem, 3vw, 1.5rem);
@@ -229,7 +224,7 @@
     }
 
     ._template-Counter-Section ._counter-Timebox {
-      font-family: var(--font-third);
+      font-family: var(--font-c);
       font-size: clamp(0.7rem, 2vw, 0.9rem);
       letter-spacing: 2.5px;
       flex: 1;
@@ -242,7 +237,7 @@
     }
 
     ._template-Counter-Section ._counter-Timebox span {
-      font-family: var(--font-third);
+      font-family: var(--font-c);
       font-weight: normal;
       font-size: clamp(1.5rem, 5vw, 3rem);
       height: auto;
@@ -318,7 +313,7 @@
     }
 
     ._secondary-section ._details h2 {
-      font-family: var(--font-third);
+      font-family: var(--font-d);
       letter-spacing: 2px;
       margin: 0;
       text-align: center;
@@ -355,7 +350,7 @@
     }
 
     ._family-section h1 {
-      font-family: var(--font-d);
+      font-family: var(--font-b);
       font-style: italic;
       font-size: clamp(1.1rem, 3vw, 1.6rem);
       line-height: 1.4;
@@ -368,7 +363,7 @@
     }
 
     ._family-section small {
-      font-family: var(--font-secondary);
+      font-family: var(--font-c);
       font-style: italic;
       font-size: 0.85rem;
       text-transform: uppercase;
@@ -413,18 +408,8 @@
       border-radius: 10px;
     }
 
-    ._place-section h1 {
-      font-family: var(--font-d);
-      font-weight: 400;
-      font-size: clamp(1.3rem, 4vw, 1.8rem);
-      letter-spacing: 5px;
-      text-align: center;
-      color: var(--color-h1);
-      text-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-    }
-
     ._place-section h2 {
-      font-family: var(--font-third);
+      font-family: var(--font-c);
       font-weight: 400;
       font-size: clamp(1.1rem, 3vw, 1.4rem);
       letter-spacing: 2px;
@@ -434,7 +419,7 @@
     }
 
     ._place-section small {
-      font-family: var(--font-third);
+      font-family: var(--font-c);
       font-size: 0.9rem;
       line-height: 1.5;
       text-align: center;
@@ -465,9 +450,7 @@
       }
     }
 
-    @media (max-width: 375.98px) {
-      
-    }
+    @media (max-width: 375.98px) {}
   </style>
 
   <!-- TimeLine -->
@@ -680,7 +663,7 @@
     }
 
     ._third-section ._details p {
-      font-family: var(--font-third);
+      font-family: var(--font-d);
       font-variant-ligatures: none;
       font-feature-settings: "liga" 0;
       letter-spacing: 1px;
@@ -746,6 +729,9 @@
 
   <!--DressCode-->
   <style>
+    ._dresscode-section{
+      padding: 0 0 2rem;
+    }
     ._dresscode-section .vr {
       border-left: 2px solid #000;
       margin: 0 0 0 20px;
@@ -765,30 +751,29 @@
     ._dresscode-section h1,
     ._dresscode-section h2,
     ._dresscode-section h3 {
-      font-family: var(--font-c);
       font-weight: bold;
       letter-spacing: 10px;
       text-transform: uppercase;
       text-align: center;
       color: var(--color-h1);
       text-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-      margin-top: 1rem;
-
     }
 
     ._dresscode-section h1 {
-      font-size: 2rem;
-      font-family: var(--font-d);
+      font-size: clamp(2rem, 4vw, 2.5rem);
+      font-family: var(--font-b);
       text-transform: none;
     }
 
     ._dresscode-section h2 {
-
-      font-size: clamp(1rem, 4vw, 1.4rem);
+      font-size: clamp(1rem, 3vw, 1.4rem);
+      font-family: var(--font-c);
+      margin-top: 1rem;
     }
 
     ._dresscode-section h3 {
       font-size: clamp(1rem, 4vw, 1.4rem);
+      font-family: var(--font-c);
     }
 
     @media (max-width: 575.98px) {
@@ -830,19 +815,17 @@
     }
 
     ._confirmation-section h1 {
-      font-family: var(--font-c);
+      font-family: var(--font-b);
       font-weight: bold;
-      font-size: clamp(1.2rem, 4vw, 1.6rem);
+      font-size: clamp(2rem, 4vw, 2.5rem);
       text-align: center;
       color: var(--color-h1);
       text-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
       margin-top: 1rem;
-      letter-spacing: 5px;
-      text-transform: uppercase;
     }
 
     ._confirmation-section h2 {
-      font-family: var(--font-third);
+      font-family: var(--font-d);
       font-size: clamp(1.1rem, 3vw, 1.4rem);
       text-align: justify;
       color: var(--color-h1);
@@ -909,24 +892,23 @@
     }
 
     ._section-gifttable h1 {
-      font-family: var(--font-c);
+      font-family: var(--font-b);
       font-weight: bold;
-      font-size: 1.4rem;
+      font-size: clamp(2rem, 4vw, 2.5rem);
       text-align: center;
       color: var(--color-h1);
       text-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
       margin-top: 1rem;
-      letter-spacing: 10px;
-      text-transform: uppercase;
     }
 
     ._section-gifttable p {
-      font-family: var(--font-third);
+      font-family: var(--font-d);
       font-weight: 400;
       font-size: 1.2rem;
       text-align: center;
       color: var(--color-p);
       text-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+      margin-top: 1rem;
     }
 
 
@@ -941,7 +923,7 @@
       gap: 10px;
       background-color: rgba(255, 255, 255, 0.6);
       color: var(--color-primary);
-      font-family: var(--font-third);
+      font-family: var(--font-d);
       font-weight: bold;
       font-size: 1.1rem;
       padding: 12px 25px;
@@ -998,6 +980,77 @@
     }
   </style>
 
+  <!--End-->
+  <style>
+    ._end-section {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      position: relative;
+      width: 100%;
+      max-width: 100%;
+    }
+
+    ._end-section img._main-image {
+      width: fit-content;
+      height: 100dvh;
+    }
+
+    ._end-section ._details {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      padding: 2rem 5px;
+    }
+
+    ._end-section ._details h1 {
+      font-family: var(--font-a);
+      font-size: var(--fs-h1);
+      line-height: 0.9;
+      padding: 0 10px;
+      margin: 0;
+      text-align: center;
+      color: var(--color-secondary);
+      text-shadow: 2px 2px 10px var(--color-shadow);
+    }
+
+    ._end-section ._details h2 {
+      font-family: var(--font-d);
+      font-style: italic;
+      font-weight: bold;
+      font-size: clamp(1rem, 3vw, 1.5rem);
+      letter-spacing: 4px;
+      text-shadow: 2px 2px 10px var(--color-shadow);
+      margin: 0.5rem 0;
+      text-align: center;
+      color: var(--color-secondary);
+    }
+
+    @media (max-width: 767.98px) {
+      ._end-section {
+        width: 100%;
+        height: 100svh;
+        overflow: hidden;
+      }
+
+      ._end-section img._main-image {
+        border: 0;
+        border-radius: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+        display: block;
+      }
+
+    }
+  </style>
 </head>
 
 <body>
@@ -1078,7 +1131,6 @@
             <img class="_main-image" src="../images/wedding2-place.jpg">
           </div>
           <div class="_common-d-flex _common-flex-column">
-            <h1>Save the Date</h1>
             <h2>La Terraza Clouthier</h2>
             <small>17:30 p.m.</small>
             <small>
@@ -1153,8 +1205,8 @@
         </div>
 
         <div class="_dresscode-section">
-          <div class="text-center mb-4">
-            <h1>Dres Code</h1>
+          <div class="text-center mb-5">
+            <h1>Dress Code</h1>
           </div>
           <div class="_common-d-flex _gap-10">
             <div class="_common-d-flex _common-flex-column">
@@ -1176,9 +1228,7 @@
           <div>
             <h1>Asistencia</h1>
             <h2>
-              Tu compañía haría este momento aún más significativo para nosotros.
-              <br><br>
-              Te agradeceremos confirmar tu asistencia a la celebración.
+              Nos encantaría que nos confirmes si podrás asistir, nos haría mucha ilusión verte ahí.
             </h2>
 
             <div class="form-fields">
@@ -1211,6 +1261,19 @@
             </div>
         </div>
 
+        <div class="_end-section">
+          <img class="_main-image" src="../images/wedding2-5.jpg">
+          <div class="_details">
+            <h2>
+              "Y todo lo que hagan,
+              <br> háganlo con amor".
+              <br> Corintios 16:14
+              <br><br>
+              ¡Los esperamos!
+            </h2>
+            <h1>Jacqueline & Jesus</h1>
+          </div>
+        </div>
       </div>
     </main>
   </div>
