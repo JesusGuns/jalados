@@ -729,9 +729,10 @@
 
   <!--DressCode-->
   <style>
-    ._dresscode-section{
+    ._dresscode-section {
       padding: 0 0 2rem;
     }
+
     ._dresscode-section .vr {
       border-left: 2px solid #000;
       margin: 0 0 0 20px;
@@ -992,6 +993,19 @@
       max-width: 100%;
     }
 
+    ._wrapper {
+      position: relative;
+    }
+
+    ._end-section ._wrapper::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.4);
+
+    }
+
+
     ._end-section img._main-image {
       width: fit-content;
       height: 100dvh;
@@ -1007,6 +1021,7 @@
       justify-content: center;
       flex-direction: column;
       padding: 2rem 5px;
+      z-index: 1;
     }
 
     ._end-section ._details h1 {
@@ -1262,7 +1277,9 @@
         </div>
 
         <div class="_end-section">
-          <img class="_main-image" src="../images/wedding2-5.jpg">
+          <div class="_wrapper">
+            <img class="_main-image" src="../images/wedding2-5.jpg">
+          </div>
           <div class="_details">
             <h2>
               "Y todo lo que hagan,
