@@ -53,9 +53,10 @@
       --color-secondary: #FAF5EF;
       --color-accent: #A68966;
       --color-white: #FFFFFF;
+      --color-c: #DDD0C0;
 
       --color-h1: #1F1F1F;
-      --color-h2: #A68966;
+
       --color-p: #4A4A4A;
       --color-small: #4A4A4A;
 
@@ -217,13 +218,12 @@
       font-size: clamp(0.7rem, 2vw, 0.9rem);
       letter-spacing: 2.5px;
       flex: 1;
-      color: var(--color-white);
-      text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
-      border: 1px solid var(--color-white);
+      color: var(--color-primary);
+      text-shadow: 0 2px 6px rgba(0, 0, 0, 1);
       border-radius: 5px;
       padding: 10px;
       gap: 10px;
-      background-color: var(--color-accent);
+      background-color: var(--color-c);
     }
 
     ._template-Counter-Section ._counter-Timebox span {
@@ -268,6 +268,64 @@
         font-size: 25px;
         height: 30px;
       }
+    }
+  </style>
+
+  <!-- Ticket -->
+  <style>
+    ._savethedate-section {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      margin: 2rem 1rem;
+      border: 2px solid var(--color-c);
+      border-radius: 5px;
+      padding: 0px 0 0 10px;
+    }
+
+    ._savethedate-section ._details h1,
+    ._savethedate-section ._details h2,
+    ._savethedate-section ._details h3,
+    ._savethedate-section ._details h4 {
+      color: var(--color-primary);
+      text-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+      margin-top: 1rem;
+      letter-spacing: 2px;
+    }
+
+    ._savethedate-section ._details h1 {
+      font-family: var(--font-b);
+      font-size: clamp(1.4rem, 3vw, 1.4rem);
+      font-weight: 600;
+      text-align: center;
+
+    }
+
+    ._savethedate-section ._details h2 {
+      font-family: var(--font-c);
+      font-size: clamp(1.4rem, 3vw, 1.4rem);
+      font-weight: 600;
+      text-align: left;
+    }
+
+    ._savethedate-section ._details h3 {
+      font-family: var(--font-c);
+      font-size: clamp(1.1rem, 3vw, 1.4rem);
+      font-weight: 600;
+      text-align: center;
+    }
+
+    ._savethedate-section ._details h4 {
+      font-family: var(--font-c);
+      font-size: clamp(1.1rem, 3vw, 1.4rem);
+      font-weight: 600;
+      text-align: right;
+    }
+
+    ._savethedate-section ._codebar-image {
+      width: 40px;
+
     }
   </style>
 
@@ -818,7 +876,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      background-image: url('../images/Wedding2/Confirmation.png');
+      background-image: url('../images/Wedding2/confirmation.png');
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
@@ -1133,6 +1191,15 @@
           </div>
         </div>
 
+        <div class="_savethedate-section">
+          <div class="_details">
+            <h1>Save the Date</h1>
+            <h2>María,</h2>
+            <h3>¡Nos casamos! Y queremos celebrarlo contigo.</h3>
+            <h4>2 pases para ti.</h4>
+          </div>
+          <img class="_codebar-image" src="../images/icons/CodeBar.jpg">
+        </div>
         <div class="_secondary-section _hide-section">
           <div class="_wrapper">
             <img class="_main-image" src="../images/Wedding2/2.jpg">
@@ -1204,10 +1271,10 @@
           <img src="../images/Wedding2/3.png">
           <img src="../images/Wedding2/4.jpg">
           <img src="../images/Wedding2/end.jpg">
-        </div>
-        <div class="modal" id="_gallery-modal">
-          <span class="close" id="_gallery-modal-close">&times;</span>
-          <img id="_gallery-modal-img">
+          <div class="modal" id="_gallery-modal">
+            <span class="close" id="_gallery-modal-close">&times;</span>
+            <img id="_gallery-modal-img">
+          </div>
         </div>
 
         <div class="_third-section _hide-section">
