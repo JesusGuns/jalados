@@ -10,19 +10,19 @@
 }
 
 @font-face {
-    font-family: 'HelloHoney';
-    font-style: normal;
-    font-weight: normal;
-    font-display: auto;
-    src: url('../fonts/hellohoney.ttf') format('truetype');
+  font-family: "HelloHoney";
+  font-style: normal;
+  font-weight: normal;
+  font-display: auto;
+  src: url("../fonts/hellohoney.ttf") format("truetype");
 }
 
 @font-face {
-    font-family: 'PlayFair Italica';
-    font-style: normal;
-    font-weight: normal;
-    font-display: auto;
-    src: url('../fonts/PlayfairDisplay.ttf') format('truetype');
+  font-family: "PlayFair Italica";
+  font-style: normal;
+  font-weight: normal;
+  font-display: auto;
+  src: url("../fonts/PlayfairDisplay.ttf") format("truetype");
 }
 
 /* #region HTML*/
@@ -94,13 +94,11 @@ main {
   filter: drop-shadow(2px 2px 2px grey);
 }
 
-._template-Audio-Button.off {
-  filter: hue-rotate(45deg);
-}
-
 ._template-Audio-Button img {
   width: 45px;
   cursor: pointer;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
 }
 
 @media (max-width: 575.98px) {
@@ -110,7 +108,7 @@ main {
 
   ._template-Audio-Button img {
     width: 30px;
-    height: 40px;
+    height: auto;
   }
 }
 
@@ -182,7 +180,7 @@ main {
 img.location-maps {
   width: 40px;
   height: 40px;
-  object-fit: cover;
+  object-fit: contain;
   border-radius: 50%;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
   animation: _animation-pulse-3 0.4s infinite;
@@ -481,11 +479,11 @@ img._common-icon {
 
 /* #region Text style*/
 .slide-right {
-  animation: slideInRight 1s  ease-out forwards;
+  animation: slideInRight 1s ease-out forwards;
 }
 
 .slide-left {
-  animation: slideInLeft 1s  ease-out forwards;
+  animation: slideInLeft 1s ease-out forwards;
 }
 
 .slide-down {
@@ -495,14 +493,18 @@ img._common-icon {
 .slide-up h2 {
   opacity: 0;
   transform: translateY(30px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
+  transition:
+    opacity 0.6s ease,
+    transform 0.6s ease;
   will-change: transform, opacity;
 }
 
 .slide-up p {
   opacity: 0;
   transform: translateY(30px);
-  transition: opacity 1.2s ease, transform 1.2s ease; /* más lenta que h2 */
+  transition:
+    opacity 1.2s ease,
+    transform 1.2s ease; /* más lenta que h2 */
   will-change: transform, opacity;
 }
 
