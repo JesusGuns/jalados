@@ -25,6 +25,14 @@
   src: url("../fonts/PlayfairDisplay.ttf") format("truetype");
 }
 
+@font-face {
+  font-family: "Eastpoint";
+  font-style: normal;
+  font-weight: normal;
+  font-display: auto;
+  src: url("../fonts/Eastpoint.ttf") format("truetype");
+}
+
 /* #region HTML*/
 html {
   font-size: 14px;
