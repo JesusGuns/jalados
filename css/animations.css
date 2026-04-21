@@ -151,6 +151,7 @@
     transform: scale(1);
   }
 }
+
 @keyframes _animation-fade-in {
   from {
     opacity: 0.7;
