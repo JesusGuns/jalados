@@ -526,11 +526,18 @@
   <!-- TimeLine -->
   <style>
     ._timeline-section {
+      display: flex;
+    align-items: center;
+    justify-content: center;
       padding: 2.5rem 0;
       overflow-x: hidden;
     }
 
-    .timeline-columns {
+    ._timeline-section ._main-image {
+      max-width: 600px;
+    }
+
+    /* .timeline-columns {
       display: flex;
       justify-content: center;
       align-items: stretch;
@@ -618,13 +625,19 @@
       }
     }
 
+   */
+
     @media (max-width: 575.98px) {
-      .timeline-center img {
+      /* .timeline-center img {
         max-width: 100px;
       }
 
       .timeline-event img {
         max-width: 100px;
+      } */
+
+      ._timeline-section ._main-image {
+        width: 85%;
       }
     }
   </style>
@@ -826,6 +839,8 @@
 
     ._dresscode-section ._main-image {
       max-width: 450px;
+      position: relative;
+      left: 10%;
     }
 
     ._dresscode-section h2,
@@ -861,7 +876,8 @@
 
     @media (max-width: 575.98px) {
       ._dresscode-section ._main-image {
-        width: 55%;
+        width: 60%;
+        left: 7%;
       }
     }
   </style>
@@ -1247,7 +1263,8 @@
         </div>
 
         <div class="_timeline-section _hide-section">
-          <div class="timeline-columns">
+          <img class="_main-image" src="../images/Wedding2/elplan.png" alt="Evento 1">
+          <!-- <div class="timeline-columns">
             <div class="timeline-left">
               <div class="timeline-event"> <img src="../images/Wedding2/timeline-1.png" alt="Evento 1"> </div>
               <div class="timeline-event"> <img src="../images/Wedding2/timeline-3.png" alt="Evento 3"> </div>
@@ -1258,7 +1275,7 @@
               <div class="timeline-event"> <img src="../images/Wedding2/timeline-2.png" alt="Evento 2"> </div>
               <div class="timeline-event"> <img src="../images/Wedding2/timeline-4.png" alt="Evento 4"> </div>
             </div>
-          </div>
+          </div> -->
         </div>
 
         <div class="_gallery-section">
