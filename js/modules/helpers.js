@@ -237,6 +237,7 @@ define(["jquery", "extended"], function ($) {
             if (data.confirmed) {
               $("._tableNumber").text(String(data.table).padStart(2, "0"));
               if($("body ._hide-section").length == 0){
+                $("body ._hide-tablesection").addClass("_hide-sectionn");
                 $("body ._hide-tablesection").removeClass("_hide-tablesection-section");
               }
             }
