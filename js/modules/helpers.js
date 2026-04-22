@@ -217,27 +217,36 @@ define(["jquery", "extended"], function ($) {
     onValidateToken: function () {
       const params = new URLSearchParams(window.location.search);
       const token = params.get("token") || "";
-      if (!token){
+      if (!token) {
         $("._confirmation-section").remove();
         $("._savethedate-section").remove();
         $("._table-section").remove();
-        return
-      };
+        return;
+      }
 
       fetch(`/api/sheet?token=${token}`)
-      .then((resp) => {
-        if (!resp.ok) throw new Error(`HTTP error ${resp.status}`);
-        return resp.json();
-      }).then((data) => {
-        if (data.success) {
-          $("._savethedate-section h2").text(data.guestName);
-          $("._savethedate-section h4 span").text(data.ticket);
-        } else {
-          $("._confirmation-section").remove();
-          $("._savethedate-section").remove();
-          $("._table-section").remove();
-        }
-      }).catch((err) => console.error("Error:", err));
+        .then((resp) => {
+          if (!resp.ok) throw new Error(`HTTP error ${resp.status}`);
+          return resp.json();
+        })
+        .then((data) => {
+          if (data.success) {
+            $("._savethedate-section h2").text(data.guestName);
+            $("._savethedate-section h4 span").text(data.ticket);
+
+            if (data.confirmed) {
+              $("._tableNumber").text(String(data.table).padStart(2, "0"));
+              $("._table-section").show();
+            }else{
+              $("._table-section").hide();
+            }
+          } else {
+            $("._confirmation-section").remove();
+            $("._savethedate-section").remove();
+            $("._table-section").remove();
+          }
+        })
+        .catch((err) => console.error("Error:", err));
     },
     onSendConfirmation: function (confirmation, guestAttendants, wishes) {
       const params = new URLSearchParams(window.location.search);
@@ -255,18 +264,20 @@ define(["jquery", "extended"], function ($) {
           guests: guestAttendants,
           wishes: wishes,
         }),
-      }).then((resp) => {
-        if (!resp.ok) throw new Error(`HTTP error ${resp.status}`);
-        return resp.json();
-      }).then((data) => {
-        if (data.success) {
-          $("._tableNumber").text(String(data.table).padStart(2, '0'))
-          $("._table-section").show();
-        } else {
-          $("._table-section").remove();
-        }
       })
-      .catch((err) => console.error("Error:", err));
+        .then((resp) => {
+          if (!resp.ok) throw new Error(`HTTP error ${resp.status}`);
+          return resp.json();
+        })
+        .then((data) => {
+          if (data.success) {
+            $("._tableNumber").text(String(data.table).padStart(2, "0"));
+            $("._table-section").show();
+          } else {
+            $("._table-section").remove();
+          }
+        })
+        .catch((err) => console.error("Error:", err));
     },
     onLoad: function () {
       Resources.MainEvent.RandomCollageImage = Math.floor(
