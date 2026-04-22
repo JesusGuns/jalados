@@ -81,7 +81,7 @@
 
     /* #endregion HTML*/
 
-    
+
     .content {
       position: relative;
       z-index: 1;
@@ -96,10 +96,6 @@
       justify-content: center;
       flex-direction: column;
 
-    }
-
-    ._gap-10 {
-      gap: 10px;
     }
 
     /* ._hide-section {
@@ -117,6 +113,7 @@
       position: relative;
       width: 100%;
       max-width: 100%;
+      margin-bottom: 2rem;
     }
 
     ._main-section ._wrapper {
@@ -225,7 +222,7 @@
     ._template-Counter-Section ._counter-Timebox span {
       font-family: var(--font-c);
       font-weight: normal;
-      font-size: clamp(2.2rem, 5vw, 3rem);
+      font-size: clamp(2rem, 5vw, 3rem);
       height: auto;
       display: block;
     }
@@ -236,129 +233,6 @@
       }
     }
   </style>
-
-  <!-- Save the Date -->
-  <style>
-    ._savethedate-section {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-      margin: 2rem 1rem 0;
-      border: 2px solid var(--color-d);
-      border-radius: 5px;
-      padding: 0px 0 0 10px;
-      background-color: rgba(255, 255, 255, 0.3);
-    }
-
-    ._savethedate-section ._details h1,
-    ._savethedate-section ._details h2,
-    ._savethedate-section ._details h3,
-    ._savethedate-section ._details h4 {
-      color: var(--color-primary);
-      text-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-      margin-top: 1rem;
-      letter-spacing: 2px;
-    }
-
-    ._savethedate-section ._details h1 {
-      font-family: var(--font-b);
-      font-size: clamp(1.4rem, 2.5vw, 1.6rem);
-      font-weight: 600;
-      text-align: center;
-
-    }
-
-    ._savethedate-section ._details h2 {
-      font-family: var(--font-c);
-      font-size: clamp(1.4rem, 2.5vw, 1.6rem);
-      font-weight: 600;
-      text-align: left;
-      padding-top: 10px;
-    }
-
-    ._savethedate-section ._details h3,
-    ._savethedate-section ._details h4 {
-      font-family: var(--font-c);
-      font-size: clamp(1.1rem, 2.5vw, 1.4rem);
-      font-weight: 600;
-    }
-
-    ._savethedate-section ._details h3 {
-      text-align: center;
-    }
-
-    ._savethedate-section ._details h4 {
-      text-align: right;
-    }
-
-    ._savethedate-section ._details h4>span {
-      font-family: var(--font-a);
-      font-size: 2rem;
-    }
-
-    ._savethedate-section ._codebar-image {
-      width: 40px;
-
-    }
-  </style>
-
-  <!-- Table -->
-  <style>
-    ._table-section {
-      display: flex;
-      height: 500px;
-      gap: 20px;
-      margin-top: 2rem;
-      border: 2px solid var(--color-d);
-      border-radius: 5px;
-      padding: 1rem 0;
-    }
-
-    ._table-section ._col-left {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      height: 100%;
-      gap: 10%;
-    }
-
-    ._table-section ._table-text {
-      writing-mode: vertical-rl;
-      transform: rotate(180deg);
-      font-family: var(--font-f);
-      font-size: 3.5rem;
-      font-weight: bold;
-      text-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-      color: var(--color-e);
-    }
-
-    ._table-section ._line {
-      width: 2px;
-      height: 100%;
-      background-color: var(--color-d);
-    }
-
-    ._table-section ._col-right {
-      font-family: var(--font-d);
-      font-size: 13rem;
-      font-weight: bold;
-      line-height: 0.8;
-      text-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-      display: flex;
-      align-items: flex-end;
-      justify-content: space-between;
-      flex-direction: column;
-      padding-right: 10px;
-      color: var(--color-e);
-    }
-
-    ._table-section ._main-mono {
-      width: 120px;
-      filter: contrast(0.4);
-    }
-  </style>
-
 
   <!-- Secondary -->
   <style>
@@ -987,6 +861,128 @@
     }
   </style>
 
+  <!-- Save the Date -->
+  <style>
+    ._savethedate-section {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      margin: 2rem 0.4rem 0;
+      border: 2px solid var(--color-d);
+      border-radius: 5px;
+      padding: 0px 0 0 10px;
+      background-color: rgba(255, 255, 255, 0.3);
+    }
+
+    ._savethedate-section ._details h1,
+    ._savethedate-section ._details h2,
+    ._savethedate-section ._details h3,
+    ._savethedate-section ._details h4 {
+      color: var(--color-primary);
+      text-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+      margin-top: 1rem;
+      letter-spacing: 2px;
+    }
+
+    ._savethedate-section ._details h1 {
+      font-family: var(--font-b);
+      font-size: clamp(1.4rem, 2.5vw, 1.6rem);
+      font-weight: 600;
+      text-align: center;
+
+    }
+
+    ._savethedate-section ._details h2 {
+      font-family: var(--font-c);
+      font-size: clamp(1.4rem, 2.5vw, 1.6rem);
+      font-weight: 600;
+      text-align: left;
+      padding-top: 10px;
+    }
+
+    ._savethedate-section ._details h3,
+    ._savethedate-section ._details h4 {
+      font-family: var(--font-c);
+      font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+      font-weight: 600;
+    }
+
+    ._savethedate-section ._details h3 {
+      text-align: center;
+    }
+
+    ._savethedate-section ._details h4 {
+      text-align: right;
+    }
+
+    ._savethedate-section ._details h4>span {
+      font-family: var(--font-a);
+      font-size: 2rem;
+    }
+
+    ._savethedate-section ._codebar-image {
+      width: 40px;
+
+    }
+  </style>
+
+  <!-- Table -->
+  <style>
+    ._table-section {
+      display: flex;
+      height: 500px;
+      gap: 20px;
+      margin: 2rem 0;
+      border: 2px solid var(--color-d);
+      border-radius: 5px;
+      padding: 1rem 0;
+    }
+
+    ._table-section ._col-left {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      height: 100%;
+      gap: 10%;
+    }
+
+    ._table-section ._table-text {
+      writing-mode: vertical-rl;
+      transform: rotate(180deg);
+      font-family: var(--font-f);
+      font-size: 3.5rem;
+      font-weight: bold;
+      text-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+      color: var(--color-e);
+    }
+
+    ._table-section ._line {
+      width: 2px;
+      height: 100%;
+      background-color: var(--color-d);
+    }
+
+    ._table-section ._col-right {
+      font-family: var(--font-d);
+      font-size: 13rem;
+      font-weight: bold;
+      line-height: 0.8;
+      text-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      flex-direction: column;
+      padding-right: 10px;
+      color: var(--color-e);
+    }
+
+    ._table-section ._main-mono {
+      width: 120px;
+      filter: contrast(0.4);
+    }
+  </style>
+
   <!--End-->
   <style>
     ._end-section {
@@ -1112,27 +1108,6 @@
             <div class="_counter-Timebox">
               <span id="seconds">0</span> Seg.
             </div>
-          </div>
-        </div>
-
-        <div class="_savethedate-section">
-          <div class="_details">
-            <h1>Save the Date</h1>
-            <h2>María,</h2>
-            <h3>¡Nos casamos! Y queremos celebrarlo contigo.</h3>
-            <h4><span>2</span> pases para ti.</h4>
-          </div>
-          <img class="_codebar-image" src="../images/icons/CodeBar.jpg">
-        </div>
-
-        <div class="_table-section">
-          <div class="_col-left">
-            <span class="_table-text">MESA</span>
-            <div class="_line"></div>
-          </div>
-          <div class="_col-right">
-            <img class="_main-mono" src="../images/Wedding2/mono.png">
-            04
           </div>
         </div>
 
@@ -1275,16 +1250,37 @@
 
         <div class="_section-gifttable _hide-section">
           <h1>Regalos</h1>
-            <p>
-              Para nosotros tu presencia es nuestro mejor regalo, pero si deseas hacernos llegar un
-              obsequio, te sugerimos la siguiente opción:
-            </p>
-            <div class="_btn-brands">
-              <a href="#" data-replace="EventLiverpoolGiftTableUrl" target="_blank" class="_btn-gift">
-                <img src="#" data-replace="Image_LiverpoolUrl" alt="Liverpool Logo" />
-                Liverpool
-              </a>
-            </div>
+          <p>
+            Para nosotros tu presencia es nuestro mejor regalo, pero si deseas hacernos llegar un
+            obsequio, te sugerimos la siguiente opción:
+          </p>
+          <div class="_btn-brands">
+            <a href="#" data-replace="EventLiverpoolGiftTableUrl" target="_blank" class="_btn-gift">
+              <img src="#" data-replace="Image_LiverpoolUrl" alt="Liverpool Logo" />
+              Liverpool
+            </a>
+          </div>
+        </div>
+
+        <div class="_savethedate-section">
+          <div class="_details">
+            <h1>Save the Date</h1>
+            <h2>María,</h2>
+            <h3>¡Nos casamos! Y queremos celebrarlo contigo.</h3>
+            <h4><span>2</span> pases para ti.</h4>
+          </div>
+          <img class="_codebar-image" src="../images/icons/CodeBar.jpg">
+        </div>
+
+        <div class="_table-section">
+          <div class="_col-left">
+            <span class="_table-text">MESA</span>
+            <div class="_line"></div>
+          </div>
+          <div class="_col-right">
+            <img class="_main-mono" src="../images/Wedding2/mono.png">
+            04
+          </div>
         </div>
 
         <div class="_end-section">
