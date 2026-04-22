@@ -236,9 +236,9 @@ define(["jquery", "extended"], function ($) {
 
             if (data.confirmed) {
               $("._tableNumber").text(String(data.table).padStart(2, "0"));
-              $("._table-section").show();
-            }else{
-              $("._table-section").hide();
+              if($("body ._hide-section").length == 0){
+                $("body ._hide-tablesection").removeClass("_hide-tablesection-section");
+              }
             }
           } else {
             $("._confirmation-section").remove();
@@ -272,7 +272,7 @@ define(["jquery", "extended"], function ($) {
         .then((data) => {
           if (data.success) {
             $("._tableNumber").text(String(data.table).padStart(2, "0"));
-            $("._table-section").show();
+            $("._table-section").removeClass("_hide-tablesection-section");
           } else {
             $("._table-section").remove();
           }
