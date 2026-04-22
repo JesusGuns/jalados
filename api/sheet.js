@@ -14,7 +14,7 @@ export default async function handler(req, res) {
   if (!token) {
     return res.status(400).json({ error: "Token is required" });
   }
-  debugger;
+
   const baseUrl =
     "https://script.google.com/macros/s/AKfycbzHxyhpVJbnluZkPquzdGdREuSwYc5yXAejV287Rt_6oHjBVPQkAW0yUHLnCRhjP6nS/exec";
 
@@ -36,7 +36,13 @@ export default async function handler(req, res) {
     // POST
     if (req.method === "POST") {
       const { token, confirmed, guests, wishes } = req.body;
-
+      console.error("Info", JSON.stringify({
+          token,
+          confirmed,
+          guests,
+          wishes,
+        }));
+        
       const response = await fetch(baseUrl, {
         method: "POST",
         headers: {
