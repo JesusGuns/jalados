@@ -275,7 +275,7 @@ define(["jquery", "extended"], function ($) {
         .then((data) => {
           if (data.success) {
             $("._tableNumber").text(String(data.table).padStart(2, "0"));
-            $("._table-section").removeClass("_hide-tablesection-section");
+            $("body ._table-section").removeClass("_hide-section").removeClass("_hide-tablesection");
           } else {
             $("._table-section").remove();
           }
