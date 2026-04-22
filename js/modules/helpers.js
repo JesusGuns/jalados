@@ -238,9 +238,9 @@ define(["jquery", "extended"], function ($) {
               $("._tableNumber").text(String(data.table).padStart(2, "0"));
 
               if($("body ._hide-section").length > 0){
-                $("body ._hide-tablesection").addClass("_hide-sectionn").removeClass("_hide-tablesection-section");
+                $("body ._table-section").addClass("_hide-sectionn").removeClass("_hide-tablesection-section");
               }else{
-                $("body ._hide-tablesection").removeClass("_hide-sectionn").removeClass("_hide-tablesection-section");
+                $("body ._table-section").removeClass("_hide-sectionn").removeClass("_hide-tablesection-section");
               }
             }
           } else {

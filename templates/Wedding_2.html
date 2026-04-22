@@ -1376,7 +1376,7 @@
 
       function onLoad() {
         helpers.onValidateToken();
-
+console.log("events")
         $("#_btnYes").on('click', function () {
           helpers.onSendConfirmation(true, $("textarea[name=guestAttendants]").val(), $("textarea[name=wishes]").val());
         });
