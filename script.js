@@ -84,7 +84,7 @@ document.addEventListener('DOMContentLoaded', function () {
         ],
         wedding: [
             '<a href="./templates/Wedding_1.html">Boda 1</a>',
-            '',
+            '<a href="./templates/Wedding_2.html">Boda 2</a>',
             ''
         ]
     };

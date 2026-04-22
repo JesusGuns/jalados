@@ -6,7 +6,7 @@ define(["jquery", "extended"], function ($) {
     ImageAudioUrl: "../images/icons/play.png",
     ImageAudioPauseUrl: "../images/icons/pause.png",
     ImageAmazonUrl: "../images/amazon.png",
-    ImageLiverpoolUrl: "../images/liverpool.jpeg",
+    ImageLiverpoolUrl: "../images/icons/liverpool.jpeg",
     ImageGoogleLocation: "../images/icons/GoogleMaps.png",
     IconChurch: "https://cdn-icons-png.flaticon.com/128/4186/4186011.png",
     IconReception: "https://cdn-icons-png.flaticon.com/128/887/887345.png",
@@ -160,8 +160,8 @@ define(["jquery", "extended"], function ($) {
       $("#seconds").text(module.onAddZeroToNumber(seconds));
       if (distance < 0) {
         //@ts-ignore
-        clearInterval(interval);
-        $("countdown").innerHTML = "¡Ha llegado el gran día!";
+        // clearInterval(interval);
+        // $("countdown").innerHTML = "¡Ha llegado el gran día!";
       }
     },
     onGoogleCalendar: function (googleCalendar) {
@@ -217,26 +217,29 @@ define(["jquery", "extended"], function ($) {
     onValidateToken: function () {
       const params = new URLSearchParams(window.location.search);
       const token = params.get("token") || "";
-      if (!token) return;
+      if (!token){
+        $("._confirmation-section").remove();
+        $("._savethedate-section").remove();
+        $("._table-section").remove();
+        return
+      };
 
       fetch(`/api/sheet?token=${token}`)
-        .then((resp) => {
-          if (!resp.ok) throw new Error(`HTTP error ${resp.status}`);
-          return resp.json();
-        })
-        .then((data) => {
-          console.log("Data:", data);
-          if (data.success) {
-            $("._btn-ConfirmButtons").show();
-            $("._savethedate-section > h2").val(data.guestName);
-            $("._savethedate-section > h4 span").val(data.ticket);
-            $("._savethedate-section").show();
-          } else {
-            $("._btn-ConfirmButtons").remove();
-            $("._savethedate-section").remove();
-          }
-        })
-        .catch((err) => console.error("Error:", err));
+      .then((resp) => {
+        if (!resp.ok) throw new Error(`HTTP error ${resp.status}`);
+        return resp.json();
+      }).then((data) => {
+        if (data.success) {
+          $("._confirmation-section").show();
+          $("._savethedate-section h2").text(data.guestName);
+          $("._savethedate-section h4 span").text(data.ticket);
+          $("._savethedate-section").show();
+        } else {
+          $("._confirmation-section").remove();
+          $("._savethedate-section").remove();
+          $("._table-section").remove();
+        }
+      }).catch((err) => console.error("Error:", err));
     },
     onSendConfirmation: function (confirmation, guestAttendants, wishes) {
       const params = new URLSearchParams(window.location.search);
@@ -254,22 +257,18 @@ define(["jquery", "extended"], function ($) {
           guests: guestAttendants,
           wishes: wishes,
         }),
+      }).then((resp) => {
+        if (!resp.ok) throw new Error(`HTTP error ${resp.status}`);
+        return resp.json();
+      }).then((data) => {
+        if (data.success) {
+          $("._tableNumber").text(String(data.table).padStart(2, '0'))
+          $("._table-section").show();
+        } else {
+          $("._table-section").remove();
+        }
       })
-        .then((resp) => {
-          if (!resp.ok) throw new Error(`HTTP error ${resp.status}`);
-          return resp.json();
-        })
-        .then((data) => {
-          console.log("POST response:", data);
-
-          if (data.success) {
-            $("._tableNumber").text(String(data.table).padStart(2, '0'))
-            $("._table-section").show();
-          } else {
-            $("._table-section").remove();
-          }
-        })
-        .catch((err) => console.error("Error:", err));
+      .catch((err) => console.error("Error:", err));
     },
     onLoad: function () {
       Resources.MainEvent.RandomCollageImage = Math.floor(
