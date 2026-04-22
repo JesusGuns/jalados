@@ -14,10 +14,12 @@ export default async function handler(req, res) {
   if (!token) {
     return res.status(400).json({ error: "Token is required" });
   }
-debugger
-  const baseUrl = "https://script.google.com/macros/s/AKfycbzHxyhpVJbnluZkPquzdGdREuSwYc5yXAejV287Rt_6oHjBVPQkAW0yUHLnCRhjP6nS/exec";
+  debugger;
+  const baseUrl =
+    "https://script.google.com/macros/s/AKfycbzHxyhpVJbnluZkPquzdGdREuSwYc5yXAejV287Rt_6oHjBVPQkAW0yUHLnCRhjP6nS/exec";
 
   try {
+    // GET
     if (req.method === "GET") {
       const urlGet = `${baseUrl}?token=${token}`;
 
@@ -31,15 +33,21 @@ debugger
       return res.status(200).json(data);
     }
 
+    // POST
     if (req.method === "POST") {
-      const { confirmed } = req.body;
+      const { token, confirmed, guests, wishes } = req.body;
 
       const response = await fetch(baseUrl, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ token, confirmed }),
+        body: JSON.stringify({
+          token,
+          confirmed,
+          guests,
+          wishes,
+        }),
       });
 
       const text = await response.text();
@@ -56,7 +64,6 @@ debugger
     }
 
     return res.status(405).json({ error: "Method not allowed" });
-
   } catch (error) {
     console.error("Error:", error.message);
     return res.status(500).json({ error: error.message });

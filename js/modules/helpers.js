@@ -214,7 +214,9 @@ define(["jquery", "extended"], function ($) {
       array.splice(newIndex, 0, array.splice(oldIndex, 1)[0]);
       return array;
     },
-    onValidateToken: function (token) {
+    onValidateToken: function () {
+      const params = new URLSearchParams(window.location.search);
+      const token = params.get("token") || "";
       if (!token) return;
 
       fetch(`/api/sheet?token=${token}`)
@@ -226,13 +228,17 @@ define(["jquery", "extended"], function ($) {
           console.log("Data:", data);
           if (data.success) {
             $("._btn-ConfirmButtons").show();
+            $("._savethedate-section > h2").val(data.guestName);
+            $("._savethedate-section > h4 span").val(data.ticket);
+            $("._savethedate-section").show();
           } else {
-            $("._btn-ConfirmButtons").hide();
+            $("._btn-ConfirmButtons").remove();
+            $("._savethedate-section").remove();
           }
         })
         .catch((err) => console.error("Error:", err));
     },
-    onSendConfirmation: function (confirmation) {
+    onSendConfirmation: function (confirmation, guestAttendants, wishes) {
       const params = new URLSearchParams(window.location.search);
       const token = params.get("token") || "";
       if (!token) return;
@@ -245,6 +251,8 @@ define(["jquery", "extended"], function ($) {
         body: JSON.stringify({
           token: token,
           confirmed: confirmation,
+          guests: guestAttendants,
+          wishes: wishes,
         }),
       })
         .then((resp) => {
@@ -254,8 +262,11 @@ define(["jquery", "extended"], function ($) {
         .then((data) => {
           console.log("POST response:", data);
 
-          if (data.status === "ok") {
-            debugger;
+          if (data.success) {
+            $("._tableNumber").text(String(data.table).padStart(2, '0'))
+            $("._table-section").show();
+          } else {
+            $("._table-section").remove();
           }
         })
         .catch((err) => console.error("Error:", err));

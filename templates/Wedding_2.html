@@ -735,7 +735,7 @@
       height: 50px;
     }
 
-    ._confirmation-section textarea[name="wish"] {
+    ._confirmation-section textarea[name="wishes"] {
       min-height: 80px;
     }
 
@@ -1234,12 +1234,12 @@
 
             <div class="form-fields">
               <label>Nombre(s) de acompañante(s)</label>
-              <textarea></textarea>
+              <textarea name="guestAttendants"></textarea>
             </div>
 
             <div class="form-fields">
               <label>Deseo</label>
-              <textarea name="wish"></textarea>
+              <textarea name="wishes"></textarea>
             </div>
             <div class="d-flex justify-content-between">
               <button id="_btnNo" class="_btn-ConfirmButtons ">No Asistiré</button>
@@ -1262,24 +1262,24 @@
           </div>
         </div>
 
-        <div class="_savethedate-section">
+        <div class="_savethedate-section _hide-savethedate">
           <div class="_details">
             <h1>Save the Date</h1>
-            <h2>María,</h2>
+            <h2></h2>
             <h3>¡Nos casamos! Y queremos celebrarlo contigo.</h3>
-            <h4><span>2</span> pases para ti.</h4>
+            <h4><span></span> pases para ti.</h4>
           </div>
           <img class="_codebar-image" src="../images/icons/CodeBar.jpg">
         </div>
 
-        <div class="_table-section">
+        <div class="_table-section _hide-table">
           <div class="_col-left">
             <span class="_table-text">MESA</span>
             <div class="_line"></div>
           </div>
           <div class="_col-right">
             <img class="_main-mono" src="../images/Wedding2/mono.png">
-            04
+            <span class="_tableNumber">04</span>
           </div>
         </div>
 
@@ -1376,16 +1376,14 @@
       };
 
       function onLoad() {
-        const params = new URLSearchParams(window.location.search);
-        const token = params.get("token") || "";
-        helpers.onValidateToken(token);
+        helpers.onValidateToken();
 
-        $("#_btnConfirm").on('click', function () {
-          helpers.onSendConfirmation(true);
+        $("#_btnYes").on('click', function () {
+          helpers.onSendConfirmation(true, $("textarea[name=guestAttendants]").val(), $("textarea[name=wishes]").val());
         });
 
-        $("#_btnReject").on('click', function () {
-          helpers.onSendConfirmation(false);
+        $("#_btnNo").on('click', function () {
+          helpers.onSendConfirmation(false, $("textarea[name=guestAttendants]").val(), $("textarea[name=wishes]").val());
         });
       }
 
