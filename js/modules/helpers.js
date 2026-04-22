@@ -230,10 +230,8 @@ define(["jquery", "extended"], function ($) {
         return resp.json();
       }).then((data) => {
         if (data.success) {
-          $("._confirmation-section").show();
           $("._savethedate-section h2").text(data.guestName);
           $("._savethedate-section h4 span").text(data.ticket);
-          $("._savethedate-section").show();
         } else {
           $("._confirmation-section").remove();
           $("._savethedate-section").remove();
