@@ -234,7 +234,7 @@ define(["jquery", "extended"], function ($) {
             $("._savethedate-section h2").text(data.guestName);
             $("._savethedate-section h4 span").text(data.ticket);
 
-            if (data.confirmed) {
+            //if (data.confirmed) {
               $("._tableNumber").text(String(data.table).padStart(2, "0"));
 
               if($("body ._hide-section").length > 0){
@@ -242,7 +242,7 @@ define(["jquery", "extended"], function ($) {
               }else{
                 $("body ._table-section").removeClass("_hide-section").removeClass("_hide-tablesection");
               }
-            }
+            //}
           } else {
             $("._confirmation-section").remove();
             $("._savethedate-section").remove();

@@ -865,17 +865,18 @@
     ._savethedate-section {
       display: flex;
       align-items: center;
-      justify-content: center;
+      justify-content: end;
       position: relative;
       margin: 2rem 0.4rem;
       border: 2px solid var(--color-d);
       border-radius: 5px;
-      max-width: 320px;
+      max-width: 559px;
     }
 
-    ._savethedate-section ._details{
+    ._savethedate-section ._details {
       padding: 0 10px;
     }
+
     ._savethedate-section ._details h1,
     ._savethedate-section ._details h2,
     ._savethedate-section ._details h3,
@@ -924,68 +925,53 @@
 
     ._savethedate-section ._codebar-image {
       width: 40px;
+    }
 
+    @media (max-width: 767.98px) {
+      ._savethedate-section {
+        max-width: 100%;
+      }
     }
   </style>
 
   <!-- Table -->
   <style>
     ._table-section {
-      display: flex;
-      height: 500px;
-      max-width: 320px;
-      margin-bottom: 2rem;
-      border: 2px solid var(--color-d);
-      border-radius: 5px;
-      padding: 1rem 0;
-
-      background-image: url('../images/Wedding2/table.jpg');
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
+      position: relative;
+      width: 100%;
+      max-width: 559px;
+      margin: 0 auto;
     }
 
-    ._table-section ._col-left {
+    ._table-section img._main-image {
+      width: 100%;
+      aspect-ratio: 1124 / 2000;
+      height: auto;
+      object-fit: cover;
+      display: block;
+    }
+
+    ._table-section ._details {
+      position: absolute;
+      bottom: 20%;
+      left: 65%;
+      transform: translate(-50%, 0);
+
       display: flex;
-      flex-direction: column;
       align-items: center;
-      height: 100%;
-      gap: 10%;
+      justify-content: center;
     }
 
-    ._table-section ._table-text {
-      writing-mode: vertical-rl;
-      transform: rotate(180deg);
-      font-family: var(--font-f);
-      font-size: 3.5rem;
-      font-weight: bold;
-      text-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-      color: var(--color-e);
+    ._table-section h1 {
+      font-size: clamp(10rem, 12vw, 15rem);
+      font-family: var(--font-b);
+      color: var(--color-primary);
     }
 
-    ._table-section ._line {
-      width: 2px;
-      height: 100%;
-      background-color: var(--color-d);
-    }
-
-    ._table-section ._col-right {
-      font-family: var(--font-d);
-      font-size: 13rem;
-      font-weight: bold;
-      line-height: 0.8;
-      text-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-      display: flex;
-      align-items: flex-end;
-      justify-content: space-between;
-      flex-direction: column;
-      padding-right: 10px;
-      color: var(--color-e);
-    }
-
-    ._table-section ._main-mono {
-      width: 120px;
-      filter: contrast(0.4);
+    @media (max-width: 767.98px) {
+      ._table-section {
+        max-width: 100%;
+      }
     }
   </style>
 
@@ -999,6 +985,7 @@
       position: relative;
       width: 100%;
       max-width: 100%;
+      margin-top: 2rem;
     }
 
     ._end-section ._wrapper {
@@ -1057,6 +1044,7 @@
       ._end-section {
         width: 100%;
         overflow: hidden;
+        margin-top: 0;
       }
 
       ._end-section img._main-image {
@@ -1279,13 +1267,11 @@
         </div>
 
         <div class="_table-section _hide-tablesection">
-          <div class="_col-left">
-            <span class="_table-text">MESA</span>
-            <div class="_line"></div>
-          </div>
-          <div class="_col-right">
-            <img class="_main-mono" src="../images/Wedding2/mono.png">
-            <span class="_tableNumber">04</span>
+
+          <img class="_main-image" src="../images/Wedding2/table.jpg">
+
+          <div class="_details">
+            <h1 class="_tableNumber">04</h1>
           </div>
         </div>
 
@@ -1376,7 +1362,7 @@
 
       function onLoad() {
         helpers.onValidateToken();
-console.log("events")
+        
         $("#_btnYes").on('click', function () {
           helpers.onSendConfirmation(true, $("textarea[name=guestAttendants]").val(), $("textarea[name=wishes]").val());
         });
