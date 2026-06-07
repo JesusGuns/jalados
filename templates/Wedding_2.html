@@ -34,10 +34,9 @@
   <!-- Font Awesome-->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-  <link
-    href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&display=swap"
-    rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&family=Playfair+Display&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
 
   <link rel="stylesheet" href="../css/templates.css">
 
@@ -461,7 +460,6 @@
       transform: scale(0.85);
       opacity: 0;
       transition: transform 0.25s ease, opacity 0.25s ease;
-      will-change: transform, opacity;
       padding: 10px 0;
     }
 
@@ -1200,10 +1198,14 @@
         </div>
 
         <div class="_video-section _hide-section">
-          <iframe src="https://www.youtube.com/embed/UqK14btTz8U?si=2JFZkDojxMx4sA7-" title="YouTube video player"
+          <iframe 
+            src="https://www.youtube.com/embed/UqK14btTz8U?si=2JFZkDojxMx4sA7-"
+            loading="lazy"
+            title="YouTube video player"
             frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen>
+          </iframe>
         </div>
 
         <div class="_dresscode-section _hide-section">
@@ -1301,6 +1303,9 @@
   <script>
     requirejs(["jquery", "helpers"], function ($, helpers) {
 
+      const $guestInput = $("textarea[name=guestAttendants]");
+      const $wishesInput = $("textarea[name=wishes]");
+
       const EventDate = new Date("2026-10-17T17:30:00");
       const EventReception = new Date("2026-10-17T18:00:00");
 
@@ -1363,67 +1368,45 @@
       function onLoad() {
         helpers.onValidateToken();
         
-        $("#_btnYes").on('click', function () {
-          helpers.onSendConfirmation(true, $("textarea[name=guestAttendants]").val(), $("textarea[name=wishes]").val());
-        });
-
-        $("#_btnNo").on('click', function () {
-          helpers.onSendConfirmation(false, $("textarea[name=guestAttendants]").val(), $("textarea[name=wishes]").val());
-        });
+        $("#_btnYes").on('click', () => helpers.onSendConfirmation(true, $guestInput.val(), $wishesInput.val()));
+        $("#_btnNo").on('click', () => helpers.onSendConfirmation(false, $guestInput.val(), $wishesInput.val()));
       }
 
       function checkVisibility() {
-        var windowTop = $(window).scrollTop();
-        var windowBottom = windowTop + $(window).height();
+        const animatedEls = document.querySelectorAll(".slide-up > h2, .slide-up > p");
+        const slideObserver = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            entry.target.classList.toggle("visible", entry.isIntersecting);
+          });
+        }, { threshold: 0.15 });
 
-        $(".slide-up > h2, .slide-up > p").each(function () {
-          var elementTop = $(this).offset().top;
-          var elementBottom = elementTop + $(this).outerHeight();
-
-          if (elementBottom > windowTop && elementTop < windowBottom) {
-            $(this).addClass("visible");
-          } else {
-            $(this).removeClass("visible");
-          }
-        });
-
-        $(".timeline-event img, .timeline-center img").each(function () {
-          var elementTop = $(this).offset().top;
-          var elementBottom = elementTop + $(this).outerHeight();
-
-          if (elementBottom > windowTop && elementTop < windowBottom) {
-            $(this).addClass("show");
-          } else {
-            $(this).removeClass("show");
-          }
-        });
+        animatedEls.forEach(el => slideObserver.observe(el));
       }
 
 
       function Init() {
         onLoad();
 
-        helpers.onCounterStart(EventDate);
-        setInterval(() => {
-          helpers.onCounterStart(EventDate);
-        }, 1000);
         helpers.onAudioPlayer();
 
         $("._play-button").on("click", function () {
-          helpers.onPlay();
-          $("._play-button").hide();
-          $("body").find("._hide-section").removeClass("_hide-section");
+          helpers.onCounterStart(EventDate);
+          setInterval(() => helpers.onCounterStart(EventDate), 1000);
+
+          $(this).hide();
+          $("._hide-section").removeClass("_hide-section");
+          requestAnimationFrame(() => {
+            helpers.onPlay();
+
+            // Re-observar ahora que las imágenes son visibles
+            images.forEach(img => {
+              observer.unobserve(img);
+              observer.observe(img);
+            });
+          });
         })
 
-        let scrollTimeout;
-        $(window).on("scroll", function () {
-          if (!scrollTimeout) {
-            scrollTimeout = setTimeout(function () {
-              checkVisibility();
-              scrollTimeout = null;
-            }, 100);
-          }
-        });
+        checkVisibility();
 
         // Gallery
         const images = document.querySelectorAll("._gallery-section img");

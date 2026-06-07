@@ -146,23 +146,32 @@ define(["jquery", "extended"], function ($) {
       return number;
     },
     onCounterStart(eventDate) {
-      const now = new Date().getTime();
-      const distance = eventDate - now;
-      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-      const hours = Math.floor(
-        (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60),
-      );
-      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-      $("#days").text(module.onAddZeroToNumber(days));
-      $("#hours").text(module.onAddZeroToNumber(hours));
-      $("#minutes").text(module.onAddZeroToNumber(minutes));
-      $("#seconds").text(module.onAddZeroToNumber(seconds));
-      if (distance < 0) {
-        //@ts-ignore
-        // clearInterval(interval);
-        // $("countdown").innerHTML = "¡Ha llegado el gran día!";
-      }
+      const $days    = $("#days");
+      const $hours   = $("#hours");
+      const $minutes = $("#minutes");
+      const $seconds = $("#seconds");
+      const $countdown = $("#countdown"); // contenedor del contador
+
+      const intervalId = setInterval(() => {
+        const distance = eventDate - new Date().getTime();
+
+        if (distance < 0) {
+          clearInterval(intervalId);
+          $days.text("00");
+          $hours.text("00");
+          $minutes.text("00");
+          $seconds.text("00");
+          return; // ← sale del tick, no actualiza los números
+        }
+
+        $days.text(module.onAddZeroToNumber(Math.floor(distance / 86400000)));
+        $hours.text(module.onAddZeroToNumber(Math.floor((distance % 86400000) / 3600000)));
+        $minutes.text(module.onAddZeroToNumber(Math.floor((distance % 3600000) / 60000)));
+        $seconds.text(module.onAddZeroToNumber(Math.floor((distance % 60000) / 1000)));
+
+      }, 1000);
+
+      return intervalId;
     },
     onGoogleCalendar: function (googleCalendar) {
       const base = "https://calendar.google.com/calendar/render";
@@ -198,12 +207,15 @@ define(["jquery", "extended"], function ($) {
     },
     onPlay: function () {
       var $audioButton = $("#audioButton");
-      $("#audio").OnAudioPlayerClick($audioButton);
-      if ($("#audioButton").hasClass("off")) {
-        $("[data-replace=Image_AudioUrl]").attr("src", Resources.StaticLinks.ImageAudioUrl);
-      } else {
-        $("[data-replace=Image_AudioUrl]").attr("src", Resources.StaticLinks.ImageAudioPauseUrl);
-      }
+      var $audio = $("#audio");
+      
+      // Cachea el selector para no buscarlo dos veces
+      $audio.OnAudioPlayerClick($audioButton);
+      
+      var isOff = $audioButton.hasClass("off");
+      var src = isOff ? Resources.StaticLinks.ImageAudioUrl : Resources.StaticLinks.ImageAudioPauseUrl;
+        
+      $("[data-replace=Image_AudioUrl]").attr("src", src);
     },
     onMoveElementFromArray: function (array, oldIndex, newIndex) {
       if (newIndex >= array.length) {
