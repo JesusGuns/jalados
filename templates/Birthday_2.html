@@ -33,9 +33,8 @@
     <!-- Font Awesome-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Tenor+Sans&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Dynalight&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="../css/templates.css">
     <script src="../js/require.js"></script>
@@ -50,9 +49,8 @@
         --color_fifth_1: rgba(199, 123, 145, 0);
         --color_counter: var(--color_primary);
 
-        --font-GreatVibes: 'Great Vibes';
-        --font-DancingScript: 'Dancing Script';
-        --font-TenorSans: 'Tenor Sans';
+        --font-primary: 'Dancing Script';
+        --font-secondary: 'Dynalight';
       }
 
       
@@ -62,8 +60,8 @@
         background-size: cover;
         background-repeat: no-repeat;
         background-position: 50% 50%;
-        min-height: 100%;
         overflow: hidden;
+        font-family: var(--font-primary);
       }
 
       main {
@@ -88,6 +86,15 @@
         }
       }
       /* #endregion HTML*/
+
+      ._main-section {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        position: relative;
+      }
+
       ._profile {
         position: relative;
         width: 350px;
@@ -120,7 +127,136 @@
       pointer-events: none;
       animation: girarAntihorario 10s linear infinite;
     }
- 
+    ._template{
+      width: 50%;
+    }
+    ._main-event {
+        position: relative;
+        width: 100%;
+        height: 70svh;
+        perspective: 1500px;
+      }
+
+    @media (max-width: 575.98px) {
+        ._template {
+          width: 100%;
+        }
+        ._main-event {
+          height: 90svh;
+        }
+      }
+    
+    .card {
+        width: 100%;
+        height: 100%;
+        background: transparent;
+        border-radius: 16px;
+        box-shadow: 0 8px 20px rgba(255, 255, 255, 0.2);
+        transform-style: preserve-3d;
+        transition: transform 1s ease;
+        position: relative;
+        border: 0px;
+      }
+
+      .card.opened {
+        transform: rotateY(180deg);
+      }
+
+      .front,
+      .back {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        backface-visibility: hidden;
+        border-radius: 16px;
+        overflow: hidden;
+        box-sizing: border-box;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+
+      .front {
+        background: linear-gradient(to bottom right, #ffb6b9, #fcd5ce);
+        color: black;
+        text-align: center;
+        align-items: center;
+
+        background: rgba(255, 255, 255, 0.6);
+        backdrop-filter: blur(1px);
+      }
+
+
+
+      .back {
+        background: #fffaf0;
+        color: #333;
+        transform: rotateY(180deg);
+        padding: 20px;
+        box-sizing: border-box;
+      }
+
+      .back h2 {
+        margin-top: 0;
+        color: #d6336c;
+        font-size: 24px;
+        text-align: center;
+      }
+
+      .back p {
+        font-size: 16px;
+        line-height: 1.4;
+        margin-bottom: 10px;
+      }
+
+      .open-btn {
+        position: absolute;
+        top: 50%;
+        right: 16px;
+        transform: translateY(-50%);
+        background: none;
+        border: none;
+        padding: 0;
+        margin: 0;
+        cursor: pointer;
+        z-index: 2;
+      }
+
+      ._btn-back{
+        left: 16px;
+      }
+
+      .pointing-hand svg {
+        width: 34px;
+        height: 34px;
+        transition: transform 0.3s ease;
+      }
+
+      .open-btn:hover svg {
+        transform: scale(1.1) translateX(-2px);
+      }
+
+      .shine-icon {
+        animation: pulse-glow 1.8s infinite ease-in-out;
+        filter: drop-shadow(0 0 6px #fff) drop-shadow(0 0 10px #ff80ab);
+      }
+
+      @keyframes pulse-glow {
+
+        0%,
+        100% {
+          transform: scale(1);
+          opacity: 1;
+          filter: drop-shadow(0 0 6px #fff) drop-shadow(0 0 10px #ff80ab);
+        }
+
+        50% {
+          transform: scale(1.1);
+          opacity: 0.85;
+          filter: drop-shadow(0 0 10px #fff) drop-shadow(0 0 18px #ff4081);
+        }
+      }
   </style>
   </head>
   <body>
@@ -129,30 +265,62 @@
         <div id="player">
           <audio id="audio" src="#" data-replace="AudioUrl" loop></audio>
         </div>
+        <span id="audioButton" class="_template-Audio-Button off">
+          <img src="#" data-replace="Image_AudioUrl" alt="Audio" />
+        </span>
         <div class="_template">
-          <div class="_profile">
-            <img
-              class="_profile-rounded"
-              src="https://img.freepik.com/fotos-premium/hermosa-nina-corona-sobre-globos-femeninos-rosas-decoraciones-flores-papel-pequena-princesa-esta-celebrando_290431-12273.jpg?ga=GA1.1.552152472.1750700573&semt=ais_items_boosted&w=740"
-              alt="Niña con corona"
-            />
-            <img
-              class="_profile-frame"
-              src="../images/bg-18.svg"  
-              alt="Marco floral"
-            />
+          <!-- <div class="_main-section">
+            <h2>Estas invitado a mi fiesta</h2>
+            <div class="_profile">
+              <img class="_profile-rounded" src="https://img.freepik.com/fotos-premium/hermosa-nina-corona-sobre-globos-femeninos-rosas-decoraciones-flores-papel-pequena-princesa-esta-celebrando_290431-12273.jpg?ga=GA1.1.552152472.1750700573&semt=ais_items_boosted&w=740" alt="Niña con corona"
+              />
+              <img class="_profile-frame" src="../images/bg-18.svg" alt="Marco floral"/>
+            </div>
+  
+          </div> -->
+          <div class="_main-event">
+<div>
+  <div class="_profile">
+    <img class="_profile-rounded" src="https://img.freepik.com/fotos-premium/hermosa-nina-corona-sobre-globos-femeninos-rosas-decoraciones-flores-papel-pequena-princesa-esta-celebrando_290431-12273.jpg?ga=GA1.1.552152472.1750700573&semt=ais_items_boosted&w=740" alt="Niña con corona"
+    />
+    <img class="_profile-frame" src="../images/bg-18.svg" alt="Marco floral"/>
+  </div>
+</div>
+
+            <!-- <div id="card" class="card"> 
+              <div class="front">
+                <h1>¡Te invito a mi cumpleaños!</h1>
+                <div class="_profile">
+                  <img class="_profile-rounded" src="https://img.freepik.com/fotos-premium/hermosa-nina-corona-sobre-globos-femeninos-rosas-decoraciones-flores-papel-pequena-princesa-esta-celebrando_290431-12273.jpg?ga=GA1.1.552152472.1750700573&semt=ais_items_boosted&w=740" alt="Niña con corona"
+                  />
+                  <img class="_profile-frame" src="../images/bg-18.svg" alt="Marco floral"/>
+                </div>
+                
+                <button class="open-btn pointing-hand _btn-front" onclick="document.getElementById('card').classList.add('opened')" aria-label="Abrir tarjeta">
+                  <svg class="shine-icon" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M4 12h14m0 0l-4-4m4 4l-4 4" />
+                    <circle cx="3" cy="12" r="1.5" fill="white" />
+                  </svg>
+                </button>
+              </div>
+              <div class="back">
+                <h2>Querida Shikis</h2>
+                <p>En este día tan especial quiero desearte un cumpleaños lleno de amor, alegría y momentos mágicos.</p>
+                <p>Que la vida te regale muchas razones para sonreír y que cada deseo se convierta en realidad.</p>
+                <p>Con mucho cariño,</p>
+                <p style="text-align:right;">Yess ♥</p>
+                <button class="open-btn pointing-hand" onclick="document.getElementById('card').classList.remove('opened')" aria-label="Cerrar tarjeta">
+                  <svg class="shine-icon" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M4 12h14m0 0l-4-4m4 4l-4 4"/>
+                    <circle cx="3" cy="12" r="1.5" fill="white"/>
+                  </svg>
+                </button>
+              </div>
+            </div> -->
           </div>
 
-          <div>
-            
-          </div>
         </div>
       </main>
-    </div>
-    <div id="themeSwitcher">
-      <button class="theme-btn" data-theme="theme1" style="background-color:#f06292"></button>
-      <button class="theme-btn" data-theme="theme2" style="background-color:#333c43"></button>
-      <button class="theme-btn" data-theme="theme3" style="background-color:#702345"></button>
     </div>
     <script src="../js/main.js"></script>
 
@@ -163,16 +331,16 @@
         const EventReception = new Date("2025-11-25T17:00:00");
 
         const mainEvent = {
-          Name: "Nicole Gutiérrez",
+          Name: "Nicole",
           Date: EventDate,
-          Description: `Acompáñanos a celebrar los XV de `,      
-          LocationDescription: "Catedral de Guadalajara",
-          Address: "Av. Fray Antonio Alcalde 10, Zona Centro, 44100 Guadalajara, Jal.",
+          Description: `Acompáñanos a celebrar el cumpleaños de `,      
+          LocationDescription: "Salón de Eventos Quinta el Eden",
+          Address: "C. Morelos 670, González Ortega, 45190 Zapopan, Jal.",
           Father: "José Gutiérrez",
           Mother: "Melissa Hurtado",
-          GodFather: "Juan Fernández",
-          GodMother: "Laura Jimenez",
-          GoogleMapsUrl: "https://maps.app.goo.gl/hBdb191LiXzkPRfR8",
+          GodFather: "",
+          GodMother: "",
+          GoogleMapsUrl: "https://maps.app.goo.gl/1wwmTSk84XA8pLMn8",
           AmazonGiftTableUrl: "https://www.amazon.com.mx/",
           LiverpoolGiftTableUrl: "https://www.liverpool.com.mx/tienda/home",
           CollageImages: ['https://img.freepik.com/foto-gratis/adolescente-celebrando-quinceanera_23-2148478038.jpg', 'https://img.freepik.com/foto-gratis/chica-sonriente-tiro-medio-hermoso-vestido_52683-86468.jpg?t=st=1746555442~exp=1746559042~hmac=e8d5adc2117161bcd88377ab37d6e1358945489c42ac647e29fb996cf047ca4c&w=1800', 'https://lh3.googleusercontent.com/p/AF1QipMv-RExo0XkTU7eg8u-FelVsp1gd3u4XZyR3ipA=s3072-v1', 'https://lh3.googleusercontent.com/p/AF1QipNk9cctNeskTP2Zg2EEOQjV-aMFrSO5RRxWtx5N=s1024-v1', 'https://img.freepik.com/foto-gratis/mujer-tiro-medio-caminando-calle_23-2148703161.jpg?ga=GA1.1.1993030682.1745256637&semt=ais_hybrid&w=740', 'https://img.freepik.com/fotos-premium/hermosa-novia-usa-vestido-blanco-exclusivo-jardin_769431-2.jpg?ga=GA1.1.1993030682.1745256637&semt=ais_hybrid&w=740'],
@@ -183,9 +351,9 @@
 
         const secondaryEvent = {
           Date: EventReception,
-          LocationDescription: "Salón de Eventos Quinta el Eden",
-          Address: "C. Morelos 670, González Ortega, 45190 Zapopan, Jal.",
-          GoogleMapsUrl: "https://maps.app.goo.gl/1wwmTSk84XA8pLMn8",
+          LocationDescription: "",
+          Address: "",
+          GoogleMapsUrl: "",
         }
 
         const googleCalendar = {
@@ -200,7 +368,7 @@
         }
 
         const additionalInformation = {
-          ImageBodyBackground: "../images/bg-16.jpg",
+          ImageBodyBackground: "../images/bg-19.jpg",
           ImageCorner: "",
           ImageFrontCard: "https://img.freepik.com/foto-gratis/chica-sonriente-tiro-completo-poniendose-zapatos_52683-86453.jpg?ga=GA1.1.1993030682.1745256637&semt=ais_hybrid&w=740",
           AudioUrl: "https://invitameok.com/invitaciones/admin/imagenes/27433/MUSICAstyle-taylor.mp3",
@@ -218,48 +386,6 @@
           $('body').css('background-image', 'url("' + Resources.AdditionalInformation.ImageBodyBackground + '")');
         
         }
-
-       
-
-        $(".theme-btn").on('click', function(){
-          const root = document.querySelector(':root');
-            var theme = $(this).data('theme');
-            switch(theme){
-              case "theme1":
-                $('body').attr('style', 'background-image:url(../images/bg-5.jpeg)');
-                $("[data-replace=Image_FrontCard]").attr("src", Resources.AdditionalInformation.ImageFrontCard);
-                root.style.setProperty('--color_primary', '#C2185B');
-                root.style.setProperty('--color_counter', 'var(--color_primary)');
-                root.style.setProperty('--color_secondary', '#bf5666');
-                root.style.setProperty('--color_third', '#bd4876');
-                root.style.setProperty('--color_fourth', '#F48FB1');
-                root.style.setProperty('--color_fifth', 'rgba(199, 123, 145, 0.4)');
-                root.style.setProperty('--color_fifth_1', 'rgba(199, 123, 145, 0)');
-                break;
-              case "theme2":
-                $('body').attr('style', 'background-image:url(../images/bg-6.jpeg)');
-                $("[data-replace=Image_FrontCard]").attr("src", 'https://img.freepik.com/foto-gratis/hermosa-mujer-morena-vestido-noche-sonriendo_176420-3710.jpg?ga=GA1.1.1993030682.1745256637&semt=ais_hybrid&w=740');
-                root.style.setProperty('--color_primary', '#333c43');
-                root.style.setProperty('--color_counter', 'white');
-                root.style.setProperty('--color_secondary', '#556066');
-                root.style.setProperty('--color_third', '#495963');
-                root.style.setProperty('--color_fourth', '#7A858C');
-                root.style.setProperty('--color_fifth', 'rgba(122, 133, 140, 0.4)');
-                root.style.setProperty('--color_fifth_1', 'rgba(122, 133, 140, 0)');
-                break;
-              case "theme3":
-                $('body').attr('style', 'background-image:url(../images/bg-15.jpg)');
-                $("[data-replace=Image_FrontCard]").attr("src", 'https://img.freepik.com/foto-gratis/chica-tiro-medio-posando-vestido-rosa_23-2149537505.jpg?ga=GA1.1.1993030682.1745256637&semt=ais_hybrid&w=740');
-                root.style.setProperty('--color_primary', '#702345');
-                root.style.setProperty('--color_counter', 'white');
-                root.style.setProperty('--color_secondary', '#9e4757');
-                root.style.setProperty('--color_third', '#97405f');
-                root.style.setProperty('--color_fourth', '#c78ca8');
-                root.style.setProperty('--color_fifth', 'rgba(159, 88, 115, 0.4)');
-                root.style.setProperty('--color_fifth_1', 'rgba(159, 88, 115, 0)');
-                break;
-            }
-          })
 
         function Init() {
           onLoad();
