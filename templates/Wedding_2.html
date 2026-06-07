@@ -1410,10 +1410,9 @@
         helpers.onAudioPlayer();
 
         $("._play-button").on("click", function () {
+          helpers.onPlay();
           $("._play-button").hide();
           $("body").find("._hide-section").removeClass("_hide-section");
-          helpers.onPlay();
-
         })
 
         let scrollTimeout;

@@ -190,20 +190,20 @@ define(["jquery", "extended"], function ($) {
       $audioButton.on("click", function () {
         $("#audio").OnAudioPlayerClick($audioButton);
         if ($("#audioButton").hasClass("off")) {
-          $("[data-replace=Image_AudioUrl]").attr(
-            "src",
-            Resources.StaticLinks.ImageAudioUrl,
-          );
+          $("[data-replace=Image_AudioUrl]").attr("src", Resources.StaticLinks.ImageAudioUrl);
         } else {
-          $("[data-replace=Image_AudioUrl]").attr(
-            "src",
-            Resources.StaticLinks.ImageAudioPauseUrl,
-          );
+          $("[data-replace=Image_AudioUrl]").attr("src", Resources.StaticLinks.ImageAudioPauseUrl);
         }
       });
     },
     onPlay: function () {
-      $("#audioButton").click();
+      var $audioButton = $("#audioButton");
+      $("#audio").OnAudioPlayerClick($audioButton);
+      if ($("#audioButton").hasClass("off")) {
+        $("[data-replace=Image_AudioUrl]").attr("src", Resources.StaticLinks.ImageAudioUrl);
+      } else {
+        $("[data-replace=Image_AudioUrl]").attr("src", Resources.StaticLinks.ImageAudioPauseUrl);
+      }
     },
     onMoveElementFromArray: function (array, oldIndex, newIndex) {
       if (newIndex >= array.length) {
@@ -224,7 +224,7 @@ define(["jquery", "extended"], function ($) {
         return;
       }
 
-      fetch(`/api/sheet?token=${token}`)
+      fetch(`https://script.google.com/macros/s/AKfycbzHxyhpVJbnluZkPquzdGdREuSwYc5yXAejV287Rt_6oHjBVPQkAW0yUHLnCRhjP6nS/exec?token=${token}`)
         .then((resp) => {
           if (!resp.ok) throw new Error(`HTTP error ${resp.status}`);
           return resp.json();
