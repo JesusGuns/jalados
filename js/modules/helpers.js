@@ -224,7 +224,7 @@ define(["jquery", "extended"], function ($) {
         return;
       }
 
-      fetch(`https://script.google.com/macros/s/AKfycbzHxyhpVJbnluZkPquzdGdREuSwYc5yXAejV287Rt_6oHjBVPQkAW0yUHLnCRhjP6nS/exec?token=${token}`)
+      fetch(`/api/sheet?token=${token}`)
         .then((resp) => {
           if (!resp.ok) throw new Error(`HTTP error ${resp.status}`);
           return resp.json();

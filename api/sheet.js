@@ -1,3 +1,5 @@
+const cache = new Map();
+const CACHE_TTL = 6 * 60 * 60 * 1000; // 6 horas en ms
 export default async function handler(req, res) {
   // CORS (mejor ponerlo arriba para todos los casos)
   res.setHeader("Access-Control-Allow-Origin", "*");
@@ -15,45 +17,43 @@ export default async function handler(req, res) {
     return res.status(400).json({ error: "Token is required" });
   }
 
-  const baseUrl =
-    "https://script.google.com/macros/s/AKfycbzHxyhpVJbnluZkPquzdGdREuSwYc5yXAejV287Rt_6oHjBVPQkAW0yUHLnCRhjP6nS/exec";
+  const baseUrl = "https://script.google.com/macros/s/AKfycbzHxyhpVJbnluZkPquzdGdREuSwYc5yXAejV287Rt_6oHjBVPQkAW0yUHLnCRhjP6nS/exec";
 
   try {
     // GET
     if (req.method === "GET") {
-      const urlGet = `${baseUrl}?token=${token}`;
-
-      const response = await fetch(urlGet);
-
-      if (!response.ok) {
-        throw new Error(`Apps Script respondió con ${response.status}`);
+      const cached = cache.get(token);
+      if (cached && Date.now() - cached.time < CACHE_TTL) {
+        res.setHeader("X-Cache", "HIT");
+        return res.status(200).json(cached.data);
       }
 
+      const response = await fetch(`${baseUrl}?token=${token}`);
+      if (!response.ok) throw new Error(`Apps Script respondió con ${response.status}`);
+
       const data = await response.json();
+
+      // Guardar en caché solo si fue exitoso
+      if (data.success) {
+        cache.set(token, { data, time: Date.now() });
+      }
+
+      res.setHeader("X-Cache", "MISS");
       return res.status(200).json(data);
     }
 
     // POST
     if (req.method === "POST") {
       const { token, confirmed, guests, wishes } = req.body;
-      console.error("Info", JSON.stringify({
-          token,
-          confirmed,
-          guests,
-          wishes,
-        }));
-        
-      const response = await fetch(baseUrl, {
+      console.error("Info", JSON.stringify({ token, confirmed, guests, wishes }));
+
+      // Invalidar caché al confirmar
+      cache.delete(token);
+
+       const response = await fetch(baseUrl, {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          token,
-          confirmed,
-          guests,
-          wishes,
-        }),
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ token, confirmed, guests, wishes }),
       });
 
       const text = await response.text();
