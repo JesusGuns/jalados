@@ -273,7 +273,7 @@
       transform: translate(-50%, -50%);
       padding: 15px 10px;
       width: 90%;
-      max-width: 600px;
+      max-width: 500px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -554,7 +554,7 @@
       left: 50%;
       transform: translate(-50%, -50%);
       width: 90%;
-      max-width: 600px;
+      max-width: 500px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -783,7 +783,7 @@
       font-weight: 400;
       font-size: clamp(1rem, 2vw, 1.2rem);
       text-align: center;
-      color: var(--color-p);
+      color: var(--color-primary);
       text-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
       margin-top: 1.5rem;
       letter-spacing: 1.5px;
@@ -1074,14 +1074,13 @@
             <img class="_main-image" src="../images/Wedding2/1.jpg">
           </div>
 
-
           <div class="_details">
             <div class="_play-button"></div>
-            <h2 class="slide-right">17 • 10 • 2026</h2>
+            <h2 class="slide-right" data-replace="EventFormatDate"></h2>
             <div class="_common-d-flex _common-flex-column">
-              <h1 class="slide-left">Jacqueline</h1>
+              <h1 class="slide-left" data-replace="BrideShortName"></h1>
               <h1 class="slide-left">&</h1>
-              <h1 class="slide-left">Jesus</h1>
+              <h1 class="slide-left" data-replace="GroomShortName"></h1>
             </div>
           </div>
         </div>
@@ -1273,7 +1272,7 @@
           <img class="_main-image" src="../images/Wedding2/table.jpg">
 
           <div class="_details">
-            <h1 class="_tableNumber">04</h1>
+            <h1 class="_tableNumber"></h1>
           </div>
         </div>
 
@@ -1289,7 +1288,7 @@
               <br><br>
               ¡Los esperamos!
             </h2>
-            <h1>Jacqueline & Jesus</h1>
+            <h1 data-replace="BrideGroomShortNames"></h1>
           </div>
         </div>
 
@@ -1307,7 +1306,7 @@
       const $wishesInput = $("textarea[name=wishes]");
 
       const EventDate = new Date("2026-10-17T17:30:00");
-      const EventReception = new Date("2026-10-17T18:00:00");
+      const EventReception = new Date("2026-10-17T17:30:00");
 
       const mainEvent = {
         Name: "",
@@ -1317,14 +1316,14 @@
         GroomShortName: "Jesús",
         Date: EventDate,
         Description: `Acompáñanos a celebrar nuestra unión `,
-        LocationDescription: "",
-        Address: "",
-        FatherBride: "Gerardo Navarro",
-        MotherBride: "Sirina Esquivias",
-        FatherGroom: "Refugio Ramirez",
-        MotherGroom: "Sara Avila",
-        GoogleMapsUrl: "",
-        AmazonGiftTableUrl: "https://www.amazon.com.mx/",
+        LocationDescription: "La Terraza Clouthier",
+        Address: "Av Manuel J. Clouthier 480, Lomas de Guadalupe, 45038 Guadalajara, Jal.",
+        FatherBride: "Gerardo González Navarro",
+        MotherBride: "Sirina Esquivias Esquivias",
+        FatherGroom: "J. Refugio Ramírez González",
+        MotherGroom: "Sara Ávila García",
+        GoogleMapsUrl: "https://maps.app.goo.gl/KuXfBs9iPrwx48xB6",
+        AmazonGiftTableUrl: "",
         LiverpoolGiftTableUrl: "https://mesaderegalos.liverpool.com.mx/milistaderegalos/51963844",
         CollageImages: [],
         ImageMyParents: "",
@@ -1366,6 +1365,12 @@
       };
 
       function onLoad() {
+        var eventFromatDate = helpers.onGetDay(EventDate) + " • " + helpers.onGetMonth(EventDate) + " • " + helpers.onGetYear(EventDate);
+        $("[data-replace=EventFormatDate]").text(eventFromatDate);
+        $("[data-replace=BrideShortName]").text(Resources.MainEvent.BrideShortName);
+        $("[data-replace=GroomShortName]").text(Resources.MainEvent.GroomShortName);
+        $("[data-replace=BrideGroomShortNames]").text(Resources.MainEvent.BrideShortName+ " & " + Resources.MainEvent.GroomShortName);
+
         helpers.onValidateToken();
         
         $("#_btnYes").on('click', () => helpers.onSendConfirmation(true, $guestInput.val(), $wishesInput.val()));
@@ -1462,6 +1467,7 @@
           }
         });
       }
+      
       helpers.init(Resources);
       Init();
     });
