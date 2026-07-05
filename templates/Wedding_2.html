@@ -1,1479 +1,1416 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
+  <head>
+    <meta name="google" content="notranslate" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" sizes="196x196" href="https://jesusguns.github.io/jalados/images/_favicon-Wedding.png" />
+    <!-- Primary Meta Tags -->
+    <title>Wedding</title>
+    <meta name="title" content="Wedding" />
+    <meta name="description" content="Los momentos más esperados se sueñan, se imaginan, se construyen y cuando llegue ese día tan especial, lo más importante es que estés a nuestro lado." />
 
-<head>
-  <meta name="google" content="notranslate">
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="icon" type="image/png" sizes="196x196"
-    href="https://jesusguns.github.io/jalados/images/_favicon-Wedding.png">
-  <!-- Primary Meta Tags -->
-  <title>Wedding</title>
-  <meta name="title" content="Wedding" />
-  <meta name="description"
-    content="Los momentos más esperados se sueñan, se imaginan, se construyen y cuando llegue ese día tan especial, lo más importante es que estés a nuestro lado." />
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://jesusguns.github.io/jalados/templates/Wedding_2.html" />
+    <meta property="og:title" content="Wedding" />
+    <meta property="og:description" content="Los momentos más esperados se sueñan, se imaginan, se construyen y cuando llegue ese día tan especial, lo más importante es que estés a nuestro lado." />
+    <meta property="og:image" content="https://jesusguns.github.io/jalados/images/_favicon-Wedding.png" />
 
-  <!-- Open Graph / Facebook -->
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://jesusguns.github.io/jalados/templates/Wedding_2.html" />
-  <meta property="og:title" content="Wedding" />
-  <meta property="og:description"
-    content="Los momentos más esperados se sueñan, se imaginan, se construyen y cuando llegue ese día tan especial, lo más importante es que estés a nuestro lado." />
-  <meta property="og:image" content="https://jesusguns.github.io/jalados/images/_favicon-Wedding.png" />
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://jesusguns.github.io/jalados/templates/Wedding_2.html" />
+    <meta property="twitter:title" content="Wedding" />
+    <meta property="twitter:description" content="Los momentos más esperados se sueñan, se imaginan, se construyen y cuando llegue ese día tan especial, lo más importante es que estés a nuestro lado." />
+    <meta property="twitter:image" content="https://jesusguns.github.io/jalados/images/_favicon-Wedding.png" />
 
-  <!-- Twitter -->
-  <meta property="twitter:card" content="summary_large_image" />
-  <meta property="twitter:url" content="https://jesusguns.github.io/jalados/templates/Wedding_2.html" />
-  <meta property="twitter:title" content="Wedding" />
-  <meta property="twitter:description"
-    content="Los momentos más esperados se sueñan, se imaginan, se construyen y cuando llegue ese día tan especial, lo más importante es que estés a nuestro lado." />
-  <meta property="twitter:image" content="https://jesusguns.github.io/jalados/images/_favicon-Wedding.png" />
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- Font Awesome-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 
-  <!-- Bootstrap CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
-  <!-- Font Awesome-->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&family=Playfair+Display&display=swap" rel="stylesheet" media="print" onload="this.media = 'all'" />
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&family=Playfair+Display&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="../css/templates.css" />
 
-  <link rel="stylesheet" href="../css/templates.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery/css/lightgallery-bundle.min.css" />
 
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery/css/lightgallery-bundle.min.css">
+    <script src="../js/require.js"></script>
 
-  <script src="../js/require.js"></script>
+    <style>
+      /* #region ROOT*/
+      :root {
+        --color-primary: #2d2d2d;
+        --color-secondary: #faf5ef;
+        --color-accent: #a68966;
+        --color-c: #ddd0c0;
+        --color-d: #938a79;
 
+        --color-h1: #1f1f1f;
 
-  <style>
-    /* #region ROOT*/
-    :root {
-      --color-primary: #2D2D2D;
-      --color-secondary: #FAF5EF;
-      --color-accent: #A68966;
-      --color-c: #DDD0C0;
-      --color-d: #938A79;
+        --color-e: #4a4a4a;
 
-      --color-h1: #1F1F1F;
+        --font-a: "HelloHoney", Sans-serif;
+        --font-b: "monallesia";
+        --font-c: "PlayFair Italica", serif;
+        --font-d: "Google Sans", sans-serif;
+        --font-e: "Eastpoint", serif;
+        --font-f: "Playfair Display", serif;
 
-      --color-e: #4A4A4A;
+        --fs-base: 16px;
+        --fs-h1: clamp(4rem, 9vw, 5rem);
+        --fs-h2: clamp(1.2rem, 4vw, 2rem);
+        --fs-body: clamp(1rem, 2.5vw, 1.2rem);
+      }
 
-      --font-a: "HelloHoney", Sans-serif;
-      --font-b: "monallesia";
-      --font-c: "PlayFair Italica", serif;
-      --font-d: "Google Sans", sans-serif;
-      --font-e: "Eastpoint", serif;
-      --font-f: "Playfair Display", serif;
+      /* #endregion ROOT*/
+      /* #region HTML*/
+      body {
+        background-color: #ffffff;
+      }
 
-      --fs-base: 16px;
-      --fs-h1: clamp(4rem, 9vw, 5rem);
-      --fs-h2: clamp(1.2rem, 4vw, 2rem);
-      --fs-body: clamp(1rem, 2.5vw, 1.2rem);
-    }
+      /* #endregion HTML*/
 
-    /* #endregion ROOT*/
-    /* #region HTML*/
-    body {
-      background-color: #FFFFFF;
-    }
+      .content {
+        position: relative;
+        z-index: 1;
+      }
+    </style>
 
-    /* #endregion HTML*/
+    <!--Template-->
+    <style>
+      ._template {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+      }
 
+      ._hide-section,
+      ._hide-tablesection {
+        display: none !important;
+      }
+    </style>
 
-    .content {
-      position: relative;
-      z-index: 1;
-    }
-  </style>
-
-  <!--Template-->
-  <style>
-    ._template {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-
-    }
-
-    ._hide-section,
-    ._hide-tablesection {
-      display: none !important;
-    }
-  </style>
-
-  <!-- Main -->
-  <style>
-    ._main-section {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-      position: relative;
-      width: 100%;
-      max-width: 100%;
-    }
-
-    ._main-section ._wrapper {
-      position: relative;
-    }
-
-    ._main-section ._wrapper::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.04);
-      z-index: 1;
-    }
-
-    ._main-section img._main-image {
-      width: 100%;
-      height: 100dvh;
-      object-fit: cover;
-      object-position: center;
-      display: block;
-    }
-
-    ._main-section img._main-mono {
-      position: absolute;
-      top: 5%;
-      left: 50%;
-      transform: translateX(-50%);
-      width: clamp(120px, 12vw, 160px);
-      height: auto;
-      z-index: 2;
-    }
-
-    ._main-section ._details {
-      position: absolute;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-      padding: 2rem 5px;
-      z-index: 2;
-    }
-
-    ._main-section ._details h1 {
-      font-family: var(--font-a);
-      font-size: var(--fs-h1);
-      line-height: 0.9;
-      padding: 0 10px;
-      margin: 0;
-      text-align: center;
-      color: var(--color-secondary);
-      text-shadow: 2px 2px 10px var(--color-primary);
-    }
-
-    ._main-section ._details h2 {
-      font-family: var(--font-d);
-      font-style: italic;
-      font-weight: bold;
-      font-size: clamp(1rem, 2.5vw, 1.5rem);
-      text-transform: uppercase;
-      letter-spacing: 4px;
-      text-shadow: 2px 2px 10px var(--color-primary);
-      margin: 0.5rem 0;
-      text-align: center;
-      color: var(--color-secondary);
-    }
-
-    @media (max-width: 767.98px) {
+    <!-- Main -->
+    <style>
       ._main-section {
-        width: 100%;
-        overflow: hidden;
-      }
-    }
-  </style>
-
-  <!-- Counter -->
-  <style>
-    ._template-Counter-Section {
-      width: 100%;
-      max-width: 350px;
-    }
-
-    ._template-Counter-Section ._counter-Countdown {
-      border-radius: 15px;
-      margin: 2rem;
-      box-shadow: none !important;
-      background: rgba(255, 255, 255, 0.1);
-      transition: background-color 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    ._template-Counter-Section ._counter-Timebox {
-      font-family: var(--font-c);
-      font-size: clamp(0.8rem, 1.5vw, 1rem);
-      letter-spacing: 2.5px;
-      flex: 1;
-      color: var(--color-primary);
-      text-shadow: 0 2px 6px rgba(0, 0, 0, 1);
-      border-radius: 5px;
-      padding: 10px;
-      gap: 10px;
-      background-color: var(--color-c);
-    }
-
-    ._template-Counter-Section ._counter-Timebox span {
-      font-family: var(--font-c);
-      font-weight: normal;
-      font-size: clamp(2rem, 5vw, 3rem);
-      height: auto;
-      display: block;
-    }
-
-    @media (max-width: 1399.98px) {
-      ._template-Counter-Section {
-        max-width: 600px;
-      }
-    }
-  </style>
-
-  <!-- Secondary -->
-  <style>
-    ._secondary-section {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-      position: relative;
-      width: 100%;
-      max-width: 100%;
-    }
-
-    ._secondary-section ._wrapper {
-      position: relative;
-    }
-
-    ._secondary-section ._wrapper::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.2);
-      z-index: 1;
-    }
-
-    ._secondary-section img._main-image {
-      width: 100%;
-      height: 100dvh;
-      object-fit: cover;
-      display: block;
-    }
-
-    ._secondary-section ._details {
-      position: absolute;
-      inset: 0;
-      z-index: 2;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      padding: 15px 10px;
-      width: 90%;
-      max-width: 500px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    ._secondary-section ._details h2 {
-      font-family: var(--font-d);
-      font-size: clamp(1.2rem, 3vw, 2rem);
-      letter-spacing: 2px;
-      margin: 0;
-      text-align: center;
-      color: var(--color-secondary);
-      text-shadow: 2px -2px 10px var(--color-primary);
-      font-size: clamp(1.4rem, 3vw, 1.8rem);
-    }
-
-    @media (max-width: 767.98px) {
-      ._secondary-section img._main-image {
-        width: 100%;
-        height: auto;
-        max-width: 100%;
-        display: block;
-      }
-    }
-  </style>
-
-  <!--Family-->
-  <style>
-    ._family-section {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      text-align: center;
-      margin: 1.5rem 0 0 0;
-    }
-
-    ._family-section>div {
-      flex: 1;
-      padding: 1.5rem;
-      border-radius: 12px;
-    }
-
-    ._family-section h1 {
-      font-family: var(--font-b);
-      font-style: italic;
-      font-size: clamp(1.2rem, 2.5vw, 1.7rem);
-      line-height: 1.4;
-      letter-spacing: 1px;
-      margin: 0;
-      text-align: center;
-      color: var(--color-h1);
-      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
-    }
-
-    ._family-section small {
-      font-family: var(--font-c);
-      font-style: italic;
-      font-size: clamp(0.85rem, 1.2vw, 0.95rem);
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      display: block;
-      margin-top: 1rem;
-      text-align: center;
-      color: var(--color-accent);
-      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
-    }
-
-    @media (max-width: 575.98px) {
-      ._family-section {
+        display: flex;
+        align-items: center;
+        justify-content: center;
         flex-direction: column;
-        gap: 2rem;
-        text-align: center;
-      }
-    }
-  </style>
-
-  <!--Place section-->
-  <style>
-    ._place-section {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 2rem;
-      border-radius: 15px;
-      margin: 1.5rem auto;
-      width: 100%;
-      max-width: 900px;
-      padding: 2rem;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-      background: rgba(255, 255, 255, 0.4);
-      backdrop-filter: blur(8px);
-    }
-
-    ._place-section img._main-image {
-      width: 200px;
-      height: auto;
-      object-fit: cover;
-      border-radius: 10px;
-    }
-
-    ._place-section h2 {
-      font-family: var(--font-c);
-      font-weight: 400;
-      font-size: clamp(1.1rem, 2.5vw, 1.5rem);
-      font-weight: 600;
-      letter-spacing: 2px;
-      text-align: center;
-      color: var(--color-accent);
-      text-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-    }
-
-    ._place-section small {
-      font-family: var(--font-c);
-      font-size: clamp(0.85rem, 1.2vw, 0.95rem);
-      font-weight: 600;
-      line-height: 1.5;
-      text-align: center;
-      color: var(--color-primary);
-      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
-      margin-bottom: 1rem;
-      max-width: 300px;
-    }
-
-    @media (max-width: 1399.98px) {
-      ._place-section {
-        width: 55%;
-      }
-    }
-
-    @media (max-width: 767.98px) {
-      ._place-section {
-        width: 90%;
-      }
-    }
-
-    @media (max-width: 575.98px) {
-      ._place-section {
-        width: 90%;
-        padding: 1.5rem 1rem;
-        flex-direction: column;
-
-      }
-    }
-
-    @media (max-width: 375.98px) {}
-  </style>
-
-  <!-- TimeLine -->
-  <style>
-    ._timeline-section {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 2.5rem 0;
-      overflow-x: hidden;
-    }
-
-    ._timeline-section ._main-image {
-      max-width: 600px;
-    }
-
-    @media (max-width: 575.98px) {
-      ._timeline-section ._main-image {
-        width: 85%;
-      }
-    }
-  </style>
-
-  <!-- Gallery -->
-  <style>
-    ._gallery-section {
-      column-count: 2;
-      column-gap: 15px;
-      max-width: 900px;
-      margin: 1rem;
-    }
-
-    ._gallery-section img {
-      max-width: 100%;
-      max-height: 90%;
-      border-radius: 10px;
-
-      transform: scale(0.85);
-      opacity: 0;
-      transition: transform 0.25s ease, opacity 0.25s ease;
-      padding: 10px 0;
-    }
-
-    ._gallery-section img.show {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    ._gallery-section img:hover {
-      transform: scale(1.03);
-      filter: brightness(1.1);
-    }
-
-    @media (max-width: 900px) {
-      ._gallery-section {
-        column-count: 2;
-      }
-    }
-
-    @media (max-width: 600px) {
-      ._gallery-section {
-        column-count: 1;
-      }
-    }
-
-    #_gallery-modal {
-      position: fixed;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.9);
-      display: none;
-      align-items: center;
-      justify-content: center;
-
-    }
-
-    #_gallery-modal img {
-      max-width: 90%;
-      max-height: 90%;
-      border-radius: 10px;
-    }
-
-    #_gallery-modal.show {
-      display: flex;
-    }
-
-    #_gallery-modal .close {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      font-size: 30px;
-      cursor: pointer;
-      color: white;
-    }
-  </style>
-
-  <!--Third section-->
-  <style>
-    ._third-section {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-      position: relative;
-      width: 100%;
-      max-width: 100%;
-    }
-
-    ._third-section ._wrapper {
-      position: relative;
-    }
-
-    ._third-section ._wrapper::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.4);
-      z-index: 1;
-    }
-
-    ._third-section img._main-image {
-      width: 100%;
-      height: 100dvh;
-      object-fit: cover;
-      display: block;
-    }
-
-    ._third-section ._details {
-      position: absolute;
-      inset: 0;
-      z-index: 2;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 90%;
-      max-width: 500px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    ._third-section ._details p {
-      font-family: var(--font-d);
-      font-variant-ligatures: none;
-      font-feature-settings: "liga" 0;
-      letter-spacing: 1px;
-      font-size: var(--fs-body);
-      line-height: 1.4;
-      text-align: center;
-      margin: 0;
-      color: var(--color-secondary);
-      text-shadow: 2px 2px 10px var(--color-primary);
-    }
-
-
-    @media (max-width: 767.98px) {
-      ._third-section img._main-image {
-        height: auto;
-        max-height: 100dvh;
-      }
-    }
-
-    @media (max-width: 575.98px) {
-      ._third-section ._details {
-        width: 90%;
-      }
-    }
-  </style>
-
-  <!--Video-->
-  <style>
-    ._video-section {
-      width: 100%;
-    }
-
-    ._video-section iframe {
-      width: 100%;
-      aspect-ratio: 16 / 9;
-      height: auto;
-    }
-  </style>
-
-  <!--DressCode-->
-  <style>
-    ._dresscode-section {
-      padding: 4rem 0 0;
-      gap: 5rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-      background-image: url('../images/Wedding2/dresscodebg-1.jpg');
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      width: 100%;
-    }
-
-    ._dresscode-section .vr {
-      border-left: 2px solid #000;
-      margin: 0 0 0 20px;
-    }
-
-    ._dresscode-section ._main-image {
-      max-width: 450px;
-      position: relative;
-      right: 3%;
-    }
-
-    ._dresscode-section h2,
-    ._dresscode-section h3 {
-      font-family: var(--font-f);
-      text-align: center;
-      color: var(--color-primary);
-      text-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-    }
-
-    ._dresscode-section h1 {
-      font-family: var(--font-e);
-      font-size: clamp(7rem, 4vw, 8.2rem);
-      font-weight: normal;
-      margin: 0;
-      line-height: 0.4;
-      text-align: center;
-      color: var(--color-primary);
-      text-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-    }
-
-    ._dresscode-section h2 {
-      font-size: clamp(2rem, 4vw, 3rem);
-      font-weight: bold;
-      letter-spacing: 10px;
-    }
-
-    ._dresscode-section h3 {
-      font-size: clamp(1.3rem, 3vw, 2rem);
-      font-family: var(--font-f);
-      letter-spacing: 15px;
-    }
-
-    @media (max-width: 575.98px) {
-      ._dresscode-section ._main-image {
-        width: 40%;
-      }
-    }
-  </style>
-
-  <!--Confirmation-->
-  <style>
-    ._confirmation-section {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background-image: url('../images/Wedding2/confirmation.jpg');
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      min-height: 100vh;
-      padding: 20px;
-      width: 100%;
-    }
-
-    ._confirmation-section>div {
-      width: 100%;
-      border-radius: 15px;
-      max-width: 600px;
-      padding: 2rem;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-      background: rgba(255, 255, 255, 0.45);
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 255, 255, 0.25);
-
-    }
-
-    ._confirmation-section h1 {
-      font-family: var(--font-b);
-      font-weight: bold;
-      font-size: clamp(1.8rem, 4vw, 2.5rem);
-      text-align: center;
-      color: var(--color-h1);
-      text-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-      margin-top: 1rem;
-    }
-
-    ._confirmation-section h2 {
-      font-family: var(--font-d);
-      font-size: clamp(1rem, 2.5vw, 1.4rem);
-      text-align: justify;
-      color: var(--color-h1);
-      text-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-      margin: 2rem 0;
-    }
-
-    ._confirmation-section .form-fields {
-      display: flex;
-      justify-content: center;
-      flex-direction: column;
-      margin-bottom: 1rem;
-    }
-
-    ._confirmation-section label {
-      font-weight: bold;
-      color: var(--color-primary);
-      font-family: var(--font-third);
-    }
-
-    ._confirmation-section textarea {
-      width: 100%;
-      resize: none;
-      border-radius: 8px;
-      height: 50px;
-    }
-
-    ._confirmation-section textarea[name="wishes"] {
-      min-height: 80px;
-    }
-
-    ._confirmation-section button {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      background-color: rgba(255, 255, 255, 0.2);
-      color: var(--color-primary);
-      font-family: var(--font-third);
-      font-weight: bold;
-      font-size: clamp(0.95rem, 2vw, 1.1rem);
-      padding: 12px 25px;
-      border-radius: 10px;
-      border: 2px solid rgba(255, 255, 255, 0.3);
-      cursor: pointer;
-      text-decoration: none;
-      transition: transform 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease;
-      will-change: transform;
-    }
-  </style>
-
-  <!--Gift table-->
-  <style>
-    ._section-gifttable {
-      border-radius: 15px;
-      margin: 3rem auto;
-      width: 35%;
-      padding: 2rem 1rem;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-
-    ._section-gifttable h1 {
-      font-family: var(--font-b);
-      font-weight: bold;
-      font-size: clamp(2rem, 4vw, 2.5rem);
-      text-align: center;
-      color: var(--color-h1);
-      text-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-      margin-top: 1rem;
-      letter-spacing: 3px;
-    }
-
-    ._section-gifttable p {
-      font-family: var(--font-d);
-      font-weight: 400;
-      font-size: clamp(1rem, 2vw, 1.2rem);
-      text-align: center;
-      color: var(--color-primary);
-      text-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-      margin-top: 1.5rem;
-      letter-spacing: 1.5px;
-    }
-
-    @keyframes _pulse-btn {
-      0% {
-        box-shadow: 0 0 10px rgba(166, 137, 102, 0.4);
-        transform: scale(1);
-      }
-
-      50% {
-        box-shadow: 0 0 25px rgba(166, 137, 102, 0.6);
-        transform: scale(1.05);
-      }
-
-      100% {
-        box-shadow: 0 0 10px rgba(166, 137, 102, 0.4);
-        transform: scale(1);
-      }
-    }
-
-    ._btn-gift {
-      min-height: 50px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 90%;
-      max-width: 300px;
-      gap: 10px;
-      background-color: rgba(255, 255, 255, 0.6);
-      color: var(--color-primary);
-      font-family: var(--font-d);
-      font-weight: bold;
-      font-size: clamp(1.2rem, 2vw, 1.4rem);
-      padding: 12px 25px;
-      letter-spacing: 0.8px;
-      border-radius: 10px;
-      cursor: pointer;
-      text-decoration: none;
-      transition: transform 0.2s, background-color 0.2s;
-      animation: _pulse-btn 1.5s infinite alternate;
-    }
-
-    ._btn-gift img {
-      width: 65px;
-      height: auto;
-    }
-
-    ._btn-gift:hover {
-      transform: scale(1.05);
-      background-color: rgba(255, 255, 255, 0.3);
-      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
-    }
-
-    @media (max-width: 1399.98px) {
-      ._section-gifttable {
-        width: 55%;
-      }
-    }
-
-    @media (max-width: 575.98px) {
-      ._section-gifttable {
+        position: relative;
         width: 100%;
-        padding: 3.5rem 1rem;
-        margin: 0;
-      }
-
-      ._btn-gift img {
-        width: 40px;
-      }
-    }
-  </style>
-
-  <!-- Save the Date -->
-  <style>
-    ._savethedate-section {
-      display: flex;
-      align-items: center;
-      justify-content: end;
-      position: relative;
-      margin: 2rem 0.4rem;
-      border: 2px solid var(--color-d);
-      border-radius: 5px;
-      max-width: 559px;
-    }
-
-    ._savethedate-section ._details {
-      padding: 0 10px;
-    }
-
-    ._savethedate-section ._details h1,
-    ._savethedate-section ._details h2,
-    ._savethedate-section ._details h3,
-    ._savethedate-section ._details h4 {
-      color: var(--color-primary);
-      text-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-      margin-top: 1rem;
-      letter-spacing: 2px;
-    }
-
-    ._savethedate-section ._details h1 {
-      font-family: var(--font-b);
-      font-size: clamp(1.4rem, 2.5vw, 1.6rem);
-      font-weight: 600;
-      text-align: center;
-
-    }
-
-    ._savethedate-section ._details h2 {
-      font-family: var(--font-c);
-      font-size: clamp(1.4rem, 2.5vw, 1.6rem);
-      font-weight: 600;
-      text-align: left;
-      padding-top: 10px;
-    }
-
-    ._savethedate-section ._details h3,
-    ._savethedate-section ._details h4 {
-      font-family: var(--font-c);
-      font-size: clamp(1.1rem, 2.5vw, 1.4rem);
-      font-weight: 600;
-    }
-
-    ._savethedate-section ._details h3 {
-      text-align: center;
-    }
-
-    ._savethedate-section ._details h4 {
-      text-align: right;
-    }
-
-    ._savethedate-section ._details h4>span {
-      font-family: var(--font-a);
-      font-size: 2rem;
-    }
-
-    ._savethedate-section ._codebar-image {
-      width: 40px;
-    }
-
-    @media (max-width: 767.98px) {
-      ._savethedate-section {
         max-width: 100%;
       }
-    }
-  </style>
 
-  <!-- Table -->
-  <style>
-    ._table-section {
-      position: relative;
-      width: 100%;
-      max-width: 559px;
-      margin: 0 auto;
-    }
-
-    ._table-section img._main-image {
-      width: 100%;
-      aspect-ratio: 1124 / 2000;
-      height: auto;
-      object-fit: cover;
-      display: block;
-    }
-
-    ._table-section ._details {
-      position: absolute;
-      bottom: 20%;
-      left: 65%;
-      transform: translate(-50%, 0);
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    ._table-section h1 {
-      font-size: clamp(10rem, 12vw, 15rem);
-      font-family: var(--font-b);
-      color: var(--color-primary);
-    }
-
-    @media (max-width: 767.98px) {
-      ._table-section {
-        max-width: 100%;
-      }
-    }
-  </style>
-
-  <!--End-->
-  <style>
-    ._end-section {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-      position: relative;
-      width: 100%;
-      max-width: 100%;
-      margin-top: 2rem;
-    }
-
-    ._end-section ._wrapper {
-      position: relative;
-    }
-
-    ._end-section ._wrapper::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.4);
-      z-index: 1;
-    }
-
-    ._end-section img._main-image {
-      width: 100%;
-      height: 100dvh;
-      object-fit: cover;
-      display: block;
-    }
-
-    ._end-section ._details {
-      position: absolute;
-      inset: 0;
-      z-index: 2;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-    }
-
-    ._end-section ._details h1 {
-      font-family: var(--font-a);
-      font-size: var(--fs-h1);
-      line-height: 0.9;
-      padding: 0 10px;
-      margin: 0;
-      text-align: center;
-      color: var(--color-secondary);
-      margin-top: 3rem;
-    }
-
-    ._end-section ._details h2 {
-      font-family: var(--font-d);
-      font-style: italic;
-      font-weight: bold;
-      font-size: clamp(0.9rem, 2.5vw, 1.5rem);
-      letter-spacing: 4px;
-      text-shadow: 2px 2px 10px var(--color-primary);
-      margin: 0.5rem 0;
-      text-align: center;
-      color: var(--color-secondary);
-    }
-
-    @media (max-width: 767.98px) {
-      ._end-section {
-        width: 100%;
-        overflow: hidden;
-        margin-top: 0;
+      ._main-section ._wrapper {
+        position: relative;
       }
 
-      ._end-section img._main-image {
-        border: 0;
-        border-radius: 0;
+      ._main-section ._wrapper::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.04);
+        z-index: 1;
+      }
+
+      ._main-section img._main-image {
         width: 100%;
-        height: 100%;
+        height: 100dvh;
         object-fit: cover;
         object-position: center;
         display: block;
       }
-    }
-  </style>
-</head>
 
-<body>
-  <div class="content">
-    <main role="main" class="w-100">
-      <div id="player">
-        <audio id="audio" src="#" data-replace="AudioUrl" loop></audio>
-      </div>
-      <span id="audioButton" class="_template-Audio-Button off _hide-section">
-        <img src="#" data-replace="Image_AudioUrl" />
-      </span>
-      <div class="_template">
-        <div class="_main-section">
-          <div class="_wrapper">
-            <img class="_main-mono" src="../images/Wedding2/mono.png">
-            <img class="_main-image" src="../images/Wedding2/1.jpg">
+      ._main-section img._main-mono {
+        position: absolute;
+        top: 5%;
+        left: 50%;
+        transform: translateX(-50%);
+        width: clamp(120px, 12vw, 160px);
+        height: auto;
+        z-index: 2;
+      }
+
+      ._main-section ._details {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        padding: 2rem 5px;
+        z-index: 2;
+      }
+
+      ._main-section ._details h1 {
+        font-family: var(--font-a);
+        font-size: var(--fs-h1);
+        line-height: 0.9;
+        padding: 0 10px;
+        margin: 0;
+        text-align: center;
+        color: var(--color-secondary);
+        text-shadow: 2px 2px 10px var(--color-primary);
+      }
+
+      ._main-section ._details h2 {
+        font-family: var(--font-d);
+        font-style: italic;
+        font-weight: bold;
+        font-size: clamp(1rem, 2.5vw, 1.5rem);
+        text-transform: uppercase;
+        letter-spacing: 4px;
+        text-shadow: 2px 2px 10px var(--color-primary);
+        margin: 0.5rem 0;
+        text-align: center;
+        color: var(--color-secondary);
+      }
+
+      @media (max-width: 767.98px) {
+        ._main-section {
+          width: 100%;
+          overflow: hidden;
+        }
+      }
+    </style>
+
+    <!-- Counter -->
+    <style>
+      ._template-Counter-Section {
+        width: 100%;
+        max-width: 350px;
+      }
+
+      ._template-Counter-Section ._counter-Countdown {
+        border-radius: 15px;
+        margin: 2rem;
+        box-shadow: none !important;
+        background: rgba(255, 255, 255, 0.1);
+        transition:
+          background-color 0.3s ease,
+          box-shadow 0.3s ease;
+      }
+
+      ._template-Counter-Section ._counter-Timebox {
+        font-family: var(--font-c);
+        font-size: clamp(0.8rem, 1.5vw, 1rem);
+        letter-spacing: 2.5px;
+        flex: 1;
+        color: var(--color-primary);
+        text-shadow: 0 2px 6px rgba(0, 0, 0, 1);
+        border-radius: 5px;
+        padding: 10px;
+        gap: 10px;
+        background-color: var(--color-c);
+      }
+
+      ._template-Counter-Section ._counter-Timebox span {
+        font-family: var(--font-c);
+        font-weight: normal;
+        font-size: clamp(2rem, 5vw, 3rem);
+        height: auto;
+        display: block;
+      }
+
+      @media (max-width: 1399.98px) {
+        ._template-Counter-Section {
+          max-width: 600px;
+        }
+      }
+    </style>
+
+    <!-- Secondary -->
+    <style>
+      ._secondary-section {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        position: relative;
+        width: 100%;
+        max-width: 100%;
+      }
+
+      ._secondary-section ._wrapper {
+        position: relative;
+      }
+
+      ._secondary-section ._wrapper::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.2);
+        z-index: 1;
+      }
+
+      ._secondary-section img._main-image {
+        width: 100%;
+        height: 100dvh;
+        object-fit: cover;
+        display: block;
+      }
+
+      ._secondary-section ._details {
+        position: absolute;
+        inset: 0;
+        z-index: 2;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        padding: 15px 10px;
+        width: 90%;
+        max-width: 500px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      ._secondary-section ._details h2 {
+        font-family: var(--font-d);
+        font-size: clamp(1.2rem, 3vw, 2rem);
+        letter-spacing: 2px;
+        margin: 0;
+        text-align: center;
+        color: var(--color-secondary);
+        text-shadow: 2px -2px 10px var(--color-primary);
+        font-size: clamp(1.4rem, 3vw, 1.8rem);
+      }
+
+      @media (max-width: 767.98px) {
+        ._secondary-section img._main-image {
+          width: 100%;
+          height: auto;
+          max-width: 100%;
+          display: block;
+        }
+      }
+    </style>
+
+    <!--Family-->
+    <style>
+      ._family-section {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        text-align: center;
+        margin: 1.5rem 0 0 0;
+      }
+
+      ._family-section > div {
+        flex: 1;
+        padding: 1.5rem;
+        border-radius: 12px;
+      }
+
+      ._family-section h1 {
+        font-family: var(--font-b);
+        font-style: italic;
+        font-size: clamp(1.2rem, 2.5vw, 1.7rem);
+        line-height: 1.4;
+        letter-spacing: 1px;
+        margin: 0;
+        text-align: center;
+        color: var(--color-h1);
+        text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+      }
+
+      ._family-section small {
+        font-family: var(--font-c);
+        font-style: italic;
+        font-size: clamp(0.85rem, 1.2vw, 0.95rem);
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        display: block;
+        margin-top: 1rem;
+        text-align: center;
+        color: var(--color-accent);
+        text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+      }
+
+      @media (max-width: 575.98px) {
+        ._family-section {
+          flex-direction: column;
+          gap: 2rem;
+          text-align: center;
+        }
+      }
+    </style>
+
+    <!--Place section-->
+    <style>
+      ._place-section {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 2rem;
+        border-radius: 15px;
+        margin: 1.5rem auto;
+        width: 100%;
+        max-width: 900px;
+        padding: 2rem;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        background: rgba(255, 255, 255, 0.4);
+        backdrop-filter: blur(8px);
+      }
+
+      ._place-section img._main-image {
+        width: 200px;
+        height: auto;
+        object-fit: cover;
+        border-radius: 10px;
+      }
+
+      ._place-section h2 {
+        font-family: var(--font-c);
+        font-weight: 400;
+        font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+        font-weight: 600;
+        letter-spacing: 2px;
+        text-align: center;
+        color: var(--color-accent);
+        text-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+      }
+
+      ._place-section small {
+        font-family: var(--font-c);
+        font-size: clamp(0.85rem, 1.2vw, 0.95rem);
+        font-weight: 600;
+        line-height: 1.5;
+        text-align: center;
+        color: var(--color-primary);
+        text-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
+        margin-bottom: 1rem;
+        max-width: 300px;
+      }
+
+      @media (max-width: 1399.98px) {
+        ._place-section {
+          width: 55%;
+        }
+      }
+
+      @media (max-width: 767.98px) {
+        ._place-section {
+          width: 90%;
+        }
+      }
+
+      @media (max-width: 575.98px) {
+        ._place-section {
+          width: 90%;
+          padding: 1.5rem 1rem;
+          flex-direction: column;
+        }
+      }
+
+      @media (max-width: 375.98px) {
+      }
+    </style>
+
+    <!-- TimeLine -->
+    <style>
+      ._timeline-section {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 2.5rem 0;
+        overflow-x: hidden;
+      }
+
+      ._timeline-section ._main-image {
+        max-width: 600px;
+      }
+
+      @media (max-width: 575.98px) {
+        ._timeline-section ._main-image {
+          width: 85%;
+        }
+      }
+    </style>
+
+    <!-- Gallery -->
+    <style>
+      ._gallery-section {
+        column-count: 2;
+        column-gap: 15px;
+        max-width: 900px;
+        margin: 1rem;
+      }
+
+      ._gallery-section img {
+        max-width: 100%;
+        max-height: 90%;
+        border-radius: 10px;
+
+        transform: scale(0.85);
+        opacity: 0;
+        transition:
+          transform 0.25s ease,
+          opacity 0.25s ease;
+        padding: 10px 0;
+      }
+
+      ._gallery-section img.show {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      ._gallery-section img:hover {
+        transform: scale(1.03);
+        filter: brightness(1.1);
+      }
+
+      @media (max-width: 900px) {
+        ._gallery-section {
+          column-count: 2;
+        }
+      }
+
+      @media (max-width: 600px) {
+        ._gallery-section {
+          column-count: 1;
+        }
+      }
+
+      #_gallery-modal {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.9);
+        display: none;
+        align-items: center;
+        justify-content: center;
+      }
+
+      #_gallery-modal img {
+        max-width: 90%;
+        max-height: 90%;
+        border-radius: 10px;
+      }
+
+      #_gallery-modal.show {
+        display: flex;
+      }
+
+      #_gallery-modal .close {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        font-size: 30px;
+        cursor: pointer;
+        color: white;
+      }
+    </style>
+
+    <!--Third section-->
+    <style>
+      ._third-section {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        position: relative;
+        width: 100%;
+        max-width: 100%;
+      }
+
+      ._third-section ._wrapper {
+        position: relative;
+      }
+
+      ._third-section ._wrapper::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.4);
+        z-index: 1;
+      }
+
+      ._third-section img._main-image {
+        width: 100%;
+        height: 100dvh;
+        object-fit: cover;
+        display: block;
+      }
+
+      ._third-section ._details {
+        position: absolute;
+        inset: 0;
+        z-index: 2;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 90%;
+        max-width: 500px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      ._third-section ._details p {
+        font-family: var(--font-d);
+        font-variant-ligatures: none;
+        font-feature-settings: "liga" 0;
+        letter-spacing: 1px;
+        font-size: var(--fs-body);
+        line-height: 1.4;
+        text-align: center;
+        margin: 0;
+        color: var(--color-secondary);
+        text-shadow: 2px 2px 10px var(--color-primary);
+      }
+
+      @media (max-width: 767.98px) {
+        ._third-section img._main-image {
+          height: auto;
+          max-height: 100dvh;
+        }
+      }
+
+      @media (max-width: 575.98px) {
+        ._third-section ._details {
+          width: 90%;
+        }
+      }
+    </style>
+
+    <!--Video-->
+    <style>
+      ._video-section {
+        width: 100%;
+      }
+
+      ._video-section iframe {
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        height: auto;
+      }
+    </style>
+
+    <!--DressCode-->
+    <style>
+      ._dresscode-section {
+        padding: 4rem 0 0;
+        gap: 5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        background-image: url("../images/templates/Wedding2/dresscodebg-1.jpg");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        width: 100%;
+      }
+
+      ._dresscode-section .vr {
+        border-left: 2px solid #000;
+        margin: 0 0 0 20px;
+      }
+
+      ._dresscode-section ._main-image {
+        max-width: 450px;
+        position: relative;
+        right: 3%;
+      }
+
+      ._dresscode-section h2,
+      ._dresscode-section h3 {
+        font-family: var(--font-f);
+        text-align: center;
+        color: var(--color-primary);
+        text-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+      }
+
+      ._dresscode-section h1 {
+        font-family: var(--font-e);
+        font-size: clamp(7rem, 4vw, 8.2rem);
+        font-weight: normal;
+        margin: 0;
+        line-height: 0.4;
+        text-align: center;
+        color: var(--color-primary);
+        text-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+      }
+
+      ._dresscode-section h2 {
+        font-size: clamp(2rem, 4vw, 3rem);
+        font-weight: bold;
+        letter-spacing: 10px;
+      }
+
+      ._dresscode-section h3 {
+        font-size: clamp(1.3rem, 3vw, 2rem);
+        font-family: var(--font-f);
+        letter-spacing: 15px;
+      }
+
+      @media (max-width: 575.98px) {
+        ._dresscode-section ._main-image {
+          width: 40%;
+        }
+      }
+    </style>
+
+    <!--Confirmation-->
+    <style>
+      ._confirmation-section {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-image: url("../images/templates/Wedding2/confirmation.jpg");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        min-height: 100vh;
+        padding: 20px;
+        width: 100%;
+      }
+
+      ._confirmation-section > div {
+        width: 100%;
+        border-radius: 15px;
+        max-width: 600px;
+        padding: 2rem;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        background: rgba(255, 255, 255, 0.45);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.25);
+      }
+
+      ._confirmation-section h1 {
+        font-family: var(--font-b);
+        font-weight: bold;
+        font-size: clamp(1.8rem, 4vw, 2.5rem);
+        text-align: center;
+        color: var(--color-h1);
+        text-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+        margin-top: 1rem;
+      }
+
+      ._confirmation-section h2 {
+        font-family: var(--font-d);
+        font-size: clamp(1rem, 2.5vw, 1.4rem);
+        text-align: justify;
+        color: var(--color-h1);
+        text-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+        margin: 2rem 0;
+      }
+
+      ._confirmation-section .form-fields {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        margin-bottom: 1rem;
+      }
+
+      ._confirmation-section label {
+        font-weight: bold;
+        color: var(--color-primary);
+        font-family: var(--font-third);
+      }
+
+      ._confirmation-section textarea {
+        width: 100%;
+        resize: none;
+        border-radius: 8px;
+        height: 50px;
+      }
+
+      ._confirmation-section textarea[name="wishes"] {
+        min-height: 80px;
+      }
+
+      ._confirmation-section button {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        background-color: rgba(255, 255, 255, 0.2);
+        color: var(--color-primary);
+        font-family: var(--font-third);
+        font-weight: bold;
+        font-size: clamp(0.95rem, 2vw, 1.1rem);
+        padding: 12px 25px;
+        border-radius: 10px;
+        border: 2px solid rgba(255, 255, 255, 0.3);
+        cursor: pointer;
+        text-decoration: none;
+        transition:
+          transform 0.25s ease,
+          box-shadow 0.25s ease,
+          background-color 0.25s ease;
+        will-change: transform;
+      }
+    </style>
+
+    <!--Gift table-->
+    <style>
+      ._section-gifttable {
+        border-radius: 15px;
+        margin: 3rem auto;
+        width: 35%;
+        padding: 2rem 1rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      ._section-gifttable h1 {
+        font-family: var(--font-b);
+        font-weight: bold;
+        font-size: clamp(2rem, 4vw, 2.5rem);
+        text-align: center;
+        color: var(--color-h1);
+        text-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+        margin-top: 1rem;
+        letter-spacing: 3px;
+      }
+
+      ._section-gifttable p {
+        font-family: var(--font-d);
+        font-weight: 400;
+        font-size: clamp(1rem, 2vw, 1.2rem);
+        text-align: center;
+        color: var(--color-primary);
+        text-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+        margin-top: 1.5rem;
+        letter-spacing: 1.5px;
+      }
+
+      @keyframes _pulse-btn {
+        0% {
+          box-shadow: 0 0 10px rgba(166, 137, 102, 0.4);
+          transform: scale(1);
+        }
+
+        50% {
+          box-shadow: 0 0 25px rgba(166, 137, 102, 0.6);
+          transform: scale(1.05);
+        }
+
+        100% {
+          box-shadow: 0 0 10px rgba(166, 137, 102, 0.4);
+          transform: scale(1);
+        }
+      }
+
+      ._btn-gift {
+        min-height: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 90%;
+        max-width: 300px;
+        gap: 10px;
+        background-color: rgba(255, 255, 255, 0.6);
+        color: var(--color-primary);
+        font-family: var(--font-d);
+        font-weight: bold;
+        font-size: clamp(1.2rem, 2vw, 1.4rem);
+        padding: 12px 25px;
+        letter-spacing: 0.8px;
+        border-radius: 10px;
+        cursor: pointer;
+        text-decoration: none;
+        transition:
+          transform 0.2s,
+          background-color 0.2s;
+        animation: _pulse-btn 1.5s infinite alternate;
+      }
+
+      ._btn-gift img {
+        width: 65px;
+        height: auto;
+      }
+
+      ._btn-gift:hover {
+        transform: scale(1.05);
+        background-color: rgba(255, 255, 255, 0.3);
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+      }
+
+      @media (max-width: 1399.98px) {
+        ._section-gifttable {
+          width: 55%;
+        }
+      }
+
+      @media (max-width: 575.98px) {
+        ._section-gifttable {
+          width: 100%;
+          padding: 3.5rem 1rem;
+          margin: 0;
+        }
+
+        ._btn-gift img {
+          width: 40px;
+        }
+      }
+    </style>
+
+    <!-- Save the Date -->
+    <style>
+      ._savethedate-section {
+        display: flex;
+        align-items: center;
+        justify-content: end;
+        position: relative;
+        margin: 2rem 0.4rem;
+        border: 2px solid var(--color-d);
+        border-radius: 5px;
+        max-width: 559px;
+      }
+
+      ._savethedate-section ._details {
+        padding: 0 10px;
+      }
+
+      ._savethedate-section ._details h1,
+      ._savethedate-section ._details h2,
+      ._savethedate-section ._details h3,
+      ._savethedate-section ._details h4 {
+        color: var(--color-primary);
+        text-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+        margin-top: 1rem;
+        letter-spacing: 2px;
+      }
+
+      ._savethedate-section ._details h1 {
+        font-family: var(--font-b);
+        font-size: clamp(1.4rem, 2.5vw, 1.6rem);
+        font-weight: 600;
+        text-align: center;
+      }
+
+      ._savethedate-section ._details h2 {
+        font-family: var(--font-c);
+        font-size: clamp(1.4rem, 2.5vw, 1.6rem);
+        font-weight: 600;
+        text-align: left;
+        padding-top: 10px;
+      }
+
+      ._savethedate-section ._details h3,
+      ._savethedate-section ._details h4 {
+        font-family: var(--font-c);
+        font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+        font-weight: 600;
+      }
+
+      ._savethedate-section ._details h3 {
+        text-align: center;
+      }
+
+      ._savethedate-section ._details h4 {
+        text-align: right;
+      }
+
+      ._savethedate-section ._details h4 > span {
+        font-family: var(--font-a);
+        font-size: 2rem;
+      }
+
+      ._savethedate-section ._codebar-image {
+        width: 40px;
+      }
+
+      @media (max-width: 767.98px) {
+        ._savethedate-section {
+          max-width: 100%;
+        }
+      }
+    </style>
+
+    <!-- Table -->
+    <style>
+      ._table-section {
+        position: relative;
+        width: 100%;
+        max-width: 559px;
+        margin: 0 auto;
+      }
+
+      ._table-section img._main-image {
+        width: 100%;
+        aspect-ratio: 1124 / 2000;
+        height: auto;
+        object-fit: cover;
+        display: block;
+      }
+
+      ._table-section ._details {
+        position: absolute;
+        bottom: 20%;
+        left: 65%;
+        transform: translate(-50%, 0);
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      ._table-section h1 {
+        font-size: clamp(10rem, 12vw, 15rem);
+        font-family: var(--font-b);
+        color: var(--color-primary);
+      }
+
+      @media (max-width: 767.98px) {
+        ._table-section {
+          max-width: 100%;
+        }
+      }
+    </style>
+
+    <!--End-->
+    <style>
+      ._end-section {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        position: relative;
+        width: 100%;
+        max-width: 100%;
+        margin-top: 2rem;
+      }
+
+      ._end-section ._wrapper {
+        position: relative;
+      }
+
+      ._end-section ._wrapper::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.4);
+        z-index: 1;
+      }
+
+      ._end-section img._main-image {
+        width: 100%;
+        height: 100dvh;
+        object-fit: cover;
+        display: block;
+      }
+
+      ._end-section ._details {
+        position: absolute;
+        inset: 0;
+        z-index: 2;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+
+      ._end-section ._details h1 {
+        font-family: var(--font-a);
+        font-size: var(--fs-h1);
+        line-height: 0.9;
+        padding: 0 10px;
+        margin: 0;
+        text-align: center;
+        color: var(--color-secondary);
+        margin-top: 3rem;
+      }
+
+      ._end-section ._details h2 {
+        font-family: var(--font-d);
+        font-style: italic;
+        font-weight: bold;
+        font-size: clamp(0.9rem, 2.5vw, 1.5rem);
+        letter-spacing: 4px;
+        text-shadow: 2px 2px 10px var(--color-primary);
+        margin: 0.5rem 0;
+        text-align: center;
+        color: var(--color-secondary);
+      }
+
+      @media (max-width: 767.98px) {
+        ._end-section {
+          width: 100%;
+          overflow: hidden;
+          margin-top: 0;
+        }
+
+        ._end-section img._main-image {
+          border: 0;
+          border-radius: 0;
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          object-position: center;
+          display: block;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="content">
+      <main role="main" class="w-100">
+        <div id="player">
+          <audio id="audio" src="#" data-replace="AudioUrl" loop></audio>
+        </div>
+        <span id="audioButton" class="_template-Audio-Button off _hide-section">
+          <img src="#" data-replace="Image_AudioUrl" />
+        </span>
+        <div class="_template">
+          <div class="_main-section">
+            <div class="_wrapper">
+              <img class="_main-mono" src="../images/templates/Wedding2/mono.png" />
+              <img class="_main-image" src="../images/templates/Wedding2/1.jpg" />
+            </div>
+
+            <div class="_details">
+              <div class="_play-button"></div>
+              <h2 class="slide-right" data-replace="EventFormatDate"></h2>
+              <div class="_common-d-flex _common-flex-column">
+                <h1 class="slide-left" data-replace="BrideShortName"></h1>
+                <h1 class="slide-left">&</h1>
+                <h1 class="slide-left" data-replace="GroomShortName"></h1>
+              </div>
+            </div>
           </div>
 
-          <div class="_details">
-            <div class="_play-button"></div>
-            <h2 class="slide-right" data-replace="EventFormatDate"></h2>
+          <div class="_template-Counter-Section _hide-section">
+            <div id="countdown" class="_counter-Countdown">
+              <div class="_counter-Timebox">
+                <span id="days">0</span>
+                Días
+              </div>
+              <div class="_counter-Timebox">
+                <span id="hours">0</span>
+                Hrs.
+              </div>
+              <div class="_counter-Timebox">
+                <span id="minutes">0</span>
+                Min.
+              </div>
+              <div class="_counter-Timebox">
+                <span id="seconds">0</span>
+                Seg.
+              </div>
+            </div>
+          </div>
+
+          <div class="_secondary-section _hide-section">
+            <div class="_wrapper">
+              <img class="_main-image" src="../images/templates/Wedding2/2.jpg" />
+            </div>
+            <div class="_details slide-up">
+              <h2>Que todas las noches sean noches de boda y que todas las lunas sean lunas de miel.</h2>
+            </div>
+          </div>
+
+          <div class="_family-section _hide-section">
             <div class="_common-d-flex _common-flex-column">
-              <h1 class="slide-left" data-replace="BrideShortName"></h1>
-              <h1 class="slide-left">&</h1>
-              <h1 class="slide-left" data-replace="GroomShortName"></h1>
+              <h1 class="slide-left">
+                Sirina Esquivias Esquivias
+                <br />
+                &
+                <br />
+                Gerardo González Navarro
+              </h1>
+              <small>Padres de la Novia</small>
+            </div>
+            <div class="_common-d-flex _common-flex-column">
+              <h1 class="slide-right">
+                Sara Ávila García
+                <br />
+                &
+                <br />
+                J. Refugio Ramírez González
+              </h1>
+              <small>Padres del Novio</small>
+            </div>
+          </div>
+
+          <div class="_place-section _hide-section">
+            <div>
+              <img class="_main-image" src="../images/templates/Wedding2/place.jpg" />
+            </div>
+            <div class="_common-d-flex _common-flex-column">
+              <h2>La Terraza Clouthier</h2>
+              <small>17:30 p.m.</small>
+              <small>Av Manuel J. Clouthier 480, Lomas de Guadalupe, 45038 Guadalajara, Jal.</small>
+              <a href="#" data-replace="EventReceptionUrl" target="_blank">
+                <img class="location-maps" src="#" data-replace="Image_GoogleLocation" alt="Google Location" />
+              </a>
+            </div>
+          </div>
+
+          <div class="_timeline-section _hide-section">
+            <img class="_main-image" src="../images/templates/Wedding2/elplan.png" alt="Evento 1" />
+          </div>
+
+          <div class="_gallery-section _hide-section">
+          </div>
+
+          <div class="_third-section _hide-section">
+            <div class="_wrapper">
+              <img class="_main-image" src="../images/templates/Wedding2/4.jpg" />
+            </div>
+            <div class="_details slide-up">
+              <p>
+                En nuestros momentos más solitarios, cuando menos buscábamos el amor, fue donde el destino decidió encontrarnos. Aún no sabemos en qué instante exácto comenzó a nacer algo tan bonito, pero sí sabemos que, sin darnos cuenta, se transformó en un amor profundo, sincero y eterno.
+                <br />
+                <br />
+                Entre miles de probabilidades en nuestra rutina diaria, todo tuvo que alinearse de manera perfecta para que lo nuestro fuera único y especial. Como si la vida, con paciencia, hubiera preparado cada paso hasta llevarnos el uno al otro.
+                <br />
+                <br />
+                Hoy después de 3 años compartiéndolo todo-- risas, aprendizajes y sueños. Tomamos la decisión más importante de nuestras vidas: elegirnos todos los días, para siempre, y caminar juntos el resto de nuestros días.
+              </p>
+            </div>
+          </div>
+
+          <div class="_video-section _hide-section">
+            <iframe src="https://www.youtube.com/embed/UqK14btTz8U?si=2JFZkDojxMx4sA7-" loading="lazy" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </div>
+
+          <div class="_dresscode-section _hide-section">
+            <div class="text-center">
+              <h1>Codigo de</h1>
+              <h2>VESTIMENTA</h2>
+              <h3>SEMI-FORMAL</h3>
+            </div>
+            <div class="_common-d-flex">
+              <img class="_main-image" src="../images/templates/Wedding2/dresscode-2.png" />
+            </div>
+          </div>
+
+          <div class="_confirmation-section _hide-section">
+            <div>
+              <h1>Asistencia</h1>
+              <h2>Nos encantaría que nos confirmes si podrás asistir, nos haría mucha ilusión verte ahí.</h2>
+
+              <div class="form-fields">
+                <label>Nombre(s) de acompañante(s)</label>
+                <textarea name="guestAttendants"></textarea>
+              </div>
+
+              <div class="form-fields">
+                <label>Deseo</label>
+                <textarea name="wishes"></textarea>
+              </div>
+              <div class="d-flex justify-content-between">
+                <button id="_btnNo">No Asistiré</button>
+                <button id="_btnYes">Asistiré</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="_section-gifttable _hide-section">
+            <h1>Regalos</h1>
+            <p>Para nosotros tu presencia es nuestro mejor regalo, pero si deseas hacernos llegar un obsequio, te sugerimos la siguiente opción:</p>
+            <div class="_btn-brands">
+              <a href="#" data-replace="EventLiverpoolGiftTableUrl" target="_blank" class="_btn-gift">
+                <img src="#" data-replace="Image_LiverpoolUrl" alt="Liverpool Logo" />
+                Liverpool
+              </a>
+            </div>
+          </div>
+
+          <div class="_savethedate-section _hide-section">
+            <div class="_details">
+              <h1>Save the Date</h1>
+              <h2></h2>
+              <h3>¡Nos casamos! Y queremos celebrarlo contigo.</h3>
+              <h4>
+                <span></span>
+                pases para ti.
+              </h4>
+            </div>
+            <img class="_codebar-image" src="../images/icons/CodeBar.jpg" />
+          </div>
+
+          <div class="_table-section _hide-tablesection">
+            <img class="_main-image" src="../images/templates/Wedding2/table.jpg" />
+
+            <div class="_details">
+              <h1 class="_tableNumber"></h1>
+            </div>
+          </div>
+
+          <div class="_end-section _hide-section">
+            <div class="_wrapper">
+              <img class="_main-image" src="../images/templates/Wedding2/end.jpg" />
+            </div>
+            <div class="_details">
+              <h2>
+                "Y todo lo que hagan,
+                <br />
+                háganlo con amor".
+                <br />
+                Corintios 16:14
+                <br />
+                <br />
+                ¡Los esperamos!
+              </h2>
+              <h1 data-replace="BrideGroomShortNames"></h1>
             </div>
           </div>
         </div>
+      </main>
+    </div>
 
-        <div class="_template-Counter-Section _hide-section">
-          <div id="countdown" class="_counter-Countdown">
-            <div class="_counter-Timebox">
-              <span id="days">0</span> Días
-            </div>
-            <div class="_counter-Timebox">
-              <span id="hours">0</span> Hrs.
-            </div>
-            <div class="_counter-Timebox">
-              <span id="minutes">0</span> Min.
-            </div>
-            <div class="_counter-Timebox">
-              <span id="seconds">0</span> Seg.
-            </div>
-          </div>
-        </div>
+    <script src="../js/main.js"></script>
 
-        <div class="_secondary-section _hide-section">
-          <div class="_wrapper">
-            <img class="_main-image" src="../images/Wedding2/2.jpg">
-          </div>
-          <div class="_details slide-up">
-            <h2>
-              Que todas las noches sean noches de boda y que todas las lunas
-              sean lunas de miel.
-            </h2>
-          </div>
-        </div>
+    <script>
+      requirejs(["jquery", "helpers"], function ($, helpers) {
+        // ─── DATOS ────────────────────────────────────────
+        const mainEvent = {
+          Date: new Date("2026-10-17T17:30:00"),
 
-        <div class="_family-section _hide-section">
-          <div class="_common-d-flex _common-flex-column">
-            <h1 class="slide-left">
-              Sirina Esquivias Esquivias <br>
-              & <br>
-              Gerardo González Navarro
-            </h1>
-            <small>Padres de la Novia</small>
-          </div>
-          <div class="_common-d-flex _common-flex-column">
-            <h1 class="slide-right">
-              Sara Ávila García <br>
-              & <br>
-              J. Refugio Ramírez González
-            </h1>
-            <small>Padres del Novio</small>
-          </div>
-        </div>
+          BrideName: "Jacqueline Esquivias",
+          GroomName: "Jesús Ramírez",
+          BrideShortName: "Jacqueline",
+          GroomShortName: "Jesús",
 
-        <div class="_place-section _hide-section">
-          <div>
-            <img class="_main-image" src="../images/Wedding2/place.jpg">
-          </div>
-          <div class="_common-d-flex _common-flex-column">
-            <h2>La Terraza Clouthier</h2>
-            <small>17:30 p.m.</small>
-            <small>
-              Av Manuel J. Clouthier 480, Lomas de Guadalupe, 45038 Guadalajara, Jal.
-            </small>
-            <a href="#" data-replace="EventReceptionUrl" target="_blank">
-              <img class="location-maps" src="#" data-replace="Image_GoogleLocation" alt="Google Location">
-            </a>
-          </div>
+          LocationDescription: "La Terraza Clouthier",
+          Address: "Av Manuel J. Clouthier 480, Lomas de Guadalupe, 45038 Guadalajara, Jal.",
+          GoogleMapsUrl: "https://maps.app.goo.gl/KuXfBs9iPrwx48xB6",
 
-        </div>
+          FatherBride: "Gerardo González Navarro",
+          MotherBride: "Sirina Esquivias Esquivias",
+          FatherGroom: "J. Refugio Ramírez González",
+          MotherGroom: "Sara Ávila García",
 
-        <div class="_timeline-section _hide-section">
-          <img class="_main-image" src="../images/Wedding2/elplan.png" alt="Evento 1">
-        </div>
+          AmazonGiftTableUrl: "",
+          LiverpoolGiftTableUrl: "https://mesaderegalos.liverpool.com.mx/milistaderegalos/51963844",
 
-        <div class="_gallery-section _hide-section">
-          <img src="../images/Wedding2/1.jpg">
-          <img src="../images/Wedding2/2.jpg">
-          <img src="../images/Wedding2/3.png">
-          <img src="../images/Wedding2/4.jpg">
-          <img src="../images/Wedding2/end.jpg">
-          <div class="modal" id="_gallery-modal">
-            <span class="close" id="_gallery-modal-close">&times;</span>
-            <img id="_gallery-modal-img">
-          </div>
-        </div>
+          Gallery: ["../images/templates/Wedding2/1.jpg", "../images/templates/Wedding2/2.jpg", "../images/templates/Wedding2/3.jpg", "../images/templates/Wedding2/4.jpg", "../images/templates/Wedding2/end.jpg"],
+        };
 
-        <div class="_third-section _hide-section">
-          <div class="_wrapper">
-            <img class="_main-image" src="../images/Wedding2/4.jpg">
-          </div>
-          <div class="_details slide-up">
-            <p>
-              En nuestros momentos más solitarios,
-              cuando menos buscábamos el amor, fue
-              donde el destino decidió encontrarnos.
-              Aún no sabemos en qué instante exácto
-              comenzó a nacer algo tan bonito, pero sí
-              sabemos que, sin darnos cuenta, se
-              transformó en un amor profundo, sincero y
-              eterno.<br><br>
-              Entre miles de probabilidades en nuestra
-              rutina diaria, todo tuvo que alinearse de
-              manera perfecta para que lo nuestro fuera
-              único y especial. Como si la vida, con
-              paciencia, hubiera preparado cada paso
-              hasta llevarnos el uno al otro.
-              <br><br>
-              Hoy después de 3 años compartiéndolo
-              todo-- risas, aprendizajes y sueños. Tomamos la decisión más importante de
-              nuestras vidas:
-              elegirnos todos los días, para siempre, y
-              caminar juntos el resto de nuestros días.
-            </p>
-          </div>
-        </div>
+        const secondaryEvent = {
+          Date: new Date("2026-10-17T17:30:00"),
+          LocationDescription: "La Terraza Clouthier",
+          Address: "Av Manuel J. Clouthier 480, Lomas de Guadalupe, 45038 Guadalajara, Jal.",
+          GoogleMapsUrl: "https://maps.app.goo.gl/HpD9ZEkGmku4WTyT8",
+        };
 
-        <div class="_video-section _hide-section">
-          <iframe 
-            src="https://www.youtube.com/embed/UqK14btTz8U?si=2JFZkDojxMx4sA7-"
-            loading="lazy"
-            title="YouTube video player"
-            frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen>
-          </iframe>
-        </div>
+        const Init = {
+          Config: {
+            EventType: "Wedding",
+            Sections: {
+              showCounter: true,
+              showIntroduction: true,
+              showParents: true,
+              showItinerary: true,
+              showGallery: true,
+              showDressCode: true,
+              showTickets: true,
+              showTableNumber: true,
+              showAttendance: true,
+              showGiftTable: true,
+            },
+            Themes: [],
+            AudioUrl: "../music/Girls Like You_1.mp3",
+          },
+          MainEvent: mainEvent,
+          SecondaryEvent: secondaryEvent,
+        };
 
-        <div class="_dresscode-section _hide-section">
-          <div class="text-center">
-            <h1>Codigo de</h1>
-            <h2>VESTIMENTA</h2>
-            <h3>SEMI-FORMAL</h3>
+        function onLoad() {
+          helpers.onValidateToken();
 
-          </div>
-          <div class="_common-d-flex">
-            <img class="_main-image" src="../images/Wedding2/dresscode-2.png">
-          </div>
-
-        </div>
-
-        <div class="_confirmation-section _hide-section">
-          <div>
-            <h1>Asistencia</h1>
-            <h2>
-              Nos encantaría que nos confirmes si podrás asistir, nos haría mucha ilusión verte ahí.
-            </h2>
-
-            <div class="form-fields">
-              <label>Nombre(s) de acompañante(s)</label>
-              <textarea name="guestAttendants"></textarea>
-            </div>
-
-            <div class="form-fields">
-              <label>Deseo</label>
-              <textarea name="wishes"></textarea>
-            </div>
-            <div class="d-flex justify-content-between">
-              <button id="_btnNo">No Asistiré</button>
-              <button id="_btnYes">Asistiré</button>
-            </div>
-          </div>
-        </div>
-
-        <div class="_section-gifttable _hide-section">
-          <h1>Regalos</h1>
-          <p>
-            Para nosotros tu presencia es nuestro mejor regalo, pero si deseas hacernos llegar un
-            obsequio, te sugerimos la siguiente opción:
-          </p>
-          <div class="_btn-brands">
-            <a href="#" data-replace="EventLiverpoolGiftTableUrl" target="_blank" class="_btn-gift">
-              <img src="#" data-replace="Image_LiverpoolUrl" alt="Liverpool Logo" />
-              Liverpool
-            </a>
-          </div>
-        </div>
-
-        <div class="_savethedate-section _hide-section">
-          <div class="_details">
-            <h1>Save the Date</h1>
-            <h2></h2>
-            <h3>¡Nos casamos! Y queremos celebrarlo contigo.</h3>
-            <h4><span></span> pases para ti.</h4>
-          </div>
-          <img class="_codebar-image" src="../images/icons/CodeBar.jpg">
-        </div>
-
-        <div class="_table-section _hide-tablesection">
-
-          <img class="_main-image" src="../images/Wedding2/table.jpg">
-
-          <div class="_details">
-            <h1 class="_tableNumber"></h1>
-          </div>
-        </div>
-
-        <div class="_end-section _hide-section">
-          <div class="_wrapper">
-            <img class="_main-image" src="../images/Wedding2/end.jpg">
-          </div>
-          <div class="_details">
-            <h2>
-              "Y todo lo que hagan,
-              <br> háganlo con amor".
-              <br> Corintios 16:14
-              <br><br>
-              ¡Los esperamos!
-            </h2>
-            <h1 data-replace="BrideGroomShortNames"></h1>
-          </div>
-        </div>
-
-      </div>
-    </main>
-  </div>
-
-  <script src="../js/main.js"></script>
-
-
-  <script>
-    requirejs(["jquery", "helpers"], function ($, helpers) {
-
-      const $guestInput = $("textarea[name=guestAttendants]");
-      const $wishesInput = $("textarea[name=wishes]");
-
-      const EventDate = new Date("2026-10-17T17:30:00");
-      const EventReception = new Date("2026-10-17T17:30:00");
-
-      const mainEvent = {
-        Name: "",
-        BrideName: "Jacqueline Esquivias",
-        GroomName: "Jesús Ramírez",
-        BrideShortName: "Jacqueline",
-        GroomShortName: "Jesús",
-        Date: EventDate,
-        Description: `Acompáñanos a celebrar nuestra unión `,
-        LocationDescription: "La Terraza Clouthier",
-        Address: "Av Manuel J. Clouthier 480, Lomas de Guadalupe, 45038 Guadalajara, Jal.",
-        FatherBride: "Gerardo González Navarro",
-        MotherBride: "Sirina Esquivias Esquivias",
-        FatherGroom: "J. Refugio Ramírez González",
-        MotherGroom: "Sara Ávila García",
-        GoogleMapsUrl: "https://maps.app.goo.gl/KuXfBs9iPrwx48xB6",
-        AmazonGiftTableUrl: "",
-        LiverpoolGiftTableUrl: "https://mesaderegalos.liverpool.com.mx/milistaderegalos/51963844",
-        CollageImages: [],
-        ImageMyParents: "",
-        ImageMyGodParents: "",
-        ImageDressCodeUrl: "",
-      };
-
-      const secondaryEvent = {
-        Date: EventReception,
-        LocationDescription: "La Terraza Clouthier",
-        Address: "Av Manuel J. Clouthier 480, Lomas de Guadalupe, 45038 Guadalajara, Jal.",
-        GoogleMapsUrl: "https://maps.app.goo.gl/HpD9ZEkGmku4WTyT8",
-      }
-
-      const googleCalendar = {
-        Text: "Boda de " + mainEvent.BrideShortName + " & " + mainEvent.GroomShortName,
-        Location: mainEvent.Address,
-        Detail: `
-                    ${mainEvent.Description}${mainEvent.Name}.
-                📍 Lugar: ${mainEvent.LocationDescription}
-                🕒 Hora: ${mainEvent.HourString}
-                ⏰ Recordatorio: Llega con 30 minutos de anticipación.
-                ✨ ¡Te esperamos para compartir este momento tan especial!`
-      }
-
-      const additionalInformation = {
-        ImageBodyBackground: "",
-        ImageCorner: "",
-        ImageFrontCard: "",
-        AudioUrl: "../music/Girls Like You_1.mp3",
-        WhatsAppUrl: "",
-      }
-
-      const Resources = {
-        MainEvent: mainEvent,
-        SecondaryEvent: secondaryEvent,
-        GoogleCalendar: googleCalendar,
-        AdditionalInformation: additionalInformation
-      };
-
-      function onLoad() {
-        var eventFromatDate = helpers.onGetDay(EventDate) + " • " + helpers.onGetMonth(EventDate) + " • " + helpers.onGetYear(EventDate);
-        $("[data-replace=EventFormatDate]").text(eventFromatDate);
-        $("[data-replace=BrideShortName]").text(Resources.MainEvent.BrideShortName);
-        $("[data-replace=GroomShortName]").text(Resources.MainEvent.GroomShortName);
-        $("[data-replace=BrideGroomShortNames]").text(Resources.MainEvent.BrideShortName+ " & " + Resources.MainEvent.GroomShortName);
-
-        helpers.onValidateToken();
-        
-        $("#_btnYes").on('click', () => helpers.onSendConfirmation(true, $guestInput.val(), $wishesInput.val()));
-        $("#_btnNo").on('click', () => helpers.onSendConfirmation(false, $guestInput.val(), $wishesInput.val()));
-      }
-
-      function checkVisibility() {
-        const animatedEls = document.querySelectorAll(".slide-up > h2, .slide-up > p");
-        const slideObserver = new IntersectionObserver((entries) => {
-          entries.forEach(entry => {
-            entry.target.classList.toggle("visible", entry.isIntersecting);
+          var eventFromatDate = helpers.onGetDay(mainEvent.Date) + " • " + helpers.onGetMonth(mainEvent.Date) + " • " + helpers.onGetYear(mainEvent.Date);
+          $("[data-replace=EventFormatDate]").text(eventFromatDate);
+          $("[data-replace=BrideShortName]").text(mainEvent.BrideShortName);
+          $("[data-replace=GroomShortName]").text(mainEvent.GroomShortName);
+          $("[data-replace=BrideGroomShortNames]").text(mainEvent.BrideShortName + " & " + mainEvent.GroomShortName);
+          // Galería
+          var gallery_imgs = mainEvent.Gallery;
+          $("#_gallery-section").empty();
+          gallery_imgs.forEach(function (url, index) {
+            var item = $("<div>", { "class": "gal-item", "data-index": index });
+            var img  = $("<img>", { src: url, alt: "Foto " + (index + 1), loading: "lazy" });
+            item.append(img);
+            $("#_gallery-section").append(item);
           });
-        }, { threshold: 0.15 });
 
-        animatedEls.forEach(el => slideObserver.observe(el));
-      }
+          // Confirmación
+          $("#_btnYes").on("click", function () {
+            helpers.onSendConfirmation(true, $("input[name=guestAttendants]").val(), $("textarea[name=wishes]").val());
+          });
+          $("#_btnNo").on("click", function () {
+            helpers.onSendConfirmation(false, $("input[name=guestName]").val(), $("textarea[name=wishes]").val());
+          });
+        }
 
+        function checkVisibility() {
+          var animatedEls = document.querySelectorAll(".slide-up > h2, .slide-up > p");
+          var slideObserver = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+              entry.target.classList.toggle("visible", entry.isIntersecting);
+            });
+          }, { threshold: 0.15 });
+          animatedEls.forEach(function (el) { slideObserver.observe(el); });
+        }
 
-      function Init() {
-        onLoad();
+        // ─── INIT PAGE ────────────────────────────────────
+        function InitPage() {
+          onLoad();
+          helpers.init(Init);
+          helpers.onAudioPlayer();
 
-        helpers.onAudioPlayer();
+          // Play button — revela secciones y arranca el contador
+          $("._play-button").on("click", function () {
+            helpers.onCounterStart(mainEvent.Date);
+            setInterval(function () {
+              helpers.onCounterStart(mainEvent.Date);
+            }, 1000);
 
-        $("._play-button").on("click", function () {
-          helpers.onCounterStart(EventDate);
-          setInterval(() => helpers.onCounterStart(EventDate), 1000);
+            $(this).hide();
+            $("._hide-section").removeClass("_hide-section");
 
-          $(this).hide();
-          $("._hide-section").removeClass("_hide-section");
-          requestAnimationFrame(() => {
-            helpers.onPlay();
+            requestAnimationFrame(function () {
+              helpers.onPlay();
+              checkVisibility();
 
-            // Re-observar ahora que las imágenes son visibles
-            images.forEach(img => {
-              observer.unobserve(img);
-              observer.observe(img);
+              // Fade-in al scroll para imágenes de galería
+              var images = document.querySelectorAll("._gallery-section img");
+              var observer = new IntersectionObserver(function (entries) {
+                entries.forEach(function (entry) {
+                  entry.target.classList.toggle("show", entry.isIntersecting);
+                });
+              }, { threshold: 0.15 });
+
+              images.forEach(function (img) {
+                observer.observe(img);
+                img.addEventListener("click", function () {
+                  var modal    = document.getElementById("_modal");
+                  var modalImg = document.getElementById("_modalImg");
+                  if (modal && modalImg) {
+                    modalImg.src = img.src;
+                    modal.classList.add("show");
+                    document.body.style.overflow = "hidden";
+                  }
+                });
+              });
+
+              // Marcar visibles al cargar
+              images.forEach(function (img) {
+                var rect = img.getBoundingClientRect();
+                if (rect.top < window.innerHeight) img.classList.add("show");
+              });
             });
           });
-        })
 
-        checkVisibility();
+          checkVisibility();
+        }
 
-        // Gallery
-        const images = document.querySelectorAll("._gallery-section img");
-        const modal = document.getElementById("_gallery-modal");
-        const modalImg = document.getElementById("_gallery-modal-img");
-        const closeBtn = document.getElementById("_gallery-modal-close");
-        /* =========================
-           FADE IN AL SCROLL
-        ========================= */
-        const observer = new IntersectionObserver((entries) => {
-          entries.forEach(entry => {
-
-            if (entry.isIntersecting) {
-              entry.target.classList.add("show");
-            } else {
-              entry.target.classList.remove("show");
-            }
-
-          });
-        }, {
-          threshold: 0.15
-        });
-
-        images.forEach(img => {
-          observer.observe(img);
-
-          img.addEventListener("click", () => {
-            modalImg.src = img.src;
-            modal.classList.add("show");
-            document.body.style.overflow = "hidden";
-          });
-        });
-
-        window.addEventListener("load", () => {
-          images.forEach(img => {
-            const rect = img.getBoundingClientRect();
-
-            if (rect.top < window.innerHeight) {
-              img.classList.add("show");
-            }
-          });
-        });
-
-        closeBtn.addEventListener("click", () => {
-          modal.classList.remove("show");
-          document.body.style.overflow = "";
-        });
-
-        modal.addEventListener("click", (e) => {
-          if (e.target === modal) {
-            modal.classList.remove("show");
-            document.body.style.overflow = "";
-          }
-        });
-      }
-      
-      helpers.init(Resources);
-      Init();
-    });
-  </script>
-
-
-</body>
-
+        InitPage();
+      });
+    </script>
+  </body>
 </html>

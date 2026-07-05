@@ -602,16 +602,7 @@
       }
 
       /* #endregion Gift Section*/
-      /* #region Audio*/
-      ._template-Audio-Button.on {
-        filter: hue-rotate(var(--filter-AudioButton)) !important;
-      }
 
-      ._template-Audio-Button.off {
-        filter: hue-rotate(var(--filter-AudioButton)) !important;
-      }
-
-      /* #endregion Audio*/
       /* #region Main Section*/
       @media (max-width: 575.98px) {
         .imgMain.themeBoy {
@@ -828,22 +819,23 @@
     <script src="../js/main.js"></script>
     <script>
       requirejs(["jquery","helpers"],function($,helpers){
-        const EventDate = new Date("2025-11-25T17:00:00");
-        const EventReception = new Date("2025-11-25T17:00:00");
+       
         const mainEvent = {
+          Date: new Date("2026-10-17T17:00:00"),
           Name: "",
-          Date: EventDate,
-          Description: `Acompáñanos a celebrar el Baby Shower de `,      
-          LocationDescription: "Salón de Eventos Quinta el Eden",
-          Address: "C. Morelos 670, González Ortega, 45190 Zapopan, Jal.",
+
+          LocationDescription: "La Terraza Clouthier",
+          Address: "Av Manuel J. Clouthier 480, Zapopan, Jal.",
+          GoogleMapsUrl: "https://maps.app.goo.gl/HpD9ZEkGmku4WTyT8",
+
           Father: "José Gutiérrez",
           Mother: "Melissa Hurtado",
           GodFather: "Juan Fernández",
           GodMother: "Laura Jimenez",
-          GoogleMapsUrl: "https://maps.app.goo.gl/1wwmTSk84XA8pLMn8",
+          
           AmazonGiftTableUrl: "https://www.amazon.com.mx/",
           LiverpoolGiftTableUrl: "https://www.liverpool.com.mx/tienda/home",
-          CollageImages: [
+          Gallery: [
             'https://i.pinimg.com/736x/29/fe/49/29fe4983d145c3471f4cb0459063ab57.jpg',
             'https://img.freepik.com/foto-gratis/mujer-embarazada-foto-su-futuro-bebe_1391-1419.jpg?ga=GA1.1.376195781.1747703452&semt=ais_hybrid&w=740',
             'https://img.freepik.com/fotos-premium/feliz-pareja-embarazada-buscando-imagen-ultrasonido-su-bebe-nacer-aislado-fondo-azul_530697-83805.jpg?ga=GA1.1.376195781.1747703452&semt=ais_hybrid&w=740',
@@ -851,36 +843,23 @@
             'https://img.freepik.com/foto-gratis/mujer-embarazada-marido-zapatos-bebe_23-2147793312.jpg?ga=GA1.1.376195781.1747703452&semt=ais_hybrid&w=740',
             'https://img.freepik.com/foto-gratis/imagen-ultrasonido-mujer-embarazada-cosas-bebe-madre-esta-esperando-bebe_169016-27477.jpg?ga=GA1.1.376195781.1747703452&semt=ais_hybrid&w=740'
           ],
-          CollageImages2: [
+          Gallery2: [
             'https://img.freepik.com/foto-gratis/mujer-embarazada-sujetando-corazon-mientras-toca-barriga_1220-849.jpg',
             'https://img.freepik.com/fotos-premium/mujer-embarazada-sosteniendo-zapatillas-blancas-bebe-cerca-vientre-embarazada-concepto-familiar_1272242-393.jpg?ga=GA1.1.376195781.1747703452&semt=ais_hybrid&w=740',
             'https://img.freepik.com/fotos-premium/manos-mujer-embarazada-primer-corazon-forman-su-panza_38678-4724.jpg?ga=GA1.1.376195781.1747703452&semt=ais_hybrid&w=740',
             'https://img.freepik.com/fotos-premium/vientre-mujer-embarazada-primer-plano-vientre-mujer-embarazada_176445-10619.jpg?ga=GA1.1.376195781.1747703452&semt=ais_hybrid&w=740',
             'https://img.freepik.com/foto-gratis/vista-frontal-mujer-embarazada-sosteniendo-su-vientre_23-2148352222.jpg?ga=GA1.1.376195781.1747703452&semt=ais_hybrid&w=740'
-          ],
-          ImageMyParents: "https://img.freepik.com/fotos-premium/retrato-pareja-madura-feliz-abrazada-casa-conexion-amor-o-confianza-asociacion-juntos-cara-al-hombre-abrazar-mujer-compromiso-cuidado-relacion-saludable-apoyo-casa_590464-361056.jpg?ga=GA1.1.1993030682.1745256637&semt=ais_hybrid&w=740",
-          ImageMyGodParents: "https://img.freepik.com/fotos-premium/pareja-dia-san-valentin_772250-159.jpg?ga=GA1.1.1993030682.1745256637&w=740",
-          ImageDressCodeUrl: "https://img.freepik.com/foto-gratis/gente-elegante-bailando-tango_23-2149193458.jpg?ga=GA1.1.1993030682.1745256637&semt=ais_hybrid&w=740",
+          ]
         };
 
         const secondaryEvent = {
-          Date: EventReception,
-          LocationDescription: "",
-          Address: "",
-          GoogleMapsUrl: "",
+          Date: new Date("2026-10-17T17:00:00"),
+          LocationDescription: "La Terraza Clouthier",
+          Address: "Av Manuel J. Clouthier 480, Zapopan, Jal.",
+          GoogleMapsUrl: "https://maps.app.goo.gl/HpD9ZEkGmku4WTyT8",
         };
 
-        const googleCalendar = {
-          Text: "Baby Shower ",
-          Location: mainEvent.Address,
-          Detail : `
-                    [0]
-                📍 Lugar: [1]
-                🕒 Hora: [2]
-                ⏰ Recordatorio: Llega con 30 minutos de anticipación.
-                ✨ ¡Te esperamos para compartir este momento tan especial!`
-        };
-
+    
         const additionalInformation = {
           ImageBodyBackground: "",
           ImageCorner: "",
@@ -888,28 +867,42 @@
           ImageMain: "",
           ImageTap: "../images/babyShower/tap-1.webp",
           ImageLoading: "../images/babyShower/loading-1.webp",
-          AudioUrl: "../music/Here Comes The Sun.mp3",
-          WhatsAppUrl: "https://tinyurl.com/3h8kmam7",
+          
         };
 
-        const Resources = {
-          MainEvent : mainEvent,
+        const Init = {
+          Config: {
+            EventType: "BabyShower",
+            Sections: {
+              showCounter: true,
+              showIntroduction: true,
+              showParents: true,
+              showItinerary: true,
+              showGallery: true,
+              showDressCode: true,
+              showTickets: true,
+              showTableNumber: true,
+              showAttendance: true,
+              showGiftTable: true,
+            },
+            Themes: [],
+            AudioUrl: "../music/Here Comes The Sun.mp3",
+          },
+          MainEvent: mainEvent,
           SecondaryEvent: secondaryEvent,
-          GoogleCalendar: Object.create(googleCalendar),
-          AdditionalInformation : additionalInformation
         };
 
         function onLoad(){
-          $('body').css('background-image', 'url("' + Resources.AdditionalInformation.ImageBodyBackground + '")');
-          $("[data-replace=ImageMain]").attr("src", Resources.AdditionalInformation.ImageMain);
-          $("[data-replace=Image_Tap]").attr("src", Resources.AdditionalInformation.ImageTap);
-          $("[data-replace=Image_Loading]").attr("src", Resources.AdditionalInformation.ImageLoading);
+          $('body').css('background-image', 'url("' + additionalInformation.ImageBodyBackground + '")');
+          $("[data-replace=ImageMain]").attr("src", additionalInformation.ImageMain);
+          $("[data-replace=Image_Tap]").attr("src", additionalInformation.ImageTap);
+          $("[data-replace=Image_Loading]").attr("src", additionalInformation.ImageLoading);
         };
 
         const book = document.getElementById('book');
         const flipSound = document.getElementById('flipSound');
         const tapHint = document.getElementById('tapHint');
-        const totalPages = Resources.MainEvent.CollageImages.length;
+        const totalPages = mainEvent.Gallery.length;
         const Themes = {
           themeBoy: {
             '--color_Primary': '#368ecf',
@@ -954,12 +947,12 @@
           const pages = [];
           const flipTimeouts = new Array(totalPages).fill(null);
 
-          Resources.MainEvent.CollageImages.forEach((img, i) => {
+          mainEvent.Gallery.forEach((img, i) => {
             const page = document.createElement('div');
             page.className = 'page';
             page.style.zIndex = totalPages - i;
 
-            const backImg = Resources.MainEvent.CollageImages2[i] || '';
+            const backImg = mainEvent.Gallery2[i] || '';
 
             page.innerHTML = `
               <div class="face front"><img src="${img}" alt="Frente ${i + 1}" /></div>
@@ -1056,25 +1049,25 @@
               document.documentElement.style.setProperty(variable, theme[variable]);
             } else {
               if (variable == 'ImageBodyBackground') {
-                Resources.AdditionalInformation.ImageBodyBackground = theme[variable];
+                additionalInformation.ImageBodyBackground = theme[variable];
               } else if (variable == 'ImageMain') {
-                Resources.AdditionalInformation.ImageMain = theme[variable];
+                additionalInformation.ImageMain = theme[variable];
               } else if (variable == 'Name') {
-                Resources.MainEvent.Name = theme[variable];
+                mainEvent.Name = theme[variable];
               } else if (variable == 'ImageCoverPage') {
-                Resources.MainEvent.CollageImages[0] = theme[variable];
+                mainEvent.Gallery[0] = theme[variable];
               }
             }
           }
 
-          const imgs = JSON.parse(JSON.stringify(Resources.MainEvent.CollageImages));
-          const imgs2 = JSON.parse(JSON.stringify(Resources.MainEvent.CollageImages2));
+          const imgs = JSON.parse(JSON.stringify(mainEvent.Gallery));
+          const imgs2 = JSON.parse(JSON.stringify(mainEvent.Gallery2));
 
-          Resources.GoogleCalendar = Object.create(googleCalendar);
+          
           onLoad();
-          helpers.init(Resources);
-          Resources.MainEvent.CollageImages = imgs;
-          Resources.MainEvent.CollageImages2 = imgs2;
+          helpers.init(Init);
+          mainEvent.Gallery = imgs;
+          mainEvent.Gallery2 = imgs2;
 
           generateBook();
         };
@@ -1092,17 +1085,15 @@
           }, 500);
         });
 
-        function Init() {
-          helpers.init(Resources);
-          helpers.onCounterStart(EventDate);
-          setInterval(() => {
-            helpers.onCounterStart(EventDate);
-          }, 1000);
+        function InitPage() {
+          helpers.init(Init);
+          helpers.onCounterStart(Init.MainEvent.Date);
+          setInterval(() => helpers.onCounterStart(Init.MainEvent.Date), 1000);
           helpers.onAudioPlayer();
           generateBook();
           applyTheme('themeBoy');
         };
-        Init();
+        InitPage();
 
       });
     </script>

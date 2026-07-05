@@ -1477,22 +1477,28 @@
     <script src="../js/main.js"></script>
     <script>
       requirejs(["jquery","helpers", "bs"],function($,helpers){
-        const EventDate = new Date("2025-11-25T16:00:00");
-        const EventReception = new Date("2025-11-25T18:00:00");
+
         const mainEvent = {
-          Name: "",
+          Date: new Date("2026-10-17T17:30:00"),
+
           BrideName: "Camila Torres",
           GroomName: "Iván Méndez",
           BrideShortName: "Camila",
           GroomShortName: "Iván",
-          Date: EventDate,
-          Description: `Acompáñanos a celebrar nuestra unión `,      
+
           LocationDescription: "Catedral de Guadalajara (Catedral Basílica de la Asunción de María Santísima)",
           Address: "Av. Fray Antonio Alcalde 10, Zona Centro, 44100 Guadalajara, Jal.",
+          GoogleMapsUrl: "https://maps.app.goo.gl/1iUcW6P1QxFhBrJg8",
+
           FatherBride: "Alfonso Torres",
           MotherBride: "Elena García",
           FatherGroom: "Carlos Méndez",
           MotherGroom: "Ana Rodríguez",
+          
+                    AmazonGiftTableUrl: "https://www.amazon.com.mx/",
+          LiverpoolGiftTableUrl: "https://www.liverpool.com.mx/tienda/home",
+
+            Gallery: [],
           GodParents: [
             {
               type: "Padrinos de Anillos",
@@ -1549,79 +1555,81 @@
               img: "https://i.pinimg.com/736x/90/97/61/909761f2733c432add664f3cc307a170.jpg"
             }
           ],
-          GoogleMapsUrl: "https://maps.app.goo.gl/1iUcW6P1QxFhBrJg8",
-          AmazonGiftTableUrl: "https://www.amazon.com.mx/",
-          LiverpoolGiftTableUrl: "https://www.liverpool.com.mx/tienda/home",
-          CollageImages: [],
+          
+
+          
           ImageMyParents: "https://img.freepik.com/fotos-premium/retrato-pareja-madura-feliz-abrazada-casa-conexion-amor-o-confianza-asociacion-juntos-cara-al-hombre-abrazar-mujer-compromiso-cuidado-relacion-saludable-apoyo-casa_590464-361056.jpg?ga=GA1.1.1993030682.1745256637&semt=ais_hybrid&w=740",
           ImageMyGodParents: "https://img.freepik.com/fotos-premium/pareja-dia-san-valentin_772250-159.jpg?ga=GA1.1.1993030682.1745256637&w=740",
           ImageDressCodeUrl: "https://img.freepik.com/foto-gratis/gente-elegante-bailando-tango_23-2149193458.jpg?ga=GA1.1.1993030682.1745256637&semt=ais_hybrid&w=740",
         };
 
         const secondaryEvent = {
-          Date: EventReception,
-          LocationDescription: "Salón de Eventos Quinta el Eden",
-          Address: "C. Morelos 670, González Ortega, 45190 Zapopan, Jal.",
-          GoogleMapsUrl: "https://maps.app.goo.gl/1wwmTSk84XA8pLMn8",
+          Date: new Date("2026-10-17T17:00:00"),
+          LocationDescription: "La Terraza Clouthier",
+          Address: "Av Manuel J. Clouthier 480, Zapopan, Jal.",
+          GoogleMapsUrl: "https://maps.app.goo.gl/HpD9ZEkGmku4WTyT8",
         };
 
-        const googleCalendar = {
-          Text: "Boda ",
-          Location: mainEvent.Address,
-          Detail : `
-                    [0]
-                📍 Lugar: [1]
-                🕒 Hora: [2]
-                ⏰ Recordatorio: Llega con 30 minutos de anticipación.
-                ✨ ¡Te esperamos para compartir este momento tan especial!`
-        };
 
         const additionalInformation = {
           ImageBodyBackground: "../images/bg-31.jpg",
-          ImageCorner: "",
-          ImageFrontCard: "",
           ImageMain: "https://i.pinimg.com/736x/76/86/8d/76868d470ea6cd8319f7958b92bde6d7.jpg",
           ImageTap: "",
           ImageLoading: "https://images.vexels.com/media/users/3/190566/isolated/preview/e20509414b44a4b9388e9309c50031d1-parejas-casadas-silueta-boda.png",
-          AudioUrl: "../music/Perfect.mp3",
-          WhatsAppUrl: "https://tinyurl.com/3h8kmam7",
         };
 
-        const Resources = {
-          MainEvent : mainEvent,
+        const Init = {
+          Config: {
+            EventType: "Wedding",
+            Sections: {
+              showCounter: true,
+              showIntroduction: true,
+              showParents: true,
+              showItinerary: true,
+              showGallery: true,
+              showLoveStory: false,
+              showVideo: false,
+              showDressCode: true,
+              showTickets: true,
+              showTableNumber: true,
+              showAttendance: true,
+              showGiftTable: true,
+            },
+            Themes: [],
+            AudioUrl: "../music/Perfect.mp3",
+          },
+          MainEvent: mainEvent,
           SecondaryEvent: secondaryEvent,
-          GoogleCalendar: Object.create(googleCalendar),
-          AdditionalInformation : additionalInformation
         };
 
         function onLoad(){
-          $("[data-replace=ImageMain]").attr("src", Resources.AdditionalInformation.ImageMain);
-          $("[data-replace=BrideName]").text(Resources.MainEvent.BrideName);
-          $("[data-replace=GroomName]").text(Resources.MainEvent.GroomName);
-          $("[data-replace=BrideShortName]").text(Resources.MainEvent.BrideShortName);
-          $("[data-replace=GroomShortName]").text(Resources.MainEvent.GroomShortName);
-          $("[data-replace=FatherBride]").text(Resources.MainEvent.FatherBride);
-          $("[data-replace=MotherBride]").text(Resources.MainEvent.MotherBride);
-          $("[data-replace=FatherGroom]").text(Resources.MainEvent.FatherGroom);
-          $("[data-replace=MotherGroom]").text(Resources.MainEvent.MotherGroom);
+          $("[data-replace=ImageMain]").attr("src", additionalInformation.ImageMain);
+          $("[data-replace=BrideName]").text(mainEvent.BrideName);
+          $("[data-replace=GroomName]").text(mainEvent.GroomName);
+          $("[data-replace=BrideShortName]").text(mainEvent.BrideShortName);
+          $("[data-replace=GroomShortName]").text(mainEvent.GroomShortName);
+          $("[data-replace=FatherBride]").text(mainEvent.FatherBride);
+          $("[data-replace=MotherBride]").text(mainEvent.MotherBride);
+          $("[data-replace=FatherGroom]").text(mainEvent.FatherGroom);
+          $("[data-replace=MotherGroom]").text(mainEvent.MotherGroom);
         };
 
-        function Init() {
-          Resources.MainEvent.Name = `${Resources.MainEvent.BrideShortName} & ${Resources.MainEvent.GroomShortName}`;
-          helpers.init(Resources);
-          helpers.onCounterStart(EventDate);
+        function InitPage() {
+          onLoad();
+          helpers.init(Init);
+          helpers.onCounterStart(mainEvent.Date);
           setInterval(() => {
-            helpers.onCounterStart(EventDate);
+            helpers.onCounterStart(mainEvent.Date);
           }, 1000);
           helpers.onAudioPlayer();
           updateBodyBackground();
-          renderGodParents(Resources.MainEvent.GodParents, 'godparents-list');
-          onLoad();
+          renderGodParents(mainEvent.GodParents, 'godparents-list');
+          
         };
-        Init();
+        InitPage();
 
         function updateBodyBackground() {
-          const bgUrl = Resources.AdditionalInformation.ImageBodyBackground;
+          const bgUrl = additionalInformation.ImageBodyBackground;
           let styleEl = document.getElementById('dynamicBodyBg');
           if (!styleEl) {
             styleEl = document.createElement('style');
@@ -1670,13 +1678,13 @@
             document.body.dataset.theme = theme;
             switch (theme) {
               case 'themeVintage':
-                Resources.AdditionalInformation.ImageBodyBackground = '../images/bg-29.jpg';
+                additionalInformation.ImageBodyBackground = '../images/bg-29.jpg';
                 break;
               case 'themeClassic':
-                Resources.AdditionalInformation.ImageBodyBackground = '../images/bg-30.jpg';
+                additionalInformation.ImageBodyBackground = '../images/bg-30.jpg';
                 break;
               default:
-                Resources.AdditionalInformation.ImageBodyBackground = '../images/bg-31.jpg';
+                additionalInformation.ImageBodyBackground = '../images/bg-31.jpg';
             }
             updateBodyBackground();
           });

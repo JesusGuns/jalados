@@ -1,0 +1,73 @@
+Estructura
+
+Seccion Principal
+Contador
+    XV
+        Presentacion
+        Padres
+        
+    Wedding
+        Mensaje novios
+        Padres
+
+Detalles del Evento
+Itinerario
+Galeria
+
+    XV
+        DressCode
+    Wedding
+        Mensaje
+        Video
+        DressCode
+
+
+Confirmar Asistencia
+Regalos
+
+    XV 
+        Boletos o pases
+        Numero de Mesa
+    Wedding
+        Boletos o pases
+        Numero de Mesa
+        Mensaje final
+
+BabyShower
+    Sección principal / portada
+    Contador regresivo
+    Detalles del evento
+    Itinerario
+    Galería
+    Confirmar asistencia
+    Regalos
+
+Wedding
+    Sección principal / portada
+    Contador regresivo
+    Mensaje novios
+    Padres
+    Detalles del evento
+    Itinerario
+    Galería
+    Mensaje (otro mensaje de los novios como una historia chiquita de como se conocieron)
+    Video
+    DressCode
+    Boletos o pases
+    Numero de Mesa
+    Confirmar asistencia
+    Regalos
+
+XV
+    Sección principal / portada
+    Contador regresivo
+    Presentacion o Invitacion de la novia tipo (me complase contar con su presencia..)
+    Padres
+    Detalles del evento
+    Itinerario
+    Galería
+    DressCode
+    Boletos o pases
+    Numero de Mesa
+    Confirmar asistencia
+    Regalos

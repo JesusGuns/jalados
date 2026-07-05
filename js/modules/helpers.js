@@ -5,7 +5,7 @@ define(["jquery", "extended"], function ($) {
   const staticLinks = {
     ImageAudioUrl: "../images/icons/play.png",
     ImageAudioPauseUrl: "../images/icons/pause.png",
-    ImageAmazonUrl: "../images/amazon.png",
+    ImageAmazonUrl: "../images/icons/amazon.png",
     ImageLiverpoolUrl: "../images/icons/liverpool.jpeg",
     ImageGoogleLocation: "../images/icons/GoogleMaps.png",
     IconChurch: "https://cdn-icons-png.flaticon.com/128/4186/4186011.png",
@@ -26,66 +26,40 @@ define(["jquery", "extended"], function ($) {
   };
   var module = {
     init: function (resources) {
+      // Config
+      Resources.Config = resources.Config;
+
+      // Main Event — propiedades calculadas de la fecha
       Resources.MainEvent = resources.MainEvent;
       Resources.MainEvent.Time = Resources.MainEvent.Date.getTime();
-      Resources.MainEvent.DateString = module.onGetDateString(
-        Resources.MainEvent.Date,
-      );
-      Resources.MainEvent.HourString = module.onGetHoursString(
-        Resources.MainEvent.Date,
-      );
-      Resources.MainEvent.WeekDay = module.onGetWeekDay(
-        Resources.MainEvent.Date,
-      );
+      Resources.MainEvent.DateString = module.onGetDateString(Resources.MainEvent.Date);
+      Resources.MainEvent.HourString = module.onGetHoursString(Resources.MainEvent.Date);
+      Resources.MainEvent.WeekDay = module.onGetWeekDay(Resources.MainEvent.Date);
       Resources.MainEvent.Day = module.onGetDay(Resources.MainEvent.Date);
       Resources.MainEvent.Month = module.onGetMonth(Resources.MainEvent.Date);
       Resources.MainEvent.Year = module.onGetYear(Resources.MainEvent.Date);
-      Resources.MainEvent.YYYYMMDD = module.onGetDateYYYYMMDD(
-        Resources.MainEvent.Date,
-      );
-      Resources.MainEvent.RandomCollageImage = 0;
+      Resources.MainEvent.YYYYMMDD = module.onGetDateYYYYMMDD(Resources.MainEvent.Date);
 
-      Resources.SecondaryEvent = resources.SecondaryEvent;
-      Resources.SecondaryEvent.Time = Resources.SecondaryEvent.Date.getTime();
-      Resources.SecondaryEvent.DateString = module.onGetDateString(
-        Resources.SecondaryEvent.Date,
-      );
-      Resources.SecondaryEvent.HourString = module.onGetHoursString(
-        Resources.SecondaryEvent.Date,
-      );
-      Resources.SecondaryEvent.WeekDay = module.onGetWeekDay(
-        Resources.SecondaryEvent.Date,
-      );
-      Resources.SecondaryEvent.Day = module.onGetDay(
-        Resources.SecondaryEvent.Date,
-      );
-      Resources.SecondaryEvent.Month = module.onGetMonth(
-        Resources.SecondaryEvent.Date,
-      );
-      Resources.SecondaryEvent.Year = module.onGetYear(
-        Resources.SecondaryEvent.Date,
-      );
-      Resources.SecondaryEvent.YYYYMMDD = module.onGetDateYYYYMMDD(
-        Resources.SecondaryEvent.Date,
-      );
+      // Secondary Event — opcional (BabyShower no lo tiene)
+      if (resources.SecondaryEvent) {
+        Resources.SecondaryEvent = resources.SecondaryEvent;
+        Resources.SecondaryEvent.Time = Resources.SecondaryEvent.Date.getTime();
+        Resources.SecondaryEvent.DateString = module.onGetDateString(Resources.SecondaryEvent.Date);
+        Resources.SecondaryEvent.HourString = module.onGetHoursString(Resources.SecondaryEvent.Date);
+        Resources.SecondaryEvent.WeekDay = module.onGetWeekDay(Resources.SecondaryEvent.Date);
+        Resources.SecondaryEvent.Day = module.onGetDay(Resources.SecondaryEvent.Date);
+        Resources.SecondaryEvent.Month = module.onGetMonth(Resources.SecondaryEvent.Date);
+        Resources.SecondaryEvent.Year = module.onGetYear(Resources.SecondaryEvent.Date);
+        Resources.SecondaryEvent.YYYYMMDD = module.onGetDateYYYYMMDD(Resources.SecondaryEvent.Date);
+      }
 
-      Resources.GoogleCalendar = resources.GoogleCalendar;
-      Resources.AdditionalInformation = resources.AdditionalInformation;
       module.onLoad();
     },
     onGetResources: function () {
       return Resources;
     },
     onGetWeekDay: function (eventDate) {
-      const days = [
-        "Domingo",
-        "Lunes",
-        "Martes",
-        "Miércoles",
-        "Jueves",
-        "Viernes",
-        "Sábado",
-      ];
+      const days = ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"];
       const dayOfWeek = eventDate.getDay();
       const dayName = days[dayOfWeek];
       return dayName;
@@ -94,20 +68,7 @@ define(["jquery", "extended"], function ($) {
       return eventDate.getDate();
     },
     onGetMonth: function (eventDate) {
-      const months = [
-        "Enero",
-        "Febrero",
-        "Marzo",
-        "Abril",
-        "Mayo",
-        "Junio",
-        "Julio",
-        "Agosto",
-        "Septiembre",
-        "Octubre",
-        "Noviembre",
-        "Diciembre",
-      ];
+      const months = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
       const month = months[eventDate.getMonth()];
       return month;
     },
@@ -119,9 +80,7 @@ define(["jquery", "extended"], function ($) {
       const dayName = module.onGetWeekDay(eventDate);
       const month = module.onGetMonth(eventDate);
       const year = module.onGetYear(eventDate);
-      const dateString = includeDayName
-        ? `${dayName} ${day} de ${month} de ${year}`
-        : `${day} de ${month} de ${year}`;
+      const dateString = includeDayName ? `${dayName} ${day} de ${month} de ${year}` : `${day} de ${month} de ${year}`;
       return dateString;
     },
     onGetHoursString: function (eventDate, includeThe) {
@@ -130,9 +89,7 @@ define(["jquery", "extended"], function ($) {
       const mins = eventDate.getMinutes().toString().padStart(2, "0");
       const the = hours > 1 ? "las " : "la";
       hours = hours % 12 || 12;
-      const hourString = includeThe
-        ? `${the} ${hours}:${mins} ${ampm}`
-        : `${hours}:${mins} ${ampm}`;
+      const hourString = includeThe ? `${the} ${hours}:${mins} ${ampm}` : `${hours}:${mins} ${ampm}`;
       return hourString;
     },
     onGetDateYYYYMMDD: function (eventDate) {
@@ -146,8 +103,8 @@ define(["jquery", "extended"], function ($) {
       return number;
     },
     onCounterStart(eventDate) {
-      const $days    = $("#days");
-      const $hours   = $("#hours");
+      const $days = $("#days");
+      const $hours = $("#hours");
       const $minutes = $("#minutes");
       const $seconds = $("#seconds");
       const $countdown = $("#countdown"); // contenedor del contador
@@ -168,31 +125,9 @@ define(["jquery", "extended"], function ($) {
         $hours.text(module.onAddZeroToNumber(Math.floor((distance % 86400000) / 3600000)));
         $minutes.text(module.onAddZeroToNumber(Math.floor((distance % 3600000) / 60000)));
         $seconds.text(module.onAddZeroToNumber(Math.floor((distance % 60000) / 1000)));
-
       }, 1000);
 
       return intervalId;
-    },
-    onGoogleCalendar: function (googleCalendar) {
-      const base = "https://calendar.google.com/calendar/render";
-      const calendarDate = module.onGetDateYYYYMMDD(Resources.MainEvent.Date);
-      const title =
-        Resources.MainEvent.Description + " " + Resources.MainEvent.Name;
-      const location = Resources.MainEvent.LocationDescription;
-      const hour = Resources.MainEvent.HourString;
-
-      googleCalendar.Detail = googleCalendar.Detail.replace("[0]", title);
-      googleCalendar.Detail = googleCalendar.Detail.replace("[1]", location);
-      googleCalendar.Detail = googleCalendar.Detail.replace("[2]", hour);
-
-      const params = new URLSearchParams({
-        action: "TEMPLATE",
-        text: googleCalendar.Text,
-        dates: `${calendarDate}/${calendarDate}`,
-        details: googleCalendar.Detail,
-        location: googleCalendar.Location,
-      });
-      return `${base}?${params.toString()}`;
     },
     onAudioPlayer: function () {
       var $audioButton = $("#audioButton");
@@ -208,13 +143,13 @@ define(["jquery", "extended"], function ($) {
     onPlay: function () {
       var $audioButton = $("#audioButton");
       var $audio = $("#audio");
-      
+
       // Cachea el selector para no buscarlo dos veces
       $audio.OnAudioPlayerClick($audioButton);
-      
+
       var isOff = $audioButton.hasClass("off");
       var src = isOff ? Resources.StaticLinks.ImageAudioUrl : Resources.StaticLinks.ImageAudioPauseUrl;
-        
+
       $("[data-replace=Image_AudioUrl]").attr("src", src);
     },
     onMoveElementFromArray: function (array, oldIndex, newIndex) {
@@ -247,13 +182,13 @@ define(["jquery", "extended"], function ($) {
             $("._savethedate-section h4 span").text(data.ticket);
 
             //if (data.confirmed) {
-              $("._tableNumber").text(String(data.table).padStart(2, "0"));
+            $("._tableNumber").text(String(data.table).padStart(2, "0"));
 
-              if($("body ._hide-section").length > 0){
-                $("body ._table-section").addClass("_hide-section").removeClass("_hide-tablesection");
-              }else{
-                $("body ._table-section").removeClass("_hide-section").removeClass("_hide-tablesection");
-              }
+            if ($("body ._hide-section").length > 0) {
+              $("body ._table-section").addClass("_hide-section").removeClass("_hide-tablesection");
+            } else {
+              $("body ._table-section").removeClass("_hide-section").removeClass("_hide-tablesection");
+            }
             //}
           } else {
             $("._confirmation-section").remove();
@@ -295,144 +230,98 @@ define(["jquery", "extended"], function ($) {
         .catch((err) => console.error("Error:", err));
     },
     onLoad: function () {
-      Resources.MainEvent.RandomCollageImage = Math.floor(
-        Math.random() * Resources.MainEvent.CollageImages.length,
-      );
-      Resources.MainEvent.CollageImages = module.onMoveElementFromArray(
-        Resources.MainEvent.CollageImages,
-        Resources.MainEvent.RandomCollageImage,
-        3,
-      );
-      //Main Event
-      $("[data-replace=EventDateString]").text(Resources.MainEvent.DateString);
-      $("[data-replace=EventHourString]").text(Resources.MainEvent.HourString);
-      $("[data-replace=EventName]").text(Resources.MainEvent.Name);
-      $("[data-replace=EventFather]").text(Resources.MainEvent.Father);
-      $("[data-replace=EventMother]").text(Resources.MainEvent.Mother);
-      $("[data-replace=EventGodFather]").text(Resources.MainEvent.GodFather);
-      $("[data-replace=EventGodMother]").text(Resources.MainEvent.GodMother);
-      $("[data-replace=EventChurchUrl]").attr(
-        "href",
-        Resources.MainEvent.GoogleMapsUrl,
-      );
-      $("[data-replace=Image_MyParents]").attr(
-        "src",
-        Resources.MainEvent.ImageMyParents,
-      );
-      $("[data-replace=Image_MyGodParents]").attr(
-        "src",
-        Resources.MainEvent.ImageMyGodParents,
-      );
-      $("[data-replace=Image_DressCodeUrl]").attr(
-        "src",
-        Resources.MainEvent.ImageDressCodeUrl,
-      );
-      $("[data-replace=EventAmazonGiftTableUrl]").attr(
-        "href",
-        Resources.MainEvent.AmazonGiftTableUrl,
-      );
-      $("[data-replace=EventLiverpoolGiftTableUrl]").attr(
-        "href",
-        Resources.MainEvent.LiverpoolGiftTableUrl,
-      );
+      const main = Resources.MainEvent;
+      const secondary = Resources.SecondaryEvent;
+      const config = Resources.Config;
+      const sections = Resources.Config.Sections;
+      const type = Resources.Config.EventType;
 
-      $("[data-replace=MainEventUrl]").attr(
-        "href",
-        Resources.MainEvent.GoogleMapsUrl,
-      );
-      $("[data-replace=MainEventHourString]").text(
-        Resources.MainEvent.HourString,
-      );
-      $("[data-replace=MainEventDay]").text(Resources.MainEvent.Day);
-      $("[data-replace=MainEventWeekDay]").text(Resources.MainEvent.WeekDay);
-      $("[data-replace=MainEventMonth]").text(Resources.MainEvent.Month);
-      $("[data-replace=MainEventYear]").text(Resources.MainEvent.Year);
+      // ─── SECCIONES — show/hide ─────────────────────────
+      const sectionMap = {
+        showCounter: "._counter-section",
+        showIntroduction: "._introduction-section",
+        showParents: "._parents-section",
+        showItinerary: "._itinerary-section",
+        showGallery: "._gallery-section",
+        showLoveStory: "._lovestory-section",
+        showVideo: "._video-section",
+        showDressCode: "._dresscode-section",
+        showTickets: "._tickets-section",
+        showTableNumber: "._table-section",
+        showAttendance: "._attendance-section",
+        showGiftTable: "._gifttable-section",
+      };
 
-      $("[data-replace=MainEventLocationDescription]").text(
-        Resources.MainEvent.LocationDescription,
-      );
-      $("[data-replace=MainEventAddress]").text(Resources.MainEvent.Address);
+      Object.entries(sectionMap).forEach(([key, selector]) => {
+        if (!sections[key]) $(selector).remove();
+      });
 
-      //Secondary Event
-      $("[data-replace=EventReceptionHourString]").text(
-        Resources.SecondaryEvent.HourString,
-      );
-      $("[data-replace=EventReceptionUrl]").attr(
-        "href",
-        Resources.SecondaryEvent.GoogleMapsUrl,
-      );
-      $("[data-replace=SecondaryEventLocationDescription]").text(
-        Resources.SecondaryEvent.LocationDescription,
-      );
-      $("[data-replace=SecondaryEventAddress]").text(
-        Resources.SecondaryEvent.Address,
-      );
+      // ─── MAIN EVENT — campos comunes ───────────────────
+      $("[data-replace=MainEventLocationDescription]").text(main.LocationDescription);
+      $("[data-replace=MainEventAddress]").text(main.Address);
+      $("[data-replace=MainEventUrl]").attr("href", main.GoogleMapsUrl);
+      $("[data-replace=MainEventHourString]").text(main.HourString);
+      $("[data-replace=MainEventDay]").text(main.Day);
+      $("[data-replace=MainEventWeekDay]").text(main.WeekDay);
+      $("[data-replace=MainEventMonth]").text(main.Month);
+      $("[data-replace=MainEventYear]").text(main.Year);
+      $("[data-replace=EventDateString]").text(main.DateString);
+      $("[data-replace=EventHourString]").text(main.HourString);
+      $("[data-replace=EventAmazonGiftTableUrl]").attr("href", main.AmazonGiftTableUrl);
+      $("[data-replace=EventLiverpoolGiftTableUrl]").attr("href", main.LiverpoolGiftTableUrl);
 
-      //Google calendar
-      $("[data-replace=GoogleCalendarUrl]").attr(
-        "href",
-        module.onGoogleCalendar(Resources.GoogleCalendar),
-      );
+      // ─── SECONDARY EVENT — solo si existe ──────────────
+      if (secondary) {
+        $("[data-replace=SecondaryEventLocationDescription]").text(secondary.LocationDescription);
+        $("[data-replace=SecondaryEventAddress]").text(secondary.Address);
+        $("[data-replace=EventReceptionUrl]").attr("href", secondary.GoogleMapsUrl);
+        $("[data-replace=EventReceptionHourString]").text(secondary.HourString);
+      }
 
-      //Additional info
-      $("[data-replace=AudioUrl]").attr(
-        "src",
-        Resources.AdditionalInformation.AudioUrl,
-      );
-      $("[data-replace=Image_FrontCard]").attr(
-        "src",
-        Resources.AdditionalInformation.ImageFrontCard,
-      );
-      $("[data-replace=WhatsAppUrl]").attr(
-        "href",
-        Resources.AdditionalInformation.WhatsAppUrl,
-      );
+      // ─── CAMPOS POR TIPO DE EVENTO ─────────────────────
+      if (type === "XV") {
+        $("[data-replace=EventName]").text(main.Name);
+        $("[data-replace=EventFather]").text(main.Father);
+        $("[data-replace=EventMother]").text(main.Mother);
+        $("[data-replace=EventGodFather]").text(main.GodFather);
+        $("[data-replace=EventGodMother]").text(main.GodMother);
+      }
 
-      //static links
-      $("[data-replace=Image_AudioUrl]").attr(
-        "src",
-        Resources.StaticLinks.ImageAudioUrl,
-      );
-      $("[data-replace=Image_AmazonUrl]").attr(
-        "src",
-        Resources.StaticLinks.ImageAmazonUrl,
-      );
-      $("[data-replace=Image_LiverpoolUrl]").attr(
-        "src",
-        Resources.StaticLinks.ImageLiverpoolUrl,
-      );
-      $("[data-replace=Image_GoogleLocation]").attr(
-        "src",
-        Resources.StaticLinks.ImageGoogleLocation,
-      );
-      $("[data-replace=ActivityIconChurch]").attr(
-        "src",
-        Resources.StaticLinks.IconChurch,
-      );
-      $("[data-replace=ActivityIconReception]").attr(
-        "src",
-        Resources.StaticLinks.IconReception,
-      );
-      $("[data-replace=ActivityIconPhotSession]").attr(
-        "src",
-        Resources.StaticLinks.IconPhotSession,
-      );
-      $("[data-replace=ActivityIconFeast]").attr(
-        "src",
-        Resources.StaticLinks.IconFeast,
-      );
-      $("[data-replace=ActivityIconVals]").attr(
-        "src",
-        Resources.StaticLinks.IconVals,
-      );
-      $("[data-replace=ActivityIconSuit]").attr(
-        "src",
-        Resources.StaticLinks.IconSuit,
-      );
-      $("[data-replace=ActivityIconDress]").attr(
-        "src",
-        Resources.StaticLinks.IconDress,
-      );
+      if (type === "Wedding") {
+        $("[data-replace=BrideName]").text(main.BrideName);
+        $("[data-replace=GroomName]").text(main.GroomName);
+        $("[data-replace=BrideShortName]").text(main.BrideShortName);
+        $("[data-replace=GroomShortName]").text(main.GroomShortName);
+        $("[data-replace=FatherBride]").text(main.FatherBride);
+        $("[data-replace=MotherBride]").text(main.MotherBride);
+        $("[data-replace=FatherGroom]").text(main.FatherGroom);
+        $("[data-replace=MotherGroom]").text(main.MotherGroom);
+      }
+
+      if (type === "BabyShower") {
+        $("[data-replace=EventName]").text(main.Name);
+      }
+
+      // ─── AUDIO ─────────────────────────────────────────
+      $("[data-replace=AudioUrl]").attr("src", config.AudioUrl);
+      $("[data-replace=Image_AudioUrl]").attr("src", Resources.StaticLinks.ImageAudioUrl);
+
+      // ─── STATIC LINKS ──────────────────────────────────
+      $("[data-replace=Image_AmazonUrl]").attr("src", Resources.StaticLinks.ImageAmazonUrl);
+      $("[data-replace=Image_LiverpoolUrl]").attr("src", Resources.StaticLinks.ImageLiverpoolUrl);
+      $("[data-replace=Image_GoogleLocation]").attr("src", Resources.StaticLinks.ImageGoogleLocation);
+
+      $("[data-replace=ActivityIconChurch]").attr("src", Resources.StaticLinks.IconChurch);
+      $("[data-replace=ActivityIconReception]").attr("src", Resources.StaticLinks.IconReception);
+      $("[data-replace=ActivityIconPhotSession]").attr("src", Resources.StaticLinks.IconPhotSession);
+      $("[data-replace=ActivityIconFeast]").attr("src", Resources.StaticLinks.IconFeast);
+      $("[data-replace=ActivityIconVals]").attr("src", Resources.StaticLinks.IconVals);
+      $("[data-replace=ActivityIconSuit]").attr("src", Resources.StaticLinks.IconSuit);
+      $("[data-replace=ActivityIconDress]").attr("src", Resources.StaticLinks.IconDress);
+
+      // ─── GALERÍA ───────────────────────────────────────
+      const randomIndex = Math.floor(Math.random() * main.Gallery.length);
+      main.Gallery = module.onMoveElementFromArray(main.Gallery, randomIndex, 3);
     },
   };
   return module;

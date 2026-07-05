@@ -1,1041 +1,1507 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
-<head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Momentos · Invitaciones Digitales</title>
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Momentos · Invitaciones Digitales</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 
+    <style>
+      /* ============================================
+      TOKENS — tema claro moderno
+      ============================================ */
+      :root {
+        --bg: #fbfaf8;
+        --surface: #ffffff;
+        --ink: #14161a;
+        --ink-dim: #5d6168;
+        --line: rgba(20, 22, 26, 0.08);
 
-<style>
-/* ============================================
-   TOKENS — tema claro moderno
-   ============================================ */
-:root {
-  --bg: #fbfaf8;
-  --surface: #ffffff;
-  --ink: #14161a;
-  --ink-dim: #5d6168;
-  --line: rgba(20, 22, 26, 0.08);
+        --coral: #ff5d5d;
+        --coral-soft: #ffe3e0;
+        --violet: #6c5ce7;
+        --violet-soft: #ece9fb;
+        --mint: #00c2a8;
+        --mint-soft: #dffaf5;
+        --amber: #ffb648;
+        --amber-soft: #fff2dd;
 
-  --coral: #ff5d5d;
-  --coral-soft: #ffe3e0;
-  --violet: #6c5ce7;
-  --violet-soft: #ece9fb;
-  --mint: #00c2a8;
-  --mint-soft: #dffaf5;
-  --amber: #ffb648;
-  --amber-soft: #fff2dd;
+        --font-display: "Sora", sans-serif;
+        --font-body: "Manrope", sans-serif;
 
-  --font-display: "Sora", sans-serif;
-  --font-body: "Manrope", sans-serif;
+        --space-1: 8px;
+        --space-2: 16px;
+        --space-3: 24px;
+        --space-4: 40px;
+        --space-5: 64px;
+        --space-6: 96px;
 
-  --space-1: 8px;
-  --space-2: 16px;
-  --space-3: 24px;
-  --space-4: 40px;
-  --space-5: 64px;
-  --space-6: 96px;
+        --radius-s: 10px;
+        --radius-m: 18px;
+        --radius-l: 28px;
 
-  --radius-s: 10px;
-  --radius-m: 18px;
-  --radius-l: 28px;
+        --ease: cubic-bezier(0.16, 1, 0.3, 1);
+      }
 
-  --ease: cubic-bezier(0.16, 1, 0.3, 1);
-}
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
 
-* { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
-body {
-  background: var(--bg);
-  color: var(--ink);
-  font-family: var(--font-body);
-  line-height: 1.5;
-  -webkit-font-smoothing: antialiased;
-}
-a { color: inherit; text-decoration: none; }
-ul { list-style: none; }
-img { max-width: 100%; display: block; }
+      html {
+        scroll-behavior: smooth;
+      }
 
-@media (prefers-reduced-motion: reduce) {
-  * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
-}
+      body {
+        background: var(--bg);
+        color: var(--ink);
+        font-family: var(--font-body);
+        line-height: 1.5;
+        -webkit-font-smoothing: antialiased;
+      }
 
-/* ============================================
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      ul {
+        list-style: none;
+      }
+
+      img {
+        max-width: 100%;
+        display: block;
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        * {
+          animation-duration: 0.01ms !important;
+          transition-duration: 0.01ms !important;
+        }
+      }
+
+      /* ============================================
    NAV
    ============================================ */
-.nav {
-  position: fixed;
-  top: 0; left: 0; right: 0;
-  z-index: 100;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: var(--space-2) var(--space-4);
-  background: rgba(251, 250, 248, 0.75);
-  backdrop-filter: blur(12px);
-  border-bottom: 1px solid var(--line);
-}
-.nav-logo {
-  font-family: var(--font-display);
-  font-weight: 800;
-  font-size: 1.3rem;
-  letter-spacing: -0.01em;
-}
-.nav-logo span { color: var(--coral); }
-.nav-links { display: flex; gap: var(--space-4); }
-.nav-links a {
-  font-size: 0.9rem;
-  font-weight: 500;
-  color: var(--ink-dim);
-  transition: color 0.2s var(--ease);
-}
-.nav-links a:hover, .nav-links a:focus-visible { color: var(--ink); }
-.btn-nav {
-  background: var(--ink);
-  color: var(--surface);
-  font-size: 0.85rem;
-  font-weight: 600;
-  padding: 10px 22px;
-  border-radius: 999px;
-  transition: transform 0.2s var(--ease), background 0.2s var(--ease);
-}
-.btn-nav:hover, .btn-nav:focus-visible { background: var(--coral); transform: translateY(-2px); }
-@media (max-width: 768px) { .nav-links { display: none; } }
+      .nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 100;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: var(--space-2) var(--space-4);
+        background: rgba(251, 250, 248, 0.75);
+        backdrop-filter: blur(12px);
+        border-bottom: 1px solid var(--line);
+      }
 
-/* ============================================
+      .nav-logo {
+        font-family: var(--font-display);
+        font-weight: 800;
+        font-size: 1.3rem;
+        letter-spacing: -0.01em;
+      }
+
+      .nav-logo span {
+        color: var(--coral);
+      }
+
+      .nav-links {
+        display: flex;
+        gap: var(--space-4);
+      }
+
+      .nav-links a {
+        font-size: 0.9rem;
+        font-weight: 500;
+        color: var(--ink-dim);
+        transition: color 0.2s var(--ease);
+      }
+
+      .nav-links a:hover,
+      .nav-links a:focus-visible {
+        color: var(--ink);
+      }
+
+      .btn-nav {
+        background: var(--ink);
+        color: var(--surface);
+        font-size: 0.85rem;
+        font-weight: 600;
+        padding: 10px 22px;
+        border-radius: 999px;
+        transition:
+          transform 0.2s var(--ease),
+          background 0.2s var(--ease);
+      }
+
+      .btn-nav:hover,
+      .btn-nav:focus-visible {
+        background: var(--coral);
+        transform: translateY(-2px);
+      }
+
+      @media (max-width: 768px) {
+        .nav-links {
+          display: none;
+        }
+      }
+
+      /* ============================================
    HERO
    ============================================ */
-.hero {
-  min-height: 100svh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: var(--space-5) var(--space-3) var(--space-4);
-  position: relative;
-  overflow: hidden;
-}
-.hero::before {
-  content: "";
-  position: absolute;
-  top: -20%; right: -10%;
-  width: 480px; height: 480px;
-  background: radial-gradient(circle, var(--coral-soft), transparent 70%);
-  border-radius: 50%;
-  z-index: -1;
-}
-.hero::after {
-  content: "";
-  position: absolute;
-  bottom: -25%; left: -15%;
-  width: 420px; height: 420px;
-  background: radial-gradient(circle, var(--violet-soft), transparent 70%);
-  border-radius: 50%;
-  z-index: -1;
-}
-.hero-eyebrow {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 0.8rem;
-  font-weight: 600;
-  letter-spacing: 0.04em;
-  color: var(--violet);
-  background: var(--violet-soft);
-  padding: 8px 16px;
-  border-radius: 999px;
-  margin-bottom: var(--space-3);
-  opacity: 0;
-  animation: fadeUp 0.7s var(--ease) 0.1s forwards;
-}
-.hero-title {
-  font-family: var(--font-display);
-  font-weight: 800;
-  font-size: clamp(2.6rem, 7vw, 5.2rem);
-  line-height: 1.05;
-  letter-spacing: -0.02em;
-}
-.hero-line { display: block; opacity: 0; animation: fadeUp 0.8s var(--ease) forwards; }
-.hero-line:nth-child(1) { animation-delay: 0.22s; }
-.hero-line--accent {
-  background: linear-gradient(100deg, var(--coral), var(--violet) 60%, var(--mint));
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  animation-delay: 0.4s;
-}
-.hero-sub {
-  max-width: 480px;
-  margin: var(--space-3) auto 0;
-  color: var(--ink-dim);
-  font-size: 1.05rem;
-  opacity: 0;
-  animation: fadeUp 0.8s var(--ease) 0.58s forwards;
-}
-.hero-actions {
-  display: flex;
-  gap: var(--space-2);
-  margin-top: var(--space-4);
-  opacity: 0;
-  animation: fadeUp 0.8s var(--ease) 0.74s forwards;
-}
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(16px); }
-  to { opacity: 1; transform: translateY(0); }
-}
+      .hero {
+        min-height: 100svh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: var(--space-5) var(--space-3) var(--space-4);
+        position: relative;
+        overflow: hidden;
+      }
 
-/* ============================================
+      .hero::before {
+        content: "";
+        position: absolute;
+        top: -20%;
+        right: -10%;
+        width: 480px;
+        height: 480px;
+        background: radial-gradient(circle, var(--coral-soft), transparent 70%);
+        border-radius: 50%;
+        z-index: -1;
+      }
+
+      .hero::after {
+        content: "";
+        position: absolute;
+        bottom: -25%;
+        left: -15%;
+        width: 420px;
+        height: 420px;
+        background: radial-gradient(circle, var(--violet-soft), transparent 70%);
+        border-radius: 50%;
+        z-index: -1;
+      }
+
+      .hero-eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 0.8rem;
+        font-weight: 600;
+        letter-spacing: 0.04em;
+        color: var(--violet);
+        background: var(--violet-soft);
+        padding: 8px 16px;
+        border-radius: 999px;
+        margin-bottom: var(--space-3);
+        opacity: 0;
+        animation: fadeUp 0.7s var(--ease) 0.1s forwards;
+      }
+
+      .hero-title {
+        font-family: var(--font-display);
+        font-weight: 800;
+        font-size: clamp(2.6rem, 7vw, 5.2rem);
+        line-height: 1.05;
+        letter-spacing: -0.02em;
+      }
+
+      .hero-line {
+        display: block;
+        opacity: 0;
+        animation: fadeUp 0.8s var(--ease) forwards;
+      }
+
+      .hero-line:nth-child(1) {
+        animation-delay: 0.22s;
+      }
+
+      .hero-line--accent {
+        background: linear-gradient(100deg, var(--coral), var(--violet) 60%, var(--mint));
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        animation-delay: 0.4s;
+      }
+
+      .hero-sub {
+        max-width: 480px;
+        margin: var(--space-3) auto 0;
+        color: var(--ink-dim);
+        font-size: 1.05rem;
+        opacity: 0;
+        animation: fadeUp 0.8s var(--ease) 0.58s forwards;
+      }
+
+      .hero-actions {
+        display: flex;
+        gap: var(--space-2);
+        margin-top: var(--space-4);
+        opacity: 0;
+        animation: fadeUp 0.8s var(--ease) 0.74s forwards;
+      }
+
+      @keyframes fadeUp {
+        from {
+          opacity: 0;
+          transform: translateY(16px);
+        }
+
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* ============================================
    BUTTONS
    ============================================ */
-.btn {
-  display: inline-block;
-  padding: 15px 32px;
-  border-radius: 999px;
-  font-size: 0.95rem;
-  font-weight: 600;
-  transition: transform 0.25s var(--ease), background 0.25s var(--ease), color 0.25s var(--ease), border-color 0.25s var(--ease), box-shadow 0.25s var(--ease);
-}
-.btn:hover, .btn:focus-visible { transform: translateY(-2px); }
-.btn--primary { background: var(--ink); color: var(--surface); }
-.btn--primary:hover, .btn--primary:focus-visible { background: var(--coral); box-shadow: 0 10px 24px rgba(255, 93, 93, 0.35); }
-.btn--ghost { border: 1.5px solid var(--line); color: var(--ink); }
-.btn--ghost:hover, .btn--ghost:focus-visible { border-color: var(--ink); }
-.btn--outline {
-  display: block; text-align: center;
-  border: 1.5px solid var(--ink);
-  color: var(--ink);
-}
-.btn--outline:hover, .btn--outline:focus-visible { background: var(--ink); color: var(--surface); }
-.btn--solid-coral { display: block; text-align: center; background: var(--coral); color: #fff; }
-.btn--solid-coral:hover, .btn--solid-coral:focus-visible { background: #ff4242; box-shadow: 0 10px 24px rgba(255, 93, 93, 0.35); }
+      .btn {
+        display: inline-block;
+        padding: 15px 32px;
+        border-radius: 999px;
+        font-size: 0.95rem;
+        font-weight: 600;
+        transition:
+          transform 0.25s var(--ease),
+          background 0.25s var(--ease),
+          color 0.25s var(--ease),
+          border-color 0.25s var(--ease),
+          box-shadow 0.25s var(--ease);
+      }
 
-/* ============================================
+      .btn:hover,
+      .btn:focus-visible {
+        transform: translateY(-2px);
+      }
+
+      .btn--primary {
+        background: var(--ink);
+        color: var(--surface);
+      }
+
+      .btn--primary:hover,
+      .btn--primary:focus-visible {
+        background: var(--coral);
+        box-shadow: 0 10px 24px rgba(255, 93, 93, 0.35);
+      }
+
+      .btn--ghost {
+        border: 1.5px solid var(--line);
+        color: var(--ink);
+      }
+
+      .btn--ghost:hover,
+      .btn--ghost:focus-visible {
+        border-color: var(--ink);
+      }
+
+      .btn--outline {
+        display: block;
+        text-align: center;
+        border: 1.5px solid var(--ink);
+        color: var(--ink);
+      }
+
+      .btn--outline:hover,
+      .btn--outline:focus-visible {
+        background: var(--ink);
+        color: var(--surface);
+      }
+
+      .btn--solid-coral {
+        display: block;
+        text-align: center;
+        background: var(--coral);
+        color: #fff;
+      }
+
+      .btn--solid-coral:hover,
+      .btn--solid-coral:focus-visible {
+        background: #ff4242;
+        box-shadow: 0 10px 24px rgba(255, 93, 93, 0.35);
+      }
+
+      /* ============================================
    SECTION SHARED
    ============================================ */
-.section { padding: var(--space-6) var(--space-4); max-width: 1200px; margin: 0 auto; }
-.section-header { text-align: center; margin-bottom: var(--space-5); }
-.section-eyebrow {
-  font-size: 0.78rem; font-weight: 700;
-  letter-spacing: 0.1em; text-transform: uppercase;
-  color: var(--coral);
-}
-.section-title {
-  font-family: var(--font-display);
-  font-weight: 800;
-  font-size: clamp(1.8rem, 4vw, 2.6rem);
-  margin-top: var(--space-1);
-  letter-spacing: -0.01em;
-}
+      .section {
+        padding: var(--space-6) var(--space-4);
+        max-width: 1200px;
+        margin: 0 auto;
+      }
 
-/* ============================================
+      .section-header {
+        text-align: center;
+        margin-bottom: var(--space-5);
+      }
+
+      .section-eyebrow {
+        font-size: 0.78rem;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--coral);
+      }
+
+      .section-title {
+        font-family: var(--font-display);
+        font-weight: 800;
+        font-size: clamp(1.8rem, 4vw, 2.6rem);
+        margin-top: var(--space-1);
+        letter-spacing: -0.01em;
+      }
+
+      /* ============================================
    CATEGORY CARDS — generadas por JS
    ============================================ */
-.categories-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: var(--space-3);
-}
-.category-card {
-  background: var(--surface);
-  border: 1px solid var(--line);
-  border-radius: var(--radius-m);
-  overflow: hidden;
-  transition: transform 0.35s var(--ease), box-shadow 0.35s var(--ease), border-color 0.35s var(--ease);
-}
-.category-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 24px 48px rgba(20, 22, 26, 0.1);
-  border-color: transparent;
-}
+      .categories-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: var(--space-3);
+      }
 
-/* Área del phone frame */
-.category-card__preview {
-  background: #f0ede8;
-  padding: var(--space-3) var(--space-3) 0;
-  display: flex;
-  justify-content: center;
-}
+      .category-card {
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: var(--radius-m);
+        overflow: hidden;
+        transition:
+          transform 0.35s var(--ease),
+          box-shadow 0.35s var(--ease),
+          border-color 0.35s var(--ease);
+      }
 
-/* Phone frame */
-.phone-frame {
-  width: 235px;
-  height: 490px;
-  background: #111;
-  border: 7px solid #1a1513;
-  border-radius: 28px;
-  position: relative;
-  box-shadow:
-    0 16px 40px rgba(0,0,0,0.25),
-    inset 0 0 0 1px rgba(255,255,255,0.05);
-  overflow: hidden;
-  flex-shrink: 0;
-}
-.phone-frame__notch {
-  position: absolute;
-  top: 0; left: 50%;
-  transform: translateX(-50%);
-  width: 64px; height: 12px;
-  background: #1a1513;
-  border-bottom-left-radius: 8px;
-  border-bottom-right-radius: 8px;
-  z-index: 10;
-}
-.phone-frame__loader {
-  position: absolute;
-  inset: 0;
-  background: #f5f5f5;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 5;
-  transition: opacity 0.4s ease;
-}
-.phone-frame__loader.is-hidden { opacity: 0; pointer-events: none; }
-.phone-frame__spinner {
-  width: 20px; height: 20px;
-  border: 2px solid var(--line);
-  border-top-color: var(--coral);
-  border-radius: 50%;
-  animation: spin 0.8s linear infinite;
-}
-@keyframes spin { to { transform: rotate(360deg); } }
-.phone-frame__iframe {
-  width: 360px;   /* Ancho lógico del S24 */
-  height: 780px;  /* Alto lógico del S24 */
-  border: none;
-  background: #fff;
-  transform-origin: top left;
-  transform: scale(calc(220 / 360)); /* ≈ 0.611 — escala para caber en 220px */
-  scrollbar-width: none;
-}
-.phone-frame__iframe::-webkit-scrollbar { display: none; }
+      .category-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 24px 48px rgba(20, 22, 26, 0.1);
+        border-color: transparent;
+      }
 
-/* Nav de slides (prev/dots/next) */
-.category-card__nav {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: var(--space-2);
-  background: #f0ede8;
-}
-.swiper-btn {
-  background: var(--surface);
-  border: 1px solid var(--line);
-  color: var(--ink);
-  width: 30px; height: 30px;
-  border-radius: 50%;
-  cursor: pointer;
-  font-size: 0.85rem;
-  display: flex; align-items: center; justify-content: center;
-  transition: background 0.2s var(--ease), color 0.2s var(--ease), border-color 0.2s var(--ease);
-}
-.swiper-btn:hover, .swiper-btn:focus-visible { background: var(--ink); color: var(--surface); border-color: var(--ink); }
-.swiper-dots { display: flex; gap: 6px; }
-.swiper-dots .dot {
-  width: 6px; height: 6px; border-radius: 50%;
-  background: rgba(20,22,26,0.15);
-  transition: background 0.3s var(--ease), transform 0.3s var(--ease);
-}
-.swiper-dots .dot.is-active { background: var(--coral); transform: scale(1.3); }
+      /* Área del phone frame */
+      .category-card__preview {
+        background: #f0ede8;
+        padding: var(--space-3) var(--space-3) 0;
+        display: flex;
+        justify-content: center;
+      }
 
-/* Info inferior de la card */
-.category-card__info { padding: var(--space-2) var(--space-3) var(--space-3); }
-.category-card__title {
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: 1.15rem;
-  margin-bottom: 4px;
-}
-.category-card__caption { font-size: 0.85rem; color: var(--ink-dim); min-height: 1.4em; }
-.category-card__caption a {
-  color: var(--violet);
-  font-weight: 600;
-  border-bottom: 1px solid transparent;
-  transition: border-color 0.2s var(--ease);
-}
-.category-card__caption a:hover, .category-card__caption a:focus-visible { border-color: var(--violet); }
-.caption-soon { color: var(--ink-dim); font-style: italic; font-size: 0.82rem; }
+      /* Phone frame */
+      .phone-frame {
+        width: 235px;
+        height: 490px;
+        background: #111;
+        border: 7px solid #1a1513;
+        border-radius: 28px;
+        position: relative;
+        box-shadow:
+          0 16px 40px rgba(0, 0, 0, 0.25),
+          inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+        overflow: hidden;
+        flex-shrink: 0;
+      }
 
-/* ============================================
+      .phone-frame__notch {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 64px;
+        height: 12px;
+        background: #1a1513;
+        border-bottom-left-radius: 8px;
+        border-bottom-right-radius: 8px;
+        z-index: 10;
+      }
+
+      .phone-frame__loader {
+        position: absolute;
+        inset: 0;
+        background: #f5f5f5;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 5;
+        transition: opacity 0.4s ease;
+      }
+
+      .phone-frame__loader.is-hidden {
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      .phone-frame__spinner {
+        width: 20px;
+        height: 20px;
+        border: 2px solid var(--line);
+        border-top-color: var(--coral);
+        border-radius: 50%;
+        animation: spin 0.8s linear infinite;
+      }
+
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      .phone-frame__iframe {
+        width: 360px;
+        /* Ancho lógico del S24 */
+        height: 780px;
+        /* Alto lógico del S24 */
+        border: none;
+        background: #fff;
+        transform-origin: top left;
+        transform: scale(calc(220 / 360));
+        /* ≈ 0.611 — escala para caber en 220px */
+        scrollbar-width: none;
+      }
+
+      .phone-frame__iframe::-webkit-scrollbar {
+        display: none;
+      }
+
+      /* Nav de slides (prev/dots/next) */
+      .category-card__nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: var(--space-2);
+        background: #f0ede8;
+      }
+
+      .swiper-btn {
+        background: var(--surface);
+        border: 1px solid var(--line);
+        color: var(--ink);
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        cursor: pointer;
+        font-size: 0.85rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition:
+          background 0.2s var(--ease),
+          color 0.2s var(--ease),
+          border-color 0.2s var(--ease);
+      }
+
+      .swiper-btn:hover,
+      .swiper-btn:focus-visible {
+        background: var(--ink);
+        color: var(--surface);
+        border-color: var(--ink);
+      }
+
+      .swiper-dots {
+        display: flex;
+        gap: 6px;
+      }
+
+      .swiper-dots .dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: rgba(20, 22, 26, 0.15);
+        transition:
+          background 0.3s var(--ease),
+          transform 0.3s var(--ease);
+      }
+
+      .swiper-dots .dot.is-active {
+        background: var(--coral);
+        transform: scale(1.3);
+      }
+
+      /* Info inferior de la card */
+      .category-card__info {
+        padding: var(--space-2) var(--space-3) var(--space-3);
+      }
+
+      .category-card__title {
+        font-family: var(--font-display);
+        font-weight: 700;
+        font-size: 1.15rem;
+        margin-bottom: 4px;
+      }
+
+      .category-card__caption {
+        font-size: 0.85rem;
+        color: var(--ink-dim);
+        min-height: 1.4em;
+      }
+
+      .category-card__caption a {
+        color: var(--violet);
+        font-weight: 600;
+        border-bottom: 1px solid transparent;
+        transition: border-color 0.2s var(--ease);
+      }
+
+      .category-card__caption a:hover,
+      .category-card__caption a:focus-visible {
+        border-color: var(--violet);
+      }
+
+      .caption-soon {
+        color: var(--ink-dim);
+        font-style: italic;
+        font-size: 0.82rem;
+      }
+
+      /* ============================================
    FEATURES STRIP
    ============================================ */
-.features-strip {
-  display: flex; flex-wrap: wrap; justify-content: center;
-  gap: var(--space-4);
-  padding: var(--space-4);
-  border-top: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
-  background: var(--surface);
-}
-.feature { display: flex; align-items: center; gap: 8px; font-size: 0.88rem; font-weight: 500; color: var(--ink-dim); }
-.feature-icon {
-  width: 30px; height: 30px;
-  display: flex; align-items: center; justify-content: center;
-  border-radius: 50%;
-  background: var(--coral-soft);
-  font-size: 0.95rem;
-}
+      .features-strip {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: var(--space-4);
+        padding: var(--space-4);
+        border-top: 1px solid var(--line);
+        border-bottom: 1px solid var(--line);
+        background: var(--surface);
+      }
 
-/* ============================================
+      .feature {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 0.88rem;
+        font-weight: 500;
+        color: var(--ink-dim);
+      }
+
+      .feature-icon {
+        width: 30px;
+        height: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        background: var(--coral-soft);
+        font-size: 0.95rem;
+      }
+
+      /* ============================================
    PLANS TABLE
    ============================================ */
-.plans-table-wrap {
-  overflow-x: auto;
-  border: 1px solid var(--line);
-  border-radius: var(--radius-m);
-  background: var(--surface);
-}
-.plans-table { width: 100%; border-collapse: collapse; min-width: 560px; }
-.plans-table th, .plans-table td {
-  padding: 14px var(--space-2);
-  text-align: center;
-  font-size: 0.9rem;
-  border-bottom: 1px solid var(--line);
-}
-.plans-table th:first-child, .plans-table td:first-child {
-  text-align: left; color: var(--ink-dim); position: relative;
-}
-.plans-table thead th {
-  font-family: var(--font-display);
-  font-size: 1.05rem; font-weight: 700;
-  padding-top: var(--space-3); padding-bottom: var(--space-2);
-}
-.plans-table__highlight-col { color: var(--coral) !important; }
-.plans-table tbody tr:hover { background: rgba(20, 22, 26, 0.02); }
-.plans-table__group-header td {
-  text-align: left;
-  font-size: 0.72rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  font-weight: 700;
-  color: var(--violet);
-  background: var(--violet-soft);
-  border-bottom: 1px solid var(--line);
-}
-.check { color: var(--mint); font-weight: 700; }
-.dash { color: rgba(20, 22, 26, 0.25); }
+      .plans-table-wrap {
+        overflow-x: auto;
+        border: 1px solid var(--line);
+        border-radius: var(--radius-m);
+        background: var(--surface);
+      }
 
-.tooltip-btn {
-  display: inline-flex; align-items: center; justify-content: center;
-  width: 16px; height: 16px;
-  border-radius: 50%;
-  border: 1px solid var(--line);
-  background: none;
-  color: var(--ink-dim);
-  font-size: 0.65rem;
-  cursor: pointer;
-  margin-left: 6px;
-  vertical-align: middle;
-  transition: border-color 0.2s var(--ease), color 0.2s var(--ease);
-}
-.tooltip-btn:hover, .tooltip-btn:focus-visible { border-color: var(--violet); color: var(--violet); }
+      .plans-table {
+        width: 100%;
+        border-collapse: collapse;
+        min-width: 560px;
+      }
 
-.tooltip-popup {
-  position: fixed;
-  max-width: 240px;
-  background: var(--ink);
-  color: var(--surface);
-  font-size: 0.8rem;
-  padding: 10px 14px;
-  border-radius: var(--radius-s);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.2s var(--ease);
-  z-index: 200;
-}
-.tooltip-popup.is-visible { opacity: 1; }
+      .plans-table th,
+      .plans-table td {
+        padding: 14px var(--space-2);
+        text-align: center;
+        font-size: 0.9rem;
+        border-bottom: 1px solid var(--line);
+      }
 
-/* ============================================
+      .plans-table th:first-child,
+      .plans-table td:first-child {
+        text-align: left;
+        color: var(--ink-dim);
+        position: relative;
+      }
+
+      .plans-table thead th {
+        font-family: var(--font-display);
+        font-size: 1.05rem;
+        font-weight: 700;
+        padding-top: var(--space-3);
+        padding-bottom: var(--space-2);
+      }
+
+      .plans-table__highlight-col {
+        color: var(--coral) !important;
+      }
+
+      .plans-table tbody tr:hover {
+        background: rgba(20, 22, 26, 0.02);
+      }
+
+      .plans-table__group-header td {
+        text-align: left;
+        font-size: 0.72rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        font-weight: 700;
+        color: var(--violet);
+        background: var(--violet-soft);
+        border-bottom: 1px solid var(--line);
+      }
+
+      .check {
+        color: var(--mint);
+        font-weight: 700;
+      }
+
+      .dash {
+        color: rgba(20, 22, 26, 0.25);
+      }
+
+      .tooltip-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+        border: 1px solid var(--line);
+        background: none;
+        color: var(--ink-dim);
+        font-size: 0.65rem;
+        cursor: pointer;
+        margin-left: 6px;
+        vertical-align: middle;
+        transition:
+          border-color 0.2s var(--ease),
+          color 0.2s var(--ease);
+      }
+
+      .tooltip-btn:hover,
+      .tooltip-btn:focus-visible {
+        border-color: var(--violet);
+        color: var(--violet);
+      }
+
+      .tooltip-popup {
+        position: fixed;
+        max-width: 240px;
+        background: var(--ink);
+        color: var(--surface);
+        font-size: 0.8rem;
+        padding: 10px 14px;
+        border-radius: var(--radius-s);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.2s var(--ease);
+        z-index: 200;
+      }
+
+      .tooltip-popup.is-visible {
+        opacity: 1;
+      }
+
+      /* ============================================
    PRICING CARDS
    ============================================ */
-.pricing-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: var(--space-3);
-}
-.pricing-card {
-  background: var(--surface);
-  border: 1px solid var(--line);
-  border-radius: var(--radius-m);
-  padding: var(--space-4) var(--space-3);
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease);
-}
-.pricing-card:hover { transform: translateY(-6px); box-shadow: 0 20px 44px rgba(20, 22, 26, 0.1); }
-.pricing-card--featured { border-color: var(--coral); background: var(--ink); color: #fff; }
-.pricing-card__badge {
-  position: absolute; top: -12px; left: 50%; transform: translateX(-50%);
-  background: var(--coral); color: #fff;
-  font-size: 0.7rem; font-weight: 700;
-  letter-spacing: 0.06em; text-transform: uppercase;
-  padding: 5px 16px; border-radius: 999px;
-}
-.pricing-card__header {
-  text-align: center;
-  margin-bottom: var(--space-3);
-  padding-bottom: var(--space-3);
-  border-bottom: 1px solid var(--line);
-}
-.pricing-card--featured .pricing-card__header { border-bottom-color: rgba(255,255,255,0.15); }
-.pricing-card__name { font-family: var(--font-display); font-weight: 700; font-size: 1.2rem; }
-.pricing-card__price { font-family: var(--font-display); font-weight: 800; font-size: 2.6rem; margin-top: 4px; }
-.pricing-card__period { font-size: 0.75rem; color: var(--ink-dim); text-transform: uppercase; letter-spacing: 0.06em; }
-.pricing-card--featured .pricing-card__period { color: rgba(255,255,255,0.6); }
-.pricing-card__features { flex-grow: 1; margin-bottom: var(--space-3); }
-.pricing-card__features li { padding: 8px 0; font-size: 0.9rem; border-bottom: 1px dashed var(--line); }
-.pricing-card--featured .pricing-card__features li { border-bottom-color: rgba(255,255,255,0.12); }
-.pricing-card__features li:last-child { border-bottom: none; }
+      .pricing-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: var(--space-3);
+      }
 
-/* ============================================
+      .pricing-card {
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: var(--radius-m);
+        padding: var(--space-4) var(--space-3);
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        transition:
+          transform 0.3s var(--ease),
+          box-shadow 0.3s var(--ease);
+      }
+
+      .pricing-card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 20px 44px rgba(20, 22, 26, 0.1);
+      }
+
+      .pricing-card--featured {
+        border-color: var(--coral);
+        background: var(--ink);
+        color: #fff;
+      }
+
+      .pricing-card__badge {
+        position: absolute;
+        top: -12px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: var(--coral);
+        color: #fff;
+        font-size: 0.7rem;
+        font-weight: 700;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        padding: 5px 16px;
+        border-radius: 999px;
+      }
+
+      .pricing-card__header {
+        text-align: center;
+        margin-bottom: var(--space-3);
+        padding-bottom: var(--space-3);
+        border-bottom: 1px solid var(--line);
+      }
+
+      .pricing-card--featured .pricing-card__header {
+        border-bottom-color: rgba(255, 255, 255, 0.15);
+      }
+
+      .pricing-card__name {
+        font-family: var(--font-display);
+        font-weight: 700;
+        font-size: 1.2rem;
+      }
+
+      .pricing-card__price {
+        font-family: var(--font-display);
+        font-weight: 800;
+        font-size: 2.6rem;
+        margin-top: 4px;
+      }
+
+      .pricing-card__period {
+        font-size: 0.75rem;
+        color: var(--ink-dim);
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+      }
+
+      .pricing-card--featured .pricing-card__period {
+        color: rgba(255, 255, 255, 0.6);
+      }
+
+      .pricing-card__features {
+        flex-grow: 1;
+        margin-bottom: var(--space-3);
+      }
+
+      .pricing-card__features li {
+        padding: 8px 0;
+        font-size: 0.9rem;
+        border-bottom: 1px dashed var(--line);
+      }
+
+      .pricing-card--featured .pricing-card__features li {
+        border-bottom-color: rgba(255, 255, 255, 0.12);
+      }
+
+      .pricing-card__features li:last-child {
+        border-bottom: none;
+      }
+
+      /* ============================================
    FOOTER
    ============================================ */
-.footer { text-align: center; padding: var(--space-4); border-top: 1px solid var(--line); }
-.footer-logo { font-family: var(--font-display); font-weight: 800; font-size: 1.2rem; margin-bottom: 4px; }
-.footer-logo span { color: var(--coral); }
-.footer-copy { font-size: 0.8rem; color: var(--ink-dim); }
+      .footer {
+        text-align: center;
+        padding: var(--space-4);
+        border-top: 1px solid var(--line);
+      }
 
-/* ============================================
+      .footer-logo {
+        font-family: var(--font-display);
+        font-weight: 800;
+        font-size: 1.2rem;
+        margin-bottom: 4px;
+      }
+
+      .footer-logo span {
+        color: var(--coral);
+      }
+
+      .footer-copy {
+        font-size: 0.8rem;
+        color: var(--ink-dim);
+      }
+
+      /* ============================================
    RESPONSIVE
    ============================================ */
-@media (max-width: 600px) {
-  .section { padding: var(--space-5) var(--space-2); }
-  .hero-actions { flex-direction: column; width: 100%; max-width: 280px; }
-  .btn { width: 100%; text-align: center; }
-}
-.pricing-card--selected {
-  border-color: var(--coral);
-  box-shadow: 0 0 0 3px rgba(255, 93, 93, 0.15);
-}
+      @media (max-width: 600px) {
+        .section {
+          padding: var(--space-6) var(--space-2);
+        }
 
-/* ============================================
+        .hero-actions {
+          flex-direction: column;
+          width: 100%;
+          max-width: 280px;
+        }
+
+        .btn {
+          width: 100%;
+          text-align: center;
+        }
+      }
+
+      .pricing-card--selected {
+        border-color: var(--coral);
+        box-shadow: 0 0 0 3px rgba(255, 93, 93, 0.15);
+      }
+
+      /* ============================================
    WHATSAPP FLOTANTE
    ============================================ */
-.whatsapp-float {
-  position: fixed;
-  bottom: 28px;
-  right: 28px;
-  z-index: 300;
-  width: 56px;
-  height: 56px;
-  background: #25d366;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 6px 20px rgba(37, 211, 102, 0.45);
-  transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease);
-}
-.whatsapp-float:hover, .whatsapp-float:focus-visible {
-  transform: translateY(-3px) scale(1.07);
-  box-shadow: 0 10px 28px rgba(37, 211, 102, 0.55);
-}
-.whatsapp-float img {
-  width: 30px;
-  height: 30px;
-  filter: brightness(0) invert(1);
-}
+      .whatsapp-float {
+        position: fixed;
+        bottom: 28px;
+        right: 28px;
+        z-index: 300;
+        width: 56px;
+        height: 56px;
+        background: #25d366;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 6px 20px rgba(37, 211, 102, 0.45);
+        transition:
+          transform 0.25s var(--ease),
+          box-shadow 0.25s var(--ease);
+      }
 
-/* Tooltip del plan seleccionado */
-.whatsapp-float::before {
-  content: attr(data-plan);
-  position: absolute;
-  right: calc(100% + 10px);
-  background: var(--ink);
-  color: var(--surface);
-  font-family: var(--font-body);
-  font-size: 0.75rem;
-  font-weight: 600;
-  white-space: nowrap;
-  padding: 6px 12px;
-  border-radius: 999px;
-  opacity: 0;
-  pointer-events: none;
-  transform: translateX(6px);
-  transition: opacity 0.2s var(--ease), transform 0.2s var(--ease);
-}
-.whatsapp-float[data-plan]::before { opacity: 0; }
-.whatsapp-float:hover::before, .whatsapp-float:focus-visible::before {
-  opacity: 1;
-  transform: translateX(0);
-}
+      .whatsapp-float:hover,
+      .whatsapp-float:focus-visible {
+        transform: translateY(-3px) scale(1.07);
+        box-shadow: 0 10px 28px rgba(37, 211, 102, 0.55);
+      }
 
-@media (max-width: 600px) {
-  .whatsapp-float { bottom: 20px; right: 20px; width: 50px; height: 50px; }
-  .whatsapp-float img { width: 26px; height: 26px; }
-}
-</style>
-</head>
-<body>
+      .whatsapp-float img {
+        width: 30px;
+        height: 30px;
+        filter: brightness(0) invert(1);
+      }
 
-  <!-- NAV -->
-  <nav class="nav">
-    <a href="#" class="nav-logo">Momento<span>s</span></a>
-    <ul class="nav-links">
-      <li><a href="#categorias">Diseños</a></li>
-      <li><a href="#planes">Planes</a></li>
-      <li><a href="#precios">Precios</a></li>
-    </ul>
-    <a href="#precios" class="btn-nav">Comenzar</a>
-  </nav>
+      /* Tooltip del plan seleccionado */
+      .whatsapp-float::before {
+        content: attr(data-plan);
+        position: absolute;
+        right: calc(100% + 10px);
+        background: var(--ink);
+        color: var(--surface);
+        font-family: var(--font-body);
+        font-size: 0.75rem;
+        font-weight: 600;
+        white-space: nowrap;
+        padding: 6px 12px;
+        border-radius: 999px;
+        opacity: 0;
+        pointer-events: none;
+        transform: translateX(6px);
+        transition:
+          opacity 0.2s var(--ease),
+          transform 0.2s var(--ease);
+      }
 
-  <!-- HERO -->
-  <header class="hero">
-    <div class="hero-eyebrow">✨ Invitaciones digitales · México</div>
-    <h1 class="hero-title">
-      <span class="hero-line">Tu evento,</span>
-      <span class="hero-line hero-line--accent">en grande.</span>
-    </h1>
-    <p class="hero-sub">Diseños modernos que tus invitados van a querer abrir una y otra vez. Envíos ilimitados, confirmación de asistencia y mucho más.</p>
-    <div class="hero-actions">
-      <a href="#categorias" class="btn btn--primary">Ver diseños</a>
-      <a href="#planes" class="btn btn--ghost">Conocer planes</a>
-    </div>
-  </header>
+      .whatsapp-float[data-plan]::before {
+        opacity: 0;
+      }
 
-  <!-- CATEGORÍAS — generadas por JS. Para agregar una nueva categoría,
+      .whatsapp-float:hover::before,
+      .whatsapp-float:focus-visible::before {
+        opacity: 1;
+        transform: translateX(0);
+      }
+
+      @media (max-width: 600px) {
+        .whatsapp-float {
+          bottom: 20px;
+          right: 20px;
+          width: 50px;
+          height: 50px;
+        }
+
+        .whatsapp-float img {
+          width: 26px;
+          height: 26px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- NAV -->
+    <nav class="nav">
+      <a href="#" class="nav-logo">
+        Momento
+        <span>s</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#categorias">Diseños</a></li>
+        <li><a href="#planes">Planes</a></li>
+        <li><a href="#precios">Precios</a></li>
+      </ul>
+      <a href="#precios" class="btn-nav">Comenzar</a>
+    </nav>
+
+    <!-- HERO -->
+    <header class="hero">
+      <div class="hero-eyebrow">✨ Invitaciones digitales · México</div>
+      <h1 class="hero-title">
+        <span class="hero-line">Tu evento,</span>
+        <span class="hero-line hero-line--accent">en grande.</span>
+      </h1>
+      <p class="hero-sub">Diseños modernos que tus invitados van a querer abrir una y otra vez. Envíos ilimitados, confirmación de asistencia y mucho más.</p>
+      <div class="hero-actions">
+        <a href="#categorias" class="btn btn--primary">Ver diseños</a>
+        <a href="#planes" class="btn btn--ghost">Conocer planes</a>
+      </div>
+    </header>
+
+    <!-- CATEGORÍAS — generadas por JS. Para agregar una nueva categoría,
        añade un objeto al array CATEGORIES en el script. -->
-  <section class="section" id="categorias">
-    <div class="section-header">
-      <p class="section-eyebrow">Nuestros diseños</p>
-      <h2 class="section-title">Para cada momento especial</h2>
-    </div>
-    <div class="categories-grid" id="categoriesGrid"></div>
-  </section>
+    <section class="section" id="categorias">
+      <div class="section-header">
+        <p class="section-eyebrow">Nuestros diseños</p>
+        <h2 class="section-title">Para cada momento especial</h2>
+      </div>
+      <div class="categories-grid" id="categoriesGrid"></div>
+    </section>
 
-  <!-- FEATURES STRIP -->
-  <section class="features-strip">
-    <div class="feature"><span class="feature-icon">📍</span><span>Ubicación interactiva</span></div>
-    <div class="feature"><span class="feature-icon">✉️</span><span>Envíos ilimitados</span></div>
-    <div class="feature"><span class="feature-icon">✔︎</span><span>Confirmación de asistencia</span></div>
-    <div class="feature"><span class="feature-icon">⏱</span><span>Cuenta regresiva</span></div>
-    <div class="feature"><span class="feature-icon">🎵</span><span>Música de fondo</span></div>
-    <div class="feature"><span class="feature-icon">🎟</span><span>Pases con QR</span></div>
-  </section>
+    <!-- FEATURES STRIP -->
+    <section class="features-strip">
+      <div class="feature">
+        <span class="feature-icon">📍</span>
+        <span>Ubicación interactiva</span>
+      </div>
+      <div class="feature">
+        <span class="feature-icon">✉️</span>
+        <span>Envíos ilimitados</span>
+      </div>
+      <div class="feature">
+        <span class="feature-icon">✔︎</span>
+        <span>Confirmación de asistencia</span>
+      </div>
+      <div class="feature">
+        <span class="feature-icon">⏱</span>
+        <span>Cuenta regresiva</span>
+      </div>
+      <div class="feature">
+        <span class="feature-icon">🎵</span>
+        <span>Música de fondo</span>
+      </div>
+      <div class="feature">
+        <span class="feature-icon">🎟️</span>
+        <span>Pases</span>
+      </div>
+      <div class="feature">
+        <span class="feature-icon">🎟</span>
+        <span>Mesa</span>
+      </div>
+    </section>
 
-  <!-- PLANES -->
-  <section class="section" id="planes">
-    <div class="section-header">
-      <p class="section-eyebrow">Comparativa</p>
-      <h2 class="section-title">¿Qué incluye cada plan?</h2>
-    </div>
-
-    <div class="plans-table-wrap">
-      <table class="plans-table">
-        <thead>
-          <tr>
-            <th></th>
-            <th>Estándar</th>
-            <th>Premium</th>
-            <th class="plans-table__highlight-col">Platinum QR</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr class="plans-table__group-header"><td colspan="4">Incluido en todos</td></tr>
-          <tr><td>Cuenta regresiva</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td></tr>
-          <tr><td>Ubicación</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td></tr>
-          <tr><td>Calendario</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td></tr>
-          <tr><td>Itinerario</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td></tr>
-          <tr><td>Hospedaje</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td></tr>
-          <tr><td>Dresscode</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td></tr>
-          <tr><td>Galería de fotos</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td></tr>
-          <tr><td>Mesa de regalos</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td></tr>
-          <tr><td>#Instagram</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td></tr>
-          <tr><td>Confirmación de asistencia</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td></tr>
-          <tr><td>Envíos ilimitados</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td></tr>
-          <tr><td>Vigencia 3 meses</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td></tr>
-          <tr class="plans-table__group-header"><td colspan="4">Exclusivo por plan</td></tr>
-          <tr><td>Pases de entrada</td><td class="dash">—</td><td class="check">✓</td><td class="check">✓</td></tr>
-          <tr>
-            <td>Música de fondo
-              <button class="tooltip-btn" aria-label="Más info" data-tip="Reproduce una canción de tu elección cuando se abre la invitación.">?</button>
-            </td>
-            <td class="dash">—</td><td class="check">✓</td><td class="check">✓</td>
-          </tr>
-          <tr>
-            <td>Pases personalizados
-              <button class="tooltip-btn" aria-label="Más info" data-tip="Cada invitado recibe un pase digital con su nombre y número de acceso.">?</button>
-            </td>
-            <td class="dash">—</td><td class="dash">—</td><td class="check">✓</td>
-          </tr>
-          <tr>
-            <td>Pregúntame
-              <button class="tooltip-btn" aria-label="Más info" data-tip="Los invitados pueden enviar preguntas directamente desde la invitación.">?</button>
-            </td>
-            <td class="dash">—</td><td class="dash">—</td><td class="check">✓</td>
-          </tr>
-          <tr>
-            <td>Control de acceso QR
-              <button class="tooltip-btn" aria-label="Más info" data-tip="Escanea los QR de tus invitados en la entrada del evento.">?</button>
-            </td>
-            <td class="dash">—</td><td class="dash">—</td><td class="check">✓</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-    <div class="tooltip-popup" id="tooltipPopup" role="tooltip" aria-live="polite"></div>
-  </section>
-
-  <!-- PRECIOS -->
-  <section class="section" id="precios">
-    <div class="section-header">
-      <p class="section-eyebrow">Elige tu plan</p>
-      <h2 class="section-title">Inversión para tu gran día</h2>
-    </div>
-
-    <div class="pricing-grid">
-      <div class="pricing-card">
-        <div class="pricing-card__header">
-          <p class="pricing-card__name">Estándar</p>
-          <p class="pricing-card__price">$1,200</p>
-          <p class="pricing-card__period">pago único · MXN</p>
-        </div>
-        <ul class="pricing-card__features">
-          <li>Cuenta regresiva</li>
-          <li>Ubicación interactiva</li>
-          <li>Calendario y agenda</li>
-          <li>Itinerario del evento</li>
-          <li>Hospedaje recomendado</li>
-          <li>Mesa de regalos</li>
-          <li>Envíos ilimitados</li>
-          <li>Vigencia 3 meses</li>
-        </ul>
-        <a href="#" class="btn btn--outline" data-package="Estándar">Seleccionar</a>
+    <!-- PLANES -->
+    <section class="section" id="planes">
+      <div class="section-header">
+        <p class="section-eyebrow">Comparativa</p>
+        <h2 class="section-title">¿Qué incluye cada plan?</h2>
       </div>
 
-      <div class="pricing-card pricing-card--featured">
-        <div class="pricing-card__badge">Más popular</div>
-        <div class="pricing-card__header">
-          <p class="pricing-card__name">Premium</p>
-          <p class="pricing-card__price">$2,240</p>
-          <p class="pricing-card__period">pago único · MXN</p>
-        </div>
-        <ul class="pricing-card__features">
-          <li>Todo lo de Estándar</li>
-          <li>Pases de entrada</li>
-          <li>Música de fondo</li>
-        </ul>
-        <a href="#" class="btn btn--solid-coral" data-package="Premium">Seleccionar</a>
+      <div class="plans-table-wrap">
+        <table class="plans-table">
+          <thead>
+            <tr>
+              <th></th>
+              <th>Estándar</th>
+              <th>Premium</th>
+              <th class="plans-table__highlight-col">Platinum QR</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="plans-table__group-header">
+              <td colspan="4">Incluido en todos</td>
+            </tr>
+            <tr>
+              <td>Cuenta regresiva</td>
+              <td class="check">✓</td>
+              <td class="check">✓</td>
+              <td class="check">✓</td>
+            </tr>
+            <tr>
+              <td>Mensaje de invitacion</td>
+              <td class="check">✓</td>
+              <td class="check">✓</td>
+              <td class="check">✓</td>
+            </tr>
+            <tr>
+              <td>Padres y/o Padrinos</td>
+              <td class="check">✓</td>
+              <td class="check">✓</td>
+              <td class="check">✓</td>
+            </tr>
+            <tr>
+              <td>Ubicación</td>
+              <td class="check">✓</td>
+              <td class="check">✓</td>
+              <td class="check">✓</td>
+            </tr>
+            <tr>
+              <td>Itinerario</td>
+              <td class="check">✓</td>
+              <td class="check">✓</td>
+              <td class="check">✓</td>
+            </tr>
+            <tr>
+              <td>Galería de fotos</td>
+              <td class="check">✓</td>
+              <td class="check">✓</td>
+              <td class="check">✓</td>
+            </tr>
+            <tr>
+              <td>Dresscode</td>
+              <td class="check">✓</td>
+              <td class="check">✓</td>
+              <td class="check">✓</td>
+            </tr>
+            <tr>
+              <td>Mesa de regalos</td>
+              <td class="check">✓</td>
+              <td class="check">✓</td>
+              <td class="check">✓</td>
+            </tr>
+            <tr>
+              <td>Seleccion de Tema</td>
+              <td class="check">✓</td>
+              <td class="check">✓</td>
+              <td class="check">✓</td>
+            </tr>
+            <tr>
+              <td>Envíos ilimitados</td>
+              <td class="check">✓</td>
+              <td class="check">✓</td>
+              <td class="check">✓</td>
+            </tr>
+            <tr>
+              <td>Vigencia 3 meses</td>
+              <td class="check">✓</td>
+              <td class="check">✓</td>
+              <td class="check">✓</td>
+            </tr>
+            <tr class="plans-table__group-header">
+              <td colspan="4">Exclusivo por plan</td>
+            </tr>
+
+            <tr>
+              <td>
+                Música de fondo
+                <button class="tooltip-btn" aria-label="Más info" data-tip="Reproduce una canción de tu elección cuando se abre la invitación.">?</button>
+              </td>
+              <td class="dash">—</td>
+              <td class="check">✓</td>
+              <td class="check">✓</td>
+            </tr>
+            <tr>
+              <td>
+                Video
+                <button class="tooltip-btn" aria-label="Más info" data-tip="Reproduce una canción de tu elección cuando se abre la invitación.">?</button>
+              </td>
+              <td class="dash">—</td>
+              <td class="check">✓</td>
+              <td class="check">✓</td>
+            </tr>
+            <tr>
+              <td>
+                Confirmación de asistencia personalizada
+                <button class="tooltip-btn" aria-label="Más info" data-tip="Cada invitado recibe un pase digital con su nombre y número de acceso.">?</button>
+              </td>
+              <td class="dash">—</td>
+              <td class="dash">—</td>
+              <td class="check">✓</td>
+            </tr>
+            <tr>
+              <td>
+                RSVP automatizado
+                <button class="tooltip-btn" aria-label="Más info" data-tip="Cada invitado recibe un pase digital con su nombre y número de acceso.">?</button>
+              </td>
+              <td class="dash">—</td>
+              <td class="dash">—</td>
+              <td class="check">✓</td>
+            </tr>
+            <tr>
+              <td>
+                Número de Pases
+                <button class="tooltip-btn" aria-label="Más info" data-tip="Cada invitado recibe un pase digital con su nombre y número de acceso.">?</button>
+              </td>
+              <td class="dash">—</td>
+              <td class="dash">—</td>
+              <td class="check">✓</td>
+            </tr>
+            <tr>
+              <td>
+                Número de Mesa
+                <button class="tooltip-btn" aria-label="Más info" data-tip="Cada invitado recibe un pase digital con su nombre y número de acceso.">?</button>
+              </td>
+              <td class="dash">—</td>
+              <td class="dash">—</td>
+              <td class="check">✓</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="tooltip-popup" id="tooltipPopup" role="tooltip" aria-live="polite"></div>
+    </section>
+
+    <!-- PRECIOS -->
+    <section class="section" id="precios">
+      <div class="section-header">
+        <p class="section-eyebrow">Elige tu plan</p>
+        <h2 class="section-title">Inversión para tu gran día</h2>
       </div>
 
-      <div class="pricing-card">
-        <div class="pricing-card__header">
-          <p class="pricing-card__name">Platinum QR</p>
-          <p class="pricing-card__price">$2,800</p>
-          <p class="pricing-card__period">pago único · MXN</p>
+      <div class="pricing-grid">
+        <div class="pricing-card">
+          <div class="pricing-card__header">
+            <p class="pricing-card__name">Estándar</p>
+            <p class="pricing-card__price">$599</p>
+            <p class="pricing-card__period">pago único · MXN</p>
+          </div>
+          <ul class="pricing-card__features">
+            <li>Cuenta regresiva</li>
+            <li>Ubicación interactiva</li>
+            <li>Calendario y agenda</li>
+            <li>Itinerario del evento</li>
+            <li>Hospedaje recomendado</li>
+            <li>Mesa de regalos</li>
+            <li>Envíos ilimitados</li>
+            <li>Vigencia 3 meses</li>
+          </ul>
+          <a href="#" class="btn btn--outline" data-package="Estándar">Seleccionar</a>
         </div>
-        <ul class="pricing-card__features">
-          <li>Todo lo de Premium</li>
-          <li>Pases personalizados</li>
-          <li>Pregúntame</li>
-          <li>Control de acceso QR</li>
-        </ul>
-        <a href="#" class="btn btn--outline" data-package="Platinum QR">Seleccionar</a>
+
+        <div class="pricing-card pricing-card--featured">
+          <div class="pricing-card__badge">Más popular</div>
+          <div class="pricing-card__header">
+            <p class="pricing-card__name">Premium</p>
+            <p class="pricing-card__price">$899</p>
+            <p class="pricing-card__period">pago único · MXN</p>
+          </div>
+          <ul class="pricing-card__features">
+            <li>Todo lo de Estándar</li>
+            <li>Pases de entrada</li>
+            <li>Música de fondo</li>
+          </ul>
+          <a href="#" class="btn btn--solid-coral" data-package="Premium">Seleccionar</a>
+        </div>
+
+        <div class="pricing-card">
+          <div class="pricing-card__header">
+            <p class="pricing-card__name">Platinum QR</p>
+            <p class="pricing-card__price">$1,599</p>
+            <p class="pricing-card__period">pago único · MXN</p>
+          </div>
+          <ul class="pricing-card__features">
+            <li>Todo lo de Premium</li>
+            <li>Pases personalizados</li>
+            <li>Pregúntame</li>
+            <li>Control de acceso QR</li>
+          </ul>
+          <a href="#" class="btn btn--outline" data-package="Platinum QR">Seleccionar</a>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- FOOTER -->
-  <footer class="footer">
-    <p class="footer-logo">Momento<span>s</span></p>
-    <p class="footer-copy">© 2025 Momentos · Invitaciones digitales · México</p>
-  </footer>
+    <!-- FOOTER -->
+    <footer class="footer">
+      <p class="footer-logo">
+        Momento
+        <span>s</span>
+      </p>
+      <p class="footer-copy">© 2025 Momentos · Invitaciones digitales · México</p>
+    </footer>
 
-  <!-- WHATSAPP FLOTANTE -->
-  <a href="#"
-     class="whatsapp-float"
-     id="whatsappBtn"
-     target="_blank"
-     rel="noopener noreferrer"
-     aria-label="Contactar por WhatsApp">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" />
-  </a>
+    <!-- WHATSAPP FLOTANTE -->
+    <a href="#" class="whatsapp-float" id="whatsappBtn" target="_blank" rel="noopener noreferrer" aria-label="Contactar por WhatsApp">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" />
+    </a>
 
-  <script>
-  document.addEventListener('DOMContentLoaded', function () {
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        /* ============================================================
+         DATOS DE CATEGORÍAS
+         ─────────────────────────────────────────────────────────────
+         Para agregar una nueva categoría, añade un objeto aquí:
+         {
+           key:      'id único sin espacios',
+           title:    'Nombre visible en la card',
+           designs: [
+             { label: 'Diseño 1', url: './templates/MiEvento_1.html' },
+             { label: 'Diseño 2', url: './templates/MiEvento_2.html' },
+             // sin url = "Próximamente"
+             { label: 'Próximamente' }
+           ]
+         }
+         ============================================================ */
+        const CATEGORIES = [
+          // {
+          //   key: 'birthday',
+          //   title: 'Cumpleaños',
+          //   designs: [
+          //     { label: 'Diseño 1', url: './templates/Birthday_1.html' },
+          //     { label: 'Diseño 2', url: './templates/Birthday_2.html' },
+          //     { label: 'Próximamente' }
+          //   ]
+          // },
+          {
+            key: "babyshower",
+            title: "Baby Shower",
+            designs: [
+              { label: "Diseño 1", url: "./templates/BabyShower_1.html" }, 
+              { label: "Diseño 2", url: "./templates/BabyShower_2.html" }, 
+              { label: "Próximamente" }],
+          },
+          {
+            key: "xv",
+            title: "XV Años",
+            designs: [
+              { label: "Diseño 1", url: "./templates/XV_1.html" },
+              { label: "Diseño 2", url: "./templates/XV_2.html" },
+              { label: "Diseño 3", url: "./templates/XV_3.html" },
+            ],
+          },
+          {
+            key: "wedding",
+            title: "Bodas",
+            designs: [
+              { label: "Diseño 1", url: "./templates/Wedding_1.html" }, 
+              { label: "Diseño 2", url: "./templates/Wedding_2.html" },
+              { label: "Diseño 3", url: "./templates/Wedding_3.html" }
+            ],
+          },
+        ];
 
-    /* ============================================================
-       DATOS DE CATEGORÍAS
-       ─────────────────────────────────────────────────────────────
-       Para agregar una nueva categoría, añade un objeto aquí:
-       {
-         key:      'id único sin espacios',
-         title:    'Nombre visible en la card',
-         designs: [
-           { label: 'Diseño 1', url: './templates/MiEvento_1.html' },
-           { label: 'Diseño 2', url: './templates/MiEvento_2.html' },
-           // sin url = "Próximamente"
-           { label: 'Próximamente' }
-         ]
-       }
-       ============================================================ */
-    const CATEGORIES = [
-      {
-        key: 'birthday',
-        title: 'Cumpleaños',
-        designs: [
-          { label: 'Diseño 1', url: './templates/Birthday_1.html' },
-          { label: 'Diseño 2', url: './templates/Birthday_2.html' },
-          { label: 'Próximamente' }
-        ]
-      },
-      {
-        key: 'babyshower',
-        title: 'Baby Shower',
-        designs: [
-          { label: 'Diseño 1', url: './templates/BabyShower_1.html' },
-          { label: 'Diseño 2', url: './templates/BabyShower_2.html' },
-          { label: 'Próximamente' }
-        ]
-      },
-      {
-        key: 'xv',
-        title: 'XV Años',
-        designs: [
-          { label: 'Diseño 1', url: './templates/XV_1.html' },
-          { label: 'Diseño 2', url: './templates/XV_2.html' },
-          { label: 'Diseño 3', url: './templates/XV_3.html' }
-        ]
-      },
-      {
-        key: 'wedding',
-        title: 'Bodas',
-        designs: [
-          { label: 'Diseño 1', url: './templates/Wedding_1.html' },
-          { label: 'Diseño 2', url: './templates/Wedding_2.html' },
-          { label: 'Próximamente' }
-        ]
-      }
-    ];
+        /* ============================================================
+         CONSTRUIR CARD — crea el DOM completo de una categoría
+         ============================================================ */
+        function buildCard(cat) {
+          const card = document.createElement("article");
+          card.className = "category-card";
 
-    /* ============================================================
-       CONSTRUIR CARD — crea el DOM completo de una categoría
-       ============================================================ */
-    function buildCard(cat) {
-      const card = document.createElement('article');
-      card.className = 'category-card';
+          // — Área del phone frame —
+          const previewArea = document.createElement("div");
+          previewArea.className = "category-card__preview";
 
-      // — Área del phone frame —
-      const previewArea = document.createElement('div');
-      previewArea.className = 'category-card__preview';
+          const frame = document.createElement("div");
+          frame.className = "phone-frame";
 
-      const frame = document.createElement('div');
-      frame.className = 'phone-frame';
+          const notch = document.createElement("div");
+          notch.className = "phone-frame__notch";
 
-      const notch = document.createElement('div');
-      notch.className = 'phone-frame__notch';
+          const loader = document.createElement("div");
+          loader.className = "phone-frame__loader";
+          loader.innerHTML = '<div class="phone-frame__spinner"></div>';
 
-      const loader = document.createElement('div');
-      loader.className = 'phone-frame__loader';
-      loader.innerHTML = '<div class="phone-frame__spinner"></div>';
+          const iframe = document.createElement("iframe");
+          iframe.className = "phone-frame__iframe";
+          iframe.title = "Preview " + cat.title;
+          iframe.setAttribute("sandbox", "allow-scripts allow-same-origin");
 
-      const iframe = document.createElement('iframe');
-      iframe.className = 'phone-frame__iframe';
-      iframe.title = 'Preview ' + cat.title;
-      iframe.setAttribute('sandbox', 'allow-scripts allow-same-origin');
+          // Ocultar loader cuando carga el iframe
+          iframe.addEventListener("load", () => loader.classList.add("is-hidden"));
 
-      // Ocultar loader cuando carga el iframe
-      iframe.addEventListener('load', () => loader.classList.add('is-hidden'));
+          frame.appendChild(notch);
+          frame.appendChild(loader);
+          frame.appendChild(iframe);
+          previewArea.appendChild(frame);
 
-      frame.appendChild(notch);
-      frame.appendChild(loader);
-      frame.appendChild(iframe);
-      previewArea.appendChild(frame);
+          // — Barra de navegación (prev · dots · next) —
+          const nav = document.createElement("div");
+          nav.className = "category-card__nav";
 
-      // — Barra de navegación (prev · dots · next) —
-      const nav = document.createElement('div');
-      nav.className = 'category-card__nav';
+          const btnPrev = document.createElement("button");
+          btnPrev.className = "swiper-btn";
+          btnPrev.setAttribute("aria-label", "Anterior");
+          btnPrev.innerHTML = "&#8592;";
 
-      const btnPrev = document.createElement('button');
-      btnPrev.className = 'swiper-btn';
-      btnPrev.setAttribute('aria-label', 'Anterior');
-      btnPrev.innerHTML = '&#8592;';
+          const dotsWrap = document.createElement("div");
+          dotsWrap.className = "swiper-dots";
 
-      const dotsWrap = document.createElement('div');
-      dotsWrap.className = 'swiper-dots';
+          const btnNext = document.createElement("button");
+          btnNext.className = "swiper-btn";
+          btnNext.setAttribute("aria-label", "Siguiente");
+          btnNext.innerHTML = "&#8594;";
 
-      const btnNext = document.createElement('button');
-      btnNext.className = 'swiper-btn';
-      btnNext.setAttribute('aria-label', 'Siguiente');
-      btnNext.innerHTML = '&#8594;';
+          cat.designs.forEach((_, i) => {
+            const dot = document.createElement("span");
+            dot.className = "dot" + (i === 0 ? " is-active" : "");
+            dotsWrap.appendChild(dot);
+          });
 
-      cat.designs.forEach((_, i) => {
-        const dot = document.createElement('span');
-        dot.className = 'dot' + (i === 0 ? ' is-active' : '');
-        dotsWrap.appendChild(dot);
-      });
+          nav.appendChild(btnPrev);
+          nav.appendChild(dotsWrap);
+          nav.appendChild(btnNext);
 
-      nav.appendChild(btnPrev);
-      nav.appendChild(dotsWrap);
-      nav.appendChild(btnNext);
+          // — Info inferior (título + caption) —
+          const info = document.createElement("div");
+          info.className = "category-card__info";
 
-      // — Info inferior (título + caption) —
-      const info = document.createElement('div');
-      info.className = 'category-card__info';
+          const title = document.createElement("h3");
+          title.className = "category-card__title";
+          title.textContent = cat.title;
 
-      const title = document.createElement('h3');
-      title.className = 'category-card__title';
-      title.textContent = cat.title;
+          const caption = document.createElement("p");
+          caption.className = "category-card__caption";
 
-      const caption = document.createElement('p');
-      caption.className = 'category-card__caption';
+          info.appendChild(title);
+          info.appendChild(caption);
 
-      info.appendChild(title);
-      info.appendChild(caption);
+          card.appendChild(previewArea);
+          card.appendChild(nav);
+          card.appendChild(info);
 
-      card.appendChild(previewArea);
-      card.appendChild(nav);
-      card.appendChild(info);
+          // — Lógica de navegación entre diseños —
+          let current = 0;
 
-      // — Lógica de navegación entre diseños —
-      let current = 0;
+          function goTo(index) {
+            const design = cat.designs[index];
+            if (!design) return;
+            current = index;
 
-      function goTo(index) {
-        const design = cat.designs[index];
-        if (!design) return;
-        current = index;
+            // Actualizar dots
+            dotsWrap.querySelectorAll(".dot").forEach((d, i) => d.classList.toggle("is-active", i === current));
 
-        // Actualizar dots
-        dotsWrap.querySelectorAll('.dot').forEach((d, i) =>
-          d.classList.toggle('is-active', i === current)
-        );
-
-        // Actualizar caption
-        if (design.url) {
-          caption.innerHTML = '<a href="' + design.url + '" target="_blank">' + design.label + '</a>';
-          // Cargar iframe
-          loader.classList.remove('is-hidden');
-          iframe.src = design.url;
-        } else {
-          caption.innerHTML = '<span class="caption-soon">' + design.label + '</span>';
-          iframe.src = 'about:blank';
-          loader.classList.add('is-hidden');
-        }
-      }
-
-      btnPrev.addEventListener('click', () =>
-        goTo((current - 1 + cat.designs.length) % cat.designs.length)
-      );
-      btnNext.addEventListener('click', () =>
-        goTo((current + 1) % cat.designs.length)
-      );
-
-      // Cargar primer diseño
-      goTo(0);
-
-      return card;
-    }
-
-    /* ============================================================
-       RENDERIZAR TODAS LAS CARDS
-       ============================================================ */
-    const grid = document.getElementById('categoriesGrid');
-    CATEGORIES.forEach(cat => grid.appendChild(buildCard(cat)));
-
-    /* ============================================================
-       TOOLTIPS
-       ============================================================ */
-    const tooltipPopup = document.getElementById('tooltipPopup');
-
-    function showTooltip(btn) {
-      const text = btn.getAttribute('data-tip');
-      if (!text) return;
-      tooltipPopup.textContent = text;
-      tooltipPopup.classList.add('is-visible');
-      const rect = btn.getBoundingClientRect();
-      const popupRect = tooltipPopup.getBoundingClientRect();
-      let left = rect.left + rect.width / 2 - popupRect.width / 2;
-      left = Math.max(8, Math.min(left, window.innerWidth - popupRect.width - 8));
-      tooltipPopup.style.left = left + 'px';
-      tooltipPopup.style.top = (rect.top - popupRect.height - 10 + window.scrollY) + 'px';
-    }
-    function hideTooltip() { tooltipPopup.classList.remove('is-visible'); }
-
-    document.querySelectorAll('.tooltip-btn').forEach(btn => {
-      btn.addEventListener('mouseenter', () => showTooltip(btn));
-      btn.addEventListener('mouseleave', hideTooltip);
-      btn.addEventListener('focus', () => showTooltip(btn));
-      btn.addEventListener('blur', hideTooltip);
-      btn.addEventListener('click', (e) => {
-        e.preventDefault();
-        tooltipPopup.classList.contains('is-visible') ? hideTooltip() : showTooltip(btn);
-      });
-    });
-
-    document.addEventListener('click', (e) => {
-      if (!e.target.closest('.tooltip-btn')) hideTooltip();
-    });
-    window.addEventListener('scroll', hideTooltip, { passive: true });
-
-    /* ============================================================
-       SMOOTH SCROLL
-       ============================================================ */
-    document.querySelectorAll('a[href^="#"]').forEach(link => {
-      link.addEventListener('click', function (e) {
-        const id = this.getAttribute('href');
-        if (id.length > 1) {
-          const target = document.querySelector(id);
-          if (target) {
-            e.preventDefault();
-            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            // Actualizar caption
+            if (design.url) {
+              caption.innerHTML = '<a href="' + design.url + '" target="_blank">' + design.label + "</a>";
+              // Cargar iframe
+              loader.classList.remove("is-hidden");
+              iframe.src = design.url;
+            } else {
+              caption.innerHTML = '<span class="caption-soon">' + design.label + "</span>";
+              iframe.src = "about:blank";
+              loader.classList.add("is-hidden");
+            }
           }
+
+          btnPrev.addEventListener("click", () => goTo((current - 1 + cat.designs.length) % cat.designs.length));
+          btnNext.addEventListener("click", () => goTo((current + 1) % cat.designs.length));
+
+          // Cargar primer diseño
+          goTo(0);
+
+          return card;
         }
-      });
-    });
 
-    /* ============================================================
-       WHATSAPP DINÁMICO
-       ─────────────────────────────────────────────────────────────
-       Cambia el número aquí:
-       ============================================================ */
-    const WA_NUMBER = '524371029173';
-    const whatsappBtn = document.getElementById('whatsappBtn');
+        /* ============================================================
+         RENDERIZAR TODAS LAS CARDS
+         ============================================================ */
+        const grid = document.getElementById("categoriesGrid");
+        CATEGORIES.forEach((cat) => grid.appendChild(buildCard(cat)));
 
-    function setWhatsappPlan(planName) {
-      const msg = planName
-        ? `Hola, me interesa obtener información y contratar el paquete *${planName}* para mis invitaciones digitales.`
-        : 'Hola, me interesa obtener información sobre las invitaciones digitales.';
-      whatsappBtn.href = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`;
-      whatsappBtn.setAttribute('data-plan', planName ? '📦 ' + planName : '');
-    }
+        /* ============================================================
+         TOOLTIPS
+         ============================================================ */
+        const tooltipPopup = document.getElementById("tooltipPopup");
 
-    // Mensaje genérico por defecto
-    setWhatsappPlan(document.querySelector(".pricing-card--featured .btn").getAttribute('data-package'));
+        function showTooltip(btn) {
+          const text = btn.getAttribute("data-tip");
+          if (!text) return;
+          tooltipPopup.textContent = text;
+          tooltipPopup.classList.add("is-visible");
+          const rect = btn.getBoundingClientRect();
+          const popupRect = tooltipPopup.getBoundingClientRect();
+          let left = rect.left + rect.width / 2 - popupRect.width / 2;
+          left = Math.max(8, Math.min(left, window.innerWidth - popupRect.width - 8));
+          tooltipPopup.style.left = left + "px";
+          tooltipPopup.style.top = rect.top - popupRect.height - 10 + window.scrollY + "px";
+        }
+        function hideTooltip() {
+          tooltipPopup.classList.remove("is-visible");
+        }
 
-    // Al hacer clic en "Seleccionar" de cualquier plan
-    document.querySelectorAll('[data-package]').forEach(btn => {
-      btn.addEventListener('click', function (e) {
-        e.preventDefault();
-        const plan = this.getAttribute('data-package');
-
-        // Quitar featured y selected de todas las cards
-        document.querySelectorAll('.pricing-card').forEach(card => {
-          card.classList.remove('pricing-card--featured', 'pricing-card--selected');
-          card.querySelector('.btn').classList.remove("btn--solid-coral");
-          card.querySelector('.btn').classList.add("btn--outline");
+        document.querySelectorAll(".tooltip-btn").forEach((btn) => {
+          btn.addEventListener("mouseenter", () => showTooltip(btn));
+          btn.addEventListener("mouseleave", hideTooltip);
+          btn.addEventListener("focus", () => showTooltip(btn));
+          btn.addEventListener("blur", hideTooltip);
+          btn.addEventListener("click", (e) => {
+            e.preventDefault();
+            tooltipPopup.classList.contains("is-visible") ? hideTooltip() : showTooltip(btn);
+          });
         });
 
-        // Aplicar featured a la card seleccionada
-        this.closest('.pricing-card').classList.add('pricing-card--featured');
-        this.closest('.pricing-card .btn').classList.remove("btn--outline");
-        this.closest('.pricing-card .btn').classList.add("btn--solid-coral");
-        setWhatsappPlan(plan);
+        document.addEventListener("click", (e) => {
+          if (!e.target.closest(".tooltip-btn")) hideTooltip();
+        });
+        window.addEventListener("scroll", hideTooltip, { passive: true });
 
-        // Animación de rebote para que el usuario note el botón
-        whatsappBtn.animate(
-          [{ transform: 'scale(1)' }, { transform: 'scale(1.3)' }, { transform: 'scale(1)' }],
-          { duration: 400, easing: 'ease' }
-        );
+        /* ============================================================
+         SMOOTH SCROLL
+         ============================================================ */
+        document.querySelectorAll('a[href^="#"]').forEach((link) => {
+          link.addEventListener("click", function (e) {
+            const id = this.getAttribute("href");
+            if (id.length > 1) {
+              const target = document.querySelector(id);
+              if (target) {
+                e.preventDefault();
+                target.scrollIntoView({ behavior: "smooth", block: "start" });
+              }
+            }
+          });
+        });
+
+        /* ============================================================
+         WHATSAPP DINÁMICO
+         ─────────────────────────────────────────────────────────────
+         Cambia el número aquí:
+         ============================================================ */
+        const WA_NUMBER = "524371029173";
+        const whatsappBtn = document.getElementById("whatsappBtn");
+
+        function setWhatsappPlan(planName) {
+          const msg = planName ? `Hola, me interesa obtener información y contratar el paquete *${planName}* para mis invitaciones digitales.` : "Hola, me interesa obtener información sobre las invitaciones digitales.";
+          whatsappBtn.href = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`;
+          whatsappBtn.setAttribute("data-plan", planName ? "📦 " + planName : "");
+        }
+
+        // Mensaje genérico por defecto
+        setWhatsappPlan(document.querySelector(".pricing-card--featured .btn").getAttribute("data-package"));
+
+        // Al hacer clic en "Seleccionar" de cualquier plan
+        document.querySelectorAll("[data-package]").forEach((btn) => {
+          btn.addEventListener("click", function (e) {
+            e.preventDefault();
+            const plan = this.getAttribute("data-package");
+
+            // Quitar featured y selected de todas las cards
+            document.querySelectorAll(".pricing-card").forEach((card) => {
+              card.classList.remove("pricing-card--featured", "pricing-card--selected");
+              card.querySelector(".btn").classList.remove("btn--solid-coral");
+              card.querySelector(".btn").classList.add("btn--outline");
+            });
+
+            // Aplicar featured a la card seleccionada
+            this.closest(".pricing-card").classList.add("pricing-card--featured");
+            this.closest(".pricing-card .btn").classList.remove("btn--outline");
+            this.closest(".pricing-card .btn").classList.add("btn--solid-coral");
+            setWhatsappPlan(plan);
+
+            // Animación de rebote para que el usuario note el botón
+            whatsappBtn.animate([{ transform: "scale(1)" }, { transform: "scale(1.3)" }, { transform: "scale(1)" }], { duration: 400, easing: "ease" });
+          });
+        });
       });
-    });
-
-  });
-  </script>
-</body>
+    </script>
+  </body>
 </html>

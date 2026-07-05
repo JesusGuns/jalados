@@ -1,1006 +1,1931 @@
-<!DOCTYPE html>
-<!--[if lt IE 7]>      <html lang="en" class="lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html lang="en" class="lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html lang="en" class="lt-ie9"> <![endif]-->
-<!--[if IE 9]>         <html lang="en" class="ie9"> <![endif]-->
-<html lang="en">
+<!doctype html>
+<html lang="es">
   <head>
-    <meta charset="utf-8" />
+    <meta name="google" content="notranslate" />
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/png" sizes="196x196" href="https://jesusguns.github.io/jalados/images/_favicon-XV.png">
-    <!-- Primary Meta Tags -->
+    <link rel="icon" type="image/png" sizes="196x196" href="https://jesusguns.github.io/jalados/images/_favicon-XV.png" />
     <title>Mis XV Años</title>
-    <meta name="title" content="Mis XV Años" />
-    <meta name="description" content="Los momentos más esperados se sueñan, se imaginan, se construyen y cuando llegue ese día tan especial, lo más importante es que estés a mi lado." />
-
-    <!-- Open Graph / Facebook -->
+    <meta name="description" content="" />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://jesusguns.github.io/jalados/templates/XV_2.html" />
-    <meta property="og:title" content="Mis XV Años" />
-    <meta property="og:description" content="Los momentos más esperados se sueñan, se imaginan, se construyen y cuando llegue ese día tan especial, lo más importante es que estés a mi lado." />
-    <meta property="og:image" content="https://jesusguns.github.io/jalados/images/_favicon-XV.png" />
-
-    <!-- Twitter -->
+    <meta property="og:url" content="" />
+    <meta property="og:title" content="" />
+    <meta property="og:description" content="" />
+    <meta property="og:image" content="" />
     <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content="https://jesusguns.github.io/jalados/templates/XV_2.html" />
-    <meta property="twitter:title" content="Mis XV Años" />
-    <meta property="twitter:description" content="Los momentos más esperados se sueñan, se imaginan, se construyen y cuando llegue ese día tan especial, lo más importante es que estés a mi lado." />
-    <meta property="twitter:image" content="https://jesusguns.github.io/jalados/images/_favicon-XV.png" />
+    <meta property="twitter:url" content="" />
+    <meta property="twitter:title" content="" />
+    <meta property="twitter:description" content="" />
+    <meta property="twitter:image" content="" />
 
-    <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
-    <!-- Font Awesome-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Josefin+Sans:wght@300;400;600&family=Pinyon+Script&display=swap" rel="stylesheet" />
 
-    <link href="https://fonts.googleapis.com/css2?family=Satisfy&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Caveat&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet" />
-
-    <link rel="stylesheet" href="../css/templates.css">
     <script src="../js/require.js"></script>
+
     <style>
-      /* #region ROOT*/
+      /* #region ROOT */
       :root {
-        --color_primary: #a14d74;
-        --color_secondary: white;
-        --color_third: #C2185B;
-        --color_fourth: #713b5f;
-        --color_fifth: #ad1457;
-        --color_sixth: rgba(173, 20, 87, 0.45);
-    
-        --font-primary: 'Satisfy';
-        --font-secondary: "Caveat";
-        --font-third: "Dancing Script";
+        --color_primary: #9b4d6e;
+        --color_secondary: #c47a9a;
+        --color_third: #7a3255;
+        --color_fourth: #d4a0b8;
+        --color_fifth: rgba(155, 77, 110, 0.35);
+        --color_fifth_1: rgba(155, 77, 110, 0);
+        --color_counter: #fff;
+        --color_gold: #c9a46b;
+        --color_gold_light: #e8d0a8;
+        --color_ink: #0e0710;
+
+        /* Text color tokens — cambian con el tema */
+        --text_primary: #ffffff;
+        --text_secondary: rgba(255, 255, 255, 0.82);
+        --text_muted: rgba(255, 255, 255, 0.55);
+        --text_soft: rgba(255, 255, 255, 0.6);
+        --card_bg: rgba(255, 255, 255, 0.04);
+        --border_subtle: rgba(201, 164, 107, 0.15);
+
+        --font-display: "Pinyon Script", cursive;
+        --font-serif: "Libre Baskerville", Georgia, serif;
+        --font-sans: "Josefin Sans", sans-serif;
+      }
+      /* #endregion ROOT */
+
+      /* #region BASE */
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
       }
 
-      /* #endregion ROOT*/
-      /* #region HTML*/
+      html {
+        scroll-behavior: smooth;
+      }
+
       body {
-        font-family: var(--font-primary);
-        background: rgb(113, 59, 95);
-        background: -moz-linear-gradient(0deg, rgba(113, 59, 95, 1) 0%, rgba(95, 59, 113, 1) 12%, rgba(15, 19, 41, 1) 95%);
-        background: -webkit-linear-gradient(0deg, rgba(113, 59, 95, 1) 0%, rgba(95, 59, 113, 1) 12%, rgba(15, 19, 41, 1) 95%);
-        background: linear-gradient(0deg, rgba(113, 59, 95, 1) 0%, rgba(95, 59, 113, 1) 12%, rgba(15, 19, 41, 1) 95%);
+        background-color: var(--color_ink);
+        font-family: var(--font-sans);
+        color: var(--text_primary);
+        overflow-x: hidden;
       }
-      /* #endregion HTML*/
-      /* #region Animations*/
 
-      @keyframes _animation-pulse-3 {
-        0% {
-          transform: scale(1);
-          box-shadow: 0 0 0 0 rgba(199, 123, 145, 0.4);
+      /* Fondo floral sutil — pattern SVG inline */
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        background-image: radial-gradient(ellipse at 20% 0%, rgba(155, 77, 110, 0.18) 0%, transparent 60%), radial-gradient(ellipse at 80% 100%, rgba(122, 50, 85, 0.2) 0%, transparent 60%);
+        z-index: 0;
+        pointer-events: none;
+      }
+
+      .page-wrap {
+        position: relative;
+        z-index: 1;
+        max-width: 520px;
+        margin: 0 auto;
+        padding-bottom: 60px;
+      }
+      /* #endregion BASE */
+
+      /* #region AUDIO */
+      ._template-Audio-Button {
+        position: fixed;
+        top: 18px;
+        right: 18px;
+        z-index: 200;
+        width: 42px;
+        height: 42px;
+        border-radius: 50%;
+        background: rgba(14, 7, 16, 0.75);
+        backdrop-filter: blur(10px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        border: 1px solid rgba(201, 164, 107, 0.55);
+        box-shadow: 0 2px 16px rgba(0, 0, 0, 0.5);
+        transition: all 0.3s ease;
+        animation: none;
+      }
+      ._template-Audio-Button img {
+        width: 20px;
+        filter: brightness(10);
+        background: transparent;
+        border-radius: 0;
+      }
+      ._template-Audio-Button:hover {
+        background: rgba(155, 77, 110, 0.4);
+        border-color: rgba(201, 164, 107, 0.9);
+      }
+      ._template-Audio-Button.off {
+        opacity: 0.45;
+        border-color: rgba(255, 255, 255, 0.2);
+      }
+      /* #endregion AUDIO */
+
+      /* #region THEME SWITCHER */
+      #themeSwitcher {
+        position: fixed;
+        left: 16px;
+        top: 50%;
+        transform: translateY(-50%);
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        z-index: 200;
+        transition:
+          opacity 0.4s ease,
+          visibility 0.4s ease;
+        background: white;
+        padding: 10px;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      }
+
+      #themeSwitcher.hidden {
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+      }
+
+      .theme-btn {
+        width: 14px;
+        height: 14px;
+        border-radius: 50%;
+        border: 2px solid rgba(255, 255, 255, 0.35);
+        cursor: pointer;
+        transition:
+          transform 0.2s,
+          border-color 0.2s;
+        padding: 0;
+        -webkit-tap-highlight-color: transparent;
+      }
+
+      .theme-btn:hover {
+        transform: scale(1.35);
+        border-color: rgba(255, 255, 255, 0.85);
+      }
+
+      .theme-btn.active {
+        border-color: var(--text_primary);
+        transform: scale(1.2);
+      }
+
+      @media (max-width: 575.98px) {
+        #themeSwitcher {
+          left: 8px;
         }
-
-        70% {
-          transform: scale(1.05);
-          box-shadow: 0 0 0 10px rgba(199, 123, 145, 0);
-        }
-
-        100% {
-          transform: scale(1);
-          box-shadow: 0 0 0 0 rgba(199, 123, 145, 0);
+        .theme-btn {
+          width: 12px;
+          height: 12px;
         }
       }
-      /* #endregion Animations*/
-      /* #region General*/
-      .fireworks-container {
+      /* #endregion THEME SWITCHER */
+      .inv-section {
+        padding: 56px 28px;
+        position: relative;
+      }
+
+      /* Línea timeline lateral — el elemento firma */
+      .inv-section.has-line::before {
+        content: "";
         position: absolute;
         left: 0;
         top: 0;
+        bottom: 0;
+        width: 2px;
+        background: linear-gradient(to bottom, transparent 0%, rgba(201, 164, 107, 0.5) 15%, rgba(201, 164, 107, 0.5) 85%, transparent 100%);
+      }
+
+      .section-eyebrow {
+        font-family: var(--font-sans);
+        font-size: 0.72rem;
+        font-weight: 600;
+        letter-spacing: 5px;
+        text-transform: uppercase;
+        color: var(--color_gold);
+        margin-bottom: 8px;
+        display: block;
+      }
+
+      .section-title {
+        font-family: var(--font-display);
+        font-size: 3.2rem;
+        color: var(--text_primary);
+        line-height: 1;
+        margin-bottom: 20px;
+      }
+
+      .section-text {
+        font-family: var(--font-serif);
+        font-size: 1rem;
+        font-style: italic;
+        color: var(--text_secondary);
+        line-height: 1.8;
+      }
+
+      /* Separador dorado */
+      .gold-rule {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin: 20px 0;
+      }
+      .gold-rule::before,
+      .gold-rule::after {
+        content: "";
+        flex: 1;
+        height: 1px;
+        background: linear-gradient(to right, transparent, rgba(201, 164, 107, 0.5), transparent);
+      }
+      .gold-rule span {
+        color: var(--color_gold);
+        font-size: 0.9rem;
+        letter-spacing: 4px;
+      }
+
+      @media (max-width: 575.98px) {
+        .inv-section {
+          padding: 44px 20px;
+        }
+        .section-title {
+          font-size: 2.6rem;
+        }
+        .section-eyebrow {
+          font-size: 0.68rem;
+        }
+      }
+      /* #endregion SECTION BASE */
+
+      /* #region HERO */
+      .hero {
+        position: relative;
+        height: 100svh;
+        min-height: 560px;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-end;
+      }
+
+      .hero-img {
+        position: absolute;
+        inset: 0;
         width: 100%;
         height: 100%;
+        object-fit: cover;
+        object-position: center top;
+      }
+
+      .hero-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(to bottom, rgba(14, 7, 16, 0.05) 0%, rgba(14, 7, 16, 0.1) 30%, rgba(14, 7, 16, 0.65) 65%, rgba(14, 7, 16, 0.97) 100%);
+      }
+
+      .hero-content {
+        position: relative;
+        z-index: 2;
+        text-align: center;
+        padding: 0 24px 36px;
+        width: 100%;
+      }
+
+      .hero-eyebrow {
+        font-family: var(--font-sans);
+        font-size: 0.72rem;
+        font-weight: 600;
+        letter-spacing: 6px;
+        text-transform: uppercase;
+        color: var(--color_gold);
+        margin-bottom: 8px;
+      }
+
+      .hero-name {
+        font-family: var(--font-display);
+        font-size: 5rem;
+        color: #fff;
+        line-height: 1;
+        text-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+        margin-bottom: 6px;
+      }
+
+      .hero-date {
+        font-family: var(--font-serif);
+        font-size: 0.95rem;
+        font-weight: 400;
+        color: var(--color_gold_light);
+        letter-spacing: 3px;
+      }
+
+      /* Scroll hint hero */
+      .hero-scroll {
+        position: absolute;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 2;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 6px;
+      }
+      .hero-scroll span {
+        font-family: var(--font-sans);
+        font-size: 0.6rem;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: var(--text_muted);
+      }
+      .hero-scroll-line {
+        width: 1px;
+        height: 40px;
+        background: linear-gradient(to bottom, rgba(201, 164, 107, 0.6), transparent);
+        animation: _animation-float 1.8s ease-in-out infinite;
+      }
+
+      @media (max-width: 575.98px) {
+        .hero-name {
+          font-size: 3.8rem;
+        }
+      }
+      /* #endregion HERO */
+
+      /* #region COUNTER */
+      .counter-section {
+        padding: 36px 28px;
+        background: rgba(155, 77, 110, 0.08);
+        border-top: 1px solid rgba(201, 164, 107, 0.15);
+        border-bottom: 1px solid rgba(201, 164, 107, 0.15);
+      }
+
+      .counter-label {
+        font-family: var(--font-sans);
+        font-size: 0.68rem;
+        letter-spacing: 5px;
+        text-transform: uppercase;
+        color: var(--color_gold);
+        text-align: center;
+        display: block;
+        margin-bottom: 20px;
+      }
+
+      .counter-row {
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        gap: 6px;
+      }
+
+      .counter-unit {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        min-width: 64px;
+      }
+
+      .counter-unit .num {
+        font-family: var(--font-serif);
+        font-size: 3rem;
+        font-weight: 700;
+        color: var(--text_primary);
+        line-height: 1;
+      }
+
+      .counter-unit .lbl {
+        font-family: var(--font-sans);
+        font-size: 0.62rem;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: var(--text_muted);
+        margin-top: 4px;
+      }
+
+      .counter-sep {
+        font-family: var(--font-serif);
+        font-size: 2.4rem;
+        color: var(--text_muted);
+        padding-top: 2px;
+        line-height: 1;
+      }
+
+      @media (max-width: 575.98px) {
+        .counter-unit {
+          min-width: 52px;
+        }
+        .counter-unit .num {
+          font-size: 2.4rem;
+        }
+      }
+      /* #endregion COUNTER */
+
+      /* #region INTRO */
+      .intro-section {
+        padding: 60px 28px 40px;
+        text-align: center;
+      }
+
+      .intro-quote {
+        font-family: var(--font-serif);
+        font-size: 1.05rem;
+        font-style: italic;
+        color: var(--text_secondary);
+        line-height: 1.9;
+        max-width: 380px;
+        margin: 0 auto 24px;
+      }
+
+      .intro-big-name {
+        font-family: var(--font-display);
+        font-size: 4.5rem;
+        color: var(--color_fourth);
+        line-height: 1;
+        margin-bottom: 12px;
+      }
+
+      .intro-sub {
+        font-family: var(--font-serif);
+        font-size: 1rem;
+        color: var(--text_soft);
+        font-style: italic;
+      }
+
+      .intro-sub strong {
+        font-style: normal;
+        color: var(--color_gold_light);
+        font-weight: 700;
+      }
+
+      @media (max-width: 575.98px) {
+        .intro-big-name {
+          font-size: 3.6rem;
+        }
+        .intro-quote {
+          font-size: 0.95rem;
+        }
+      }
+      /* #endregion INTRO */
+
+      /* #region PADRES */
+      .parents-section {
+        padding: 48px 28px;
+        background: rgba(255, 255, 255, 0.03);
+        border-top: 1px solid rgba(201, 164, 107, 0.1);
+        border-bottom: 1px solid rgba(201, 164, 107, 0.1);
+      }
+
+      .parents-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+        margin-top: 24px;
+      }
+
+      .parents-card {
+        background: var(--card_bg);
+        border: 1px solid var(--border_subtle);
+        border-radius: 12px;
+        overflow: hidden;
+      }
+
+      .parents-card img {
+        width: 100%;
+        height: 160px;
+        object-fit: cover;
+        display: block;
+      }
+
+      .parents-card .pc-body {
+        padding: 12px 14px 16px;
+        text-align: center;
+      }
+
+      .parents-card .pc-label {
+        font-family: var(--font-sans);
+        font-size: 0.65rem;
+        letter-spacing: 4px;
+        text-transform: uppercase;
+        color: var(--color_gold);
+        display: block;
+        margin-bottom: 6px;
+      }
+
+      .parents-card .pc-names {
+        list-style: none;
+        padding: 0;
+      }
+
+      .parents-card .pc-names li {
+        font-family: var(--font-serif);
+        font-size: 0.88rem;
+        color: var(--text_primary);
+        padding: 2px 0;
+        line-height: 1.4;
+      }
+
+      @media (max-width: 380px) {
+        .parents-grid {
+          grid-template-columns: 1fr;
+        }
+        .parents-card img {
+          height: 200px;
+        }
+      }
+      /* #endregion PADRES */
+
+      /* #region DETALLES */
+      .details-section {
+        padding: 56px 28px;
+      }
+
+      .detail-card {
+        display: flex;
+        align-items: flex-start;
+        gap: 16px;
+        padding: 18px 20px;
+        background: var(--card_bg);
+        border: 1px solid var(--border_subtle);
+        border-radius: 12px;
+        margin-bottom: 12px;
+        text-decoration: none;
+        color: var(--text_primary);
+        transition:
+          background 0.25s,
+          border-color 0.25s;
+      }
+
+      .detail-card:hover,
+      .detail-card:active {
+        background: rgba(155, 77, 110, 0.1);
+        border-color: rgba(201, 164, 107, 0.3);
+        color: var(--text_primary);
+      }
+
+      .detail-card .dc-icon {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: rgba(201, 164, 107, 0.1);
+        border: 1px solid rgba(201, 164, 107, 0.25);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--color_gold);
+        font-size: 1rem;
+        flex-shrink: 0;
+      }
+
+      .detail-card .dc-info {
+        flex: 1;
+      }
+
+      .detail-card .dc-tag {
+        font-family: var(--font-sans);
+        font-size: 0.65rem;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: var(--color_gold_light);
+        display: block;
+        margin-bottom: 3px;
+      }
+
+      .detail-card .dc-place {
+        font-family: var(--font-serif);
+        font-size: 1.05rem;
+        color: var(--text_primary);
+        font-weight: 700;
+        margin: 0 0 3px;
+      }
+
+      .detail-card .dc-address {
+        font-family: var(--font-sans);
+        font-size: 0.82rem;
+        color: var(--text_soft);
+        line-height: 1.4;
+        margin: 0;
+      }
+
+      .detail-card .dc-map {
+        flex-shrink: 0;
+        align-self: center;
+      }
+
+      .detail-card .dc-map img {
+        width: auto;
+        height: 28px;
+        animation: _animation-pulse-3 1.5s infinite;
+        border-radius: 50%;
+      }
+      /* #endregion DETALLES */
+
+      /* #region ITINERARIO */
+      .itinerary-section {
+        padding: 48px 28px;
+        background: rgba(255, 255, 255, 0.03);
+        border-top: 1px solid rgba(201, 164, 107, 0.1);
+        border-bottom: 1px solid rgba(201, 164, 107, 0.1);
+        position: relative;
+      }
+
+      /* Línea vertical izquierda */
+      .itinerary-section::before {
+        content: "";
+        position: absolute;
+        left: 44px;
+        top: 90px;
+        bottom: 36px;
+        width: 1px;
+        background: linear-gradient(to bottom, rgba(201, 164, 107, 0.4), transparent);
+      }
+
+      .itin-list {
+        margin-top: 24px;
+      }
+
+      .itin-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 16px;
+        padding: 0 0 28px 0;
+        position: relative;
+      }
+
+      .itin-item:last-child {
+        padding-bottom: 0;
+      }
+
+      .itin-dot {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        background: var(--color_ink);
+        border: 1px solid rgba(201, 164, 107, 0.4);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--color_gold);
+        font-size: 0.8rem;
+        flex-shrink: 0;
+        position: relative;
         z-index: 1;
       }
 
-      ._btn-brands {
-        display: none;
-        justify-content: center;
-        gap: 1rem;
-        width: 60%;
+      .itin-body {
+        padding-top: 4px;
       }
 
-      ._btn-brands.show {
-        display: flex;
+      .itin-name {
+        font-family: var(--font-serif);
+        font-size: 1.05rem;
+        color: var(--text_primary);
+        font-weight: 700;
+        margin-bottom: 2px;
       }
 
-      ._btn-gifttable {
-        background-color: rgba(255, 255, 255, 0.5);
-        border: 5px solid rgba(255, 255, 255, 0.1);
-        border-radius: 8px;
-        box-shadow: 0 4px 6px 0 #ccc;
-        color: black;
-        cursor: pointer;
-        font-family: var(--font-secondary);
-        font-size: 2rem;
-        font-weight: bold;
-        padding: 10px;
-        text-decoration: none;
-        display: flex;
-        align-items: center;
-        justify-content: flex-start;
-      }
-
-      ._btn-gifttable:hover {
-        box-shadow: 4px 6px 12px 0px #545454;
-      }
-
-      ._btn-gifttable a {
-        width: 65px;
-        margin-right: 1rem;
-      }
-
-      ._btn-gifttable img {
-        width: 65px;
-        margin-right: 1rem;
-      }
-
-      ._parent-confirmation {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-
-      ._confirmation-section {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 2rem;
-        padding: 2rem 0px;
-        border-radius: 15px;
-        box-shadow: 0 0px 25px rgba(0, 0, 0, 0.33);
-        margin: 2rem 0;
-        width: 90%;
-        transition: background-color 0.3s ease, box-shadow 0.3s ease;
-        animation: _animation-pulse-3 2s infinite;
-      }
-
-      ._btn-Confirmation {
-        background-color: var(--color_fifth);
-        color: #fff;
-        font-family: var(--font-secondary);
-        font-size: 2rem;
-        border-radius: 25px;
-        cursor: pointer;
-        box-shadow: 0 4px 12px rgba(199, 123, 145, 0.4);
-        transition: background-color 0.3s ease, box-shadow 0.3s ease;
-        animation: _animation-pulse-3 2s infinite;
-        text-decoration: none;
-        width: 40%;
-        text-align: center;
-        padding: 12px 32px;
-      }
-
-      ._btn-Confirmation i {
-        margin-right: 8px;
-        transition: transform 0.3s ease;
-      }
-
-      ._btn-Confirmation:hover {
-        background-color: var(--color_sixth);
-        box-shadow: 0 6px 18px rgba(173, 95, 125, 0.45);
-      }
-
-      ._btn-Confirmation:hover i {
-        animation: _animation-heartbeat 1s ease-in-out infinite;
+      .itin-time {
+        font-family: var(--font-sans);
+        font-size: 0.75rem;
+        letter-spacing: 2px;
+        color: var(--color_gold);
       }
 
       @media (max-width: 575.98px) {
-        ._btn-gifttable {
-          border: 0;
-        }
-
-        ._btn-gifttable img {
-          width: 40px;
-        }
-
-        ._confirmation-section {
-          padding: 2rem;
-        }
-
-        ._btn-Confirmation {
-          font-size: 1.7rem;
-          width: 80%;
-          padding: 12px 0px;
+        .itinerary-section::before {
+          left: 38px;
         }
       }
+      /* #endregion ITINERARIO */
 
-      /* #endregion General*/
-      /* #region Audio*/
-      ._template-Audio-Button.off {
-        filter: hue-rotate(45deg);
-      }
-      /* #endregion Audio*/
-      /* #region Counter*/
-   
-
-      ._template-Counter-Section ._counter-Countdown {
-        border-radius: 15px;
-        box-shadow: 0 0px 25px rgba(0, 0, 0, 0.33);
-        width: 90%;
-        transition: background-color 0.3s ease, box-shadow 0.3s ease;
-        animation: _animation-pulse-3 2s infinite;
+      /* #region GALERIA */
+      .gallery-section {
+        padding: 56px 0 0;
       }
 
-      ._template-Counter-Section ._counter-Timebox {
+      .gallery-header {
+        padding: 0 28px 20px;
         display: flex;
-        flex-direction: column;
-        align-items: center;
-        font-size: 22px;
-        color: var(--color_primary);
-        animation: none;
+        align-items: flex-end;
+        justify-content: space-between;
       }
 
-      ._template-Counter-Section ._counter-Timebox span {
+      .gallery-count {
+        font-family: var(--font-serif);
+        font-size: 0.85rem;
+        font-style: italic;
+        color: var(--text_muted);
+      }
+
+      .gallery-masonry {
+        columns: 2;
+        column-gap: 4px;
+        padding: 0 4px;
+      }
+
+      .gal-item {
+        break-inside: avoid;
+        margin-bottom: 4px;
+        cursor: pointer;
+        position: relative;
+        overflow: hidden;
+        border-radius: 6px;
+        display: block;
+      }
+
+      .gal-item img {
+        width: 100%;
         height: auto;
+        display: block;
+        transition: transform 0.4s ease;
       }
 
-      @media (max-width: 575.98px) {
-        ._template-Counter-Section ._counter-Countdown {
-          margin: 2rem 0;
-        }
-        ._template-Counter-Section ._counter-Timebox {
-          font-size: 1.2rem;
-        }
-
-        ._template-Counter-Section ._counter-Timebox span{
-          font-size: 40px;
-          height: auto;
-        }
-      }
-
-      /* #endregion Counter*/
-      /* #region Main Section*/
-      ._main-section {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
-        position: relative;
-      }
-
-      ._main-section img {
-        width: fit-content;
-        height: 100vh;
-      }
-
-      ._main-section ._details {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
-        position: absolute;
-        bottom: 0;
-      }
-
-      ._main-section p {
-        color: var(--color_third);
-        font-size: 7rem;
-        margin: 0;
-      }
-
-      ._main-section p._event-date {
-        font-size: 3.5rem;
-        font-weight: bold;
-      }
-
-      @media (max-width: 1599.98px) { 
-        ._main-section p {
-          font-size: 4rem;
-        }
-
-        ._main-section p._event-date {
-          font-size: 2.5rem;
-        }
-      }
-
-      @media (max-width: 767.98px) {
-        ._main-section p._event-date {
-          font-size: 1.8rem;
-          font-weight: bold;
-          letter-spacing: 2px;
-        }
-      }
-
-      @media (max-width: 575.98px) {
-        ._main-section img {
-          width: 100%;
-          height: fit-content;
-        }
-
-        ._main-section p {
-          font-size: 3rem;
-        }
-
-        ._main-section p._event-date {
-          font-size: 1.5rem;
-        }
-      }
-      /* #endregion Main Section*/
-      /* #region TimeLine Section*/
-      ._timeline-section {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
-        position: relative;
-      }
-
-      ._timeline-section::after {
+      .gal-item::after {
         content: "";
         position: absolute;
-        top: 15%;
-        width: 4px;
-        background-color: var(--color_primary);
-        height: 80%;
+        inset: 0;
+        background: rgba(155, 77, 110, 0);
+        transition: background 0.3s;
       }
 
-      ._timeline-section h3 {
-        font-size: 4rem;
-        margin-bottom: 1rem;
-        font-family: var(--font-third);
-        font-weight: bold;
-        color: var(--color_secondary);
-        filter: brightness(0.9);
-        letter-spacing: 0.3rem;
+      .gal-item:hover::after,
+      .gal-item:active::after {
+        background: rgba(155, 77, 110, 0.2);
       }
 
-      .timeline-section {
-        margin-top: 50px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 16px;
-        padding: 12px 20px 12px 12px;
-        background-color: var(--color_primary);
-        border-radius: 50px;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-        transition: background-color 0.3s ease, transform 0.3s ease;
-        animation: _animation-bounceIn 0.6s ease forwards;
+      /* Gradient bottom en toda la galería */
+      .gallery-fade {
+        height: 80px;
+        background: linear-gradient(to top, var(--color_ink), transparent);
+        margin-top: -80px;
+        position: relative;
         z-index: 2;
       }
+      /* #endregion GALERIA */
 
-      .timeline-section:hover {
-        background-color: var(--color_fourth);
-        transform: translateY(-2px);
-      }
-
-      .timeline-section img {
-        width: 60px;
-        height: 60px;
-        object-fit: cover;
-        border-radius: 50%;
-        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-      }
-
-      .timeline-section img.location-maps {
-        animation: _animation-pulse-3 0.4s infinite;
-      }
-
-      .timeline-section .location-text {
-        color: var(--color_secondary);
-        flex: 1;
-        margin: 0;
-        font-family: var(--font-secondary);
-        font-size: 2.5rem;
-        letter-spacing: 2px;
-      }
-
-      @media (max-width: 767.98px) {
-        .timeline-section .location-text {
-          font-size: 2.2rem;
-        }
-
-        .timeline-section>img {
-          display: none;
-        }
-      }
-
-      @media (max-width: 575.98px) {
-        ._timeline-section::after {
-          height: 70%;
-          top: 20%;
-        }
-
-        .timeline-section {
-          margin-top: 25px;
-        }
-
-        .timeline-section .location-text {
-          font-size: 1.7rem;
-          letter-spacing: 0;
-        }
-
-        .timeline-section img.location-maps {
-          width: 45px;
-          height: 45px;
-        }
-      }
-
-      @media (max-width: 375.98px) {
-        .timeline-section .location-text {
-          font-size: 1.4rem;
-        }
-
-        .timeline-section img.location-maps {
-          width: 40px;
-          height: 40px;
-        }
-      }
-
-      /* #endregion TimeLine Section*/
-      /* #region Carousel Section*/
-      ._carousel-section {
-        display: flex;
-        justify-content: center;
-        width: 100%;
-      }
-
-      ._template-Stack-Gallery {
-        width: 600px;
-        height: 600px;
-        margin: 6rem 0;
-      }
-
-
-      @media (max-width: 1399.98px) {
-        ._template-Stack-Gallery {
-          width: 450px;
-          height: 450px;
-          margin: 5rem 0;
-        }
-      }
-
-      @media (max-width: 575.98px) {
-        ._template-Stack-Gallery {
-          margin: 2rem 0;
-        }
-      }
-      /* #endregion Carousel Section*/
-      /* #region Family Section*/
-      ._family-section {
-        display: flex;
-        justify-content: center;
-        gap: 24px;
-        margin: 60px 0px;
-        flex-wrap: wrap;
-      }
-
-      ._family-section ._details {
-        background: var(--color_secondary);
-        padding: 10px 10px 30px 10px;
-        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25);
-        width: 240px;
-        text-align: center;
-        border-radius: 8px;
-        transform: rotate(-3deg);
-        transition: transform 0.3s ease;
-      }
-
-      ._family-section ._details:nth-child(2) {
-        transform: rotate(3deg);
-      }
-
-      ._family-section ._details:hover {
-        transform: rotate(0deg) scale(1.03);
-      }
-
-      ._family-section img {
-        width: 100%;
-        height: 300px;
-        border-radius: 4px;
-      }
-
-      ._family-section ._title-caption {
-        font-size: 1.7rem;
-      }
-
-      ._family-section .caption {
-        margin-top: 12px;
-        font-family: var(--font-secondary);
-        font-size: 1.8rem;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        letter-spacing: 1px;
-      }
-
-      /* #endregion Family Section*/
-      /* #region Gift Section*/
-      ._gift-section {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
-        margin: 7rem 0 1rem;
+      /* #region DRESSCODE */
+      .dresscode-section {
         position: relative;
+        min-height: 400px;
+        overflow: hidden;
+        display: flex;
+        align-items: flex-end;
       }
 
-      ._gift-box {
-        position: relative;
-        width: 220px;
-        height: 230px;
-        margin-bottom: 5rem;
-      }
-
-      .gift-wrapper {
-        position: relative;
-        width: 250px;
-        top: 50px;
-        left: -15px;
-        z-index: 7;
-        transition: transform 0.5s ease;
-        transform-origin: left bottom;
-        animation: _animation-gift-top-box 2s both infinite;
-      }
-
-      .gift-top {
-        background: linear-gradient(to bottom, #d32f4d, #b9203d);
-        width: 250px;
-        height: 60px;
-        border-radius: 20px;
-        box-shadow: 0 8px 12px rgba(0, 0, 0, 0.3), 0 10px 15px rgba(0, 0, 0, 0.2);
-        z-index: 2;
+      .dresscode-section .dc-bg {
         position: absolute;
-        top: 0;
-      }
-
-      .gift-top::before {
-        content: '';
-        position: absolute;
-        background: #ffffff;
-        width: 55px;
+        inset: 0;
+        width: 100%;
         height: 100%;
-        left: 50%;
-        transform: translateX(-50%);
+        object-fit: cover;
+        object-position: center top;
       }
 
-      .bow-wrapper {
+      .dresscode-section .dc-overlay {
         position: absolute;
-        top: -25px;
-        left: 0;
-        width: 250px;
-        display: flex;
-        justify-content: center;
-        transition: transform 0.5s ease;
-        transform-origin: left bottom;
+        inset: 0;
+        background: linear-gradient(to top, rgba(14, 7, 16, 0.96) 0%, rgba(14, 7, 16, 0.5) 50%, rgba(14, 7, 16, 0.1) 100%);
       }
 
-      .bow {
-        width: 250px;
-        height: 40px;
+      .dresscode-section .dc-content {
+        position: relative;
+        z-index: 2;
+        padding: 0 28px 40px;
+        width: 100%;
+      }
+
+      .dresscode-section .dc-eyebrow {
+        font-family: var(--font-sans);
+        font-size: 0.72rem;
+        letter-spacing: 5px;
+        text-transform: uppercase;
+        color: var(--color_gold_light);
+        display: block;
+        margin-bottom: 8px;
+      }
+
+      .dresscode-section h2 {
+        font-family: var(--font-display);
+        font-size: 4rem;
+        color: var(--text_primary);
+        line-height: 0.9;
+        margin-bottom: 16px;
+      }
+
+      .dresscode-section .dc-style {
+        font-family: var(--font-sans);
+        font-size: 0.88rem;
+        letter-spacing: 4px;
+        text-transform: uppercase;
+        color: var(--color_gold_light);
+        border: 1px solid rgba(201, 164, 107, 0.35);
+        border-radius: 50px;
+        padding: 8px 22px;
+        display: inline-block;
+      }
+      /* #endregion DRESSCODE */
+
+      /* #region CONFIRMACION */
+      .confirm-section {
+        padding: 56px 28px;
+        text-align: center;
+      }
+
+      .confirm-form {
         display: flex;
+        flex-direction: column;
+        gap: 14px;
+        margin-top: 28px;
+        text-align: left;
+      }
+
+      .confirm-field {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+      }
+
+      .confirm-field label {
+        font-family: var(--font-sans);
+        font-size: 0.72rem;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: var(--color_gold_light);
+      }
+
+      .confirm-field input,
+      .confirm-field textarea {
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(201, 164, 107, 0.2);
+        border-radius: 10px;
+        padding: 13px 16px;
+        color: var(--text_primary);
+        font-family: var(--font-serif);
+        font-size: 1rem;
+        outline: none;
+        resize: none;
+        transition:
+          border-color 0.25s,
+          background 0.25s;
+        width: 100%;
+      }
+
+      .confirm-field input:focus,
+      .confirm-field textarea:focus {
+        border-color: rgba(201, 164, 107, 0.55);
+        background: rgba(255, 255, 255, 0.07);
+      }
+
+      .confirm-field input::placeholder,
+      .confirm-field textarea::placeholder {
+        color: var(--text_muted);
+        font-style: italic;
+      }
+
+      .confirm-field textarea {
+        height: 80px;
+      }
+
+      .confirm-actions {
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+        margin-top: 4px;
+      }
+
+      .confirm-btn {
+        flex: auto;
+        display: flex;
+        align-items: center;
         justify-content: center;
+        gap: 8px;
+        padding: 14px 16px;
+        border-radius: 50px;
+        font-family: var(--font-sans);
+        font-size: 0.82rem;
+        font-weight: 600;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        border: none;
+        cursor: pointer;
+        transition: all 0.25s ease;
+        -webkit-tap-highlight-color: transparent;
+      }
+
+      .confirm-btn.primary {
+        background: var(--color_primary);
+        color: var(--text_primary);
+        box-shadow: 0 6px 20px rgba(155, 77, 110, 0.4);
+      }
+
+      .confirm-btn.primary:hover,
+      .confirm-btn.primary:active {
+        background: var(--color_third);
+        box-shadow: 0 10px 28px rgba(155, 77, 110, 0.5);
+      }
+
+      .confirm-btn.outline {
+        background: transparent;
+        color: var(--text_secondary);
+        border: 1px solid rgba(255, 255, 255, 0.18);
+      }
+
+      .confirm-btn.outline:hover,
+      .confirm-btn.outline:active {
+        border-color: rgba(201, 164, 107, 0.45);
+        color: var(--color_gold_light);
+      }
+      /* #endregion CONFIRMACION */
+
+      /* #region REGALOS */
+      .gifts-section {
+        padding: 48px 28px 56px;
+        background: rgba(255, 255, 255, 0.02);
+        border-top: 1px solid rgba(201, 164, 107, 0.1);
+      }
+
+      .gift-btn {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        width: 100%;
+        padding: 16px 20px;
+        background: var(--card_bg);
+        border: 1px solid rgba(201, 164, 107, 0.18);
+        border-radius: 12px;
+        text-decoration: none;
+        color: var(--text_primary);
+        font-family: var(--font-sans);
+        transition: all 0.25s ease;
+        margin-bottom: 10px;
+      }
+
+      .gift-btn:hover,
+      .gift-btn:active {
+        background: rgba(155, 77, 110, 0.12);
+        border-color: rgba(201, 164, 107, 0.38);
+        color: var(--text_primary);
+      }
+
+      .gift-btn img {
+        width: 38px;
+        height: 38px;
+        object-fit: contain;
+        border-radius: 8px;
+      }
+
+      .gift-btn .gift-label {
+        font-size: 1rem;
+        font-weight: 400;
+        flex: 1;
+      }
+
+      .gift-btn .gift-arrow {
+        color: var(--color_gold);
+        opacity: 0.65;
+        font-size: 0.85rem;
+      }
+      /* #endregion REGALOS */
+
+      /* #region MESA */
+      .ticket-section {
+        padding: 48px 28px 56px;
+      }
+
+      .ticket-card {
+        background: var(--card_bg);
+        border: 1px solid rgba(201, 164, 107, 0.22);
+        border-radius: 16px;
+        overflow: hidden;
+        margin-top: 24px;
+      }
+
+      .ticket-card .ticket-header {
+        background: rgba(201, 164, 107, 0.1);
+        border-bottom: 1px solid rgba(201, 164, 107, 0.18);
+        padding: 12px 20px;
+        display: flex;
         align-items: center;
         gap: 10px;
       }
 
-      .bow-part {
-        width: 50px;
-        height: 91px;
-        background: #fff;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+      .ticket-card .ticket-header i {
+        color: var(--color_gold);
+        font-size: 1rem;
       }
 
-      .bow-part:first-child {
-        transform: rotate(55deg);
-        border-radius: 1.5em 0 3em 1em / 1.5em 0 3em 4.5em;
-        box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);
+      .ticket-card .ticket-header span {
+        font-family: var(--font-sans);
+        font-size: 0.78rem;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: var(--color_gold);
+        font-weight: 600;
       }
 
-      .bow-part:last-child {
-        transform: rotate(302deg);
-        border-radius: 0 1.5em 1em 3em / 0 1.5em 3.5em 3em;
-        box-shadow: -4px 4px 10px rgba(0, 0, 0, 0.3);
+      .ticket-card .ticket-body {
+        padding: 20px 24px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 16px;
       }
 
-      .bow-center {
-        width: 50px;
-        height: 35px;
-        background: #fff;
-        border-radius: 10px;
-        box-shadow: 0px 4px 6px 8px rgb(0 0 0 / 20%);
-        z-index: 1;
+      .ticket-value {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        flex: 1;
       }
 
-      .gift-wrapper.lifted {
-        transform: translateY(-50px) rotate(-18deg);
-        animation: none;
+      .ticket-value .t-num {
+        font-family: var(--font-display);
+        font-size: 5rem;
+        color: var(--text_primary);
+        line-height: 1;
+        text-shadow: 0 2px 20px rgba(201, 164, 107, 0.3);
       }
 
-      .bow-wrapper.lifted {
-        transform: translateY(-50px) rotate(-18deg);
+      .ticket-value .t-lbl {
+        font-family: var(--font-sans);
+        font-size: 0.78rem;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: var(--text_soft);
+        margin-top: 4px;
       }
 
-      .gift-box {
-        position: absolute;
-        bottom: 0;
-        width: 220px;
-        height: 140px;
-        background: linear-gradient(to bottom, #ff4d6d, #d63050);
-        border-radius: 10px 10px 20px 20px;
-        box-shadow: 0 15px 20px rgba(0, 0, 0, 0.3);
-        z-index: 1;
-        cursor: pointer;
+      .ticket-divider {
+        width: 1px;
+        height: 72px;
+        background: linear-gradient(to bottom, transparent, rgba(201, 164, 107, 0.3), transparent);
+        flex-shrink: 0;
+      }
+
+      .ticket-perforated {
+        border-top: 1px dashed rgba(201, 164, 107, 0.25);
+        margin: 0 20px 14px;
+        padding: 10px 0 0;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .ticket-perforated .perf-dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: rgba(201, 164, 107, 0.35);
+        flex-shrink: 0;
+      }
+
+      .ticket-perforated p {
+        font-family: var(--font-serif);
+        font-size: 0.85rem;
+        font-style: italic;
+        color: var(--text_muted);
+        margin: 0;
+        flex: 1;
+        text-align: center;
+      }
+      /* #endregion MESA */
+
+      /* #region MODAL GALERIA */
+      #galleryModal {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(8, 3, 8, 0.97);
+        z-index: 9999;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+
+      #galleryModal.open {
+        display: flex;
+      }
+
+      .gallery-modal-img-wrap {
+        flex: 1;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 60px 16px 10px;
         overflow: hidden;
       }
 
-      .gift-box::before {
-        content: '';
-        position: absolute;
-        background: #ffffff;
-        width: 55px;
-        height: 100%;
-        left: 50%;
-        transform: translateX(-50%);
-      }
-
-      .star {
-        position: absolute;
-        width: 12px;
-        height: 12px;
-        background: yellow;
-        clip-path: polygon(50% 0%,
-            60% 35%,
-            100% 50%,
-            60% 65%,
-            50% 100%,
-            40% 65%,
-            0% 50%,
-            40% 35%);
-        box-shadow: 0 0 10px yellow;
-        animation: _animation-twinkle 1s infinite ease-in-out;
-        z-index: 8;
-      }
-
-      .star:nth-child(1) {
-        top: -40px;
-        left: -30px;
-      }
-
-      .star:nth-child(2) {
-        top: -40px;
-        right: -30px;
-      }
-
-      .star:nth-child(3) {
-        bottom: -40px;
-        left: -25px;
-      }
-
-      .star:nth-child(4) {
-        bottom: -40px;
-        right: -25px;
-      }
-
-      .star:nth-child(5) {
-        top: -60px;
-        left: 80px;
-      }
-
-      .star:nth-child(6) {
-        top: -45px;
-        right: 50px;
-      }
-
-      .star:nth-child(7) {
-        top: 70px;
-        left: 40px;
-      }
-
-      .star:nth-child(8) {
-        top: 100px;
-        right: 30px;
-      }
-
-      .star:nth-child(9) {
-        bottom: 40px;
-        left: 70px;
-      }
-
-      .star:nth-child(10) {
-        bottom: 50px;
-        right: 60px;
-      }
-
-
-      @media (max-width: 575.98px) {
-        ._gift-box {
-          margin-bottom: 0rem;
-          transform: scale(0.6);
-        }
-
-        ._gift-section {
-          margin: 2rem 0;
-        }
-      }
-
-      /* #endregion Gift Section*/
-      /* #region DressCode Section*/
-      ._dresscode-section {
-        display: flex;
-        justify-content: center;
-        gap: 24px;
-        margin: 60px 0px;
-        flex-wrap: wrap;
-      }
-
-      ._dresscode-section ._details {
-        background: var(--color_secondary);
-        padding: 10px 10px 20px 10px;
-        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25);
-        width: 240px;
-        text-align: center;
+      #modalGalleryImage {
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: contain;
         border-radius: 8px;
+        transition: opacity 0.18s ease;
+        pointer-events: none;
+        user-select: none;
       }
 
-      ._dresscode-section img {
+      #modalGalleryImage.fading {
+        opacity: 0;
+      }
+
+      .gallery-modal-bar {
+        flex-shrink: 0;
         width: 100%;
-        height: 300px;
-        border-radius: 4px;
+        padding: 12px 24px 32px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
       }
 
-      ._dresscode-section ._title-caption {
-        font-size: 1.7rem;
-      }
-
-      ._dresscode-section .caption {
-        margin-top: 12px;
-        font-family: var(--font-secondary);
+      .gallery-modal-nav {
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(201, 164, 107, 0.3);
+        color: rgba(255, 255, 255, 0.9);
         font-size: 1.1rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        -webkit-tap-highlight-color: transparent;
       }
 
-      @media (max-width: 575.98px) {
-        ._dresscode-section ._details {
-          width: 200px;
-        }
-
-        ._dresscode-section img {
-          height: 230px;
-        }
+      .gallery-modal-nav:hover,
+      .gallery-modal-nav:active {
+        background: rgba(201, 164, 107, 0.18);
+        border-color: rgba(201, 164, 107, 0.6);
       }
 
-      /* #endregion DressCode Section*/
+      .gallery-modal-counter {
+        font-family: var(--font-serif);
+        font-size: 1rem;
+        font-style: italic;
+        color: var(--text_muted);
+      }
+
+      .gallery-modal-counter strong {
+        color: var(--color_gold);
+        font-style: normal;
+        font-size: 1.2rem;
+      }
+
+      .gallery-modal-close {
+        position: fixed;
+        top: 16px;
+        right: 16px;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        color: rgba(255, 255, 255, 0.9);
+        font-size: 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        z-index: 10000;
+        -webkit-tap-highlight-color: transparent;
+      }
+
+      .gallery-modal-close:hover,
+      .gallery-modal-close:active {
+        background: rgba(255, 255, 255, 0.18);
+      }
+      /* #endregion MODAL */
+
+      /* #region ANIMATIONS */
+      @keyframes _animation-pulse-3 {
+        0% {
+          transform: scale(1);
+          box-shadow: 0 0 0 0 rgba(201, 164, 107, 0.4);
+        }
+        70% {
+          transform: scale(1.04);
+          box-shadow: 0 0 0 8px rgba(201, 164, 107, 0);
+        }
+        100% {
+          transform: scale(1);
+          box-shadow: 0 0 0 0 rgba(201, 164, 107, 0);
+        }
+      }
+      /* #endregion ANIMATIONS */
+
+      /* #region SCROLL REVEAL */
+      .reveal {
+        opacity: 0;
+        transform: translateY(24px);
+        transition:
+          opacity 0.6s ease,
+          transform 0.6s ease;
+      }
+      .reveal.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      /* #endregion SCROLL REVEAL */
     </style>
   </head>
-  <body>
-    <div class="container">
-      <main role="main" class="w-100">
-        <div id="player">
-          <audio id="audio" src="#" data-replace="AudioUrl" loop></audio>
-        </div>
-        <span id="audioButton" class="_template-Audio-Button off">
-          <img src="#" data-replace="Image_AudioUrl" alt="Audio" />
-        </span>
-        <div class="_template">
-          <div id="_main" class="_main-section">
-            <img src="#" data-replace="Image_FrontCard" alt="❧ Mis XV ❧">
-            <div class="_details">
-              <p>❧ Mis XV ❧</p>
-              <p data-replace="EventName"></p>
-              <p class="_event-date" data-replace="EventDateString"></p>
-            </div>
-            <div class="fireworks-container"></div>
-          </div>
-          <div class="_template-Counter-Section">
-            <div id="countdown" class="_counter-Countdown">
-              <div class="_counter-Timebox">
-                <span id="days">0</span> Días
-              </div>
-              <div class="_counter-Timebox">
-                <span id="hours">0</span> Horas
-              </div>
-              <div class="_counter-Timebox">
-                <span id="days">:</span> &nbsp;
-              </div>
-              <div class="_counter-Timebox">
-                <span id="minutes">0</span> Minutos
-              </div>
-              <div class="_counter-Timebox">
-                <span id="days">:</span> &nbsp;
-              </div>
-              <div class="_counter-Timebox">
-                <span id="seconds">0</span> Segundos
-              </div>
-            </div>
-          </div>
-          <div class="_family-section">
-            <div class="_details">
-              <div class="_title-caption">Mis Padres</div>
-              <img src="#" data-replace="Image_MyParents" alt="Mis Padres">
-              <div class="caption">
-                <span data-replace="EventFather"></span>
-                <span data-replace="EventMother"></span>
-              </div>
-            </div>
-            <div class="_details">
-              <div class="_title-caption">Mis Padrinos</div>
-              <img src="#" data-replace="Image_MyGodParents" alt="Mis Padrinos">
-              <div class="caption">
-                <span data-replace="EventGodFather"></span>
-                <span data-replace="EventGodMother"></span>
-              </div>
-            </div>
-          </div>
-          <div class="_timeline-section">
-            <h3>Itinerario</h3>
-            <div class="timeline-section mt-0">
-              <p class="location-text">
-                <span data-replace="EventHourString"></span> - Ceremonia Religiosa
-              </p>
-              <a href="#" data-replace="EventChurchUrl" target="_blank">
-                <img class="location-maps" src="#" data-replace="Image_GoogleLocation" alt="Google Location">
-              </a>
-            </div>
-            <div class="timeline-section">
-              <p class="location-text">
-                <span data-replace="EventReceptionHourString"></span> - Recepción
-              </p>
-              <a href="#" data-replace="EventReceptionUrl" target="_blank">
-                <img class="location-maps" src="#" data-replace="Image_GoogleLocation" alt="Google Location">
-              </a>
-            </div>
-            <div class="timeline-section">
-              <p class="location-text">Photo Session</p>
-            </div>
-            <div class="timeline-section">
-              <p class="location-text">Banquete</p>
-            </div>
-            <div class="timeline-section">
-              <p class="location-text">Vals</p>
-            </div>
-          </div>
-          <div class="_dresscode-section">
-            <div class="_details">
-              <div class="_title-caption">Dress Code</div>
-              <img src="" data-replace="Image_DressCodeUrl" alt="Dress Code">
-              <div class="caption">Formal</div>
-            </div>
-          </div>
-          <div class="_gift-section">
-            <div class="_gift-box">
-              <div class="gift-wrapper" id="giftWrapper">
-                <div class="gift-top" id="giftTop"></div>
-                <div class="bow-wrapper" id="bowWrapper">
-                  <div class="bow">
-                    <div class="bow-part"></div>
-                    <div class="bow-center"></div>
-                    <div class="bow-part"></div>
-                  </div>
-                </div>
-              </div>
-              <!-- Box -->
-              <div class="gift-box"></div>
-              <!-- Stars -->
-              <div class="star"></div>
-              <div class="star"></div>
-              <div class="star"></div>
-              <div class="star"></div>
-              <div class="star"></div>
-              <div class="star"></div>
-              <div class="star"></div>
-              <div class="star"></div>
-              <div class="star"></div>
-              <div class="star"></div>
-            </div>
-            <div class="_btn-brands">
-              <a href="#" data-replace="EventAmazonGiftTableUrl" target="_blank" class="_btn-gifttable">
-                <img src="#" data-replace="Image_AmazonUrl" alt="Amazon" /> Amazon </a>
-              <a href="#" data-replace="EventLiverpoolGiftTableUrl" target="_blank" class="_btn-gifttable">
-                <img src="#" data-replace="Image_LiverpoolUrl" alt="Liverpool" /> Liverpool </a>
-            </div>
-          </div>
-          <div class="_carousel-section">
-            <div class="_template-Stack-Gallery" id="carousel">
-              <div class="_image-wrapper">
-                <div class="_rotated-box _box1"></div>
-                <div class="_rotated-box _box2"></div>
-                <div class="_rotated-box _box3"></div>
-                <div class="_rotated-box _box4"></div>
-              </div>
-            </div>
-          </div>
-          <div class="_parent-confirmation">
-            <div class="_confirmation-section">
-              <a href="#" data-replace="WhatsAppUrl" target="_blank" class="_btn-Confirmation">
-                <i class="fas fa-heart"></i> Asistiré </a>
-              <a href="#" data-replace="GoogleCalendarUrl" target="_blank" class="_btn-Confirmation">
-                <i class="fas fa-calendar"></i> Agendar </a>
-            </div>
-          </div>
-        </div>
-      </main>
-    </div>
-    <script src="../js/main.js"></script>
-    
-    <script>
-      requirejs(["jquery","helpers","fireworks", "gallery","confetti","bs","extended"],function($,helpers,Fireworks,gallery){
-        var actions = {
-          onConfetti: function() {
-            $("._gift-box").on("click", function() {
-              if (!$("#giftWrapper").hasClass('lifted')) {
-                $("#giftWrapper").addClass('lifted');
-                $("._btn-brands").css("animation", "_animation-surprise-Bounce 0.6s ease-out");
-                $("._btn-brands").addClass("show");
-                $(this).OnConfettiStart();
-              } else {
-                $("#giftWrapper").removeClass('lifted');
-                $("._btn-brands").css("animation", "_animation-hide-Fade-Shrink 0.4s ease-out");
-                setTimeout(() => {
-                  $("._btn-brands").removeClass("show");
-                }, 400);
-              }
-            });
-          }
-        };
-        
-        const EventDate = new Date("2025-11-25T13:00:00");
-        const EventReception = new Date("2025-11-25T17:00:00");
 
+  <body>
+    <audio id="audio" src="#" data-replace="AudioUrl" loop></audio>
+
+    <span id="audioButton" class="_template-Audio-Button off">
+      <img src="#" data-replace="Image_AudioUrl" alt="Audio" />
+    </span>
+
+    <!-- Theme Switcher -->
+    <div id="themeSwitcher">
+      <button class="theme-btn active" data-theme="theme1" style="background: #9b4d6e" title="Rosa oscuro"></button>
+      <button class="theme-btn" data-theme="theme2" style="background: #f0e6d3" title="Champagne"></button>
+      <button class="theme-btn" data-theme="theme3" style="background: #ddd0e8" title="Lavanda claro"></button>
+      <button class="theme-btn" data-theme="theme4" style="background: #c8dfd4" title="Menta claro"></button>
+      <button class="theme-btn" data-theme="theme5" style="background: #e0d4c8" title="Arena claro"></button>
+    </div>
+
+    <div class="page-wrap">
+      <!-- HERO -->
+      <section class="hero">
+        <img class="hero-img" src="#" data-replace="Image_MainCard" alt="Portada" />
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+          <p class="hero-eyebrow">Mis XV Años</p>
+          <h1 class="hero-name" data-replace="EventName"></h1>
+          <p class="hero-date">
+            <span data-replace="MainEventWeekDay"></span>
+            <span data-replace="MainEventDay"></span>
+            de
+            <span data-replace="MainEventMonth"></span>
+            de
+            <span data-replace="MainEventYear"></span>
+          </p>
+        </div>
+        <div class="hero-scroll">
+          <div class="hero-scroll-line"></div>
+          <span>Desliza</span>
+        </div>
+      </section>
+
+      <!-- CONTADOR -->
+      <div class="counter-section _counter-section">
+        <span class="counter-label">Faltan</span>
+        <div class="counter-row">
+          <div class="counter-unit">
+            <span class="num" id="days">00</span>
+            <span class="lbl">Días</span>
+          </div>
+          <span class="counter-sep">·</span>
+          <div class="counter-unit">
+            <span class="num" id="hours">00</span>
+            <span class="lbl">Horas</span>
+          </div>
+          <span class="counter-sep">·</span>
+          <div class="counter-unit">
+            <span class="num" id="minutes">00</span>
+            <span class="lbl">Min</span>
+          </div>
+          <span class="counter-sep">·</span>
+          <div class="counter-unit">
+            <span class="num" id="seconds">00</span>
+            <span class="lbl">Seg</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- INTRODUCCION -->
+      <section class="intro-section reveal _introduction-section">
+        <span class="section-eyebrow">Invitación</span>
+        <div class="gold-rule"><span>✦</span></div>
+        <p class="intro-quote">Los momentos más esperados se sueñan, se imaginan, se construyen. Y cuando llega ese día tan especial, lo más importante es que estés a mi lado.</p>
+        <div class="gold-rule"><span>✦</span></div>
+        <p class="intro-big-name" data-replace="EventName"></p>
+        <p class="intro-sub">
+          te invita a celebrar sus
+          <strong>XV Años</strong>
+        </p>
+      </section>
+
+      <!-- PADRES -->
+      <section class="parents-section reveal _parents-section">
+        <span class="section-eyebrow">Con el amor de</span>
+        <p class="section-text">Su presencia en mi vida ha sido un tesoro invaluable. Gracias por guiarme con amor en este momento tan especial.</p>
+        <div class="parents-grid">
+          <div class="parents-card">
+            <img src="#" data-replace="Image_MyParents" alt="Mis Padres" />
+            <div class="pc-body">
+              <span class="pc-label">Mis Padres</span>
+              <ul class="pc-names">
+                <li data-replace="EventFather"></li>
+                <li data-replace="EventMother"></li>
+              </ul>
+            </div>
+          </div>
+          <div class="parents-card">
+            <img src="#" data-replace="Image_MyGodParents" alt="Mis Padrinos" />
+            <div class="pc-body">
+              <span class="pc-label">Mis Padrinos</span>
+              <ul class="pc-names">
+                <li data-replace="EventGodFather"></li>
+                <li data-replace="EventGodMother"></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- DETALLES -->
+      <section class="details-section reveal">
+        <span class="section-eyebrow">El gran día</span>
+        <h2 class="section-title">
+          <span data-replace="MainEventDay"></span>
+          de
+          <span data-replace="MainEventMonth"></span>
+        </h2>
+        <div class="gold-rule"><span>✦</span></div>
+
+        <a href="#" data-replace="MainEventUrl" target="_blank" class="detail-card">
+          <div class="dc-icon"><i class="fas fa-church"></i></div>
+          <div class="dc-info">
+            <span class="dc-tag" data-replace="MainEventHourString"></span>
+            <p class="dc-place" data-replace="MainEventLocationDescription"></p>
+            <p class="dc-address" data-replace="MainEventAddress"></p>
+          </div>
+          <div class="dc-map">
+            <img src="#" data-replace="Image_GoogleLocation" alt="Maps" />
+          </div>
+        </a>
+
+        <a href="#" data-replace="EventReceptionUrl" target="_blank" class="detail-card">
+          <div class="dc-icon"><i class="fas fa-champagne-glasses"></i></div>
+          <div class="dc-info">
+            <span class="dc-tag" data-replace="EventReceptionHourString"></span>
+            <p class="dc-place" data-replace="SecondaryEventLocationDescription"></p>
+            <p class="dc-address" data-replace="SecondaryEventAddress"></p>
+          </div>
+          <div class="dc-map">
+            <img src="#" data-replace="Image_GoogleLocation" alt="Maps" />
+          </div>
+        </a>
+      </section>
+
+      <!-- ITINERARIO -->
+      <section class="itinerary-section reveal _itinerary-section">
+        <span class="section-eyebrow">Programa</span>
+        <h2 class="section-title">Itinerario</h2>
+
+        <div class="itin-list">
+          <div class="itin-item">
+            <div class="itin-dot"><i class="fas fa-church"></i></div>
+            <div class="itin-body">
+              <p class="itin-name">Ceremonia</p>
+              <span class="itin-time" data-replace="MainEventHourString"></span>
+            </div>
+          </div>
+          <div class="itin-item">
+            <div class="itin-dot"><i class="fas fa-champagne-glasses"></i></div>
+            <div class="itin-body">
+              <p class="itin-name">Recepción</p>
+              <span class="itin-time" data-replace="EventReceptionHourString"></span>
+            </div>
+          </div>
+          <div class="itin-item">
+            <div class="itin-dot"><i class="fas fa-camera"></i></div>
+            <div class="itin-body">
+              <p class="itin-name">Photo Session</p>
+            </div>
+          </div>
+          <div class="itin-item">
+            <div class="itin-dot"><i class="fas fa-utensils"></i></div>
+            <div class="itin-body">
+              <p class="itin-name">Banquete</p>
+            </div>
+          </div>
+          <div class="itin-item">
+            <div class="itin-dot"><i class="fas fa-music"></i></div>
+            <div class="itin-body">
+              <p class="itin-name">Vals</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- GALERIA -->
+      <section class="gallery-section reveal _gallery-section">
+        <div class="gallery-header">
+          <div>
+            <span class="section-eyebrow">Momentos</span>
+            <h2 class="section-title" style="margin-bottom: 0">Galería</h2>
+          </div>
+          <span class="gallery-count" id="gallery-count"></span>
+        </div>
+        <div class="gallery-masonry" id="gallery-grid"></div>
+        <div class="gallery-fade"></div>
+      </section>
+
+      <!-- DRESS CODE -->
+      <section class="dresscode-section reveal _dresscode-section">
+        <img class="dc-bg" src="#" data-replace="Image_DressCodeUrl" alt="Dress Code" />
+        <div class="dc-overlay"></div>
+        <div class="dc-content">
+          <span class="dc-eyebrow">Código de vestimenta</span>
+          <h2>
+            Dress
+            <br />
+            Code
+          </h2>
+          <div class="gold-rule" style="margin-bottom: 14px"><span>✦</span></div>
+          <span class="dc-style" data-replace="DressCodeStyle">Semi-Formal</span>
+        </div>
+      </section>
+
+      <!-- CONFIRMACION -->
+      <section class="confirm-section reveal _attendance-section">
+        <span class="section-eyebrow">Nos encantaría verte</span>
+        <h2 class="section-title">¡Te esperamos!</h2>
+        <div class="gold-rule"><span>✦</span></div>
+        <div class="confirm-form">
+          <div class="confirm-field">
+            <label>Acompañantes</label>
+            <textarea name="guestAttendants" placeholder="Nombres de tus acompañantes"></textarea>
+          </div>
+          <div class="confirm-field">
+            <label>Un deseo para la festejada</label>
+            <textarea name="wishes" placeholder="Escribe tu mensaje aquí…"></textarea>
+          </div>
+          <div class="confirm-actions">
+            <button class="confirm-btn outline" id="_btnNo">
+              <i class="fas fa-times"></i>
+              No asistiré
+            </button>
+            <button class="confirm-btn primary" id="_btnYes">
+              <i class="fas fa-check"></i>
+              ¡Asistiré!
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- REGALOS -->
+      <section class="gifts-section reveal _gifttable-section">
+        <span class="section-eyebrow">Mesa de Regalos</span>
+        <h2 class="section-title">Regalos</h2>
+        <div class="gold-rule"><span>✦</span></div>
+        <p class="section-text" style="margin-bottom: 24px">Tu presencia es el mejor regalo. Si deseas obsequiarme algo, te sugerimos estas opciones:</p>
+        <a href="#" data-replace="EventAmazonGiftTableUrl" target="_blank" class="gift-btn">
+          <img src="#" data-replace="Image_AmazonUrl" alt="Amazon" />
+          <span class="gift-label">Amazon</span>
+          <span class="gift-arrow"><i class="fas fa-arrow-right"></i></span>
+        </a>
+        <a href="#" data-replace="EventLiverpoolGiftTableUrl" target="_blank" class="gift-btn">
+          <img src="#" data-replace="Image_LiverpoolUrl" alt="Liverpool" />
+          <span class="gift-label">Liverpool</span>
+          <span class="gift-arrow"><i class="fas fa-arrow-right"></i></span>
+        </a>
+      </section>
+
+      <!-- MESA Y BOLETOS -->
+      <section class="ticket-section reveal _table-section">
+        <span class="section-eyebrow">Jackie</span>
+        <span class="section-eyebrow">Tu lugar en la fiesta</span>
+        <h2 class="section-title">Acceso</h2>
+        <div class="ticket-card">
+          <div class="ticket-header">
+            <i class="fas fa-ticket-alt"></i>
+            <span>Boleto de acceso</span>
+          </div>
+          <div class="ticket-body">
+            <div class="ticket-value">
+              <span class="t-num" data-replace="TableNumber">4</span>
+              <span class="t-lbl">Mesa</span>
+            </div>
+            <div class="ticket-divider"></div>
+            <div class="ticket-value">
+              <span class="t-num" data-replace="TicketCount">2</span>
+              <span class="t-lbl">Pases</span>
+            </div>
+          </div>
+          <div class="ticket-perforated">
+            <div class="perf-dot"></div>
+            <p data-replace="EventName"></p>
+            <div class="perf-dot"></div>
+          </div>
+        </div>
+      </section>
+    </div>
+    <!-- /.page-wrap -->
+
+    <!-- Modal galería custom -->
+    <div id="galleryModal">
+      <button class="gallery-modal-close" id="galleryModalClose">
+        <i class="fas fa-times"></i>
+      </button>
+      <div class="gallery-modal-img-wrap" id="galleryModalImgWrap">
+        <img src="" id="modalGalleryImage" alt="Galería" />
+      </div>
+      <div class="gallery-modal-bar">
+        <button class="gallery-modal-nav" id="galleryModalPrev">
+          <i class="fas fa-chevron-left"></i>
+        </button>
+        <span class="gallery-modal-counter">
+          <strong id="galleryModalCurrent">1</strong>
+          <span>/</span>
+          <span id="galleryModalTotal">1</span>
+        </span>
+        <button class="gallery-modal-nav" id="galleryModalNext">
+          <i class="fas fa-chevron-right"></i>
+        </button>
+      </div>
+    </div>
+
+    <script src="../js/main.js"></script>
+    <script>
+      requirejs(["jquery", "helpers", "bs"], function ($, helpers, bs) {
+        // ─── DATOS ────────────────────────────────────────
         const mainEvent = {
-          Name: "Nicole",
-          Date: EventDate,
-          Description: `Acompáñanos a celebrar los XV de `,      
+          Date: new Date("2026-10-17T13:00:00"),
+          Name: "Nicole Gutiérrez",
+
           LocationDescription: "Catedral de Guadalajara",
-          Address: "Av. Fray Antonio Alcalde 10, Zona Centro, 44100 Guadalajara, Jal.",
+          Address: "Av. Fray Antonio Alcalde 10, Guadalajara, Jal.",
+          GoogleMapsUrl: "https://maps.app.goo.gl/hBdb191LiXzkPRfR8",
+
           Father: "José Gutiérrez",
           Mother: "Melissa Hurtado",
           GodFather: "Juan Fernández",
           GodMother: "Laura Jimenez",
-          GoogleMapsUrl: "https://maps.app.goo.gl/hBdb191LiXzkPRfR8",
+
+          Gallery: ["../images/templates/XV1/1.jpg", "../images/templates/XV1/2.jpg", "../images/templates/XV1/3.jpg", "../images/templates/XV1/4.jpg", "../images/templates/XV1/5.jpg", "../images/templates/XV1/6.jpg"],
+
           AmazonGiftTableUrl: "https://www.amazon.com.mx/",
           LiverpoolGiftTableUrl: "https://www.liverpool.com.mx/tienda/home",
-          CollageImages: ['https://img.freepik.com/foto-gratis/adolescente-celebrando-quinceanera_23-2148478038.jpg', 'https://img.freepik.com/foto-gratis/chica-sonriente-tiro-medio-hermoso-vestido_52683-86468.jpg?t=st=1746555442~exp=1746559042~hmac=e8d5adc2117161bcd88377ab37d6e1358945489c42ac647e29fb996cf047ca4c&w=1800', 'https://lh3.googleusercontent.com/p/AF1QipMv-RExo0XkTU7eg8u-FelVsp1gd3u4XZyR3ipA=s3072-v1', 'https://lh3.googleusercontent.com/p/AF1QipNk9cctNeskTP2Zg2EEOQjV-aMFrSO5RRxWtx5N=s1024-v1'],
-          ImageMyParents: "https://img.freepik.com/fotos-premium/retrato-pareja-madura-feliz-abrazada-casa-conexion-amor-o-confianza-asociacion-juntos-cara-al-hombre-abrazar-mujer-compromiso-cuidado-relacion-saludable-apoyo-casa_590464-361056.jpg?ga=GA1.1.1993030682.1745256637&semt=ais_hybrid&w=740",
-          ImageMyGodParents: "https://img.freepik.com/fotos-premium/pareja-dia-san-valentin_772250-159.jpg?ga=GA1.1.1993030682.1745256637&w=740",
-          ImageDressCodeUrl: "https://img.freepik.com/foto-gratis/gente-elegante-bailando-tango_23-2149193458.jpg?ga=GA1.1.1993030682.1745256637&semt=ais_hybrid&w=740",
+
+          TableNumber: 4,
+          TicketCount: 2,
+          DressCodeStyle: "Semi-Formal",
         };
 
         const secondaryEvent = {
-          Date: EventReception,
-          LocationDescription: "Salón de Eventos Quinta el Eden",
-          Address: "C. Morelos 670, González Ortega, 45190 Zapopan, Jal.",
-          GoogleMapsUrl: "https://maps.app.goo.gl/1wwmTSk84XA8pLMn8",
-        }
-
-        const googleCalendar = {
-          Text: "Mis XV "+ mainEvent.Name,
-          Location: mainEvent.Address,
-          Detail : `
-                    [0]
-                📍 Lugar: [1]
-                🕒 Hora: [2]
-                ⏰ Recordatorio: Llega con 30 minutos de anticipación.
-                ✨ ¡Te esperamos para compartir este momento tan especial!`
-        }
-
-        const additionalInformation = {
-          ImageBodyBackground: "",
-          ImageCorner: "",
-          ImageFrontCard: "https://img.freepik.com/foto-gratis/chica-sonriente-tiro-medio-hermoso-vestido_52683-86468.jpg?t=st=1746555442~exp=1746559042~hmac=e8d5adc2117161bcd88377ab37d6e1358945489c42ac647e29fb996cf047ca4c&w=1800",
-          AudioUrl: "https://invitameok.com/invitaciones/admin/imagenes/26931/MUSICAdont-start-now-traducida-al-espanol%20(mp3cut.net).mp3",
-          WhatsAppUrl: "https://wa.link/encb79"
-        }
-
-        const Resources = {
-          MainEvent : mainEvent,
-          SecondaryEvent: secondaryEvent,
-          GoogleCalendar: googleCalendar, 
-          AdditionalInformation : additionalInformation
+          Date: new Date("2026-10-17T17:00:00"),
+          LocationDescription: "La Terraza Clouthier",
+          Address: "Av Manuel J. Clouthier 480, Zapopan, Jal.",
+          GoogleMapsUrl: "https://maps.app.goo.gl/HpD9ZEkGmku4WTyT8",
         };
 
-        function Init() {          
-          $('.fireworks-container').onFireworksStart();
-          helpers.init(Resources);
-          helpers.onCounterStart(EventDate);
-          setInterval(() => {
-            helpers.onCounterStart(EventDate);
+        const Init = {
+          Config: {
+            EventType: "XV",
+            Sections: {
+              showCounter: true,
+              showIntroduction: true,
+              showParents: true,
+              showItinerary: true,
+              showGallery: true,
+              showDressCode: true,
+              showTickets: true,
+              showTableNumber: true,
+              showAttendance: true,
+              showGiftTable: true,
+            },
+            Themes: [],
+            AudioUrl: "../music/taylor.mp3",
+          },
+          MainEvent: mainEvent,
+          SecondaryEvent: secondaryEvent,
+        };
+
+        const additionalInformation = {
+          ImageMainCard: "../images/templates/XV1/1.jpg",
+          ImageMyParents: "../images/templates/XV1/padres.jpg",
+          ImageMyGodParents: "../images/templates/XV1/padrinos.jpg",
+          ImageDressCodeUrl: "../images/shared/dresscode_2.jpg",
+        };
+
+        // ─── TEMAS ────────────────────────────────────────
+        const themes = {
+          // Oscuro — el diseño original
+          theme1: {
+            ink: "#0e0710",
+            primary: "#9b4d6e",
+            secondary: "#c47a9a",
+            third: "#7a3255",
+            fourth: "#d4a0b8",
+            fifth: "rgba(155,77,110,0.35)",
+            fifth1: "rgba(155,77,110,0)",
+            gradA: "rgba(155,77,110,0.18)",
+            gradB: "rgba(122,50,85,0.2)",
+            textPrimary: "#ffffff",
+            textSecondary: "rgba(255,255,255,0.82)",
+            textMuted: "rgba(255,255,255,0.45)",
+            textSoft: "rgba(255,255,255,0.6)",
+            cardBg: "rgba(255,255,255,0.04)",
+            borderSubtle: "rgba(201,164,107,0.15)",
+          },
+          // Champagne claro
+          theme2: {
+            ink: "#faf5ee",
+            primary: "#9b6a4a",
+            secondary: "#c49a78",
+            third: "#7a4f35",
+            fourth: "#8b5a3a",
+            fifth: "rgba(155,106,74,0.2)",
+            fifth1: "rgba(155,106,74,0)",
+            gradA: "rgba(180,140,100,0.12)",
+            gradB: "rgba(140,100,70,0.1)",
+            textPrimary: "#1a0e08",
+            textSecondary: "rgba(26,14,8,0.8)",
+            textMuted: "rgba(26,14,8,0.45)",
+            textSoft: "rgba(26,14,8,0.6)",
+            cardBg: "rgba(0,0,0,0.05)",
+            borderSubtle: "rgba(155,106,74,0.2)",
+          },
+          // Lavanda claro
+          theme3: {
+            ink: "#f5f0fa",
+            primary: "#6b4d8a",
+            secondary: "#9a78b8",
+            third: "#4e3268",
+            fourth: "#5a3a7a",
+            fifth: "rgba(107,77,138,0.2)",
+            fifth1: "rgba(107,77,138,0)",
+            gradA: "rgba(150,120,190,0.12)",
+            gradB: "rgba(100,70,140,0.1)",
+            textPrimary: "#180e28",
+            textSecondary: "rgba(24,14,40,0.8)",
+            textMuted: "rgba(24,14,40,0.45)",
+            textSoft: "rgba(24,14,40,0.6)",
+            cardBg: "rgba(0,0,0,0.05)",
+            borderSubtle: "rgba(107,77,138,0.2)",
+          },
+          // Menta claro
+          theme4: {
+            ink: "#f0f7f4",
+            primary: "#3a7a60",
+            secondary: "#6aaa90",
+            third: "#2a5e48",
+            fourth: "#3a6a54",
+            fifth: "rgba(58,122,96,0.2)",
+            fifth1: "rgba(58,122,96,0)",
+            gradA: "rgba(80,160,130,0.12)",
+            gradB: "rgba(40,110,85,0.1)",
+            textPrimary: "#0a2018",
+            textSecondary: "rgba(10,32,24,0.8)",
+            textMuted: "rgba(10,32,24,0.45)",
+            textSoft: "rgba(10,32,24,0.6)",
+            cardBg: "rgba(0,0,0,0.05)",
+            borderSubtle: "rgba(58,122,96,0.2)",
+          },
+          // Arena claro
+          theme5: {
+            ink: "#f7f3ee",
+            primary: "#8a6a4a",
+            secondary: "#b89878",
+            third: "#6a4e32",
+            fourth: "#7a5a3a",
+            fifth: "rgba(138,106,74,0.2)",
+            fifth1: "rgba(138,106,74,0)",
+            gradA: "rgba(170,140,100,0.12)",
+            gradB: "rgba(120,90,60,0.1)",
+            textPrimary: "#1a1008",
+            textSecondary: "rgba(26,16,8,0.8)",
+            textMuted: "rgba(26,16,8,0.45)",
+            textSoft: "rgba(26,16,8,0.6)",
+            cardBg: "rgba(0,0,0,0.05)",
+            borderSubtle: "rgba(138,106,74,0.2)",
+          },
+        };
+
+        function applyTheme(key) {
+          const t = themes[key];
+          if (!t) return;
+          const r = document.documentElement;
+
+          // Variables de color de marca
+          r.style.setProperty("--color_primary", t.primary);
+          r.style.setProperty("--color_secondary", t.secondary);
+          r.style.setProperty("--color_third", t.third);
+          r.style.setProperty("--color_fourth", t.fourth);
+          r.style.setProperty("--color_fifth", t.fifth);
+          r.style.setProperty("--color_fifth_1", t.fifth1);
+          r.style.setProperty("--color_ink", t.ink);
+
+          // Variables de texto — estas hacen todo el trabajo
+          r.style.setProperty("--text_primary", t.textPrimary);
+          r.style.setProperty("--text_secondary", t.textSecondary);
+          r.style.setProperty("--text_muted", t.textMuted);
+          r.style.setProperty("--text_soft", t.textSoft);
+          r.style.setProperty("--card_bg", t.cardBg);
+          r.style.setProperty("--border_subtle", t.borderSubtle);
+
+          // Fondo body
+          $("body").css("background-color", t.ink);
+
+          // body::before — pseudo-elemento requiere <style> dinámico
+          $("#dynamic-theme-style").remove();
+          $("<style id='dynamic-theme-style'>")
+            .text(
+              `body::before {
+              background-image:
+                radial-gradient(ellipse at 20% 0%, ${t.gradA} 0%, transparent 60%),
+                radial-gradient(ellipse at 80% 100%, ${t.gradB} 0%, transparent 60%);
+            }`,
+            )
+            .appendTo("head");
+
+          // Botón activo
+          $(".theme-btn").removeClass("active");
+          $(`.theme-btn[data-theme="${key}"]`).addClass("active");
+        }
+
+        $(".theme-btn").on("click", function () {
+          applyTheme($(this).data("theme"));
+        });
+
+        // ─── ONLOAD LOCAL ─────────────────────────────────
+        function onLoad() {
+          $("[data-replace=Image_MainCard]").attr("src", additionalInformation.ImageMainCard);
+          $("[data-replace=Image_MyParents]").attr("src", additionalInformation.ImageMyParents);
+          $("[data-replace=Image_MyGodParents]").attr("src", additionalInformation.ImageMyGodParents);
+          $("[data-replace=Image_DressCodeUrl]").attr("src", additionalInformation.ImageDressCodeUrl);
+
+          // Mesa y boletos
+          $("[data-replace=TableNumber]").text(Init.MainEvent.TableNumber);
+          $("[data-replace=TicketCount]").text(Init.MainEvent.TicketCount);
+          $("[data-replace=DressCodeStyle]").text(Init.MainEvent.DressCodeStyle);
+
+          // Meta tags
+          const name = mainEvent.Name;
+          const title = `XV Años de ${name}`;
+          const desc = `${name} te invita a celebrar sus XV Años. ¡Acompáñala en este día tan especial!`;
+          document.title = title;
+          $('meta[property="og:title"]').attr("content", title);
+          $('meta[property="og:description"]').attr("content", desc);
+          $('meta[property="og:image"]').attr("content", additionalInformation.ImageMainCard);
+          $('meta[property="og:url"]').attr("content", window.location.href);
+          $('meta[property="twitter:title"]').attr("content", title);
+          $('meta[property="twitter:description"]').attr("content", desc);
+          $('meta[property="twitter:image"]').attr("content", additionalInformation.ImageMainCard);
+          $('meta[name="description"]').attr("content", desc);
+
+          // Galería masonry
+          const gallery = Init.MainEvent.Gallery;
+          $("#gallery-count").text(gallery.length + " fotos");
+          gallery.forEach(function (url, index) {
+            const item = $("<div>", { class: "gal-item", "data-index": index });
+            const img = $("<img>", { src: url, alt: `Foto ${index + 1}`, loading: "lazy" });
+            item.append(img);
+            $("#gallery-grid").append(item);
+          });
+
+          // Confirmación
+          $("#_btnYes").on("click", function () {
+            helpers.onSendConfirmation(true, $("input[name=guestAttendants]").val(), $("textarea[name=wishes]").val());
+          });
+          $("#_btnNo").on("click", function () {
+            helpers.onSendConfirmation(false, $("input[name=guestName]").val(), $("textarea[name=wishes]").val());
+          });
+        }
+
+        // ─── GALERIA MODAL ────────────────────────────────
+        var galleryModal = {
+          $el: null,
+          currentIndex: 0,
+          images: [],
+          touchStartX: 0,
+          touchStartY: 0,
+
+          init: function () {
+            var self = galleryModal;
+            self.$el = $("#galleryModal");
+            self.images = Init.MainEvent.Gallery;
+
+            $(document).on("click", ".gal-item", function () {
+              self.open(parseInt($(this).data("index")));
+            });
+
+            $("#galleryModalClose").on("click", function (e) {
+              e.stopPropagation();
+              self.close();
+            });
+
+            self.$el.on("click", function (e) {
+              if ($(e.target).is("#galleryModal")) self.close();
+            });
+
+            $("#galleryModalPrev").on("click", function (e) {
+              e.stopPropagation();
+              self.navigate(-1);
+            });
+            $("#galleryModalNext").on("click", function (e) {
+              e.stopPropagation();
+              self.navigate(1);
+            });
+
+            var imgWrap = document.getElementById("galleryModalImgWrap");
+            imgWrap.addEventListener(
+              "touchstart",
+              function (e) {
+                self.touchStartX = e.changedTouches[0].screenX;
+                self.touchStartY = e.changedTouches[0].screenY;
+              },
+              { passive: true },
+            );
+            imgWrap.addEventListener(
+              "touchend",
+              function (e) {
+                var dx = e.changedTouches[0].screenX - self.touchStartX;
+                var dy = e.changedTouches[0].screenY - self.touchStartY;
+                if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 45) {
+                  self.navigate(dx < 0 ? 1 : -1);
+                }
+              },
+              { passive: true },
+            );
+
+            document.addEventListener("keydown", function (e) {
+              if (!self.$el.hasClass("open")) return;
+              if (e.key === "ArrowLeft") self.navigate(-1);
+              if (e.key === "ArrowRight") self.navigate(1);
+              if (e.key === "Escape") self.close();
+            });
+          },
+
+          open: function (index) {
+            var self = galleryModal;
+            self.currentIndex = index;
+            self.updateImage();
+            self.$el.addClass("open");
+            $("body").css("overflow", "hidden");
+          },
+
+          close: function () {
+            var self = galleryModal;
+            self.$el.removeClass("open");
+            $("body").css("overflow", "");
+          },
+
+          navigate: function (dir) {
+            var self = galleryModal;
+            var $img = $("#modalGalleryImage");
+            $img.addClass("fading");
+            setTimeout(function () {
+              self.currentIndex = (self.currentIndex + dir + self.images.length) % self.images.length;
+              self.updateImage();
+              $img.removeClass("fading");
+            }, 180);
+          },
+
+          updateImage: function () {
+            var self = galleryModal;
+            $("#modalGalleryImage").attr("src", self.images[self.currentIndex]);
+            $("#galleryModalCurrent").text(self.currentIndex + 1);
+            $("#galleryModalTotal").text(self.images.length);
+          },
+        };
+
+        // ─── SCROLL REVEAL ────────────────────────────────
+        function initScrollReveal() {
+          var observer = new IntersectionObserver(
+            function (entries) {
+              entries.forEach(function (entry) {
+                if (entry.isIntersecting) {
+                  entry.target.classList.add("visible");
+                }
+              });
+            },
+            { threshold: 0.1 },
+          );
+
+          document.querySelectorAll(".reveal").forEach(function (el) {
+            observer.observe(el);
+          });
+        }
+
+        // ─── INIT PAGE ────────────────────────────────────
+        function InitPage() {
+          onLoad();
+          helpers.init(Init);
+          helpers.onCounterStart(Init.MainEvent.Date);
+          setInterval(function () {
+            helpers.onCounterStart(Init.MainEvent.Date);
           }, 1000);
           helpers.onAudioPlayer();
-          gallery.onCreateGallery();
-          actions.onConfetti();
+          galleryModal.init();
+          initScrollReveal();
         }
-        Init();
+
+        InitPage();
       });
     </script>
   </body>

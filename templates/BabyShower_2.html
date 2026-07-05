@@ -1111,58 +1111,56 @@
         const EventDate = new Date("2025-11-25T17:00:00");
         const EventReception = new Date("2025-11-25T17:00:00");
         const mainEvent = {
+          Date: new Date("2026-10-17T13:00:00"),
           Name: "Mateo",
-          Date: EventDate,
-          Description: `Acompáñanos a celebrar el Baby Shower de `,      
-          LocationDescription: "Salón de Eventos Quinta el Eden",
-          Address: "C. Morelos 670, González Ortega, 45190 Zapopan, Jal.",
+
+          LocationDescription: "La Terraza Clouthier",
+          Address: "Av Manuel J. Clouthier 480, Zapopan, Jal.",
+          GoogleMapsUrl: "https://maps.app.goo.gl/HpD9ZEkGmku4WTyT8",
+
           Father: "José Gutiérrez",
           Mother: "Melissa Hurtado",
           GodFather: "Juan Fernández",
           GodMother: "Laura Jimenez",
-          GoogleMapsUrl: "https://maps.app.goo.gl/1wwmTSk84XA8pLMn8",
+          
           AmazonGiftTableUrl: "https://www.amazon.com.mx/",
           LiverpoolGiftTableUrl: "https://www.liverpool.com.mx/tienda/home",
-          CollageImages: [],
-          ImageMyParents: "https://img.freepik.com/fotos-premium/retrato-pareja-madura-feliz-abrazada-casa-conexion-amor-o-confianza-asociacion-juntos-cara-al-hombre-abrazar-mujer-compromiso-cuidado-relacion-saludable-apoyo-casa_590464-361056.jpg?ga=GA1.1.1993030682.1745256637&semt=ais_hybrid&w=740",
-          ImageMyGodParents: "https://img.freepik.com/fotos-premium/pareja-dia-san-valentin_772250-159.jpg?ga=GA1.1.1993030682.1745256637&w=740",
-          ImageDressCodeUrl: "https://img.freepik.com/foto-gratis/gente-elegante-bailando-tango_23-2149193458.jpg?ga=GA1.1.1993030682.1745256637&semt=ais_hybrid&w=740",
+          
+          Gallery: [],
         };
 
         const secondaryEvent = {
-          Date: EventReception,
-          LocationDescription: "",
-          Address: "",
-          GoogleMapsUrl: "",
+          Date: new Date("2026-10-17T17:00:00"),
+          LocationDescription: "La Terraza Clouthier",
+          Address: "Av Manuel J. Clouthier 480, Zapopan, Jal.",
+          GoogleMapsUrl: "https://maps.app.goo.gl/HpD9ZEkGmku4WTyT8",
         };
 
-        const googleCalendar = {
-          Text: "Baby Shower ",
-          Location: mainEvent.Address,
-          Detail : `
-                    [0]
-                📍 Lugar: [1]
-                🕒 Hora: [2]
-                ⏰ Recordatorio: Llega con 30 minutos de anticipación.
-                ✨ ¡Te esperamos para compartir este momento tan especial!`
+        const Init = {
+          Config: {
+            EventType: "BabyShower",
+            Sections: {
+              showCounter: true,
+              showIntroduction: true,
+              showParents: true,
+              showItinerary: true,
+              showGallery: true,
+              showDressCode: true,
+              showTickets: true,
+              showTableNumber: true,
+              showAttendance: true,
+              showGiftTable: true,
+            },
+            Themes: [],
+            AudioUrl: "../music/Here Comes The Sun.mp3",
+          },
+          MainEvent: mainEvent,
+          SecondaryEvent: secondaryEvent,
         };
 
         const additionalInformation = {
-          ImageBodyBackground: "",
-          ImageCorner: "",
-          ImageFrontCard: "",
-          ImageMain: "",
-          ImageTap: "",
-          ImageLoading: "",
           AudioUrl: "../music/Here Comes The Sun.mp3",
           WhatsAppUrl: "https://tinyurl.com/3h8kmam7",
-        };
-
-        const Resources = {
-          MainEvent : mainEvent,
-          SecondaryEvent: secondaryEvent,
-          GoogleCalendar: Object.create(googleCalendar),
-          AdditionalInformation : additionalInformation
         };
 
         const starfield = document.getElementById('starfield');
@@ -1279,17 +1277,15 @@
           });
         });
 
-        function Init() {
-          helpers.init(Resources);
-          helpers.onCounterStart(EventDate);
-          setInterval(() => {
-            helpers.onCounterStart(EventDate);
-          }, 1000);
+        function InitPage() {
+          helpers.init(Init);
+          helpers.onCounterStart(Init.MainEvent.Date);
+          setInterval(() => helpers.onCounterStart(Init.MainEvent.Date), 1000);
           helpers.onAudioPlayer();
           animate();
           activateTab(0);
         };
-        Init();
+        InitPage();
 
 
         window.addEventListener('resize', () => {
