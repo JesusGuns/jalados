@@ -1,41 +1,48 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
   <head>
-    <meta charset="utf-8" />
+    <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/png" sizes="196x196" href="https://jesusguns.github.io/jalados/images/_favicon-BabyShower.png">
+    <meta name="google" content="notranslate" />
+
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
     <!-- Primary Meta Tags -->
     <title>Baby Shower</title>
-    <meta name="title" content="Baby Shower" />
-    <meta name="description" content="Los momentos más esperados se sueñan, se imaginan, se construyen y cuando llegue ese día tan especial, lo más importante es que estés a nuestro lado." />
+    <meta name="title" content="¡Baby Shower de nuestro bebé! 🍼✨" />
+    <meta name="description" content="¡Estamos esperando un bebé! Te invitamos a celebrar con nosotros este día tan especial." />
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://jesusguns.github.io/jalados/templates/BabyShower_1.html" />
-    <meta property="og:title" content="Baby Shower" />
-    <meta property="og:description" content="Los momentos más esperados se sueñan, se imaginan, se construyen y cuando llegue ese día tan especial, lo más importante es que estés a nuestro lado." />
+    <meta property="og:url" content="https://jesusguns.github.io/jalados/templates/BabyShower_2.html" />
+    <meta property="og:title" content="¡Baby Shower de nuestro bebé! 🍼✨" />
+    <meta property="og:description" content="¡Estamos esperando un bebé! Te invitamos a celebrar con nosotros este día tan especial." />
     <meta property="og:image" content="https://jesusguns.github.io/jalados/images/_favicon-BabyShower.png" />
 
     <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content="https://jesusguns.github.io/jalados/templates/BabyShower_1.html" />
-    <meta property="twitter:title" content="Baby Shower" />
-    <meta property="twitter:description" content="Los momentos más esperados se sueñan, se imaginan, se construyen y cuando llegue ese día tan especial, lo más importante es que estés a nuestro lado." />
-    <meta property="twitter:image" content="https://jesusguns.github.io/jalados/images/_favicon-BabyShower.png" />
-    
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://jesusguns.github.io/jalados/templates/BabyShower_2.html" />
+    <meta name="twitter:title" content="¡Baby Shower de nuestro bebé! 🍼✨" />
+    <meta name="twitter:description" content="¡Estamos esperando un bebé! Te invitamos a celebrar con nosotros este día tan especial." />
+    <meta name="twitter:image" content="https://jesusguns.github.io/jalados/images/_favicon-BabyShower.png" />
+
+    <link rel="icon" type="image/png" sizes="196x196" href="../images/icons/_favicon-BabyShower-196.png" />
+
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" as="style" />
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
     <!-- Font Awesome-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 
-    <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap" rel="stylesheet" />
 
-    <link rel="stylesheet" href="../css/templates.css">
-    <script src="../js/require.js"></script>
+    <link rel="stylesheet" href="../css/templates.css" />
     <style>
       /* #region ROOT*/
       :root {
-        --font-Primary: 'Indie Flower';
+        --font-Primary: "Indie Flower";
       }
 
       /* #endregion ROOT*/
@@ -143,7 +150,7 @@
         background: #ffffffcc;
         padding: 5px;
         border-radius: 10px;
-        box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
       }
       .clock span {
         font-size: 1.8rem;
@@ -208,13 +215,13 @@
       }
 
       .book::before {
-        content: '';
+        content: "";
         position: absolute;
         top: 0;
         left: 49%;
         width: 2%;
         height: 100%;
-        background: radial-gradient(ellipse at center, rgba(0,0,0,0.1), transparent);
+        background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.1), transparent);
         z-index: 0;
       }
 
@@ -229,20 +236,22 @@
         height: 100%;
         transform-origin: left center;
         transform-style: preserve-3d;
-        transition: transform 1s ease, box-shadow 1s ease;
+        transition:
+          transform 1s ease,
+          box-shadow 1s ease;
         z-index: 100;
         box-shadow: 5px 0 15px rgba(0, 0, 0, 0.1);
         border-radius: 15px;
       }
 
       .page::before {
-        content: '';
+        content: "";
         position: absolute;
         top: 0;
         left: 0;
         width: 100%;
         height: 100%;
-        background: linear-gradient(to left, rgba(0,0,0,0.1), transparent);
+        background: linear-gradient(to left, rgba(0, 0, 0, 0.1), transparent);
         opacity: 0.3;
         pointer-events: none;
         z-index: 2;
@@ -256,7 +265,7 @@
       }
 
       .page.flipped::before {
-        background: linear-gradient(to right, rgba(0,0,0,0.1), transparent);
+        background: linear-gradient(to right, rgba(0, 0, 0, 0.1), transparent);
         opacity: 0.15;
       }
 
@@ -327,7 +336,7 @@
         background: white;
         padding: 5px;
         border-radius: 20px;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
         z-index: 999;
       }
 
@@ -399,7 +408,7 @@
       }
 
       .timeline::after {
-        content: '';
+        content: "";
         position: absolute;
         width: 4px;
         background-color: var(--color_Quaternary);
@@ -416,7 +425,7 @@
       }
 
       .timeline .timeline-event::after {
-        content: '';
+        content: "";
         position: absolute;
         width: 20px;
         height: 20px;
@@ -546,7 +555,7 @@
       }
 
       ._btn-gift:hover {
-         box-shadow: 0 2px 10px var(--color_Tertiary);
+        box-shadow: 0 2px 10px var(--color_Tertiary);
       }
 
       ._btn-gift a {
@@ -670,23 +679,34 @@
         <!-- Initial section -->
         <section class="box">
           <div class="subcontainer">
-            <img class="imgMain" src="#" data-replace="ImageMain" alt="Image Main">
-            <h1>¡Estás invitado <br> al Baby Shower de <br> <span data-replace="EventName"></span>!</h1>
+            <img class="imgMain" src="#" data-replace="ImageMain" alt="Image Main" />
+            <h1>
+              ¡Estás invitado
+              <br />
+              al Baby Shower de
+              <br />
+              <span data-replace="EventName"></span>
+              !
+            </h1>
             <div class="mt">
               <h2>Faltan:</h2>
               <div id="countdown">
                 <div class="clock">
                   <div class="time-box">
-                    <span id="days">0</span> <small>Días</small>
+                    <span id="days">0</span>
+                    <small>Días</small>
                   </div>
                   <div class="time-box">
-                    <span id="hours">0</span> <small>Horas</small>
+                    <span id="hours">0</span>
+                    <small>Horas</small>
                   </div>
                   <div class="time-box">
-                    <span id="minutes">0</span> <small>Minutos</small>
+                    <span id="minutes">0</span>
+                    <small>Minutos</small>
                   </div>
                   <div class="time-box">
-                    <span id="seconds">0</span> <small>Segundos</small>
+                    <span id="seconds">0</span>
+                    <small>Segundos</small>
                   </div>
                 </div>
               </div>
@@ -700,14 +720,17 @@
             <h2>Detalles del evento</h2>
             <div class="detail-box-text">
               <div class="block">
-                <h3>¿Cuándo? <span>🗓️</span></h3>
+                <h3>
+                  ¿Cuándo?
+                  <span>🗓️</span>
+                </h3>
                 <p><strong data-replace="EventDateString"></strong></p>
                 <p data-replace="EventHourString"></p>
 
                 <h3 class="mt">
-                    ¿Dónde?
+                  ¿Dónde?
                   <a href="#" data-replace="MainEventUrl" target="_blank">
-                    <img class="location-maps" src="#" data-replace="Image_GoogleLocation" alt="Google Location">
+                    <img class="location-maps" src="#" data-replace="Image_GoogleLocation" alt="Google Location" />
                   </a>
                 </h3>
                 <p data-replace="MainEventLocationDescription"></p>
@@ -724,16 +747,12 @@
             <div class="timeline">
               <div class="timeline-event left">
                 <div class="content">
-                  <h3>
-                    Recepción y bienvenida
-                  </h3>
+                  <h3>Recepción y bienvenida</h3>
                 </div>
               </div>
               <div class="timeline-event right">
                 <div class="content">
-                  <h3>
-                    Juegos
-                  </h3>
+                  <h3>Juegos</h3>
                 </div>
               </div>
               <div class="timeline-event left">
@@ -759,14 +778,14 @@
             </div>
           </div>
         </section>
-        
+
         <!-- Album book section -->
         <section class="box">
           <div class="subcontainerbook">
             <h2 class="bookTitle">Momentos ✨</h2>
             <div class="book-wrapper">
               <div class="book" id="book"></div>
-              <img class="imgTap" id="tapHint" src="#" data-replace="Image_Tap" alt="Tap tap">
+              <img class="imgTap" id="tapHint" src="#" data-replace="Image_Tap" alt="Tap tap" />
             </div>
           </div>
         </section>
@@ -774,12 +793,16 @@
         <section class="detail-box">
           <div class="subcontainer _section-gifttable">
             <h2>Regalos</h2>
-            <p> Para nosotros tu presencia es nuestro mejor regalo, pero si deseas hacernos llegar un obsequio, te sugerimos la siguiente opción: </p>
+            <p>Para nosotros tu presencia es nuestro mejor regalo, pero si deseas hacernos llegar un obsequio, te sugerimos la siguiente opción:</p>
             <div class="_btn-brands">
               <a href="#" data-replace="EventAmazonGiftTableUrl" target="_blank" class="_btn-gift">
-                <img src="#" data-replace="Image_AmazonUrl" /> Amazon </a>
+                <img src="#" data-replace="Image_AmazonUrl" />
+                Amazon
+              </a>
               <a href="#" data-replace="EventLiverpoolGiftTableUrl" target="_blank" class="_btn-gift">
-                <img src="#" data-replace="Image_LiverpoolUrl" /> Liverpool </a>
+                <img src="#" data-replace="Image_LiverpoolUrl" />
+                Liverpool
+              </a>
             </div>
           </div>
         </section>
@@ -798,168 +821,164 @@
     </div>
 
     <div id="themeSwitcher">
-      <button class="theme-btn" data-theme="themeBoy" style="background-color:#368ecf"></button>
-      <button class="theme-btn" data-theme="themeGirl" style="background-color:#f06292"></button>
-      <button class="theme-btn" data-theme="themeNeutral" style="background-color:#bfa058"></button>
+      <button class="theme-btn" data-theme="themeBoy" style="background-color: #368ecf"></button>
+      <button class="theme-btn" data-theme="themeGirl" style="background-color: #f06292"></button>
+      <button class="theme-btn" data-theme="themeNeutral" style="background-color: #bfa058"></button>
     </div>
 
     <div id="themeOverlay">
-      <img class="loader-img" src="#" data-replace="Image_Loading" alt="Loading">
+      <img class="loader-img" src="#" data-replace="Image_Loading" alt="Loading" />
       <span>Cambiando tema...</span>
     </div>
 
-    <script src="../js/main.js"></script>
-    <script src="../js/main.js"></script>
-    <script>
-      requirejs(["jquery", "helpers"], function ($, helpers) {
+    <!-- jQuery primero — sin defer -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js" defer></script>
+    <!-- Bootstrap con defer -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" defer></script>
 
-        // ─── DATOS ────────────────────────────────────────
-        var mainEvent = {
-          Date: new Date("2026-10-17T17:00:00"),
-          Name: "Thomas", // se sobreescribe con applyTheme
+    <script type="module">
+      import { helpers } from "../js/modules/helpers.js";
 
-          LocationDescription: "La Terraza Clouthier",
-          Address:      "Av Manuel J. Clouthier 480, Zapopan, Jal.",
-          GoogleMapsUrl: "https://maps.app.goo.gl/HpD9ZEkGmku4WTyT8",
+      // ─── DATOS ────────────────────────────────────────
+      var mainEvent = {
+        Date: new Date("2026-10-17T17:00:00"),
+        Name: "Thomas", // se sobreescribe con applyTheme
 
-          Father:    "José Gutiérrez",
-          Mother:    "Melissa Hurtado",
-          GodFather: "Juan Fernández",
-          GodMother: "Laura Jimenez",
+        LocationDescription: "La Terraza Clouthier",
+        Address: "Av Manuel J. Clouthier 480, Zapopan, Jal.",
+        GoogleMapsUrl: "https://maps.app.goo.gl/HpD9ZEkGmku4WTyT8",
 
-          AmazonGiftTableUrl:    "https://www.amazon.com.mx/",
-          LiverpoolGiftTableUrl: "https://www.liverpool.com.mx/tienda/home",
+        Father: "José Gutiérrez",
+        Mother: "Melissa Hurtado",
+        GodFather: "Juan Fernández",
+        GodMother: "Laura Jimenez",
 
-          Gallery: [
-            "https://i.pinimg.com/736x/29/fe/49/29fe4983d145c3471f4cb0459063ab57.jpg",
-            "https://img.freepik.com/foto-gratis/mujer-embarazada-foto-su-futuro-bebe_1391-1419.jpg",
-            "https://img.freepik.com/fotos-premium/feliz-pareja-embarazada-buscando-imagen-ultrasonido_530697-83805.jpg",
-            "https://img.freepik.com/foto-gratis/dos-manos-forma-corazon-estomago-madre-embarazada_181624-6985.jpg",
-            "https://img.freepik.com/foto-gratis/mujer-embarazada-marido-zapatos-bebe_23-2147793312.jpg",
-          ],
+        AmazonGiftTableUrl: "https://www.amazon.com.mx/",
+        LiverpoolGiftTableUrl: "https://www.liverpool.com.mx/tienda/home",
 
-          // Gallery2 debe tener el mismo número de imágenes que Gallery
-          Gallery2: [
-            "https://img.freepik.com/foto-gratis/mujer-embarazada-sujetando-corazon-mientras-toca-barriga_1220-849.jpg",
-            "https://img.freepik.com/fotos-premium/mujer-embarazada-sosteniendo-zapatillas-blancas-bebe_1272242-393.jpg",
-            "https://img.freepik.com/fotos-premium/manos-mujer-embarazada-primer-corazon-forman-su-panza_38678-4724.jpg",
-            "https://img.freepik.com/fotos-premium/vientre-mujer-embarazada-primer-plano_176445-10619.jpg",
-            "https://img.freepik.com/foto-gratis/vista-frontal-mujer-embarazada-sosteniendo-su-vientre_23-2148352222.jpg",
-          ],
-        };
+        Gallery: ["https://i.pinimg.com/736x/29/fe/49/29fe4983d145c3471f4cb0459063ab57.jpg", "https://img.freepik.com/foto-gratis/mujer-embarazada-foto-su-futuro-bebe_1391-1419.jpg", "https://img.freepik.com/fotos-premium/feliz-pareja-embarazada-buscando-imagen-ultrasonido_530697-83805.jpg", "https://img.freepik.com/foto-gratis/dos-manos-forma-corazon-estomago-madre-embarazada_181624-6985.jpg", "https://img.freepik.com/foto-gratis/mujer-embarazada-marido-zapatos-bebe_23-2147793312.jpg"],
 
-        // BabyShower — un solo evento, no hay SecondaryEvent
-        var Init = {
-          Config: {
-            EventType: "BabyShower",
-            Sections: {
-              showCounter:   true,
-              showItinerary: true,
-              showGallery:   true,
-              showAttendance: true,
-              showGiftTable: true,
-            },
-            Themes: [],
-            AudioUrl: "../music/Here Comes The Sun.mp3",
+        // Gallery2 debe tener el mismo número de imágenes que Gallery
+        Gallery2: ["https://img.freepik.com/foto-gratis/mujer-embarazada-sujetando-corazon-mientras-toca-barriga_1220-849.jpg", "https://img.freepik.com/fotos-premium/mujer-embarazada-sosteniendo-zapatillas-blancas-bebe_1272242-393.jpg", "https://img.freepik.com/fotos-premium/manos-mujer-embarazada-primer-corazon-forman-su-panza_38678-4724.jpg", "https://img.freepik.com/fotos-premium/vientre-mujer-embarazada-primer-plano_176445-10619.jpg", "https://img.freepik.com/foto-gratis/vista-frontal-mujer-embarazada-sosteniendo-su-vientre_23-2148352222.jpg"],
+      };
+
+      // BabyShower — un solo evento, no hay SecondaryEvent
+      var Init = {
+        Config: {
+          EventType: "BabyShower",
+          Sections: {
+            showCounter: true,
+            showItinerary: true,
+            showGallery: true,
+            showAttendance: true,
+            showGiftTable: true,
           },
-          MainEvent: mainEvent,
-        };
+          Themes: [],
+          AudioUrl: "../music/Here Comes The Sun.mp3",
+        },
+        MainEvent: mainEvent,
+      };
 
-        // Imágenes del template — se actualizan con applyTheme
-        var additionalInformation = {
+      // Imágenes del template — se actualizan con applyTheme
+      var additionalInformation = {
+        ImageBodyBackground: "../images/bg-28.gif",
+        ImageMain: "../images/babyShower/main-6.png",
+        ImageTap: "../images/babyShower/tap-1.webp",
+        ImageLoading: "../images/babyShower/loading-1.webp",
+      };
+
+      // ─── TEMAS ────────────────────────────────────────
+      var Themes = {
+        themeBoy: {
+          "--color_Primary": "#368ecf",
+          "--color_Secondary": "#6d4c41",
+          "--color_Tertiary": "#ff6f61",
+          "--color_Quaternary": "#99d5f06b",
+          "--filter-AudioButton": "230deg",
           ImageBodyBackground: "../images/bg-28.gif",
-          ImageMain:           "../images/babyShower/main-6.png",
-          ImageTap:            "../images/babyShower/tap-1.webp",
-          ImageLoading:        "../images/babyShower/loading-1.webp",
-        };
+          ImageMain: "../images/babyShower/main-6.png",
+          ImageCoverPage: "../images/babyShower/album-1.avif",
+          Name: "Thomas",
+        },
+        themeGirl: {
+          "--color_Primary": "#f06292bd",
+          "--color_Secondary": "#ad1457",
+          "--color_Tertiary": "#e91e63",
+          "--color_Quaternary": "#fce4ec",
+          "--filter-AudioButton": "0deg",
+          ImageBodyBackground: "../images/bg-25.gif",
+          ImageMain: "../images/babyShower/main-2.jpg",
+          ImageCoverPage: "../images/babyShower/album-2.avif",
+          Name: "Valentina",
+        },
+        themeNeutral: {
+          "--color_Primary": "#bfa058a8",
+          "--color_Secondary": "#7e6d4d",
+          "--color_Tertiary": "#957d4a",
+          "--color_Quaternary": "#fff9c4",
+          "--filter-AudioButton": "70deg",
+          ImageBodyBackground: "../images/bg-27.gif",
+          ImageMain: "../images/babyShower/main-5.jpg",
+          ImageCoverPage: "../images/babyShower/album-3.avif",
+          Name: "Aitana y Alex",
+        },
+      };
 
-        // ─── TEMAS ────────────────────────────────────────
-        var Themes = {
-          themeBoy: {
-            "--color_Primary":       "#368ecf",
-            "--color_Secondary":     "#6d4c41",
-            "--color_Tertiary":      "#ff6f61",
-            "--color_Quaternary":    "#99d5f06b",
-            "--filter-AudioButton":  "230deg",
-            ImageBodyBackground:     "../images/bg-28.gif",
-            ImageMain:               "../images/babyShower/main-6.png",
-            ImageCoverPage:          "../images/babyShower/album-1.avif",
-            Name:                    "Thomas",
-          },
-          themeGirl: {
-            "--color_Primary":       "#f06292bd",
-            "--color_Secondary":     "#ad1457",
-            "--color_Tertiary":      "#e91e63",
-            "--color_Quaternary":    "#fce4ec",
-            "--filter-AudioButton":  "0deg",
-            ImageBodyBackground:     "../images/bg-25.gif",
-            ImageMain:               "../images/babyShower/main-2.jpg",
-            ImageCoverPage:          "../images/babyShower/album-2.avif",
-            Name:                    "Valentina",
-          },
-          themeNeutral: {
-            "--color_Primary":       "#bfa058a8",
-            "--color_Secondary":     "#7e6d4d",
-            "--color_Tertiary":      "#957d4a",
-            "--color_Quaternary":    "#fff9c4",
-            "--filter-AudioButton":  "70deg",
-            ImageBodyBackground:     "../images/bg-27.gif",
-            ImageMain:               "../images/babyShower/main-5.jpg",
-            ImageCoverPage:          "../images/babyShower/album-3.avif",
-            Name:                    "Aitana y Alex",
-          },
-        };
+      // ─── REFERENCIAS DOM ──────────────────────────────
+      var book = document.getElementById("book");
+      var flipSound = document.getElementById("flipSound");
+      var tapHint = document.getElementById("tapHint");
 
-        // ─── REFERENCIAS DOM ──────────────────────────────
-        var book     = document.getElementById("book");
-        var flipSound = document.getElementById("flipSound");
-        var tapHint  = document.getElementById("tapHint");
+      // ─── ONLOAD LOCAL ─────────────────────────────────
+      function onLoad() {
+        $("body").css("background-image", 'url("' + additionalInformation.ImageBodyBackground + '")');
+        $("[data-replace=ImageMain]").attr("src", additionalInformation.ImageMain);
+        $("[data-replace=Image_Tap]").attr("src", additionalInformation.ImageTap);
+        $("[data-replace=Image_Loading]").attr("src", additionalInformation.ImageLoading);
+        $("[data-replace=EventName]").text(mainEvent.Name);
+      }
 
-        // ─── ONLOAD LOCAL ─────────────────────────────────
-        function onLoad() {
-          $("body").css("background-image", 'url("' + additionalInformation.ImageBodyBackground + '")');
-          $("[data-replace=ImageMain]").attr("src",      additionalInformation.ImageMain);
-          $("[data-replace=Image_Tap]").attr("src",      additionalInformation.ImageTap);
-          $("[data-replace=Image_Loading]").attr("src",  additionalInformation.ImageLoading);
-          $("[data-replace=EventName]").text(mainEvent.Name);
-        }
+      // ─── GENERAR LIBRO ────────────────────────────────
+      function generateBook() {
+        var currentPage = 0;
+        var totalPages = mainEvent.Gallery.length;
+        $("#book").empty();
 
-        // ─── GENERAR LIBRO ────────────────────────────────
-        function generateBook() {
-          var currentPage  = 0;
-          var totalPages   = mainEvent.Gallery.length;
-          $("#book").empty();
+        var pages = [];
+        var flipTimeouts = [];
+        for (var k = 0; k < totalPages; k++) flipTimeouts.push(null);
 
-          var pages        = [];
-          var flipTimeouts = [];
-          for (var k = 0; k < totalPages; k++) flipTimeouts.push(null);
+        mainEvent.Gallery.forEach(function (img, i) {
+          var page = document.createElement("div");
+          page.className = "page";
+          page.style.zIndex = totalPages - i;
 
-          mainEvent.Gallery.forEach(function (img, i) {
-            var page       = document.createElement("div");
-            page.className = "page";
-            page.style.zIndex = totalPages - i;
+          var backImg = mainEvent.Gallery2[i] || mainEvent.Gallery[0];
 
-            var backImg = mainEvent.Gallery2[i] || mainEvent.Gallery[0];
+          page.innerHTML = '<div class="face front"><img src="' + img + '" alt="Frente ' + (i + 1) + '" /></div>' + '<div class="face back"><img src="' + backImg + '" alt="Reverso ' + (i + 1) + '" /></div>';
 
-            page.innerHTML =
-              '<div class="face front"><img src="' + img + '" alt="Frente ' + (i + 1) + '" /></div>' +
-              '<div class="face back"><img src="' + backImg + '" alt="Reverso ' + (i + 1) + '" /></div>';
+          pages.push(page);
 
-            pages.push(page);
-
-            page.addEventListener("click", (function (idx, pageEl) {
+          page.addEventListener(
+            "click",
+            (function (idx, pageEl) {
               return function () {
                 if (idx !== currentPage) return;
 
                 pageEl.classList.add("flipped");
-                if (flipSound) { flipSound.currentTime = 0; flipSound.play(); }
+                if (flipSound) {
+                  flipSound.currentTime = 0;
+                  flipSound.play();
+                }
 
                 currentPage++;
-                var isLast = (currentPage === totalPages);
+                var isLast = currentPage === totalPages;
 
                 if (isLast) {
                   currentPage = 0;
-                  pages.forEach(function (p, j) { p.style.zIndex = totalPages - j; });
+                  pages.forEach(function (p, j) {
+                    p.style.zIndex = totalPages - j;
+                  });
                 }
 
                 if (!isLast) {
@@ -985,7 +1004,10 @@
                         p.style.zIndex = totalPages - jj;
                         void p.offsetHeight;
                         p.classList.remove("flipped");
-                        if (flipTimeouts[jj] !== null) { clearTimeout(flipTimeouts[jj]); flipTimeouts[jj] = null; }
+                        if (flipTimeouts[jj] !== null) {
+                          clearTimeout(flipTimeouts[jj]);
+                          flipTimeouts[jj] = null;
+                        }
                       }, delay);
                     })(j);
                   }
@@ -1000,83 +1022,84 @@
                   }, totalDelay);
                 }
               };
-            })(i, page));
+            })(i, page),
+          );
 
-            book.appendChild(page);
-          });
-        }
-
-        // ─── APPLY THEME ─────────────────────────────────
-        function applyTheme(themeName) {
-          var theme = Themes[themeName];
-          if (!theme) return;
-
-          var imgMain = document.querySelector(".imgMain");
-          if (imgMain) {
-            imgMain.classList.remove("themeBoy", "themeGirl", "themeNeutral");
-            imgMain.classList.add(themeName);
-          }
-
-          $("#audioButton").addClass("off");
-          if (tapHint) tapHint.classList.remove("hidden");
-          if (book) book.classList.remove("shifted");
-          $("#book").empty();
-
-          // Aplicar variables CSS y propiedades del tema
-          for (var key in theme) {
-            if (!theme.hasOwnProperty(key)) continue;
-            if (key.indexOf("--") === 0) {
-              document.documentElement.style.setProperty(key, theme[key]);
-            } else if (key === "ImageBodyBackground") {
-              additionalInformation.ImageBodyBackground = theme[key];
-            } else if (key === "ImageMain") {
-              additionalInformation.ImageMain = theme[key];
-            } else if (key === "Name") {
-              mainEvent.Name = theme[key];
-            } else if (key === "ImageCoverPage") {
-              mainEvent.Gallery[0] = theme[key];
-            }
-          }
-
-          // Guardar Gallery antes de helpers.init() que puede modificarla
-          var galleryBackup  = mainEvent.Gallery.slice();
-          var gallery2Backup = mainEvent.Gallery2.slice();
-
-          onLoad();
-          helpers.init(Init);
-
-          // Restaurar Gallery después de helpers.init()
-          mainEvent.Gallery  = galleryBackup;
-          mainEvent.Gallery2 = gallery2Backup;
-
-          generateBook();
-        }
-
-        // ─── THEME SWITCHER ───────────────────────────────
-        $(".theme-btn").on("click", function () {
-          var theme = $(this).data("theme");
-          $("#themeOverlay").addClass("active");
-          setTimeout(function () {
-            applyTheme(theme);
-            window.scrollTo({ top: 0, behavior: "smooth" });
-            setTimeout(function () {
-              $("#themeOverlay").removeClass("active");
-            }, 2000);
-          }, 500);
+          book.appendChild(page);
         });
+      }
 
-        // ─── INIT PAGE ────────────────────────────────────
-        function InitPage() {
-          helpers.init(Init);
-          helpers.onCounterStart(Init.MainEvent.Date);
-          setInterval(function () { helpers.onCounterStart(Init.MainEvent.Date); }, 1000);
-          helpers.onAudioPlayer();
-          applyTheme("themeBoy");
+      // ─── APPLY THEME ─────────────────────────────────
+      function applyTheme(themeName) {
+        var theme = Themes[themeName];
+        if (!theme) return;
+
+        var imgMain = document.querySelector(".imgMain");
+        if (imgMain) {
+          imgMain.classList.remove("themeBoy", "themeGirl", "themeNeutral");
+          imgMain.classList.add(themeName);
         }
 
-        InitPage();
-      });
-    </script>
+        $("#audioButton").addClass("off");
+        if (tapHint) tapHint.classList.remove("hidden");
+        if (book) book.classList.remove("shifted");
+        $("#book").empty();
 
+        // Aplicar variables CSS y propiedades del tema
+        for (var key in theme) {
+          if (!theme.hasOwnProperty(key)) continue;
+          if (key.indexOf("--") === 0) {
+            document.documentElement.style.setProperty(key, theme[key]);
+          } else if (key === "ImageBodyBackground") {
+            additionalInformation.ImageBodyBackground = theme[key];
+          } else if (key === "ImageMain") {
+            additionalInformation.ImageMain = theme[key];
+          } else if (key === "Name") {
+            mainEvent.Name = theme[key];
+          } else if (key === "ImageCoverPage") {
+            mainEvent.Gallery[0] = theme[key];
+          }
+        }
+
+        // Guardar Gallery antes de helpers.init() que puede modificarla
+        var galleryBackup = mainEvent.Gallery.slice();
+        var gallery2Backup = mainEvent.Gallery2.slice();
+
+        onLoad();
+        helpers.init(Init);
+
+        // Restaurar Gallery después de helpers.init()
+        mainEvent.Gallery = galleryBackup;
+        mainEvent.Gallery2 = gallery2Backup;
+
+        generateBook();
+      }
+
+      // ─── THEME SWITCHER ───────────────────────────────
+      $(".theme-btn").on("click", function () {
+        var theme = $(this).data("theme");
+        $("#themeOverlay").addClass("active");
+        setTimeout(function () {
+          applyTheme(theme);
+          window.scrollTo({ top: 0, behavior: "smooth" });
+          setTimeout(function () {
+            $("#themeOverlay").removeClass("active");
+          }, 2000);
+        }, 500);
+      });
+
+      // ─── INIT PAGE ────────────────────────────────────
+      function InitPage() {
+        helpers.init(Init);
+        helpers.onCounterStart(Init.MainEvent.Date);
+        setInterval(function () {
+          helpers.onCounterStart(Init.MainEvent.Date);
+        }, 1000);
+        helpers.onAudioPlayer();
+        applyTheme("themeBoy");
+      }
+
+      InitPage();
+    </script>
   </body>
 </html>
