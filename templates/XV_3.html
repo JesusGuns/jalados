@@ -1550,7 +1550,7 @@
         GodFather: "Juan Fernández",
         GodMother: "Laura Jimenez",
 
-        Gallery: ["../images/templates/XV1/1.webp", "../images/templates/XV1/2.jpg", "../images/templates/XV1/3.jpg", "../images/templates/XV1/4.jpg", "../images/templates/XV1/5.jpg", "../images/templates/XV1/6.jpg"],
+        Gallery: ["../images/templates/XV1/1.webp", "../images/templates/XV1/2.webp", "../images/templates/XV1/3.webp", "../images/templates/XV1/4.webp", "../images/templates/XV1/5.webp", "../images/templates/XV1/6.webp"],
 
         AmazonGiftTableUrl: "https://www.amazon.com.mx/",
         LiverpoolGiftTableUrl: "https://www.liverpool.com.mx/tienda/home",
@@ -1570,7 +1570,7 @@
       const additionalInformation = {
         ImageMainCard: "../images/templates/XV1/1.webp",
         ImageMyParents: "../images/templates/XV1/padres.jpg",
-        ImageMyGodParents: "../images/templates/XV1/padrinos.jpg",
+        ImageMyGodParents: "../images/templates/XV1/padrinos.webp",
         ImageDressCodeUrl: "../images/shared/dresscode_2.jpg",
       };
 
@@ -1649,18 +1649,18 @@
         $("[data-replace=TableNumber]").text(mainEvent.TableNumber);
         $("[data-replace=TicketCount]").text(mainEvent.TicketCount);
 
-        var name = mainEvent.Name;
-        var title = "XV Años de " + name;
-        var desc = name + " te invita a celebrar sus XV Años. ¡Acompáñala en este día tan especial!";
-        document.title = title;
-        $('meta[property="og:title"]').attr("content", title);
-        $('meta[property="og:description"]').attr("content", desc);
-        $('meta[property="og:image"]').attr("content", additionalInformation.ImageMainCard);
-        $('meta[property="og:url"]').attr("content", window.location.href);
-        $('meta[property="twitter:title"]').attr("content", title);
-        $('meta[property="twitter:description"]').attr("content", desc);
-        $('meta[property="twitter:image"]').attr("content", additionalInformation.ImageMainCard);
-        $('meta[name="description"]').attr("content", desc);
+        // var name = mainEvent.Name;
+        // var title = "XV Años de " + name;
+        // var desc = name + " te invita a celebrar sus XV Años. ¡Acompáñala en este día tan especial!";
+        // document.title = title;
+        // $('meta[property="og:title"]').attr("content", title);
+        // $('meta[property="og:description"]').attr("content", desc);
+        // $('meta[property="og:image"]').attr("content", additionalInformation.ImageMainCard);
+        // $('meta[property="og:url"]').attr("content", window.location.href);
+        // $('meta[property="twitter:title"]').attr("content", title);
+        // $('meta[property="twitter:description"]').attr("content", desc);
+        // $('meta[property="twitter:image"]').attr("content", additionalInformation.ImageMainCard);
+        // $('meta[name="description"]').attr("content", desc);
 
         mainEvent.Gallery.forEach(function (url, i) {
           var item = $("<div>", { class: "gal-item", "data-index": i });
