@@ -1,30 +1,41 @@
 <!doctype html>
 <html lang="es">
   <head>
-    <meta name="google" content="notranslate" />
     <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/png" sizes="196x196" href="https://jesusguns.github.io/jalados/images/_favicon-XV.png" />
-    <title>Mis XV Años</title>
-    <meta name="description" content="" />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="" />
-    <meta property="og:title" content="" />
-    <meta property="og:description" content="" />
-    <meta property="og:image" content="" />
-    <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content="" />
-    <meta property="twitter:title" content="" />
-    <meta property="twitter:description" content="" />
-    <meta property="twitter:image" content="" />
+    <meta name="google" content="notranslate" />
 
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- Primary Meta Tags -->
+    <title>Mis XV Años</title>
+    <meta name="title" content="Mis XV Años" />
+    <meta name="description" content="Te invito a celebrar mis XV años. ¡Acompáñame en este día tan especial!" />
+
+    <!-- Open Graph / Facebook / WhatsApp -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://jalados.vercel.app/templates/XV_1.html" />
+    <meta property="og:title" content="Mis XV Años" />
+    <meta property="og:description" content="Te invito a celebrar mis XV años. ¡Acompáñame en este día tan especial!" />
+    <meta property="og:image" content="https://jalados.vercel.app/images/icons/_favicon-XV-196.png" />
+
+    <!-- X (Twitter) -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://jalados.vercel.app/templates/XV_1.html" />
+    <meta name="twitter:title" content="Mis XV Años" />
+    <meta name="twitter:description" content="Te invito a celebrar mis XV años. ¡Acompáñame en este día tan especial!" />
+    <meta name="twitter:image" content="https://jalados.vercel.app/images/icons/_favicon-XV-196.png" />
+
+    <link rel="icon" type="image/png" sizes="196x196" href="../images/icons/_favicon-XV-196.png" />
+
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" as="style" />
     <link rel="preload" fetchpriority="high" as="image" href="../images/templates/XV1/1.webp" type="image/webp" />
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Josefin+Sans:wght@300;400;600&family=Pinyon+Script&display=swap" rel="stylesheet" />
 
     <style>
@@ -1770,18 +1781,18 @@
         $("[data-replace=DressCodeStyle]").text(Init.MainEvent.DressCodeStyle);
 
         // Meta tags
-        const name = mainEvent.Name;
-        const title = `XV Años de ${name}`;
-        const desc = `${name} te invita a celebrar sus XV Años. ¡Acompáñala en este día tan especial!`;
-        document.title = title;
-        $('meta[property="og:title"]').attr("content", title);
-        $('meta[property="og:description"]').attr("content", desc);
-        $('meta[property="og:image"]').attr("content", additionalInformation.ImageMainCard);
-        $('meta[property="og:url"]').attr("content", window.location.href);
-        $('meta[property="twitter:title"]').attr("content", title);
-        $('meta[property="twitter:description"]').attr("content", desc);
-        $('meta[property="twitter:image"]').attr("content", additionalInformation.ImageMainCard);
-        $('meta[name="description"]').attr("content", desc);
+        // const name = mainEvent.Name;
+        // const title = `XV Años de ${name}`;
+        // const desc = `${name} te invita a celebrar sus XV Años. ¡Acompáñala en este día tan especial!`;
+        // document.title = title;
+        // $('meta[property="og:title"]').attr("content", title);
+        // $('meta[property="og:description"]').attr("content", desc);
+        // $('meta[property="og:image"]').attr("content", additionalInformation.ImageMainCard);
+        // $('meta[property="og:url"]').attr("content", window.location.href);
+        // $('meta[property="twitter:title"]').attr("content", title);
+        // $('meta[property="twitter:description"]').attr("content", desc);
+        // $('meta[property="twitter:image"]').attr("content", additionalInformation.ImageMainCard);
+        // $('meta[name="description"]').attr("content", desc);
 
         // Galería masonry
         const gallery = Init.MainEvent.Gallery;
