@@ -1,9 +1,5 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html lang="en" class="lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html lang="en" class="lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html lang="en" class="lt-ie9"> <![endif]-->
-<!--[if IE 9]>         <html lang="en" class="ie9"> <![endif]-->
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -1087,9 +1083,6 @@
                     <a href="#" data-replace="WhatsAppUrl" target="_blank" class="holo-button">
                       Aceptar
                     </a>
-                    <a href="#" data-replace="GoogleCalendarUrl" target="_blank" class="holo-button">
-                      Agendar
-                    </a>
                   </div>
                 </div>
               </div>
@@ -1107,83 +1100,71 @@
 
     <script src="../js/main.js"></script>
     <script>
-      requirejs(["jquery","helpers","three", "bs"],function($,helpers,THREE){
-        const EventDate = new Date("2025-11-25T17:00:00");
-        const EventReception = new Date("2025-11-25T17:00:00");
-        const mainEvent = {
+      requirejs(["jquery", "helpers", "three", "bs"], function ($, helpers, THREE) {
+
+        // ─── DATOS ────────────────────────────────────────
+        var mainEvent = {
           Date: new Date("2026-10-17T13:00:00"),
           Name: "Mateo",
 
           LocationDescription: "La Terraza Clouthier",
-          Address: "Av Manuel J. Clouthier 480, Zapopan, Jal.",
+          Address:      "Av Manuel J. Clouthier 480, Zapopan, Jal.",
           GoogleMapsUrl: "https://maps.app.goo.gl/HpD9ZEkGmku4WTyT8",
 
-          Father: "José Gutiérrez",
-          Mother: "Melissa Hurtado",
+          Father:    "José Gutiérrez",
+          Mother:    "Melissa Hurtado",
           GodFather: "Juan Fernández",
           GodMother: "Laura Jimenez",
-          
-          AmazonGiftTableUrl: "https://www.amazon.com.mx/",
+
+          AmazonGiftTableUrl:    "https://www.amazon.com.mx/",
           LiverpoolGiftTableUrl: "https://www.liverpool.com.mx/tienda/home",
-          
+
           Gallery: [],
         };
 
-        const secondaryEvent = {
-          Date: new Date("2026-10-17T17:00:00"),
-          LocationDescription: "La Terraza Clouthier",
-          Address: "Av Manuel J. Clouthier 480, Zapopan, Jal.",
-          GoogleMapsUrl: "https://maps.app.goo.gl/HpD9ZEkGmku4WTyT8",
-        };
-
-        const Init = {
+        // BabyShower — un solo evento, no hay SecondaryEvent
+        var Init = {
           Config: {
             EventType: "BabyShower",
             Sections: {
-              showCounter: true,
-              showIntroduction: true,
-              showParents: true,
-              showItinerary: true,
-              showGallery: true,
-              showDressCode: true,
-              showTickets: true,
-              showTableNumber: true,
+              showCounter:    true,
+              showItinerary:  true,
+              showGallery:    false,
               showAttendance: true,
-              showGiftTable: true,
+              showGiftTable:  true,
             },
-            Themes: [],
+            Themes:   [],
             AudioUrl: "../music/Here Comes The Sun.mp3",
           },
           MainEvent: mainEvent,
-          SecondaryEvent: secondaryEvent,
         };
 
-        const additionalInformation = {
-          AudioUrl: "../music/Here Comes The Sun.mp3",
+        var additionalInformation = {
           WhatsAppUrl: "https://tinyurl.com/3h8kmam7",
         };
 
-        const starfield = document.getElementById('starfield');
-        const scene = new THREE.Scene();
-        const camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 1, 2000);
+        // ─── THREE.JS — CAMPO DE ESTRELLAS ────────────────
+        var starfield = document.getElementById("starfield");
+        var scene     = new THREE.Scene();
+        var camera    = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 1, 2000);
         camera.position.z = 1000;
 
-        const renderer = new THREE.WebGLRenderer({antialias:true, alpha:true});
+        var renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
         renderer.setSize(window.innerWidth, window.innerHeight);
         starfield.appendChild(renderer.domElement);
 
-        const starCount = 1200;
-        const geometry = new THREE.BufferGeometry();
-        const positions = new Float32Array(starCount * 3);
-        for(let i=0; i<starCount; i++) {
-          positions[i*3] = (Math.random() - 0.5) * 2000;
-          positions[i*3 + 1] = (Math.random() - 0.5) * 2000;
-          positions[i*3 + 2] = (Math.random() - 0.5) * 2000;
+        var starCount = 1200;
+        var geometry  = new THREE.BufferGeometry();
+        var positions = new Float32Array(starCount * 3);
+        for (var i = 0; i < starCount; i++) {
+          positions[i * 3]     = (Math.random() - 0.5) * 2000;
+          positions[i * 3 + 1] = (Math.random() - 0.5) * 2000;
+          positions[i * 3 + 2] = (Math.random() - 0.5) * 2000;
         }
-        geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+        geometry.setAttribute("position", new THREE.BufferAttribute(positions, 3));
 
-        const material = new THREE.PointsMaterial({color: '#00ffc3', size: 2});
-        const stars = new THREE.Points(geometry, material);
+        var material = new THREE.PointsMaterial({ color: "#00ffc3", size: 2 });
+        var stars    = new THREE.Points(geometry, material);
         scene.add(stars);
 
         function animate() {
@@ -1191,108 +1172,96 @@
           stars.rotation.y += 0.0006;
           stars.rotation.x += 0.0004;
           renderer.render(scene, camera);
-        };
+        }
 
-        window.addEventListener('resize', () => {
-          camera.aspect = window.innerWidth/window.innerHeight;
-          camera.updateProjectionMatrix();
-          renderer.setSize(window.innerWidth, window.innerHeight);
-        });
+        // ─── REFERENCIAS DOM ──────────────────────────────
+        var bell           = document.getElementById("bell-overlay-img");
+        var bellOver       = document.getElementById("bell-overlay");
+        var notification   = document.getElementById("notification");
+        var missionTop     = document.getElementById("mission-top");
+        var missionTopText = document.getElementById("mission-top-text");
+        var mission        = document.getElementById("mission-container");
+        var buttons        = document.getElementById("overlay-buttons");
+        var audioButton    = document.getElementById("audioButton");
+        var midContainer   = document.getElementById("mid-container");
+        var scrollIndicator = midContainer ? midContainer.querySelector(".scroll-indicator") : null;
+        var clock          = document.getElementById("counter-section");
 
-        const bell = document.getElementById('bell-overlay-img');
-        const bellOver = document.getElementById('bell-overlay');
-        const notification = document.getElementById('notification');
-        const missionTop      = document.getElementById('mission-top');
-        const missionTopText  = document.getElementById('mission-top-text');
-        const mission = document.getElementById('mission-container');
-        const buttons = document.getElementById('overlay-buttons');
-        const audioButton = document.getElementById('audioButton');
-        const midContainer = document.getElementById('mid-container');
-        const scrollIndicator   = midContainer.querySelector('.scroll-indicator');
-        const clock = document.getElementById('counter-section');
-
+        // ─── BELL CLICK ───────────────────────────────────
         if (bell) {
-          bell.addEventListener('click', () => {
-                audioButton.click();
+          bell.addEventListener("click", function () {
+            audioButton.click();
 
-                bell.style.display               = 'none';
-                bellOver.style.display           = 'none';
-                notification.style.display       = 'none';
+            bell.style.display         = "none";
+            bellOver.style.display     = "none";
+            notification.style.display = "none";
+            missionTop.style.display   = "block";
+            missionTopText.classList.add("typing");
 
-                missionTop.style.display         = 'block';
-                missionTopText.classList.add('typing');
+            missionTopText.addEventListener("animationend", function (e) {
+              if (e.animationName === "typing") {
+                missionTopText.style.borderRight = "none";
+                setTimeout(function () {
+                  buttons.style.display      = "flex";
+                  midContainer.style.display = "flex";
+                  clock.style.display        = "flex";
+                  mission.style.display      = "flex";
+                  updateScrollHint();
+                }, 500);
+              }
+            });
 
-                missionTopText.addEventListener('animationend', (e) => {
-                  if (e.animationName === 'typing') {
-                    missionTopText.style.borderRight     = 'none';
-
-                    setTimeout(() => {
-                        buttons.style.display            = 'flex';
-                        midContainer.style.display       = 'flex';
-                        clock.style.display              = 'flex';
-                        mission.style.display            = 'flex';
-
-                        updateScrollHint();
-                    }, 500);
-
-                  }
-                });
-
-                midContainer.addEventListener('scroll', () => {
-                  if (midContainer.scrollTop > 0) {
-                    scrollIndicator.style.display = 'none';
-                  }
-                });
-
-                // audioButton.style.display        = 'flex';
+            midContainer.addEventListener("scroll", function () {
+              if (midContainer.scrollTop > 0 && scrollIndicator) {
+                scrollIndicator.style.display = "none";
+              }
+            });
           });
         }
 
+        // ─── SCROLL HINT ──────────────────────────────────
         function updateScrollHint() {
-          if (midContainer.scrollHeight > midContainer.clientHeight) {
-            scrollIndicator.style.display = 'block';
-          } else {
-            scrollIndicator.style.display = 'none';
-          }
-        };
+          if (!midContainer || !scrollIndicator) return;
+          scrollIndicator.style.display =
+            midContainer.scrollHeight > midContainer.clientHeight ? "block" : "none";
+        }
 
-        const tabButtons = document.querySelectorAll('#overlay-buttons .holo-button.icono');
-        const tabContents = document.querySelectorAll('.mid-tab-content');
+        // ─── TABS ─────────────────────────────────────────
+        var tabButtons  = document.querySelectorAll("#overlay-buttons .holo-button.icono");
+        var tabContents = document.querySelectorAll(".mid-tab-content");
 
         function activateTab(index) {
-          tabButtons.forEach((b,i) => {
-            b.classList.toggle('active', i === index);
-          });
-          tabContents.forEach((c,i) => {
-            c.classList.toggle('active', i === index);
-          });
-
-          midContainer.scrollTop = 0;
+          tabButtons.forEach(function (b, i) { b.classList.toggle("active", i === index); });
+          tabContents.forEach(function (c, i) { c.classList.toggle("active", i === index); });
+          if (midContainer) midContainer.scrollTop = 0;
           updateScrollHint();
-        };
+        }
 
-        tabButtons.forEach((btn, i) => {
-          btn.addEventListener('click', () => {
-            activateTab(i);
-          });
+        tabButtons.forEach(function (btn, i) {
+          btn.addEventListener("click", function () { activateTab(i); });
         });
 
+        // ─── RESIZE — un solo listener ────────────────────
+        window.addEventListener("resize", function () {
+          camera.aspect = window.innerWidth / window.innerHeight;
+          camera.updateProjectionMatrix();
+          renderer.setSize(window.innerWidth, window.innerHeight);
+          if (midContainer) midContainer.scrollTop = 0;
+          updateScrollHint();
+        }, { passive: true });
+
+        // ─── INIT PAGE ────────────────────────────────────
         function InitPage() {
+          $("[data-replace=WhatsAppUrl]").attr("href", additionalInformation.WhatsAppUrl);
           helpers.init(Init);
-          helpers.onCounterStart(Init.MainEvent.Date);
-          setInterval(() => helpers.onCounterStart(Init.MainEvent.Date), 1000);
+          helpers.onCounterStart(mainEvent.Date);
+          setInterval(function () { helpers.onCounterStart(mainEvent.Date); }, 1000);
           helpers.onAudioPlayer();
           animate();
           activateTab(0);
-        };
+        }
+
         InitPage();
-
-
-        window.addEventListener('resize', () => {
-          midContainer.scrollTop = 0;
-          updateScrollHint();
-        });
-
       });
     </script>
   </body>

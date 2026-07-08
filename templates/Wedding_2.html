@@ -3,6 +3,7 @@
   <head>
     <meta name="google" content="notranslate" />
     <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/png" sizes="196x196" href="https://jesusguns.github.io/jalados/images/_favicon-Wedding.png" />
     <!-- Primary Meta Tags -->
@@ -37,8 +38,6 @@
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery/css/lightgallery-bundle.min.css" />
-
-    <script src="../js/require.js"></script>
 
     <style>
       /* #region ROOT*/
@@ -1067,8 +1066,8 @@
         <div class="_template">
           <div class="_main-section">
             <div class="_wrapper">
-              <img class="_main-mono" src="../images/templates/Wedding2/mono.png" />
-              <img class="_main-image" src="../images/templates/Wedding2/1.jpg" />
+              <img class="_main-mono" src="../images/templates/Wedding2/mono.png" fetchpriority="high" loading="eager"/>
+              <img class="_main-image" src="../images/templates/Wedding2/1.jpg" fetchpriority="high" loading="eager"/>
             </div>
 
             <div class="_details">
@@ -1153,8 +1152,7 @@
             <img class="_main-image" src="../images/templates/Wedding2/elplan.png" alt="Evento 1" />
           </div>
 
-          <div class="_gallery-section _hide-section">
-          </div>
+          <div class="_gallery-section _hide-section"></div>
 
           <div class="_third-section _hide-section">
             <div class="_wrapper">
@@ -1263,154 +1261,165 @@
       </main>
     </div>
 
-    <script src="../js/main.js"></script>
+    <!-- jQuery primero — sin defer -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <!-- Bootstrap con defer -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" defer></script>
 
-    <script>
-      requirejs(["jquery", "helpers"], function ($, helpers) {
-        // ─── DATOS ────────────────────────────────────────
-        const mainEvent = {
-          Date: new Date("2026-10-17T17:30:00"),
+    <script type="module">
+      import { helpers } from "../js/modules/helpers.js";
 
-          BrideName: "Jacqueline Esquivias",
-          GroomName: "Jesús Ramírez",
-          BrideShortName: "Jacqueline",
-          GroomShortName: "Jesús",
+      // ─── DATOS ────────────────────────────────────────
+      const mainEvent = {
+        Date: new Date("2026-10-17T17:30:00"),
 
-          LocationDescription: "La Terraza Clouthier",
-          Address: "Av Manuel J. Clouthier 480, Lomas de Guadalupe, 45038 Guadalajara, Jal.",
-          GoogleMapsUrl: "https://maps.app.goo.gl/KuXfBs9iPrwx48xB6",
+        BrideName: "Jacqueline Esquivias",
+        GroomName: "Jesús Ramírez",
+        BrideShortName: "Jacqueline",
+        GroomShortName: "Jesús",
 
-          FatherBride: "Gerardo González Navarro",
-          MotherBride: "Sirina Esquivias Esquivias",
-          FatherGroom: "J. Refugio Ramírez González",
-          MotherGroom: "Sara Ávila García",
+        LocationDescription: "La Terraza Clouthier",
+        Address: "Av Manuel J. Clouthier 480, Lomas de Guadalupe, 45038 Guadalajara, Jal.",
+        GoogleMapsUrl: "https://maps.app.goo.gl/KuXfBs9iPrwx48xB6",
 
-          AmazonGiftTableUrl: "",
-          LiverpoolGiftTableUrl: "https://mesaderegalos.liverpool.com.mx/milistaderegalos/51963844",
+        FatherBride: "Gerardo González Navarro",
+        MotherBride: "Sirina Esquivias Esquivias",
+        FatherGroom: "J. Refugio Ramírez González",
+        MotherGroom: "Sara Ávila García",
 
-          Gallery: ["../images/templates/Wedding2/1.jpg", "../images/templates/Wedding2/2.jpg", "../images/templates/Wedding2/3.jpg", "../images/templates/Wedding2/4.jpg", "../images/templates/Wedding2/end.jpg"],
-        };
+        AmazonGiftTableUrl: "",
+        LiverpoolGiftTableUrl: "https://mesaderegalos.liverpool.com.mx/milistaderegalos/51963844",
 
-        const secondaryEvent = {
-          Date: new Date("2026-10-17T17:30:00"),
-          LocationDescription: "La Terraza Clouthier",
-          Address: "Av Manuel J. Clouthier 480, Lomas de Guadalupe, 45038 Guadalajara, Jal.",
-          GoogleMapsUrl: "https://maps.app.goo.gl/HpD9ZEkGmku4WTyT8",
-        };
+        Gallery: ["../images/templates/Wedding2/1.jpg", "../images/templates/Wedding2/2.jpg", "../images/templates/Wedding2/3.jpg", "../images/templates/Wedding2/4.jpg", "../images/templates/Wedding2/end.jpg"],
+      };
 
-        const Init = {
-          Config: {
-            EventType: "Wedding",
-            Sections: {
-              showCounter: true,
-              showIntroduction: true,
-              showParents: true,
-              showItinerary: true,
-              showGallery: true,
-              showDressCode: true,
-              showTickets: true,
-              showTableNumber: true,
-              showAttendance: true,
-              showGiftTable: true,
-            },
-            Themes: [],
-            AudioUrl: "../music/Girls Like You_1.mp3",
+      const secondaryEvent = {
+        Date: new Date("2026-10-17T17:30:00"),
+        LocationDescription: "La Terraza Clouthier",
+        Address: "Av Manuel J. Clouthier 480, Lomas de Guadalupe, 45038 Guadalajara, Jal.",
+        GoogleMapsUrl: "https://maps.app.goo.gl/HpD9ZEkGmku4WTyT8",
+      };
+
+      const Init = {
+        Config: {
+          EventType: "Wedding",
+          Sections: {
+            showCounter: true,
+            showIntroduction: true,
+            showParents: true,
+            showItinerary: true,
+            showGallery: true,
+            showDressCode: true,
+            showTickets: true,
+            showTableNumber: true,
+            showAttendance: true,
+            showGiftTable: true,
           },
-          MainEvent: mainEvent,
-          SecondaryEvent: secondaryEvent,
-        };
+          Themes: [],
+          AudioUrl: "../music/Girls Like You_1.mp3",
+        },
+        MainEvent: mainEvent,
+        SecondaryEvent: secondaryEvent,
+      };
 
-        function onLoad() {
-          helpers.onValidateToken();
+      function onLoad() {
+        helpers.onValidateToken();
 
-          var eventFromatDate = helpers.onGetDay(mainEvent.Date) + " • " + helpers.onGetMonth(mainEvent.Date) + " • " + helpers.onGetYear(mainEvent.Date);
-          $("[data-replace=EventFormatDate]").text(eventFromatDate);
-          $("[data-replace=BrideShortName]").text(mainEvent.BrideShortName);
-          $("[data-replace=GroomShortName]").text(mainEvent.GroomShortName);
-          $("[data-replace=BrideGroomShortNames]").text(mainEvent.BrideShortName + " & " + mainEvent.GroomShortName);
-          // Galería
-          var gallery_imgs = mainEvent.Gallery;
-          $("#_gallery-section").empty();
-          gallery_imgs.forEach(function (url, index) {
-            var item = $("<div>", { "class": "gal-item", "data-index": index });
-            var img  = $("<img>", { src: url, alt: "Foto " + (index + 1), loading: "lazy" });
-            item.append(img);
-            $("#_gallery-section").append(item);
-          });
+        var eventFromatDate = helpers.onGetDay(mainEvent.Date) + " • " + helpers.onGetMonth(mainEvent.Date) + " • " + helpers.onGetYear(mainEvent.Date);
+        $("[data-replace=EventFormatDate]").text(eventFromatDate);
+        $("[data-replace=BrideShortName]").text(mainEvent.BrideShortName);
+        $("[data-replace=GroomShortName]").text(mainEvent.GroomShortName);
+        $("[data-replace=BrideGroomShortNames]").text(mainEvent.BrideShortName + " & " + mainEvent.GroomShortName);
+        // Galería
+        var gallery_imgs = mainEvent.Gallery;
+        $("#_gallery-section").empty();
+        gallery_imgs.forEach(function (url, index) {
+          var item = $("<div>", { class: "gal-item", "data-index": index });
+          var img = $("<img>", { src: url, alt: "Foto " + (index + 1), loading: "lazy" });
+          item.append(img);
+          $("#_gallery-section").append(item);
+        });
 
-          // Confirmación
-          $("#_btnYes").on("click", function () {
-            helpers.onSendConfirmation(true, $("input[name=guestAttendants]").val(), $("textarea[name=wishes]").val());
-          });
-          $("#_btnNo").on("click", function () {
-            helpers.onSendConfirmation(false, $("input[name=guestName]").val(), $("textarea[name=wishes]").val());
-          });
-        }
+        // Confirmación
+        $("#_btnYes").on("click", function () {
+          helpers.onSendConfirmation(true, $("input[name=guestAttendants]").val(), $("textarea[name=wishes]").val());
+        });
+        $("#_btnNo").on("click", function () {
+          helpers.onSendConfirmation(false, $("input[name=guestName]").val(), $("textarea[name=wishes]").val());
+        });
+      }
 
-        function checkVisibility() {
-          var animatedEls = document.querySelectorAll(".slide-up > h2, .slide-up > p");
-          var slideObserver = new IntersectionObserver(function (entries) {
+      function checkVisibility() {
+        var animatedEls = document.querySelectorAll(".slide-up > h2, .slide-up > p");
+        var slideObserver = new IntersectionObserver(
+          function (entries) {
             entries.forEach(function (entry) {
               entry.target.classList.toggle("visible", entry.isIntersecting);
             });
-          }, { threshold: 0.15 });
-          animatedEls.forEach(function (el) { slideObserver.observe(el); });
-        }
+          },
+          { threshold: 0.15 },
+        );
+        animatedEls.forEach(function (el) {
+          slideObserver.observe(el);
+        });
+      }
 
-        // ─── INIT PAGE ────────────────────────────────────
-        function InitPage() {
-          onLoad();
-          helpers.init(Init);
-          helpers.onAudioPlayer();
+      // ─── INIT PAGE ────────────────────────────────────
+      function InitPage() {
+        onLoad();
+        helpers.init(Init);
+        helpers.onAudioPlayer();
 
-          // Play button — revela secciones y arranca el contador
-          $("._play-button").on("click", function () {
+        // Play button — revela secciones y arranca el contador
+        $("._play-button").on("click", function () {
+          helpers.onCounterStart(mainEvent.Date);
+          setInterval(function () {
             helpers.onCounterStart(mainEvent.Date);
-            setInterval(function () {
-              helpers.onCounterStart(mainEvent.Date);
-            }, 1000);
+          }, 1000);
 
-            $(this).hide();
-            $("._hide-section").removeClass("_hide-section");
+          $(this).hide();
+          $("._hide-section").removeClass("_hide-section");
 
-            requestAnimationFrame(function () {
-              helpers.onPlay();
-              checkVisibility();
+          requestAnimationFrame(function () {
+            helpers.onPlay();
+            checkVisibility();
 
-              // Fade-in al scroll para imágenes de galería
-              var images = document.querySelectorAll("._gallery-section img");
-              var observer = new IntersectionObserver(function (entries) {
+            // Fade-in al scroll para imágenes de galería
+            var images = document.querySelectorAll("._gallery-section img");
+            var observer = new IntersectionObserver(
+              function (entries) {
                 entries.forEach(function (entry) {
                   entry.target.classList.toggle("show", entry.isIntersecting);
                 });
-              }, { threshold: 0.15 });
+              },
+              { threshold: 0.15 },
+            );
 
-              images.forEach(function (img) {
-                observer.observe(img);
-                img.addEventListener("click", function () {
-                  var modal    = document.getElementById("_modal");
-                  var modalImg = document.getElementById("_modalImg");
-                  if (modal && modalImg) {
-                    modalImg.src = img.src;
-                    modal.classList.add("show");
-                    document.body.style.overflow = "hidden";
-                  }
-                });
-              });
-
-              // Marcar visibles al cargar
-              images.forEach(function (img) {
-                var rect = img.getBoundingClientRect();
-                if (rect.top < window.innerHeight) img.classList.add("show");
+            images.forEach(function (img) {
+              observer.observe(img);
+              img.addEventListener("click", function () {
+                var modal = document.getElementById("_modal");
+                var modalImg = document.getElementById("_modalImg");
+                if (modal && modalImg) {
+                  modalImg.src = img.src;
+                  modal.classList.add("show");
+                  document.body.style.overflow = "hidden";
+                }
               });
             });
+
+            // Marcar visibles al cargar
+            images.forEach(function (img) {
+              var rect = img.getBoundingClientRect();
+              if (rect.top < window.innerHeight) img.classList.add("show");
+            });
           });
+        });
 
-          checkVisibility();
-        }
+        checkVisibility();
+      }
 
-        InitPage();
-      });
+      InitPage();
     </script>
   </body>
 </html>

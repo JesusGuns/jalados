@@ -1,9 +1,5 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html lang="en" class="lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html lang="en" class="lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html lang="en" class="lt-ie9"> <![endif]-->
-<!--[if IE 9]>         <html lang="en" class="ie9"> <![endif]-->
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -796,10 +792,6 @@
               <i class="fas fa-heart"></i>
               Asistiré
             </a>
-            <a href="#" data-replace="GoogleCalendarUrl" target="_blank" class="btn">
-              <i class="fas fa-calendar"></i>
-              Agendar
-            </a>
           </div>
         </section>
       </main>
@@ -817,71 +809,53 @@
     </div>
 
     <script src="../js/main.js"></script>
+    <script src="../js/main.js"></script>
     <script>
-      requirejs(["jquery","helpers"],function($,helpers){
-       
-        const mainEvent = {
+      requirejs(["jquery", "helpers"], function ($, helpers) {
+
+        // ─── DATOS ────────────────────────────────────────
+        var mainEvent = {
           Date: new Date("2026-10-17T17:00:00"),
-          Name: "",
+          Name: "Thomas", // se sobreescribe con applyTheme
 
           LocationDescription: "La Terraza Clouthier",
-          Address: "Av Manuel J. Clouthier 480, Zapopan, Jal.",
+          Address:      "Av Manuel J. Clouthier 480, Zapopan, Jal.",
           GoogleMapsUrl: "https://maps.app.goo.gl/HpD9ZEkGmku4WTyT8",
 
-          Father: "José Gutiérrez",
-          Mother: "Melissa Hurtado",
+          Father:    "José Gutiérrez",
+          Mother:    "Melissa Hurtado",
           GodFather: "Juan Fernández",
           GodMother: "Laura Jimenez",
-          
-          AmazonGiftTableUrl: "https://www.amazon.com.mx/",
+
+          AmazonGiftTableUrl:    "https://www.amazon.com.mx/",
           LiverpoolGiftTableUrl: "https://www.liverpool.com.mx/tienda/home",
+
           Gallery: [
-            'https://i.pinimg.com/736x/29/fe/49/29fe4983d145c3471f4cb0459063ab57.jpg',
-            'https://img.freepik.com/foto-gratis/mujer-embarazada-foto-su-futuro-bebe_1391-1419.jpg?ga=GA1.1.376195781.1747703452&semt=ais_hybrid&w=740',
-            'https://img.freepik.com/fotos-premium/feliz-pareja-embarazada-buscando-imagen-ultrasonido-su-bebe-nacer-aislado-fondo-azul_530697-83805.jpg?ga=GA1.1.376195781.1747703452&semt=ais_hybrid&w=740',
-            'https://img.freepik.com/foto-gratis/dos-manos-forma-corazon-estomago-madre-embarazada_181624-6985.jpg?ga=GA1.1.376195781.1747703452&semt=ais_hybrid&w=740',
-            'https://img.freepik.com/foto-gratis/mujer-embarazada-marido-zapatos-bebe_23-2147793312.jpg?ga=GA1.1.376195781.1747703452&semt=ais_hybrid&w=740',
-            'https://img.freepik.com/foto-gratis/imagen-ultrasonido-mujer-embarazada-cosas-bebe-madre-esta-esperando-bebe_169016-27477.jpg?ga=GA1.1.376195781.1747703452&semt=ais_hybrid&w=740'
+            "https://i.pinimg.com/736x/29/fe/49/29fe4983d145c3471f4cb0459063ab57.jpg",
+            "https://img.freepik.com/foto-gratis/mujer-embarazada-foto-su-futuro-bebe_1391-1419.jpg",
+            "https://img.freepik.com/fotos-premium/feliz-pareja-embarazada-buscando-imagen-ultrasonido_530697-83805.jpg",
+            "https://img.freepik.com/foto-gratis/dos-manos-forma-corazon-estomago-madre-embarazada_181624-6985.jpg",
+            "https://img.freepik.com/foto-gratis/mujer-embarazada-marido-zapatos-bebe_23-2147793312.jpg",
           ],
+
+          // Gallery2 debe tener el mismo número de imágenes que Gallery
           Gallery2: [
-            'https://img.freepik.com/foto-gratis/mujer-embarazada-sujetando-corazon-mientras-toca-barriga_1220-849.jpg',
-            'https://img.freepik.com/fotos-premium/mujer-embarazada-sosteniendo-zapatillas-blancas-bebe-cerca-vientre-embarazada-concepto-familiar_1272242-393.jpg?ga=GA1.1.376195781.1747703452&semt=ais_hybrid&w=740',
-            'https://img.freepik.com/fotos-premium/manos-mujer-embarazada-primer-corazon-forman-su-panza_38678-4724.jpg?ga=GA1.1.376195781.1747703452&semt=ais_hybrid&w=740',
-            'https://img.freepik.com/fotos-premium/vientre-mujer-embarazada-primer-plano-vientre-mujer-embarazada_176445-10619.jpg?ga=GA1.1.376195781.1747703452&semt=ais_hybrid&w=740',
-            'https://img.freepik.com/foto-gratis/vista-frontal-mujer-embarazada-sosteniendo-su-vientre_23-2148352222.jpg?ga=GA1.1.376195781.1747703452&semt=ais_hybrid&w=740'
-          ]
+            "https://img.freepik.com/foto-gratis/mujer-embarazada-sujetando-corazon-mientras-toca-barriga_1220-849.jpg",
+            "https://img.freepik.com/fotos-premium/mujer-embarazada-sosteniendo-zapatillas-blancas-bebe_1272242-393.jpg",
+            "https://img.freepik.com/fotos-premium/manos-mujer-embarazada-primer-corazon-forman-su-panza_38678-4724.jpg",
+            "https://img.freepik.com/fotos-premium/vientre-mujer-embarazada-primer-plano_176445-10619.jpg",
+            "https://img.freepik.com/foto-gratis/vista-frontal-mujer-embarazada-sosteniendo-su-vientre_23-2148352222.jpg",
+          ],
         };
 
-        const secondaryEvent = {
-          Date: new Date("2026-10-17T17:00:00"),
-          LocationDescription: "La Terraza Clouthier",
-          Address: "Av Manuel J. Clouthier 480, Zapopan, Jal.",
-          GoogleMapsUrl: "https://maps.app.goo.gl/HpD9ZEkGmku4WTyT8",
-        };
-
-    
-        const additionalInformation = {
-          ImageBodyBackground: "",
-          ImageCorner: "",
-          ImageFrontCard: "",
-          ImageMain: "",
-          ImageTap: "../images/babyShower/tap-1.webp",
-          ImageLoading: "../images/babyShower/loading-1.webp",
-          
-        };
-
-        const Init = {
+        // BabyShower — un solo evento, no hay SecondaryEvent
+        var Init = {
           Config: {
             EventType: "BabyShower",
             Sections: {
-              showCounter: true,
-              showIntroduction: true,
-              showParents: true,
+              showCounter:   true,
               showItinerary: true,
-              showGallery: true,
-              showDressCode: true,
-              showTickets: true,
-              showTableNumber: true,
+              showGallery:   true,
               showAttendance: true,
               showGiftTable: true,
             },
@@ -889,213 +863,220 @@
             AudioUrl: "../music/Here Comes The Sun.mp3",
           },
           MainEvent: mainEvent,
-          SecondaryEvent: secondaryEvent,
         };
 
-        function onLoad(){
-          $('body').css('background-image', 'url("' + additionalInformation.ImageBodyBackground + '")');
-          $("[data-replace=ImageMain]").attr("src", additionalInformation.ImageMain);
-          $("[data-replace=Image_Tap]").attr("src", additionalInformation.ImageTap);
-          $("[data-replace=Image_Loading]").attr("src", additionalInformation.ImageLoading);
+        // Imágenes del template — se actualizan con applyTheme
+        var additionalInformation = {
+          ImageBodyBackground: "../images/bg-28.gif",
+          ImageMain:           "../images/babyShower/main-6.png",
+          ImageTap:            "../images/babyShower/tap-1.webp",
+          ImageLoading:        "../images/babyShower/loading-1.webp",
         };
 
-        const book = document.getElementById('book');
-        const flipSound = document.getElementById('flipSound');
-        const tapHint = document.getElementById('tapHint');
-        const totalPages = mainEvent.Gallery.length;
-        const Themes = {
+        // ─── TEMAS ────────────────────────────────────────
+        var Themes = {
           themeBoy: {
-            '--color_Primary': '#368ecf',
-            '--color_Secondary': '#6d4c41',
-            '--color_Tertiary': '#ff6f61',
-            '--color_Quaternary': '#99d5f06b',
-            '--filter-AudioButton': '230deg',
-            ImageBodyBackground: "../images/bg-28.gif",
-            ImageMain: "../images/babyShower/main-6.png",
-            ImageCoverPage: "../images/babyShower/album-1.avif",
-            Name: 'Thomas'
+            "--color_Primary":       "#368ecf",
+            "--color_Secondary":     "#6d4c41",
+            "--color_Tertiary":      "#ff6f61",
+            "--color_Quaternary":    "#99d5f06b",
+            "--filter-AudioButton":  "230deg",
+            ImageBodyBackground:     "../images/bg-28.gif",
+            ImageMain:               "../images/babyShower/main-6.png",
+            ImageCoverPage:          "../images/babyShower/album-1.avif",
+            Name:                    "Thomas",
           },
           themeGirl: {
-            '--color_Primary': '#f06292bd',
-            '--color_Secondary': '#ad1457',
-            '--color_Tertiary': '#e91e63',
-            '--color_Quaternary': '#fce4ec',
-            '--filter-AudioButton': '0deg',
-            ImageBodyBackground: "../images/bg-25.gif",
-            ImageMain: "../images/babyShower/main-2.jpg",
-            ImageCoverPage: "../images/babyShower/album-2.avif",
-            Name: 'Valentina'
+            "--color_Primary":       "#f06292bd",
+            "--color_Secondary":     "#ad1457",
+            "--color_Tertiary":      "#e91e63",
+            "--color_Quaternary":    "#fce4ec",
+            "--filter-AudioButton":  "0deg",
+            ImageBodyBackground:     "../images/bg-25.gif",
+            ImageMain:               "../images/babyShower/main-2.jpg",
+            ImageCoverPage:          "../images/babyShower/album-2.avif",
+            Name:                    "Valentina",
           },
           themeNeutral: {
-            '--color_Primary': '#bfa058a8',
-            '--color_Secondary': '#7e6d4d',
-            '--color_Tertiary': '#957d4a',
-            '--color_Quaternary': '#fff9c4',
-            '--filter-AudioButton': '70deg',
-            ImageBodyBackground: "../images/bg-27.gif",
-            ImageMain: "../images/babyShower/main-5.jpg",
-            ImageCoverPage: "../images/babyShower/album-3.avif",
-            Name: 'Aitana y Alex'
-          }
+            "--color_Primary":       "#bfa058a8",
+            "--color_Secondary":     "#7e6d4d",
+            "--color_Tertiary":      "#957d4a",
+            "--color_Quaternary":    "#fff9c4",
+            "--filter-AudioButton":  "70deg",
+            ImageBodyBackground:     "../images/bg-27.gif",
+            ImageMain:               "../images/babyShower/main-5.jpg",
+            ImageCoverPage:          "../images/babyShower/album-3.avif",
+            Name:                    "Aitana y Alex",
+          },
         };
-        
+
+        // ─── REFERENCIAS DOM ──────────────────────────────
+        var book     = document.getElementById("book");
+        var flipSound = document.getElementById("flipSound");
+        var tapHint  = document.getElementById("tapHint");
+
+        // ─── ONLOAD LOCAL ─────────────────────────────────
+        function onLoad() {
+          $("body").css("background-image", 'url("' + additionalInformation.ImageBodyBackground + '")');
+          $("[data-replace=ImageMain]").attr("src",      additionalInformation.ImageMain);
+          $("[data-replace=Image_Tap]").attr("src",      additionalInformation.ImageTap);
+          $("[data-replace=Image_Loading]").attr("src",  additionalInformation.ImageLoading);
+          $("[data-replace=EventName]").text(mainEvent.Name);
+        }
+
+        // ─── GENERAR LIBRO ────────────────────────────────
         function generateBook() {
-          let currentPage = 0;
+          var currentPage  = 0;
+          var totalPages   = mainEvent.Gallery.length;
+          $("#book").empty();
 
-          $('#book').empty();
+          var pages        = [];
+          var flipTimeouts = [];
+          for (var k = 0; k < totalPages; k++) flipTimeouts.push(null);
 
-          const pages = [];
-          const flipTimeouts = new Array(totalPages).fill(null);
-
-          mainEvent.Gallery.forEach((img, i) => {
-            const page = document.createElement('div');
-            page.className = 'page';
+          mainEvent.Gallery.forEach(function (img, i) {
+            var page       = document.createElement("div");
+            page.className = "page";
             page.style.zIndex = totalPages - i;
 
-            const backImg = mainEvent.Gallery2[i] || '';
+            var backImg = mainEvent.Gallery2[i] || mainEvent.Gallery[0];
 
-            page.innerHTML = `
-              <div class="face front"><img src="${img}" alt="Frente ${i + 1}" /></div>
-              <div class="face back"><img src="${backImg}" alt="Reverso ${i + 1}" /></div>
-            `;
+            page.innerHTML =
+              '<div class="face front"><img src="' + img + '" alt="Frente ' + (i + 1) + '" /></div>' +
+              '<div class="face back"><img src="' + backImg + '" alt="Reverso ' + (i + 1) + '" /></div>';
 
             pages.push(page);
 
-            page.addEventListener('click', () => {
-              if (i !== currentPage) return;
+            page.addEventListener("click", (function (idx, pageEl) {
+              return function () {
+                if (idx !== currentPage) return;
 
-              page.classList.add('flipped');
-              if (flipSound) {
-                flipSound.currentTime = 0;
-                flipSound.play();
-              }
+                pageEl.classList.add("flipped");
+                if (flipSound) { flipSound.currentTime = 0; flipSound.play(); }
 
-              currentPage++;
-              const esUltima = (currentPage == totalPages);
-              if (esUltima) {
-                currentPage = 0;
+                currentPage++;
+                var isLast = (currentPage === totalPages);
 
-                pages.forEach((p, idx) => {
-                  p.style.zIndex = totalPages - idx;
-                });
-              }
-
-              if (!esUltima) {
-                if (flipTimeouts[i] !== null) {
-                  clearTimeout(flipTimeouts[i]);
+                if (isLast) {
+                  currentPage = 0;
+                  pages.forEach(function (p, j) { p.style.zIndex = totalPages - j; });
                 }
-                flipTimeouts[i] = setTimeout(() => {
-                  if (page.classList.contains('flipped')) {
-                    page.style.zIndex = i;
+
+                if (!isLast) {
+                  if (flipTimeouts[idx] !== null) clearTimeout(flipTimeouts[idx]);
+                  flipTimeouts[idx] = setTimeout(function () {
+                    if (pageEl.classList.contains("flipped")) pageEl.style.zIndex = idx;
+                    flipTimeouts[idx] = null;
+                  }, 300);
+                }
+
+                if (idx === 0) {
+                  book.classList.add("shifted");
+                  tapHint.classList.add("hidden");
+                  tapHint.classList.remove("shifted");
+                }
+
+                if (isLast) {
+                  for (var j = totalPages - 1; j >= 0; j--) {
+                    (function (jj) {
+                      var delay = (totalPages - 1 - jj) * 400;
+                      var p = pages[jj];
+                      setTimeout(function () {
+                        p.style.zIndex = totalPages - jj;
+                        void p.offsetHeight;
+                        p.classList.remove("flipped");
+                        if (flipTimeouts[jj] !== null) { clearTimeout(flipTimeouts[jj]); flipTimeouts[jj] = null; }
+                      }, delay);
+                    })(j);
                   }
-                  flipTimeouts[i] = null;
-                }, 300);
-              }
-
-              if (i == 0) {
-                book.classList.add('shifted');
-                tapHint.classList.add('hidden');
-                tapHint.classList.remove('shifted');
-              }
-
-              if (esUltima) {
-                for (let j = totalPages - 1; j >= 0; j--) {
-                  const delay = (totalPages - 1 - j) * 400;
-                  const p = pages[j];
-
-                  setTimeout(() => {
-                    p.style.zIndex = totalPages - j;
-                    void p.offsetHeight;
-                    p.classList.remove('flipped');
-                    if (flipTimeouts[j] !== null) {
-                      clearTimeout(flipTimeouts[j]);
-                      flipTimeouts[j] = null;
-                    }
-                  }, delay);
+                  var totalDelay = (totalPages - 1) * 400 + 750;
+                  setTimeout(function () {
+                    book.style.transition = "transform 1s ease";
+                    book.classList.remove("shifted");
+                    setTimeout(function () {
+                      tapHint.classList.add("fade-in");
+                      tapHint.classList.remove("hidden");
+                    }, 1500);
+                  }, totalDelay);
                 }
-
-                const totalDelay = (totalPages - 1) * 400 + 750;
-                setTimeout(() => {
-                  book.style.transition = 'transform 1s ease';
-                  book.classList.remove('shifted');
-                  setTimeout(() => {
-                    tapHint.classList.add('fade-in');
-                    tapHint.classList.remove('hidden');
-                  }, 1500);
-                }, totalDelay);
-              }
-            });
+              };
+            })(i, page));
 
             book.appendChild(page);
           });
-        };
+        }
 
+        // ─── APPLY THEME ─────────────────────────────────
         function applyTheme(themeName) {
-          const theme = Themes[themeName];
+          var theme = Themes[themeName];
+          if (!theme) return;
 
-          const imgMain = document.querySelector('.imgMain');
-          imgMain.classList.remove('themeBoy', 'themeGirl', 'themeNeutral');
-          imgMain.classList.add(`${themeName}`);
+          var imgMain = document.querySelector(".imgMain");
+          if (imgMain) {
+            imgMain.classList.remove("themeBoy", "themeGirl", "themeNeutral");
+            imgMain.classList.add(themeName);
+          }
 
           $("#audioButton").addClass("off");
+          if (tapHint) tapHint.classList.remove("hidden");
+          if (book) book.classList.remove("shifted");
+          $("#book").empty();
 
-          tapHint.classList.remove("hidden");
-          
-          book.classList.remove('shifted');
-          $('#book').empty();
-
-          for (let variable in theme) {
-            if (variable.startsWith('--')) {
-              document.documentElement.style.setProperty(variable, theme[variable]);
-            } else {
-              if (variable == 'ImageBodyBackground') {
-                additionalInformation.ImageBodyBackground = theme[variable];
-              } else if (variable == 'ImageMain') {
-                additionalInformation.ImageMain = theme[variable];
-              } else if (variable == 'Name') {
-                mainEvent.Name = theme[variable];
-              } else if (variable == 'ImageCoverPage') {
-                mainEvent.Gallery[0] = theme[variable];
-              }
+          // Aplicar variables CSS y propiedades del tema
+          for (var key in theme) {
+            if (!theme.hasOwnProperty(key)) continue;
+            if (key.indexOf("--") === 0) {
+              document.documentElement.style.setProperty(key, theme[key]);
+            } else if (key === "ImageBodyBackground") {
+              additionalInformation.ImageBodyBackground = theme[key];
+            } else if (key === "ImageMain") {
+              additionalInformation.ImageMain = theme[key];
+            } else if (key === "Name") {
+              mainEvent.Name = theme[key];
+            } else if (key === "ImageCoverPage") {
+              mainEvent.Gallery[0] = theme[key];
             }
           }
 
-          const imgs = JSON.parse(JSON.stringify(mainEvent.Gallery));
-          const imgs2 = JSON.parse(JSON.stringify(mainEvent.Gallery2));
+          // Guardar Gallery antes de helpers.init() que puede modificarla
+          var galleryBackup  = mainEvent.Gallery.slice();
+          var gallery2Backup = mainEvent.Gallery2.slice();
 
-          
           onLoad();
           helpers.init(Init);
-          mainEvent.Gallery = imgs;
-          mainEvent.Gallery2 = imgs2;
+
+          // Restaurar Gallery después de helpers.init()
+          mainEvent.Gallery  = galleryBackup;
+          mainEvent.Gallery2 = gallery2Backup;
 
           generateBook();
-        };
+        }
 
-        $('.theme-btn').on('click', function () {
-          const theme = $(this).data('theme');
-          $('#themeOverlay').addClass('active');
-
-          setTimeout(() => {
+        // ─── THEME SWITCHER ───────────────────────────────
+        $(".theme-btn").on("click", function () {
+          var theme = $(this).data("theme");
+          $("#themeOverlay").addClass("active");
+          setTimeout(function () {
             applyTheme(theme);
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-            setTimeout(() => {
-              $('#themeOverlay').removeClass('active');
+            window.scrollTo({ top: 0, behavior: "smooth" });
+            setTimeout(function () {
+              $("#themeOverlay").removeClass("active");
             }, 2000);
           }, 500);
         });
 
+        // ─── INIT PAGE ────────────────────────────────────
         function InitPage() {
           helpers.init(Init);
           helpers.onCounterStart(Init.MainEvent.Date);
-          setInterval(() => helpers.onCounterStart(Init.MainEvent.Date), 1000);
+          setInterval(function () { helpers.onCounterStart(Init.MainEvent.Date); }, 1000);
           helpers.onAudioPlayer();
-          generateBook();
-          applyTheme('themeBoy');
-        };
-        InitPage();
+          applyTheme("themeBoy");
+        }
 
+        InitPage();
       });
     </script>
+
   </body>
 </html>

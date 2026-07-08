@@ -1,13 +1,11 @@
-<!DOCTYPE html>
-<!--[if lt IE 7]>      <html lang="en" class="lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html lang="en" class="lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html lang="en" class="lt-ie9"> <![endif]-->
-<!--[if IE 9]>         <html lang="en" class="ie9"> <![endif]-->
-<html lang="en">
+<!doctype html>
+<html lang="es">
   <head>
-    <meta charset="utf-8" />
+    <meta name="google" content="notranslate" />
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/png" sizes="196x196" href="https://jesusguns.github.io/jalados/images/_favicon-Wedding.png">
+    <link rel="icon" type="image/png" sizes="196x196" href="https://jesusguns.github.io/jalados/images/_favicon-Wedding.png" />
     <!-- Primary Meta Tags -->
     <title>Nuestra Boda</title>
     <meta name="title" content="Nuestra Boda" />
@@ -30,12 +28,12 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
     <!-- Font Awesome-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 
-    <link href="https://fonts.googleapis.com/css2?family=Delius&family=Pacifico&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Delius&family=Pacifico&display=swap" rel="stylesheet" />
 
-    <link rel="stylesheet" href="../css/templates.css">
-    <script src="../js/require.js"></script>
+    <link rel="stylesheet" href="../css/templates.css" />
+
     <style>
       /* #region ROOT*/
       :root {
@@ -66,7 +64,7 @@
         --c25: #b07fcb48;
         --c26: #81b8df22;
         --c27: #b07fcbcc;
-        --c28: rgba(255,255,255,0.95);
+        --c28: rgba(255, 255, 255, 0.95);
         --c29: #fff;
         --c30: #f9a5b722;
         --c31: #81b8df17;
@@ -113,7 +111,7 @@
         --c72: #b07fcb29;
         --c73: #faabaf17;
         --c74: #b07fcbbb;
-        --c75: rgba(255,255,255,0.95);
+        --c75: rgba(255, 255, 255, 0.95);
         --c76: #b07fcb19;
         --c77: #b07fcb21;
         --c78: #faabaf30;
@@ -129,7 +127,7 @@
 
         --main-bg: linear-gradient(135deg, var(--c01) 0%, var(--c02) 100%);
         --glass-blur: 14px;
-        --font-Primary: 'Delius';
+        --font-Primary: "Delius";
         --color_Primary: var(--c03);
         --color_Secondary: var(--c04);
         --color_Tertiary: var(--c05);
@@ -229,7 +227,7 @@
 
         --main-bg: linear-gradient(135deg, var(--c01) 0%, var(--c02) 100%);
         --glass-blur: 14px;
-        --font-Primary: 'Delius';
+        --font-Primary: "Delius";
         --color_Primary: var(--c03);
         --color_Secondary: var(--c04);
         --color_Tertiary: var(--c05);
@@ -329,7 +327,7 @@
 
         --main-bg: linear-gradient(135deg, var(--c01) 0%, var(--c02) 100%);
         --glass-blur: 14px;
-        --font-Primary: 'Delius';
+        --font-Primary: "Delius";
         --color_Primary: var(--c03);
         --color_Secondary: var(--c04);
         --color_Tertiary: var(--c05);
@@ -350,11 +348,26 @@
       /* #endregion HTML*/
       /* #region Animations*/
       @keyframes heroTitle {
-        0% {opacity:0; transform:translate(-50%,30px);}
-        100%{opacity:1; transform:translate(-50%,-50%);}
+        0% {
+          opacity: 0;
+          transform: translate(-50%, 30px);
+        }
+        100% {
+          opacity: 1;
+          transform: translate(-50%, -50%);
+        }
       }
 
-      @keyframes fadein { from { opacity: 0; transform: translateY(30px);} to { opacity:1; transform: none; } }
+      @keyframes fadein {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: none;
+        }
+      }
 
       /* #endregion Animations*/
       /* #region General*/
@@ -379,9 +392,11 @@
         position: absolute;
         top: 20%;
         left: 50%;
-        transform: translate(-50%,-50%);
+        transform: translate(-50%, -50%);
         color: var(--c08);
-        text-shadow: 0 3px 14px var(--c09), 0 1px 7px var(--c10);
+        text-shadow:
+          0 3px 14px var(--c09),
+          0 1px 7px var(--c10);
         font-size: 2.6rem;
         font-family: var(--font-Primary);
         letter-spacing: 2px;
@@ -493,7 +508,7 @@
       .parent-title {
         font-family: var(--font-Primary);
         color: var(--color_Tertiary);
-        font-size: 1.10rem;
+        font-size: 1.1rem;
         margin-bottom: 0.12rem;
         margin-top: 0.5em;
       }
@@ -541,7 +556,9 @@
         min-height: 100px;
         backdrop-filter: blur(17px);
         border-radius: 32px;
-        box-shadow: 0 7px 22px var(--c22), 0 2px 8px var(--c23);
+        box-shadow:
+          0 7px 22px var(--c22),
+          0 2px 8px var(--c23);
         border: 3.2px solid var(--c24);
         display: flex;
         align-items: center;
@@ -549,12 +566,16 @@
         gap: 1.35rem;
         animation: fadein 0.9s;
         position: relative;
-        transition: transform 0.19s, box-shadow 0.25s;
+        transition:
+          transform 0.19s,
+          box-shadow 0.25s;
         overflow: hidden;
       }
 
       .godparent-card-cute:hover {
-        box-shadow: 0 9px 30px var(--c25), 0 4px 13px var(--c26);
+        box-shadow:
+          0 9px 30px var(--c25),
+          0 4px 13px var(--c26);
         border-color: var(--c27);
         background: var(--c28);
         z-index: 2;
@@ -566,7 +587,9 @@
         border-radius: 50%;
         background: var(--c29);
         object-fit: cover;
-        box-shadow: 0 5px 25px var(--c30), 0 1px 7px var(--c31);
+        box-shadow:
+          0 5px 25px var(--c30),
+          0 1px 7px var(--c31);
         border: 3px solid var(--c32);
         position: relative;
         flex-shrink: 0;
@@ -624,45 +647,35 @@
       }
       .timeline::before,
       .timeline-progress {
-        content: '';
+        content: "";
         position: absolute;
         left: 12px;
         width: 7px;
         border-radius: 3.5px;
       }
       .timeline::before {
-        content: '';
-        position: absolute;
-        left: 12px;
-        top: 18px;
-        width: 7px; 
-        height: calc(100% - 36px);
-        background: linear-gradient(
-          180deg,
-          var(--c34) 0%,
-          var(--c35) 50%,
-          var(--c36) 100%
-        );
-        border-radius: 3.5px;
-        box-shadow: 0 0 8px var(--c37); 
-        z-index: 1;
-      }
-      .timeline-progress {
-        content: '';
+        content: "";
         position: absolute;
         left: 12px;
         top: 18px;
         width: 7px;
-        background: linear-gradient(
-          180deg,
-          var(--c38) 0%,
-          var(--c39) 60%,
-          var(--c40) 100%
-        );
+        height: calc(100% - 36px);
+        background: linear-gradient(180deg, var(--c34) 0%, var(--c35) 50%, var(--c36) 100%);
+        border-radius: 3.5px;
+        box-shadow: 0 0 8px var(--c37);
+        z-index: 1;
+      }
+      .timeline-progress {
+        content: "";
+        position: absolute;
+        left: 12px;
+        top: 18px;
+        width: 7px;
+        background: linear-gradient(180deg, var(--c38) 0%, var(--c39) 60%, var(--c40) 100%);
         box-shadow: 0 0 6px var(--c41);
         border-radius: 3.5px;
         z-index: 2;
-        transition: height 0.38s cubic-bezier(.62,1.17,.53,1.04);
+        transition: height 0.38s cubic-bezier(0.62, 1.17, 0.53, 1.04);
         pointer-events: none;
       }
       .timeline-event {
@@ -670,7 +683,7 @@
         margin-bottom: 44px;
         opacity: 0;
         transform: translateY(56px) scale(0.96);
-        transition: all 0.65s cubic-bezier(.46,1.48,.56,1);
+        transition: all 0.65s cubic-bezier(0.46, 1.48, 0.56, 1);
         z-index: 2;
         display: flex;
         align-items: flex-start;
@@ -678,10 +691,12 @@
         padding-top: 0;
         padding-bottom: 2px;
       }
-      .timeline-event:last-child { margin-bottom: 0; }
+      .timeline-event:last-child {
+        margin-bottom: 0;
+      }
       .timeline-event.visible {
         opacity: 1;
-        transform: translateY(0) scale(1.0);
+        transform: translateY(0) scale(1);
       }
       .timeline-dot {
         position: absolute;
@@ -696,18 +711,25 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        transition: border-color 0.4s, background 0.4s, box-shadow 0.33s;
+        transition:
+          border-color 0.4s,
+          background 0.4s,
+          box-shadow 0.33s;
       }
       .timeline-event.active .timeline-dot {
         border-color: var(--c44);
         background: var(--c45);
-        box-shadow: 0 0 0 8px var(--c46), 0 3px 18px var(--c47);
+        box-shadow:
+          0 0 0 8px var(--c46),
+          0 3px 18px var(--c47);
       }
       .timeline-event.visible .timeline-dot {
         border-color: var(--c48);
       }
       .timeline-dot i {
-        width: 10px; height: 10px; display: block;
+        width: 10px;
+        height: 10px;
+        display: block;
         margin-top: -5px !important;
         color: var(--color_Primary);
       }
@@ -783,7 +805,9 @@
       .stories-photo-frame {
         background: var(--c57);
         border-radius: 22px;
-        box-shadow: 0 5px 32px var(--c58), 0 1px 9px var(--c59);
+        box-shadow:
+          0 5px 32px var(--c58),
+          0 1px 9px var(--c59);
         padding: 0.5em 0.5em 2em 0.5em;
         width: 100%;
         max-width: 320px;
@@ -797,10 +821,14 @@
         cursor: pointer;
         user-select: none;
         overflow: hidden;
-        transition: box-shadow 0.18s, transform 0.16s;
+        transition:
+          box-shadow 0.18s,
+          transform 0.16s;
       }
       .stories-photo-frame:hover {
-        box-shadow: 0 9px 40px var(--c60), 0 5px 20px var(--c61);
+        box-shadow:
+          0 9px 40px var(--c60),
+          0 5px 20px var(--c61);
       }
       .stories-photo-frame img {
         width: 99%;
@@ -839,7 +867,7 @@
         font-weight: 800;
         transition: transform 0.3s ease;
         margin-top: 0.5rem;
-        margin-bottom: 0.5rem
+        margin-bottom: 0.5rem;
       }
       .btn:hover {
         transform: scale(1.05);
@@ -857,7 +885,9 @@
       }
       .evento-magic-card {
         border-radius: 32px;
-        box-shadow: 0 10px 40px var(--c69), 0 2px 8px var(--c70);
+        box-shadow:
+          0 10px 40px var(--c69),
+          0 2px 8px var(--c70);
         border: 1.8px solid var(--c71);
         display: flex;
         align-items: center;
@@ -865,30 +895,40 @@
         padding: 1.35em 1.18em 1.35em 1.18em;
         position: relative;
         overflow: visible;
-        transition: box-shadow 0.18s, border-color 0.18s;
+        transition:
+          box-shadow 0.18s,
+          border-color 0.18s;
       }
       .evento-magic-card:hover {
-        box-shadow: 0 18px 44px var(--c72), 0 2px 12px var(--c73);
+        box-shadow:
+          0 18px 44px var(--c72),
+          0 2px 12px var(--c73);
         border-color: var(--c74);
         background: var(--c75);
       }
       .evento-magic-icon {
-        min-width: 62px; min-height: 62px;
+        min-width: 62px;
+        min-height: 62px;
         border-radius: 50%;
-        display: flex; align-items: center; justify-content: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         box-shadow: 0 3px 18px var(--c76);
         border: 2.5px solid var(--c77);
         position: relative;
       }
       .evento-magic-icon img {
-        width: 36px; height: 36px;
+        width: 36px;
+        height: 36px;
         object-fit: contain;
         filter: drop-shadow(0 2px 8px var(--c78));
       }
 
       .evento-magic-content {
         flex: 1;
-        display: flex; flex-direction: column; align-items: flex-start;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
         padding-left: 0.1em;
         text-align: left !important;
       }
@@ -926,18 +966,32 @@
         color: var(--c83);
         font-size: 1.11em;
         margin-top: 0.2em;
-        opacity: 0.80;
-        font-family: 'Pacifico', cursive;
+        opacity: 0.8;
+        font-family: "Pacifico", cursive;
         user-select: none;
         pointer-events: none;
       }
 
       @media (max-width: 600px) {
-        .evento-clean-magic { max-width: 99vw; padding:0 0.1em;}
-        .evento-magic-card { padding: 1.1em 0.7em; gap: 0.9em; }
-        .evento-magic-icon { min-width: 41px; min-height: 41px;}
-        .evento-magic-icon img { width: 23px; height: 23px;}
-        .evento-magic-content { padding-left: 0;}
+        .evento-clean-magic {
+          max-width: 99vw;
+          padding: 0 0.1em;
+        }
+        .evento-magic-card {
+          padding: 1.1em 0.7em;
+          gap: 0.9em;
+        }
+        .evento-magic-icon {
+          min-width: 41px;
+          min-height: 41px;
+        }
+        .evento-magic-icon img {
+          width: 23px;
+          height: 23px;
+        }
+        .evento-magic-content {
+          padding-left: 0;
+        }
       }
 
       /* #endregion Event Section*/
@@ -964,11 +1018,7 @@
         display: inline-block;
         width: 120px;
         height: 120px;
-        background-image: linear-gradient(
-          to right,
-          var(--c84),
-          var(--c85)
-        );
+        background-image: linear-gradient(to right, var(--c84), var(--c85));
         mask-repeat: no-repeat;
         mask-size: contain;
         mask-position: center;
@@ -981,8 +1031,12 @@
         -webkit-mask-type: alpha;
       }
 
-      .icon--suit  { --mask: url('https://cdn-icons-png.flaticon.com/128/389/389573.png'); }
-      .icon--dress { --mask: url('https://cdn-icons-png.flaticon.com/128/3507/3507059.png'); }
+      .icon--suit {
+        --mask: url("https://cdn-icons-png.flaticon.com/128/389/389573.png");
+      }
+      .icon--dress {
+        --mask: url("https://cdn-icons-png.flaticon.com/128/3507/3507059.png");
+      }
 
       /* #endregion DressCode Section*/
       /* #region Gift Section*/
@@ -1099,7 +1153,7 @@
           font-size: 1rem;
         }
 
-        ._template-Counter-Section ._counter-Timebox span{
+        ._template-Counter-Section ._counter-Timebox span {
           font-size: 1.8rem;
           height: auto;
         }
@@ -1197,19 +1251,36 @@
       }
 
       @media (max-width: 700px) {
-        .invitation-container { max-width: 90vw;}
-        .hero-title { font-size: 1.45rem;}
+        .invitation-container {
+          max-width: 90vw;
+        }
+        .hero-title {
+          font-size: 1.45rem;
+        }
       }
       @media (max-width: 600px) {
-        .stories-gallery {max-width: 98vw;}
-        .stories-photo-frame {max-width: 98vw; min-height:270px; padding-bottom:1.3em;}
-        .stories-photo-frame img {height: 82%;}
+        .stories-gallery {
+          max-width: 98vw;
+        }
+        .stories-photo-frame {
+          max-width: 98vw;
+          min-height: 270px;
+          padding-bottom: 1.3em;
+        }
+        .stories-photo-frame img {
+          height: 82%;
+        }
       }
       @media (max-width: 550px) {
-        .parent-card { max-width:99vw;}
+        .parent-card {
+          max-width: 99vw;
+        }
       }
       @media (max-width: 400px) {
-        .parent-card, .godparent-card-cute { padding:0.7rem;}
+        .parent-card,
+        .godparent-card-cute {
+          padding: 0.7rem;
+        }
       }
 
       /* #endregion Main Section*/
@@ -1224,7 +1295,7 @@
         background: white;
         padding: 5px;
         border-radius: 20px;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
         z-index: 999;
       }
 
@@ -1279,47 +1350,53 @@
         </span>
         <!-- Initial section -->
         <div class="hero-novios">
-          <img src="#" data-replace="ImageMain" alt="Image Main">
+          <img src="#" data-replace="ImageMain" fetchpriority="high" loading="eager" />
           <div class="hero-title">
             ¡Nos casamos!
-            <br>
+            <br />
             <span data-replace="BrideShortName"></span>
             &amp;
             <span data-replace="GroomShortName"></span>
           </div>
         </div>
         <div class="invitation-container">
-          <div class="section-title" style="margin-top: 3rem !important;">¡Ya queda menos!</div>
+          <div class="section-title" style="margin-top: 3rem !important">¡Ya queda menos!</div>
           <div class="_template-Counter-Section">
             <div id="countdown" class="_counter-Countdown">
-              <div class="_counter-Timebox" style="margin-right: 15px !important;">
-                <span id="days">0</span> Días
+              <div class="_counter-Timebox" style="margin-right: 15px !important">
+                <span id="days">0</span>
+                Días
               </div>
               <div class="_counter-Timebox">
-                <span id="hours">0</span> Horas
+                <span id="hours">0</span>
+                Horas
               </div>
               <div class="_counter-Timebox">
-                <span id="days">:</span> &nbsp;
+                <span id="days">:</span>
+                &nbsp;
               </div>
               <div class="_counter-Timebox">
-                <span id="minutes">0</span> Minutos
+                <span id="minutes">0</span>
+                Minutos
               </div>
               <div class="_counter-Timebox">
-                <span id="days">:</span> &nbsp;
+                <span id="days">:</span>
+                &nbsp;
               </div>
               <div class="_counter-Timebox">
-                <span id="seconds">0</span> Segundos
+                <span id="seconds">0</span>
+                Segundos
               </div>
             </div>
           </div>
 
-          <img src="https://images.vexels.com/media/users/3/127731/isolated/preview/2b70133359ee29fa8d69d5f5f4998e27-adorno-floral-linea-pin.png" class="floral-header" alt="Decoración floral">
+          <img src="https://images.vexels.com/media/users/3/127731/isolated/preview/2b70133359ee29fa8d69d5f5f4998e27-adorno-floral-linea-pin.png" class="floral-header" alt="Decoración floral" />
 
-          <div class="section-title" style="margin-top: 0rem !important;">Detalles del evento</div>
+          <div class="section-title" style="margin-top: 0rem !important">Detalles del evento</div>
           <section class="evento-clean-magic">
             <div class="evento-magic-card">
               <div class="evento-magic-icon evento-magic-fecha">
-                <img src="https://cdn-icons-png.flaticon.com/512/1513/1513520.png" alt="Calendario">
+                <img src="https://cdn-icons-png.flaticon.com/512/1513/1513520.png" alt="Calendario" />
               </div>
               <div class="evento-magic-content">
                 <div class="evento-magic-label">Fecha</div>
@@ -1331,7 +1408,7 @@
             <div class="evento-magic-card">
               <div class="evento-magic-icon evento-magic-ceremonia">
                 <a href="#" class="evento-magic-address" data-replace="EventChurchUrl" target="_blank">
-                  <img class="location-maps" src="#" data-replace="Image_GoogleLocation" alt="Google Location">
+                  <img class="location-maps" src="#" data-replace="Image_GoogleLocation" alt="Google Location" />
                 </a>
               </div>
               <div class="evento-magic-content">
@@ -1345,7 +1422,7 @@
             <div class="evento-magic-card">
               <div class="evento-magic-icon evento-magic-recepcion">
                 <a href="#" class="evento-magic-address" data-replace="EventReceptionUrl" target="_blank">
-                  <img class="location-maps" src="#" data-replace="Image_GoogleLocation" alt="Google Location">
+                  <img class="location-maps" src="#" data-replace="Image_GoogleLocation" alt="Google Location" />
                 </a>
               </div>
               <div class="evento-magic-content">
@@ -1360,12 +1437,12 @@
           <div class="section-title">Los Novios</div>
           <div class="couple-section">
             <div class="couple-card">
-              <img src="https://i.pinimg.com/736x/06/84/c6/0684c6819cddf8a5c450c1fa83e64773.jpg" class="couple-photo" alt="Novio">
+              <img src="https://i.pinimg.com/736x/06/84/c6/0684c6819cddf8a5c450c1fa83e64773.jpg" class="couple-photo" alt="Novio" />
               <div class="couple-name">
                 <span data-replace="BrideName"></span>
-                <br>
+                <br />
                 &amp;
-                <br>
+                <br />
                 <span data-replace="GroomName"></span>
               </div>
             </div>
@@ -1374,12 +1451,12 @@
           <div class="section-title">Padres de la Novia</div>
           <div class="parents-section">
             <div class="parent-card">
-              <img src="https://i.pinimg.com/736x/dd/b7/17/ddb71718c8daaac4b0111e4882d1627d.jpg" class="parent-photo-unique" alt="Padres novia">
+              <img src="https://i.pinimg.com/736x/dd/b7/17/ddb71718c8daaac4b0111e4882d1627d.jpg" class="parent-photo-unique" alt="Padres novia" />
               <div class="parent-title">
                 <span data-replace="MotherBride"></span>
-                <br>
+                <br />
                 &amp;
-                <br>
+                <br />
                 <span data-replace="FatherBride"></span>
               </div>
             </div>
@@ -1387,12 +1464,12 @@
           <div class="section-title">Padres del Novio</div>
           <div class="parents-section">
             <div class="parent-card">
-              <img src="https://i.pinimg.com/736x/27/96/c5/2796c57f77bd7b9bc98d8475952f540a.jpg" class="parent-photo-unique" alt="Padres novio">
+              <img src="https://i.pinimg.com/736x/27/96/c5/2796c57f77bd7b9bc98d8475952f540a.jpg" class="parent-photo-unique" alt="Padres novio" />
               <div class="parent-title">
                 <span data-replace="MotherGroom"></span>
-                <br>
+                <br />
                 &amp;
-                <br>
+                <br />
                 <span data-replace="FatherGroom"></span>
               </div>
             </div>
@@ -1410,16 +1487,26 @@
           </section>
 
           <!-- Dress Code -->
-          <div class="section-title" style="margin-top: 6rem !important;">Dress Code</div>
+          <div class="section-title" style="margin-top: 6rem !important">Dress Code</div>
           <div class="_dresscode-section">
             <div class="_box">
               <div class="icons">
-                <span class="icon icon--suit"   aria-label="Suit"></span>
-                <span class="icon icon--dress"  aria-label="Dress"></span>
+                <span class="icon icon--suit" aria-label="Suit"></span>
+                <span class="icon icon--dress" aria-label="Dress"></span>
               </div>
               <h2>Formal / Elegante</h2>
-              <p><span>Mujeres</span> <br> Vestido Largo <br> Se reserva el color blanco para la novia</p>
-              <p><span>Hombres</span> <br> Traje y Corbata</p>
+              <p>
+                <span>Mujeres</span>
+                <br />
+                Vestido Largo
+                <br />
+                Se reserva el color blanco para la novia
+              </p>
+              <p>
+                <span>Hombres</span>
+                <br />
+                Traje y Corbata
+              </p>
             </div>
           </div>
 
@@ -1430,7 +1517,7 @@
               <div class="stories-progress"></div>
               <div class="stories-photo-frame">
                 <div class="stories-caption" id="stories-caption"></div>
-                <img id="stories-image" src="" alt="Historia">
+                <img id="stories-image" src="" alt="Historia" />
               </div>
             </div>
           </div>
@@ -1439,12 +1526,16 @@
           <div class="section-title">Regalos</div>
           <section>
             <div class="_section-gifttable">
-              <p class="_details"> Para nosotros tu presencia es nuestro mejor regalo, pero si deseas hacernos llegar un obsequio, te sugerimos la siguiente opción: </p>
+              <p class="_details">Para nosotros tu presencia es nuestro mejor regalo, pero si deseas hacernos llegar un obsequio, te sugerimos la siguiente opción:</p>
               <div class="_btn-brands">
                 <a href="#" data-replace="EventAmazonGiftTableUrl" target="_blank" class="_btn-gift">
-                  <img src="#" data-replace="Image_AmazonUrl" /> Amazon </a>
+                  <img src="#" data-replace="Image_AmazonUrl" />
+                  Amazon
+                </a>
                 <a href="#" data-replace="EventLiverpoolGiftTableUrl" target="_blank" class="_btn-gift">
-                  <img src="#" data-replace="Image_LiverpoolUrl" /> Liverpool </a>
+                  <img src="#" data-replace="Image_LiverpoolUrl" />
+                  Liverpool
+                </a>
               </div>
             </div>
           </section>
@@ -1457,11 +1548,6 @@
                 <i class="fas fa-heart"></i>
                 Asistiré
               </a>
-              &nbsp;&nbsp;
-              <a href="#" data-replace="GoogleCalendarUrl" target="_blank" class="btn">
-                <i class="fas fa-calendar"></i>
-                Agendar
-              </a>
             </div>
           </section>
         </div>
@@ -1469,558 +1555,387 @@
     </div>
 
     <div id="themeSwitcher">
-      <button class="theme-btn" data-theme="" style="background-color:#b07fcb"></button>
-      <button class="theme-btn" data-theme="themeVintage" style="background-color:#8b6515"></button>
-      <button class="theme-btn" data-theme="themeClassic" style="background-color:#2e2e2e"></button>
+      <button class="theme-btn" data-theme="" style="background-color: #b07fcb"></button>
+      <button class="theme-btn" data-theme="themeVintage" style="background-color: #8b6515"></button>
+      <button class="theme-btn" data-theme="themeClassic" style="background-color: #2e2e2e"></button>
     </div>
 
-    <script src="../js/main.js"></script>
-    <script>
-      requirejs(["jquery","helpers", "bs"],function($,helpers){
+    <!-- jQuery primero — sin defer -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <!-- Bootstrap con defer -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" defer></script>
 
-        const mainEvent = {
-          Date: new Date("2026-10-17T17:30:00"),
+    <script type="module">
+      import { helpers } from "../js/modules/helpers.js";
 
-          BrideName: "Camila Torres",
-          GroomName: "Iván Méndez",
-          BrideShortName: "Camila",
-          GroomShortName: "Iván",
+      // ─── DATOS ────────────────────────────────────────
+      var mainEvent = {
+        Date: new Date("2026-10-17T17:30:00"),
 
-          LocationDescription: "Catedral de Guadalajara (Catedral Basílica de la Asunción de María Santísima)",
-          Address: "Av. Fray Antonio Alcalde 10, Zona Centro, 44100 Guadalajara, Jal.",
-          GoogleMapsUrl: "https://maps.app.goo.gl/1iUcW6P1QxFhBrJg8",
+        BrideName: "Camila Torres",
+        GroomName: "Iván Méndez",
+        BrideShortName: "Camila",
+        GroomShortName: "Iván",
 
-          FatherBride: "Alfonso Torres",
-          MotherBride: "Elena García",
-          FatherGroom: "Carlos Méndez",
-          MotherGroom: "Ana Rodríguez",
-          
-                    AmazonGiftTableUrl: "https://www.amazon.com.mx/",
-          LiverpoolGiftTableUrl: "https://www.liverpool.com.mx/tienda/home",
+        LocationDescription: "Catedral de Guadalajara (Catedral Basílica de la Asunción de María Santísima)",
+        Address: "Av. Fray Antonio Alcalde 10, Zona Centro, 44100 Guadalajara, Jal.",
+        GoogleMapsUrl: "https://maps.app.goo.gl/1iUcW6P1QxFhBrJg8",
 
-            Gallery: [],
-          GodParents: [
-            {
-              type: "Padrinos de Anillos",
-              GodFather: "Carlos Ramírez",
-              GodMother: "Sofía Morales",
-              img: "https://i.pinimg.com/736x/47/79/04/477904ac5fc3a09e840a78a202d12799.jpg"
-            },
-            {
-              type: "Padrinos de Lazo",
-              GodFather: "Raúl Romero",
-              GodMother: "Marina Díaz",
-              img: "https://i.pinimg.com/736x/0c/14/c8/0c14c80f4d432162ef001bf381a62f65.jpg"
-            },
-            {
-              type: "Padrinos de Arras",
-              GodFather: "Esteban León",
-              GodMother: "Paula Sosa",
-              img: "https://i.pinimg.com/736x/84/8c/03/848c032a8fd4e5b9d9d23e7b8334351b.jpg"
-            },
-            {
-              type: "Biblia y Rosario",
-              GodFather: "Julio Vargas",
-              GodMother: "Lucía Peña",
-              img: "https://i.pinimg.com/736x/10/28/be/1028beba69d2b76da28f88e54435ef81.jpg"
-            },
-            {
-              type: "Padrinos de Ramo",
-              GodFather: "Daniel Ponce",
-              GodMother: "Alejandra Luna",
-              img: "https://i.pinimg.com/736x/0a/cf/41/0acf41786bb22fc2002e54ccc42cfbb3.jpg"
-            },
-            {
-              type: "Copas / Brindis",
-              GodFather: "Andrés Castillo",
-              GodMother: "Valentina Lozano",
-              img: "https://i.pinimg.com/736x/dd/a0/d2/dda0d21c2ade71c47faa7b3f40d432e4.jpg"
-            },
-            {
-              type: "Banquete",
-              GodFather: "Mateo Rivas",
-              GodMother: "Gabriela Paredes",
-              img: "https://i.pinimg.com/736x/92/95/42/929542722660c9dd892a389f037debc9.jpg"
-            },
-            {
-              type: "Pastel",
-              GodFather: "Leonardo Méndez",
-              GodMother: "Renata Salazar",
-              img: "https://i.pinimg.com/736x/a7/3c/9c/a73c9c6bd85e62ce63f3552f957158e1.jpg"
-            },
-            {
-              type: "Recuerdos",
-              GodFather: "Sebastián Cruz",
-              GodMother: "Isabel Cortés",
-              img: "https://i.pinimg.com/736x/90/97/61/909761f2733c432add664f3cc307a170.jpg"
-            }
-          ],
-          
+        FatherBride: "Alfonso Torres",
+        MotherBride: "Elena García",
+        FatherGroom: "Carlos Méndez",
+        MotherGroom: "Ana Rodríguez",
 
-          
-          ImageMyParents: "https://img.freepik.com/fotos-premium/retrato-pareja-madura-feliz-abrazada-casa-conexion-amor-o-confianza-asociacion-juntos-cara-al-hombre-abrazar-mujer-compromiso-cuidado-relacion-saludable-apoyo-casa_590464-361056.jpg?ga=GA1.1.1993030682.1745256637&semt=ais_hybrid&w=740",
-          ImageMyGodParents: "https://img.freepik.com/fotos-premium/pareja-dia-san-valentin_772250-159.jpg?ga=GA1.1.1993030682.1745256637&w=740",
-          ImageDressCodeUrl: "https://img.freepik.com/foto-gratis/gente-elegante-bailando-tango_23-2149193458.jpg?ga=GA1.1.1993030682.1745256637&semt=ais_hybrid&w=740",
-        };
+        AmazonGiftTableUrl: "https://www.amazon.com.mx/",
+        LiverpoolGiftTableUrl: "https://www.liverpool.com.mx/tienda/home",
 
-        const secondaryEvent = {
-          Date: new Date("2026-10-17T17:00:00"),
-          LocationDescription: "La Terraza Clouthier",
-          Address: "Av Manuel J. Clouthier 480, Zapopan, Jal.",
-          GoogleMapsUrl: "https://maps.app.goo.gl/HpD9ZEkGmku4WTyT8",
-        };
+        // Galería — imágenes de la pareja para el carrusel de stories
+        Gallery: ["https://i.pinimg.com/736x/cc/fa/d5/ccfad55fa13f3126131e479f260c2c2a.jpg", "https://i.pinimg.com/736x/02/0b/98/020b98b54441df5551e5c12b53761881.jpg", "https://i.pinimg.com/736x/c1/b1/2d/c1b12d4787d714f18f3d92a849c7d1ae.jpg", "https://i.pinimg.com/736x/89/fb/d5/89fbd581a3f7c849d40a17abfec1a388.jpg", "https://i.pinimg.com/736x/41/c4/8b/41c48b0902ac1716fc651fcbb78c496a.jpg", "https://i.pinimg.com/736x/30/35/57/303557688e3cd1ce15f6f66181bce236.jpg"],
 
+        GodParents: [
+          { type: "Padrinos de Anillos", GodFather: "Carlos Ramírez", GodMother: "Sofía Morales", img: "https://i.pinimg.com/736x/47/79/04/477904ac5fc3a09e840a78a202d12799.jpg" },
+          { type: "Padrinos de Lazo", GodFather: "Raúl Romero", GodMother: "Marina Díaz", img: "https://i.pinimg.com/736x/0c/14/c8/0c14c80f4d432162ef001bf381a62f65.jpg" },
+          { type: "Padrinos de Arras", GodFather: "Esteban León", GodMother: "Paula Sosa", img: "https://i.pinimg.com/736x/84/8c/03/848c032a8fd4e5b9d9d23e7b8334351b.jpg" },
+          { type: "Biblia y Rosario", GodFather: "Julio Vargas", GodMother: "Lucía Peña", img: "https://i.pinimg.com/736x/10/28/be/1028beba69d2b76da28f88e54435ef81.jpg" },
+          { type: "Padrinos de Ramo", GodFather: "Daniel Ponce", GodMother: "Alejandra Luna", img: "https://i.pinimg.com/736x/0a/cf/41/0acf41786bb22fc2002e54ccc42cfbb3.jpg" },
+          { type: "Copas / Brindis", GodFather: "Andrés Castillo", GodMother: "Valentina Lozano", img: "https://i.pinimg.com/736x/dd/a0/d2/dda0d21c2ade71c47faa7b3f40d432e4.jpg" },
+          { type: "Banquete", GodFather: "Mateo Rivas", GodMother: "Gabriela Paredes", img: "https://i.pinimg.com/736x/92/95/42/929542722660c9dd892a389f037debc9.jpg" },
+          { type: "Pastel", GodFather: "Leonardo Méndez", GodMother: "Renata Salazar", img: "https://i.pinimg.com/736x/a7/3c/9c/a73c9c6bd85e62ce63f3552f957158e1.jpg" },
+          { type: "Recuerdos", GodFather: "Sebastián Cruz", GodMother: "Isabel Cortés", img: "https://i.pinimg.com/736x/90/97/61/909761f2733c432add664f3cc307a170.jpg" },
+        ],
+      };
 
-        const additionalInformation = {
-          ImageBodyBackground: "../images/bg-31.jpg",
-          ImageMain: "https://i.pinimg.com/736x/76/86/8d/76868d470ea6cd8319f7958b92bde6d7.jpg",
-          ImageTap: "",
-          ImageLoading: "https://images.vexels.com/media/users/3/190566/isolated/preview/e20509414b44a4b9388e9309c50031d1-parejas-casadas-silueta-boda.png",
-        };
+      var secondaryEvent = {
+        Date: new Date("2026-10-17T17:00:00"),
+        LocationDescription: "La Terraza Clouthier",
+        Address: "Av Manuel J. Clouthier 480, Zapopan, Jal.",
+        GoogleMapsUrl: "https://maps.app.goo.gl/HpD9ZEkGmku4WTyT8",
+      };
 
-        const Init = {
-          Config: {
-            EventType: "Wedding",
-            Sections: {
-              showCounter: true,
-              showIntroduction: true,
-              showParents: true,
-              showItinerary: true,
-              showGallery: true,
-              showLoveStory: false,
-              showVideo: false,
-              showDressCode: true,
-              showTickets: true,
-              showTableNumber: true,
-              showAttendance: true,
-              showGiftTable: true,
-            },
-            Themes: [],
-            AudioUrl: "../music/Perfect.mp3",
+      // Imágenes del template — separadas de los datos del evento
+      var additionalInformation = {
+        ImageBodyBackground: "../images/bg-31.jpg",
+        ImageMain: "https://i.pinimg.com/736x/76/86/8d/76868d470ea6cd8319f7958b92bde6d7.jpg",
+        WhatsAppUrl: "https://wa.link/encb79",
+      };
+
+      var Init = {
+        Config: {
+          EventType: "Wedding",
+          Sections: {
+            showCounter: true,
+            showIntroduction: true,
+            showParents: true,
+            showItinerary: true,
+            showGallery: true,
+            showLoveStory: false,
+            showVideo: false,
+            showDressCode: true,
+            showTickets: true,
+            showTableNumber: true,
+            showAttendance: true,
+            showGiftTable: true,
           },
-          MainEvent: mainEvent,
-          SecondaryEvent: secondaryEvent,
-        };
+          Themes: [],
+          AudioUrl: "../music/Perfect.mp3",
+        },
+        MainEvent: mainEvent,
+        SecondaryEvent: secondaryEvent,
+      };
 
-        function onLoad(){
-          $("[data-replace=ImageMain]").attr("src", additionalInformation.ImageMain);
-          $("[data-replace=BrideName]").text(mainEvent.BrideName);
-          $("[data-replace=GroomName]").text(mainEvent.GroomName);
-          $("[data-replace=BrideShortName]").text(mainEvent.BrideShortName);
-          $("[data-replace=GroomShortName]").text(mainEvent.GroomShortName);
-          $("[data-replace=FatherBride]").text(mainEvent.FatherBride);
-          $("[data-replace=MotherBride]").text(mainEvent.MotherBride);
-          $("[data-replace=FatherGroom]").text(mainEvent.FatherGroom);
-          $("[data-replace=MotherGroom]").text(mainEvent.MotherGroom);
-        };
+      // ─── ITINERARIO ───────────────────────────────────
+      var Itinerary = [
+        { time: "16:00", description: "Ceremonia religiosa", icon: "fa-solid fa-church", ml: "-7.5" },
+        { time: "17:00", description: "Sesión fotográfica", icon: "fa-solid fa-camera", ml: "-4.5" },
+        { time: "18:00", description: "Recepción y bienvenida", icon: "fa-solid fa-bell-concierge", ml: "-4" },
+        { time: "18:30", description: "Cóctel", icon: "fa-solid fa-cocktail", ml: "-7.5" },
+        { time: "19:00", description: "Banquete", icon: "fa-solid fa-utensils", ml: "-4.5" },
+        { time: "20:00", description: "Brindis y discursos", icon: "fa-solid fa-champagne-glasses", ml: "-7" },
+        { time: "20:15", description: "Corte de pastel", icon: "fa-solid fa-birthday-cake", ml: "-2.5" },
+        { time: "20:30", description: "Vals nupcial", icon: "fas fa-heart", ml: "-3.5" },
+        { time: "20:45", description: "Lanzamiento del ramo", icon: "fas fa-spa", ml: "-5" },
+        { time: "21:00", description: "Baile libre", icon: "fa-solid fa-music", ml: "-6" },
+        { time: "22:30", description: "After party", icon: "fa-solid fa-face-smile-wink", ml: "-3.5" },
+        { time: "00:00", description: "Despedida de los novios", icon: "fa-solid fa-door-open", ml: "-6" },
+      ];
 
-        function InitPage() {
-          onLoad();
-          helpers.init(Init);
-          helpers.onCounterStart(mainEvent.Date);
-          setInterval(() => {
-            helpers.onCounterStart(mainEvent.Date);
-          }, 1000);
-          helpers.onAudioPlayer();
-          updateBodyBackground();
-          renderGodParents(mainEvent.GodParents, 'godparents-list');
-          
-        };
-        InitPage();
-
-        function updateBodyBackground() {
-          const bgUrl = additionalInformation.ImageBodyBackground;
-          let styleEl = document.getElementById('dynamicBodyBg');
-          if (!styleEl) {
-            styleEl = document.createElement('style');
-            styleEl.id = 'dynamicBodyBg';
-            document.head.appendChild(styleEl);
-          }
-          styleEl.innerHTML = `
-            body::before {
-              content: "";
-              position: fixed;
-              z-index: 0;
-              top: 0; left: 0; right: 0; bottom: 0;
-              background: url('${bgUrl}') center center/cover no-repeat;
-              opacity: 0.16;
-              filter: blur(3px) brightness(1.1);
-              pointer-events: none;
-            }
-          `;
-        };
-
-        function renderGodParents(godParentsArray, containerId) {
-          const listContainer = document.getElementById(containerId);
-          listContainer.innerHTML = '';
-
-          godParentsArray.forEach(parent => {
-            const card = document.createElement('div');
-            card.className = 'godparent-card-cute';
-
-            card.innerHTML = `
-              <img src="${parent.img}" class="godparent-avatar" alt="${parent.GodFather} y ${parent.GodMother}">
-              <div class="godparent-details-cute">
-                <div class="godparent-role-cute">${parent.type}<span class="godparent-emoji"></span></div>
-                <div class="godparent-names-cute">${parent.GodFather} <br> &amp; <br> ${parent.GodMother}</div>
-              </div>
-            `;
-
-            listContainer.appendChild(card);
-          });
-        };
-
-        const buttons = document.querySelectorAll('#themeSwitcher .theme-btn');
-        buttons.forEach(btn => {
-          btn.addEventListener('click', () => {
-            const theme = btn.getAttribute('data-theme');
-            // Al hacer clic, establece el atributo data-theme en <body>
-            document.body.dataset.theme = theme;
-            switch (theme) {
-              case 'themeVintage':
-                additionalInformation.ImageBodyBackground = '../images/bg-29.jpg';
-                break;
-              case 'themeClassic':
-                additionalInformation.ImageBodyBackground = '../images/bg-30.jpg';
-                break;
-              default:
-                additionalInformation.ImageBodyBackground = '../images/bg-31.jpg';
-            }
-            updateBodyBackground();
-          });
-        });
+      // ─── STORIES — usa mainEvent.Gallery ─────────────
+      var captions = ["El gran día", "Momentos mágicos", "Juntos siempre", "Nuestra aventura", "Diversión y amor", "Nuestro viaje"];
+      var stories = mainEvent.Gallery.map(function (url, i) {
+        return { img: url, caption: captions[i] || "" };
       });
-    </script>
-    <script>
-      requirejs(["jquery", "bs"],function($){
-        const Itinerary = [
-          {
-            time: "16:00",
-            description: "Ceremonia religiosa",
-            icon: "fa-solid fa-church",
-            ml: "-7.5"
-          },
-          {
-            time: "17:00",
-            description: "Sesión fotográfica",
-            icon: "fa-solid fa-camera",
-            ml: "-4.5"
-          },
-          {
-            time: "18:00",
-            description: "Recepción y bienvenida",
-            icon: "fa-solid fa-bell-concierge",
-            ml: "-4"
-          },
-          {
-            time: "18:30",
-            description: "Cóctel",
-            icon: "fa-solid fa-cocktail",
-            ml: "-7.5"
-          },
-          {
-            time: "19:00",
-            description: "Banquete",
-            icon: "fa-solid fa-utensils",
-            ml: "-4.5"
-          },
-          {
-            time: "20:00",
-            description: "Brindis y discursos",
-            icon: "fa-solid fa-champagne-glasses",
-            ml: "-7"
-          },
-          {
-            time: "20:15",
-            description: "Corte de pastel",
-            icon: "fa-solid fa-birthday-cake",
-            ml: "-2.5"
-          },
-          {
-            time: "20:30",
-            description: "Vals nupcial",
-            icon: "fas fa-heart",
-            ml: "-3.5"
-          },
-          {
-            time: "20:45",
-            description: "Lanzamiento del ramo",
-            icon: "fas fa-spa",
-            ml: "-5"
-          },
-          {
-            time: "21:00",
-            description: "Baile libre",
-            icon: "fa-solid fa-music",
-            ml: "-6" },
-          {
-            time: "22:30",
-            description: "After party",
-            icon: "fa-solid fa-face-smile-wink",
-            ml: "-3.5"
-          },
-          {
-            time: "00:00",
-            description: "Despedida de los novios",
-            icon: "fa-solid fa-door-open",
-            ml: "-6"
-          },
-        ];
 
-        function renderItinerary(itineraryArray, containerId) {
-          const timelineContainer = document.getElementById(containerId);
-          timelineContainer.innerHTML = '';
+      // ─── ONLOAD LOCAL ─────────────────────────────────
+      function onLoad() {
+        $("[data-replace=ImageMain]").attr("src", additionalInformation.ImageMain);
+        $("[data-replace=WhatsAppUrl]").attr("href", additionalInformation.WhatsAppUrl);
+        $("[data-replace=BrideName]").text(mainEvent.BrideName);
+        $("[data-replace=GroomName]").text(mainEvent.GroomName);
+        $("[data-replace=BrideShortName]").text(mainEvent.BrideShortName);
+        $("[data-replace=GroomShortName]").text(mainEvent.GroomShortName);
+        $("[data-replace=FatherBride]").text(mainEvent.FatherBride);
+        $("[data-replace=MotherBride]").text(mainEvent.MotherBride);
+        $("[data-replace=FatherGroom]").text(mainEvent.FatherGroom);
+        $("[data-replace=MotherGroom]").text(mainEvent.MotherGroom);
+      }
 
-          // Agregar la barra de progreso
-          const progress = document.createElement('div');
-          progress.className = 'timeline-progress';
-          timelineContainer.appendChild(progress);
+      // ─── FONDO BODY ───────────────────────────────────
+      function updateBodyBackground() {
+        var bgUrl = additionalInformation.ImageBodyBackground;
+        var styleEl = document.getElementById("dynamicBodyBg");
+        if (!styleEl) {
+          styleEl = document.createElement("style");
+          styleEl.id = "dynamicBodyBg";
+          document.head.appendChild(styleEl);
+        }
+        styleEl.innerHTML = ["body::before {", "  content: '';", "  position: fixed; z-index: 0;", "  top: 0; left: 0; right: 0; bottom: 0;", "  background: url('" + bgUrl + "') center center/cover no-repeat;", "  opacity: 0.16;", "  filter: blur(3px) brightness(1.1);", "  pointer-events: none;", "}"].join("\n");
+      }
 
-          itineraryArray.forEach(event => {
-            const timelineEvent = document.createElement('div');
-            timelineEvent.className = 'timeline-event';
+      // ─── PADRINOS ─────────────────────────────────────
+      function renderGodParents(godParentsArray, containerId) {
+        var listContainer = document.getElementById(containerId);
+        if (!listContainer) return;
+        listContainer.innerHTML = "";
 
-            timelineEvent.innerHTML = `
-              <span class="timeline-dot">
-                <i class="${event.icon}" style="margin-left: ${event.ml}px !important;"></i>
-              </span>
-              <div class="timeline-event-content">
-                <!-- <div class="timeline-time">${event.time} hrs</div> -->
-                <div class="timeline-desc">${event.description}</div>
-              </div>
-            `;
+        godParentsArray.forEach(function (parent) {
+          var card = document.createElement("div");
+          card.className = "godparent-card-cute";
+          card.innerHTML = '<img src="' + parent.img + '" class="godparent-avatar" alt="' + parent.GodFather + '">' + '<div class="godparent-details-cute">' + '<div class="godparent-role-cute">' + parent.type + "</div>" + '<div class="godparent-names-cute">' + parent.GodFather + " <br> &amp; <br> " + parent.GodMother + "</div>" + "</div>";
+          listContainer.appendChild(card);
+        });
+      }
 
-            timelineContainer.appendChild(timelineEvent);
-          });
-        };
+      // ─── ITINERARIO RENDER ────────────────────────────
+      function renderItinerary(itineraryArray, containerId) {
+        var container = document.getElementById(containerId);
+        if (!container) return;
+        container.innerHTML = "";
 
-        renderItinerary(Itinerary, 'timeline-list');
+        var progress = document.createElement("div");
+        progress.className = "timeline-progress";
+        container.appendChild(progress);
 
-        window.addEventListener('scroll', animateTimeline, {passive: true});
-        window.addEventListener('load', animateTimeline);
-        window.addEventListener('resize', animateTimeline);
+        itineraryArray.forEach(function (event) {
+          var item = document.createElement("div");
+          item.className = "timeline-event";
+          item.innerHTML = '<span class="timeline-dot">' + '<i class="' + event.icon + '" style="margin-left:' + event.ml + 'px !important;"></i>' + "</span>" + '<div class="timeline-event-content">' + '<div class="timeline-desc">' + event.description + "</div>" + "</div>";
+          container.appendChild(item);
+        });
+      }
 
-        function animateTimeline() {
-          const timeline = document.querySelector('.timeline');
-          const progress = document.querySelector('.timeline-progress');
-          const events = document.querySelectorAll('.timeline-event');
-          const windowHeight = window.innerHeight;
-          let lastVisibleIdx = -1;
-          let closestIdx = -1;
-          let closestDistance = Number.POSITIVE_INFINITY;
-          events.forEach((event, idx) => {
-            const rect = event.getBoundingClientRect();
-            if (rect.top < windowHeight * 0.88) {
-              event.classList.add('visible');
-              lastVisibleIdx = idx;
-              const dist = Math.abs(rect.top + rect.height/2 - windowHeight/2);
-              if(dist < closestDistance){
-                closestDistance = dist;
-                closestIdx = idx;
-              }
-            } else {
-              event.classList.remove('visible');
+      // ─── TIMELINE ANIMATION ───────────────────────────
+      function animateTimeline() {
+        var timeline = document.querySelector(".timeline");
+        var progress = document.querySelector(".timeline-progress");
+        var events = document.querySelectorAll(".timeline-event");
+        if (!timeline || !progress || !events.length) return;
+
+        var windowHeight = window.innerHeight;
+        var lastVisibleIdx = -1;
+        var closestIdx = -1;
+        var closestDist = Number.POSITIVE_INFINITY;
+
+        events.forEach(function (event, idx) {
+          var rect = event.getBoundingClientRect();
+          if (rect.top < windowHeight * 0.88) {
+            event.classList.add("visible");
+            lastVisibleIdx = idx;
+            var dist = Math.abs(rect.top + rect.height / 2 - windowHeight / 2);
+            if (dist < closestDist) {
+              closestDist = dist;
+              closestIdx = idx;
             }
-            event.classList.remove('active');
-          });
-          if (closestIdx >= 0) events[closestIdx].classList.add('active');
-          if (lastVisibleIdx >= 0) {
-            const firstDot = events[0].querySelector('.timeline-dot');
-            const lastDot = events[lastVisibleIdx].querySelector('.timeline-dot');
-            const timelineRect = timeline.getBoundingClientRect();
-            const firstDotRect = firstDot.getBoundingClientRect();
-            const lastDotRect = lastDot.getBoundingClientRect();
-            const offsetStart = firstDotRect.top + firstDotRect.height / 2 - timelineRect.top;
-            const offsetEnd = lastDotRect.top + lastDotRect.height / 2 - timelineRect.top;
-            const height = Math.max(0, offsetEnd - offsetStart);
-            progress.style.top = offsetStart + "px";
-            progress.style.height = height + "px";
           } else {
-            progress.style.height = "0px";
+            event.classList.remove("visible");
           }
-        };
-
-        const stories = [
-          {
-            img: "https://i.pinimg.com/736x/cc/fa/d5/ccfad55fa13f3126131e479f260c2c2a.jpg",
-            caption: "El gran día"
-          },
-          {
-            img: "https://i.pinimg.com/736x/02/0b/98/020b98b54441df5551e5c12b53761881.jpg",
-            caption: "Momentos mágicos"
-          },
-          {
-            img: "https://i.pinimg.com/736x/c1/b1/2d/c1b12d4787d714f18f3d92a849c7d1ae.jpg",
-            caption: "Juntos siempre"
-          },
-          {
-            img: "https://i.pinimg.com/736x/89/fb/d5/89fbd581a3f7c849d40a17abfec1a388.jpg",
-            caption: "Nuestra aventura"
-          },
-          {
-            img: "https://i.pinimg.com/736x/41/c4/8b/41c48b0902ac1716fc651fcbb78c496a.jpg",
-            caption: "Diversión y amor"
-          },
-          {
-            img: "https://i.pinimg.com/736x/30/35/57/303557688e3cd1ce15f6f66181bce236.jpg",
-            caption: "Nuestro viaje"
-          }
-        ];
-
-        let currentStory = 0;
-        let progressBars = [];
-        let progressFills = [];
-        let timer = null;
-        let storyStartTime = 0;
-        let elapsedTime = 0;
-        let isPaused = false;
-        const intervalMs = 3200;
-        let lastTransitionHandler = null;
-        let isAdvancing = false;
-
-        function setupStories() {
-            const progressContainer = document.querySelector('.stories-progress');
-            progressContainer.innerHTML = '';
-            progressBars = [];
-            progressFills = [];
-
-            for (let i = 0; i < stories.length; i++) {
-                const bar = document.createElement('div');
-                bar.className = "stories-progress-bar";
-
-                const fill = document.createElement('div');
-                fill.className = "stories-progress-bar-fill";
-
-                bar.appendChild(fill);
-                progressContainer.appendChild(bar);
-
-                progressBars.push(bar);
-                progressFills.push(fill);
-            }
-
-            document.querySelector('.stories-photo-frame').onclick = function () {
-                if (isAdvancing) return;
-                isAdvancing = true;
-
-                elapsedTime = 0;
-                showStory(currentStory + 1, true);
-
-                setTimeout(() => {
-                    isAdvancing = false;
-                }, 200);
-            };
-        };
-
-        function showStory(idx, isTap) {
-            if (idx >= stories.length) {
-                idx = 0;
-            }
-            if (idx < 0) idx = stories.length - 1;
-
-            elapsedTime = 0;
-            storyStartTime = performance.now();
-
-            currentStory = idx;
-            document.getElementById('stories-image').src = stories[idx].img;
-            document.getElementById('stories-caption').textContent = stories[idx].caption;
-
-            progressFills.forEach((fill, i) => {
-                if (lastTransitionHandler) {
-                    fill.removeEventListener('transitionend', lastTransitionHandler);
-                }
-            });
-            lastTransitionHandler = null;
-
-            progressFills.forEach((fill, i) => {
-                if (i < idx) {
-                    fill.style.transition = 'none';
-                    fill.style.width = '100%';
-                } else if (i > idx) {
-                    fill.style.transition = 'none';
-                    fill.style.width = '0%';
-                } else {
-                    fill.style.transition = 'none';
-                    fill.style.width = '0%';
-                    void fill.offsetWidth;
-
-                    const remainingTime = intervalMs;
-
-                    fill.style.transition = `width ${remainingTime}ms linear`;
-                    fill.style.width = '100%';
-
-                    lastTransitionHandler = () => {
-                        if (!isPaused) {
-                            showStory(currentStory + 1, false);
-                        }
-                    };
-
-                    fill.addEventListener('transitionend', lastTransitionHandler, { once: true });
-                }
-            });
-        };
-
-        function startStories() {
-            if (progressFills.length === 0) return;
-
-            if (timer == null && currentStory === 0 && progressFills[0].style.width === '0%') {
-                showStory(0, false);
-            }
-
-            if (!timer) {
-                const fill = progressFills[currentStory];
-                const remainingTime = intervalMs - elapsedTime;
-
-                fill.style.transition = `width ${remainingTime}ms linear`;
-                fill.style.width = '100%';
-
-                storyStartTime = performance.now() - elapsedTime;
-
-                timer = setTimeout(() => {
-                    timer = null;
-                }, remainingTime);
-
-                console.log('Stories reanudados');
-            }
-        };
-
-        const observer = new IntersectionObserver(entries => {
-            entries.forEach(entry => {
-                if (progressFills.length === 0) return;
-
-                if (entry.isIntersecting) {
-                    isPaused = false;
-                    startStories();
-                } else {
-                    isPaused = true;
-                    clearTimeout(timer);
-                    timer = null;
-
-                    elapsedTime = performance.now() - storyStartTime;
-
-                    const fill = progressFills[currentStory];
-                    const computedStyle = window.getComputedStyle(fill);
-                    const width = computedStyle.getPropertyValue('width');
-                    const parentWidth = fill.parentElement.offsetWidth;
-                    const percent = (parseFloat(width) / parentWidth) * 100;
-
-                    fill.style.transition = 'none';
-                    fill.style.width = `${percent}%`;
-
-                    console.log('Stories pausados en', percent.toFixed(1), '%');
-                }
-            });
-        }, {
-            threshold: 0.5
+          event.classList.remove("active");
         });
 
-        window.addEventListener('load', () => {
-            setupStories();
-            showStory(0, false);
+        if (closestIdx >= 0) events[closestIdx].classList.add("active");
 
-            const storiesSection = document.querySelector('.gallery-section');
-            observer.observe(storiesSection);
+        if (lastVisibleIdx >= 0) {
+          var timelineRect = timeline.getBoundingClientRect();
+          var firstDotRect = events[0].querySelector(".timeline-dot").getBoundingClientRect();
+          var lastDotRect = events[lastVisibleIdx].querySelector(".timeline-dot").getBoundingClientRect();
+          var offsetStart = firstDotRect.top + firstDotRect.height / 2 - timelineRect.top;
+          var offsetEnd = lastDotRect.top + lastDotRect.height / 2 - timelineRect.top;
+          progress.style.top = offsetStart + "px";
+          progress.style.height = Math.max(0, offsetEnd - offsetStart) + "px";
+        } else {
+          progress.style.height = "0px";
+        }
+      }
+
+      // ─── STORIES ──────────────────────────────────────
+      var currentStory = 0;
+      var progressBars = [];
+      var progressFills = [];
+      var storyTimer = null;
+      var storyStart = 0;
+      var elapsedTime = 0;
+      var isPaused = false;
+      var intervalMs = 3200;
+      var lastTransHandler = null;
+      var isAdvancing = false;
+
+      function setupStories() {
+        var progressContainer = document.querySelector(".stories-progress");
+        if (!progressContainer) return;
+        progressContainer.innerHTML = "";
+        progressBars = [];
+        progressFills = [];
+
+        for (var i = 0; i < stories.length; i++) {
+          var bar = document.createElement("div");
+          bar.className = "stories-progress-bar";
+          var fill = document.createElement("div");
+          fill.className = "stories-progress-bar-fill";
+          bar.appendChild(fill);
+          progressContainer.appendChild(bar);
+          progressBars.push(bar);
+          progressFills.push(fill);
+        }
+
+        var frame = document.querySelector(".stories-photo-frame");
+        if (frame) {
+          frame.onclick = function () {
+            if (isAdvancing) return;
+            isAdvancing = true;
+            elapsedTime = 0;
+            showStory(currentStory + 1, true);
+            setTimeout(function () {
+              isAdvancing = false;
+            }, 200);
+          };
+        }
+      }
+
+      function showStory(idx) {
+        if (idx >= stories.length) idx = 0;
+        if (idx < 0) idx = stories.length - 1;
+
+        elapsedTime = 0;
+        storyStart = performance.now();
+        currentStory = idx;
+
+        var imgEl = document.getElementById("stories-image");
+        var captionEl = document.getElementById("stories-caption");
+        if (imgEl) imgEl.src = stories[idx].img;
+        if (captionEl) captionEl.textContent = stories[idx].caption;
+
+        progressFills.forEach(function (fill) {
+          if (lastTransHandler) fill.removeEventListener("transitionend", lastTransHandler);
+        });
+        lastTransHandler = null;
+
+        progressFills.forEach(function (fill, i) {
+          if (i < idx) {
+            fill.style.transition = "none";
+            fill.style.width = "100%";
+          } else if (i > idx) {
+            fill.style.transition = "none";
+            fill.style.width = "0%";
+          } else {
+            fill.style.transition = "none";
+            fill.style.width = "0%";
+            void fill.offsetWidth;
+            fill.style.transition = "width " + intervalMs + "ms linear";
+            fill.style.width = "100%";
+            lastTransHandler = function () {
+              if (!isPaused) showStory(currentStory + 1);
+            };
+            fill.addEventListener("transitionend", lastTransHandler, { once: true });
+          }
+        });
+      }
+
+      function startStories() {
+        if (!progressFills.length) return;
+        if (storyTimer == null && currentStory === 0 && progressFills[0].style.width === "0%") {
+          showStory(0);
+        }
+        if (!storyTimer) {
+          var fill = progressFills[currentStory];
+          var remainingTime = intervalMs - elapsedTime;
+          fill.style.transition = "width " + remainingTime + "ms linear";
+          fill.style.width = "100%";
+          storyStart = performance.now() - elapsedTime;
+          storyTimer = setTimeout(function () {
+            storyTimer = null;
+          }, remainingTime);
+        }
+      }
+
+      var storiesObserver = new IntersectionObserver(
+        function (entries) {
+          entries.forEach(function (entry) {
+            if (!progressFills.length) return;
+            if (entry.isIntersecting) {
+              isPaused = false;
+              startStories();
+            } else {
+              isPaused = true;
+              clearTimeout(storyTimer);
+              storyTimer = null;
+              elapsedTime = performance.now() - storyStart;
+              var fill = progressFills[currentStory];
+              var computed = window.getComputedStyle(fill);
+              var width = computed.getPropertyValue("width");
+              var parentW = fill.parentElement.offsetWidth;
+              var percent = (parseFloat(width) / parentW) * 100;
+              fill.style.transition = "none";
+              fill.style.width = percent + "%";
+            }
+          });
+        },
+        { threshold: 0.5 },
+      );
+
+      // ─── TEMAS ────────────────────────────────────────
+      document.querySelectorAll("#themeSwitcher .theme-btn").forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          var theme = btn.getAttribute("data-theme");
+          document.body.dataset.theme = theme;
+          switch (theme) {
+            case "themeVintage":
+              additionalInformation.ImageBodyBackground = "../images/bg-29.jpg";
+              break;
+            case "themeClassic":
+              additionalInformation.ImageBodyBackground = "../images/bg-30.jpg";
+              break;
+            default:
+              additionalInformation.ImageBodyBackground = "../images/bg-31.jpg";
+          }
+          updateBodyBackground();
         });
       });
+
+      // ─── INIT PAGE ────────────────────────────────────
+      function InitPage() {
+        onLoad();
+        helpers.init(Init);
+        helpers.onCounterStart(mainEvent.Date);
+        setInterval(function () {
+          helpers.onCounterStart(mainEvent.Date);
+        }, 1000);
+        helpers.onAudioPlayer();
+        updateBodyBackground();
+        renderGodParents(mainEvent.GodParents, "godparents-list");
+        renderItinerary(Itinerary, "timeline-list");
+
+        window.addEventListener("scroll", animateTimeline, { passive: true });
+        window.addEventListener("resize", animateTimeline, { passive: true });
+
+        window.addEventListener("load", function () {
+          setupStories();
+          showStory(0);
+          var storiesSection = document.querySelector(".gallery-section");
+          if (storiesSection) storiesObserver.observe(storiesSection);
+          animateTimeline();
+        });
+      }
+
+      InitPage();
     </script>
   </body>
 </html>

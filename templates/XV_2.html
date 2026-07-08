@@ -19,13 +19,13 @@
     <meta property="twitter:description" content="" />
     <meta property="twitter:image" content="" />
 
+    <link rel="preload" fetchpriority="high" as="image" href="../images/templates/XV1/1.webp" type="image/webp" />
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Josefin+Sans:wght@300;400;600&family=Pinyon+Script&display=swap" rel="stylesheet" />
-
-    <script src="../js/require.js"></script>
 
     <style>
       /* #region ROOT */
@@ -1258,7 +1258,7 @@
     <div class="page-wrap">
       <!-- HERO -->
       <section class="hero">
-        <img class="hero-img" src="#" data-replace="Image_MainCard" alt="Portada" />
+        <img class="hero-img" src="#" data-replace="Image_MainCard" fetchpriority="high" loading="eager" />
         <div class="hero-overlay"></div>
         <div class="hero-content">
           <p class="hero-eyebrow">Mis XV Años</p>
@@ -1549,384 +1549,388 @@
       </div>
     </div>
 
-    <script src="../js/main.js"></script>
-    <script>
-      requirejs(["jquery", "helpers", "bs"], function ($, helpers, bs) {
-        // ─── DATOS ────────────────────────────────────────
-        const mainEvent = {
-          Date: new Date("2026-10-17T13:00:00"),
-          Name: "Nicole Gutiérrez",
+    <!-- jQuery primero — sin defer -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <!-- Bootstrap con defer -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" defer></script>
 
-          LocationDescription: "Catedral de Guadalajara",
-          Address: "Av. Fray Antonio Alcalde 10, Guadalajara, Jal.",
-          GoogleMapsUrl: "https://maps.app.goo.gl/hBdb191LiXzkPRfR8",
+    <script type="module">
+      import { helpers } from "../js/modules/helpers.js";
 
-          Father: "José Gutiérrez",
-          Mother: "Melissa Hurtado",
-          GodFather: "Juan Fernández",
-          GodMother: "Laura Jimenez",
+      // ─── DATOS ────────────────────────────────────────
+      const mainEvent = {
+        Date: new Date("2026-10-17T13:00:00"),
+        Name: "Nicole Gutiérrez",
 
-          Gallery: ["../images/templates/XV1/1.jpg", "../images/templates/XV1/2.jpg", "../images/templates/XV1/3.jpg", "../images/templates/XV1/4.jpg", "../images/templates/XV1/5.jpg", "../images/templates/XV1/6.jpg"],
+        LocationDescription: "Catedral de Guadalajara",
+        Address: "Av. Fray Antonio Alcalde 10, Guadalajara, Jal.",
+        GoogleMapsUrl: "https://maps.app.goo.gl/hBdb191LiXzkPRfR8",
 
-          AmazonGiftTableUrl: "https://www.amazon.com.mx/",
-          LiverpoolGiftTableUrl: "https://www.liverpool.com.mx/tienda/home",
+        Father: "José Gutiérrez",
+        Mother: "Melissa Hurtado",
+        GodFather: "Juan Fernández",
+        GodMother: "Laura Jimenez",
 
-          TableNumber: 4,
-          TicketCount: 2,
-          DressCodeStyle: "Semi-Formal",
-        };
+        Gallery: ["../images/templates/XV1/1.webp", "../images/templates/XV1/2.jpg", "../images/templates/XV1/3.jpg", "../images/templates/XV1/4.jpg", "../images/templates/XV1/5.jpg", "../images/templates/XV1/6.jpg"],
 
-        const secondaryEvent = {
-          Date: new Date("2026-10-17T17:00:00"),
-          LocationDescription: "La Terraza Clouthier",
-          Address: "Av Manuel J. Clouthier 480, Zapopan, Jal.",
-          GoogleMapsUrl: "https://maps.app.goo.gl/HpD9ZEkGmku4WTyT8",
-        };
+        AmazonGiftTableUrl: "https://www.amazon.com.mx/",
+        LiverpoolGiftTableUrl: "https://www.liverpool.com.mx/tienda/home",
 
-        const Init = {
-          Config: {
-            EventType: "XV",
-            Sections: {
-              showCounter: true,
-              showIntroduction: true,
-              showParents: true,
-              showItinerary: true,
-              showGallery: true,
-              showDressCode: true,
-              showTickets: true,
-              showTableNumber: true,
-              showAttendance: true,
-              showGiftTable: true,
-            },
-            Themes: [],
-            AudioUrl: "../music/taylor.mp3",
+        TableNumber: 4,
+        TicketCount: 2,
+        DressCodeStyle: "Semi-Formal",
+      };
+
+      const secondaryEvent = {
+        Date: new Date("2026-10-17T17:00:00"),
+        LocationDescription: "La Terraza Clouthier",
+        Address: "Av Manuel J. Clouthier 480, Zapopan, Jal.",
+        GoogleMapsUrl: "https://maps.app.goo.gl/HpD9ZEkGmku4WTyT8",
+      };
+
+      const Init = {
+        Config: {
+          EventType: "XV",
+          Sections: {
+            showCounter: true,
+            showIntroduction: true,
+            showParents: true,
+            showItinerary: true,
+            showGallery: true,
+            showDressCode: true,
+            showTickets: true,
+            showTableNumber: true,
+            showAttendance: true,
+            showGiftTable: true,
           },
-          MainEvent: mainEvent,
-          SecondaryEvent: secondaryEvent,
-        };
+          Themes: [],
+          AudioUrl: "../music/taylor.mp3",
+        },
+        MainEvent: mainEvent,
+        SecondaryEvent: secondaryEvent,
+      };
 
-        const additionalInformation = {
-          ImageMainCard: "../images/templates/XV1/1.jpg",
-          ImageMyParents: "../images/templates/XV1/padres.jpg",
-          ImageMyGodParents: "../images/templates/XV1/padrinos.jpg",
-          ImageDressCodeUrl: "../images/shared/dresscode_2.jpg",
-        };
+      const additionalInformation = {
+        ImageMainCard: "../images/templates/XV1/1.webp",
+        ImageMyParents: "../images/templates/XV1/padres.jpg",
+        ImageMyGodParents: "../images/templates/XV1/padrinos.jpg",
+        ImageDressCodeUrl: "../images/shared/dresscode_2.jpg",
+      };
 
-        // ─── TEMAS ────────────────────────────────────────
-        const themes = {
-          // Oscuro — el diseño original
-          theme1: {
-            ink: "#0e0710",
-            primary: "#9b4d6e",
-            secondary: "#c47a9a",
-            third: "#7a3255",
-            fourth: "#d4a0b8",
-            fifth: "rgba(155,77,110,0.35)",
-            fifth1: "rgba(155,77,110,0)",
-            gradA: "rgba(155,77,110,0.18)",
-            gradB: "rgba(122,50,85,0.2)",
-            textPrimary: "#ffffff",
-            textSecondary: "rgba(255,255,255,0.82)",
-            textMuted: "rgba(255,255,255,0.45)",
-            textSoft: "rgba(255,255,255,0.6)",
-            cardBg: "rgba(255,255,255,0.04)",
-            borderSubtle: "rgba(201,164,107,0.15)",
-          },
-          // Champagne claro
-          theme2: {
-            ink: "#faf5ee",
-            primary: "#9b6a4a",
-            secondary: "#c49a78",
-            third: "#7a4f35",
-            fourth: "#8b5a3a",
-            fifth: "rgba(155,106,74,0.2)",
-            fifth1: "rgba(155,106,74,0)",
-            gradA: "rgba(180,140,100,0.12)",
-            gradB: "rgba(140,100,70,0.1)",
-            textPrimary: "#1a0e08",
-            textSecondary: "rgba(26,14,8,0.8)",
-            textMuted: "rgba(26,14,8,0.45)",
-            textSoft: "rgba(26,14,8,0.6)",
-            cardBg: "rgba(0,0,0,0.05)",
-            borderSubtle: "rgba(155,106,74,0.2)",
-          },
-          // Lavanda claro
-          theme3: {
-            ink: "#f5f0fa",
-            primary: "#6b4d8a",
-            secondary: "#9a78b8",
-            third: "#4e3268",
-            fourth: "#5a3a7a",
-            fifth: "rgba(107,77,138,0.2)",
-            fifth1: "rgba(107,77,138,0)",
-            gradA: "rgba(150,120,190,0.12)",
-            gradB: "rgba(100,70,140,0.1)",
-            textPrimary: "#180e28",
-            textSecondary: "rgba(24,14,40,0.8)",
-            textMuted: "rgba(24,14,40,0.45)",
-            textSoft: "rgba(24,14,40,0.6)",
-            cardBg: "rgba(0,0,0,0.05)",
-            borderSubtle: "rgba(107,77,138,0.2)",
-          },
-          // Menta claro
-          theme4: {
-            ink: "#f0f7f4",
-            primary: "#3a7a60",
-            secondary: "#6aaa90",
-            third: "#2a5e48",
-            fourth: "#3a6a54",
-            fifth: "rgba(58,122,96,0.2)",
-            fifth1: "rgba(58,122,96,0)",
-            gradA: "rgba(80,160,130,0.12)",
-            gradB: "rgba(40,110,85,0.1)",
-            textPrimary: "#0a2018",
-            textSecondary: "rgba(10,32,24,0.8)",
-            textMuted: "rgba(10,32,24,0.45)",
-            textSoft: "rgba(10,32,24,0.6)",
-            cardBg: "rgba(0,0,0,0.05)",
-            borderSubtle: "rgba(58,122,96,0.2)",
-          },
-          // Arena claro
-          theme5: {
-            ink: "#f7f3ee",
-            primary: "#8a6a4a",
-            secondary: "#b89878",
-            third: "#6a4e32",
-            fourth: "#7a5a3a",
-            fifth: "rgba(138,106,74,0.2)",
-            fifth1: "rgba(138,106,74,0)",
-            gradA: "rgba(170,140,100,0.12)",
-            gradB: "rgba(120,90,60,0.1)",
-            textPrimary: "#1a1008",
-            textSecondary: "rgba(26,16,8,0.8)",
-            textMuted: "rgba(26,16,8,0.45)",
-            textSoft: "rgba(26,16,8,0.6)",
-            cardBg: "rgba(0,0,0,0.05)",
-            borderSubtle: "rgba(138,106,74,0.2)",
-          },
-        };
+      // ─── TEMAS ────────────────────────────────────────
+      const themes = {
+        // Oscuro — el diseño original
+        theme1: {
+          ink: "#0e0710",
+          primary: "#9b4d6e",
+          secondary: "#c47a9a",
+          third: "#7a3255",
+          fourth: "#d4a0b8",
+          fifth: "rgba(155,77,110,0.35)",
+          fifth1: "rgba(155,77,110,0)",
+          gradA: "rgba(155,77,110,0.18)",
+          gradB: "rgba(122,50,85,0.2)",
+          textPrimary: "#ffffff",
+          textSecondary: "rgba(255,255,255,0.82)",
+          textMuted: "rgba(255,255,255,0.45)",
+          textSoft: "rgba(255,255,255,0.6)",
+          cardBg: "rgba(255,255,255,0.04)",
+          borderSubtle: "rgba(201,164,107,0.15)",
+        },
+        // Champagne claro
+        theme2: {
+          ink: "#faf5ee",
+          primary: "#9b6a4a",
+          secondary: "#c49a78",
+          third: "#7a4f35",
+          fourth: "#8b5a3a",
+          fifth: "rgba(155,106,74,0.2)",
+          fifth1: "rgba(155,106,74,0)",
+          gradA: "rgba(180,140,100,0.12)",
+          gradB: "rgba(140,100,70,0.1)",
+          textPrimary: "#1a0e08",
+          textSecondary: "rgba(26,14,8,0.8)",
+          textMuted: "rgba(26,14,8,0.45)",
+          textSoft: "rgba(26,14,8,0.6)",
+          cardBg: "rgba(0,0,0,0.05)",
+          borderSubtle: "rgba(155,106,74,0.2)",
+        },
+        // Lavanda claro
+        theme3: {
+          ink: "#f5f0fa",
+          primary: "#6b4d8a",
+          secondary: "#9a78b8",
+          third: "#4e3268",
+          fourth: "#5a3a7a",
+          fifth: "rgba(107,77,138,0.2)",
+          fifth1: "rgba(107,77,138,0)",
+          gradA: "rgba(150,120,190,0.12)",
+          gradB: "rgba(100,70,140,0.1)",
+          textPrimary: "#180e28",
+          textSecondary: "rgba(24,14,40,0.8)",
+          textMuted: "rgba(24,14,40,0.45)",
+          textSoft: "rgba(24,14,40,0.6)",
+          cardBg: "rgba(0,0,0,0.05)",
+          borderSubtle: "rgba(107,77,138,0.2)",
+        },
+        // Menta claro
+        theme4: {
+          ink: "#f0f7f4",
+          primary: "#3a7a60",
+          secondary: "#6aaa90",
+          third: "#2a5e48",
+          fourth: "#3a6a54",
+          fifth: "rgba(58,122,96,0.2)",
+          fifth1: "rgba(58,122,96,0)",
+          gradA: "rgba(80,160,130,0.12)",
+          gradB: "rgba(40,110,85,0.1)",
+          textPrimary: "#0a2018",
+          textSecondary: "rgba(10,32,24,0.8)",
+          textMuted: "rgba(10,32,24,0.45)",
+          textSoft: "rgba(10,32,24,0.6)",
+          cardBg: "rgba(0,0,0,0.05)",
+          borderSubtle: "rgba(58,122,96,0.2)",
+        },
+        // Arena claro
+        theme5: {
+          ink: "#f7f3ee",
+          primary: "#8a6a4a",
+          secondary: "#b89878",
+          third: "#6a4e32",
+          fourth: "#7a5a3a",
+          fifth: "rgba(138,106,74,0.2)",
+          fifth1: "rgba(138,106,74,0)",
+          gradA: "rgba(170,140,100,0.12)",
+          gradB: "rgba(120,90,60,0.1)",
+          textPrimary: "#1a1008",
+          textSecondary: "rgba(26,16,8,0.8)",
+          textMuted: "rgba(26,16,8,0.45)",
+          textSoft: "rgba(26,16,8,0.6)",
+          cardBg: "rgba(0,0,0,0.05)",
+          borderSubtle: "rgba(138,106,74,0.2)",
+        },
+      };
 
-        function applyTheme(key) {
-          const t = themes[key];
-          if (!t) return;
-          const r = document.documentElement;
+      function applyTheme(key) {
+        const t = themes[key];
+        if (!t) return;
+        const r = document.documentElement;
 
-          // Variables de color de marca
-          r.style.setProperty("--color_primary", t.primary);
-          r.style.setProperty("--color_secondary", t.secondary);
-          r.style.setProperty("--color_third", t.third);
-          r.style.setProperty("--color_fourth", t.fourth);
-          r.style.setProperty("--color_fifth", t.fifth);
-          r.style.setProperty("--color_fifth_1", t.fifth1);
-          r.style.setProperty("--color_ink", t.ink);
+        // Variables de color de marca
+        r.style.setProperty("--color_primary", t.primary);
+        r.style.setProperty("--color_secondary", t.secondary);
+        r.style.setProperty("--color_third", t.third);
+        r.style.setProperty("--color_fourth", t.fourth);
+        r.style.setProperty("--color_fifth", t.fifth);
+        r.style.setProperty("--color_fifth_1", t.fifth1);
+        r.style.setProperty("--color_ink", t.ink);
 
-          // Variables de texto — estas hacen todo el trabajo
-          r.style.setProperty("--text_primary", t.textPrimary);
-          r.style.setProperty("--text_secondary", t.textSecondary);
-          r.style.setProperty("--text_muted", t.textMuted);
-          r.style.setProperty("--text_soft", t.textSoft);
-          r.style.setProperty("--card_bg", t.cardBg);
-          r.style.setProperty("--border_subtle", t.borderSubtle);
+        // Variables de texto — estas hacen todo el trabajo
+        r.style.setProperty("--text_primary", t.textPrimary);
+        r.style.setProperty("--text_secondary", t.textSecondary);
+        r.style.setProperty("--text_muted", t.textMuted);
+        r.style.setProperty("--text_soft", t.textSoft);
+        r.style.setProperty("--card_bg", t.cardBg);
+        r.style.setProperty("--border_subtle", t.borderSubtle);
 
-          // Fondo body
-          $("body").css("background-color", t.ink);
+        // Fondo body
+        $("body").css("background-color", t.ink);
 
-          // body::before — pseudo-elemento requiere <style> dinámico
-          $("#dynamic-theme-style").remove();
-          $("<style id='dynamic-theme-style'>")
-            .text(
-              `body::before {
+        // body::before — pseudo-elemento requiere <style> dinámico
+        $("#dynamic-theme-style").remove();
+        $("<style id='dynamic-theme-style'>")
+          .text(
+            `body::before {
               background-image:
                 radial-gradient(ellipse at 20% 0%, ${t.gradA} 0%, transparent 60%),
                 radial-gradient(ellipse at 80% 100%, ${t.gradB} 0%, transparent 60%);
             }`,
-            )
-            .appendTo("head");
+          )
+          .appendTo("head");
 
-          // Botón activo
-          $(".theme-btn").removeClass("active");
-          $(`.theme-btn[data-theme="${key}"]`).addClass("active");
-        }
+        // Botón activo
+        $(".theme-btn").removeClass("active");
+        $(`.theme-btn[data-theme="${key}"]`).addClass("active");
+      }
 
-        $(".theme-btn").on("click", function () {
-          applyTheme($(this).data("theme"));
+      $(".theme-btn").on("click", function () {
+        applyTheme($(this).data("theme"));
+      });
+
+      // ─── ONLOAD LOCAL ─────────────────────────────────
+      function onLoad() {
+        $("[data-replace=Image_MainCard]").attr("src", additionalInformation.ImageMainCard);
+        $("[data-replace=Image_MyParents]").attr("src", additionalInformation.ImageMyParents);
+        $("[data-replace=Image_MyGodParents]").attr("src", additionalInformation.ImageMyGodParents);
+        $("[data-replace=Image_DressCodeUrl]").attr("src", additionalInformation.ImageDressCodeUrl);
+
+        // Mesa y boletos
+        $("[data-replace=TableNumber]").text(Init.MainEvent.TableNumber);
+        $("[data-replace=TicketCount]").text(Init.MainEvent.TicketCount);
+        $("[data-replace=DressCodeStyle]").text(Init.MainEvent.DressCodeStyle);
+
+        // Meta tags
+        const name = mainEvent.Name;
+        const title = `XV Años de ${name}`;
+        const desc = `${name} te invita a celebrar sus XV Años. ¡Acompáñala en este día tan especial!`;
+        document.title = title;
+        $('meta[property="og:title"]').attr("content", title);
+        $('meta[property="og:description"]').attr("content", desc);
+        $('meta[property="og:image"]').attr("content", additionalInformation.ImageMainCard);
+        $('meta[property="og:url"]').attr("content", window.location.href);
+        $('meta[property="twitter:title"]').attr("content", title);
+        $('meta[property="twitter:description"]').attr("content", desc);
+        $('meta[property="twitter:image"]').attr("content", additionalInformation.ImageMainCard);
+        $('meta[name="description"]').attr("content", desc);
+
+        // Galería masonry
+        const gallery = Init.MainEvent.Gallery;
+        $("#gallery-count").text(gallery.length + " fotos");
+        gallery.forEach(function (url, index) {
+          const item = $("<div>", { class: "gal-item", "data-index": index });
+          const img = $("<img>", { src: url, alt: `Foto ${index + 1}`, loading: "lazy" });
+          item.append(img);
+          $("#gallery-grid").append(item);
         });
 
-        // ─── ONLOAD LOCAL ─────────────────────────────────
-        function onLoad() {
-          $("[data-replace=Image_MainCard]").attr("src", additionalInformation.ImageMainCard);
-          $("[data-replace=Image_MyParents]").attr("src", additionalInformation.ImageMyParents);
-          $("[data-replace=Image_MyGodParents]").attr("src", additionalInformation.ImageMyGodParents);
-          $("[data-replace=Image_DressCodeUrl]").attr("src", additionalInformation.ImageDressCodeUrl);
+        // Confirmación
+        $("#_btnYes").on("click", function () {
+          helpers.onSendConfirmation(true, $("input[name=guestAttendants]").val(), $("textarea[name=wishes]").val());
+        });
+        $("#_btnNo").on("click", function () {
+          helpers.onSendConfirmation(false, $("input[name=guestName]").val(), $("textarea[name=wishes]").val());
+        });
+      }
 
-          // Mesa y boletos
-          $("[data-replace=TableNumber]").text(Init.MainEvent.TableNumber);
-          $("[data-replace=TicketCount]").text(Init.MainEvent.TicketCount);
-          $("[data-replace=DressCodeStyle]").text(Init.MainEvent.DressCodeStyle);
+      // ─── GALERIA MODAL ────────────────────────────────
+      var galleryModal = {
+        $el: null,
+        currentIndex: 0,
+        images: [],
+        touchStartX: 0,
+        touchStartY: 0,
 
-          // Meta tags
-          const name = mainEvent.Name;
-          const title = `XV Años de ${name}`;
-          const desc = `${name} te invita a celebrar sus XV Años. ¡Acompáñala en este día tan especial!`;
-          document.title = title;
-          $('meta[property="og:title"]').attr("content", title);
-          $('meta[property="og:description"]').attr("content", desc);
-          $('meta[property="og:image"]').attr("content", additionalInformation.ImageMainCard);
-          $('meta[property="og:url"]').attr("content", window.location.href);
-          $('meta[property="twitter:title"]').attr("content", title);
-          $('meta[property="twitter:description"]').attr("content", desc);
-          $('meta[property="twitter:image"]').attr("content", additionalInformation.ImageMainCard);
-          $('meta[name="description"]').attr("content", desc);
+        init: function () {
+          var self = galleryModal;
+          self.$el = $("#galleryModal");
+          self.images = Init.MainEvent.Gallery;
 
-          // Galería masonry
-          const gallery = Init.MainEvent.Gallery;
-          $("#gallery-count").text(gallery.length + " fotos");
-          gallery.forEach(function (url, index) {
-            const item = $("<div>", { class: "gal-item", "data-index": index });
-            const img = $("<img>", { src: url, alt: `Foto ${index + 1}`, loading: "lazy" });
-            item.append(img);
-            $("#gallery-grid").append(item);
+          $(document).on("click", ".gal-item", function () {
+            self.open(parseInt($(this).data("index")));
           });
 
-          // Confirmación
-          $("#_btnYes").on("click", function () {
-            helpers.onSendConfirmation(true, $("input[name=guestAttendants]").val(), $("textarea[name=wishes]").val());
+          $("#galleryModalClose").on("click", function (e) {
+            e.stopPropagation();
+            self.close();
           });
-          $("#_btnNo").on("click", function () {
-            helpers.onSendConfirmation(false, $("input[name=guestName]").val(), $("textarea[name=wishes]").val());
+
+          self.$el.on("click", function (e) {
+            if ($(e.target).is("#galleryModal")) self.close();
           });
-        }
 
-        // ─── GALERIA MODAL ────────────────────────────────
-        var galleryModal = {
-          $el: null,
-          currentIndex: 0,
-          images: [],
-          touchStartX: 0,
-          touchStartY: 0,
+          $("#galleryModalPrev").on("click", function (e) {
+            e.stopPropagation();
+            self.navigate(-1);
+          });
+          $("#galleryModalNext").on("click", function (e) {
+            e.stopPropagation();
+            self.navigate(1);
+          });
 
-          init: function () {
-            var self = galleryModal;
-            self.$el = $("#galleryModal");
-            self.images = Init.MainEvent.Gallery;
-
-            $(document).on("click", ".gal-item", function () {
-              self.open(parseInt($(this).data("index")));
-            });
-
-            $("#galleryModalClose").on("click", function (e) {
-              e.stopPropagation();
-              self.close();
-            });
-
-            self.$el.on("click", function (e) {
-              if ($(e.target).is("#galleryModal")) self.close();
-            });
-
-            $("#galleryModalPrev").on("click", function (e) {
-              e.stopPropagation();
-              self.navigate(-1);
-            });
-            $("#galleryModalNext").on("click", function (e) {
-              e.stopPropagation();
-              self.navigate(1);
-            });
-
-            var imgWrap = document.getElementById("galleryModalImgWrap");
-            imgWrap.addEventListener(
-              "touchstart",
-              function (e) {
-                self.touchStartX = e.changedTouches[0].screenX;
-                self.touchStartY = e.changedTouches[0].screenY;
-              },
-              { passive: true },
-            );
-            imgWrap.addEventListener(
-              "touchend",
-              function (e) {
-                var dx = e.changedTouches[0].screenX - self.touchStartX;
-                var dy = e.changedTouches[0].screenY - self.touchStartY;
-                if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 45) {
-                  self.navigate(dx < 0 ? 1 : -1);
-                }
-              },
-              { passive: true },
-            );
-
-            document.addEventListener("keydown", function (e) {
-              if (!self.$el.hasClass("open")) return;
-              if (e.key === "ArrowLeft") self.navigate(-1);
-              if (e.key === "ArrowRight") self.navigate(1);
-              if (e.key === "Escape") self.close();
-            });
-          },
-
-          open: function (index) {
-            var self = galleryModal;
-            self.currentIndex = index;
-            self.updateImage();
-            self.$el.addClass("open");
-            $("body").css("overflow", "hidden");
-          },
-
-          close: function () {
-            var self = galleryModal;
-            self.$el.removeClass("open");
-            $("body").css("overflow", "");
-          },
-
-          navigate: function (dir) {
-            var self = galleryModal;
-            var $img = $("#modalGalleryImage");
-            $img.addClass("fading");
-            setTimeout(function () {
-              self.currentIndex = (self.currentIndex + dir + self.images.length) % self.images.length;
-              self.updateImage();
-              $img.removeClass("fading");
-            }, 180);
-          },
-
-          updateImage: function () {
-            var self = galleryModal;
-            $("#modalGalleryImage").attr("src", self.images[self.currentIndex]);
-            $("#galleryModalCurrent").text(self.currentIndex + 1);
-            $("#galleryModalTotal").text(self.images.length);
-          },
-        };
-
-        // ─── SCROLL REVEAL ────────────────────────────────
-        function initScrollReveal() {
-          var observer = new IntersectionObserver(
-            function (entries) {
-              entries.forEach(function (entry) {
-                if (entry.isIntersecting) {
-                  entry.target.classList.add("visible");
-                }
-              });
+          var imgWrap = document.getElementById("galleryModalImgWrap");
+          imgWrap.addEventListener(
+            "touchstart",
+            function (e) {
+              self.touchStartX = e.changedTouches[0].screenX;
+              self.touchStartY = e.changedTouches[0].screenY;
             },
-            { threshold: 0.1 },
+            { passive: true },
+          );
+          imgWrap.addEventListener(
+            "touchend",
+            function (e) {
+              var dx = e.changedTouches[0].screenX - self.touchStartX;
+              var dy = e.changedTouches[0].screenY - self.touchStartY;
+              if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 45) {
+                self.navigate(dx < 0 ? 1 : -1);
+              }
+            },
+            { passive: true },
           );
 
-          document.querySelectorAll(".reveal").forEach(function (el) {
-            observer.observe(el);
+          document.addEventListener("keydown", function (e) {
+            if (!self.$el.hasClass("open")) return;
+            if (e.key === "ArrowLeft") self.navigate(-1);
+            if (e.key === "ArrowRight") self.navigate(1);
+            if (e.key === "Escape") self.close();
           });
-        }
+        },
 
-        // ─── INIT PAGE ────────────────────────────────────
-        function InitPage() {
-          onLoad();
-          helpers.init(Init);
+        open: function (index) {
+          var self = galleryModal;
+          self.currentIndex = index;
+          self.updateImage();
+          self.$el.addClass("open");
+          $("body").css("overflow", "hidden");
+        },
+
+        close: function () {
+          var self = galleryModal;
+          self.$el.removeClass("open");
+          $("body").css("overflow", "");
+        },
+
+        navigate: function (dir) {
+          var self = galleryModal;
+          var $img = $("#modalGalleryImage");
+          $img.addClass("fading");
+          setTimeout(function () {
+            self.currentIndex = (self.currentIndex + dir + self.images.length) % self.images.length;
+            self.updateImage();
+            $img.removeClass("fading");
+          }, 180);
+        },
+
+        updateImage: function () {
+          var self = galleryModal;
+          $("#modalGalleryImage").attr("src", self.images[self.currentIndex]);
+          $("#galleryModalCurrent").text(self.currentIndex + 1);
+          $("#galleryModalTotal").text(self.images.length);
+        },
+      };
+
+      // ─── SCROLL REVEAL ────────────────────────────────
+      function initScrollReveal() {
+        var observer = new IntersectionObserver(
+          function (entries) {
+            entries.forEach(function (entry) {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("visible");
+              }
+            });
+          },
+          { threshold: 0.1 },
+        );
+
+        document.querySelectorAll(".reveal").forEach(function (el) {
+          observer.observe(el);
+        });
+      }
+
+      // ─── INIT PAGE ────────────────────────────────────
+      function InitPage() {
+        onLoad();
+        helpers.init(Init);
+        helpers.onCounterStart(Init.MainEvent.Date);
+        setInterval(function () {
           helpers.onCounterStart(Init.MainEvent.Date);
-          setInterval(function () {
-            helpers.onCounterStart(Init.MainEvent.Date);
-          }, 1000);
-          helpers.onAudioPlayer();
-          galleryModal.init();
-          initScrollReveal();
-        }
+        }, 1000);
+        helpers.onAudioPlayer();
+        galleryModal.init();
+        initScrollReveal();
+      }
 
-        InitPage();
-      });
+      InitPage();
     </script>
   </body>
 </html>

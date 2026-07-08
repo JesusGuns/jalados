@@ -1,7 +1,6 @@
-// @ts-nocheck
 
-//@ts-ignore
-define(["jquery", "extended"], function ($) {
+  import './extended.js';
+
   const staticLinks = {
     ImageAudioUrl: "../images/icons/play.png",
     ImageAudioPauseUrl: "../images/icons/pause.png",
@@ -24,7 +23,7 @@ define(["jquery", "extended"], function ($) {
     AdditionalInformation: {},
     StaticLinks: staticLinks,
   };
-  var module = {
+  export const helpers = {
     init: function (resources) {
       // Config
       Resources.Config = resources.Config;
@@ -32,28 +31,28 @@ define(["jquery", "extended"], function ($) {
       // Main Event — propiedades calculadas de la fecha
       Resources.MainEvent = resources.MainEvent;
       Resources.MainEvent.Time = Resources.MainEvent.Date.getTime();
-      Resources.MainEvent.DateString = module.onGetDateString(Resources.MainEvent.Date);
-      Resources.MainEvent.HourString = module.onGetHoursString(Resources.MainEvent.Date);
-      Resources.MainEvent.WeekDay = module.onGetWeekDay(Resources.MainEvent.Date);
-      Resources.MainEvent.Day = module.onGetDay(Resources.MainEvent.Date);
-      Resources.MainEvent.Month = module.onGetMonth(Resources.MainEvent.Date);
-      Resources.MainEvent.Year = module.onGetYear(Resources.MainEvent.Date);
-      Resources.MainEvent.YYYYMMDD = module.onGetDateYYYYMMDD(Resources.MainEvent.Date);
+      Resources.MainEvent.DateString = helpers.onGetDateString(Resources.MainEvent.Date);
+      Resources.MainEvent.HourString = helpers.onGetHoursString(Resources.MainEvent.Date);
+      Resources.MainEvent.WeekDay = helpers.onGetWeekDay(Resources.MainEvent.Date);
+      Resources.MainEvent.Day = helpers.onGetDay(Resources.MainEvent.Date);
+      Resources.MainEvent.Month = helpers.onGetMonth(Resources.MainEvent.Date);
+      Resources.MainEvent.Year = helpers.onGetYear(Resources.MainEvent.Date);
+      Resources.MainEvent.YYYYMMDD = helpers.onGetDateYYYYMMDD(Resources.MainEvent.Date);
 
       // Secondary Event — opcional (BabyShower no lo tiene)
       if (resources.SecondaryEvent) {
         Resources.SecondaryEvent = resources.SecondaryEvent;
         Resources.SecondaryEvent.Time = Resources.SecondaryEvent.Date.getTime();
-        Resources.SecondaryEvent.DateString = module.onGetDateString(Resources.SecondaryEvent.Date);
-        Resources.SecondaryEvent.HourString = module.onGetHoursString(Resources.SecondaryEvent.Date);
-        Resources.SecondaryEvent.WeekDay = module.onGetWeekDay(Resources.SecondaryEvent.Date);
-        Resources.SecondaryEvent.Day = module.onGetDay(Resources.SecondaryEvent.Date);
-        Resources.SecondaryEvent.Month = module.onGetMonth(Resources.SecondaryEvent.Date);
-        Resources.SecondaryEvent.Year = module.onGetYear(Resources.SecondaryEvent.Date);
-        Resources.SecondaryEvent.YYYYMMDD = module.onGetDateYYYYMMDD(Resources.SecondaryEvent.Date);
+        Resources.SecondaryEvent.DateString = helpers.onGetDateString(Resources.SecondaryEvent.Date);
+        Resources.SecondaryEvent.HourString = helpers.onGetHoursString(Resources.SecondaryEvent.Date);
+        Resources.SecondaryEvent.WeekDay = helpers.onGetWeekDay(Resources.SecondaryEvent.Date);
+        Resources.SecondaryEvent.Day = helpers.onGetDay(Resources.SecondaryEvent.Date);
+        Resources.SecondaryEvent.Month = helpers.onGetMonth(Resources.SecondaryEvent.Date);
+        Resources.SecondaryEvent.Year = helpers.onGetYear(Resources.SecondaryEvent.Date);
+        Resources.SecondaryEvent.YYYYMMDD = helpers.onGetDateYYYYMMDD(Resources.SecondaryEvent.Date);
       }
 
-      module.onLoad();
+      helpers.onLoad();
     },
     onGetResources: function () {
       return Resources;
@@ -76,10 +75,10 @@ define(["jquery", "extended"], function ($) {
       return eventDate.getFullYear();
     },
     onGetDateString: function (eventDate, includeDayName) {
-      const day = module.onGetDay(eventDate);
-      const dayName = module.onGetWeekDay(eventDate);
-      const month = module.onGetMonth(eventDate);
-      const year = module.onGetYear(eventDate);
+      const day = helpers.onGetDay(eventDate);
+      const dayName = helpers.onGetWeekDay(eventDate);
+      const month = helpers.onGetMonth(eventDate);
+      const year = helpers.onGetYear(eventDate);
       const dateString = includeDayName ? `${dayName} ${day} de ${month} de ${year}` : `${day} de ${month} de ${year}`;
       return dateString;
     },
@@ -121,10 +120,10 @@ define(["jquery", "extended"], function ($) {
           return; // ← sale del tick, no actualiza los números
         }
 
-        $days.text(module.onAddZeroToNumber(Math.floor(distance / 86400000)));
-        $hours.text(module.onAddZeroToNumber(Math.floor((distance % 86400000) / 3600000)));
-        $minutes.text(module.onAddZeroToNumber(Math.floor((distance % 3600000) / 60000)));
-        $seconds.text(module.onAddZeroToNumber(Math.floor((distance % 60000) / 1000)));
+        $days.text(helpers.onAddZeroToNumber(Math.floor(distance / 86400000)));
+        $hours.text(helpers.onAddZeroToNumber(Math.floor((distance % 86400000) / 3600000)));
+        $minutes.text(helpers.onAddZeroToNumber(Math.floor((distance % 3600000) / 60000)));
+        $seconds.text(helpers.onAddZeroToNumber(Math.floor((distance % 60000) / 1000)));
       }, 1000);
 
       return intervalId;
@@ -321,8 +320,7 @@ define(["jquery", "extended"], function ($) {
 
       // ─── GALERÍA ───────────────────────────────────────
       const randomIndex = Math.floor(Math.random() * main.Gallery.length);
-      main.Gallery = module.onMoveElementFromArray(main.Gallery, randomIndex, 3);
+      main.Gallery = helpers.onMoveElementFromArray(main.Gallery, randomIndex, 3);
     },
   };
-  return module;
-});
+

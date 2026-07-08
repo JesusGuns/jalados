@@ -1,7 +1,9 @@
 <!doctype html>
 <html lang="es">
   <head>
+    <meta name="google" content="notranslate" />
     <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/png" sizes="196x196" href="https://jesusguns.github.io/jalados/images/_favicon-XV.png" />
     <title>Mis XV Años</title>
@@ -17,13 +19,13 @@
     <meta property="twitter:description" content="" />
     <meta property="twitter:image" content="" />
 
+    <link rel="preload" fetchpriority="high" as="image" href="../images/templates/XV1/1.webp" type="image/webp" />
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Cinzel:wght@400;600;700&family=Cinzel+Decorative:wght@400;700&family=Lato:wght@300;400&display=swap" rel="stylesheet" />
-    
-    <script src="../js/require.js"></script>
 
     <style>
       /* #region ROOT */
@@ -134,11 +136,11 @@
       }
       .theme-btn {
         width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    border: none;
-    cursor: pointer;
-    transition: transform 0.3s;
+        height: 20px;
+        border-radius: 50%;
+        border: none;
+        cursor: pointer;
+        transition: transform 0.3s;
         padding: 0;
         -webkit-tap-highlight-color: transparent;
       }
@@ -1269,7 +1271,7 @@
         <!-- FOTO CIRCULAR + NOMBRE -->
         <div class="portrait-wrap _introduction-section">
           <div class="portrait-ring">
-            <img class="portrait-img" src="#" data-replace="Image_MainCard" alt="Festejada" />
+            <img class="portrait-img" src="#" data-replace="Image_MainCard" fetchpriority="high" loading="eager" />
             <svg class="ring-text" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
               <defs>
                 <path id="circle-path" d="M 100,100 m -75,0 a 75,75 0 1,1 150,0 a 75,75 0 1,1 -150,0" />
@@ -1516,243 +1518,246 @@
       </div>
     </div>
 
-    <script src="../js/main.js"></script>
-    <script>
-      requirejs(["jquery", "helpers", "bs"], function ($, helpers) {
-        // ─── DATOS ────────────────────────────────────────
-        var mainEvent = {
-          Date: new Date("2026-10-17T13:00:00"),
-          Name: "Nicole Gutiérrez",
+    <!-- jQuery primero — sin defer -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <!-- Bootstrap con defer -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" defer></script>
 
-          LocationDescription: "Catedral de Guadalajara",
-          Address: "Av. Fray Antonio Alcalde 10, Guadalajara, Jal.",
-          GoogleMapsUrl: "https://maps.app.goo.gl/hBdb191LiXzkPRfR8",
+    <script type="module">
+      import { helpers } from "../js/modules/helpers.js";
+      // ─── DATOS ────────────────────────────────────────
+      var mainEvent = {
+        Date: new Date("2026-10-17T13:00:00"),
+        Name: "Nicole Gutiérrez",
 
-          Father: "José Gutiérrez",
-          Mother: "Melissa Hurtado",
-          GodFather: "Juan Fernández",
-          GodMother: "Laura Jimenez",
+        LocationDescription: "Catedral de Guadalajara",
+        Address: "Av. Fray Antonio Alcalde 10, Guadalajara, Jal.",
+        GoogleMapsUrl: "https://maps.app.goo.gl/hBdb191LiXzkPRfR8",
 
-          Gallery: ["../images/templates/XV1/1.jpg", "../images/templates/XV1/2.jpg", "../images/templates/XV1/3.jpg", "../images/templates/XV1/4.jpg", "../images/templates/XV1/5.jpg", "../images/templates/XV1/6.jpg"],
+        Father: "José Gutiérrez",
+        Mother: "Melissa Hurtado",
+        GodFather: "Juan Fernández",
+        GodMother: "Laura Jimenez",
 
-          AmazonGiftTableUrl: "https://www.amazon.com.mx/",
-          LiverpoolGiftTableUrl: "https://www.liverpool.com.mx/tienda/home",
+        Gallery: ["../images/templates/XV1/1.webp", "../images/templates/XV1/2.jpg", "../images/templates/XV1/3.jpg", "../images/templates/XV1/4.jpg", "../images/templates/XV1/5.jpg", "../images/templates/XV1/6.jpg"],
 
-          TableNumber: 4,
-          TicketCount: 2,
-          DressCodeStyle: "Semi-Formal",
-        };
+        AmazonGiftTableUrl: "https://www.amazon.com.mx/",
+        LiverpoolGiftTableUrl: "https://www.liverpool.com.mx/tienda/home",
 
-        const secondaryEvent = {
-          Date: new Date("2026-10-17T17:00:00"),
-          LocationDescription: "La Terraza Clouthier",
-          Address: "Av Manuel J. Clouthier 480, Zapopan, Jal.",
-          GoogleMapsUrl: "https://maps.app.goo.gl/HpD9ZEkGmku4WTyT8",
-        };
+        TableNumber: 4,
+        TicketCount: 2,
+        DressCodeStyle: "Semi-Formal",
+      };
 
-        const additionalInformation = {
-          ImageMainCard: "../images/templates/XV1/1.jpg",
-          ImageMyParents: "../images/templates/XV1/padres.jpg",
-          ImageMyGodParents: "../images/templates/XV1/padrinos.jpg",
-          ImageDressCodeUrl: "../images/shared/dresscode_2.jpg",
-        };
+      const secondaryEvent = {
+        Date: new Date("2026-10-17T17:00:00"),
+        LocationDescription: "La Terraza Clouthier",
+        Address: "Av Manuel J. Clouthier 480, Zapopan, Jal.",
+        GoogleMapsUrl: "https://maps.app.goo.gl/HpD9ZEkGmku4WTyT8",
+      };
 
-        const Init = {
-          Config: {
-            EventType: "XV",
-            Sections: {
-              showCounter: true,
-              showIntroduction: true,
-              showParents: true,
-              showItinerary: true,
-              showGallery: true,
-              showDressCode: true,
-              showTickets: true,
-              showTableNumber: true,
-              showAttendance: true,
-              showGiftTable: true,
-            },
-            Themes: [],
-            AudioUrl: "../music/Ember Island - Umbrella.mp3",
+      const additionalInformation = {
+        ImageMainCard: "../images/templates/XV1/1.webp",
+        ImageMyParents: "../images/templates/XV1/padres.jpg",
+        ImageMyGodParents: "../images/templates/XV1/padrinos.jpg",
+        ImageDressCodeUrl: "../images/shared/dresscode_2.jpg",
+      };
+
+      const Init = {
+        Config: {
+          EventType: "XV",
+          Sections: {
+            showCounter: true,
+            showIntroduction: true,
+            showParents: true,
+            showItinerary: true,
+            showGallery: true,
+            showDressCode: true,
+            showTickets: true,
+            showTableNumber: true,
+            showAttendance: true,
+            showGiftTable: true,
           },
-          MainEvent: mainEvent,
-          SecondaryEvent: secondaryEvent,
-        };
+          Themes: [],
+          AudioUrl: "../music/Ember Island - Umbrella.mp3",
+        },
+        MainEvent: mainEvent,
+        SecondaryEvent: secondaryEvent,
+      };
 
-        // ─── TEMAS ────────────────────────────────────────
-        var themes = {
-          t1: { bg: "#fdf8f0", bg2: "#f5ede0", sepia: "#7a5c3a", sepiaL: "#c8a87a", sepiaXL: "#e8d4b4", border: "rgba(122,92,58,0.3)", ink: "#1a0e06", red: "#8b2020" },
-          t2: { bg: "#f8f4ec", bg2: "#ece4d4", sepia: "#6a5030", sepiaL: "#b89868", sepiaXL: "#dcc8a4", border: "rgba(106,80,48,0.28)", ink: "#140c04", red: "#7a1818" },
-          t3: { bg: "#f2f8f2", bg2: "#e0ece0", sepia: "#4a7050", sepiaL: "#84b48a", sepiaXL: "#c4dcc8", border: "rgba(74,112,80,0.28)", ink: "#0c180e", red: "#2a5830" },
-          t4: { bg: "#f6f2fc", bg2: "#e8e0f4", sepia: "#6050a0", sepiaL: "#9888cc", sepiaXL: "#d0c4ec", border: "rgba(96,80,160,0.25)", ink: "#140e20", red: "#5040a0" },
-          t5: { bg: "#fdf4f0", bg2: "#f0e0d8", sepia: "#9a5a44", sepiaL: "#c8887a", sepiaXL: "#e8c4bc", border: "rgba(154,90,68,0.28)", ink: "#1c0e08", red: "#8b2020" },
-        };
+      // ─── TEMAS ────────────────────────────────────────
+      var themes = {
+        t1: { bg: "#fdf8f0", bg2: "#f5ede0", sepia: "#7a5c3a", sepiaL: "#c8a87a", sepiaXL: "#e8d4b4", border: "rgba(122,92,58,0.3)", ink: "#1a0e06", red: "#8b2020" },
+        t2: { bg: "#f8f4ec", bg2: "#ece4d4", sepia: "#6a5030", sepiaL: "#b89868", sepiaXL: "#dcc8a4", border: "rgba(106,80,48,0.28)", ink: "#140c04", red: "#7a1818" },
+        t3: { bg: "#f2f8f2", bg2: "#e0ece0", sepia: "#4a7050", sepiaL: "#84b48a", sepiaXL: "#c4dcc8", border: "rgba(74,112,80,0.28)", ink: "#0c180e", red: "#2a5830" },
+        t4: { bg: "#f6f2fc", bg2: "#e8e0f4", sepia: "#6050a0", sepiaL: "#9888cc", sepiaXL: "#d0c4ec", border: "rgba(96,80,160,0.25)", ink: "#140e20", red: "#5040a0" },
+        t5: { bg: "#fdf4f0", bg2: "#f0e0d8", sepia: "#9a5a44", sepiaL: "#c8887a", sepiaXL: "#e8c4bc", border: "rgba(154,90,68,0.28)", ink: "#1c0e08", red: "#8b2020" },
+      };
 
-        function applyTheme(key) {
-          var t = themes[key];
-          if (!t) return;
-          var r = document.documentElement;
-          r.style.setProperty("--t-bg", t.bg);
-          r.style.setProperty("--t-bg2", t.bg2);
-          r.style.setProperty("--t-sepia", t.sepia);
-          r.style.setProperty("--t-sepia-l", t.sepiaL);
-          r.style.setProperty("--t-sepia-xl", t.sepiaXL);
-          r.style.setProperty("--t-border", t.border);
-          r.style.setProperty("--t-red", t.red);
-          r.style.setProperty("--ink", t.ink);
-          r.style.setProperty("--ink-mid", hexAlpha(t.ink, 0.65));
-          r.style.setProperty("--ink-faint", hexAlpha(t.ink, 0.35));
+      function applyTheme(key) {
+        var t = themes[key];
+        if (!t) return;
+        var r = document.documentElement;
+        r.style.setProperty("--t-bg", t.bg);
+        r.style.setProperty("--t-bg2", t.bg2);
+        r.style.setProperty("--t-sepia", t.sepia);
+        r.style.setProperty("--t-sepia-l", t.sepiaL);
+        r.style.setProperty("--t-sepia-xl", t.sepiaXL);
+        r.style.setProperty("--t-border", t.border);
+        r.style.setProperty("--t-red", t.red);
+        r.style.setProperty("--ink", t.ink);
+        r.style.setProperty("--ink-mid", hexAlpha(t.ink, 0.65));
+        r.style.setProperty("--ink-faint", hexAlpha(t.ink, 0.35));
 
-          $("body")
-            .css("background-color", t.bg)
-            .css("background-image", "url('https://www.transparenttextures.com/patterns/old-mathematics.png'), radial-gradient(ellipse at center, " + t.bg + " 0%, " + t.bg2 + " 100%)");
+        $("body")
+          .css("background-color", t.bg)
+          .css("background-image", "url('https://www.transparenttextures.com/patterns/old-mathematics.png'), radial-gradient(ellipse at center, " + t.bg + " 0%, " + t.bg2 + " 100%)");
 
-          $(".theme-btn").removeClass("active");
-          $(".theme-btn[data-theme='" + key + "']").addClass("active");
-        }
+        $(".theme-btn").removeClass("active");
+        $(".theme-btn[data-theme='" + key + "']").addClass("active");
+      }
 
-        function hexAlpha(hex, a) {
-          var r = parseInt(hex.slice(1, 3), 16);
-          var g = parseInt(hex.slice(3, 5), 16);
-          var b = parseInt(hex.slice(5, 7), 16);
-          return "rgba(" + r + "," + g + "," + b + "," + a + ")";
-        }
+      function hexAlpha(hex, a) {
+        var r = parseInt(hex.slice(1, 3), 16);
+        var g = parseInt(hex.slice(3, 5), 16);
+        var b = parseInt(hex.slice(5, 7), 16);
+        return "rgba(" + r + "," + g + "," + b + "," + a + ")";
+      }
 
-        $(".theme-btn").on("click", function () {
-          applyTheme($(this).data("theme"));
+      $(".theme-btn").on("click", function () {
+        applyTheme($(this).data("theme"));
+      });
+
+      // ─── ONLOAD LOCAL ─────────────────────────────────
+      function onLoad() {
+        $("[data-replace=Image_MainCard]").attr("src", additionalInformation.ImageMainCard);
+        $("[data-replace=Image_MyParents]").attr("src", additionalInformation.ImageMyParents);
+        $("[data-replace=Image_MyGodParents]").attr("src", additionalInformation.ImageMyGodParents);
+        $("[data-replace=Image_DressCodeUrl]").attr("src", additionalInformation.ImageDressCodeUrl);
+        $("[data-replace=DressCodeStyle]").text(mainEvent.DressCodeStyle);
+        $("[data-replace=TableNumber]").text(mainEvent.TableNumber);
+        $("[data-replace=TicketCount]").text(mainEvent.TicketCount);
+
+        var name = mainEvent.Name;
+        var title = "XV Años de " + name;
+        var desc = name + " te invita a celebrar sus XV Años. ¡Acompáñala en este día tan especial!";
+        document.title = title;
+        $('meta[property="og:title"]').attr("content", title);
+        $('meta[property="og:description"]').attr("content", desc);
+        $('meta[property="og:image"]').attr("content", additionalInformation.ImageMainCard);
+        $('meta[property="og:url"]').attr("content", window.location.href);
+        $('meta[property="twitter:title"]').attr("content", title);
+        $('meta[property="twitter:description"]').attr("content", desc);
+        $('meta[property="twitter:image"]').attr("content", additionalInformation.ImageMainCard);
+        $('meta[name="description"]').attr("content", desc);
+
+        mainEvent.Gallery.forEach(function (url, i) {
+          var item = $("<div>", { class: "gal-item", "data-index": i });
+          item.append($("<img>", { src: url, alt: "Foto " + (i + 1), loading: "lazy" }));
+          $("#gallery-grid").append(item);
         });
 
-        // ─── ONLOAD LOCAL ─────────────────────────────────
-        function onLoad() {
-          $("[data-replace=Image_MainCard]").attr("src", additionalInformation.ImageMainCard);
-          $("[data-replace=Image_MyParents]").attr("src", additionalInformation.ImageMyParents);
-          $("[data-replace=Image_MyGodParents]").attr("src", additionalInformation.ImageMyGodParents);
-          $("[data-replace=Image_DressCodeUrl]").attr("src", additionalInformation.ImageDressCodeUrl);
-          $("[data-replace=DressCodeStyle]").text(mainEvent.DressCodeStyle);
-          $("[data-replace=TableNumber]").text(mainEvent.TableNumber);
-          $("[data-replace=TicketCount]").text(mainEvent.TicketCount);
+        $("#_btnYes").on("click", function () {
+          helpers.onSendConfirmation(true, $("input[name=guestAttendants]").val(), $("textarea[name=wishes]").val());
+        });
+        $("#_btnNo").on("click", function () {
+          helpers.onSendConfirmation(false, $("input[name=guestName]").val(), $("textarea[name=wishes]").val());
+        });
+      }
 
-          var name = mainEvent.Name;
-          var title = "XV Años de " + name;
-          var desc = name + " te invita a celebrar sus XV Años. ¡Acompáñala en este día tan especial!";
-          document.title = title;
-          $('meta[property="og:title"]').attr("content", title);
-          $('meta[property="og:description"]').attr("content", desc);
-          $('meta[property="og:image"]').attr("content", additionalInformation.ImageMainCard);
-          $('meta[property="og:url"]').attr("content", window.location.href);
-          $('meta[property="twitter:title"]').attr("content", title);
-          $('meta[property="twitter:description"]').attr("content", desc);
-          $('meta[property="twitter:image"]').attr("content", additionalInformation.ImageMainCard);
-          $('meta[name="description"]').attr("content", desc);
-
-          mainEvent.Gallery.forEach(function (url, i) {
-            var item = $("<div>", { class: "gal-item", "data-index": i });
-            item.append($("<img>", { src: url, alt: "Foto " + (i + 1), loading: "lazy" }));
-            $("#gallery-grid").append(item);
+      // ─── GALERIA MODAL ────────────────────────────────
+      var galleryModal = {
+        $el: null,
+        currentIndex: 0,
+        images: [],
+        tX: 0,
+        tY: 0,
+        init: function () {
+          var s = this;
+          s.$el = $("#galleryModal");
+          s.images = mainEvent.Gallery;
+          $(document).on("click", ".gal-item", function () {
+            s.open(parseInt($(this).data("index")));
           });
-
-          $("#_btnYes").on("click", function () {
-            helpers.onSendConfirmation(true, $("input[name=guestAttendants]").val(), $("textarea[name=wishes]").val());
+          $("#galleryModalClose").on("click", function (e) {
+            e.stopPropagation();
+            s.close();
           });
-          $("#_btnNo").on("click", function () {
-            helpers.onSendConfirmation(false, $("input[name=guestName]").val(), $("textarea[name=wishes]").val());
+          s.$el.on("click", function (e) {
+            if ($(e.target).is("#galleryModal")) s.close();
           });
-        }
+          $("#galleryModalPrev").on("click", function (e) {
+            e.stopPropagation();
+            s.navigate(-1);
+          });
+          $("#galleryModalNext").on("click", function (e) {
+            e.stopPropagation();
+            s.navigate(1);
+          });
+          var w = document.getElementById("galleryModalImgWrap");
+          w.addEventListener(
+            "touchstart",
+            function (e) {
+              s.tX = e.changedTouches[0].screenX;
+              s.tY = e.changedTouches[0].screenY;
+            },
+            { passive: true },
+          );
+          w.addEventListener(
+            "touchend",
+            function (e) {
+              var dx = e.changedTouches[0].screenX - s.tX,
+                dy = e.changedTouches[0].screenY - s.tY;
+              if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 45) s.navigate(dx < 0 ? 1 : -1);
+            },
+            { passive: true },
+          );
+          document.addEventListener("keydown", function (e) {
+            if (!s.$el.hasClass("open")) return;
+            if (e.key === "ArrowLeft") s.navigate(-1);
+            if (e.key === "ArrowRight") s.navigate(1);
+            if (e.key === "Escape") s.close();
+          });
+        },
+        open: function (i) {
+          this.currentIndex = i;
+          this.upd();
+          this.$el.addClass("open");
+          $("body").css("overflow", "hidden");
+        },
+        close: function () {
+          this.$el.removeClass("open");
+          $("body").css("overflow", "");
+        },
+        navigate: function (dir) {
+          var s = this;
+          $("#modalImg").addClass("fading");
+          setTimeout(function () {
+            s.currentIndex = (s.currentIndex + dir + s.images.length) % s.images.length;
+            s.upd();
+            $("#modalImg").removeClass("fading");
+          }, 180);
+        },
+        upd: function () {
+          $("#modalImg").attr("src", this.images[this.currentIndex]);
+          $("#galleryModalCurrent").text(this.currentIndex + 1);
+          $("#galleryModalTotal").text(this.images.length);
+        },
+      };
 
-        // ─── GALERIA MODAL ────────────────────────────────
-        var galleryModal = {
-          $el: null,
-          currentIndex: 0,
-          images: [],
-          tX: 0,
-          tY: 0,
-          init: function () {
-            var s = this;
-            s.$el = $("#galleryModal");
-            s.images = mainEvent.Gallery;
-            $(document).on("click", ".gal-item", function () {
-              s.open(parseInt($(this).data("index")));
-            });
-            $("#galleryModalClose").on("click", function (e) {
-              e.stopPropagation();
-              s.close();
-            });
-            s.$el.on("click", function (e) {
-              if ($(e.target).is("#galleryModal")) s.close();
-            });
-            $("#galleryModalPrev").on("click", function (e) {
-              e.stopPropagation();
-              s.navigate(-1);
-            });
-            $("#galleryModalNext").on("click", function (e) {
-              e.stopPropagation();
-              s.navigate(1);
-            });
-            var w = document.getElementById("galleryModalImgWrap");
-            w.addEventListener(
-              "touchstart",
-              function (e) {
-                s.tX = e.changedTouches[0].screenX;
-                s.tY = e.changedTouches[0].screenY;
-              },
-              { passive: true },
-            );
-            w.addEventListener(
-              "touchend",
-              function (e) {
-                var dx = e.changedTouches[0].screenX - s.tX,
-                  dy = e.changedTouches[0].screenY - s.tY;
-                if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 45) s.navigate(dx < 0 ? 1 : -1);
-              },
-              { passive: true },
-            );
-            document.addEventListener("keydown", function (e) {
-              if (!s.$el.hasClass("open")) return;
-              if (e.key === "ArrowLeft") s.navigate(-1);
-              if (e.key === "ArrowRight") s.navigate(1);
-              if (e.key === "Escape") s.close();
-            });
-          },
-          open: function (i) {
-            this.currentIndex = i;
-            this.upd();
-            this.$el.addClass("open");
-            $("body").css("overflow", "hidden");
-          },
-          close: function () {
-            this.$el.removeClass("open");
-            $("body").css("overflow", "");
-          },
-          navigate: function (dir) {
-            var s = this;
-            $("#modalImg").addClass("fading");
-            setTimeout(function () {
-              s.currentIndex = (s.currentIndex + dir + s.images.length) % s.images.length;
-              s.upd();
-              $("#modalImg").removeClass("fading");
-            }, 180);
-          },
-          upd: function () {
-            $("#modalImg").attr("src", this.images[this.currentIndex]);
-            $("#galleryModalCurrent").text(this.currentIndex + 1);
-            $("#galleryModalTotal").text(this.images.length);
-          },
-        };
-
-        // ─── INIT PAGE ────────────────────────────────────
-        function InitPage() {
-          onLoad();
-          helpers.init(Init);
+      // ─── INIT PAGE ────────────────────────────────────
+      function InitPage() {
+        onLoad();
+        helpers.init(Init);
+        helpers.onCounterStart(mainEvent.Date);
+        setInterval(function () {
           helpers.onCounterStart(mainEvent.Date);
-          setInterval(function () {
-            helpers.onCounterStart(mainEvent.Date);
-          }, 1000);
-          helpers.onAudioPlayer();
-          galleryModal.init();
-        }
+        }, 1000);
+        helpers.onAudioPlayer();
+        galleryModal.init();
+      }
 
-        InitPage();
-      });
+      InitPage();
     </script>
   </body>
 </html>
