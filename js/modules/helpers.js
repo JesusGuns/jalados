@@ -1,9 +1,9 @@
   const staticLinks = {
     ImageAudioUrl: "../images/icons/play.png",
     ImageAudioPauseUrl: "../images/icons/pause.png",
-    ImageAmazonUrl: "../images/icons/amazon.png",
+    ImageAmazonUrl: "../images/icons/amazon-256.png",
     ImageLiverpoolUrl: "../images/icons/liverpool.jpeg",
-    ImageGoogleLocation: "../images/icons/GoogleMaps.png",
+    ImageGoogleLocation: "../images/icons/GoogleMaps-256.png",
     IconChurch: "https://cdn-icons-png.flaticon.com/128/4186/4186011.png",
     IconReception: "https://cdn-icons-png.flaticon.com/128/887/887345.png",
     IconPhotSession: "https://cdn-icons-png.flaticon.com/128/3004/3004613.png",
