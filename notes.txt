@@ -1,73 +1,25 @@
-Estructura
+Vete por la Opción 1 (www.moments.com/xv-sofia-castro) como tu estándar de oro.
 
-Seccion Principal
-Contador
-    XV
-        Presentacion
-        Padres
-        
-    Wedding
-        Mensaje novios
-        Padres
-
-Detalles del Evento
-Itinerario
-Galeria
-
-    XV
-        DressCode
-    Wedding
-        Mensaje
-        Video
-        DressCode
+Cuando cierres el trato con un cliente, puedes decirle: “Tu invitación incluirá un enlace personalizado premium listo para compartir, que será: moments.com/wedding-tu-nombre-y-apellido”. Esto no solo te resuelve el problema técnico en las carpetas de Visual Studio Code gracias a tu archivo vercel.json, 
+sino que además le añade valor comercial a tu producto.
 
 
-Confirmar Asistencia
-Regalos
 
-    XV 
-        Boletos o pases
-        Numero de Mesa
-    Wedding
-        Boletos o pases
-        Numero de Mesa
-        Mensaje final
 
-BabyShower
-    Sección principal / portada
-    Contador regresivo
-    Detalles del evento
-    Itinerario
-    Galería
-    Confirmar asistencia
-    Regalos
 
-Wedding
-    Sección principal / portada
-    Contador regresivo
-    Mensaje novios
-    Padres
-    Detalles del evento
-    Itinerario
-    Galería
-    Mensaje (otro mensaje de los novios como una historia chiquita de como se conocieron)
-    Video
-    DressCode
-    Boletos o pases
-    Numero de Mesa
-    Confirmar asistencia
-    Regalos
 
-XV
-    Sección principal / portada
-    Contador regresivo
-    Presentacion o Invitacion de la novia tipo (me complase contar con su presencia..)
-    Padres
-    Detalles del evento
-    Itinerario
-    Galería
-    DressCode
-    Boletos o pases
-    Numero de Mesa
-    Confirmar asistencia
-    Regalos
+El único comportamiento que debes tener en cuenta es que, en algunos navegadores, al usar window.location.search tras un rewrite, la barra de direcciones del usuario podría pasar de mostrar /xv-sofia-castro/xfsdefff a mostrar /xv-sofia-castro/index.html?token=xfsdefff justo después de que cargue la página.
+
+Si notas que eso te pasa y quieres que la barra de direcciones se quede 100% limpia y 
+fija en [www.moments.com/xv-sofia-castro/xfsdefff](https://www.moments.com/xv-sofia-castro/xfsdefff) sin que el invitado vea jamás el signo de interrogación, puedes agregar esta pequeña línea de código justo después de obtener tu token:
+
+const params = new URLSearchParams(window.location.search);
+const token = params.get("token") || "";
+
+if (token) {
+    // ESTA LÍNEA OCULTA EL "?token=..." DE LA BARRA DE DIRECCIONES SIN BORRAR LA VARIABLE
+    window.history.replaceState({}, document.title, window.location.pathname.replace('/index.html', ''));
+    
+    // Aquí sigues con tu lógica normal hacia Google Sheets
+    obtenerInfoInvitado(token);
+}

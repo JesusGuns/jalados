@@ -15,25 +15,26 @@
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://jesusguns.github.io/jalados/templates/BabyShower_3.html" />
+    <meta property="og:url" content="https://jalados.vercel.app/templates/BabyShower_3.html" />
     <meta property="og:title" content="¡Baby Shower de nuestro bebé! 🍼✨" />
     <meta property="og:description" content="¡Estamos esperando un bebé! Te invitamos a celebrar con nosotros este día tan especial." />
-    <meta property="og:image" content="https://jesusguns.github.io/jalados/images/_favicon-BabyShower.png" />
+    <meta property="og:image" content="https://jalados.vercel.app/images/_favicon-BabyShower.png" />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:url" content="https://jesusguns.github.io/jalados/templates/BabyShower_3.html" />
+    <meta name="twitter:url" content="https://jalados.vercel.app/templates/BabyShower_3.html" />
     <meta name="twitter:title" content="¡Baby Shower de nuestro bebé! 🍼✨" />
     <meta name="twitter:description" content="¡Estamos esperando un bebé! Te invitamos a celebrar con nosotros este día tan especial." />
-    <meta name="twitter:image" content="https://jesusguns.github.io/jalados/images/_favicon-BabyShower.png" />
+    <meta name="twitter:image" content="https://jalados.vercel.app/images/_favicon-BabyShower.png" />
 
     <link rel="icon" type="image/png" sizes="196x196" href="../images/icons/_favicon-BabyShower-196.png" />
 
     <!-- Font Awesome-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media = 'all'" />
 
-    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700&family=Quicksand:wght@300;400;500;600&family=Pacifico&display=swap" rel="stylesheet" />
-
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700&family=Quicksand:wght@300;400;500;600&family=Pacifico&display=swap" rel="stylesheet" media="print" onload="this.media = 'all'" />
+    <!-- Toastify-->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css" media="print" onload="this.media = 'all'" />
     <style>
       /* ─── ROOT ─────────────────────────────────────── */
       :root {
@@ -1108,7 +1109,7 @@
   </head>
 
   <body>
-    <audio id="audio" src="#" data-replace="AudioUrl" loop></audio>
+    <audio id="audio" src="#" data-replace="AudioUrl" preload="metadata" loop></audio>
 
     <span id="audioButton" class="_template-Audio-Button off">
       <img src="#" data-replace="Image_AudioUrl" alt="Audio" />
@@ -1127,7 +1128,7 @@
       <section class="hero reveal">
         <span class="hero-eyebrow">¡Baby Shower!</span>
         <div class="hero-photo-wrap">
-          <img src="#" data-replace="Image_FrontCard" alt="Festejada" />
+          <img src="#" data-replace="Image_MainCard" fetchpriority="high" loading="eager" />
           <div class="hero-badge" id="heroBadge">🍼</div>
         </div>
         <p class="hero-title">Viene en camino</p>
@@ -1300,29 +1301,9 @@
       <section class="confirm-section reveal _attendance-section">
         <p class="section-title">¡Confirma tu asistencia! 🙋</p>
         <p class="section-sub">Tu presencia es el mejor regalo</p>
+
         <div class="confirm-form">
-          <div class="cf-field">
-            <label>¿Quién asistirá?</label>
-            <input type="text" name="guestName" placeholder="Tu nombre" />
-          </div>
-          <div class="cf-field">
-            <label>Acompañantes</label>
-            <input type="text" name="guestAttendants" placeholder="Nombres de tus acompañantes" />
-          </div>
-          <div class="cf-field">
-            <label>Un deseo para el bebé 💛</label>
-            <textarea name="wishes" placeholder="Escribe tu mensaje aquí…"></textarea>
-          </div>
-          <div class="cf-actions">
-            <button class="cf-btn outline" id="_btnNo">
-              <i class="fas fa-times"></i>
-              No asistiré
-            </button>
-            <button class="cf-btn primary" id="_btnYes">
-              <i class="fas fa-check"></i>
-              ¡Asistiré!
-            </button>
-          </div>
+          <a href="#" data-replace="WhatsAppUrl" target="_blank" class="cf-btn primary">Aceptar</a>
         </div>
       </section>
 
@@ -1341,31 +1322,6 @@
           <span class="ga"><i class="fas fa-arrow-right"></i></span>
         </a>
       </section>
-
-      <!-- TICKET -->
-      <div class="_savethedate-section _tickets-section">
-        <div class="ticket-card">
-          <div class="tc-head">
-            <span>🎫 Tu lugar en el Baby Shower</span>
-          </div>
-          <div class="tc-body">
-            <div class="tc-val">
-              <span class="tn" data-replace="TableNumber">—</span>
-              <span class="tl">Mesa</span>
-            </div>
-            <div class="tc-div"></div>
-            <div class="tc-val">
-              <span class="tn" data-replace="TicketCount">2</span>
-              <span class="tl">Pases</span>
-            </div>
-          </div>
-          <div class="tc-foot">
-            <div class="dot"></div>
-            <p data-replace="EventName"></p>
-            <div class="dot"></div>
-          </div>
-        </div>
-      </div>
 
       <!-- CIERRE -->
       <footer class="footer-section">
@@ -1405,14 +1361,41 @@
 
     <script type="module">
       import { helpers } from "../js/modules/helpers.js";
+      import { rsvp } from "../js/modules/helpers.js";
 
-      // ─── DATOS ────────────────────────────────────────
+      // ─── RSVP ─────────────────────────────
+      const configRSVP = {
+        Enable: false,
+        EventID: "BabyShower_20261017_Mateo"
+      };
+      // ─── Settings ─────────────────────────────
+      const settings = {
+        EventType: "BabyShower",
+        Template: true, // Cambiar a false en producción para saber que es un cliente real
+        ImagesURL: "../images/templates/BabyShower/",
+        AudioUrl: "../music/Here Comes The Sun.mp3",
+        Sections: {
+          showCounter: true,
+          showIntroduction: true,
+          showParents: true,
+          showItinerary: true,
+          showGallery: true,
+          showAttendance: true,
+          showGiftTable: true,
+        },
+        ShowElements: {
+          showAmazonOption: true,
+          showLiverpoolOption: true,
+        },
+      };
+
+      // ─── DATOS DEL EVENTO ─────────────────────────────
       var mainEvent = {
         Date: new Date("2026-10-17T12:00:00"),
         Name: "Mateo",
 
-        LocationDescription: "Salón de Fiestas El Jardín",
-        Address: "Av. Patria 1200, Zapopan, Jal.",
+        LocationDescription: "La Terraza Clouthier",
+        Address: "Av Manuel J. Clouthier 480, Zapopan, Jal.",
         GoogleMapsUrl: "https://maps.app.goo.gl/HpD9ZEkGmku4WTyT8",
 
         Father: "José Gutiérrez",
@@ -1420,77 +1403,66 @@
         GodFather: "Juan Fernández",
         GodMother: "Laura Jimenez",
 
-        Gallery: ["https://img.freepik.com/foto-gratis/mujer-embarazada-foto-su-futuro-bebe_1391-1419.jpg", "https://img.freepik.com/fotos-premium/feliz-pareja-embarazada-buscando-imagen-ultrasonido_530697-83805.jpg", "https://img.freepik.com/foto-gratis/dos-manos-forma-corazon-estomago-madre-embarazada_181624-6985.jpg", "https://img.freepik.com/foto-gratis/mujer-embarazada-marido-zapatos-bebe_23-2147793312.jpg", "https://img.freepik.com/foto-gratis/mujer-embarazada-sujetando-corazon-mientras-toca-barriga_1220-849.jpg", "https://img.freepik.com/fotos-premium/mujer-embarazada-sosteniendo-zapatillas-blancas-bebe_1272242-393.jpg"],
+        Gallery: [`${settings.ImagesURL}1.webp`, `${settings.ImagesURL}2.webp`],
 
         AmazonGiftTableUrl: "https://www.amazon.com.mx/",
         LiverpoolGiftTableUrl: "https://www.liverpool.com.mx/tienda/home",
-
-        TableNumber: 4,
-        TicketCount: 2,
       };
 
       // BabyShower — un solo evento, sin SecondaryEvent
       var Init = {
         Config: {
-          EventType: "BabyShower",
-          Sections: {
-            showCounter: true,
-            showItinerary: true,
-            showGallery: true,
-            showAttendance: true,
-            showGiftTable: true,
+          ...settings,
+          Themes: {
+            themeMint: {
+              primary: "#7dcbb5",
+              primaryBg: "#e0f7f0",
+              accent: "#fde68a",
+              accent2: "#fcd5b8",
+              badge: "🍼",
+            },
+            themeRose: {
+              primary: "#f48fb1",
+              primaryBg: "#fce4ec",
+              accent: "#fcd5b8",
+              accent2: "#fde68a",
+              badge: "🎀",
+            },
+            themeLilac: {
+              primary: "#a78bfa",
+              primaryBg: "#ede9fe",
+              accent: "#ddd6fe",
+              accent2: "#fcd5b8",
+              badge: "🌸",
+            },
+            themeSky: {
+              primary: "#38bdf8",
+              primaryBg: "#e0f2fe",
+              accent: "#bae6fd",
+              accent2: "#fde68a",
+              badge: "☁️",
+            },
+            themeYellow: {
+              primary: "#f59e0b",
+              primaryBg: "#fef9c3",
+              accent: "#fde68a",
+              accent2: "#fcd5b8",
+              badge: "⭐",
+            },
           },
-          Themes: [],
-          AudioUrl: "../music/Here Comes The Sun.mp3",
         },
+        RSVP: configRSVP,
         MainEvent: mainEvent,
       };
 
       var additionalInformation = {
-        ImageFrontCard: "https://img.freepik.com/foto-gratis/mujer-embarazada-foto-su-futuro-bebe_1391-1419.jpg",
+        ImageMainCard: `${settings.ImagesURL}1.webp`,
+        WhatsAppUrl: "https://tinyurl.com/3h8kmam7",
       };
 
       // ─── TEMAS ────────────────────────────────────────
-      var themes = {
-        themeMint: {
-          primary: "#7dcbb5",
-          primaryBg: "#e0f7f0",
-          accent: "#fde68a",
-          accent2: "#fcd5b8",
-          badge: "🍼",
-        },
-        themeRose: {
-          primary: "#f48fb1",
-          primaryBg: "#fce4ec",
-          accent: "#fcd5b8",
-          accent2: "#fde68a",
-          badge: "🎀",
-        },
-        themeLilac: {
-          primary: "#a78bfa",
-          primaryBg: "#ede9fe",
-          accent: "#ddd6fe",
-          accent2: "#fcd5b8",
-          badge: "🌸",
-        },
-        themeSky: {
-          primary: "#38bdf8",
-          primaryBg: "#e0f2fe",
-          accent: "#bae6fd",
-          accent2: "#fde68a",
-          badge: "☁️",
-        },
-        themeYellow: {
-          primary: "#f59e0b",
-          primaryBg: "#fef9c3",
-          accent: "#fde68a",
-          accent2: "#fcd5b8",
-          badge: "⭐",
-        },
-      };
-
       function applyTheme(key) {
-        var t = themes[key];
+        const t = Init.Config.Themes[key];
         if (!t) return;
         var r = document.documentElement;
         r.style.setProperty("--primary", t.primary);
@@ -1509,23 +1481,14 @@
 
       // ─── ONLOAD LOCAL ─────────────────────────────────
       function onLoad() {
-        $("[data-replace=Image_FrontCard]").attr("src", additionalInformation.ImageFrontCard);
-        $("[data-replace=TableNumber]").text(mainEvent.TableNumber);
-        $("[data-replace=TicketCount]").text(mainEvent.TicketCount);
+        $("[data-replace=Image_MainCard]").attr("src", additionalInformation.ImageMainCard);
+        $("[data-replace=WhatsAppUrl]").attr("href", additionalInformation.WhatsAppUrl);
 
         // Galería
         mainEvent.Gallery.forEach(function (url, i) {
           var item = $("<div>", { class: "gal-item", "data-index": i });
           item.append($("<img>", { src: url, alt: "Foto " + (i + 1), loading: "lazy" }));
           $("#gallery-grid").append(item);
-        });
-
-        // Confirmación
-        $("#_btnYes").on("click", function () {
-          helpers.onSendConfirmation(true, $("input[name=guestName]").val() + " " + $("input[name=guestAttendants]").val(), $("textarea[name=wishes]").val());
-        });
-        $("#_btnNo").on("click", function () {
-          helpers.onSendConfirmation(false, $("input[name=guestName]").val(), $("textarea[name=wishes]").val());
         });
       }
 
@@ -1630,13 +1593,13 @@
 
       // ─── INIT PAGE ────────────────────────────────────
       function InitPage() {
-        onLoad();
         helpers.init(Init);
-        helpers.onCounterStart(mainEvent.Date);
-        setInterval(function () {
-          helpers.onCounterStart(mainEvent.Date);
-        }, 1000);
+
+        onLoad();
+        helpers.onCounterStart(Init.MainEvent.Date);
+        setInterval(() => helpers.onCounterStart(Init.MainEvent.Date), 1000);
         helpers.onAudioPlayer();
+
         applyTheme("themeMint");
         galleryModal.init();
         initReveal();
