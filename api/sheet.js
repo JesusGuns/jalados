@@ -12,7 +12,7 @@ export default async function handler(req, res) {
   }
 
   const token = req.method === "GET" ? req.query.token : req.body.token;
-
+  const eventID = req.method === "GET" ? req.query.eventID : req.body.eventID;
   if (!token) {
     return res.status(400).json({ error: "Token is required" });
   }
@@ -28,7 +28,7 @@ export default async function handler(req, res) {
         return res.status(200).json(cached.data);
       }
 
-      const response = await fetch(`${baseUrl}?token=${token}`);
+      const response = await fetch(`${baseUrl}?token=${token}&eventID=${eventID}`);
       if (!response.ok) throw new Error(`Apps Script respondió con ${response.status}`);
 
       const data = await response.json();
