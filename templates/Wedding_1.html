@@ -1557,7 +1557,7 @@
 
               <div class="form-fields">
                 <label>Deseo</label>
-                <textarea name="wishes" placeholder="Escribe tu mensaje aquí…"></textarea>
+                <textarea name="wishes" placeholder="Escribe tus buenos deseos…"></textarea>
               </div>
               <div class="d-flex justify-content-between">
                 <button id="_btnNo">No asistiré</button>
@@ -1772,10 +1772,10 @@
 
         // Confirmación
         $("#_btnYes").on("click", function () {
-          rsvp.onPostRSPV(true, $("input[name=guestAttendants]").val(), $("textarea[name=wishes]").val());
+          rsvp.onPostRSPV(true, $("textarea[name=guestAttendants]").val(), $("textarea[name=wishes]").val());
         });
         $("#_btnNo").on("click", function () {
-          rsvp.onPostRSPV(false, $("input[name=guestName]").val(), $("textarea[name=wishes]").val());
+          rsvp.onPostRSPV(false, $("textarea[name=guestAttendants]").val(), $("textarea[name=wishes]").val());
         });
       }
 
