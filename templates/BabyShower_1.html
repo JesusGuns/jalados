@@ -39,6 +39,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap" rel="stylesheet" />
 
     <link rel="stylesheet" href="../css/templates.css" />
+    <!-- Toastify-->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css" media="print" onload="this.media = 'all'" />
     <style>
       /* #region ROOT*/
       :root {
@@ -56,6 +58,31 @@
 
       /* #endregion HTML*/
       /* #region General*/
+      ._template-Audio-Button {
+        position: fixed;
+        top: 16px;
+        right: 16px;
+        z-index: 500;
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        background: #fff;
+        border: 2.5px solid var(--primary);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        box-shadow: 0 3px 12px rgba(125, 203, 181, 0.3);
+        transition: all 0.3s;
+        animation: none;
+      }
+      ._template-Audio-Button img {
+        width: 18px;
+        filter: brightness(0) saturate(100%) invert(65%) sepia(30%) saturate(500%) hue-rotate(120deg);
+        background: transparent;
+        border-radius: 0;
+      }
+      
       img.location-maps {
         width: 25px;
         height: 25px;
@@ -838,8 +865,35 @@
 
     <script type="module">
       import { helpers } from "../js/modules/helpers.js";
+      import { rsvp } from "../js/modules/helpers.js";
 
-      // ─── DATOS ────────────────────────────────────────
+      // ─── RSVP ─────────────────────────────
+      const configRSVP = {
+        Enable: false,
+        EventID: "BabyShower_20261017_Mateo",
+      };
+      // ─── Settings ─────────────────────────────
+      const settings = {
+        EventType: "BabyShower",
+        Template: true, // Cambiar a false en producción para saber que es un cliente real
+        ImagesURL: "../images/templates/BabyShower/",
+        AudioUrl: "../music/Here Comes The Sun.mp3",
+        Sections: {
+          showCounter: true,
+          showIntroduction: true,
+          showParents: true,
+          showItinerary: true,
+          showGallery: true,
+          showAttendance: true,
+          showGiftTable: true,
+        },
+        ShowElements: {
+          showAmazonOption: true,
+          showLiverpoolOption: true,
+        },
+      };
+
+      // ─── DATOS DEL EVENTO ─────────────────────────────
       var mainEvent = {
         Date: new Date("2026-10-17T17:00:00"),
         Name: "Thomas", // se sobreescribe con applyTheme
@@ -853,76 +907,70 @@
         GodFather: "Juan Fernández",
         GodMother: "Laura Jimenez",
 
-        AmazonGiftTableUrl: "https://www.amazon.com.mx/",
-        LiverpoolGiftTableUrl: "https://www.liverpool.com.mx/tienda/home",
-
-        Gallery: ["https://i.pinimg.com/736x/29/fe/49/29fe4983d145c3471f4cb0459063ab57.jpg", "https://img.freepik.com/foto-gratis/mujer-embarazada-foto-su-futuro-bebe_1391-1419.jpg", "https://img.freepik.com/fotos-premium/feliz-pareja-embarazada-buscando-imagen-ultrasonido_530697-83805.jpg", "https://img.freepik.com/foto-gratis/dos-manos-forma-corazon-estomago-madre-embarazada_181624-6985.jpg", "https://img.freepik.com/foto-gratis/mujer-embarazada-marido-zapatos-bebe_23-2147793312.jpg"],
+        Gallery: [`${settings.ImagesURL}1.webp`, `${settings.ImagesURL}2.webp`, `${settings.ImagesURL}3.webp`, `${settings.ImagesURL}4.webp`, `${settings.ImagesURL}5.webp`, , `${settings.ImagesURL}6.webp`, , `${settings.ImagesURL}7.webp`],
 
         // Gallery2 debe tener el mismo número de imágenes que Gallery
-        Gallery2: ["https://img.freepik.com/foto-gratis/mujer-embarazada-sujetando-corazon-mientras-toca-barriga_1220-849.jpg", "https://img.freepik.com/fotos-premium/mujer-embarazada-sosteniendo-zapatillas-blancas-bebe_1272242-393.jpg", "https://img.freepik.com/fotos-premium/manos-mujer-embarazada-primer-corazon-forman-su-panza_38678-4724.jpg", "https://img.freepik.com/fotos-premium/vientre-mujer-embarazada-primer-plano_176445-10619.jpg", "https://img.freepik.com/foto-gratis/vista-frontal-mujer-embarazada-sosteniendo-su-vientre_23-2148352222.jpg"],
+        Gallery2: [`${settings.ImagesURL}1.webp`, `${settings.ImagesURL}2.webp`, `${settings.ImagesURL}3.webp`, `${settings.ImagesURL}4.webp`, `${settings.ImagesURL}5.webp`, , `${settings.ImagesURL}6.webp`, , `${settings.ImagesURL}7.webp`],
+
+        AmazonGiftTableUrl: "https://www.amazon.com.mx/",
+        LiverpoolGiftTableUrl: "https://www.liverpool.com.mx/tienda/home",
+      };
+
+      var additionalInformation = {
+        ImageBodyBackground: `../images/bg-28.gif`,
+        ImageMain: `../images/babyShower/main-6.png`,
+        ImageTap: `../images/babyShower/tap-1.webp`,
+        ImageLoading: `../images/babyShower/loading-1.webp`,
+        WhatsAppUrl: "https://wa.link/smvz7g",
       };
 
       // BabyShower — un solo evento, no hay SecondaryEvent
       var Init = {
         Config: {
-          EventType: "BabyShower",
-          Sections: {
-            showCounter: true,
-            showItinerary: true,
-            showGallery: true,
-            showAttendance: true,
-            showGiftTable: true,
-          },
-          Themes: [],
-          AudioUrl: "../music/Here Comes The Sun.mp3",
+          ...settings,
+          Themes: {
+            themeBoy: {
+              "--color_Primary": "#368ecf",
+              "--color_Secondary": "#6d4c41",
+              "--color_Tertiary": "#ff6f61",
+              "--color_Quaternary": "#99d5f06b",
+              "--filter-AudioButton": "230deg",
+              ImageBodyBackground: "../images/bg-28.gif",
+              ImageMain: "../images/babyShower/main-6.png",
+              ImageCoverPage: "../images/babyShower/album-1.avif",
+              Name: "Thomas",
+            },
+            themeGirl: {
+              "--color_Primary": "#f06292bd",
+              "--color_Secondary": "#ad1457",
+              "--color_Tertiary": "#e91e63",
+              "--color_Quaternary": "#fce4ec",
+              "--filter-AudioButton": "0deg",
+              ImageBodyBackground: "../images/bg-25.gif",
+              ImageMain: "../images/babyShower/main-2.jpg",
+              ImageCoverPage: "../images/babyShower/album-2.avif",
+              Name: "Valentina",
+            },
+            themeNeutral: {
+              "--color_Primary": "#bfa058a8",
+              "--color_Secondary": "#7e6d4d",
+              "--color_Tertiary": "#957d4a",
+              "--color_Quaternary": "#fff9c4",
+              "--filter-AudioButton": "70deg",
+              ImageBodyBackground: "../images/bg-27.gif",
+              ImageMain: "../images/babyShower/main-5.jpg",
+              ImageCoverPage: "../images/babyShower/album-3.avif",
+              Name: "Aitana y Alex",
+            },
+          }
         },
+        RSVP: configRSVP,
         MainEvent: mainEvent,
       };
 
       // Imágenes del template — se actualizan con applyTheme
-      var additionalInformation = {
-        ImageBodyBackground: "../images/bg-28.gif",
-        ImageMain: "../images/babyShower/main-6.png",
-        ImageTap: "../images/babyShower/tap-1.webp",
-        ImageLoading: "../images/babyShower/loading-1.webp",
-      };
 
       // ─── TEMAS ────────────────────────────────────────
-      var Themes = {
-        themeBoy: {
-          "--color_Primary": "#368ecf",
-          "--color_Secondary": "#6d4c41",
-          "--color_Tertiary": "#ff6f61",
-          "--color_Quaternary": "#99d5f06b",
-          "--filter-AudioButton": "230deg",
-          ImageBodyBackground: "../images/bg-28.gif",
-          ImageMain: "../images/babyShower/main-6.png",
-          ImageCoverPage: "../images/babyShower/album-1.avif",
-          Name: "Thomas",
-        },
-        themeGirl: {
-          "--color_Primary": "#f06292bd",
-          "--color_Secondary": "#ad1457",
-          "--color_Tertiary": "#e91e63",
-          "--color_Quaternary": "#fce4ec",
-          "--filter-AudioButton": "0deg",
-          ImageBodyBackground: "../images/bg-25.gif",
-          ImageMain: "../images/babyShower/main-2.jpg",
-          ImageCoverPage: "../images/babyShower/album-2.avif",
-          Name: "Valentina",
-        },
-        themeNeutral: {
-          "--color_Primary": "#bfa058a8",
-          "--color_Secondary": "#7e6d4d",
-          "--color_Tertiary": "#957d4a",
-          "--color_Quaternary": "#fff9c4",
-          "--filter-AudioButton": "70deg",
-          ImageBodyBackground: "../images/bg-27.gif",
-          ImageMain: "../images/babyShower/main-5.jpg",
-          ImageCoverPage: "../images/babyShower/album-3.avif",
-          Name: "Aitana y Alex",
-        },
-      };
 
       // ─── REFERENCIAS DOM ──────────────────────────────
       var book = document.getElementById("book");
@@ -936,6 +984,7 @@
         $("[data-replace=Image_Tap]").attr("src", additionalInformation.ImageTap);
         $("[data-replace=Image_Loading]").attr("src", additionalInformation.ImageLoading);
         $("[data-replace=EventName]").text(mainEvent.Name);
+        $("[data-replace=WhatsAppUrl]").attr("href", additionalInformation.WhatsAppUrl);
       }
 
       // ─── GENERAR LIBRO ────────────────────────────────
@@ -1031,7 +1080,7 @@
 
       // ─── APPLY THEME ─────────────────────────────────
       function applyTheme(themeName) {
-        var theme = Themes[themeName];
+        var theme = Init.Config.Themes[themeName];
         if (!theme) return;
 
         var imgMain = document.querySelector(".imgMain");
