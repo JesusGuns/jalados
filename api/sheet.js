@@ -44,8 +44,8 @@ export default async function handler(req, res) {
 
     // POST
     if (req.method === "POST") {
-      const { token, confirmed, guests, wishes } = req.body;
-      console.error("Info", JSON.stringify({ token, confirmed, guests, wishes }));
+      const { token, confirmed, guests, wishes, eventID } = req.body;
+      console.error("Info", JSON.stringify(req.body));
 
       // Invalidar caché al confirmar
       cache.delete(token);
@@ -53,7 +53,7 @@ export default async function handler(req, res) {
        const response = await fetch(baseUrl, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ token, confirmed, guests, wishes }),
+        body: JSON.stringify({ token, confirmed, guests, wishes, eventID }),
       });
 
       const text = await response.text();
