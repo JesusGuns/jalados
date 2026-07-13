@@ -320,7 +320,7 @@ export const rsvp = {
     //   return;
     // }
 
-    if(!Resources.RSVP.Enable){
+    if (!Resources.RSVP.Enable) {
       return;
     }
 
@@ -363,12 +363,16 @@ export const rsvp = {
       .catch((err) => console.error("Error:", err));
   },
   onPostRSPV: function (confirmation, guestAttendants, wishes) {
-    if (Resources.RSVP.Enable && Resources.Config.Template) {
-      if (confirmation) {
-        helpers.onToasty(Resources.Messages.Confirmation);
-      } else {
-        helpers.onToasty(Resources.Messages.WillNotAttend);
-      }
+    // if (Resources.RSVP.Enable && Resources.Config.Template) {
+    //   if (confirmation) {
+    //     helpers.onToasty(Resources.Messages.Confirmation);
+    //   } else {
+    //     helpers.onToasty(Resources.Messages.WillNotAttend);
+    //   }
+    //   return;
+    // }
+
+    if (!Resources.RSVP.Enable) {
       return;
     }
 
@@ -403,7 +407,7 @@ export const rsvp = {
         }
       })
       .catch((err) => console.error("Error:", err));
-  }
+  },
 };
 
 $.fn.extend({
