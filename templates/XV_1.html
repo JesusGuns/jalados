@@ -2228,10 +2228,10 @@
 
         // Confirmación
         $("#_btnYes").on("click", function () {
-          rsvp.onPostRSPV(true, $("input[name=guestAttendants]").val(), $("textarea[name=wishes]").val());
+          rsvp.onPostRSPV(true, $("textarea[name=guestAttendants]").val(), $("textarea[name=wishes]").val());
         });
         $("#_btnNo").on("click", function () {
-          rsvp.onPostRSPV(false, $("input[name=guestName]").val(), $("textarea[name=wishes]").val());
+          rsvp.onPostRSPV(false, $("textarea[name=guestAttendants]").val(), $("textarea[name=wishes]").val());
         });
       }
 

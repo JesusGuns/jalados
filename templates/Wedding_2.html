@@ -1737,7 +1737,7 @@
         <div class="confirm-form">
           <div class="cf-field">
             <label>Acompañantes</label>
-            <input type="text" name="guestAttendants" placeholder="Nombres de tus acompañantes" />
+            <textarea name="guestAttendants" placeholder="Nombres de tus acompañantes"></textarea>
           </div>
           <div class="cf-field">
             <label>Un deseo para los novios</label>
@@ -1953,10 +1953,10 @@
 
         // Confirmación
         $("#_btnYes").on("click", function () {
-          rsvp.onPostRSPV(true, $("input[name=guestName]").val() + " " + $("input[name=guestAttendants]").val(), $("textarea[name=wishes]").val());
+          rsvp.onPostRSPV(true, $("textarea[name=guestAttendants]").val(), $("textarea[name=wishes]").val());
         });
         $("#_btnNo").on("click", function () {
-          rsvp.onPostRSPV(false, $("input[name=guestName]").val(), $("textarea[name=wishes]").val());
+          rsvp.onPostRSPV(false, $("textarea[name=guestAttendants]").val(), $("textarea[name=wishes]").val());
         });
       }
 

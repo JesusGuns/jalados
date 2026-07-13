@@ -47,7 +47,7 @@
         --gold: #b3926a;
         --gold-light: #decba4;
         --border: #222222;
-        
+
         --font-display: "Alex Brush", cursive;
         --font-serif: "Cormorant Garamond", Georgia, serif;
         --font-sans: "Montserrat", sans-serif;
@@ -69,7 +69,9 @@
       }
 
       /* ─── BASE ─────────────────────────────────────── */
-      *, *::before, *::after {
+      *,
+      *::before,
+      *::after {
         box-sizing: border-box;
         margin: 0;
         padding: 0;
@@ -125,7 +127,7 @@
         justify-content: center;
         cursor: pointer;
         backdrop-filter: blur(8px);
-        box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
         transition: all 0.3s ease;
       }
       ._template-Audio-Button img {
@@ -160,7 +162,7 @@
         content: "";
         position: absolute;
         inset: 0;
-        background: linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.85) 100%);
+        background: linear-gradient(to bottom, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.85) 100%);
       }
       .hero-content {
         position: relative;
@@ -198,7 +200,7 @@
       }
       .hero-date-editorial {
         margin-top: 24px;
-        border-top: 1px solid rgba(255,255,255,0.15);
+        border-top: 1px solid rgba(255, 255, 255, 0.15);
         padding-top: 20px;
         display: flex;
         justify-content: space-between;
@@ -390,7 +392,7 @@
         text-transform: uppercase;
         color: var(--ink-muted);
       }
-      
+
       .venue-card {
         display: block;
         padding: 30px 24px;
@@ -442,7 +444,9 @@
         border-bottom: 1px solid var(--gold);
         padding-bottom: 2px;
       }
-      .venue-card .vc-map { display: none; }
+      .venue-card .vc-map {
+        display: none;
+      }
 
       /* ─── PROGRAMA / TIMELINE EDITORIAL ────────────── */
       ._timeline-section {
@@ -475,8 +479,12 @@
         border-bottom: 1px solid var(--border);
         padding-bottom: 20px;
       }
-      .program-item:last-child { border-bottom: none; }
-      .program-item .pi-icon { display: none; }
+      .program-item:last-child {
+        border-bottom: none;
+      }
+      .program-item .pi-icon {
+        display: none;
+      }
       .program-item .pi-time {
         font-family: var(--font-sans);
         font-size: 0.65rem;
@@ -569,7 +577,9 @@
         border-top: 1px solid var(--border);
         border-bottom: 1px solid var(--border);
       }
-      ._dresscode-section img._main-image { display: none; }
+      ._dresscode-section img._main-image {
+        display: none;
+      }
       .dc-editorial h2 {
         font-family: var(--font-serif);
         font-size: 2.2rem;
@@ -609,7 +619,8 @@
         margin-bottom: 8px;
         display: block;
       }
-      .cf-field input, .cf-field textarea {
+      .cf-field input,
+      .cf-field textarea {
         width: 100%;
         background: transparent;
         border: none;
@@ -621,7 +632,8 @@
         outline: none;
         transition: border-color 0.3s ease;
       }
-      .cf-field input:focus, .cf-field textarea:focus {
+      .cf-field input:focus,
+      .cf-field textarea:focus {
         border-bottom-color: var(--gold);
       }
       .cf-actions {
@@ -646,7 +658,9 @@
         color: var(--bg-dark);
         font-weight: 500;
       }
-      #_btnYes:hover { background: #ffffff; }
+      #_btnYes:hover {
+        background: #ffffff;
+      }
       #_btnNo {
         background: transparent;
         color: var(--ink-muted);
@@ -786,7 +800,7 @@
         font-size: 1.2rem;
         font-weight: 300;
         line-height: 1.8;
-        color: rgba(255,255,255,0.7);
+        color: rgba(255, 255, 255, 0.7);
         margin-bottom: 40px;
       }
       ._end-section ._details h1 {
@@ -800,14 +814,20 @@
       #_gallery-modal {
         position: fixed;
         inset: 0;
-        background: rgba(0,0,0,0.98);
+        background: rgba(0, 0, 0, 0.98);
         display: none;
         align-items: center;
         justify-content: center;
         z-index: 99999;
       }
-      #_gallery-modal.show { display: flex; }
-      #_gallery-modal img { max-width: 90%; max-height: 80vh; object-fit: contain; }
+      #_gallery-modal.show {
+        display: flex;
+      }
+      #_gallery-modal img {
+        max-width: 90%;
+        max-height: 80vh;
+        object-fit: contain;
+      }
       #_gallery-modal .close {
         position: absolute;
         top: 24px;
@@ -821,7 +841,9 @@
       .reveal {
         opacity: 0;
         transform: translateY(20px);
-        transition: opacity 1s ease, transform 1s ease;
+        transition:
+          opacity 1s ease,
+          transform 1s ease;
       }
       .reveal.visible {
         opacity: 1;
@@ -829,7 +851,10 @@
       }
 
       /* AUXILIAR ESCONDIDO */
-      ._hide-section, ._hide-tablesection { display: none !important; }
+      ._hide-section,
+      ._hide-tablesection {
+        display: none !important;
+      }
     </style>
   </head>
 
@@ -841,7 +866,6 @@
     </span>
 
     <div class="page">
-      
       <!-- HERO EDITORIAL ASIMÉTRICO -->
       <div class="_main-section">
         <div class="hero-bg">
@@ -930,24 +954,38 @@
           <span class="dh-weekday" data-replace="MainEventWeekDay"></span>
           <div class="dh-number" data-replace="MainEventDay"></div>
           <span class="dh-month-year">
-            <span data-replace="MainEventMonth"></span>&nbsp;<span data-replace="MainEventYear"></span>
+            <span data-replace="MainEventMonth"></span>
+            &nbsp;
+            <span data-replace="MainEventYear"></span>
           </span>
         </div>
 
         <!-- Ceremonia -->
         <a href="#" data-replace="MainEventUrl" target="_blank" class="venue-card">
-          <span class="vc-tag">Ceremonia Religiosa • <span data-replace="MainEventHourString"></span></span>
+          <span class="vc-tag">
+            Ceremonia Religiosa •
+            <span data-replace="MainEventHourString"></span>
+          </span>
           <h2 data-replace="MainEventLocationDescription"></h2>
           <small data-replace="MainEventAddress"></small>
-          <span class="vc-map-btn">Ver en mapa <i class="fas fa-chevron-right" style="font-size:0.5rem"></i></span>
+          <span class="vc-map-btn">
+            Ver en mapa
+            <i class="fas fa-chevron-right" style="font-size: 0.5rem"></i>
+          </span>
         </a>
 
         <!-- Recepción -->
         <a href="#" data-replace="EventReceptionUrl" target="_blank" class="venue-card">
-          <span class="vc-tag">Recepción • <span data-replace="EventReceptionHourString"></span></span>
+          <span class="vc-tag">
+            Recepción •
+            <span data-replace="EventReceptionHourString"></span>
+          </span>
           <h2 data-replace="SecondaryEventLocationDescription"></h2>
           <small data-replace="SecondaryEventAddress"></small>
-          <span class="vc-map-btn">Ver en mapa <i class="fas fa-chevron-right" style="font-size:0.5rem"></i></span>
+          <span class="vc-map-btn">
+            Ver en mapa
+            <i class="fas fa-chevron-right" style="font-size: 0.5rem"></i>
+          </span>
         </a>
       </div>
 
@@ -991,7 +1029,7 @@
 
       <!-- GALERÍA EDITORIAL -->
       <div class="gallery-wrap _hide-section _gallery-section-wrap reveal">
-        <div style="text-align:center; margin-bottom: 32px;">
+        <div style="text-align: center; margin-bottom: 32px">
           <span class="eyebrow">Galería</span>
           <div class="editorial-rule"></div>
         </div>
@@ -1010,14 +1048,14 @@
 
       <!-- RSVP / ASISTENCIA -->
       <div class="_confirmation-section _hide-section _attendance-section reveal">
-        <div style="text-align:center;">
+        <div style="text-align: center">
           <span class="eyebrow">R.S.V.P</span>
           <div class="editorial-rule"></div>
         </div>
         <div class="confirm-form">
           <div class="cf-field">
             <label>Nombres de tus acompañantes</label>
-            <input type="text" name="guestAttendants" placeholder="Ej. Familia Pérez" />
+            <textarea type="text" name="guestAttendants" placeholder="Nombres de tus acompañantes" ></textarea>
           </div>
           <div class="cf-field">
             <label>Dedicatoria o mensaje</label>
@@ -1075,11 +1113,14 @@
       <div class="_end-section _hide-section">
         <img class="_main-image" src="#" data-replace="Image_EndCard" alt="" />
         <div class="_details">
-          <h2>"Y todo lo que hagan, háganlo con amor."<br>1 Corintios 16:14</h2>
+          <h2>
+            "Y todo lo que hagan, háganlo con amor."
+            <br />
+            1 Corintios 16:14
+          </h2>
           <h1 data-replace="BrideGroomShortNames"></h1>
         </div>
       </div>
-
     </div>
 
     <!-- MODAL GALERÍA -->
@@ -1164,8 +1205,8 @@
         ImageAttendantBackGround: `${settings.ImagesURL}attendantbg-1.jpg`,
         ImageTable: `${settings.ImagesURL}table.webp`,
         ImageEnd: `${settings.ImagesURL}4.webp`,
-        ImageParentsBride: `${settings.ImagesURL}parents_bride.webp`, 
-        ImageParentsGroom: `${settings.ImagesURL}parents_groom.webp`
+        ImageParentsBride: `${settings.ImagesURL}parents_bride.webp`,
+        ImageParentsGroom: `${settings.ImagesURL}parents_groom.webp`,
       };
 
       var Init = {
@@ -1181,7 +1222,7 @@
         $("[data-replace=Image_MainCard]").attr("src", additionalInformation.ImageMainCard);
         $("[data-replace=Image_LoveStory]").attr("src", additionalInformation.ImageLoveStory);
         $("[data-replace=Image_EndCard]").attr("src", additionalInformation.ImageEnd);
-        
+
         $("[data-replace=ImageParentsBride]").attr("src", additionalInformation.ImageParentsBride);
         $("[data-replace=ImageParentsGroom]").attr("src", additionalInformation.ImageParentsGroom);
 
@@ -1200,10 +1241,10 @@
 
         // RSVP Atributos nativos vinculados
         $("#_btnYes").on("click", function () {
-          rsvp.onPostRSPV(true, $("input[name=guestName]").val() + " " + $("input[name=guestAttendants]").val(), $("textarea[name=wishes]").val());
+          rsvp.onPostRSPV(true, $("textarea[name=guestAttendants]").val(), $("textarea[name=wishes]").val());
         });
         $("#_btnNo").on("click", function () {
-          rsvp.onPostRSPV(false, $("input[name=guestName]").val(), $("textarea[name=wishes]").val());
+          rsvp.onPostRSPV(false, $("textarea[name=guestAttendants]").val(), $("textarea[name=wishes]").val());
         });
       }
 
