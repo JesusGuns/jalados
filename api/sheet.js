@@ -17,7 +17,7 @@ export default async function handler(req, res) {
     return res.status(400).json({ error: "Token is required" });
   }
 
-  const baseUrl = "https://script.google.com/macros/s/AKfycbyNwJ0573iYs2Cx4BisEcb61-cAmQw2GSx3UUG6vJ5LRpLKrQGA7P7o0wCINcbA_Iys/exec";
+  const baseUrl = "https://script.google.com/macros/s/AKfycbzo19L9ls9wSCMm7Yv7vGhDzGXtnGqblqFdD5ijrCg/dev";
 
   try {
     // GET
