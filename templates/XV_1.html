@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="google" content="notranslate" />
 
-    <!-- 1. Preconnects optimizados (Agregamos el crossorigin faltante) -->
     <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -32,18 +31,18 @@
 
     <link rel="icon" type="image/png" sizes="196x196" href="../images/icons/_favicon-XV-196.png" />
 
-    <!-- 2. Ruta Crítica de Carga: Preloads primero -->
     <link rel="preload" fetchpriority="high" as="image" href="../images/templates/XV/1.webp" type="image/webp" />
 
-    <!-- 3. Hojas de estilo que bloquean el render (Bootstrap va primero, luego tus estilos locales) -->
-    <link rel="stylesheet" href="../css/bootstrap.min.css" crossorigin>
+    <!-- (Bootstrap AND CSS) -->
+    <link rel="stylesheet" href="../css/bootstrap.min.css" crossorigin />
     <link rel="stylesheet" href="../css/XV/XV_1.min.css" />
 
-    <!-- 4. Recursos Asíncronos / No bloqueantes (FontAwesome, Google Fonts y Toastify al final) -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'" />
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&family=Great+Vibes&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
-    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&family=Playfair+Display&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css" media="print" onload="this.media='all'" />
+    <!-- Font Awesome-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media = 'all'" />
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&family=Great+Vibes&display=swap" rel="stylesheet" media="print" onload="this.media = 'all'" />
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&family=Playfair+Display&display=swap" rel="stylesheet" media="print" onload="this.media = 'all'" />
+    <!-- Toastify-->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css" media="print" onload="this.media = 'all'" />
   </head>
 
   <body>
