@@ -1,5 +1,3 @@
-import Toastify from "https://esm.sh/toastify-js";
-
 var Resources = {
   Config: {
     EventType: "",
@@ -187,7 +185,7 @@ export const helpers = {
   },
   onToasty: function (mensaje, colorPrincipal = "#8B5E83") {
     if (Resources.Config.EventType == "Wedding") colorPrincipal = "#a68966";
-    Toastify({
+    window.Toastify({
       text: mensaje,
       duration: 4000,
       gravity: "bottom",
