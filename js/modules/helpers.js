@@ -327,6 +327,7 @@ export const rsvp = {
 
     if (!token) {
       Resources.Config.Sections.showTableNumber = false;
+      Resources.Config.Sections.showTickets = false;
       Resources.Config.Sections.showAttendance = false;
       Resources.RSVP.GuestName = "";
       Resources.RSVP.TableNumber = 0;
@@ -350,6 +351,7 @@ export const rsvp = {
           Resources.RSVP.TableNumber = data.table;
         } else {
           Resources.Config.Sections.showTableNumber = false;
+          Resources.Config.Sections.showTickets = false;
           Resources.Config.Sections.showAttendance = false;
           Resources.RSVP.GuestName = "";
           Resources.RSVP.TableNumber = 0;

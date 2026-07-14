@@ -12,7 +12,7 @@
   font-family: "HelloHoney";
   font-style: normal;
   font-weight: normal;
-  font-display: auto;
+  font-display: swap;
   src: url("../fonts/hellohoney.ttf") format("truetype");
 }
 
@@ -20,7 +20,7 @@
   font-family: "PlayFair Italica";
   font-style: normal;
   font-weight: normal;
-  font-display: auto;
+  font-display: swap;
   src: url("../fonts/PlayfairDisplay.ttf") format("truetype");
 }
 
@@ -28,6 +28,6 @@
   font-family: "Eastpoint";
   font-style: normal;
   font-weight: normal;
-  font-display: auto;
+  font-display: swap;
   src: url("../fonts/Eastpoint.ttf") format("truetype");
 }
