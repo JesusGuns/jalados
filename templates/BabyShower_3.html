@@ -10,20 +10,20 @@
 
     <!-- Primary Meta Tags -->
     <title>Baby Shower</title>
-    <meta name="title" content="¡Baby Shower de nuestro bebé! 🍼✨" />
+    <meta name="title" content="¡Baby Shower de nuestro bebé! 🌙✨" />
     <meta name="description" content="¡Estamos esperando un bebé! Te invitamos a celebrar con nosotros este día tan especial." />
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://jalados.vercel.app/templates/BabyShower_3.html" />
-    <meta property="og:title" content="¡Baby Shower de nuestro bebé! 🍼✨" />
+    <meta property="og:title" content="¡Baby Shower de nuestro bebé! 🌙✨" />
     <meta property="og:description" content="¡Estamos esperando un bebé! Te invitamos a celebrar con nosotros este día tan especial." />
     <meta property="og:image" content="https://jalados.vercel.app/images/_favicon-BabyShower.png" />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:url" content="https://jalados.vercel.app/templates/BabyShower_3.html" />
-    <meta name="twitter:title" content="¡Baby Shower de nuestro bebé! 🍼✨" />
+    <meta name="twitter:title" content="¡Baby Shower de nuestro bebé! 🌙✨" />
     <meta name="twitter:description" content="¡Estamos esperando un bebé! Te invitamos a celebrar con nosotros este día tan especial." />
     <meta name="twitter:image" content="https://jalados.vercel.app/images/_favicon-BabyShower.png" />
 
@@ -32,27 +32,21 @@
     <!-- Font Awesome-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media = 'all'" />
 
-    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700&family=Quicksand:wght@300;400;500;600&family=Pacifico&display=swap" rel="stylesheet" media="print" onload="this.media = 'all'" />
+    <link href="https://fonts.googleapis.com/css2?family=Gochi+Hand&family=Comfortaa:wght@400;600;700&family=Nunito:wght@400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media = 'all'" />
     <!-- Toastify-->
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css" media="print" onload="this.media = 'all'" />
     <style>
       /* ─── ROOT ─────────────────────────────────────── */
       :root {
         --mint: #b8e8d8;
-        --mint-light: #e0f7f0;
-        --mint-dark: #7dcbb5;
-        --yellow: #fde68a;
-        --yellow-light: #fef9c3;
         --peach: #fcd5b8;
-        --peach-dark: #f4a97a;
-        --lilac: #ddd6fe;
-        --lilac-dark: #a78bfa;
-        --sky: #bae6fd;
-        --rose: #fecdd3;
-        --cream: #fffbf5;
-        --ink: #3d2f2f;
-        --ink-mid: rgba(61, 47, 47, 0.65);
-        --ink-faint: rgba(61, 47, 47, 0.38);
+        --peach-dark: #e0895a;
+        --cream: #fffaf3;
+        --paper: #fffdf8;
+        --ink: #4a4038;
+        --ink-mid: rgba(74, 64, 56, 0.68);
+        --ink-faint: rgba(74, 64, 56, 0.4);
+        --thread: rgba(74, 64, 56, 0.22);
 
         /* Activos — cambian con el tema */
         --primary: #7dcbb5;
@@ -60,9 +54,9 @@
         --accent: #fde68a;
         --accent2: #fcd5b8;
 
-        --font-display: "Pacifico", cursive;
-        --font-round: "Baloo 2", sans-serif;
-        --font-soft: "Quicksand", sans-serif;
+        --font-display: "Gochi Hand", cursive;
+        --font-round: "Comfortaa", sans-serif;
+        --font-soft: "Nunito", sans-serif;
       }
 
       /* ─── BASE ─────────────────────────────────────── */
@@ -78,28 +72,94 @@
       }
 
       body {
-        background-color: var(--cream);
         font-family: var(--font-soft);
         color: var(--ink);
         overflow-x: hidden;
+        background: var(--cream);
+        background-image: radial-gradient(circle at 10% 8%, color-mix(in srgb, var(--primary-bg) 70%, transparent) 0%, transparent 40%), radial-gradient(circle at 90% 25%, color-mix(in srgb, var(--accent) 45%, transparent) 0%, transparent 35%), radial-gradient(circle at 15% 70%, color-mix(in srgb, var(--accent2) 45%, transparent) 0%, transparent 38%), radial-gradient(circle at 85% 90%, color-mix(in srgb, var(--primary-bg) 60%, transparent) 0%, transparent 40%);
+        background-attachment: fixed;
       }
 
       .page {
         max-width: 560px;
         margin: 0 auto;
+        padding: 0 18px;
       }
 
       /* Reveal on scroll */
       .reveal {
         opacity: 0;
-        transform: translateY(20px);
+        transform: translateY(24px) rotate(0deg);
         transition:
-          opacity 0.65s ease,
-          transform 0.65s ease;
+          opacity 0.7s ease,
+          transform 0.7s ease;
       }
       .reveal.visible {
         opacity: 1;
         transform: none;
+      }
+
+      /* ─── TARJETA DE SCRAPBOOK (base de cada sección) ── */
+      .scrap {
+        position: relative;
+        background: var(--paper);
+        border-radius: 26px;
+        box-shadow: 0 14px 30px -12px rgba(74, 64, 56, 0.25);
+        padding: 38px 24px 34px;
+        margin: 0 auto 46px;
+        border: 1px solid rgba(74, 64, 56, 0.06);
+      }
+      .scrap.tilt-l {
+        transform: rotate(-1.4deg);
+      }
+      .scrap.tilt-r {
+        transform: rotate(1.4deg);
+      }
+
+      /* Washi tape decorativo */
+      .washi {
+        position: absolute;
+        top: -14px;
+        left: 50%;
+        transform: translateX(-50%) rotate(-3deg);
+        width: 90px;
+        height: 26px;
+        background: var(--primary);
+        opacity: 0.75;
+        border-radius: 3px;
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.12);
+      }
+      .washi::before,
+      .washi::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: 8px;
+        background: repeating-linear-gradient(45deg, transparent 0 4px, rgba(255, 255, 255, 0.5) 4px 8px);
+      }
+      .washi::before {
+        left: 0;
+      }
+      .washi::after {
+        right: 0;
+      }
+
+      /* Hilo/cordón entre tarjetas */
+      .thread {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+        margin: -26px 0 24px;
+        position: relative;
+      }
+      .thread span {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--primary);
+        opacity: 0.5;
       }
 
       /* ─── AUDIO ─────────────────────────────────────── */
@@ -108,18 +168,17 @@
         top: 16px;
         right: 16px;
         z-index: 500;
-        width: 44px;
-        height: 44px;
-        border-radius: 50%;
+        width: 46px;
+        height: 46px;
+        border-radius: 50% 50% 50% 8px;
         background: #fff;
-        border: 2.5px solid var(--primary);
+        border: 2px solid var(--primary);
         display: flex;
         align-items: center;
         justify-content: center;
         cursor: pointer;
-        box-shadow: 0 3px 12px rgba(125, 203, 181, 0.3);
+        box-shadow: 0 4px 12px rgba(74, 64, 56, 0.18);
         transition: all 0.3s;
-        animation: none;
       }
       ._template-Audio-Button img {
         width: 18px;
@@ -128,7 +187,7 @@
         border-radius: 0;
       }
       ._template-Audio-Button:hover {
-        background: var(--primary-bg);
+        transform: rotate(10deg);
       }
       ._template-Audio-Button.off {
         opacity: 0.45;
@@ -142,108 +201,72 @@
         transform: translateY(-50%);
         display: flex;
         flex-direction: column;
-        gap: 8px;
+        gap: 10px;
         z-index: 500;
+        background: #fff;
+        padding: 10px 7px;
+        border-radius: 30px;
+        box-shadow: 0 4px 16px rgba(74, 59, 59, 0.1);
       }
       .theme-btn {
-        width: 14px;
-        height: 14px;
+        width: 15px;
+        height: 15px;
         border-radius: 50%;
-        border: 2.5px solid rgba(61, 47, 47, 0.2);
+        border: 2px solid rgba(74, 64, 56, 0.15);
         cursor: pointer;
-        transition:
-          transform 0.2s,
-          border-color 0.2s;
+        transition: transform 0.2s;
         padding: 0;
         -webkit-tap-highlight-color: transparent;
       }
       .theme-btn:hover {
-        transform: scale(1.4);
-        border-color: rgba(61, 47, 47, 0.5);
+        transform: scale(1.3);
       }
       .theme-btn.active {
         border-color: var(--ink);
-        transform: scale(1.2);
-      }
-      @media (max-width: 575.98px) {
-        #themeSwitcher {
-          left: 5px;
-        }
-      }
-
-      /* ─── WAVY DIVIDER ──────────────────────────────── */
-      .wavy-top,
-      .wavy-bottom {
-        width: 100%;
-        overflow: hidden;
-        line-height: 0;
-      }
-      .wavy-top svg,
-      .wavy-bottom svg {
-        display: block;
-        width: 100%;
+        transform: scale(1.25);
       }
 
       /* ─── HERO ──────────────────────────────────────── */
-      .hero {
-        position: relative;
-        background: var(--primary-bg);
-        padding: 56px 28px 20px;
+      .hero-wrap {
+        padding: 54px 0 0;
         text-align: center;
+        position: relative;
+      }
+
+      .hero-arch {
+        width: 190px;
+        height: 230px;
+        margin: 0 auto 18px;
+        border-radius: 100px 100px 14px 14px;
         overflow: hidden;
-      }
-
-      /* Estrellas / puntitos decorativos de fondo */
-      .hero::before {
-        content: "✦ ✧ ✦ ✧ ✦ ✧ ✦ ✧ ✦ ✧ ✦ ✧";
-        position: absolute;
-        top: 14px;
-        left: 0;
-        right: 0;
-        text-align: center;
-        font-size: 0.55rem;
-        letter-spacing: 6px;
-        color: var(--primary);
-        opacity: 0.5;
-      }
-
-      /* Foto circular de la mamá/bebé */
-      .hero-photo-wrap {
+        border: 6px solid #fff;
+        box-shadow: 0 16px 34px -10px rgba(74, 64, 56, 0.35);
         position: relative;
-        width: 170px;
-        height: 170px;
-        margin: 0 auto 20px;
       }
-
-      .hero-photo-wrap img {
+      .hero-arch img {
         width: 100%;
         height: 100%;
-        border-radius: 50%;
         object-fit: cover;
         object-position: center top;
-        border: 5px solid #fff;
-        box-shadow: 0 6px 24px rgba(125, 203, 181, 0.35);
       }
 
-      /* Ícono de bebé flotando */
       .hero-badge {
         position: absolute;
-        bottom: 2px;
-        right: 2px;
-        width: 46px;
-        height: 46px;
+        bottom: -6px;
+        right: calc(50% - 95px - 8px);
+        width: 48px;
+        height: 48px;
         background: var(--accent);
         border-radius: 50%;
-        border: 3px solid #fff;
+        border: 4px solid #fff;
         display: flex;
         align-items: center;
         justify-content: center;
         font-size: 1.4rem;
-        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.12);
-        animation: wobble 2.5s ease-in-out infinite;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+        animation: sway 3s ease-in-out infinite;
       }
-
-      @keyframes wobble {
+      @keyframes sway {
         0%,
         100% {
           transform: rotate(-6deg);
@@ -253,31 +276,49 @@
         }
       }
 
-      .hero-eyebrow {
-        font-family: var(--font-soft);
-        font-size: 0.7rem;
-        font-weight: 600;
-        letter-spacing: 4px;
+      .hero-ribbon {
+        display: inline-block;
+        font-family: var(--font-round);
+        font-size: 0.68rem;
+        font-weight: 700;
+        letter-spacing: 2.5px;
         text-transform: uppercase;
-        color: var(--primary-dark, var(--mint-dark));
-        display: block;
-        margin-bottom: 6px;
+        color: #fff;
+        background: var(--primary);
+        padding: 7px 18px;
+        border-radius: 4px;
+        margin-bottom: 18px;
+        transform: rotate(-2deg);
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
       }
 
       .hero-title {
-        font-family: var(--font-display);
-        font-size: clamp(2.6rem, 9vw, 3.8rem);
-        color: var(--ink);
-        line-height: 1.1;
-        margin-bottom: 4px;
+        font-family: var(--font-soft);
+        font-weight: 600;
+        font-size: 1.05rem;
+        color: var(--ink-mid);
       }
 
       .hero-name {
         font-family: var(--font-display);
-        font-size: clamp(3rem, 11vw, 4.5rem);
-        color: var(--primary);
+        font-size: clamp(3.6rem, 15vw, 5.2rem);
+        color: var(--ink);
         line-height: 1;
-        margin-bottom: 16px;
+        margin: 2px 0 22px;
+        position: relative;
+        display: inline-block;
+      }
+      .hero-name::after {
+        content: "";
+        position: absolute;
+        left: 6%;
+        right: 6%;
+        bottom: 6px;
+        height: 10px;
+        background: var(--accent);
+        opacity: 0.6;
+        z-index: -1;
+        border-radius: 4px;
       }
 
       .hero-date-pill {
@@ -285,708 +326,419 @@
         align-items: center;
         gap: 8px;
         background: #fff;
-        border: 2px solid var(--primary);
-        border-radius: 50px;
-        padding: 8px 20px;
+        border: 2px solid var(--ink);
+        border-radius: 4px;
+        padding: 10px 20px;
         font-family: var(--font-round);
-        font-size: 0.85rem;
-        font-weight: 600;
+        font-size: 0.82rem;
+        font-weight: 700;
         color: var(--ink);
-      }
-
-      .hero-date-pill i {
-        color: var(--primary);
-      }
-
-      @media (max-width: 575.98px) {
-        .hero-photo-wrap {
-          width: 140px;
-          height: 140px;
-        }
-        .hero-title {
-          font-size: clamp(2.2rem, 10vw, 3rem);
-        }
-        .hero-name {
-          font-size: clamp(2.6rem, 13vw, 3.8rem);
-        }
+        transform: rotate(1deg);
+        box-shadow: 3px 3px 0 var(--primary);
       }
 
       /* ─── COUNTER ───────────────────────────────────── */
-      ._counter-section {
-        background: #fff;
-        padding: 32px 20px;
-        text-align: center;
-      }
-
       ._counter-section .counter-title {
-        font-family: var(--font-round);
-        font-size: 0.72rem;
-        font-weight: 600;
-        letter-spacing: 4px;
-        text-transform: uppercase;
-        color: var(--ink-faint);
-        margin-bottom: 20px;
         display: block;
+        text-align: center;
+        font-family: var(--font-display);
+        font-size: 1.6rem;
+        color: var(--ink);
+        margin-bottom: 20px;
       }
 
       ._counter-Countdown {
         display: flex;
-        align-items: flex-start;
+        align-items: center;
         justify-content: center;
-        gap: 0;
+        gap: 8px;
         width: 100%;
-        max-width: 380px;
-        margin: 0 auto;
       }
 
       ._counter-Timebox {
         display: flex;
         flex-direction: column;
         align-items: center;
-        width: 72px;
-        flex-shrink: 0;
+        flex: 1;
+        max-width: 78px;
       }
 
       ._counter-Timebox span {
         font-family: var(--font-round);
-        font-size: clamp(2rem, 7vw, 2.8rem);
         font-weight: 700;
-        color: var(--primary);
+        font-size: clamp(1.5rem, 6vw, 2rem);
+        color: #fff;
         line-height: 1;
-        display: block;
-        height: auto;
-        background: var(--primary-bg);
-        border-radius: 14px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: var(--primary);
+        border-radius: 50%;
         width: 100%;
-        text-align: center;
-        padding: 8px 0;
+        aspect-ratio: 1;
+        padding: 0;
       }
-
       ._counter-Timebox span::after {
         display: none;
       }
 
       ._counter-Timebox .counter-label {
         font-family: var(--font-soft);
-        font-size: 0.55rem;
-        font-weight: 600;
-        letter-spacing: 2px;
+        font-size: 0.6rem;
+        font-weight: 700;
+        letter-spacing: 1.5px;
         text-transform: uppercase;
         color: var(--ink-faint);
-        margin-top: 6px;
-        display: block;
+        margin-top: 8px;
       }
 
       ._counter-sep {
         font-family: var(--font-round);
-        font-size: 2rem;
-        font-weight: 700;
-        color: var(--primary);
-        opacity: 0.4;
-        line-height: 1;
-        padding: 8px 2px 0;
-        flex-shrink: 0;
+        font-size: 1.4rem;
+        color: var(--ink-faint);
         align-self: flex-start;
-      }
-
-      @media (max-width: 380px) {
-        ._counter-Timebox {
-          width: 58px;
-        }
-        ._counter-Timebox span {
-          font-size: 1.7rem;
-          border-radius: 10px;
-        }
+        margin-top: 10px;
       }
 
       /* ─── INTRO / QUOTE ─────────────────────────────── */
-      .intro-section {
-        padding: 48px 28px;
+      .intro-quote {
         text-align: center;
-        background: var(--primary-bg);
         position: relative;
-        overflow: hidden;
       }
-
-      /* Ilustraciones decorativas de fondo */
-      .intro-section::before {
-        content: "🌙 ⭐ 🌟 ✨ 🌙 ⭐";
-        position: absolute;
-        top: 12px;
-        left: 0;
-        right: 0;
-        text-align: center;
-        font-size: 1rem;
-        opacity: 0.18;
-        letter-spacing: 12px;
+      .intro-quote .quote-mark {
+        font-family: var(--font-display);
+        font-size: 3.2rem;
+        color: var(--primary);
+        line-height: 0.5;
+        display: block;
+        margin-bottom: 14px;
       }
-
-      .intro-section .quote-bubble {
-        background: #fff;
-        border-radius: 20px;
-        padding: 24px 28px;
-        box-shadow: 0 4px 20px rgba(125, 203, 181, 0.18);
-        position: relative;
-        text-align: left;
-        border: 2px solid rgba(125, 203, 181, 0.2);
-      }
-
-      .intro-section .quote-bubble::after {
-        content: "";
-        position: absolute;
-        bottom: -14px;
-        left: 36px;
-        width: 0;
-        height: 0;
-        border-left: 14px solid transparent;
-        border-right: 14px solid transparent;
-        border-top: 14px solid #fff;
-      }
-
-      .intro-section .quote-bubble p {
+      .intro-quote p {
         font-family: var(--font-soft);
+        font-weight: 500;
         font-size: 1rem;
-        font-weight: 400;
         color: var(--ink-mid);
-        line-height: 1.8;
+        line-height: 1.85;
       }
-
-      .intro-section .quote-author {
-        margin-top: 28px;
+      .intro-quote .quote-author {
+        margin-top: 22px;
         font-family: var(--font-display);
         font-size: 2rem;
         color: var(--ink);
       }
 
       /* ─── PARENTS ───────────────────────────────────── */
-      .parents-section {
-        padding: 48px 28px;
-        background: #fff;
-        text-align: center;
-      }
-
       .section-title {
         font-family: var(--font-display);
-        font-size: clamp(1.8rem, 6vw, 2.4rem);
+        font-size: clamp(1.9rem, 7vw, 2.4rem);
         color: var(--ink);
-        margin-bottom: 6px;
+        text-align: center;
+        margin-bottom: 4px;
       }
-
       .section-sub {
         font-family: var(--font-soft);
-        font-size: 0.88rem;
+        font-size: 0.85rem;
         color: var(--ink-faint);
-        margin-bottom: 24px;
+        text-align: center;
+        margin-bottom: 26px;
       }
 
-      .parents-cards {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
+      .tags-row {
+        display: flex;
+        flex-wrap: wrap;
         gap: 14px;
-        margin-top: 8px;
+        justify-content: center;
       }
 
       .parent-card {
+        width: calc(50% - 7px);
         background: var(--primary-bg);
-        border-radius: 18px;
-        padding: 18px 14px;
-        border: 2px solid rgba(125, 203, 181, 0.25);
+        border-radius: 4px 14px 14px 4px;
+        padding: 16px 12px 14px 18px;
+        position: relative;
+        text-align: left;
+      }
+      .parent-card::before {
+        content: "";
+        position: absolute;
+        left: 7px;
+        top: 14px;
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--paper);
+        box-shadow: inset 0 0 0 1px rgba(74, 64, 56, 0.2);
+      }
+      .parent-card:nth-child(odd) {
+        transform: rotate(-1.5deg);
+      }
+      .parent-card:nth-child(even) {
+        transform: rotate(1.5deg);
       }
 
       .parent-card .pc-icon {
-        font-size: 2rem;
-        margin-bottom: 8px;
-        display: block;
-      }
-
-      .parent-card .pc-label {
-        font-family: var(--font-round);
-        font-size: 0.6rem;
-        font-weight: 600;
-        letter-spacing: 3px;
-        text-transform: uppercase;
-        color: var(--primary);
+        font-size: 1.6rem;
         display: block;
         margin-bottom: 6px;
       }
-
-      .parent-card .pc-name {
-        font-family: var(--font-soft);
-        font-size: 0.9rem;
-        font-weight: 600;
-        color: var(--ink);
-        line-height: 1.5;
-      }
-
-      @media (max-width: 380px) {
-        .parents-cards {
-          grid-template-columns: 1fr;
-        }
-      }
-
-      /* ─── DETAILS ───────────────────────────────────── */
-      .details-section {
-        padding: 48px 28px;
-        background: var(--accent, #fde68a);
-        background: linear-gradient(135deg, var(--accent) 0%, var(--accent2, #fcd5b8) 100%);
-        position: relative;
-        overflow: hidden;
-      }
-
-      .details-section::before {
-        content: "✦";
-        position: absolute;
-        top: -30px;
-        right: -20px;
-        font-size: 8rem;
-        color: rgba(255, 255, 255, 0.2);
-        line-height: 1;
-      }
-
-      .details-section .section-title {
-        color: var(--ink);
-      }
-
-      .venue-card {
-        display: flex;
-        align-items: flex-start;
-        gap: 14px;
-        background: rgba(255, 255, 255, 0.7);
-        backdrop-filter: blur(8px);
-        border-radius: 18px;
-        padding: 18px 20px;
-        text-decoration: none;
-        color: var(--ink);
-        border: 2px solid rgba(255, 255, 255, 0.8);
-        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.07);
-        transition: all 0.25s;
-      }
-
-      .venue-card:hover,
-      .venue-card:active {
-        background: rgba(255, 255, 255, 0.9);
-        color: var(--ink);
-        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
-      }
-
-      .venue-card .vc-emoji {
-        font-size: 2rem;
-        flex-shrink: 0;
-        margin-top: 2px;
-      }
-
-      .venue-card .vc-tag {
+      .parent-card .pc-label {
         font-family: var(--font-round);
-        font-size: 0.62rem;
-        font-weight: 600;
+        font-size: 0.58rem;
+        font-weight: 700;
         letter-spacing: 2px;
         text-transform: uppercase;
-        color: var(--peach-dark);
+        color: var(--primary);
         display: block;
-        margin-bottom: 3px;
+        margin-bottom: 4px;
       }
-
-      .venue-card h2 {
-        font-family: var(--font-round);
-        font-size: 1.05rem;
-        font-weight: 700;
-        color: var(--ink);
-        margin: 0 0 3px;
-      }
-
-      .venue-card small {
+      .parent-card .pc-name {
         font-family: var(--font-soft);
-        font-size: 0.8rem;
-        color: var(--ink-mid);
-        line-height: 1.4;
-        display: block;
+        font-weight: 700;
+        font-size: 0.86rem;
+        color: var(--ink);
       }
 
-      .venue-card .vc-map {
-        flex-shrink: 0;
-        align-self: center;
-        margin-left: auto;
+      /* ─── DETAILS (postal) ──────────────────────────── */
+      .postcard {
+        border: 2px dashed var(--ink-faint);
+        border-radius: 14px;
+        padding: 20px;
+        position: relative;
       }
-
-      .venue-card .vc-map img {
-        width: 28px;
-        height: 28px;
-        border-radius: 50%;
-        animation: _animation-pulse-3 1.8s infinite;
-      }
-
-      /* ─── ITINERARY ─────────────────────────────────── */
-      .itinerary-section {
-        padding: 48px 28px;
-        background: #fff;
-      }
-
-      .itin-list {
-        margin-top: 24px;
-      }
-
-      .itin-item {
-        display: flex;
-        align-items: center;
-        gap: 16px;
-        padding: 14px 0;
-        border-bottom: 2px dashed rgba(125, 203, 181, 0.25);
-      }
-
-      .itin-item:last-child {
-        border-bottom: none;
-      }
-
-      .itin-item .ii-icon {
+      .postcard .stamp {
+        position: absolute;
+        top: -16px;
+        right: 14px;
         width: 46px;
         height: 46px;
-        flex-shrink: 0;
-        border-radius: 14px;
-        background: var(--primary-bg);
-        border: 2px solid rgba(125, 203, 181, 0.3);
+        background: var(--accent);
+        border-radius: 50%;
+        border: 3px solid var(--paper);
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: 1.4rem;
+        font-size: 1.3rem;
+        transform: rotate(8deg);
+      }
+      .postcard-row {
+        display: flex;
+        gap: 14px;
+        align-items: flex-start;
+      }
+      .postcard .pc-detail-tag {
+        font-family: var(--font-round);
+        font-size: 0.62rem;
+        font-weight: 700;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: var(--primary);
+        display: block;
+        margin-bottom: 4px;
+      }
+      .postcard h2 {
+        font-family: var(--font-round);
+        font-weight: 700;
+        font-size: 1.05rem;
+        color: var(--ink);
+        margin-bottom: 4px;
+      }
+      .postcard small {
+        font-family: var(--font-soft);
+        font-size: 0.82rem;
+        color: var(--ink-mid);
+        line-height: 1.5;
+        display: block;
+      }
+      .postcard a.map-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        margin-top: 14px;
+        font-family: var(--font-round);
+        font-weight: 700;
+        font-size: 0.78rem;
+        color: var(--primary);
+        text-decoration: none;
+        border-bottom: 2px solid var(--primary);
+        padding-bottom: 2px;
+      }
+      .postcard .vc-map img {
+        width: auto;
+        height: 26px;
+        border-radius: 50%;
       }
 
+      /* ─── ITINERARY (timeline) ──────────────────────── */
+      .timeline {
+        position: relative;
+        margin-top: 8px;
+        padding-left: 28px;
+      }
+      .timeline::before {
+        content: "";
+        position: absolute;
+        left: 9px;
+        top: 6px;
+        bottom: 6px;
+        width: 2px;
+        background-image: linear-gradient(var(--thread) 60%, transparent 0%);
+        background-size: 2px 10px;
+        background-repeat: repeat-y;
+      }
+      .itin-item {
+        position: relative;
+        padding-bottom: 22px;
+      }
+      .itin-item:last-child {
+        padding-bottom: 0;
+      }
+      .itin-item .ii-dot {
+        position: absolute;
+        left: -28px;
+        top: 2px;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background: var(--primary);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.7rem;
+        border: 3px solid var(--paper);
+        box-shadow: 0 0 0 2px var(--primary);
+      }
       .itin-item .ii-name {
         font-family: var(--font-round);
-        font-size: 1rem;
-        font-weight: 600;
+        font-weight: 700;
+        font-size: 0.95rem;
         color: var(--ink);
-        margin: 0 0 2px;
       }
-
       .itin-item .ii-time {
         font-family: var(--font-soft);
         font-size: 0.75rem;
-        font-weight: 500;
+        font-weight: 700;
         color: var(--primary);
       }
 
-      /* ─── GALLERY ───────────────────────────────────── */
-      .gallery-section {
-        padding: 48px 0 0;
-        background: var(--primary-bg);
+      /* ─── GALLERY (tira de polaroids) ───────────────── */
+      .gallery-scroll {
+        display: flex;
+        gap: 14px;
+        overflow-x: auto;
+        padding: 10px 4px 18px;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
       }
-
-      .gallery-head {
-        padding: 0 28px 20px;
+      .gallery-scroll::-webkit-scrollbar {
+        height: 6px;
       }
-
-      .gallery-masonry {
-        columns: 2;
-        column-gap: 6px;
-        padding: 0 6px;
+      .gallery-scroll::-webkit-scrollbar-thumb {
+        background: var(--primary);
+        border-radius: 4px;
       }
 
       .gal-item {
-        break-inside: avoid;
-        margin-bottom: 6px;
+        flex: 0 0 auto;
+        scroll-snap-align: center;
+        background: #fff;
+        padding: 8px 8px 22px;
+        border-radius: 4px;
+        box-shadow: 0 8px 18px rgba(74, 64, 56, 0.18);
         cursor: pointer;
-        overflow: hidden;
-        border-radius: 16px;
-        display: block;
-        border: 3px solid #fff;
-        box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
+        width: 140px;
       }
-
+      .gal-item:nth-child(odd) {
+        transform: rotate(-3deg);
+      }
+      .gal-item:nth-child(even) {
+        transform: rotate(3deg);
+      }
       .gal-item img {
         width: 100%;
-        height: auto;
+        height: 150px;
+        object-fit: cover;
+        border-radius: 2px;
         display: block;
-        transition: transform 0.4s ease;
       }
 
-      .gal-item:hover img,
-      .gal-item:active img {
-        transform: scale(1.04);
-      }
-
-      .gallery-fade {
-        height: 60px;
-        margin-top: -60px;
-        position: relative;
-        z-index: 2;
-        background: linear-gradient(to top, var(--primary-bg), transparent);
-      }
-
-      /* ─── CONFIRMATION ──────────────────────────────── */
-      .confirm-section {
-        padding: 48px 28px;
-        background: #fff;
-      }
-
-      .confirm-form {
-        display: flex;
-        flex-direction: column;
-        gap: 14px;
-        margin-top: 24px;
-      }
-
-      .cf-field {
-        display: flex;
-        flex-direction: column;
-        gap: 6px;
-      }
-
-      .cf-field label {
-        font-family: var(--font-round);
-        font-size: 0.65rem;
-        font-weight: 700;
-        letter-spacing: 2px;
-        text-transform: uppercase;
-        color: var(--primary);
-      }
-
-      .cf-field input,
-      .cf-field textarea {
-        background: var(--primary-bg);
-        border: 2px solid rgba(125, 203, 181, 0.3);
-        border-radius: 14px;
-        padding: 12px 16px;
-        color: var(--ink);
-        font-family: var(--font-soft);
-        font-size: 0.95rem;
-        outline: none;
-        resize: none;
-        transition: border-color 0.25s;
-        width: 100%;
-      }
-
-      .cf-field input:focus,
-      .cf-field textarea:focus {
-        border-color: var(--primary);
-        background: #fff;
-      }
-
-      .cf-field input::placeholder,
-      .cf-field textarea::placeholder {
-        color: var(--ink-faint);
-        font-style: italic;
-      }
-
-      .cf-field textarea {
-        height: 80px;
-      }
-
-      .cf-actions {
-        display: flex;
-        gap: 10px;
-        margin-top: 4px;
-      }
-
-      .cf-btn {
-        flex: 1;
+      /* ─── CONFIRMATION (sobre) ──────────────────────── */
+      .envelope-btn {
         display: flex;
         align-items: center;
         justify-content: center;
-        gap: 8px;
-        padding: 14px 16px;
+        gap: 10px;
+        margin-top: 22px;
+        padding: 16px;
         border-radius: 50px;
         font-family: var(--font-round);
-        font-size: 0.85rem;
         font-weight: 700;
-        letter-spacing: 1px;
-        border: none;
-        cursor: pointer;
-        transition: all 0.25s;
-        -webkit-tap-highlight-color: transparent;
-      }
-
-      .cf-btn.primary {
-        background: var(--primary);
+        font-size: 0.9rem;
         color: #fff;
-        box-shadow: 0 6px 18px rgba(125, 203, 181, 0.4);
+        background: var(--primary);
+        text-decoration: none;
+        box-shadow: 0 10px 22px -6px color-mix(in srgb, var(--primary) 60%, transparent);
+        transition: transform 0.2s;
       }
-
-      .cf-btn.primary:hover,
-      .cf-btn.primary:active {
-        background: var(--mint-dark);
-        box-shadow: 0 10px 24px rgba(125, 203, 181, 0.5);
-      }
-
-      .cf-btn.outline {
-        background: transparent;
-        color: var(--ink-mid);
-        border: 2px solid rgba(61, 47, 47, 0.15);
-      }
-
-      .cf-btn.outline:hover,
-      .cf-btn.outline:active {
-        border-color: var(--primary);
-        color: var(--primary);
+      .envelope-btn:hover {
+        transform: translateY(-2px) scale(1.02);
       }
 
       /* ─── GIFTS ─────────────────────────────────────── */
-      .gifts-section {
-        padding: 48px 28px;
-        background: var(--primary-bg);
+      .gift-list {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        margin-top: 22px;
       }
-
       .gift-btn {
         display: flex;
         align-items: center;
         gap: 14px;
-        padding: 16px 20px;
-        background: #fff;
-        border: 2px solid rgba(125, 203, 181, 0.25);
-        border-radius: 18px;
+        padding: 14px 18px;
+        background: var(--primary-bg);
+        border-radius: 4px 16px 16px 4px;
         text-decoration: none;
         color: var(--ink);
-        font-family: var(--font-soft);
-        transition: all 0.25s;
-        margin-bottom: 10px;
-        box-shadow: 0 3px 12px rgba(0, 0, 0, 0.06);
       }
-
-      .gift-btn:hover,
-      .gift-btn:active {
-        border-color: var(--primary);
-        color: var(--ink);
-        box-shadow: 0 6px 20px rgba(125, 203, 181, 0.25);
+      .gift-btn:nth-child(2) {
+        border-radius: 16px 4px 4px 16px;
       }
-
       .gift-btn img {
-        width: 38px;
-        height: 38px;
+        width: 34px;
+        height: 34px;
         object-fit: contain;
         border-radius: 8px;
       }
       .gift-btn .gl {
-        font-size: 0.95rem;
-        font-weight: 600;
+        font-family: var(--font-soft);
+        font-weight: 700;
+        font-size: 0.92rem;
         flex: 1;
       }
       .gift-btn .ga {
         color: var(--primary);
-        font-size: 0.9rem;
-      }
-
-      /* ─── TICKET ─────────────────────────────────────── */
-      ._savethedate-section {
-        padding: 0 28px 48px;
-        background: var(--primary-bg);
-        border: none;
-        border-radius: 0;
-        max-width: 100%;
-        margin: 0;
-      }
-
-      .ticket-card {
-        background: #fff;
-        border: 2px solid rgba(125, 203, 181, 0.3);
-        border-radius: 20px;
-        overflow: hidden;
-        box-shadow: 0 4px 20px rgba(125, 203, 181, 0.15);
-      }
-
-      .ticket-card .tc-head {
-        background: var(--primary);
-        padding: 14px 20px;
-        display: flex;
-        align-items: center;
-        gap: 10px;
-      }
-
-      .ticket-card .tc-head span {
-        font-family: var(--font-round);
-        font-size: 0.72rem;
-        font-weight: 700;
-        letter-spacing: 2px;
-        text-transform: uppercase;
-        color: #fff;
-      }
-
-      .ticket-card .tc-body {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 10px;
-        padding: 22px 24px;
-      }
-
-      .tc-val {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        flex: 1;
-      }
-
-      .tc-val .tn {
-        font-family: var(--font-display);
-        font-size: 4.5rem;
-        color: var(--primary);
-        line-height: 1;
-      }
-
-      .tc-val .tl {
-        font-family: var(--font-round);
-        font-size: 0.6rem;
-        font-weight: 700;
-        letter-spacing: 2px;
-        text-transform: uppercase;
-        color: var(--ink-faint);
-        margin-top: 4px;
-      }
-
-      .tc-div {
-        width: 2px;
-        height: 64px;
-        background: linear-gradient(to bottom, transparent, rgba(125, 203, 181, 0.3), transparent);
-      }
-
-      .ticket-card .tc-foot {
-        border-top: 2px dashed rgba(125, 203, 181, 0.3);
-        margin: 0 20px 14px;
-        padding: 10px 0 0;
-        display: flex;
-        align-items: center;
-        gap: 8px;
-      }
-
-      .ticket-card .tc-foot .dot {
-        width: 7px;
-        height: 7px;
-        border-radius: 50%;
-        background: rgba(125, 203, 181, 0.4);
-        flex-shrink: 0;
-      }
-
-      .ticket-card .tc-foot p {
-        font-family: var(--font-soft);
-        font-size: 0.85rem;
-        color: var(--ink-faint);
-        margin: 0;
-        flex: 1;
-        text-align: center;
       }
 
       /* ─── FOOTER / CIERRE ───────────────────────────── */
-      .footer-section {
-        padding: 48px 28px 64px;
-        background: var(--primary);
+      .footer-wrap {
         text-align: center;
+        padding: 6px 0 60px;
       }
-
-      .footer-section .ft-emoji {
-        font-size: 3rem;
+      .footer-wrap .ft-emoji {
+        font-size: 2.6rem;
         display: block;
-        margin-bottom: 12px;
+        margin-bottom: 10px;
       }
-
-      .footer-section h2 {
+      .footer-wrap h2 {
         font-family: var(--font-display);
-        font-size: clamp(2rem, 7vw, 3rem);
-        color: #fff;
+        font-size: clamp(2rem, 8vw, 2.8rem);
+        color: var(--ink);
         margin-bottom: 8px;
       }
-
-      .footer-section p {
+      .footer-wrap p {
         font-family: var(--font-soft);
-        font-size: 0.95rem;
-        color: rgba(255, 255, 255, 0.8);
+        font-size: 0.9rem;
+        color: var(--ink-mid);
         line-height: 1.7;
       }
 
@@ -995,7 +747,7 @@
         display: none;
         position: fixed;
         inset: 0;
-        background: rgba(10, 6, 3, 0.96);
+        background: rgba(20, 14, 10, 0.95);
         z-index: 9999;
         flex-direction: column;
         align-items: center;
@@ -1004,7 +756,6 @@
       #galleryModal.open {
         display: flex;
       }
-
       .gm-wrap {
         flex: 1;
         width: 100%;
@@ -1014,19 +765,19 @@
         padding: 54px 14px 8px;
         overflow: hidden;
       }
-
       #modalImg {
         max-width: 100%;
         max-height: 100%;
         object-fit: contain;
-        border-radius: 16px;
+        border-radius: 6px;
         transition: opacity 0.18s;
         pointer-events: none;
+        background: #fff;
+        padding: 10px;
       }
       #modalImg.fading {
         opacity: 0;
       }
-
       .gm-bar {
         flex-shrink: 0;
         width: 100%;
@@ -1035,37 +786,28 @@
         align-items: center;
         justify-content: space-between;
       }
-
       .gm-btn {
-        width: 46px;
-        height: 46px;
+        width: 44px;
+        height: 44px;
         border-radius: 50%;
-        background: rgba(255, 255, 255, 0.1);
-        border: 2px solid rgba(125, 203, 181, 0.4);
-        color: rgba(255, 255, 255, 0.85);
+        background: rgba(255, 255, 255, 0.12);
+        border: 2px solid rgba(255, 255, 255, 0.35);
+        color: rgba(255, 255, 255, 0.9);
         font-size: 1rem;
         display: flex;
         align-items: center;
         justify-content: center;
         cursor: pointer;
-        transition: all 0.2s;
-        -webkit-tap-highlight-color: transparent;
       }
-      .gm-btn:hover,
-      .gm-btn:active {
-        background: rgba(125, 203, 181, 0.2);
-      }
-
       .gm-ctr {
         font-family: var(--font-soft);
-        font-size: 0.95rem;
-        color: rgba(255, 255, 255, 0.4);
+        font-size: 0.9rem;
+        color: rgba(255, 255, 255, 0.5);
       }
       .gm-ctr strong {
-        color: var(--mint);
-        font-size: 1.1rem;
+        color: var(--accent);
+        font-size: 1.05rem;
       }
-
       .gm-close {
         position: fixed;
         top: 14px;
@@ -1073,43 +815,34 @@
         width: 38px;
         height: 38px;
         border-radius: 50%;
-        background: rgba(255, 255, 255, 0.1);
-        border: 1px solid rgba(255, 255, 255, 0.2);
-        color: rgba(255, 255, 255, 0.85);
-        font-size: 0.9rem;
+        background: rgba(255, 255, 255, 0.12);
+        border: 1px solid rgba(255, 255, 255, 0.25);
+        color: rgba(255, 255, 255, 0.9);
         display: flex;
         align-items: center;
         justify-content: center;
         cursor: pointer;
         z-index: 10000;
-        -webkit-tap-highlight-color: transparent;
-      }
-
-      /* ─── ANIMATIONS ─────────────────────────────────── */
-      @keyframes _animation-pulse-3 {
-        0% {
-          transform: scale(1);
-          box-shadow: 0 0 0 0 rgba(125, 203, 181, 0.4);
-        }
-        70% {
-          transform: scale(1.04);
-          box-shadow: 0 0 0 8px rgba(125, 203, 181, 0);
-        }
-        100% {
-          transform: scale(1);
-          box-shadow: 0 0 0 0 rgba(125, 203, 181, 0);
-        }
       }
 
       /* ─── HIDE ───────────────────────────────────────── */
       ._hide-section {
         display: none !important;
       }
+
+      @media (max-width: 380px) {
+        .parent-card {
+          width: 100%;
+        }
+        .scrap {
+          padding: 32px 18px 28px;
+        }
+      }
     </style>
   </head>
 
   <body>
-    <audio id="audio" src="#" data-replace="AudioUrl" preload="metadata" loop></audio>
+    <audio id="audio" src="#" data-replace="AudioUrl" preload="none" loop></audio>
 
     <span id="audioButton" class="_template-Audio-Button off">
       <img src="#" data-replace="Image_AudioUrl" alt="Audio" />
@@ -1125,16 +858,17 @@
 
     <div class="page">
       <!-- HERO -->
-      <section class="hero reveal">
-        <span class="hero-eyebrow">¡Baby Shower!</span>
-        <div class="hero-photo-wrap">
+      <section class="hero-wrap reveal">
+        <div class="hero-arch">
           <img src="#" data-replace="Image_MainCard" fetchpriority="high" loading="eager" />
           <div class="hero-badge" id="heroBadge">🍼</div>
         </div>
-        <p class="hero-title">Viene en camino</p>
+        <span class="hero-ribbon">Viene en camino</span>
+        <p class="hero-title">Con todo nuestro amor esperamos a</p>
         <p class="hero-name" data-replace="EventName"></p>
+        <br />
         <div class="hero-date-pill">
-          <i class="fas fa-calendar-heart"></i>
+          <i class="fas fa-star"></i>
           <span data-replace="MainEventWeekDay"></span>
           <span data-replace="MainEventDay"></span>
           de
@@ -1144,69 +878,66 @@
         </div>
       </section>
 
-      <!-- Onda decorativa -->
-      <div class="wavy-top">
-        <svg viewBox="0 0 560 40" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
-          <path d="M0,20 C70,40 140,0 210,20 C280,40 350,0 420,20 C490,40 525,10 560,20 L560,0 L0,0 Z" fill="var(--primary-bg)" />
-        </svg>
-      </div>
-
       <!-- CONTADOR -->
-      <div class="_template-Counter-Section _counter-section">
-        <span class="counter-title">¡Faltan!</span>
+      <section class="scrap tilt-l reveal _template-Counter-Section _counter-section">
+        <div class="washi"></div>
+        <span class="counter-title">Faltan...</span>
         <div class="_counter-Countdown">
           <div class="_counter-Timebox">
             <span id="days">00</span>
             <span class="counter-label">Días</span>
           </div>
-          <span class="_counter-sep">:</span>
+          <span class="_counter-sep">·</span>
           <div class="_counter-Timebox">
             <span id="hours">00</span>
-            <span class="counter-label">Horas</span>
+            <span class="counter-label">Hrs</span>
           </div>
-          <span class="_counter-sep">:</span>
+          <span class="_counter-sep">·</span>
           <div class="_counter-Timebox">
             <span id="minutes">00</span>
             <span class="counter-label">Min</span>
           </div>
-          <span class="_counter-sep">:</span>
+          <span class="_counter-sep">·</span>
           <div class="_counter-Timebox">
             <span id="seconds">00</span>
             <span class="counter-label">Seg</span>
           </div>
         </div>
-      </div>
+      </section>
 
       <!-- INTRO / QUOTE -->
-      <section class="intro-section reveal _introduction-section">
-        <div class="quote-bubble">
-          <p>Los bebés llegan al mundo con un olor a cielo que todavía no han olvidado. Ven a celebrar con nosotros la llegada de este pequeño milagro.</p>
+      <section class="scrap tilt-r reveal _introduction-section">
+        <div class="washi"></div>
+        <div class="intro-quote">
+          <span class="quote-mark">“</span>
+          <p>Un pedacito de cielo está por llegar a nuestras vidas. Queremos que nos acompañes a celebrar y consentir a este bebé antes de conocerlo.</p>
+          <p class="quote-author" data-replace="EventName"></p>
         </div>
-        <p class="quote-author" style="margin-top: 28px" data-replace="EventName"></p>
       </section>
 
       <!-- PADRES -->
-      <section class="parents-section reveal _parents-section">
-        <p class="section-title">Con el amor de</p>
+      <section class="scrap tilt-l reveal _parents-section">
+        <div class="washi"></div>
+        <p class="section-title">Con el cariño de</p>
         <p class="section-sub">Los papás y padrinos que lo hacen posible</p>
-        <div class="parents-cards">
+        <div class="tags-row">
           <div class="parent-card">
-            <span class="pc-icon">👩</span>
+            <span class="pc-icon">🤰</span>
             <span class="pc-label">Mamá</span>
             <p class="pc-name" data-replace="EventMother"></p>
           </div>
           <div class="parent-card">
-            <span class="pc-icon">👨</span>
+            <span class="pc-icon">🧑</span>
             <span class="pc-label">Papá</span>
             <p class="pc-name" data-replace="EventFather"></p>
           </div>
           <div class="parent-card">
-            <span class="pc-icon">👩‍❤️‍👨</span>
+            <span class="pc-icon">💐</span>
             <span class="pc-label">Madrina</span>
             <p class="pc-name" data-replace="EventGodMother"></p>
           </div>
           <div class="parent-card">
-            <span class="pc-icon">🤵</span>
+            <span class="pc-icon">🎀</span>
             <span class="pc-label">Padrino</span>
             <p class="pc-name" data-replace="EventGodFather"></p>
           </div>
@@ -1214,9 +945,10 @@
       </section>
 
       <!-- DETALLES DEL EVENTO -->
-      <section class="details-section reveal">
-        <p class="section-title">¿Dónde y cuándo? 📍</p>
-        <p class="section-sub" style="color: var(--ink-mid); margin-bottom: 20px">
+      <section class="scrap tilt-r reveal">
+        <div class="washi"></div>
+        <p class="section-title">¿Dónde y cuándo?</p>
+        <p class="section-sub">
           <span data-replace="MainEventWeekDay"></span>
           <span data-replace="MainEventDay"></span>
           de
@@ -1224,107 +956,95 @@
           de
           <span data-replace="MainEventYear"></span>
         </p>
-        <a href="#" data-replace="MainEventUrl" target="_blank" class="venue-card">
-          <div class="vc-emoji">🏡</div>
-          <div>
-            <span class="vc-tag" data-replace="MainEventHourString"></span>
-            <h2 data-replace="MainEventLocationDescription"></h2>
-            <small data-replace="MainEventAddress"></small>
+        <div class="postcard">
+          <div class="stamp">🏡</div>
+          <div class="postcard-row">
+            <div>
+              <span class="pc-detail-tag" data-replace="MainEventHourString"></span>
+              <h2 data-replace="MainEventLocationDescription"></h2>
+              <small data-replace="MainEventAddress"></small>
+              <a href="#" data-replace="MainEventUrl" target="_blank" class="map-link">
+                <span class="vc-map"><img src="#" data-replace="Image_GoogleLocation" alt="Maps" /></span>
+                Ver mapa
+              </a>
+            </div>
           </div>
-          <div class="vc-map">
-            <img src="#" data-replace="Image_GoogleLocation" alt="Maps" />
-          </div>
-        </a>
+        </div>
       </section>
 
-      <!-- Onda -->
-      <div class="wavy-top">
-        <svg viewBox="0 0 560 40" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
-          <path d="M0,20 C70,0 140,40 210,20 C280,0 350,40 420,20 C490,0 525,30 560,20 L560,0 L0,0 Z" fill="#fff" />
-        </svg>
-      </div>
-
       <!-- ITINERARIO -->
-      <section class="itinerary-section reveal _itinerary-section">
-        <p class="section-title">Programa 🎉</p>
-        <div class="itin-list">
+      <section class="scrap tilt-l reveal _itinerary-section">
+        <div class="washi"></div>
+        <p class="section-title">Programa</p>
+        <div class="timeline">
           <div class="itin-item">
-            <div class="ii-icon">🎈</div>
-            <div>
-              <p class="ii-name">Bienvenida</p>
-              <span class="ii-time" data-replace="MainEventHourString"></span>
-            </div>
+            <div class="ii-dot">🎈</div>
+            <p class="ii-name">Bienvenida</p>
+            <span class="ii-time" data-replace="MainEventHourString"></span>
           </div>
           <div class="itin-item">
-            <div class="ii-icon">🎮</div>
-            <div>
-              <p class="ii-name">Juegos y dinámica</p>
-            </div>
+            <div class="ii-dot">🎮</div>
+            <p class="ii-name">Juegos y dinámica</p>
           </div>
           <div class="itin-item">
-            <div class="ii-icon">🎁</div>
-            <div>
-              <p class="ii-name">Apertura de regalos</p>
-            </div>
+            <div class="ii-dot">🎁</div>
+            <p class="ii-name">Apertura de regalos</p>
           </div>
           <div class="itin-item">
-            <div class="ii-icon">🍽️</div>
-            <div>
-              <p class="ii-name">Comida</p>
-            </div>
+            <div class="ii-dot">🍽️</div>
+            <p class="ii-name">Comida</p>
           </div>
           <div class="itin-item">
-            <div class="ii-icon">🎂</div>
-            <div>
-              <p class="ii-name">Pastel de revelación</p>
-            </div>
+            <div class="ii-dot">🎂</div>
+            <p class="ii-name">Pastel de revelación</p>
           </div>
           <div class="itin-item">
-            <div class="ii-icon">📸</div>
-            <div>
-              <p class="ii-name">Sesión de fotos</p>
-            </div>
+            <div class="ii-dot">📸</div>
+            <p class="ii-name">Sesión de fotos</p>
           </div>
         </div>
       </section>
 
       <!-- GALERÍA -->
-      <section class="gallery-section reveal _gallery-section">
-        <div class="gallery-head">
-          <p class="section-title">Momentos 📷</p>
-        </div>
-        <div class="gallery-masonry" id="gallery-grid"></div>
-        <div class="gallery-fade"></div>
+      <section class="scrap tilt-r reveal _gallery-section">
+        <div class="washi"></div>
+        <p class="section-title">Momentos</p>
+        <p class="section-sub">Desliza para ver más →</p>
+        <div class="gallery-scroll" id="gallery-grid"></div>
       </section>
 
       <!-- CONFIRMACIÓN -->
-      <section class="confirm-section reveal _attendance-section">
-        <p class="section-title">¡Confirma tu asistencia! 🙋</p>
+      <section class="scrap tilt-l reveal _attendance-section" style="text-align: center">
+        <div class="washi"></div>
+        <p class="section-title">¡Confirma tu asistencia!</p>
         <p class="section-sub">Tu presencia es el mejor regalo</p>
-
-        <div class="confirm-form">
-          <a href="#" data-replace="WhatsAppUrl" target="_blank" class="cf-btn primary">Aceptar</a>
-        </div>
+        <a href="#" data-replace="WhatsAppUrl" target="_blank" class="envelope-btn">
+          <i class="fas fa-envelope"></i>
+          Sí, ahí estaré
+        </a>
       </section>
 
       <!-- REGALOS -->
-      <section class="gifts-section reveal _gifttable-section">
-        <p class="section-title">Mesa de Regalos 🎁</p>
-        <p class="section-sub" style="margin-bottom: 20px">Si deseas hacerle un regalo al bebé, aquí te dejamos opciones</p>
-        <a href="#" data-replace="EventAmazonGiftTableUrl" target="_blank" class="gift-btn">
-          <img src="#" data-replace="Image_AmazonUrl" alt="Amazon" />
-          <span class="gl">Amazon</span>
-          <span class="ga"><i class="fas fa-arrow-right"></i></span>
-        </a>
-        <a href="#" data-replace="EventLiverpoolGiftTableUrl" target="_blank" class="gift-btn">
-          <img src="#" data-replace="Image_LiverpoolUrl" alt="Liverpool" />
-          <span class="gl">Liverpool</span>
-          <span class="ga"><i class="fas fa-arrow-right"></i></span>
-        </a>
+      <section class="scrap tilt-r reveal _gifttable-section" style="text-align: center">
+        <div class="washi"></div>
+        <p class="section-title">Mesa de Regalos</p>
+        <p class="section-sub">Si deseas hacerle un regalo al bebé, aquí te dejamos opciones</p>
+        <div class="gift-list">
+          <a href="#" data-replace="EventAmazonGiftTableUrl" target="_blank" class="gift-btn">
+            <img src="#" data-replace="Image_AmazonUrl" alt="Amazon" />
+            <span class="gl">Amazon</span>
+            <span class="ga"><i class="fas fa-arrow-right"></i></span>
+          </a>
+          <a href="#" data-replace="EventLiverpoolGiftTableUrl" target="_blank" class="gift-btn">
+            <img src="#" data-replace="Image_LiverpoolUrl" alt="Liverpool" />
+            <span class="gl">Liverpool</span>
+            <span class="ga"><i class="fas fa-arrow-right"></i></span>
+          </a>
+        </div>
       </section>
 
       <!-- CIERRE -->
-      <footer class="footer-section">
+      <footer class="footer-wrap">
         <span class="ft-emoji">👶</span>
         <h2>¡Los esperamos!</h2>
         <p>
@@ -1358,7 +1078,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js" defer></script>
     <!-- Bootstrap con defer -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" defer></script>
-
+    <script src="https://cdn.jsdelivr.net/npm/toastify-js" defer></script>
     <script type="module">
       import { helpers } from "../js/modules/helpers.js";
       import { rsvp } from "../js/modules/helpers.js";
@@ -1376,16 +1096,14 @@
         AudioUrl: "../music/Here Comes The Sun.mp3",
         Sections: {
           showCounter: true,
-          showIntroduction: true,
-          showParents: true,
           showItinerary: true,
           showGallery: true,
           showAttendance: true,
-          showGiftTable: true,
+          showGiftTable: false,
         },
         ShowElements: {
-          showAmazonOption: true,
-          showLiverpoolOption: true,
+          showAmazonOption: false,
+          showLiverpoolOption: false,
         },
       };
 

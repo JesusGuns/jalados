@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="google" content="notranslate" />
 
-    <link rel="preconnect" href="https://cdn.jsdelivr.net" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
@@ -16,44 +15,68 @@
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://jesusguns.github.io/jalados/templates/BabyShower_2.html" />
+    <meta property="og:url" content="https://jalados.vercel.app/templates/BabyShower_1.html" />
     <meta property="og:title" content="¡Baby Shower de nuestro bebé! 🍼✨" />
     <meta property="og:description" content="¡Estamos esperando un bebé! Te invitamos a celebrar con nosotros este día tan especial." />
-    <meta property="og:image" content="https://jesusguns.github.io/jalados/images/_favicon-BabyShower.png" />
+    <meta property="og:image" content="https://jalados.vercel.app/images/_favicon-BabyShower.png" />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:url" content="https://jesusguns.github.io/jalados/templates/BabyShower_2.html" />
+    <meta name="twitter:url" content="https://jalados.vercel.app/templates/BabyShower_1.html" />
     <meta name="twitter:title" content="¡Baby Shower de nuestro bebé! 🍼✨" />
     <meta name="twitter:description" content="¡Estamos esperando un bebé! Te invitamos a celebrar con nosotros este día tan especial." />
-    <meta name="twitter:image" content="https://jesusguns.github.io/jalados/images/_favicon-BabyShower.png" />
+    <meta name="twitter:image" content="https://jalados.vercel.app/images/_favicon-BabyShower.png" />
 
     <link rel="icon" type="image/png" sizes="196x196" href="../images/icons/_favicon-BabyShower-196.png" />
 
-    <link rel="preload" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" as="style" />
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
     <!-- Font Awesome-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media = 'all'" />
 
-    <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media = 'all'" />
 
-    <link rel="stylesheet" href="../css/templates.css" />
     <!-- Toastify-->
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css" media="print" onload="this.media = 'all'" />
     <style>
       /* #region ROOT*/
       :root {
         --font-Primary: "Indie Flower";
+        --font-Body: "Quicksand", sans-serif;
+        --paper: #fffdf8;
+        --ink-soft: rgba(0, 0, 0, 0.08);
+        --card-shadow: 0 14px 30px rgba(60, 40, 20, 0.14);
+        --card-radius: 22px;
       }
 
       /* #endregion ROOT*/
       /* #region HTML*/
       body {
-        font-family: var(--font-Primary);
+        font-family: var(--font-Body);
         min-height: 100%;
         width: 100%;
         color: var(--color_Secondary);
+        letter-spacing: 0.01em;
+      }
+
+      h1,
+      h2,
+      .bookTitle,
+      h1 + .mt h2 {
+        font-family: var(--font-Primary);
+      }
+
+      /* Decorative torn-tape strip — evokes a scrapbook page, applied automatically to every card */
+      .subcontainer::before {
+        content: "";
+        position: absolute;
+        top: -14px;
+        left: 50%;
+        transform: translateX(-50%) rotate(-2deg);
+        width: 90px;
+        height: 26px;
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.6));
+        border: 1px dashed rgba(0, 0, 0, 0.15);
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+        pointer-events: none;
       }
 
       /* #endregion HTML*/
@@ -82,7 +105,7 @@
         background: transparent;
         border-radius: 0;
       }
-      
+
       img.location-maps {
         width: 25px;
         height: 25px;
@@ -90,18 +113,25 @@
       }
 
       .subcontainer {
-        background: rgba(255, 255, 255, 0.85);
-        border-radius: 20px;
-        padding: 2rem 2rem;
+        position: relative;
+        background: var(--paper);
+        border-radius: var(--card-radius);
+        border: 1px solid var(--ink-soft);
+        padding: 2.4rem 2rem 2rem;
         width: 100%;
         max-width: 500px;
         text-align: center;
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        box-shadow: var(--card-shadow);
         animation: _animation-fade-in 1s ease-in-out;
       }
 
       .imgMain {
-        width: 50%;
+        width: 46%;
+        padding: 8px;
+        background: #fff;
+        border-radius: 6px;
+        box-shadow: 0 8px 18px rgba(0, 0, 0, 0.18);
+        transform: rotate(-3deg);
         animation: _animation-float 3s ease-in-out infinite;
       }
 
@@ -114,12 +144,24 @@
       }
 
       h1 {
-        font-size: 3rem;
+        font-size: 2.6rem;
+        line-height: 1.25;
         color: var(--color_Primary);
         margin-bottom: 1rem;
       }
       h1 span {
         color: var(--color_Tertiary);
+      }
+
+      .mt h2 {
+        font-family: var(--font-Body);
+        font-weight: 600;
+        font-size: 1.05rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--color_Secondary);
+        opacity: 0.75;
+        margin-bottom: 0.4rem;
       }
 
       .detail-box {
@@ -137,18 +179,20 @@
       }
 
       .block h3 {
+        font-family: var(--font-Primary);
+        font-size: 1.5rem;
         margin-bottom: 0.3rem;
         color: var(--color_Secondary);
       }
 
       .block p {
         margin: 0.2rem 0;
-        font-size: 1.2rem;
+        font-size: 1.05rem;
       }
 
       .block a {
         color: var(--color_Primary);
-        text-decoration: underline;
+        text-decoration: none;
       }
 
       .confirm-attendance {
@@ -169,39 +213,57 @@
         display: flex;
         justify-content: space-between;
         flex-wrap: nowrap;
-        gap: 0.5rem;
-        margin-top: 0.5rem;
+        gap: 0.6rem;
+        margin-top: 0.6rem;
       }
       .clock div {
         flex: 1;
-        background: #ffffffcc;
-        padding: 5px;
-        border-radius: 10px;
-        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        background: #fff;
+        padding: 0.6rem 0.3rem;
+        border-radius: 14px;
+        border: 1px solid var(--ink-soft);
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
       }
       .clock span {
-        font-size: 1.8rem;
+        font-family: var(--font-Primary);
+        font-size: 1.9rem;
         font-weight: bold;
         color: var(--color_Primary);
         display: block;
+        line-height: 1;
       }
       .clock small {
-        font-size: 1rem;
+        font-size: 0.7rem;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
         color: var(--color_Secondary);
+        opacity: 0.75;
       }
 
       .btn {
-        display: inline-block;
-        padding: 2rem 2rem;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.6rem;
+        padding: 0.9rem 2.2rem;
         background-color: var(--color_Quaternary) !important;
         color: #090703 !important;
         text-decoration: none !important;
         border-radius: 30px;
-        font-weight: bold;
-        transition: transform 0.3s ease;
+        font-family: var(--font-Body);
+        font-size: 1.1rem;
+        font-weight: 700;
+        letter-spacing: 0.02em;
+        box-shadow: 0 8px 18px rgba(0, 0, 0, 0.14);
+        transition:
+          transform 0.3s ease,
+          box-shadow 0.3s ease;
       }
       .btn:hover {
         transform: scale(1.05);
+        box-shadow: 0 10px 22px rgba(0, 0, 0, 0.18);
+      }
+      .btn i {
+        color: var(--color_Primary);
       }
 
       .confirm-attendance .mt {
@@ -209,20 +271,23 @@
       }
 
       .subcontainerbook {
-        padding: 2rem 1.5rem;
+        padding: 2rem 1.5rem 2.5rem;
         width: 100%;
         max-width: 500px;
         animation: _animation-fade-in 1s ease-in-out;
       }
 
       .bookTitle {
+        display: inline-block;
+        font-size: 1.4rem;
         background-color: white;
-        box-shadow: 5px 0px 20px rgba(0, 0, 0, 0.2);
+        box-shadow: 5px 0px 20px rgba(0, 0, 0, 0.15);
+        border: 1px solid var(--ink-soft);
         border-radius: 50px;
-        padding: 0.5rem 0.5rem;
+        padding: 0.4rem 1.4rem;
         text-align: center;
         color: var(--color_Primary);
-        margin-bottom: 1.5rem;
+        margin-bottom: 1.75rem;
       }
 
       .book-wrapper {
@@ -230,6 +295,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        padding: 1.5rem 0 1rem;
       }
 
       .book {
@@ -239,6 +305,22 @@
         position: relative;
         perspective: 2000px;
         cursor: pointer;
+        /* Grounds the album like it's resting on a surface, without changing the positioning context */
+        filter: drop-shadow(0 16px 12px rgba(60, 40, 20, 0.28));
+      }
+
+      /* Stacked-pages silhouette peeking from the right edge of the closed book */
+      .book::after {
+        content: "";
+        position: absolute;
+        top: 4px;
+        right: -6px;
+        width: 10px;
+        height: calc(100% - 8px);
+        background: repeating-linear-gradient(180deg, #fff 0 2px, #eee 2px 4px);
+        border-radius: 0 6px 6px 0;
+        box-shadow: 2px 0 6px rgba(0, 0, 0, 0.12);
+        z-index: 0;
       }
 
       .book::before {
@@ -308,12 +390,16 @@
         backface-visibility: hidden;
         overflow: hidden;
         border-radius: 15px;
+        background: #fff;
+        padding: 6px 6px 16px;
+        box-sizing: border-box;
       }
 
       .face img {
         width: 100%;
         height: 100%;
         object-fit: cover;
+        border-radius: 4px;
       }
 
       .back {
@@ -356,27 +442,30 @@
       #themeSwitcher {
         position: fixed;
         top: 50%;
+        left: 14px;
         transform: translateY(-50%);
         display: flex;
         flex-direction: column;
         gap: 10px;
         background: white;
-        padding: 5px;
+        padding: 8px 6px;
         border-radius: 20px;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        box-shadow: 0 4px 14px rgba(0, 0, 0, 0.18);
         z-index: 999;
       }
 
       .theme-btn {
-        width: 20px;
-        height: 20px;
+        width: 22px;
+        height: 22px;
         border-radius: 50%;
-        border: none;
+        border: 2px solid #fff;
+        outline: 1px solid rgba(0, 0, 0, 0.12);
         cursor: pointer;
-        transition: transform 0.3s;
+        transition: transform 0.25s ease;
       }
 
-      .theme-btn:hover {
+      .theme-btn:hover,
+      .theme-btn:focus-visible {
         transform: scale(1.2);
       }
 
@@ -386,12 +475,14 @@
         left: 0;
         width: 100%;
         height: 100%;
-        background: rgba(255, 255, 255, 1);
+        background: var(--paper);
         z-index: 2000;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        gap: 0.5rem;
+        font-family: var(--font-Primary);
         font-size: 1.7rem;
         font-weight: bold;
         color: var(--color_Primary, #333);
@@ -423,10 +514,13 @@
       }
 
       .subcontainerTimeline h2 {
+        display: inline-block;
         background-color: white;
-        box-shadow: 5px 0px 20px rgba(0, 0, 0, 0.2);
+        box-shadow: 5px 0px 20px rgba(0, 0, 0, 0.15);
+        border: 1px solid var(--ink-soft);
         border-radius: 50px;
-        padding: 0.5rem 0.5rem;
+        padding: 0.4rem 1.4rem;
+        margin-bottom: 0.5rem;
       }
 
       .timeline {
@@ -478,14 +572,16 @@
       }
 
       .timeline .content {
-        padding: 20px 0px 20px 10px;
+        padding: 16px 12px 16px 14px;
         background-color: white !important;
         position: relative;
-        border-radius: 6px;
-        box-shadow: 5px 0px 20px rgba(0, 0, 0, 0.2);
+        border-radius: 14px;
+        border: 1px solid var(--ink-soft);
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
         display: flex;
         align-items: center;
-        justify-content: space-between;
+        gap: 0.6rem;
+        justify-content: flex-start;
       }
 
       .timeline .content .location-maps {
@@ -495,10 +591,19 @@
         border-radius: 50%;
       }
 
+      .timeline .content .timeline-icon {
+        font-size: 1.4rem;
+        line-height: 1;
+        flex-shrink: 0;
+      }
+
       .timeline .content h3 {
         margin: 0;
         color: var(--color_Secondary);
-        font-size: 1.2rem;
+        font-family: var(--font-Body);
+        font-weight: 600;
+        font-size: 1.05rem;
+        text-align: left;
       }
 
       @media screen and (max-width: 768px) {
@@ -566,23 +671,28 @@
       }
 
       ._btn-gift {
-        border: 5px solid rgba(255, 255, 255, 0.1);
-        background: rgb(255 255 255 / 0%);
-        border-radius: 8px;
-        box-shadow: 0 4px 6px 0 #ccc;
+        border: 1px solid var(--ink-soft);
+        background: #fff;
+        border-radius: 12px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
         color: var(--color_Secondary);
         cursor: pointer;
-        font-family: var(--font-TenorSans);
-        font-size: 1.2rem;
-        padding: 10px;
+        font-family: var(--font-Body);
+        font-weight: 600;
+        font-size: 1.05rem;
+        padding: 10px 16px;
         text-decoration: none;
         display: flex;
         align-items: center;
         justify-content: flex-start;
+        transition:
+          box-shadow 0.25s ease,
+          transform 0.25s ease;
       }
 
       ._btn-gift:hover {
-        box-shadow: 0 2px 10px var(--color_Tertiary);
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.14);
+        transform: translateY(-2px);
       }
 
       ._btn-gift a {
@@ -698,7 +808,7 @@
     <div class="container">
       <main role="main" class="w-100">
         <div id="player">
-          <audio id="audio" src="#" data-replace="AudioUrl" loop></audio>
+          <audio id="audio" src="#" data-replace="AudioUrl" preload="none" loop></audio>
         </div>
         <span id="audioButton" class="_template-Audio-Button on off">
           <img src="#" data-replace="Image_AudioUrl" alt="Audio" />
@@ -715,7 +825,7 @@
               <span data-replace="EventName"></span>
               !
             </h1>
-            <div class="mt">
+            <div class="_counter-section mt">
               <h2>Faltan:</h2>
               <div id="countdown">
                 <div class="clock">
@@ -768,37 +878,43 @@
         </section>
 
         <!-- Timeline section -->
-        <section class="detail-box">
+        <section class="_itinerary-section detail-box">
           <div class="subcontainerTimeline">
             <h2>Itinerario</h2>
             <div class="timeline">
               <div class="timeline-event left">
                 <div class="content">
+                  <span class="timeline-icon" aria-hidden="true">🎈</span>
                   <h3>Recepción y bienvenida</h3>
                 </div>
               </div>
               <div class="timeline-event right">
                 <div class="content">
+                  <span class="timeline-icon" aria-hidden="true">🎲</span>
                   <h3>Juegos</h3>
                 </div>
               </div>
               <div class="timeline-event left">
                 <div class="content">
+                  <span class="timeline-icon" aria-hidden="true">🍽️</span>
                   <h3>Comida</h3>
                 </div>
               </div>
               <div class="timeline-event right">
                 <div class="content">
+                  <span class="timeline-icon" aria-hidden="true">🎁</span>
                   <h3>Apertura de regalos</h3>
                 </div>
               </div>
               <div class="timeline-event left">
                 <div class="content">
+                  <span class="timeline-icon" aria-hidden="true">📸</span>
                   <h3>Sesión fotográfica</h3>
                 </div>
               </div>
               <div class="timeline-event right">
                 <div class="content">
+                  <span class="timeline-icon" aria-hidden="true">💌</span>
                   <h3>Agradecimiento y Cierre</h3>
                 </div>
               </div>
@@ -807,7 +923,7 @@
         </section>
 
         <!-- Album book section -->
-        <section class="box">
+        <section class="_gallery-section box">
           <div class="subcontainerbook">
             <h2 class="bookTitle">Momentos ✨</h2>
             <div class="book-wrapper">
@@ -817,7 +933,7 @@
           </div>
         </section>
 
-        <section class="detail-box">
+        <section class="_gifttable-section detail-box">
           <div class="subcontainer _section-gifttable">
             <h2>Regalos</h2>
             <p>Para nosotros tu presencia es nuestro mejor regalo, pero si deseas hacernos llegar un obsequio, te sugerimos la siguiente opción:</p>
@@ -835,7 +951,7 @@
         </section>
 
         <!-- Final section to confirm attendance  -->
-        <section class="confirm-attendance">
+        <section class="_attendance-section confirm-attendance">
           <div class="subcontainer">
             <h2>¿Nos acompañas?</h2>
             <a href="#" data-replace="WhatsAppUrl" target="_blank" class="btn">
@@ -862,7 +978,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js" defer></script>
     <!-- Bootstrap con defer -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" defer></script>
-
+    <script src="https://cdn.jsdelivr.net/npm/toastify-js" defer></script>
     <script type="module">
       import { helpers } from "../js/modules/helpers.js";
       import { rsvp } from "../js/modules/helpers.js";
@@ -880,16 +996,14 @@
         AudioUrl: "../music/Here Comes The Sun.mp3",
         Sections: {
           showCounter: true,
-          showIntroduction: true,
-          showParents: true,
           showItinerary: true,
           showGallery: true,
           showAttendance: true,
-          showGiftTable: true,
+          showGiftTable: false,
         },
         ShowElements: {
-          showAmazonOption: true,
-          showLiverpoolOption: true,
+          showAmazonOption: false,
+          showLiverpoolOption: false,
         },
       };
 
@@ -962,7 +1076,7 @@
               ImageCoverPage: "../images/babyShower/album-3.avif",
               Name: "Aitana y Alex",
             },
-          }
+          },
         },
         RSVP: configRSVP,
         MainEvent: mainEvent,
