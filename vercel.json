@@ -14,12 +14,12 @@
       "destination": "/templates/Wedding_:id.html"
     },
     {
-      "source": "/(wedding-[^/]+|babyshower-[^/]+|xv-[^/]+)/:token",
-      "destination": "/clientes/$1/index.html?token=:token"
+      "source": "/:tipo(wedding-[^/]+|babyshower-[^/]+|xv-[^/]+)/:token",
+      "destination": "/clientes/:tipo/index.html?token=:token"
     },
     {
-      "source": "/(wedding-[^/]+|babyshower-[^/]+|xv-[^/]+)",
-      "destination": "/clientes/$1/index.html"
+      "source": "/:tipo(wedding-[^/]+|babyshower-[^/]+|xv-[^/]+)",
+      "destination": "/clientes/:tipo/index.html"
     }
   ]
 }
