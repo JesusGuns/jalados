@@ -2,15 +2,15 @@
   "cleanUrls": true,
   "rewrites": [
     {
-      "source": "/babyshower/:id",
+      "source": "/:tipo(?i:babyshower)/:id",
       "destination": "/templates/BabyShower_:id.html"
     },
     {
-      "source": "/xv/:id",
+      "source": "/:tipo(?i:xv)/:id",
       "destination": "/templates/XV_:id.html"
     },
     {
-      "source": "/wedding/:id",
+      "source": "/:tipo(?i:wedding)/:id",
       "destination": "/templates/Wedding_:id.html"
     },
     {
