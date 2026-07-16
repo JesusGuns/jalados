@@ -185,7 +185,8 @@ export const helpers = {
   },
   onToasty: function (mensaje, colorPrincipal = "#8B5E83") {
     if (Resources.Config.EventType == "Wedding") colorPrincipal = "#a68966";
-    window.Toastify({
+    window
+      .Toastify({
         text: mensaje,
         duration: 4000,
         gravity: "bottom",
@@ -196,7 +197,8 @@ export const helpers = {
           borderRadius: "20px",
           padding: "12px 24px",
         },
-      }).showToast();
+      })
+      .showToast();
   },
   onLoadSections: function () {
     const sections = Resources.Config.Sections;
@@ -322,17 +324,12 @@ export const rsvp = {
       return;
     }
 
-    const pathParts = window.location.pathname.split("/");
+    const pathParts = window.location.pathname.split("/").filter(Boolean);
     let token = "";
     if (Resources.RSVP.Enable && !Resources.Config.Template) {
-      const eventprefix = ["wedding-", "babyshower-", "xv-"];
-      const pathname = eventprefix.some((prefix) => token.toLowerCase().startsWith(prefix)) || token === "index.html";
-
-      if (pathname) {
-        token = "";
-      }
-
-      if (!token) {
+      if (pathParts.length > 1) {
+        token = pathParts[pathParts.length - 1];
+      } else {
         const params = new URLSearchParams(window.location.search);
         token = params.get("token") || "";
       }
