@@ -6,24 +6,48 @@
       "destination": "/templates/BabyShower_:id.html"
     },
     {
+      "source": "/babyshower/:id",
+      "destination": "/templates/babyshower_:id.html"
+    },
+    {
       "source": "/BabyShower/:id",
       "destination": "/templates/BabyShower_:id.html"
+    },
+    {
+      "source": "/BabyShower/:id",
+      "destination": "/templates/babyshower_:id.html"
     },
     {
       "source": "/xv/:id",
       "destination": "/templates/XV_:id.html"
     },
     {
+      "source": "/xv/:id",
+      "destination": "/templates/xv_:id.html"
+    },
+    {
       "source": "/XV/:id",
       "destination": "/templates/XV_:id.html"
+    },
+    {
+      "source": "/XV/:id",
+      "destination": "/templates/xv_:id.html"
     },
     {
       "source": "/wedding/:id",
       "destination": "/templates/Wedding_:id.html"
     },
     {
+      "source": "/wedding/:id",
+      "destination": "/templates/wedding_:id.html"
+    },
+    {
       "source": "/Wedding/:id",
       "destination": "/templates/Wedding_:id.html"
+    },
+    {
+      "source": "/Wedding/:id",
+      "destination": "/templates/wedding_:id.html"
     },
     {
       "source": "/:tipo(wedding-[^/]+|babyshower-[^/]+|xv-[^/]+)/:token",
