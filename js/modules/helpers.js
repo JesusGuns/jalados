@@ -186,17 +186,17 @@ export const helpers = {
   onToasty: function (mensaje, colorPrincipal = "#8B5E83") {
     if (Resources.Config.EventType == "Wedding") colorPrincipal = "#a68966";
     window.Toastify({
-      text: mensaje,
-      duration: 4000,
-      gravity: "bottom",
-      position: "center",
-      style: {
-        background: colorPrincipal,
-        color: "#ffffff",
-        borderRadius: "20px",
-        padding: "12px 24px",
-      },
-    }).showToast();
+        text: mensaje,
+        duration: 4000,
+        gravity: "bottom",
+        position: "center",
+        style: {
+          background: colorPrincipal,
+          color: "#ffffff",
+          borderRadius: "20px",
+          padding: "12px 24px",
+        },
+      }).showToast();
   },
   onLoadSections: function () {
     const sections = Resources.Config.Sections;
@@ -312,18 +312,31 @@ export const helpers = {
 
 export const rsvp = {
   onGetRSVP: function () {
-    // if (Resources.RSVP.Enable && Resources.Config.Template) {
-    //   helpers.onLoadRSVP();
-    //   helpers.onLoadSections();
-    //   return;
-    // }
+    if (Resources.RSVP.Enable && Resources.Config.Template) {
+      helpers.onLoadRSVP();
+      helpers.onLoadSections();
+      return;
+    }
 
     if (!Resources.RSVP.Enable) {
       return;
     }
 
-    const params = new URLSearchParams(window.location.search);
-    const token = params.get("token") || "";
+    const pathParts = window.location.pathname.split("/");
+    let token = "";
+    if (Resources.RSVP.Enable && !Resources.Config.Template) {
+      const eventprefix = ["wedding-", "babyshower-", "xv-"];
+      const pathname = eventprefix.some((prefix) => token.toLowerCase().startsWith(prefix)) || token === "index.html";
+
+      if (pathname) {
+        token = "";
+      }
+
+      if (!token) {
+        const params = new URLSearchParams(window.location.search);
+        token = params.get("token") || "";
+      }
+    }
 
     if (!token) {
       Resources.Config.Sections.showTableNumber = false;
@@ -363,14 +376,14 @@ export const rsvp = {
       .catch((err) => console.error("Error:", err));
   },
   onPostRSPV: function (confirmation, guestAttendants, wishes) {
-    // if (Resources.RSVP.Enable && Resources.Config.Template) {
-    //   if (confirmation) {
-    //     helpers.onToasty(Resources.Messages.Confirmation);
-    //   } else {
-    //     helpers.onToasty(Resources.Messages.WillNotAttend);
-    //   }
-    //   return;
-    // }
+    if (Resources.RSVP.Enable && Resources.Config.Template) {
+      if (confirmation) {
+        helpers.onToasty(Resources.Messages.Confirmation);
+      } else {
+        helpers.onToasty(Resources.Messages.WillNotAttend);
+      }
+      return;
+    }
 
     if (!Resources.RSVP.Enable) {
       return;
