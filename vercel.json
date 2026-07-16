@@ -49,12 +49,12 @@
       "destination": "/templates/wedding_:id.html"
     },
     {
-      "source": "/:tipo(wedding-[^/]+|babyshower-[^/]+|xv-[^/]+)/:token",
-      "destination": "/clientes/:tipo/index.html?token=:token"
+      "source": "/wedding-:cliente/:token",
+      "destination": "/clientes/Wedding/:cliente/index.html?token=:token"
     },
     {
-      "source": "/:tipo(wedding-[^/]+|babyshower-[^/]+|xv-[^/]+)",
-      "destination": "/clientes/:tipo/index.html"
+      "source": "/wedding-:cliente",
+      "destination": "/clientes/Wedding/:cliente/index.html"
     }
   ]
 }

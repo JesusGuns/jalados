@@ -34,12 +34,12 @@ var Resources = {
   MainEvent: {},
   SecondaryEvent: {},
   StaticLinks: {
-    ImageAudioUrl: "../images/icons/play.png",
-    ImageAudioPauseUrl: "../images/icons/pause.png",
-    ImageAmazonUrl: "../images/icons/amazon-256.png",
-    ImageLiverpoolUrl: "../images/icons/liverpool.jpeg",
-    ImageGoogleLocation: "../images/icons/GoogleMaps-256.png",
-    ImageCodeBar: "../images/icons/CodeBar.jpg",
+    ImageAudioUrl: "/images/icons/play.png",
+    ImageAudioPauseUrl: "/images/icons/pause.png",
+    ImageAmazonUrl: "/images/icons/amazon-256.png",
+    ImageLiverpoolUrl: "/images/icons/liverpool.jpeg",
+    ImageGoogleLocation: "/images/icons/GoogleMaps-256.png",
+    ImageCodeBar: "/images/icons/CodeBar.jpg",
   },
   Messages: {
     Confirmation: "¡Qué alegría! Tu asistencia ha sido confirmada. ✨",

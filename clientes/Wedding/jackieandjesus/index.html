@@ -1,0 +1,1925 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="google" content="notranslate" />
+
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
+
+    <!-- Primary Meta Tags -->
+    <title>Nuestra Boda</title>
+    <meta name="title" content="Nuestra Boda" />
+    <meta name="description" content="Te invitamos a formar parte del día más feliz de nuestras vidas. Acompáñanos a celebrar nuestra boda." />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://jalados.vercel.app/templates/Wedding_1.html" />
+    <meta property="og:title" content="Nuestra Boda" />
+    <meta property="og:description" content="Te invitamos a formar parte del día más feliz de nuestras vidas. Acompáñanos a celebrar nuestra boda." />
+    <meta property="og:image" content="https://jalados.vercel.app/images/icons/_favicon-Wedding.png" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://jalados.vercel.app/templates/Wedding_1.html" />
+    <meta name="twitter:title" content="Nuestra Boda" />
+    <meta name="twitter:description" content="Te invitamos a formar parte del día más feliz de nuestras vidas. Acompáñanos a celebrar nuestra boda." />
+    <meta name="twitter:image" content="https://jalados.vercel.app/images/icons/_favicon-Wedding.png" />
+
+    <link rel="icon" type="image/png" sizes="196x196" href="https://jalados.vercel.app/images/icons/_favicon-Wedding-196.png" />
+
+    <link rel="preload" fetchpriority="high" as="image" href="./1.webp" type="image/webp" />
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css" crossorigin />
+    <link rel="stylesheet" href="/css/templates.css" />
+
+    <!-- Font Awesome-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media = 'all'" />
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&family=Playfair+Display&display=swap" rel="stylesheet" media="print" onload="this.media = 'all'" />
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css" media="print" onload="this.media = 'all'" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery/css/lightgallery-bundle.min.css" media="print" onload="this.media = 'all'" />
+    <!-- Toastify-->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css" media="print" onload="this.media = 'all'" />
+
+    <style>
+      /* #region ROOT*/
+      :root {
+        --color-primary: #2d2d2d;
+        --color-secondary: #faf5ef;
+        --color-accent: #a68966;
+        --color-c: #ddd0c0;
+        --color-d: #938a79;
+
+        --color-h1: #1f1f1f;
+
+        --color-e: #4a4a4a;
+
+        --font-a: "HelloHoney", Sans-serif;
+        --font-b: "monallesia";
+        --font-c: "PlayFair Italica", serif;
+        --font-d: "Google Sans", sans-serif;
+        --font-e: "Eastpoint", serif;
+        --font-f: "Playfair Display", serif;
+
+        --fs-base: 16px;
+        --fs-h1: clamp(4rem, 9vw, 5rem);
+        --fs-h2: clamp(1.2rem, 4vw, 2rem);
+        --fs-body: clamp(1rem, 2.5vw, 1.2rem);
+      }
+
+      /* #endregion ROOT*/
+      /* #region HTML*/
+      body {
+        background-color: #ffffff;
+        overflow-anchor: none;
+      }
+
+      /* #endregion HTML*/
+      html {
+        overflow-anchor: none;
+      }
+
+      .content {
+        position: relative;
+        z-index: 1;
+        overflow-x: hidden;
+        width: 100%;
+      }
+
+      /* #region TEMPLATE */
+      /* #region ANIMATIONS */
+      @keyframes _animation-pulse-3 {
+        0% {
+          transform: scale(1);
+          box-shadow: 0 0 0 0 rgba(201, 164, 107, 0.4);
+        }
+        70% {
+          transform: scale(1.04);
+          box-shadow: 0 0 0 8px rgba(201, 164, 107, 0);
+        }
+        100% {
+          transform: scale(1);
+          box-shadow: 0 0 0 0 rgba(201, 164, 107, 0);
+        }
+      }
+
+      @keyframes slideInRight {
+        0% {
+          transform: translateX(50px); /* 👈 En lugar de 100%, solo 50px a la derecha */
+          opacity: 0;
+        }
+        100% {
+          transform: translateX(0);
+          opacity: 1;
+        }
+      }
+
+      @keyframes slideInLeft {
+        0% {
+          transform: translateX(-50px); /* 👈 En lugar de -100%, solo 50px a la izquierda */
+          opacity: 0;
+        }
+        100% {
+          transform: translateX(0);
+          opacity: 1;
+        }
+      }
+
+      @keyframes slideDown {
+        0% {
+          transform: translateY(-50%);
+          opacity: 0;
+        }
+        100% {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+
+      @keyframes _pulse-btn {
+        0% {
+          box-shadow: 0 0 10px rgba(166, 137, 102, 0.4);
+          transform: scale(1);
+        }
+
+        50% {
+          box-shadow: 0 0 25px rgba(166, 137, 102, 0.6);
+          transform: scale(1.05);
+        }
+
+        100% {
+          box-shadow: 0 0 10px rgba(166, 137, 102, 0.4);
+          transform: scale(1);
+        }
+      }
+      /* #endregion ANIMATIONS */
+
+      ._template {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        width: 100%;
+        overflow-x: hidden; /* 👈 Refuerzo para asegurar que nada rompa el ancho */
+      }
+
+      .dc-map {
+        flex-shrink: 0;
+        align-self: center;
+      }
+      .dc-map img {
+        width: 45px;
+        height: 45px;
+        animation: _animation-pulse-3 1.5s infinite;
+        border-radius: 50%;
+        object-fit: contain;
+      }
+      ._common-d-flex {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      ._common-flex-column {
+        flex-direction: column;
+      }
+      ._hide-section {
+        display: none !important;
+      }
+
+      .slide-right {
+        opacity: 0;
+      }
+
+      .slide-right.visible {
+        animation: slideInRight 1s ease-out forwards;
+      }
+
+      .slide-left {
+        opacity: 0;
+      }
+
+      .slide-left.visible {
+        animation: slideInLeft 1s ease-out forwards;
+      }
+
+      .slide-down {
+        opacity: 0;
+        transform: translateY(-50%);
+      }
+
+      .slide-down.visible {
+        animation: slideDown 1s ease forwards;
+      }
+
+      .slide-up h2 {
+        opacity: 0;
+        transform: translateY(30px);
+        transition:
+          opacity 0.6s ease,
+          transform 0.6s ease;
+        will-change: transform, opacity;
+      }
+
+      .slide-up p {
+        opacity: 0;
+        transform: translateY(30px);
+        transition:
+          opacity 1.2s ease,
+          transform 1.2s ease; /* más lenta que h2 */
+        will-change: transform, opacity;
+      }
+
+      .slide-up > h2.visible,
+      .slide-up > p.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* Efecto personalizado para las imágenes de la galería al hacer scroll */
+      .fade-scroll {
+        opacity: 0;
+        transform: translateY(30px);
+        transition:
+          opacity 0.7s ease-out,
+          transform 0.7s ease-out;
+        will-change: transform, opacity;
+      }
+
+      /* Estado activo cuando el elemento entra en la pantalla */
+      .fade-scroll.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* #region AUDIO */
+      ._template-Audio-Button {
+        position: fixed;
+        top: 18px;
+        right: 18px;
+        z-index: 200;
+        width: 42px;
+        height: 42px;
+        border-radius: 50%;
+        background: rgba(14, 7, 16, 0.75);
+        backdrop-filter: blur(10px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        border: 1px solid rgba(201, 164, 107, 0.55);
+        box-shadow: 0 2px 16px rgba(0, 0, 0, 0.5);
+        transition: all 0.3s ease;
+        animation: none;
+      }
+      ._template-Audio-Button img {
+        width: 22px;
+        filter: invert(1);
+        background: transparent;
+        border-radius: 0;
+      }
+      ._template-Audio-Button:hover {
+        background: rgba(201, 164, 107, 0.4);
+        border-color: rgba(201, 164, 107, 0.9);
+      }
+      ._template-Audio-Button.off {
+        background: rgba(201, 169, 110, 0.25);
+        border-color: rgba(255, 255, 255, 0.2);
+      }
+      /* #endregion AUDIO */
+
+      /* #region Play Button*/
+      ._play-button {
+        width: clamp(70px, 10vw, 100px);
+        height: clamp(70px, 10vw, 100px);
+        background: rgba(255, 255, 255, 0.63);
+        border-radius: 50%;
+        position: relative;
+        cursor: pointer;
+        animation: _animation-pulse-3 1.8s infinite;
+        transition: transform 0.2s ease;
+      }
+
+      ._play-button:hover {
+        transform: scale(1.1);
+        animation-play-state: paused;
+      }
+
+      ._play-button:active {
+        transform: scale(0.95);
+      }
+
+      /* Triángulo (icono play) */
+      ._play-button::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-40%, -50%);
+        width: 0;
+        height: 0;
+        border-left: 30px solid var(--color-primary);
+        border-top: 20px solid transparent;
+        border-bottom: 20px solid transparent;
+      }
+
+      /* #endregion Play Button*/
+
+      /* #region MAIN */
+      ._main-section {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        position: relative;
+        width: 100%;
+        max-width: 100%;
+      }
+
+      ._main-section ._wrapper {
+        position: relative;
+      }
+
+      ._main-section ._wrapper::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.04);
+        z-index: 1;
+      }
+
+      ._main-section img._main-image {
+        width: 100%;
+        height: 100dvh;
+        object-fit: cover;
+        object-position: center;
+        display: block;
+      }
+
+      ._main-section img._main-mono {
+        position: absolute;
+        top: 5%;
+        left: 50%;
+        transform: translateX(-50%);
+        width: clamp(120px, 12vw, 160px);
+        height: auto;
+        z-index: 2;
+      }
+
+      ._main-section ._details {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        padding: 2rem 5px;
+        z-index: 2;
+      }
+
+      ._main-section ._details h1 {
+        font-family: var(--font-a);
+        font-size: var(--fs-h1);
+        line-height: 0.9;
+        padding: 0 10px;
+        margin: 0;
+        text-align: center;
+        color: var(--color-secondary);
+        text-shadow: 2px 2px 10px var(--color-primary);
+      }
+
+      ._main-section ._details h2 {
+        font-family: var(--font-d);
+        font-style: italic;
+        font-weight: bold;
+        font-size: clamp(1rem, 2.5vw, 1.5rem);
+        text-transform: uppercase;
+        letter-spacing: 4px;
+        text-shadow: 2px 2px 10px var(--color-primary);
+        margin: 0.5rem 0;
+        text-align: center;
+        color: var(--color-secondary);
+      }
+
+      @media (max-width: 767.98px) {
+        ._main-section {
+          width: 100%;
+          overflow: hidden;
+        }
+      }
+
+      /* #region COUNTER */
+      ._counter-section {
+        width: 100%;
+        max-width: 350px;
+      }
+
+      ._counter-section ._counter-Countdown {
+        display: flex;
+        align-items: stretch;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 10px;
+        border-radius: 15px;
+        margin: 2rem;
+        box-shadow: none !important;
+        background: rgba(255, 255, 255, 0.1);
+        transition:
+          background-color 0.3s ease,
+          box-shadow 0.3s ease;
+      }
+
+      ._counter-section ._counter-Timebox {
+        font-family: var(--font-c);
+        font-size: clamp(0.8rem, 1.5vw, 1rem);
+        letter-spacing: 2.5px;
+        flex: 1;
+        min-width: 65px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        color: var(--color-primary);
+        text-shadow: 0 2px 6px rgba(0, 0, 0, 1);
+        border-radius: 5px;
+        padding: 10px;
+        background-color: var(--color-c);
+      }
+
+      ._counter-section ._counter-Timebox span {
+        font-family: var(--font-c);
+        font-weight: normal;
+        font-size: clamp(2rem, 5vw, 3rem);
+        height: auto;
+        display: block;
+      }
+
+      @media (max-width: 1399.98px) {
+        ._counter-section {
+          max-width: 600px;
+        }
+      }
+
+      /* #region SECONDARY */
+      ._introduction-section {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        position: relative;
+        width: 100%;
+        max-width: 100%;
+      }
+
+      ._introduction-section ._wrapper {
+        position: relative;
+      }
+
+      ._introduction-section ._wrapper::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.2);
+        z-index: 1;
+      }
+
+      ._introduction-section img._main-image {
+        width: 100%;
+        height: 100dvh;
+        object-fit: cover;
+        display: block;
+      }
+
+      ._introduction-section ._details {
+        position: absolute;
+        inset: 0;
+        z-index: 2;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        padding: 15px 10px;
+        width: 90%;
+        max-width: 500px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      ._introduction-section ._details h2 {
+        font-family: var(--font-d);
+        font-size: clamp(1.4rem, 3vw, 1.8rem);
+        letter-spacing: 2px;
+        margin: 0;
+        text-align: center;
+        color: var(--color-secondary);
+        text-shadow: 2px -2px 10px var(--color-primary);
+      }
+
+      @media (max-width: 767.98px) {
+        ._introduction-section img._main-image {
+          width: 100%;
+          height: auto;
+          max-width: 100%;
+          display: block;
+        }
+      }
+
+      /* #region FAMILY */
+      ._family-section {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        text-align: center;
+        margin: 1.5rem 0 0 0;
+      }
+
+      ._family-section > div {
+        flex: 1;
+        padding: 1.5rem;
+        border-radius: 12px;
+      }
+
+      ._family-section h1 {
+        font-family: var(--font-b);
+        font-style: italic;
+        font-size: clamp(1.2rem, 2.5vw, 1.7rem);
+        line-height: 1.4;
+        letter-spacing: 1px;
+        margin: 0;
+        text-align: center;
+        color: var(--color-h1);
+        text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+      }
+
+      ._family-section small {
+        font-family: var(--font-c);
+        font-style: italic;
+        font-size: clamp(0.85rem, 1.2vw, 0.95rem);
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        display: block;
+        margin-top: 1rem;
+        text-align: center;
+        color: var(--color-accent);
+        text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+      }
+
+      @media (max-width: 575.98px) {
+        ._family-section {
+          flex-direction: column;
+          gap: 2rem;
+          text-align: center;
+        }
+      }
+
+      /* #region PLACE SECTION */
+      ._place-section {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 2rem;
+        border-radius: 15px;
+        margin: 1.5rem auto;
+        width: 100%;
+        max-width: 900px;
+        padding: 2rem;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        background: rgba(255, 255, 255, 0.4);
+        backdrop-filter: blur(8px);
+      }
+
+      ._place-section img._main-image {
+        width: 200px;
+        height: auto;
+        object-fit: cover;
+        border-radius: 10px;
+      }
+
+      ._place-section h2 {
+        font-family: var(--font-c);
+        font-weight: 600;
+        font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+        letter-spacing: 2px;
+        text-align: center;
+        color: var(--color-accent);
+        text-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+      }
+
+      ._place-section small {
+        font-family: var(--font-c);
+        font-size: clamp(0.85rem, 1.2vw, 0.95rem);
+        font-weight: 600;
+        line-height: 1.5;
+        text-align: center;
+        color: var(--color-primary);
+        text-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
+        margin-bottom: 1rem;
+        max-width: 300px;
+      }
+
+      @media (max-width: 1399.98px) {
+        ._place-section {
+          width: 55%;
+        }
+      }
+
+      @media (max-width: 767.98px) {
+        ._place-section {
+          width: 90%;
+        }
+      }
+
+      @media (max-width: 575.98px) {
+        ._place-section {
+          width: 90%;
+          padding: 1.5rem 1rem;
+          flex-direction: column;
+        }
+      }
+
+      /* #region TIMELINE */
+      ._itinerary-section {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 2.5rem 0;
+        overflow-x: hidden;
+      }
+
+      ._itinerary-section ._main-image {
+        max-width: 600px;
+      }
+
+      @media (max-width: 575.98px) {
+        ._itinerary-section ._main-image {
+          width: 85%;
+        }
+      }
+
+      /* #region GALLERY */
+      ._gallery-section {
+        column-count: 2;
+        column-gap: 15px;
+        max-width: 900px;
+        margin: 1rem auto;
+      }
+
+      ._gallery-section .gal-item {
+        break-inside: avoid;
+        margin-bottom: 15px;
+        border-radius: 10px;
+        overflow: hidden;
+        background: rgba(0, 0, 0, 0.05);
+        /* Placeholder de proporcion: reserva espacio ANTES de que la imagen
+           cargue para que la seccion nunca colapse a 0px de alto. Se
+           actualiza a la proporcion real de cada foto cuando termina de cargar. */
+        aspect-ratio: 3 / 4;
+        cursor: zoom-in;
+      }
+
+      ._gallery-section .gal-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+
+        opacity: 0;
+        transform: scale(1.04);
+        transition:
+          transform 0.4s ease,
+          opacity 0.4s ease;
+      }
+
+      ._gallery-section .gal-item img.show {
+        opacity: 1;
+        transform: scale(1);
+      }
+
+      ._gallery-section .gal-item:hover img {
+        transform: scale(1.05);
+        filter: brightness(1.05);
+      }
+
+      @media (max-width: 900px) {
+        ._gallery-section {
+          column-count: 2;
+        }
+      }
+
+      @media (max-width: 600px) {
+        ._gallery-section {
+          column-count: 1;
+        }
+      }
+
+      #_gallery-modal {
+        position: fixed;
+        inset: 0;
+        z-index: 2000;
+        background: rgba(0, 0, 0, 0.92);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        visibility: hidden;
+        cursor: zoom-out;
+        transition:
+          opacity 0.3s ease,
+          visibility 0.3s ease;
+      }
+
+      #_gallery-modal img {
+        max-width: 90%;
+        max-height: 85vh;
+        border-radius: 10px;
+        cursor: default;
+        transform: scale(0.9);
+        transition: transform 0.3s ease;
+        position: relative;
+        z-index: 1;
+      }
+
+      #_gallery-modal.show {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      #_gallery-modal.show img {
+        transform: scale(1);
+      }
+
+      #_gallery-modal .close,
+      #_gallery-modal .gallery-nav {
+        position: absolute;
+        z-index: 10;
+        cursor: pointer;
+        color: white;
+        background: rgba(0, 0, 0, 0.35);
+        border: none;
+        transition:
+          color 0.2s ease,
+          background 0.2s ease;
+      }
+
+      #_gallery-modal .close {
+        top: 16px;
+        right: 16px;
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        font-size: 26px;
+        line-height: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      #_gallery-modal .gallery-nav {
+        top: 50%;
+        transform: translateY(-50%);
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        font-size: 22px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      #_gallery-modal .gallery-nav.prev {
+        left: 12px;
+      }
+
+      #_gallery-modal .gallery-nav.next {
+        right: 12px;
+      }
+
+      #_gallery-modal .close:hover,
+      #_gallery-modal .gallery-nav:hover {
+        color: var(--color-accent);
+        background: rgba(0, 0, 0, 0.55);
+      }
+
+      #_gallery-modal .gallery-counter {
+        position: absolute;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 10;
+        color: white;
+        font-size: 14px;
+        letter-spacing: 1px;
+        background: rgba(0, 0, 0, 0.35);
+        padding: 4px 12px;
+        border-radius: 20px;
+      }
+
+      @media (max-width: 600px) {
+        #_gallery-modal .gallery-nav {
+          width: 40px;
+          height: 40px;
+        }
+      }
+
+      /* #region THIRD SECTION */
+      ._third-section {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        position: relative;
+        width: 100%;
+        max-width: 100%;
+      }
+
+      ._third-section ._wrapper {
+        position: relative;
+      }
+
+      ._third-section ._wrapper::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.4);
+        z-index: 1;
+      }
+
+      ._third-section img._main-image {
+        width: 100%;
+        height: 100dvh;
+        object-fit: cover;
+        display: block;
+      }
+
+      ._third-section ._details {
+        position: absolute;
+        inset: 0;
+        z-index: 2;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 90%;
+        max-width: 500px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      ._third-section ._details p {
+        font-family: var(--font-d);
+        font-variant-ligatures: none;
+        font-feature-settings: "liga" 0;
+        letter-spacing: 1px;
+        font-size: var(--fs-body);
+        line-height: 1.4;
+        text-align: center;
+        margin: 0;
+        color: var(--color-secondary);
+        text-shadow: 2px 2px 10px var(--color-primary);
+      }
+
+      @media (max-width: 767.98px) {
+        ._third-section img._main-image {
+          height: auto;
+          max-height: 100dvh;
+        }
+      }
+
+      @media (max-width: 575.98px) {
+        ._third-section ._details {
+          width: 90%;
+        }
+      }
+
+      /* #region VIDEO */
+      ._video-section {
+        width: 100%;
+      }
+
+      ._video-section iframe {
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        height: auto;
+      }
+
+      /* #region DRESSCODE */
+      ._dresscode-section {
+        padding: 4rem 0 0;
+        gap: 5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        width: 100%;
+      }
+
+      ._dresscode-section .vr {
+        border-left: 2px solid var(--color-primary);
+        margin: 0 0 0 20px;
+      }
+
+      ._dresscode-section ._main-image {
+        max-width: 450px;
+        position: relative;
+        right: 3%;
+      }
+
+      ._dresscode-section h2,
+      ._dresscode-section h3 {
+        font-family: var(--font-f);
+        text-align: center;
+        color: var(--color-primary);
+        text-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+      }
+
+      ._dresscode-section h1 {
+        font-family: var(--font-e);
+        font-size: clamp(3.5rem, 10vw, 8.2rem);
+        font-weight: normal;
+        margin: 0;
+        line-height: 0.4;
+        text-align: center;
+        color: var(--color-primary);
+        text-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+      }
+
+      ._dresscode-section h2 {
+        font-size: clamp(2rem, 4vw, 3rem);
+        font-weight: bold;
+        letter-spacing: 10px;
+      }
+
+      ._dresscode-section h3 {
+        font-size: clamp(1.3rem, 3vw, 2rem);
+        font-family: var(--font-f);
+        letter-spacing: 15px;
+      }
+
+      @media (max-width: 575.98px) {
+        ._dresscode-section ._main-image {
+          width: 40%;
+        }
+      }
+
+      /* #region CONFIRMATION */
+      ._attendance-section {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        min-height: 100vh;
+        padding: 20px;
+        width: 100%;
+      }
+
+      ._attendance-section > div {
+        width: 100%;
+        border-radius: 15px;
+        max-width: 600px;
+        padding: 2.5rem 2rem;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        background: rgba(255, 255, 255, 0.45);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.25);
+      }
+
+      ._attendance-section h1 {
+        font-family: var(--font-b);
+        font-weight: bold;
+        font-size: clamp(1.8rem, 4vw, 2.5rem);
+        text-align: center;
+        color: var(--color-h1);
+        text-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+        margin-top: 1rem;
+      }
+
+      ._attendance-section h2 {
+        font-family: var(--font-d);
+        font-size: clamp(1rem, 2.5vw, 1.4rem);
+        text-align: center;
+        color: var(--color-h1);
+        text-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+        margin: 0.75rem 0 2rem;
+      }
+
+      ._attendance-section .form-fields {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 1.25rem;
+      }
+
+      ._attendance-section label {
+        display: block;
+        font-weight: bold;
+        color: var(--color-primary);
+        font-family: var(--font-d);
+        letter-spacing: 0.5px;
+        margin-bottom: 0.5rem;
+      }
+
+      ._attendance-section textarea {
+        width: 100%;
+        resize: none;
+        border-radius: 8px;
+        height: 50px;
+        padding: 10px 14px;
+        border: 1px solid rgba(166, 137, 102, 0.4);
+        background: rgba(255, 255, 255, 0.55);
+        font-family: var(--font-d);
+        font-size: 0.95rem;
+        color: var(--color-primary);
+        transition:
+          border-color 0.25s ease,
+          background-color 0.25s ease;
+      }
+
+      ._attendance-section textarea::placeholder {
+        color: var(--color-d);
+      }
+
+      ._attendance-section textarea:focus {
+        outline: none;
+        border-color: var(--color-accent);
+        background: rgba(255, 255, 255, 0.85);
+      }
+
+      ._attendance-section textarea[name="wishes"] {
+        min-height: 90px;
+      }
+
+      ._attendance-section .d-flex {
+        gap: 1rem;
+      }
+
+      ._attendance-section button {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        background-color: rgba(255, 255, 255, 0.2);
+        color: var(--color-primary);
+        font-family: var(--font-d);
+        font-weight: bold;
+        font-size: clamp(0.95rem, 2vw, 1.1rem);
+        padding: 12px 25px;
+        border-radius: 10px;
+        border: 2px solid rgba(255, 255, 255, 0.3);
+        cursor: pointer;
+        text-decoration: none;
+        transition:
+          transform 0.25s ease,
+          box-shadow 0.25s ease,
+          background-color 0.25s ease,
+          border-color 0.25s ease;
+        will-change: transform;
+      }
+
+      ._attendance-section button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+      }
+
+      ._attendance-section button:active {
+        transform: translateY(0);
+      }
+
+      ._attendance-section #_btnYes {
+        background-color: var(--color-accent);
+        color: var(--color-secondary);
+        border-color: var(--color-accent);
+      }
+
+      ._attendance-section #_btnYes:hover {
+        background-color: #8f6f4e;
+      }
+
+      ._attendance-section #_btnNo {
+        background-color: rgba(255, 255, 255, 0.25);
+      }
+
+      ._attendance-section #_btnNo:hover {
+        background-color: rgba(255, 255, 255, 0.5);
+      }
+
+      @media (max-width: 575.98px) {
+        ._attendance-section .d-flex {
+          flex-direction: column;
+        }
+      }
+
+      /* #region GIFT TABLE */
+      ._gifttable-section {
+        border-radius: 15px;
+        margin: 3rem auto;
+        width: 35%;
+        padding: 2rem 1rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      ._gifttable-section h1 {
+        font-family: var(--font-b);
+        font-weight: bold;
+        font-size: clamp(2rem, 4vw, 2.5rem);
+        text-align: center;
+        color: var(--color-h1);
+        text-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+        margin-top: 1rem;
+        letter-spacing: 3px;
+      }
+
+      ._gifttable-section p {
+        font-family: var(--font-d);
+        font-weight: 400;
+        font-size: clamp(1rem, 2vw, 1.2rem);
+        text-align: center;
+        color: var(--color-primary);
+        text-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+        margin-top: 1.5rem;
+        letter-spacing: 1.5px;
+      }
+
+      ._btn-brands {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        gap: 1.25rem;
+        width: 100%;
+        margin-top: 1.5rem;
+      }
+
+      ._btn-gift {
+        min-height: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 90%;
+        max-width: 300px;
+        gap: 10px;
+        background-color: rgba(255, 255, 255, 0.6);
+        color: var(--color-primary);
+        font-family: var(--font-d);
+        font-weight: bold;
+        font-size: clamp(1.2rem, 2vw, 1.4rem);
+        padding: 12px 25px;
+        letter-spacing: 0.8px;
+        border-radius: 10px;
+        cursor: pointer;
+        text-decoration: none;
+        transition:
+          transform 0.2s,
+          background-color 0.2s;
+        animation: _pulse-btn 1.5s infinite alternate;
+      }
+
+      ._btn-gift img {
+        width: 65px;
+        height: auto;
+      }
+
+      ._btn-gift:hover {
+        transform: scale(1.05);
+        background-color: rgba(255, 255, 255, 0.3);
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+        animation-play-state: paused;
+      }
+
+      @media (max-width: 1399.98px) {
+        ._gifttable-section {
+          width: 55%;
+        }
+      }
+
+      @media (max-width: 575.98px) {
+        ._gifttable-section {
+          width: 100%;
+          padding: 3.5rem 1rem;
+          margin: 0;
+        }
+
+        ._btn-gift img {
+          width: 40px;
+        }
+      }
+
+      /* #region SAVE THE DATE */
+      ._savethedate-section {
+        display: flex;
+        align-items: center;
+        justify-content: end;
+        position: relative;
+        margin: 2rem 0.4rem;
+        border: 2px solid var(--color-d);
+        border-radius: 5px;
+        max-width: 559px;
+      }
+
+      ._savethedate-section ._details {
+        padding: 0 10px;
+      }
+
+      ._savethedate-section ._details h1,
+      ._savethedate-section ._details h2,
+      ._savethedate-section ._details h3,
+      ._savethedate-section ._details h4 {
+        color: var(--color-primary);
+        text-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+        margin-top: 1rem;
+        letter-spacing: 2px;
+      }
+
+      ._savethedate-section ._details h1 {
+        font-family: var(--font-b);
+        font-size: clamp(1.4rem, 2.5vw, 1.6rem);
+        font-weight: 600;
+        text-align: center;
+      }
+
+      ._savethedate-section ._details h2 {
+        font-family: var(--font-c);
+        font-size: clamp(1.4rem, 2.5vw, 1.6rem);
+        font-weight: 600;
+        text-align: left;
+        padding-top: 10px;
+      }
+
+      ._savethedate-section ._details h3,
+      ._savethedate-section ._details h4 {
+        font-family: var(--font-c);
+        font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+        font-weight: 600;
+      }
+
+      ._savethedate-section ._details h3 {
+        text-align: center;
+      }
+
+      ._savethedate-section ._details h4 {
+        text-align: right;
+      }
+
+      ._savethedate-section ._details h4 > span {
+        font-family: var(--font-a);
+        font-size: 2rem;
+      }
+
+      ._savethedate-section ._codebar-image {
+        width: 40px;
+      }
+
+      @media (max-width: 767.98px) {
+        ._savethedate-section {
+          max-width: 100%;
+        }
+      }
+
+      /* #region TABLE */
+      ._table-section {
+        position: relative;
+        width: 100%;
+        max-width: 559px;
+        margin: 0 auto;
+      }
+
+      ._table-section img._main-image {
+        width: 100%;
+        aspect-ratio: 1124 / 2000;
+        height: auto;
+        object-fit: cover;
+        display: block;
+      }
+
+      ._table-section ._details {
+        position: absolute;
+        bottom: 20%;
+        left: 65%;
+        transform: translate(-50%, 0);
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      ._table-section h1 {
+        font-size: clamp(10rem, 12vw, 15rem);
+        font-family: var(--font-b);
+        color: var(--color-primary);
+      }
+
+      @media (max-width: 767.98px) {
+        ._table-section {
+          max-width: 100%;
+        }
+      }
+
+      /* #region END */
+      ._end-section {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        position: relative;
+        width: 100%;
+        max-width: 100%;
+        margin-top: 2rem;
+      }
+
+      ._end-section ._wrapper {
+        position: relative;
+      }
+
+      ._end-section ._wrapper::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.4);
+        z-index: 1;
+      }
+
+      ._end-section img._main-image {
+        width: 100%;
+        height: 100dvh;
+        object-fit: cover;
+        display: block;
+      }
+
+      ._end-section ._details {
+        position: absolute;
+        inset: 0;
+        z-index: 2;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+
+      ._end-section ._details h1 {
+        font-family: var(--font-a);
+        font-size: var(--fs-h1);
+        line-height: 0.9;
+        padding: 0 10px;
+        margin: 0;
+        text-align: center;
+        color: var(--color-secondary);
+        margin-top: 3rem;
+      }
+
+      ._end-section ._details h2 {
+        font-family: var(--font-d);
+        font-style: italic;
+        font-weight: bold;
+        font-size: clamp(0.9rem, 2.5vw, 1.5rem);
+        letter-spacing: 4px;
+        text-shadow: 2px 2px 10px var(--color-primary);
+        margin: 0.5rem 0;
+        text-align: center;
+        color: var(--color-secondary);
+      }
+
+      @media (max-width: 767.98px) {
+        ._end-section {
+          width: 100%;
+          overflow: hidden;
+          margin-top: 0;
+        }
+
+        ._end-section img._main-image {
+          border: 0;
+          border-radius: 0;
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          object-position: center;
+          display: block;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="content">
+      <main role="main" class="w-100">
+        <div id="player">
+          <audio id="audio" src="#" data-replace="AudioUrl" preload="none" loop></audio>
+        </div>
+        <span id="audioButton" class="_template-Audio-Button off _hide-section">
+          <img src="#" data-replace="Image_AudioUrl" />
+        </span>
+        <div class="_template">
+          <div class="_main-section">
+            <div class="_wrapper">
+              <img class="_main-mono" src="#" data-replace="Image_Mono" fetchpriority="high" loading="eager" />
+              <img class="_main-image" src="#" data-replace="Image_MainCard" fetchpriority="high" loading="eager" />
+            </div>
+
+            <div class="_details">
+              <div class="_play-button"></div>
+              <h2 class="slide-right" data-replace="EventFormatDate"></h2>
+              <div class="_common-d-flex _common-flex-column">
+                <h1 class="slide-left" data-replace="BrideShortName"></h1>
+                <h1 class="slide-left">&</h1>
+                <h1 class="slide-left" data-replace="GroomShortName"></h1>
+              </div>
+            </div>
+          </div>
+
+          <div class="_counter-section _hide-section">
+            <div id="countdown" class="_counter-Countdown">
+              <div class="_counter-Timebox">
+                <span id="days">0</span>
+                Días
+              </div>
+              <div class="_counter-Timebox">
+                <span id="hours">0</span>
+                Hrs.
+              </div>
+              <div class="_counter-Timebox">
+                <span id="minutes">0</span>
+                Min.
+              </div>
+              <div class="_counter-Timebox">
+                <span id="seconds">0</span>
+                Seg.
+              </div>
+            </div>
+          </div>
+
+          <div class="_introduction-section _hide-section">
+            <div class="_wrapper">
+              <img class="_main-image" src="#" data-replace="Image_Introduction" />
+            </div>
+            <div class="_details slide-up">
+              <h2>Que todas las noches sean noches de boda y que todas las lunas sean lunas de miel.</h2>
+            </div>
+          </div>
+
+          <div class="_parents-section _family-section _hide-section">
+            <div class="_common-d-flex _common-flex-column">
+              <h1 class="slide-left">
+                <span data-replace="MotherBride"></span>
+                <br />
+                &
+                <br />
+                <span data-replace="FatherBride"></span>
+              </h1>
+              <small>Padres de la Novia</small>
+            </div>
+            <div class="_common-d-flex _common-flex-column">
+              <h1 class="slide-right">
+                <span data-replace="MotherGroom"></span>
+                <br />
+                &
+                <br />
+                <span data-replace="FatherGroom"></span>
+              </h1>
+              <small>Padres del Novio</small>
+            </div>
+          </div>
+
+          <div class="_place-section _hide-section">
+            <div>
+              <img class="_main-image" src="#" data-replace="Image_Place" />
+            </div>
+            <div class="_common-d-flex _common-flex-column">
+              <h2 data-replace="MainEventLocationDescription"></h2>
+              <small data-replace="MainEventHourString"></small>
+              <small data-replace="MainEventAddress"></small>
+              <a class="dc-map" href="#" data-replace="EventReceptionUrl" target="_blank">
+                <img src="#" data-replace="Image_GoogleLocation" alt="Google Location" />
+              </a>
+            </div>
+          </div>
+
+          <div class="_itinerary-section _hide-section">
+            <img class="_main-image" src="#" data-replace="Image_Itinerary" alt="Evento 1" />
+          </div>
+
+          <div id="_gallery-section" class="_gallery-section _hide-section"></div>
+
+          <div class="_lovestory-section _third-section _hide-section">
+            <div class="_wrapper">
+              <img class="_main-image" src="#" data-replace="Image_LoveStory" />
+            </div>
+            <div class="_details slide-up">
+              <p>
+                En nuestros momentos más solitarios, cuando menos buscábamos el amor, fue donde el destino decidió encontrarnos. Aún no sabemos en qué instante exácto comenzó a nacer algo tan bonito, pero sí sabemos que, sin darnos cuenta, se transformó en un amor profundo, sincero y eterno.
+                <br />
+                <br />
+                Entre miles de probabilidades en nuestra rutina diaria, todo tuvo que alinearse de manera perfecta para que lo nuestro fuera único y especial. Como si la vida, con paciencia, hubiera preparado cada paso hasta llevarnos el uno al otro.
+                <br />
+                <br />
+                Hoy después de 3 años compartiéndolo todo-- risas, aprendizajes y sueños. Tomamos la decisión más importante de nuestras vidas: elegirnos todos los días, para siempre, y caminar juntos el resto de nuestras vidas.
+              </p>
+            </div>
+          </div>
+
+          <div class="_video-section _hide-section">
+            <iframe src="https://www.youtube.com/embed/UqK14btTz8U?si=2JFZkDojxMx4sA7-" loading="lazy" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </div>
+
+          <div class="_dresscode-section _hide-section">
+            <div class="text-center">
+              <h1>Codigo de</h1>
+              <h2>VESTIMENTA</h2>
+              <h3 data-replace="DressCodeStyle"></h3>
+            </div>
+            <div class="_common-d-flex">
+              <img class="_main-image" src="#" data-replace="Image_DressCodeUrl" />
+            </div>
+          </div>
+
+          <div class="_attendance-section _hide-section">
+            <div>
+              <h1>Asistencia</h1>
+              <h2>¡Te esperamos!</h2>
+
+              <div class="form-fields">
+                <label>Acompañantes</label>
+                <textarea name="guestAttendants" placeholder="Nombres de tus acompañantes"></textarea>
+              </div>
+
+              <div class="form-fields">
+                <label>Deseo</label>
+                <textarea name="wishes" placeholder="Escribe tus buenos deseos…"></textarea>
+              </div>
+              <div class="d-flex justify-content-between">
+                <button id="_btnNo">No asistiré</button>
+                <button id="_btnYes">¡Asistiré!</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="_gifttable-section _hide-section">
+            <h1>Regalos</h1>
+            <p>Para nosotros tu presencia es nuestro mejor regalo, pero si deseas hacernos llegar un obsequio, te sugerimos la siguiente opción:</p>
+            <div class="_btn-brands">
+              <a href="#" data-replace="EventAmazonGiftTableUrl" target="_blank" class="_btn-gift">
+                <img src="#" data-replace="Image_AmazonUrl" alt="Liverpool Logo" />
+                Amazon
+              </a>
+              <a href="#" data-replace="EventLiverpoolGiftTableUrl" target="_blank" class="_btn-gift">
+                <img src="#" data-replace="Image_LiverpoolUrl" alt="Liverpool Logo" />
+                Liverpool
+              </a>
+            </div>
+          </div>
+
+          <div class="_tickets-section _savethedate-section _hide-section">
+            <div class="_details">
+              <h1>Save the Date</h1>
+              <h2 data-replace="GuestName"></h2>
+              <h3>¡Nos casamos! Y queremos celebrarlo contigo.</h3>
+              <h4>
+                <span data-replace="TicketCount"></span>
+                pases para ti.
+              </h4>
+            </div>
+            <img class="_codebar-image" src="#" data-replace="Image_CodeBar" />
+          </div>
+
+          <div class="_table-section _hide-section">
+            <img class="_main-image" src="#" data-replace="Image_Table" />
+
+            <div class="_details">
+              <h1 class="_tableNumber" data-replace="TableNumber"></h1>
+            </div>
+          </div>
+
+          <div class="_end-section _hide-section">
+            <div class="_wrapper">
+              <img class="_main-image" src="#" data-replace="Image_End" />
+            </div>
+            <div class="_details">
+              <h2>
+                "Y todo lo que hagan,
+                <br />
+                háganlo con amor".
+                <br />
+                Corintios 16:14
+                <br />
+                <br />
+                ¡Los esperamos!
+              </h2>
+              <h1 data-replace="BrideGroomShortNames"></h1>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <!-- Modal de galería (lightbox) -->
+    <div id="_gallery-modal">
+      <button type="button" class="close" aria-label="Cerrar">&times;</button>
+      <button type="button" class="gallery-nav prev" aria-label="Foto anterior">&#10094;</button>
+      <img id="_modalImg" src="" alt="" />
+      <button type="button" class="gallery-nav next" aria-label="Foto siguiente">&#10095;</button>
+      <span class="gallery-counter"><span id="_modalCounter">1 / 1</span></span>
+    </div>
+
+    <!-- jQuery primero — sin defer -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <!-- Bootstrap con defer -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/toastify-js" defer></script>
+    <script type="module">
+      import { helpers } from "/js/modules/helpers.js";
+      import { rsvp } from "/js/modules/helpers.js";
+
+      // ─── RSVP ─────────────────────────────
+      const configRSVP = {
+        Enable: true,
+        EventID: "Wedding_20261017_JJ",
+      };
+      // ─── Settings ─────────────────────────────
+      const settings = {
+        EventType: "Wedding",
+        Template: false, // Cambiar a false en producción para saber que es un cliente real
+        ImagesURL: "./",
+        AudioUrl: "/music/Girls Like You_1.mp3",
+        Sections: {
+          showCounter: true,
+          showIntroduction: true,
+          showParents: true,
+          showItinerary: true,
+          showGallery: true,
+          showLoveStory: true,
+          showVideo: false,
+          showDressCode: true,
+          showTickets: true,
+          showTableNumber: configRSVP.Enable,
+          showAttendance: configRSVP.Enable,
+          showGiftTable: true,
+        },
+        ShowElements: {
+          showAmazonOption: false,
+          showLiverpoolOption: true,
+        },
+      };
+
+      // ─── DATOS DEL EVENTO ─────────────────────────────
+      const mainEvent = {
+        Date: new Date("2026-10-17T17:30:00"),
+
+        BrideName: "Jacqueline Esquivias",
+        GroomName: "Jesús Ramírez",
+        BrideShortName: "Jacqueline",
+        GroomShortName: "Jesús",
+
+        LocationDescription: "La Terraza Clouthier",
+        Address: "Av Manuel J. Clouthier 480, Lomas de Guadalupe, 45038 Guadalajara, Jal.",
+        GoogleMapsUrl: "https://maps.app.goo.gl/KuXfBs9iPrwx48xB6",
+
+        FatherBride: "Gerardo González Navarro",
+        MotherBride: "Sirina Esquivias Esquivias",
+        FatherGroom: "J. Refugio Ramírez González",
+        MotherGroom: "Sara Ávila García",
+
+        Gallery: [`${settings.ImagesURL}1.webp`, `${settings.ImagesURL}2.webp`, `${settings.ImagesURL}3.webp`, `${settings.ImagesURL}4.webp`, `${settings.ImagesURL}5.webp`],
+
+        AmazonGiftTableUrl: "https://www.amazon.com.mx/",
+        LiverpoolGiftTableUrl: "https://mesaderegalos.liverpool.com.mx/milistaderegalos/51963844",
+
+        DressCodeStyle: "SEMI-FORMAL",
+      };
+
+      const secondaryEvent = {
+        Date: new Date("2026-10-17T17:30:00"),
+        LocationDescription: "La Terraza Clouthier",
+        Address: "Av Manuel J. Clouthier 480, Lomas de Guadalupe, 45038 Guadalajara, Jal.",
+        GoogleMapsUrl: "https://maps.app.goo.gl/HpD9ZEkGmku4WTyT8",
+      };
+
+      const additionalInformation = {
+        ImageMainCard: `${settings.ImagesURL}1.webp`,
+        ImageMono: `${settings.ImagesURL}mono.webp`,
+        ImageIntroduction: `${settings.ImagesURL}2.webp`,
+        ImagePlace: `${settings.ImagesURL}place.jpg`,
+        ImageItinerary: `${settings.ImagesURL}elplan.png`,
+        ImageLoveStory: `${settings.ImagesURL}3.webp`,
+        ImageDressCodeUrl: `${settings.ImagesURL}dresscode_1.webp`,
+        ImageDressCodeBackGround: `${settings.ImagesURL}dresscodebg-1.jpg`,
+        ImageAttendantBackGround: `${settings.ImagesURL}attendantbg-1.jpg`,
+        ImageTable: `${settings.ImagesURL}table.webp`,
+        ImageEnd: `${settings.ImagesURL}4.webp`,
+      };
+
+      const Init = {
+        Config: {
+          ...settings,
+          Themes: [],
+        },
+        RSVP: configRSVP,
+        MainEvent: mainEvent,
+        SecondaryEvent: secondaryEvent,
+      };
+
+      function onLoad() {
+        var eventFormatDate = helpers.onGetDay(mainEvent.Date) + " • " + helpers.onGetMonth(mainEvent.Date) + " • " + helpers.onGetYear(mainEvent.Date);
+        $("[data-replace=EventFormatDate]").text(eventFormatDate);
+        $("[data-replace=Image_MainCard]").attr("src", additionalInformation.ImageMainCard);
+        $("[data-replace=Image_Mono]").attr("src", additionalInformation.ImageMono);
+        $("[data-replace=Image_Introduction]").attr("src", additionalInformation.ImageIntroduction);
+        $("[data-replace=Image_Place]").attr("src", additionalInformation.ImagePlace);
+        $("[data-replace=Image_Itinerary]").attr("src", additionalInformation.ImageItinerary);
+        $("[data-replace=Image_LoveStory]").attr("src", additionalInformation.ImageLoveStory);
+        $("[data-replace=Image_DressCodeUrl]").attr("src", additionalInformation.ImageDressCodeUrl);
+        $("[data-replace=Image_Table]").attr("src", additionalInformation.ImageTable);
+        $("[data-replace=Image_End]").attr("src", additionalInformation.ImageEnd);
+
+        $("._dresscode-section").css("background-image", `url("${additionalInformation.ImageDressCodeBackGround}")`);
+        $("._attendance-section").css("background-image", `url("${additionalInformation.ImageAttendantBackGround}")`);
+        $("[data-replace=DressCodeStyle]").text(Init.MainEvent.DressCodeStyle);
+
+        // Galería
+        var gallery_imgs = mainEvent.Gallery;
+        var $gallerySection = $("#_gallery-section");
+        $gallerySection.empty();
+        gallery_imgs.forEach(function (url, index) {
+          var $item = $("<div>", { class: "gal-item fade-scroll", "data-index": index });
+          var $img = $("<img>", { src: url, alt: "Foto " + (index + 1), loading: "lazy" });
+
+          // En cuanto la imagen real termina de cargar, ajustamos el
+          // placeholder a su proporción verdadera y la mostramos con fade-in.
+          // Esto evita que la sección "colapse" mientras las fotos cargan,
+          // que es lo que provocaba el brinco de scroll al abrir la página.
+          $img.on("load", function () {
+            if (this.naturalWidth && this.naturalHeight) {
+              $item.css("aspect-ratio", this.naturalWidth + " / " + this.naturalHeight);
+            }
+            $img.addClass("show");
+          });
+
+          $item.append($img);
+          $gallerySection.append($item);
+        });
+
+        // Confirmación
+        $("#_btnYes").on("click", function () {
+          rsvp.onPostRSPV(true, $("textarea[name=guestAttendants]").val(), $("textarea[name=wishes]").val());
+        });
+        $("#_btnNo").on("click", function () {
+          rsvp.onPostRSPV(false, $("textarea[name=guestAttendants]").val(), $("textarea[name=wishes]").val());
+        });
+      }
+
+      function checkVisibility() {
+        var animatedEls = document.querySelectorAll(".fade-scroll, .slide-up, .slide-up > h2, .slide-up > p, .slide-left, .slide-right, .slide-down");
+        var slideObserver = new IntersectionObserver(
+          function (entries) {
+            entries.forEach(function (entry) {
+              entry.target.classList.toggle("visible", entry.isIntersecting);
+            });
+          },
+          { threshold: 0.15 },
+        );
+        animatedEls.forEach(function (el) {
+          slideObserver.observe(el);
+        });
+      }
+
+      // ─── Galería / Lightbox ─────────────────────────────
+      // Independiente del play button: se inicializa una sola vez al cargar
+      // la página. Los listeners quedan puestos aunque la sección de
+      // galería esté oculta; en cuanto el usuario le da play, todo funciona
+      // sin necesidad de volver a configurar nada.
+      var galleryModal = {
+        currentIndex: 0,
+        images: [],
+
+        init: function () {
+          var self = this;
+          var modal = document.getElementById("_gallery-modal");
+          var modalImg = document.getElementById("_modalImg");
+          var modalCounter = document.getElementById("_modalCounter");
+          if (!modal || !modalImg) return;
+
+          var modalClose = modal.querySelector(".close");
+          var btnPrev = modal.querySelector(".gallery-nav.prev");
+          var btnNext = modal.querySelector(".gallery-nav.next");
+
+          function refreshImages() {
+            self.images = Array.prototype.slice.call(document.querySelectorAll("#_gallery-section img"));
+          }
+
+          function updateModalImage() {
+            var img = self.images[self.currentIndex];
+            if (!img) return;
+            modalImg.src = img.src;
+            modalImg.alt = img.alt || "";
+            if (modalCounter) {
+              modalCounter.textContent = self.currentIndex + 1 + " / " + self.images.length;
+            }
+          }
+
+          function openModal(index) {
+            refreshImages();
+            if (!self.images.length) return;
+            self.currentIndex = index;
+            updateModalImage();
+            modal.classList.add("show");
+            document.body.style.overflow = "hidden";
+          }
+
+          function closeModal() {
+            modal.classList.remove("show");
+            document.body.style.overflow = "";
+          }
+
+          function showPrev() {
+            if (!self.images.length) return;
+            self.currentIndex = (self.currentIndex - 1 + self.images.length) % self.images.length;
+            updateModalImage();
+          }
+
+          function showNext() {
+            if (!self.images.length) return;
+            self.currentIndex = (self.currentIndex + 1) % self.images.length;
+            updateModalImage();
+          }
+
+          // Delegación de eventos: funciona con las imágenes que existen
+          // hoy y con cualquiera que se agregue/regenere después.
+          document.getElementById("_gallery-section").addEventListener("click", function (e) {
+            var img = e.target.closest("img");
+            if (!img) return;
+            refreshImages();
+            var index = self.images.indexOf(img);
+            openModal(index >= 0 ? index : 0);
+          });
+
+          if (modalClose) modalClose.addEventListener("click", closeModal);
+          if (btnPrev) btnPrev.addEventListener("click", showPrev);
+          if (btnNext) btnNext.addEventListener("click", showNext);
+
+          // Clic en el fondo oscuro (no en la imagen ni en los controles) cierra
+          modal.addEventListener("click", function (e) {
+            if (e.target === modal) closeModal();
+          });
+
+          document.addEventListener("keydown", function (e) {
+            if (!modal.classList.contains("show")) return;
+            if (e.key === "Escape") closeModal();
+            if (e.key === "ArrowLeft") showPrev();
+            if (e.key === "ArrowRight") showNext();
+          });
+        },
+      };
+
+      // ─── INIT PAGE ────────────────────────────────────
+      function InitPage() {
+        helpers.init(Init);
+
+        // RSVP Invitacion
+        rsvp.onGetRSVP();
+
+        onLoad();
+        helpers.onCounterStart(Init.MainEvent.Date);
+        setInterval(function () {
+          helpers.onCounterStart(Init.MainEvent.Date);
+        }, 1000);
+        helpers.onAudioPlayer();
+
+        // Play button — revela secciones y arranca el contador.
+        // Ya NO gestiona el modal ni observers de la galería: eso vive en
+        // galleryModal.init(), que corre una sola vez al cargar la página.
+        $("._play-button").on("click", function () {
+          $(this).hide();
+          $("._hide-section").removeClass("_hide-section");
+
+          void document.body.offsetHeight;
+          setTimeout(function () {
+            helpers.onPlay();
+          }, 50);
+        });
+
+        checkVisibility();
+        galleryModal.init();
+      }
+
+      // Evita que el navegador intente restaurar/ajustar el scroll por su
+      // cuenta (algunos navegadores lo hacen al cambiar mucho el alto de la
+      // página), lo cual también contribuía al brinco reportado.
+      if ("scrollRestoration" in history) {
+        history.scrollRestoration = "manual";
+      }
+
+      InitPage();
+    </script>
+  </body>
+</html>
