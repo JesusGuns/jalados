@@ -2,15 +2,27 @@
   "cleanUrls": true,
   "rewrites": [
     {
-      "source": "/:tipo([bB][aA][bB][yY][sS][hH][oO][wW][eE][rR])/:id",
+      "source": "/babyshower/:id",
       "destination": "/templates/BabyShower_:id.html"
     },
     {
-      "source": "/:tipo([xX][vV])/:id",
+      "source": "/BabyShower/:id",
+      "destination": "/templates/BabyShower_:id.html"
+    },
+    {
+      "source": "/xv/:id",
       "destination": "/templates/XV_:id.html"
     },
     {
-      "source": "/:tipo([wW][eE][dD][dD][iI][nN][gG])/:id",
+      "source": "/XV/:id",
+      "destination": "/templates/XV_:id.html"
+    },
+    {
+      "source": "/wedding/:id",
+      "destination": "/templates/Wedding_:id.html"
+    },
+    {
+      "source": "/Wedding/:id",
       "destination": "/templates/Wedding_:id.html"
     },
     {
