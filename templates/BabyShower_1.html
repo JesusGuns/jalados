@@ -7,6 +7,7 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
 
     <!-- Primary Meta Tags -->
     <title>Baby Shower</title>
@@ -38,7 +39,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media = 'all'" />
 
     <!-- Toastify-->
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css" media="print" onload="this.media = 'all'" />
+    <!-- <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css" media="print" onload="this.media = 'all'" /> -->
   </head>
   <body>
     <div class="container">
@@ -211,16 +212,16 @@
       <button class="theme-btn" data-theme="themeNeutral" style="background-color: #bfa058"></button>
     </div>
 
-    <div id="themeOverlay">
+    <!-- <div id="themeOverlay">
       <img class="loader-img" src="#" data-replace="Image_Loading" alt="Loading" />
       <span>Cambiando tema...</span>
-    </div>
+    </div> -->
 
     <!-- jQuery primero — sin defer -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js" defer></script>
     <!-- Bootstrap con defer -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" defer></script>
-    <script src="https://cdn.jsdelivr.net/npm/toastify-js" defer></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/toastify-js" defer></script> -->
     <script type="module">
       import { helpers } from "/js/helpers.js";
       import { rsvp } from "/js/helpers.js";
@@ -302,7 +303,7 @@
               "--color_Tertiary": "#e91e63",
               "--color_Quaternary": "#fce4ec",
               "--filter-AudioButton": "0deg",
-              ImageBodyBackground: "/images/templates/BabyShowerbg-2.gif",
+              ImageBodyBackground: "/images/templates/BabyShower/bg-2.gif",
               ImageMain: "/images/templates/BabyShower/main-2.jpg",
               ImageCoverPage: "/images/templates/BabyShower/album-2.avif",
               Name: "Valentina",
@@ -483,14 +484,16 @@
       // ─── THEME SWITCHER ───────────────────────────────
       $(".theme-btn").on("click", function () {
         var theme = $(this).data("theme");
-        $("#themeOverlay").addClass("active");
-        setTimeout(function () {
-          applyTheme(theme);
-          window.scrollTo({ top: 0, behavior: "smooth" });
-          setTimeout(function () {
-            $("#themeOverlay").removeClass("active");
-          }, 2000);
-        }, 500);
+        applyTheme(theme);
+        window.scrollTo({ top: 0, behavior: "smooth" });
+        // $("#themeOverlay").addClass("active");
+        // setTimeout(function () {
+          
+          
+        //   setTimeout(function () {
+        //     $("#themeOverlay").removeClass("active");
+        //   }, 2000);
+        // }, 500);
       });
 
       // ─── INIT PAGE ────────────────────────────────────
