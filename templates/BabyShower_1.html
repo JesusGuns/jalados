@@ -53,7 +53,7 @@
         <!-- Initial section -->
         <section class="box">
           <div class="subcontainer">
-            <img class="imgMain" src="#" data-replace="ImageMain" alt="Image Main" />
+            <img class="imgMain" src="#" data-replace="Image_MainCard" alt="Image Main" fetchpriority="high" loading="eager" />
             <h1>
               ¡Estás invitado
               <br />
@@ -275,7 +275,7 @@
 
       var additionalInformation = {
         ImageBodyBackground: `/images/templates/BabyShower/bg-1.gif`,
-        ImageMain: `/images/templates/BabyShower/main-1.png`,
+        ImageMainCard: `/images/templates/BabyShower/1.webp`,
         ImageTap: `/images/templates/BabyShower/tap.webp`,
         ImageLoading: `/images/templates/BabyShower/loading.webp`,
         WhatsAppUrl: "https://wa.link/smvz7g",
@@ -293,7 +293,7 @@
               "--color_Quaternary": "#99d5f06b",
               "--filter-AudioButton": "230deg",
               ImageBodyBackground: "/images/templates/BabyShower/bg-1.gif",
-              ImageMain: "/images/templates/BabyShower/main-1.png",
+              ImageMainCard: "/images/templates/BabyShower/1.webp",
               ImageCoverPage: "/images/templates/BabyShower/album-1.avif",
               Name: "Thomas",
             },
@@ -304,7 +304,7 @@
               "--color_Quaternary": "#fce4ec",
               "--filter-AudioButton": "0deg",
               ImageBodyBackground: "/images/templates/BabyShower/bg-2.gif",
-              ImageMain: "/images/templates/BabyShower/main-2.jpg",
+              ImageMainCard: "/images/templates/BabyShower/1.webp",
               ImageCoverPage: "/images/templates/BabyShower/album-2.avif",
               Name: "Valentina",
             },
@@ -315,7 +315,7 @@
               "--color_Quaternary": "#fff9c4",
               "--filter-AudioButton": "70deg",
               ImageBodyBackground: "/images/templates/BabyShower/bg-3.gif",
-              ImageMain: "/images/templates/BabyShower/main-3.jpg",
+              ImageMainCard: "/images/templates/BabyShower/1.webp",
               ImageCoverPage: "/images/templates/BabyShower/album-3.avif",
               Name: "Aitana y Alex",
             },
@@ -337,7 +337,7 @@
       // ─── ONLOAD LOCAL ─────────────────────────────────
       function onLoad() {
         $("body").css("background-image", 'url("' + additionalInformation.ImageBodyBackground + '")');
-        $("[data-replace=ImageMain]").attr("src", additionalInformation.ImageMain);
+        $("[data-replace=Image_MainCard]").attr("src", additionalInformation.ImageMainCard);
         $("[data-replace=Image_Tap]").attr("src", additionalInformation.ImageTap);
         $("[data-replace=Image_Loading]").attr("src", additionalInformation.ImageLoading);
         $("[data-replace=EventName]").text(mainEvent.Name);
@@ -458,8 +458,8 @@
             document.documentElement.style.setProperty(key, theme[key]);
           } else if (key === "ImageBodyBackground") {
             additionalInformation.ImageBodyBackground = theme[key];
-          } else if (key === "ImageMain") {
-            additionalInformation.ImageMain = theme[key];
+          } else if (key === "Image_MainCard") {
+            additionalInformation.ImageMainCard = theme[key];
           } else if (key === "Name") {
             mainEvent.Name = theme[key];
           } else if (key === "ImageCoverPage") {
