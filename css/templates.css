@@ -2,8 +2,8 @@
 @font-face {
   font-family: "monallesia";
   src:
-    url("../fonts/monallesiascript.woff2") format("woff2"),
-    url("../fonts/monallesiascript.woff") format("woff");
+    url("/fonts/monallesiascript.woff2") format("woff2"),
+    url("/fonts/monallesiascript.woff") format("woff");
   font-weight: normal;
   font-style: normal;
 }
@@ -13,7 +13,7 @@
   font-style: normal;
   font-weight: normal;
   font-display: swap;
-  src: url("../fonts/hellohoney.ttf") format("truetype");
+  src: url("/fonts/hellohoney.woff2") format("woff2");
 }
 
 @font-face {
@@ -21,7 +21,7 @@
   font-style: normal;
   font-weight: normal;
   font-display: swap;
-  src: url("../fonts/PlayfairDisplay.ttf") format("truetype");
+  src: url("/fonts/PlayfairDisplay.woff2") format("woff2");
 }
 
 @font-face {
@@ -29,5 +29,5 @@
   font-style: normal;
   font-weight: normal;
   font-display: swap;
-  src: url("../fonts/Eastpoint.ttf") format("truetype");
+  src: url("/fonts/Eastpoint.woff2") format("woff2");
 }
