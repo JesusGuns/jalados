@@ -15,8 +15,8 @@ export default async function handler(req, res) {
   if (!token) {
     return res.status(400).json({ error: "Token is required" });
   }
-
-  const baseUrl = "https://script.google.com/macros/s/AKfycbyyDwed1ybS1NAItw6MntTh0beOVUBw2mR3Iohj3RqtaqpYA0If8z2gC0v1gkqnraiH/exec";
+  // Moomentos
+  const baseUrl = "https://script.google.com/macros/s/AKfycbyCUTnb4Uh1FUEni-k3y3NuFYI5WPnv9foN39Ay_u8XAHRvL_Y6YKwDRXE3D8z9uOWM/exec";
 
   try {
     // GET
