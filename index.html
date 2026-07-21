@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   
-    <title>Momentos · Invitaciones Digitales</title>
+    <title>Moomentos · Invitaciones Digitales</title>
 
     <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
     <style>
@@ -647,6 +647,19 @@
         background: rgba(20, 22, 26, 0.02);
       }
 
+      .plans-table td.cross {
+        color: var(--coral);
+        font-weight: 700;
+        text-align: center;
+      }
+
+      .plans-table__note {
+        margin-top: var(--space-2);
+        font-size: 0.85rem;
+        color: var(--ink-dim);
+        text-align: center;
+      }
+
       .plans-table__group-header td {
         text-align: left;
         font-size: 0.72rem;
@@ -709,6 +722,108 @@
 
       .tooltip-popup.is-visible {
         opacity: 1;
+      }
+
+      /* ============================================
+   TYPE CARDS — "qué trae tu invitación" por evento
+   ============================================ */
+      .type-cards {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: var(--space-3);
+      }
+
+      .type-card {
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: var(--radius-m);
+        padding: var(--space-4) var(--space-3);
+        position: relative;
+        transition:
+          transform 0.3s var(--ease),
+          box-shadow 0.3s var(--ease);
+      }
+
+      .type-card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 20px 44px rgba(20, 22, 26, 0.1);
+      }
+
+      .type-card--featured {
+        border-color: var(--violet);
+      }
+
+      .type-card__badge {
+        position: absolute;
+        top: -12px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: var(--violet);
+        color: #fff;
+        font-size: 0.7rem;
+        font-weight: 700;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        padding: 5px 16px;
+        border-radius: 999px;
+      }
+
+      .type-card__icon {
+        font-size: 2.2rem;
+        text-align: center;
+        margin-bottom: var(--space-2);
+      }
+
+      .type-card__title {
+        font-family: var(--font-display);
+        font-weight: 700;
+        font-size: 1.3rem;
+        text-align: center;
+        margin-bottom: 6px;
+      }
+
+      .type-card__desc {
+        font-size: 0.85rem;
+        color: var(--ink-dim);
+        text-align: center;
+        margin-bottom: var(--space-3);
+      }
+
+      .type-card__list li {
+        position: relative;
+        padding: 7px 0 7px 26px;
+        font-size: 0.9rem;
+        border-bottom: 1px dashed var(--line);
+      }
+
+      .type-card__list li:last-child {
+        border-bottom: none;
+      }
+
+      .type-card__list li::before {
+        content: "✓";
+        position: absolute;
+        left: 0;
+        color: var(--mint);
+        font-weight: 700;
+      }
+
+      .type-card__list li span {
+        font-size: 0.78rem;
+        color: var(--ink-dim);
+      }
+
+      .type-card__list li.type-card__extra {
+        color: var(--ink-dim);
+      }
+
+      .type-card__list li.type-card__extra::before {
+        content: "★";
+        color: var(--amber);
+      }
+
+      .type-card__list li.type-card__extra span {
+        font-size: 0.78rem;
       }
 
       /* ============================================
@@ -800,9 +915,19 @@
       }
 
       .pricing-card__features li {
-        padding: 8px 0;
+        position: relative;
+        padding: 8px 0 8px 26px;
         font-size: 0.9rem;
         border-bottom: 1px dashed var(--line);
+      }
+
+      .pricing-card__features li::before {
+        content: "✓";
+        position: absolute;
+        left: 0;
+        top: 8px;
+        color: var(--mint);
+        font-weight: 700;
       }
 
       .pricing-card--featured .pricing-card__features li {
@@ -811,6 +936,53 @@
 
       .pricing-card__features li:last-child {
         border-bottom: none;
+      }
+
+      .pricing-card__group {
+        margin-top: var(--space-2);
+        padding-top: var(--space-2);
+        border-top: 1px solid var(--line);
+      }
+
+      .pricing-card--featured .pricing-card__group {
+        border-top-color: rgba(255, 255, 255, 0.15);
+      }
+
+      .pricing-card__group-tag {
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 0.03em;
+        color: var(--coral);
+        background: var(--coral-soft);
+        padding: 4px 12px;
+        border-radius: 999px;
+        margin-bottom: 6px;
+      }
+
+      .pricing-card--featured .pricing-card__group-tag {
+        background: rgba(255, 93, 93, 0.18);
+        color: #ffb3b3;
+      }
+
+      .pricing-card__group ul {
+        margin: 0;
+      }
+
+      .pricing-card__group li {
+        border-bottom: none;
+        padding: 4px 0 4px 26px;
+        position: relative;
+      }
+
+      .pricing-card__group li::before {
+        content: "✓";
+        position: absolute;
+        left: 0;
+        color: var(--coral);
+        font-weight: 700;
       }
 
       /* ============================================
@@ -947,8 +1119,7 @@
     <!-- NAV -->
     <nav class="nav">
       <a href="#" class="nav-logo">
-        Momento
-        <span>s</span>
+        M<span>oo</span>mentos
       </a>
       <ul class="nav-links">
         <li><a href="#categorias">Diseños</a></li>
@@ -1017,153 +1188,59 @@
     <!-- PLANES -->
     <section class="section" id="planes">
       <div class="section-header">
-        <p class="section-eyebrow">Comparativa</p>
-        <h2 class="section-title">¿Qué incluye cada plan?</h2>
+        <p class="section-eyebrow">Para cada evento</p>
+        <h2 class="section-title">¿Qué trae tu invitación?</h2>
       </div>
 
-      <div class="plans-table-wrap">
-        <table class="plans-table">
-          <thead>
-            <tr>
-              <th></th>
-              <th>Estándar</th>
-              <th>Premium</th>
-              <th class="plans-table__highlight-col">Platinum QR</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr class="plans-table__group-header">
-              <td colspan="4">Incluido en todos</td>
-            </tr>
-            <tr>
-              <td>Cuenta regresiva</td>
-              <td class="check">✓</td>
-              <td class="check">✓</td>
-              <td class="check">✓</td>
-            </tr>
-            <tr>
-              <td>Mensaje de invitacion</td>
-              <td class="check">✓</td>
-              <td class="check">✓</td>
-              <td class="check">✓</td>
-            </tr>
-            <tr>
-              <td>Padres y/o Padrinos</td>
-              <td class="check">✓</td>
-              <td class="check">✓</td>
-              <td class="check">✓</td>
-            </tr>
-            <tr>
-              <td>Ubicación</td>
-              <td class="check">✓</td>
-              <td class="check">✓</td>
-              <td class="check">✓</td>
-            </tr>
-            <tr>
-              <td>Itinerario</td>
-              <td class="check">✓</td>
-              <td class="check">✓</td>
-              <td class="check">✓</td>
-            </tr>
-            <tr>
-              <td>Galería de fotos</td>
-              <td class="check">✓</td>
-              <td class="check">✓</td>
-              <td class="check">✓</td>
-            </tr>
-            <tr>
-              <td>Dresscode</td>
-              <td class="check">✓</td>
-              <td class="check">✓</td>
-              <td class="check">✓</td>
-            </tr>
-            <tr>
-              <td>Mesa de regalos</td>
-              <td class="check">✓</td>
-              <td class="check">✓</td>
-              <td class="check">✓</td>
-            </tr>
-            <tr>
-              <td>Seleccion de Tema</td>
-              <td class="check">✓</td>
-              <td class="check">✓</td>
-              <td class="check">✓</td>
-            </tr>
-            <tr>
-              <td>Envíos ilimitados</td>
-              <td class="check">✓</td>
-              <td class="check">✓</td>
-              <td class="check">✓</td>
-            </tr>
-            <tr>
-              <td>Vigencia 3 meses</td>
-              <td class="check">✓</td>
-              <td class="check">✓</td>
-              <td class="check">✓</td>
-            </tr>
-            <tr class="plans-table__group-header">
-              <td colspan="4">Exclusivo por plan</td>
-            </tr>
+      <div class="type-cards">
+        <article class="type-card">
+          <div class="type-card__icon">✨</div>
+          <h3 class="type-card__title">Lo Básico</h3>
+          <p class="type-card__desc">Viene incluido en cualquier invitación, sin importar el tipo de evento. Es exactamente lo que trae un Baby Shower.</p>
+          <ul class="type-card__list">
+            <li>Portada principal</li>
+            <li>Contador regresivo</li>
+            <li>Detalles del evento e itinerario</li>
+            <li>Galería de fotos</li>
+            <li>Confirmación de asistencia <span>(por WhatsApp)</span></li>
+            <li>Música de fondo </li>
+          </ul>
+        </article>
 
-            <tr>
-              <td>
-                Música de fondo
-                <button class="tooltip-btn" aria-label="Más info" data-tip="Reproduce una canción de tu elección cuando se abre la invitación.">?</button>
-              </td>
-              <td class="dash">—</td>
-              <td class="check">✓</td>
-              <td class="check">✓</td>
-            </tr>
-            <tr>
-              <td>
-                Video
-                <button class="tooltip-btn" aria-label="Más info" data-tip="Reproduce una canción de tu elección cuando se abre la invitación.">?</button>
-              </td>
-              <td class="dash">—</td>
-              <td class="check">✓</td>
-              <td class="check">✓</td>
-            </tr>
-            <tr>
-              <td>
-                Confirmación de asistencia personalizada
-                <button class="tooltip-btn" aria-label="Más info" data-tip="Cada invitado recibe un pase digital con su nombre y número de acceso.">?</button>
-              </td>
-              <td class="dash">—</td>
-              <td class="dash">—</td>
-              <td class="check">✓</td>
-            </tr>
-            <tr>
-              <td>
-                RSVP automatizado
-                <button class="tooltip-btn" aria-label="Más info" data-tip="Cada invitado recibe un pase digital con su nombre y número de acceso.">?</button>
-              </td>
-              <td class="dash">—</td>
-              <td class="dash">—</td>
-              <td class="check">✓</td>
-            </tr>
-            <tr>
-              <td>
-                Número de Pases
-                <button class="tooltip-btn" aria-label="Más info" data-tip="Cada invitado recibe un pase digital con su nombre y número de acceso.">?</button>
-              </td>
-              <td class="dash">—</td>
-              <td class="dash">—</td>
-              <td class="check">✓</td>
-            </tr>
-            <tr>
-              <td>
-                Número de Mesa
-                <button class="tooltip-btn" aria-label="Más info" data-tip="Cada invitado recibe un pase digital con su nombre y número de acceso.">?</button>
-              </td>
-              <td class="dash">—</td>
-              <td class="dash">—</td>
-              <td class="check">✓</td>
-            </tr>
-          </tbody>
-        </table>
+        <article class="type-card type-card--featured">
+          <div class="type-card__badge">Más completa</div>
+          <div class="type-card__icon">👑</div>
+          <h3 class="type-card__title">XV Años</h3>
+          <p class="type-card__desc">Todo lo Básico (excepto WhatsApp), y además:</p>
+          <ul class="type-card__list">
+            <li>Presentación de la quinceañera</li>
+            <li>Padres y padrinos</li>
+            <li>Dress code</li>
+            <li>Mesa de regalos</li>
+            <li class="type-card__extra">★ RSVP en la invitación <span>(Platinum)</span></li>
+            <li class="type-card__extra">★ Boletos con número de mesa <span>(Platinum)</span></li>
+          </ul>
+        </article>
+
+        <article class="type-card">
+          <div class="type-card__icon">💍</div>
+          <h3 class="type-card__title">Bodas</h3>
+          <p class="type-card__desc">Todo lo Básico (excepto WhatsApp), y además:</p>
+          <ul class="type-card__list">
+            <li>Mensaje de los novios</li>
+            <li>Padres</li>
+            <li>Dress code</li>
+            <li>Mesa de regalos</li>
+            <li class="type-card__extra">★ Historia de los novios <span>(Premium o superior)</span></li>
+            <li class="type-card__extra">★ Video <span>(Premium o superior)</span></li>
+            <li class="type-card__extra">★ RSVP en la invitación <span>(Platinum)</span></li>
+            <li class="type-card__extra">★ Boletos con número de mesa <span>(Platinum)</span></li>
+          </ul>
+        </article>
       </div>
-      <div class="tooltip-popup" id="tooltipPopup" role="tooltip" aria-live="polite"></div>
+      <p class="plans-table__note">★ Estas funciones se agregan según el plan que elijas (Estándar, Premium o Platinum) — más detalle en la sección de precios, abajo. 🎈 Baby Shower confirma asistencia por WhatsApp. 👑💍 XV y Bodas confirman por RSVP dentro de la invitación, disponible solo en el plan Platinum.</p>
     </section>
+
 
     <!-- PRECIOS -->
     <section class="section" id="precios">
@@ -1172,23 +1249,29 @@
         <h2 class="section-title">Inversión para tu gran día</h2>
       </div>
 
-      <div class="pricing-grid">
+      <p class="plans-table__note" style="margin-bottom: var(--space-3)">🎈 Baby Shower usa el plan <strong>Estándar</strong> — mismo precio, ya que incluye justo lo que necesita este tipo de evento.</p>
+
+      <div class="pricing-grid" id="pricingGrid">
         <div class="pricing-card">
           <div class="pricing-card__header">
             <p class="pricing-card__name">Estándar</p>
-            <p class="pricing-card__price">$599</p>
+            <p class="pricing-card__price">$499</p>
             <p class="pricing-card__period">pago único · MXN</p>
           </div>
           <ul class="pricing-card__features">
-            <li>Cuenta regresiva</li>
-            <li>Ubicación interactiva</li>
-            <li>Calendario y agenda</li>
-            <li>Itinerario del evento</li>
-            <li>Hospedaje recomendado</li>
-            <li>Mesa de regalos</li>
+            <li>Portada + cuenta regresiva</li>
+            <li>Detalles del evento e itinerario</li>
+            <li>Galería de fotos</li>
+            <li>Música de fondo</li>
             <li>Envíos ilimitados</li>
             <li>Vigencia 3 meses</li>
           </ul>
+          <div class="pricing-card__group">
+            <span class="pricing-card__group-tag">🎈 Solo Baby Shower</span>
+            <ul>
+              <li>Confirmación de asistencia (WhatsApp)</li>
+            </ul>
+          </div>
           <a href="#" class="btn btn--outline" data-package="Estándar">Seleccionar</a>
         </div>
 
@@ -1201,25 +1284,40 @@
           </div>
           <ul class="pricing-card__features">
             <li>Todo lo de Estándar</li>
-            <li>Pases de entrada</li>
-            <li>Música de fondo</li>
+            <li>Dress code</li>
+            <li>Mesa de regalos</li>
           </ul>
+          <div class="pricing-card__group">
+            <span class="pricing-card__group-tag">👑 Solo XV</span>
+            <ul>
+              <li>Presentación de la quinceañera</li>
+              <li>Padres y padrinos</li>
+            </ul>
+          </div>
+          <div class="pricing-card__group">
+            <span class="pricing-card__group-tag">💍 Solo Bodas</span>
+            <ul>
+              <li>Mensaje de los novios</li>
+              <li>Historia de los novios / Video</li>
+            </ul>
+          </div>
           <a href="#" class="btn btn--solid-coral" data-package="Premium">Seleccionar</a>
         </div>
 
         <div class="pricing-card">
           <div class="pricing-card__header">
-            <p class="pricing-card__name">Platinum QR</p>
+            <p class="pricing-card__name">Platinum</p>
             <p class="pricing-card__price">$1,599</p>
             <p class="pricing-card__period">pago único · MXN</p>
           </div>
           <ul class="pricing-card__features">
             <li>Todo lo de Premium</li>
+            <li>RSVP en la invitación (reemplaza WhatsApp)</li>
             <li>Pases personalizados</li>
-            <li>Pregúntame</li>
-            <li>Control de acceso QR</li>
+            <li>Número de mesa</li>
+            <li>Control de Invitados</li>
           </ul>
-          <a href="#" class="btn btn--outline" data-package="Platinum QR">Seleccionar</a>
+          <a href="#" class="btn btn--outline" data-package="Platinum">Seleccionar</a>
         </div>
       </div>
     </section>
@@ -1227,10 +1325,9 @@
     <!-- FOOTER -->
     <footer class="footer">
       <p class="footer-logo">
-        Momento
-        <span>s</span>
+        M<span>oo</span>mentos
       </p>
-      <p class="footer-copy">© 2025 Momentos · Invitaciones digitales · México</p>
+      <p class="footer-copy">© 2026 Moomentos · Invitaciones digitales · México</p>
     </footer>
 
     <!-- WHATSAPP FLOTANTE -->
@@ -1410,43 +1507,6 @@
          ============================================================ */
         const grid = document.getElementById("categoriesGrid");
         CATEGORIES.forEach((cat) => grid.appendChild(buildCard(cat)));
-
-        /* ============================================================
-         TOOLTIPS
-         ============================================================ */
-        const tooltipPopup = document.getElementById("tooltipPopup");
-
-        function showTooltip(btn) {
-          const text = btn.getAttribute("data-tip");
-          if (!text) return;
-          tooltipPopup.textContent = text;
-          tooltipPopup.classList.add("is-visible");
-          const rect = btn.getBoundingClientRect();
-          const popupRect = tooltipPopup.getBoundingClientRect();
-          let left = rect.left + rect.width / 2 - popupRect.width / 2;
-          left = Math.max(8, Math.min(left, window.innerWidth - popupRect.width - 8));
-          tooltipPopup.style.left = left + "px";
-          tooltipPopup.style.top = rect.top - popupRect.height - 10 + window.scrollY + "px";
-        }
-        function hideTooltip() {
-          tooltipPopup.classList.remove("is-visible");
-        }
-
-        document.querySelectorAll(".tooltip-btn").forEach((btn) => {
-          btn.addEventListener("mouseenter", () => showTooltip(btn));
-          btn.addEventListener("mouseleave", hideTooltip);
-          btn.addEventListener("focus", () => showTooltip(btn));
-          btn.addEventListener("blur", hideTooltip);
-          btn.addEventListener("click", (e) => {
-            e.preventDefault();
-            tooltipPopup.classList.contains("is-visible") ? hideTooltip() : showTooltip(btn);
-          });
-        });
-
-        document.addEventListener("click", (e) => {
-          if (!e.target.closest(".tooltip-btn")) hideTooltip();
-        });
-        window.addEventListener("scroll", hideTooltip, { passive: true });
 
         /* ============================================================
          SMOOTH SCROLL
