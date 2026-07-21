@@ -386,9 +386,16 @@ export const rsvp = {
       return;
     }
 
-    const params = new URLSearchParams(window.location.search);
-    const token = params.get("token") || "";
-    if (!token) return;
+    const pathParts = window.location.pathname.split("/").filter(Boolean);
+    let token = "";
+    if (Resources.RSVP.Enable && !Resources.Config.Template) {
+      if (pathParts.length > 1) {
+        token = pathParts[pathParts.length - 1];
+      } else {
+        const params = new URLSearchParams(window.location.search);
+        token = params.get("token") || "";
+      }
+    }
 
     fetch(`/api/sheet`, {
       method: "POST",
