@@ -1,3 +1,37 @@
+@font-face {
+  font-family: "monallesia";
+  src:
+    url("/fonts/monallesiascript.woff2") format("woff2"),
+    url("/fonts/monallesiascript.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "HelloHoney";
+  font-style: normal;
+  font-weight: normal;
+  font-display: swap;
+  src: url("/fonts/hellohoney.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "PlayFair Italica";
+  font-style: normal;
+  font-weight: normal;
+  font-display: swap;
+  src: url("/fonts/PlayfairDisplay.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Eastpoint";
+  font-style: normal;
+  font-weight: normal;
+  font-display: swap;
+  src: url("/fonts/Eastpoint.woff2") format("woff2");
+}
+
+
 /* #region ROOT*/
 :root {
   --color-primary: #2d2d2d;
@@ -839,7 +873,7 @@ html {
 
 @media (max-width: 767.98px) {
   ._third-section img._main-image {
-    height: auto;
+    /* height: auto; */
     max-height: 100dvh;
   }
 }

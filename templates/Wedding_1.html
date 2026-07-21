@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="google" content="notranslate" />
 
+    <link rel="preconnect" href="https://ajax.googleapis.com" />
     <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -32,11 +33,13 @@
     <link rel="icon" type="image/png" sizes="196x196" href="/images/icons/_favicon-Wedding-196.png" />
 
     <link rel="preload" fetchpriority="high" as="image" href="/images/templates/Wedding/1.webp" type="image/webp" />
+    <link rel="preload" fetchpriority="high" as="image" href="/images/templates/Wedding/mono.webp" type="image/webp" />
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="/css/bootstrap.min.css" crossorigin />
-    <link rel="stylesheet" href="/css/templates.css" />
-    <link rel="stylesheet" href="/css/Wedding/Wedding_1.min.css" />
+    <noscript>
+      <link rel="stylesheet" href="/css/bootstrap.min.css" />
+      <link rel="stylesheet" href="/css/Wedding/Wedding_1.min.css" />
+    </noscript>
 
     <!-- Font Awesome-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media = 'all'" />
@@ -269,7 +272,7 @@
     </div>
 
     <!-- jQuery primero — sin defer -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js" defer></script>
     <!-- Bootstrap con defer -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/toastify-js" defer></script>
