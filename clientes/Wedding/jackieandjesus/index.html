@@ -520,11 +520,10 @@
       // ─── INIT PAGE ────────────────────────────────────
       function InitPage() {
         helpers.init(Init);
-
+        onLoad();
         // RSVP Invitacion
         rsvp.onGetRSVP();
 
-        onLoad();
         helpers.onCounterStart(Init.MainEvent.Date);
         setInterval(function () {
           helpers.onCounterStart(Init.MainEvent.Date);
