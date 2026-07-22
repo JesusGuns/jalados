@@ -31,7 +31,6 @@
   src: url("/fonts/Eastpoint.woff2") format("woff2");
 }
 
-
 /* #region ROOT*/
 :root {
   --color-primary: #2d2d2d;
@@ -354,6 +353,10 @@ html {
   width: clamp(120px, 12vw, 160px);
   height: auto;
   z-index: 2;
+}
+
+._main-section ._main-image {
+  background-color: #ece7e2;
 }
 
 ._main-section ._details {

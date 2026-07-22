@@ -18,6 +18,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="google" content="notranslate" />
 
+    <base href="/images/templates/Wedding/" />
+
     <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -49,8 +51,8 @@
 
     <link rel="icon" type="image/png" sizes="196x196" href="/images/icons/_favicon-Wedding-196.png" />
 
-    <link rel="preload" fetchpriority="high" as="image" href="/images/templates/Wedding/1.webp" type="image/webp" />
-    <link rel="preload" fetchpriority="high" as="image" href="/images/templates/Wedding/mono.webp" type="image/webp" />
+    <link rel="preload" fetchpriority="high" as="image" href="1.webp" type="image/webp" />
+    <link rel="preload" fetchpriority="high" as="image" href="mono.webp" type="image/webp" />
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css" />
@@ -78,8 +80,8 @@
         <div class="_template">
           <div class="_main-section">
             <div class="_wrapper">
-              <img class="_main-mono" src="#" data-replace="Image_Mono" fetchpriority="high" loading="eager" />
-              <img class="_main-image" src="#" data-replace="Image_MainCard" fetchpriority="high" loading="eager" />
+              <img class="_main-mono" data-replace="Image_Mono" src="mono.webp" fetchpriority="high" loading="eager" decoding="sync" alt="" />
+              <img class="_main-image" data-replace="Image_MainCard" src="1.webp" fetchpriority="high" loading="eager" decoding="sync" alt="" />
             </div>
 
             <div class="_details">
@@ -386,8 +388,8 @@
       function onLoad() {
         var eventFormatDate = helpers.onGetDay(mainEvent.Date) + " • " + helpers.onGetMonth(mainEvent.Date) + " • " + helpers.onGetYear(mainEvent.Date);
         $("[data-replace=EventFormatDate]").text(eventFormatDate);
-        $("[data-replace=Image_MainCard]").attr("src", additionalInformation.ImageMainCard);
-        $("[data-replace=Image_Mono]").attr("src", additionalInformation.ImageMono);
+        // $("[data-replace=Image_MainCard]").attr("src", additionalInformation.ImageMainCard);
+        // $("[data-replace=Image_Mono]").attr("src", additionalInformation.ImageMono);
         $("[data-replace=Image_Introduction]").attr("src", additionalInformation.ImageIntroduction);
         $("[data-replace=Image_Place]").attr("src", additionalInformation.ImagePlace);
         $("[data-replace=Image_Itinerary]").attr("src", additionalInformation.ImageItinerary);
