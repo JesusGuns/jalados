@@ -159,7 +159,7 @@ html {
 .dc-map img {
   width: 45px;
   height: 45px;
-  animation: _animation-pulse-3 1.5s infinite;
+  animation: _animation-pulse-3 1.8s ease-out 3;
   border-radius: 50%;
   object-fit: contain;
 }
@@ -397,45 +397,71 @@ html {
   display: flex;
   align-items: stretch;
   justify-content: center;
-  flex-wrap: wrap;
-  gap: 10px;
-  border-radius: 15px;
+  border-radius: 14px;
   margin: 2rem;
-  box-shadow: none !important;
-  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08) !important;
+  background: rgba(255, 255, 255, 0.45);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(166, 137, 102, 0.25);
+  overflow: hidden;
   transition:
     background-color 0.3s ease,
     box-shadow 0.3s ease;
 }
 
 ._counter-section ._counter-Timebox {
-  font-family: var(--font-c);
-  font-size: clamp(0.8rem, 1.5vw, 1rem);
+  font-family: var(--font-d);
+  font-size: 0.68rem;
+  font-weight: 600;
   letter-spacing: 2.5px;
+  text-transform: uppercase;
   flex: 1;
   min-width: 65px;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  color: var(--color-primary);
-  text-shadow: 0 2px 6px rgba(0, 0, 0, 1);
-  border-radius: 5px;
-  padding: 10px;
-  background-color: var(--color-c);
+  color: var(--color-d);
+  padding: 16px 8px;
+  position: relative;
+}
+
+._counter-section ._counter-Timebox:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: 22%;
+  bottom: 22%;
+  right: 0;
+  width: 1px;
+  background: rgba(166, 137, 102, 0.25);
 }
 
 ._counter-section ._counter-Timebox span {
-  font-family: var(--font-c);
-  font-weight: normal;
-  font-size: clamp(2rem, 5vw, 3rem);
+  font-family: var(--font-f);
+  font-weight: 600;
+  font-size: clamp(1.8rem, 4.5vw, 2.6rem);
+  font-variant-numeric: tabular-nums;
+  color: var(--color-h1);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
   height: auto;
   display: block;
+  margin-bottom: 4px;
 }
 
 @media (max-width: 1399.98px) {
   ._counter-section {
     max-width: 600px;
+  }
+}
+
+@media (max-width: 375px) {
+  ._counter-section ._counter-Countdown {
+    margin: 1.25rem 0.75rem;
+  }
+
+  ._counter-section ._counter-Timebox {
+    min-width: 0;
+    padding: 12px 4px;
   }
 }
 
@@ -1192,7 +1218,7 @@ html {
   transition:
     transform 0.2s,
     background-color 0.2s;
-  animation: _pulse-btn 1.5s infinite alternate;
+  animation: _pulse-btn 1.5s ease-in-out 3 alternate;
 }
 
 ._btn-gift img {
