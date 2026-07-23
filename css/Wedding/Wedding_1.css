@@ -406,7 +406,7 @@ html {
 /* #region COUNTER */
 ._counter-section {
   width: 100%;
-  max-width: 350px;
+  max-width: 600px;
 }
 
 ._counter-section ._counter-Countdown {
