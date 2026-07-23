@@ -5,34 +5,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="google" content="notranslate" />
 
+    <base href="/clientes/Wedding/jackieandjesus/" />
+
     <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
 
+    <!-- SEO básico -->
+    <meta name="robots" content="noindex, nofollow" />
+    <link rel="canonical" href="https://www.moomentos.com" />
+
     <!-- Primary Meta Tags -->
-    <title>Nuestra Boda</title>
-    <meta name="title" content="Nuestra Boda" />
+    <title>Nuestra Boda Jackie & Jesus</title>
+    <meta name="title" content="Nuestra Boda Jackie & Jesus" />
     <meta name="description" content="Te invitamos a formar parte del día más feliz de nuestras vidas. Acompáñanos a celebrar nuestra boda." />
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://www.moomentos.com/Wedding/1" />
-    <meta property="og:title" content="Nuestra Boda" />
+    <meta property="og:url" content="https://www.moomentos.com/wedding-jackieandjesus" />
+    <meta property="og:site_name" content="Moomentos" />
+    <meta property="og:title" content="Nuestra Boda Jackie & Jesus" />
     <meta property="og:description" content="Te invitamos a formar parte del día más feliz de nuestras vidas. Acompáñanos a celebrar nuestra boda." />
     <meta property="og:image" content="https://www.moomentos.com/images/icons/_favicon-Wedding.png" />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:url" content="https://www.moomentos.com/Wedding/1" />
-    <meta name="twitter:title" content="Nuestra Boda" />
+    <meta name="twitter:url" content="https://www.moomentos.com/wedding-jackieandjesus" />
+    <meta name="twitter:title" content="Nuestra Boda Jackie & Jesus" />
     <meta name="twitter:description" content="Te invitamos a formar parte del día más feliz de nuestras vidas. Acompáñanos a celebrar nuestra boda." />
     <meta name="twitter:image" content="https://www.moomentos.com/images/icons/_favicon-Wedding.png" />
 
     <link rel="icon" type="image/png" sizes="196x196" href="/images/icons/_favicon-Wedding-196.png" />
 
-    <link rel="preload" fetchpriority="high" as="image" href="/clientes/Wedding/jackieandjesus/1.webp" type="image/webp" />
-    <link rel="preload" fetchpriority="high" as="image" href="/clientes/Wedding/jackieandjesus/mono.webp" type="image/webp" />
+    <link rel="preload" fetchpriority="high" as="image" href="1.webp" type="image/webp" />
+    <link rel="preload" fetchpriority="high" as="image" href="mono.webp" type="image/webp" />
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css" />
@@ -60,8 +67,8 @@
         <div class="_template">
           <div class="_main-section">
             <div class="_wrapper">
-              <img class="_main-mono" src="#" data-replace="Image_Mono" fetchpriority="high" loading="eager" />
-              <img class="_main-image" src="#" data-replace="Image_MainCard" fetchpriority="high" loading="eager" />
+              <img class="_main-mono" data-replace="Image_Mono" src="mono.webp" fetchpriority="high" loading="eager" decoding="sync" alt="" />
+              <img class="_main-image" data-replace="Image_MainCard" src="1.webp" fetchpriority="high" loading="eager" decoding="sync" alt="" />
             </div>
 
             <div class="_details">
@@ -368,8 +375,8 @@
       function onLoad() {
         var eventFormatDate = helpers.onGetDay(mainEvent.Date) + " • " + helpers.onGetMonth(mainEvent.Date) + " • " + helpers.onGetYear(mainEvent.Date);
         $("[data-replace=EventFormatDate]").text(eventFormatDate);
-        $("[data-replace=Image_MainCard]").attr("src", additionalInformation.ImageMainCard);
-        $("[data-replace=Image_Mono]").attr("src", additionalInformation.ImageMono);
+        // $("[data-replace=Image_MainCard]").attr("src", additionalInformation.ImageMainCard);
+        // $("[data-replace=Image_Mono]").attr("src", additionalInformation.ImageMono);
         $("[data-replace=Image_Introduction]").attr("src", additionalInformation.ImageIntroduction);
         $("[data-replace=Image_Place]").attr("src", additionalInformation.ImagePlace);
         $("[data-replace=Image_Itinerary]").attr("src", additionalInformation.ImageItinerary);
