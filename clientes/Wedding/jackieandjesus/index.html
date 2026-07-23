@@ -50,8 +50,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&family=Playfair+Display&display=swap" rel="stylesheet" media="print" onload="this.media = 'all'" />
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Raleway:wght@200;300;400;500&family=Great+Vibes&display=swap" rel="stylesheet" />
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css" media="print" onload="this.media = 'all'" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery/css/lightgallery-bundle.min.css" media="print" onload="this.media = 'all'" />
     <!-- Toastify-->
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css" media="print" onload="this.media = 'all'" />
   </head>
@@ -154,7 +152,17 @@
             <img class="_main-image" src="#" data-replace="Image_Itinerary" alt="Evento 1" />
           </div>
 
-          <div id="_gallery-section" class="_gallery-section _hide-section"></div>
+          <div id="_gallery-section" class="gallery-section _hide-section">
+            <div class="gallery-header">
+              <div>
+                <span class="section-eyebrow">Momentos</span>
+                <h2 class="section-title" style="margin-bottom: 0">Galería</h2>
+              </div>
+              <span class="gallery-count" id="gallery-count"></span>
+            </div>
+            <div class="gallery-masonry" id="gallery-grid"></div>
+            <div class="gallery-fade"></div>
+          </div>
 
           <div class="_lovestory-section _third-section _hide-section">
             <div class="_wrapper">
@@ -267,13 +275,27 @@
       </main>
     </div>
 
-    <!-- Modal de galería (lightbox) -->
-    <div id="_gallery-modal">
-      <button type="button" class="close" aria-label="Cerrar">&times;</button>
-      <button type="button" class="gallery-nav prev" aria-label="Foto anterior">&#10094;</button>
-      <img id="_modalImg" src="" alt="" />
-      <button type="button" class="gallery-nav next" aria-label="Foto siguiente">&#10095;</button>
-      <span class="gallery-counter"><span id="_modalCounter">1 / 1</span></span>
+    <!-- Modal galería custom -->
+    <div id="galleryModal">
+      <button class="gallery-modal-close" id="galleryModalClose">
+        <i class="fas fa-times"></i>
+      </button>
+      <div class="gallery-modal-img-wrap" id="galleryModalImgWrap">
+        <img src="" id="modalGalleryImage" alt="Galería" />
+      </div>
+      <div class="gallery-modal-bar">
+        <button class="gallery-modal-nav" id="galleryModalPrev">
+          <i class="fas fa-chevron-left"></i>
+        </button>
+        <span class="gallery-modal-counter">
+          <strong id="galleryModalCurrent">1</strong>
+          <span>/</span>
+          <span id="galleryModalTotal">1</span>
+        </span>
+        <button class="gallery-modal-nav" id="galleryModalNext">
+          <i class="fas fa-chevron-right"></i>
+        </button>
+      </div>
     </div>
 
     <!-- jQuery primero — sin defer -->
@@ -409,26 +431,18 @@
 
         // Galería
         var gallery_imgs = mainEvent.Gallery;
-        var $gallerySection = $("#_gallery-section");
-        $gallerySection.empty();
+        $("#gallery-count").text(gallery_imgs.length + " fotos");
+        var $galleryGrid = $("#gallery-grid");
+        $galleryGrid.empty();
+        var $colLeft = $("<div>", { class: "gal-col" });
+        var $colRight = $("<div>", { class: "gal-col" });
         gallery_imgs.forEach(function (url, index) {
-          var $item = $("<div>", { class: "gal-item fade-scroll", "data-index": index });
+          var $item = $("<div>", { class: "gal-item", "data-index": index });
           var $img = $("<img>", { src: url, alt: "Foto " + (index + 1), loading: "lazy" });
-
-          // En cuanto la imagen real termina de cargar, ajustamos el
-          // placeholder a su proporción verdadera y la mostramos con fade-in.
-          // Esto evita que la sección "colapse" mientras las fotos cargan,
-          // que es lo que provocaba el brinco de scroll al abrir la página.
-          $img.on("load", function () {
-            if (this.naturalWidth && this.naturalHeight) {
-              $item.css("aspect-ratio", this.naturalWidth + " / " + this.naturalHeight);
-            }
-            $img.addClass("show");
-          });
-
           $item.append($img);
-          $gallerySection.append($item);
+          (index % 2 === 0 ? $colLeft : $colRight).append($item);
         });
+        $galleryGrid.append($colLeft, $colRight);
 
         // Confirmación
         $("#_btnYes").on("click", function () {
@@ -440,7 +454,7 @@
       }
 
       function checkVisibility() {
-        var animatedEls = document.querySelectorAll(".fade-scroll, .slide-up, .slide-up > h2, .slide-up > p, .slide-left, .slide-right, .slide-down");
+        var animatedEls = document.querySelectorAll(".slide-up, .slide-up > h2, .slide-up > p, .slide-left, .slide-right, .slide-down");
         var slideObserver = new IntersectionObserver(
           function (entries) {
             entries.forEach(function (entry) {
@@ -458,87 +472,102 @@
       // Independiente del play button: se inicializa una sola vez al cargar
       // la página. Los listeners quedan puestos aunque la sección de
       // galería esté oculta; en cuanto el usuario le da play, todo funciona
-      // sin necesidad de volver a configurar nada.
+      // sin necesidad de volver a configurar nada. Delegación de eventos en
+      // document, así que funciona con las fotos generadas dinámicamente
+      // en onLoad() sin importar el orden de ejecución.
       var galleryModal = {
+        $el: null,
         currentIndex: 0,
         images: [],
+        touchStartX: 0,
+        touchStartY: 0,
 
         init: function () {
-          var self = this;
-          var modal = document.getElementById("_gallery-modal");
-          var modalImg = document.getElementById("_modalImg");
-          var modalCounter = document.getElementById("_modalCounter");
-          if (!modal || !modalImg) return;
+          var self = galleryModal;
+          self.$el = $("#galleryModal");
+          self.images = mainEvent.Gallery;
 
-          var modalClose = modal.querySelector(".close");
-          var btnPrev = modal.querySelector(".gallery-nav.prev");
-          var btnNext = modal.querySelector(".gallery-nav.next");
-
-          function refreshImages() {
-            self.images = Array.prototype.slice.call(document.querySelectorAll("#_gallery-section img"));
-          }
-
-          function updateModalImage() {
-            var img = self.images[self.currentIndex];
-            if (!img) return;
-            modalImg.src = img.src;
-            modalImg.alt = img.alt || "";
-            if (modalCounter) {
-              modalCounter.textContent = self.currentIndex + 1 + " / " + self.images.length;
-            }
-          }
-
-          function openModal(index) {
-            refreshImages();
-            if (!self.images.length) return;
-            self.currentIndex = index;
-            updateModalImage();
-            modal.classList.add("show");
-            document.body.style.overflow = "hidden";
-          }
-
-          function closeModal() {
-            modal.classList.remove("show");
-            document.body.style.overflow = "";
-          }
-
-          function showPrev() {
-            if (!self.images.length) return;
-            self.currentIndex = (self.currentIndex - 1 + self.images.length) % self.images.length;
-            updateModalImage();
-          }
-
-          function showNext() {
-            if (!self.images.length) return;
-            self.currentIndex = (self.currentIndex + 1) % self.images.length;
-            updateModalImage();
-          }
-
-          // Delegación de eventos: funciona con las imágenes que existen
-          // hoy y con cualquiera que se agregue/regenere después.
-          document.getElementById("_gallery-section").addEventListener("click", function (e) {
-            var img = e.target.closest("img");
-            if (!img) return;
-            refreshImages();
-            var index = self.images.indexOf(img);
-            openModal(index >= 0 ? index : 0);
+          $(document).on("click", ".gal-item", function () {
+            self.open(parseInt($(this).data("index")));
           });
 
-          if (modalClose) modalClose.addEventListener("click", closeModal);
-          if (btnPrev) btnPrev.addEventListener("click", showPrev);
-          if (btnNext) btnNext.addEventListener("click", showNext);
-
-          // Clic en el fondo oscuro (no en la imagen ni en los controles) cierra
-          modal.addEventListener("click", function (e) {
-            if (e.target === modal) closeModal();
+          $("#galleryModalClose").on("click", function (e) {
+            e.stopPropagation();
+            self.close();
           });
+
+          self.$el.on("click", function (e) {
+            if ($(e.target).is("#galleryModal")) self.close();
+          });
+
+          $("#galleryModalPrev").on("click", function (e) {
+            e.stopPropagation();
+            self.navigate(-1);
+          });
+          $("#galleryModalNext").on("click", function (e) {
+            e.stopPropagation();
+            self.navigate(1);
+          });
+
+          var imgWrap = document.getElementById("galleryModalImgWrap");
+          imgWrap.addEventListener(
+            "touchstart",
+            function (e) {
+              self.touchStartX = e.changedTouches[0].screenX;
+              self.touchStartY = e.changedTouches[0].screenY;
+            },
+            { passive: true },
+          );
+          imgWrap.addEventListener(
+            "touchend",
+            function (e) {
+              var dx = e.changedTouches[0].screenX - self.touchStartX;
+              var dy = e.changedTouches[0].screenY - self.touchStartY;
+              if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 45) {
+                self.navigate(dx < 0 ? 1 : -1);
+              }
+            },
+            { passive: true },
+          );
 
           document.addEventListener("keydown", function (e) {
-            if (!modal.classList.contains("show")) return;
-            if (e.key === "Escape") closeModal();
-            if (e.key === "ArrowLeft") showPrev();
-            if (e.key === "ArrowRight") showNext();
+            if (!self.$el.hasClass("open")) return;
+            if (e.key === "ArrowLeft") self.navigate(-1);
+            if (e.key === "ArrowRight") self.navigate(1);
+            if (e.key === "Escape") self.close();
           });
+        },
+
+        open: function (index) {
+          var self = galleryModal;
+          self.currentIndex = index;
+          self.updateImage();
+          self.$el.addClass("open");
+          $("body").css("overflow", "hidden");
+        },
+
+        close: function () {
+          var self = galleryModal;
+          self.$el.removeClass("open");
+          $("body").css("overflow", "");
+        },
+
+        navigate: function (dir) {
+          var self = galleryModal;
+          var $img = $("#modalGalleryImage");
+          $img.addClass("fading");
+          setTimeout(function () {
+            self.currentIndex = (self.currentIndex + dir + self.images.length) % self.images.length;
+            self.updateImage();
+            $img.removeClass("fading");
+          }, 180);
+        },
+
+        updateImage: function () {
+          var self = galleryModal;
+          $("#modalGalleryImage").attr("src", self.images[self.currentIndex]);
+          $("#galleryModalCurrent").text(self.currentIndex + 1);
+          $("#galleryModalTotal").text(self.images.length);
         },
       };
 
