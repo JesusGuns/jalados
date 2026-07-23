@@ -501,7 +501,7 @@ html {
 }
 
 ._introduction-section ._details h2 {
-  font-family: var(--font-b);
+  font-family: "Great Vibes", cursive;
   font-size: clamp(1.4rem, 3vw, 1.8rem);
   font-weight: 600;
   letter-spacing: 2px;
