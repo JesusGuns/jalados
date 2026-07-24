@@ -655,7 +655,7 @@ html {
   justify-content: space-between;
 }
 
-.gallery-header .section-eyebrow {
+.gallery-header .section-eyebrow a{
   font-family: var(--font-d);
   font-size: 0.72rem;
   font-weight: 600;
@@ -664,6 +664,7 @@ html {
   color: var(--color-accent);
   margin-bottom: 8px;
   display: block;
+  text-decoration: none;
 }
 
 .gallery-header .section-title {
