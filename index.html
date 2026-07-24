@@ -43,7 +43,7 @@
     <meta name="twitter:url" content="https://www.moomentos.com/" />
     <meta name="twitter:title" content="Moomentos | Invitaciones Digitales para XV, Bodas y Baby Shower" />
     <meta name="twitter:description" content="Invitaciones digitales con RSVP integrado, sin depender de WhatsApp. Planes con distintas características para XV años, bodas y baby shower." />
-    <meta name="twitter:image" content="https://www.moomentos.com/social-card-1200x630.png">
+    <meta name="twitter:image" content="https://www.moomentos.com/social-card-1200x630.png" />
 
     <link rel="icon" type="image/png" sizes="32x32" href="/images/icons/icon-outline-32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="/images/icons/icon-outline-16.png" />
@@ -1049,6 +1049,39 @@
         color: var(--ink-dim);
       }
 
+      .footer-social {
+        display: flex;
+        justify-content: center;
+        margin: var(--space-2) 0;
+      }
+
+      .footer-social a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        border: 1px solid var(--line);
+        color: var(--ink-dim);
+        transition:
+          color 0.2s var(--ease),
+          border-color 0.2s var(--ease),
+          transform 0.2s var(--ease);
+      }
+
+      .footer-social a:hover,
+      .footer-social a:focus-visible {
+        color: var(--coral);
+        border-color: var(--coral-soft);
+        transform: translateY(-2px);
+      }
+
+      .footer-social svg {
+        width: 20px;
+        height: 20px;
+      }
+
       /* ============================================
    RESPONSIVE
    ============================================ */
@@ -1394,6 +1427,15 @@
         <span>oo</span>
         mentos
       </p>
+      <div class="footer-social">
+        <a href="https://www.instagram.com/moomentos.official" target="_blank" rel="noopener noreferrer" aria-label="Síguenos en Instagram">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+          </svg>
+        </a>
+      </div>
       <p class="footer-copy">© 2026 Moomentos · Invitaciones digitales · México</p>
     </footer>
 

@@ -1,1 +1,21 @@
+:root {
+  --coral: #ff5d5d;
+  --violet: #6c5ce7;
+  --mint: #00c2a8;
+}
 
+.moomentos-credit {
+  display: inline-block;
+  margin-top: 14px;
+  font-family: Quicksand, sans-serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.04em;
+  color: var(--mint);
+  opacity: 0.95;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+.moomentos-credit:hover,
+.moomentos-credit:focus-visible {
+  opacity: 0.85;
+}

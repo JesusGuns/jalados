@@ -1,26 +1,9 @@
 @font-face {
-  font-family: "monallesia";
-  src:
-    url("/fonts/monallesiascript.woff2") format("woff2"),
-    url("/fonts/monallesiascript.woff") format("woff");
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
   font-family: "HelloHoney";
   font-style: normal;
   font-weight: normal;
   font-display: swap;
   src: url("/fonts/hellohoney.woff2") format("woff2");
-}
-
-@font-face {
-  font-family: "PlayFair Italica";
-  font-style: normal;
-  font-weight: normal;
-  font-display: swap;
-  src: url("/fonts/PlayfairDisplay.woff2") format("woff2");
 }
 
 @font-face {
@@ -44,8 +27,6 @@
   --color-e: #4a4a4a;
 
   --font-a: "HelloHoney", Sans-serif;
-  --font-b: "monallesia";
-  --font-c: "PlayFair Italica", serif;
   --font-d: "Google Sans", sans-serif;
   --font-e: "Eastpoint", serif;
   --font-f: "Playfair Display", serif;
@@ -512,9 +493,9 @@ html {
 
 ._introduction-section ._details h2 {
   font-family: "Great Vibes", cursive;
-  font-size: clamp(1.4rem, 3vw, 1.8rem);
-  font-weight: 600;
-  letter-spacing: 2px;
+  font-size: clamp(1.6rem, 3.5vw, 2.1rem);
+  font-weight: 400;
+  letter-spacing: 1px;
   margin: 0;
   text-align: center;
   color: var(--color-secondary);
@@ -546,7 +527,7 @@ html {
 }
 
 ._family-section h1 {
-  font-family: var(--font-b);
+  font-family: var(--font-f);
   font-style: italic;
   font-size: clamp(1.2rem, 2.5vw, 1.7rem);
   line-height: 1.4;
@@ -558,8 +539,7 @@ html {
 }
 
 ._family-section small {
-  font-family: var(--font-c);
-  font-style: italic;
+  font-family: var(--font-d);
   font-size: clamp(0.85rem, 1.2vw, 0.95rem);
   font-weight: 600;
   text-transform: uppercase;
@@ -603,7 +583,7 @@ html {
 }
 
 ._place-section h2 {
-  font-family: var(--font-c);
+  font-family: var(--font-f);
   font-weight: 600;
   font-size: clamp(1.1rem, 2.5vw, 1.5rem);
   letter-spacing: 2px;
@@ -613,13 +593,13 @@ html {
 }
 
 ._place-section small {
-  font-family: var(--font-c);
+  font-family: var(--font-d);
   font-size: clamp(0.85rem, 1.2vw, 0.95rem);
   font-weight: 600;
   line-height: 1.5;
   text-align: center;
   color: var(--color-primary);
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
   margin-bottom: 1rem;
   max-width: 300px;
 }
@@ -935,12 +915,78 @@ html {
 /* #region VIDEO */
 ._video-section {
   width: 100%;
+  padding: 64px 28px;
+  text-align: center;
+  background: var(--color-secondary);
 }
 
-._video-section iframe {
+._video-section .eyebrow {
+  font-family: var(--font-d);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin-bottom: 8px;
+  display: block;
+}
+
+._video-section .video-title {
+  font-family: var(--font-f);
+  font-size: var(--fs-h2);
+  color: var(--color-h1);
+  margin: 8px 0 24px;
+}
+
+._video-section .video-wrap {
+  position: relative;
   width: 100%;
+  max-width: 720px;
+  margin: 0 auto;
+  padding-bottom: 56.25%; /* 16:9 */
+  height: 0;
+  overflow: hidden;
+  border-radius: 4px;
+  border: 1px solid rgba(166, 137, 102, 0.2);
+}
+
+._video-section .video-wrap iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+/* Placeholder si no hay video */
+._video-section .video-placeholder {
+  width: 100%;
+  max-width: 720px;
+  margin: 0 auto;
   aspect-ratio: 16 / 9;
-  height: auto;
+  background: rgba(0, 0, 0, 0.03);
+  border: 1px dashed rgba(166, 137, 102, 0.3);
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+._video-section .video-placeholder i {
+  font-size: 2.5rem;
+  color: rgba(166, 137, 102, 0.4);
+}
+
+._video-section .video-placeholder p {
+  font-family: var(--font-d);
+  font-size: 0.65rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--color-d);
+  margin: 0;
 }
 
 /* #region DRESSCODE */
@@ -978,7 +1024,7 @@ html {
 
 ._dresscode-section h1 {
   font-family: var(--font-e);
-  font-size: clamp(3.5rem, 10vw, 8.2rem);
+  font-size: clamp(5.5rem, 10vw, 8.2rem);
   font-weight: normal;
   margin: 0;
   line-height: 0.4;
@@ -1030,7 +1076,7 @@ html {
 }
 
 ._attendance-section h1 {
-  font-family: var(--font-b);
+  font-family: var(--font-f);
   font-weight: bold;
   font-size: clamp(1.8rem, 4vw, 2.5rem);
   text-align: center;
@@ -1166,7 +1212,7 @@ html {
 }
 
 ._gifttable-section h1 {
-  font-family: var(--font-b);
+  font-family: var(--font-f);
   font-weight: bold;
   font-size: clamp(2rem, 4vw, 2.5rem);
   text-align: center;
@@ -1213,11 +1259,15 @@ html {
   padding: 12px 25px;
   letter-spacing: 0.8px;
   border-radius: 10px;
+  border: 1px solid rgba(166, 137, 102, 0.35);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
   cursor: pointer;
   text-decoration: none;
   transition:
     transform 0.2s,
-    background-color 0.2s;
+    background-color 0.2s,
+    box-shadow 0.2s,
+    border-color 0.2s;
   animation: _pulse-btn 1.5s ease-in-out 3 alternate;
 }
 
@@ -1230,6 +1280,7 @@ html {
   transform: scale(1.05);
   background-color: rgba(255, 255, 255, 0.3);
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+  border-color: rgba(166, 137, 102, 0.6);
   animation-play-state: paused;
 }
 
@@ -1278,14 +1329,15 @@ html {
 }
 
 ._savethedate-section ._details h1 {
-  font-family: var(--font-b);
+  font-family: var(--font-f);
   font-size: clamp(1.4rem, 2.5vw, 1.6rem);
   font-weight: 600;
   text-align: center;
 }
 
 ._savethedate-section ._details h2 {
-  font-family: var(--font-c);
+  font-family: var(--font-f);
+  font-style: italic;
   font-size: clamp(1.4rem, 2.5vw, 1.6rem);
   font-weight: 600;
   text-align: left;
@@ -1294,7 +1346,7 @@ html {
 
 ._savethedate-section ._details h3,
 ._savethedate-section ._details h4 {
-  font-family: var(--font-c);
+  font-family: var(--font-f);
   font-size: clamp(1.1rem, 2.5vw, 1.4rem);
   font-weight: 600;
 }
@@ -1351,7 +1403,8 @@ html {
 
 ._table-section h1 {
   font-size: clamp(10rem, 12vw, 15rem);
-  font-family: var(--font-b);
+  font-family: var(--font-f);
+  font-weight: 700;
   color: var(--color-primary);
 }
 
