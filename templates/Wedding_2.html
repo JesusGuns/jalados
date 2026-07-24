@@ -519,14 +519,18 @@
         $("[data-replace=DressCodeStyle]").text(mainEvent.DressCodeStyle);
 
         // Galería
-        var imgs = mainEvent.Gallery;
-        $("#_gallery-section").empty();
-        imgs.forEach(function (url, i) {
-          var item = $("<div>", { class: "gal-item", "data-index": i });
-          var img = $("<img>", { src: url, alt: "Foto " + (i + 1), loading: "lazy" });
-          item.append(img);
-          $("#_gallery-section").append(item);
+        var gallery_imgs = mainEvent.Gallery;
+        var $galleryGrid = $("#_gallery-section");
+        $galleryGrid.empty();
+        var $colLeft = $("<div>", { class: "gal-col" });
+        var $colRight = $("<div>", { class: "gal-col" });
+        gallery_imgs.forEach(function (url, index) {
+          var $item = $("<div>", { class: "gal-item", "data-index": index });
+          var $img = $("<img>", { src: url, alt: "Foto " + (index + 1), loading: "lazy" });
+          $item.append($img);
+          (index % 2 === 0 ? $colLeft : $colRight).append($item);
         });
+        $galleryGrid.append($colLeft, $colRight);
 
         // Confirmación
         $("#_btnYes").on("click", function () {
