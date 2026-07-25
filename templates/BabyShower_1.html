@@ -22,6 +22,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
 
+    <base href="/images/templates/BabyShower/" />
+
     <!-- SEO básico -->
     <meta name="robots" content="index, follow" />
     <link rel="canonical" href="https://www.moomentos.com/BabyShower/1" />
@@ -48,6 +50,8 @@
 
     <link rel="icon" type="image/png" sizes="196x196" href="/images/icons/_favicon-BabyShower-196.png" />
 
+    <link rel="preload" fetchpriority="high" as="image" href="1.webp" type="image/webp" />
+
     <!-- CSS -->
     <link rel="stylesheet" href="/css/BabyShower/BabyShower_1.min.css" />
     <link rel="stylesheet" href="/css/templates.min.css" />
@@ -69,7 +73,7 @@
         <!-- Initial section -->
         <section class="box">
           <div class="subcontainer">
-            <img class="imgMain" src="#" data-replace="Image_MainCard" alt="Image Main" fetchpriority="high" loading="eager" />
+            <img class="imgMain" src="1.webp" data-replace="Image_MainCard" alt="Image Main" fetchpriority="high" loading="eager" />
             <h1>
               ¡Estás invitado
               <br />
@@ -242,7 +246,7 @@
       const settings = {
         EventType: "BabyShower",
         Template: true, // Cambiar a false en producción para saber que es un cliente real
-        ImagesURL: "/images/templates/BabyShower/", //Prod = "/clientes/BabyShower/customerfolder/"
+        ImagesURL: "",
         AudioUrl: "/music/Here Comes The Sun.mp3",
         Sections: {
           showCounter: true,
@@ -271,10 +275,10 @@
         GodFather: "Alessandro Villanueva",
         GodMother: "Georgina Montemayor ",
 
-        Gallery: [`${settings.ImagesURL}1.webp`, `${settings.ImagesURL}2.webp`, `${settings.ImagesURL}3.webp`, `${settings.ImagesURL}4.webp`, `${settings.ImagesURL}5.webp`, , `${settings.ImagesURL}6.webp`, , `${settings.ImagesURL}7.webp`],
+        Gallery: [`1.webp`, `2.webp`, `3.webp`, `4.webp`, `5.webp`, , `6.webp`, , `7.webp`],
 
         // Gallery2 debe tener el mismo número de imágenes que Gallery
-        Gallery2: [`${settings.ImagesURL}1.webp`, `${settings.ImagesURL}2.webp`, `${settings.ImagesURL}3.webp`, `${settings.ImagesURL}4.webp`, `${settings.ImagesURL}5.webp`, , `${settings.ImagesURL}6.webp`, , `${settings.ImagesURL}7.webp`],
+        Gallery2: [`1.webp`, `2.webp`, `3.webp`, `4.webp`, `5.webp`, , `6.webp`, , `7.webp`],
 
         AmazonGiftTableUrl: "https://www.amazon.com.mx/",
         LiverpoolGiftTableUrl: "https://www.liverpool.com.mx/tienda/home",
@@ -282,7 +286,7 @@
 
       var additionalInformation = {
         ImageBodyBackground: `/images/templates/BabyShower/bg-1.gif`,
-        ImageMainCard: `/images/templates/BabyShower/1.webp`,
+        ImageMainCard: `1.webp`,
         ImageTap: `/images/templates/BabyShower/tap.webp`,
         ImageLoading: `/images/templates/BabyShower/loading.webp`,
         WhatsAppUrl: "https://wa.link/smvz7g",
@@ -343,7 +347,6 @@
       // ─── ONLOAD LOCAL ─────────────────────────────────
       function onLoad() {
         $("body").css("background-image", 'url("' + additionalInformation.ImageBodyBackground + '")');
-        $("[data-replace=Image_MainCard]").attr("src", additionalInformation.ImageMainCard);
         $("[data-replace=Image_Tap]").attr("src", additionalInformation.ImageTap);
         $("[data-replace=Image_Loading]").attr("src", additionalInformation.ImageLoading);
         $("[data-replace=EventName]").text(mainEvent.Name);

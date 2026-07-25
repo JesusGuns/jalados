@@ -52,7 +52,7 @@
     <link rel="icon" type="image/png" sizes="196x196" href="/images/icons/_favicon-Wedding-196.png" />
 
     <link rel="preload" fetchpriority="high" as="image" href="1.webp" type="image/webp" />
-    <link rel="preload" fetchpriority="high" as="image" href="mono.webp" type="image/webp" />
+    <!-- <link rel="preload" fetchpriority="high" as="image" href="mono.webp" type="image/webp" /> -->
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css" />
@@ -79,7 +79,7 @@
         <div class="_template">
           <div class="_main-section">
             <div class="_wrapper">
-              <img class="_main-mono" data-replace="Image_Mono" src="mono.webp" fetchpriority="high" loading="eager" decoding="sync" alt="" />
+              <!-- <img class="_main-mono" data-replace="Image_Mono" src="mono.webp" fetchpriority="high" loading="eager" decoding="sync" alt="" /> -->
               <img class="_main-image" data-replace="Image_MainCard" src="1.webp" fetchpriority="high" loading="eager" decoding="sync" alt="" />
             </div>
 
@@ -170,8 +170,8 @@
               <div>
                 <span class="section-eyebrow">
                   <a href="https://www.moomentos.com" target="_blank" rel="noopener noreferrer">#Moomentos</a>
-e" s                </span>
-                <h2 class="section-titltyle="margin-bottom: 0">Galería</h2>
+                </span>
+                <h2 class="section-title" style="margin-bottom: 0">Galería</h2>
               </div>
               <span class="gallery-count" id="gallery-count"></span>
             </div>
@@ -342,7 +342,7 @@ e" s                </span>
       const settings = {
         EventType: "Wedding",
         Template: true, // Cambiar a false en producción para saber que es un cliente real
-        ImagesURL: "/images/templates/Wedding/", //Prod = "/clientes/Wedding/customerfolder/"
+        ImagesURL: "", //Prod = "/clientes/Wedding/customerfolder/"
         AudioUrl: "/music/Girls Like You_1.mp3",
         Sections: {
           showCounter: true,
@@ -382,7 +382,7 @@ e" s                </span>
         FatherGroom: "Alessandro Gil Villanueva",
         MotherGroom: "Eva Georgina Montemayor",
 
-        Gallery: [`${settings.ImagesURL}1.webp`, `${settings.ImagesURL}2.webp`, `${settings.ImagesURL}3.webp`, `${settings.ImagesURL}4.webp`, `${settings.ImagesURL}5.webp`, `${settings.ImagesURL}6.webp`, `${settings.ImagesURL}7.webp`, `${settings.ImagesURL}8.webp`],
+        Gallery: [`1.webp`, `2.webp`, `3.webp`, `4.webp`, `5.webp`, `6.webp`, `7.webp`, `8.webp`],
 
         AmazonGiftTableUrl: "https://www.amazon.com.mx/",
         LiverpoolGiftTableUrl: "https://mesaderegalos.liverpool.com.mx/milistaderegalos/51963844",
@@ -398,17 +398,17 @@ e" s                </span>
       };
 
       const additionalInformation = {
-        ImageMainCard: `${settings.ImagesURL}1.webp`,
-        ImageMono: `${settings.ImagesURL}mono.webp`,
-        ImageIntroduction: `${settings.ImagesURL}2.webp`,
-        ImagePlace: `${settings.ImagesURL}place.jpg`,
-        ImageItinerary: `${settings.ImagesURL}elplan.webp`,
-        ImageLoveStory: `${settings.ImagesURL}3.webp`,
+        ImageMainCard: `1.webp`,
+        ImageMono: `mono.webp`,
+        ImageIntroduction: `2.webp`,
+        ImagePlace: `place.jpg`,
+        ImageItinerary: `elplan.webp`,
+        ImageLoveStory: `3.webp`,
         ImageDressCodeUrl: `/images/templates/Wedding/dresscode_1.webp`,
         ImageDressCodeBackGround: `/images/templates/Wedding/dresscodebg-1.webp`,
         ImageAttendantBackGround: `/images/templates/Wedding/attendantbg-1.webp`,
         ImageTable: `/images/templates/Wedding/table.webp`,
-        ImageEnd: `${settings.ImagesURL}4.webp`,
+        ImageEnd: `4.webp`,
       };
 
       const Init = {
@@ -424,8 +424,6 @@ e" s                </span>
       function onLoad() {
         var eventFormatDate = helpers.onGetDay(mainEvent.Date) + " • " + helpers.onGetMonth(mainEvent.Date) + " • " + helpers.onGetYear(mainEvent.Date);
         $("[data-replace=EventFormatDate]").text(eventFormatDate);
-        // $("[data-replace=Image_MainCard]").attr("src", additionalInformation.ImageMainCard);
-        // $("[data-replace=Image_Mono]").attr("src", additionalInformation.ImageMono);
         $("[data-replace=Image_Introduction]").attr("src", additionalInformation.ImageIntroduction);
         $("[data-replace=Image_Place]").attr("src", additionalInformation.ImagePlace);
         $("[data-replace=Image_Itinerary]").attr("src", additionalInformation.ImageItinerary);

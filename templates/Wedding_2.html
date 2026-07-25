@@ -18,6 +18,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="google" content="notranslate" />
 
+    <base href="/images/templates/Wedding/" />
+
     <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -49,7 +51,7 @@
 
     <link rel="icon" type="image/png" sizes="196x196" href="/images/icons/_favicon-Wedding-196.png" />
 
-    <link rel="preload" fetchpriority="high" as="image" href="/images/templates/Wedding/1.webp" type="image/webp" />
+    <link rel="preload" fetchpriority="high" as="image" href="1.webp" type="image/webp" />
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css" crossorigin />
@@ -74,7 +76,7 @@
       <!-- HERO — split screen -->
       <div class="_main-section">
         <div class="hero-photo-panel">
-          <img class="_main-image" src="#" data-replace="Image_MainCard" fetchpriority="high" loading="eager" />
+          <img class="_main-image" src="1.webp" data-replace="Image_MainCard" fetchpriority="high" loading="eager" />
         </div>
         <div class="hero-text-panel">
           <p class="hero-names" data-replace="BrideShortName"></p>
@@ -435,7 +437,7 @@
       const settings = {
         EventType: "Wedding",
         Template: true, // Cambiar a false en producción para saber que es un cliente real
-        ImagesURL: "/images/templates/Wedding/", //Prod = "/clientes/Wedding/customerfolder/"
+        ImagesURL: "", 
         AudioUrl: "/music/Girls Like You_1.mp3",
         Sections: {
           showCounter: true,
@@ -474,7 +476,7 @@
         FatherGroom: "Alessandro Gil Villanueva",
         MotherGroom: "Eva Georgina Montemayor",
 
-        Gallery: [`${settings.ImagesURL}1.webp`, `${settings.ImagesURL}2.webp`, `${settings.ImagesURL}3.webp`, `${settings.ImagesURL}4.webp`, `${settings.ImagesURL}5.webp`, `${settings.ImagesURL}6.webp`, `${settings.ImagesURL}7.webp`, `${settings.ImagesURL}8.webp`],
+        Gallery: [`1.webp`, `2.webp`, `3.webp`, `4.webp`, `5.webp`, `6.webp`, `7.webp`, `8.webp`],
 
         AmazonGiftTableUrl: "",
         LiverpoolGiftTableUrl: "https://mesaderegalos.liverpool.com.mx/milistaderegalos/51963844",
@@ -490,10 +492,10 @@
       };
 
       const additionalInformation = {
-        ImageMainCard: `${settings.ImagesURL}1.webp`,
-        ImageLoveStory: `${settings.ImagesURL}3.webp`,
+        ImageMainCard: `1.webp`,
+        ImageLoveStory: `3.webp`,
         ImageDressCodeUrl: `/images/templates/Wedding/dresscode_1.webp`,
-        ImageEnd: `${settings.ImagesURL}4.webp`,
+        ImageEnd: `4.webp`,
       };
 
       var Init = {
@@ -510,7 +512,6 @@
       function onLoad() {
         var eventFormatDate = helpers.onGetDay(mainEvent.Date) + " • " + helpers.onGetMonth(mainEvent.Date) + " • " + helpers.onGetYear(mainEvent.Date);
 
-        $("[data-replace=Image_MainCard]").attr("src", additionalInformation.ImageMainCard);
         $("[data-replace=Image_LoveStory]").attr("src", additionalInformation.ImageLoveStory);
         $("[data-replace=Image_DressCodeUrl]").attr("src", additionalInformation.ImageDressCodeUrl);
         $("[data-replace=Image_EndCard]").attr("src", additionalInformation.ImageEnd);

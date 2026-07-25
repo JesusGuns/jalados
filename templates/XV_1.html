@@ -18,6 +18,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="google" content="notranslate" />
 
+    <base href="/images/templates/XV/" />
+
     <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -49,7 +51,7 @@
 
     <link rel="icon" type="image/png" sizes="196x196" href="/images/icons/_favicon-XV-196.png" />
 
-    <link rel="preload" fetchpriority="high" as="image" href="/images/templates/XV/1.webp" type="image/webp" />
+    <link rel="preload" fetchpriority="high" as="image" href="1.webp" type="image/webp" />
 
     <!-- (Bootstrap AND CSS) -->
     <link rel="stylesheet" href="/css/bootstrap.min.css" crossorigin />
@@ -94,7 +96,7 @@
             <!-- SLIDE 1 — PORTADA + CONTADOR -->
             <div class="carousel-item active">
               <div class="card-face slide-cover">
-                <img class="cover-img" src="#" data-replace="Image_MainCard" fetchpriority="high" loading="eager" />
+                <img class="cover-img" src="1.webp" data-replace="Image_MainCard" fetchpriority="high" loading="eager" />
                 <div class="cover-overlay"></div>
                 <div class="cover-content">
                   <p class="cover-eyebrow">Mis XV Años</p>
@@ -566,7 +568,7 @@
       const settings = {
         EventType: "XV",
         Template: true, // Cambiar a false en producción para saber que es un cliente real
-        ImagesURL: "/images/templates/XV/", //Prod = "/clientes/XV/customerfolder/"
+        ImagesURL: "",
         AudioUrl: "/music/taylor.mp3",
         Sections: {
           showCounter: true,
@@ -599,7 +601,7 @@
         GodFather: "Alessandro Villanueva",
         GodMother: "Georgina Montemayor ",
 
-        Gallery: [`${settings.ImagesURL}1.webp`, `${settings.ImagesURL}2.webp`, `${settings.ImagesURL}3.webp`, `${settings.ImagesURL}4.webp`, `${settings.ImagesURL}5.webp`, `${settings.ImagesURL}6.webp`],
+        Gallery: [`1.webp`, `2.webp`, `3.webp`, `4.webp`, `5.webp`, `6.webp`],
 
         AmazonGiftTableUrl: "https://www.amazon.com.mx/",
         LiverpoolGiftTableUrl: "https://www.liverpool.com.mx/tienda/home",
@@ -615,7 +617,7 @@
       };
 
       const additionalInformation = {
-        ImageMainCard: `${settings.ImagesURL}1.webp`,
+        ImageMainCard: `1.webp`,
         ImageBodyBackground: `/images/templates/XV/bg-1.webp`,
         ImageDressCodeUrl: `/images/templates/XV/dresscode_1.webp`,
       };
@@ -697,7 +699,6 @@
       // ─── ONLOAD LOCAL ─────────────────────────────────
       function onLoad() {
         $("body").css("background-image", `url("${additionalInformation.ImageBodyBackground}")`);
-        $("[data-replace=Image_MainCard]").attr("src", additionalInformation.ImageMainCard);
         $("[data-replace=Image_DressCodeUrl]").attr("src", additionalInformation.ImageDressCodeUrl);
         $("[data-replace=DressCodeStyle]").text(Init.MainEvent.DressCodeStyle);
 
