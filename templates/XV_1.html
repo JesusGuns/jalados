@@ -505,7 +505,7 @@
           <!-- /.carousel-inner -->
 
           <!-- Controles -->
-          <button class="carousel-control-prev" type="button" data-bs-target="#_invitation-carousel" data-bs-slide="prev">
+          <button class="carousel-control-prev d-none" type="button" data-bs-target="#_invitation-carousel" data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Anterior</span>
           </button>
@@ -543,7 +543,7 @@
     </div>
 
     <!-- Theme Switcher -->
-    <div id="themeSwitcher">
+    <div id="themeSwitcher" class="d-none">
       <button class="theme-btn" data-theme="theme1" style="background: #8b5e83" title="Malva"></button>
       <button class="theme-btn" data-theme="theme2" style="background: #333c43" title="Carbón"></button>
       <button class="theme-btn" data-theme="theme3" style="background: #702345" title="Borgoña"></button>
@@ -568,7 +568,6 @@
       const settings = {
         EventType: "XV",
         Template: true, // Cambiar a false en producción para saber que es un cliente real
-        ImagesURL: "",
         AudioUrl: "/music/taylor.mp3",
         Sections: {
           showCounter: true,
@@ -680,7 +679,6 @@
         if (!t) return;
         const root = document.documentElement;
         $("body").css("background-image", `url(${t.bg})`);
-        $("[data-replace=Image_MainCard]").attr("src", t.frontCard);
 
         // Variables de color de marca
         root.style.setProperty("--color_primary", t.primary);

@@ -66,18 +66,18 @@
   </head>
 
   <body>
-    <audio id="audio" src="1.webp" data-replace="AudioUrl" preload="none" loop></audio>
+    <audio id="audio" src="#" data-replace="AudioUrl" preload="none" loop></audio>
 
     <span id="audioButton" class="_template-Audio-Button off">
       <img src="#" data-replace="Image_AudioUrl" alt="Audio" />
     </span>
 
-    <div id="themeSwitcher">
-      <button class="theme-btn active" data-theme="t1" style="background: #fdf8f0" title="Pergamino"></button>
+    <div id="themeSwitcher" class="d-none">
+      <button class="theme-btn" data-theme="t1" style="background: #fdf8f0" title="Pergamino"></button>
       <button class="theme-btn" data-theme="t2" style="background: #f0ece4" title="Marfil"></button>
       <button class="theme-btn" data-theme="t3" style="background: #eef4ee" title="Salvia"></button>
       <button class="theme-btn" data-theme="t4" style="background: #f4f0f8" title="Lavanda"></button>
-      <button class="theme-btn" data-theme="t5" style="background: #fdf0ec" title="Durazno"></button>
+      <button class="theme-btn active" data-theme="t5" style="background: #fdf0ec" title="Durazno"></button>
     </div>
 
     <div class="wrap">
@@ -157,7 +157,7 @@
         <!-- FOTO CIRCULAR + NOMBRE -->
         <div class="portrait-wrap _introduction-section">
           <div class="portrait-ring">
-            <img class="portrait-img" src="#" data-replace="Image_MainCard" fetchpriority="high" loading="eager" />
+            <img class="portrait-img" src="1.webp" data-replace="Image_MainCard" fetchpriority="high" loading="eager" />
             <svg class="ring-text" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
               <defs>
                 <path id="circle-path" d="M 100,100 m -75,0 a 75,75 0 1,1 150,0 a 75,75 0 1,1 -150,0" />
@@ -428,7 +428,6 @@
       const settings = {
         EventType: "XV",
         Template: true, // Cambiar a false en producción para saber que es un cliente real
-        ImagesURL: "",
         AudioUrl: "/music/taylor.mp3",
         Sections: {
           showCounter: true,
@@ -538,7 +537,6 @@
 
       // ─── ONLOAD LOCAL ─────────────────────────────────
       function onLoad() {
-        $("[data-replace=Image_MainCard]").attr("src", additionalInformation.ImageMainCard);
         $("[data-replace=Image_MyParents]").attr("src", additionalInformation.ImageMyParents);
         $("[data-replace=Image_MyGodParents]").attr("src", additionalInformation.ImageMyGodParents);
         $("[data-replace=Image_DressCodeUrl]").attr("src", additionalInformation.ImageDressCodeUrl);

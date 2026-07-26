@@ -228,7 +228,7 @@
       </main>
     </div>
 
-    <div id="themeSwitcher">
+    <div id="themeSwitcher" class="d-none">
       <button class="theme-btn" data-theme="themeBoy" style="background-color: #368ecf"></button>
       <button class="theme-btn" data-theme="themeGirl" style="background-color: #f06292"></button>
       <button class="theme-btn" data-theme="themeNeutral" style="background-color: #bfa058"></button>
@@ -246,7 +246,6 @@
       const settings = {
         EventType: "BabyShower",
         Template: true, // Cambiar a false en producción para saber que es un cliente real
-        ImagesURL: "",
         AudioUrl: "/music/Here Comes The Sun.mp3",
         Sections: {
           showCounter: true,

@@ -2,7 +2,6 @@ var Resources = {
   Config: {
     EventType: "",
     Template: true,
-    ImagesURL: "",
     AudioUrl: "",
     Sections: {
       showCounter: true,
@@ -227,8 +226,12 @@ export const helpers = {
     // ─── SECCIONES — show/hide elements ─────────────────────────
     const elementsMap = {
       showAmazonOption: "[data-replace='EventAmazonGiftTableUrl']",
-      showLiverpoolOption: "[data-replace='EventLiverpoolGiftTableUrl']",
+      showLiverpoolOption: "[data-replace='EventLiverpoolGiftTableUrl']"
     };
+
+    if(Resources.Config.Template){
+      $("#themeSwitcher").removeClass("d-none");
+    }
 
     Object.entries(elementsMap).forEach(([key, selector]) => {
       if (!showElements[key]) $(selector).remove();

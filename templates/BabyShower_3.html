@@ -69,7 +69,7 @@
       <img src="#" data-replace="Image_AudioUrl" alt="Audio" />
     </span>
 
-    <div id="themeSwitcher">
+    <div id="themeSwitcher" class="d-none">
       <button class="theme-btn active" data-theme="themeMint" style="background: #b8e8d8" title="Menta"></button>
       <button class="theme-btn" data-theme="themeRose" style="background: #fecdd3" title="Rosa"></button>
       <button class="theme-btn" data-theme="themeLilac" style="background: #ddd6fe" title="Lila"></button>
@@ -308,7 +308,6 @@
       const settings = {
         EventType: "BabyShower",
         Template: true, // Cambiar a false en producción para saber que es un cliente real
-        ImagesURL: "",
         AudioUrl: "/music/Here Comes The Sun.mp3",
         Sections: {
           showCounter: true,

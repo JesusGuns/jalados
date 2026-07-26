@@ -73,7 +73,7 @@
     </span>
 
     <!-- Theme Switcher -->
-    <div id="themeSwitcher">
+    <div id="themeSwitcher" class="d-none">
       <button class="theme-btn active" data-theme="theme1" style="background: #9b4d6e" title="Rosa oscuro"></button>
       <button class="theme-btn" data-theme="theme2" style="background: #f0e6d3" title="Champagne"></button>
       <button class="theme-btn" data-theme="theme3" style="background: #ddd0e8" title="Lavanda claro"></button>
@@ -399,7 +399,6 @@
       const settings = {
         EventType: "XV",
         Template: true, // Cambiar a false en producción para saber que es un cliente real
-        ImagesURL: "/images/templates/XV/", //Prod = "/clientes/XV/customerfolder/"
         AudioUrl: "/music/taylor.mp3",
         Sections: {
           showCounter: true,
