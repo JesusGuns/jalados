@@ -27,6 +27,10 @@
   --font-soft: "Quicksand", sans-serif;
 }
 
+.moomentos-tagline span{
+  color: #fff
+}
+
 /* ─── BASE ─────────────────────────────────────── */
 *,
 *::before,

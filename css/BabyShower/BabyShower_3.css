@@ -20,7 +20,9 @@
   --font-round: "Comfortaa", sans-serif;
   --font-soft: "Nunito", sans-serif;
 }
-
+.moomentos-tagline span{
+  color: #ff5d5d
+}
 /* ─── BASE ─────────────────────────────────────── */
 *,
 *::before,

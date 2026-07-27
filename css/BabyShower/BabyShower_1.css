@@ -8,6 +8,10 @@
   --card-radius: 22px;
 }
 
+.moomentos-tagline span{
+  color: #ff5d5d
+}
+
 /* #endregion ROOT*/
 /* #region HTML*/
 html {

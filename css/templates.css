@@ -1,21 +1,42 @@
-:root {
-  --coral: #ff5d5d;
-  --violet: #6c5ce7;
-  --mint: #00c2a8;
+.moomentos-tagline {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  padding: 48px 24px 0;
+  text-align: center;
 }
 
-.moomentos-credit {
-  display: inline-block;
-  margin-top: 14px;
-  font-family: Quicksand, sans-serif;
-  font-size: 0.7rem;
-  letter-spacing: 0.04em;
-  color: var(--mint);
-  opacity: 0.95;
-  text-decoration: none;
-  transition: opacity 0.2s ease;
+.moomentos-tagline__line {
+  flex: 1;
+  max-width: 60px;
+  height: 1px;
+  background: rgba(0, 0, 0, 0.2);
 }
-.moomentos-credit:hover,
-.moomentos-credit:focus-visible {
-  opacity: 0.85;
+
+.moomentos-tagline a {
+  font-family: serif;
+  font-style: italic;
+  font-weight: 600;
+  font-size: 1.15rem;
+  line-height: 1.5;
+  color: #2b2b2b;
+  margin: 0;
+  max-width: 480px;
+  text-decoration: none;;
+}
+
+.moomentos-tagline span {
+  font-style: normal;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+}
+
+@media (max-width: 500px) {
+  .moomentos-tagline a {
+    font-size: 1rem;
+  }
+  .moomentos-tagline__line {
+    max-width: 32px;
+  }
 }

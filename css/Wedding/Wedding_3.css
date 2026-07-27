@@ -35,7 +35,12 @@
   --font-f: "Cormorant Garamond", serif;
   --font-g: "Yeseva One", serif;
 }
-
+.moomentos-tagline {
+  padding: 48px 24px;
+}
+.moomentos-tagline span {
+  color: var(--sage);
+}
 /* ─── BASE ─────────────────────────────────────── */
 *,
 *::before,

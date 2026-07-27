@@ -23,6 +23,14 @@
   --font-serif: "Libre Baskerville", Georgia, serif;
   --font-sans: "Josefin Sans", sans-serif;
 }
+
+.moomentos-tagline a {
+  color: #fff ;
+  font-weight: normal;
+}
+.moomentos-tagline span {
+  color: var(--color_gold);
+}
 /* #endregion ROOT */
 
 /* #region BASE */

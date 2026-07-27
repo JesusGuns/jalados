@@ -18,6 +18,16 @@
 
   --text_primary: #ffffff;
 }
+.moomentos-tagline {
+  padding: 48px 0 0;
+}
+.moomentos-tagline a {
+  color: #fff ;
+  font-weight: normal;
+}
+.moomentos-tagline span {
+  color: var(--color_gold);
+}
 /* #endregion ROOT */
 
 /* #region BASE */

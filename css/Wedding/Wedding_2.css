@@ -30,7 +30,12 @@
   --font-f: "Playfair Display", serif;
   --font-g: "Great Vibes", cursive;
 }
-
+.moomentos-tagline {
+  padding: 48px 24px;
+}
+.moomentos-tagline span {
+  color: var(--gold);
+}
 /* ─── BASE ─────────────────────────────────────── */
 *,
 *::before,
