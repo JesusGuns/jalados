@@ -26,9 +26,7 @@
   --t-red: #8b2020;
   --text_primary: #ffffff;
 }
-.moomentos-tagline {
-  padding: 48px 0 0;
-}
+
 .moomentos-tagline span {
   color: var(--sepia);
 }
