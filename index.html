@@ -515,58 +515,59 @@
         display: none;
       }
 
-      /* Nav de slides (prev/dots/next) */
+      /* Nav de slides — pestañas con el nombre del diseño */
       .category-card__nav {
         display: flex;
         align-items: center;
-        justify-content: space-between;
+        gap: 6px;
         padding: var(--space-2);
         background: #f0ede8;
       }
 
-      .swiper-btn {
-        background: var(--surface);
+      .tab-btn {
+        flex: 1;
+        min-width: 0;
+        padding: 9px 6px;
+        border-radius: 999px;
         border: 1px solid var(--line);
-        color: var(--ink);
-        width: 30px;
-        height: 30px;
-        border-radius: 50%;
+        background: var(--surface);
+        color: var(--ink-dim);
+        font-family: var(--font-body);
+        font-size: 0.72rem;
+        font-weight: 600;
+        line-height: 1.1;
         cursor: pointer;
-        font-size: 0.85rem;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
         transition:
           background 0.2s var(--ease),
           color 0.2s var(--ease),
-          border-color 0.2s var(--ease);
+          border-color 0.2s var(--ease),
+          transform 0.2s var(--ease);
       }
 
-      .swiper-btn:hover,
-      .swiper-btn:focus-visible {
+      .tab-btn:hover,
+      .tab-btn:focus-visible {
+        border-color: var(--coral);
+        color: var(--ink);
+      }
+
+      .tab-btn.is-active {
         background: var(--ink);
         color: var(--surface);
         border-color: var(--ink);
+        transform: translateY(-1px);
       }
 
-      .swiper-dots {
-        display: flex;
-        gap: 6px;
+      .tab-btn:disabled {
+        cursor: not-allowed;
+        opacity: 0.55;
       }
 
-      .swiper-dots .dot {
-        width: 6px;
-        height: 6px;
-        border-radius: 50%;
-        background: rgba(20, 22, 26, 0.15);
-        transition:
-          background 0.3s var(--ease),
-          transform 0.3s var(--ease);
-      }
-
-      .swiper-dots .dot.is-active {
-        background: var(--coral);
-        transform: scale(1.3);
+      .tab-btn:disabled:hover {
+        border-color: var(--line);
+        color: var(--ink-dim);
       }
 
       /* Info inferior de la card */
@@ -1540,32 +1541,20 @@
           frame.appendChild(iframe);
           previewArea.appendChild(frame);
 
-          // — Barra de navegación (prev · dots · next) —
+          // — Barra de navegación: una pestaña por diseño, con su nombre —
           const nav = document.createElement("div");
           nav.className = "category-card__nav";
 
-          const btnPrev = document.createElement("button");
-          btnPrev.className = "swiper-btn";
-          btnPrev.setAttribute("aria-label", "Anterior");
-          btnPrev.innerHTML = "&#8592;";
-
-          const dotsWrap = document.createElement("div");
-          dotsWrap.className = "swiper-dots";
-
-          const btnNext = document.createElement("button");
-          btnNext.className = "swiper-btn";
-          btnNext.setAttribute("aria-label", "Siguiente");
-          btnNext.innerHTML = "&#8594;";
-
-          cat.designs.forEach((_, i) => {
-            const dot = document.createElement("span");
-            dot.className = "dot" + (i === 0 ? " is-active" : "");
-            dotsWrap.appendChild(dot);
+          const tabButtons = cat.designs.map((design, i) => {
+            const tab = document.createElement("button");
+            tab.type = "button";
+            tab.className = "tab-btn" + (i === 0 ? " is-active" : "");
+            tab.textContent = design.label.replace(/^Diseño\s+/i, "");
+            if (!design.url) tab.disabled = true;
+            tab.addEventListener("click", () => goTo(i));
+            nav.appendChild(tab);
+            return tab;
           });
-
-          nav.appendChild(btnPrev);
-          nav.appendChild(dotsWrap);
-          nav.appendChild(btnNext);
 
           // — Info inferior (título + caption) —
           const info = document.createElement("div");
@@ -1593,8 +1582,8 @@
             if (!design) return;
             current = index;
 
-            // Actualizar dots
-            dotsWrap.querySelectorAll(".dot").forEach((d, i) => d.classList.toggle("is-active", i === current));
+            // Actualizar pestaña activa
+            tabButtons.forEach((btn, i) => btn.classList.toggle("is-active", i === current));
 
             // Actualizar caption
             if (design.url) {
@@ -1608,9 +1597,6 @@
               loader.classList.add("is-hidden");
             }
           }
-
-          btnPrev.addEventListener("click", () => goTo((current - 1 + cat.designs.length) % cat.designs.length));
-          btnNext.addEventListener("click", () => goTo((current + 1) % cat.designs.length));
 
           // Cargar primer diseño
           goTo(0);
