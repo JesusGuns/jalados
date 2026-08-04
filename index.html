@@ -190,9 +190,54 @@
         transform: translateY(-2px);
       }
 
+      .nav-toggle {
+        display: none;
+        width: 40px;
+        height: 40px;
+        border: 1.5px solid var(--line);
+        border-radius: 50%;
+        background: var(--surface);
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+      }
+
+      .nav-toggle svg {
+        width: 20px;
+        height: 20px;
+      }
+
       @media (max-width: 768px) {
         .nav-links {
-          display: none;
+          position: absolute;
+          top: 100%;
+          left: 0;
+          right: 0;
+          flex-direction: column;
+          align-items: center;
+          gap: 0;
+          background: var(--surface);
+          border-bottom: 1px solid var(--line);
+          max-height: 0;
+          overflow: hidden;
+          transition: max-height 0.3s var(--ease);
+        }
+
+        .nav-links.is-open {
+          max-height: 220px;
+        }
+
+        .nav-links a {
+          display: block;
+          width: 100%;
+          text-align: center;
+          padding: 16px;
+          font-size: 1rem;
+          border-top: 1px solid var(--line);
+        }
+
+        .nav-toggle {
+          display: flex;
         }
       }
 
@@ -585,19 +630,40 @@
       .category-card__caption {
         font-size: 0.85rem;
         color: var(--ink-dim);
-        min-height: 1.4em;
+        min-height: 44px;
       }
 
       .category-card__caption a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+        width: 100%;
+        min-height: 44px;
+        padding: 10px 14px;
+        border: 1.5px solid var(--violet-soft);
+        border-radius: 999px;
+        background: var(--violet-soft);
         color: var(--violet);
-        font-weight: 600;
-        border-bottom: 1px solid transparent;
-        transition: border-color 0.2s var(--ease);
+        font-weight: 700;
+        font-size: 0.85rem;
+        text-align: center;
+        transition:
+          background 0.2s var(--ease),
+          border-color 0.2s var(--ease),
+          transform 0.2s var(--ease);
       }
 
       .category-card__caption a:hover,
       .category-card__caption a:focus-visible {
+        background: var(--violet);
         border-color: var(--violet);
+        color: #fff;
+        transform: translateY(-1px);
+      }
+
+      .category-card__caption a:active {
+        transform: translateY(0);
       }
 
       .caption-soon {
@@ -1197,12 +1263,17 @@
         <span>oo</span>
         mentos
       </a>
-      <ul class="nav-links">
+      <ul class="nav-links" id="navLinks">
         <li><a href="#categorias">Diseños</a></li>
         <li><a href="#planes">Planes</a></li>
         <li><a href="#precios">Precios</a></li>
       </ul>
-      <a href="#precios" class="btn-nav">Comenzar</a>
+      <div style="display: flex; align-items: center; gap: 10px">
+        <a href="#precios" class="btn-nav">Comenzar</a>
+        <button type="button" class="nav-toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        </button>
+      </div>
     </nav>
 
     <!-- HERO -->
@@ -1549,7 +1620,9 @@
             const tab = document.createElement("button");
             tab.type = "button";
             tab.className = "tab-btn" + (i === 0 ? " is-active" : "");
-            tab.textContent = design.label.replace(/^Diseño\s+/i, "");
+            const shortLabel = design.label.replace(/^Diseño\s+/i, "");
+            tab.textContent = shortLabel;
+            tab.title = design.url ? "Ver diseño " + shortLabel : shortLabel;
             if (!design.url) tab.disabled = true;
             tab.addEventListener("click", () => goTo(i));
             nav.appendChild(tab);
@@ -1587,7 +1660,7 @@
 
             // Actualizar caption
             if (design.url) {
-              caption.innerHTML = '<a href="' + design.url + '" target="_blank">' + design.label + "</a>";
+              caption.innerHTML = '<a href="' + design.url + '" target="_blank" rel="noopener noreferrer">👀 Ver ' + design.label + "</a>";
               // Cargar iframe
               loader.classList.remove("is-hidden");
               iframe.src = design.url;
@@ -1611,6 +1684,17 @@
         CATEGORIES.forEach((cat) => grid.appendChild(buildCard(cat)));
 
         /* ============================================================
+         MENÚ MOBILE
+         ============================================================ */
+        const navToggle = document.getElementById("navToggle");
+        const navLinks = document.getElementById("navLinks");
+
+        navToggle.addEventListener("click", () => {
+          const isOpen = navLinks.classList.toggle("is-open");
+          navToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+        });
+
+        /* ============================================================
          SMOOTH SCROLL
          ============================================================ */
         document.querySelectorAll('a[href^="#"]').forEach((link) => {
@@ -1623,6 +1707,9 @@
                 target.scrollIntoView({ behavior: "smooth", block: "start" });
               }
             }
+            // Cerrar el menú mobile al elegir una opción
+            navLinks.classList.remove("is-open");
+            navToggle.setAttribute("aria-expanded", "false");
           });
         });
 
@@ -1631,7 +1718,7 @@
          ─────────────────────────────────────────────────────────────
          Cambia el número aquí:
          ============================================================ */
-        const WA_NUMBER = "524371029173";
+        const WA_NUMBER = "523346004551";
         const whatsappBtn = document.getElementById("whatsappBtn");
 
         function setWhatsappPlan(planName) {
