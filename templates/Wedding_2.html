@@ -205,18 +205,19 @@
         </div>
         <div class="program-list">
           <div class="program-item">
-            <div class="pi-icon"><i class="fas fa-door-open"></i></div>
-            <div class="pi-body">
-              <p class="pi-name">Recepción de invitados</p>
-              <span class="pi-time" data-replace="MainEventHourString"></span>
-              <p class="pi-desc">Bienvenida y aperitivos</p>
-            </div>
-          </div>
-          <div class="program-item">
             <div class="pi-icon"><i class="fas fa-cross"></i></div>
             <div class="pi-body">
               <p class="pi-name">Ceremonia Religiosa</p>
+              <span class="pi-time" data-replace="MainEventHourString"></span>
               <p class="pi-desc" data-replace="MainEventLocationDescription"></p>
+            </div>
+          </div>
+          <div class="program-item">
+            <div class="pi-icon"><i class="fas fa-door-open"></i></div>
+            <div class="pi-body">
+              <p class="pi-name">Recepción de invitados</p>
+              <span class="pi-time" data-replace="EventReceptionHourString"></span>
+              <p class="pi-desc" data-replace="SecondaryEventLocationDescription"></p>
             </div>
           </div>
           <div class="program-item">
@@ -231,14 +232,6 @@
             <div class="pi-body">
               <p class="pi-name">Sesión de Fotos</p>
               <p class="pi-desc">Momentos para siempre</p>
-            </div>
-          </div>
-          <div class="program-item">
-            <div class="pi-icon"><i class="fas fa-champagne-glasses"></i></div>
-            <div class="pi-body">
-              <p class="pi-name">Recepción</p>
-              <span class="pi-time" data-replace="EventReceptionHourString"></span>
-              <p class="pi-desc" data-replace="SecondaryEventLocationDescription"></p>
             </div>
           </div>
           <div class="program-item">
@@ -465,16 +458,16 @@
       };
       // ─── DATOS DEL EVENTO ─────────────────────────────
       var mainEvent = {
-        Date: new Date("2026-10-17T17:30:00"),
+        Date: new Date("2026-10-17T14:00:00"),
 
         BrideName: "Daniela Curiel",
         GroomName: "Rodrigo Gil",
         BrideShortName: "Daniela",
         GroomShortName: "Rodrigo",
 
-        LocationDescription: "La Terraza Clouthier",
-        Address: "Av Manuel J. Clouthier 480, Lomas de Guadalupe, 45038 Guadalajara, Jal.",
-        GoogleMapsUrl: "https://maps.app.goo.gl/KuXfBs9iPrwx48xB6",
+        LocationDescription: "Catedral de Guadalajara",
+        Address: "Av. Fray Antonio Alcalde 10, Guadalajara, Jal.",
+        GoogleMapsUrl: "https://maps.app.goo.gl/hBdb191LiXzkPRfR8",
 
         FatherBride: "Cesar Damián Curiel de la O",
         MotherBride: "Melissa Lara Villalvazo",

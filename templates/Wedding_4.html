@@ -63,28 +63,22 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css" />
 
     <style>
-      /* 
-           ==========================================================================
-           WEDDING_4: BOTANICAL EDITORIAL & MODERN CHIC PALETTES
-           ==========================================================================
-        */
-
-      /* PALETA: Coral + Durazno + Oro + Marfil — cálida, alegre y elegante para boda */
+      
       :root {
-        --bg-primary: #fdf7f5; /* Blanco rosado */
-        --bg-secondary: #f7e9e6; /* Rosa polvo suave */
-        --bg-dark: #a8557a; /* Ciruela/magenta cálido */
-        --text-primary: #3a2f35;
-        --text-secondary: #8c7a80;
-        --text-light: #fffaf9;
-        --accent-main: #d97b8d; /* Rosa coral vivo */
-        --accent-muted: #e9a5ab; /* Rosa suave */
-        --accent-botanical: #8a9a6b; /* Verde salvia claro (no oscuro) */
-        --accent-line: #c9a15a; /* Dorado */
-        --border-color: #f0dcd9;
+        --bg-primary: #fffdfb; /* Blanco cálido */
+        --bg-secondary: #f2e9dc; /* Beige suave */
+        --bg-dark: #6e2436; /* Tinto / vino profundo */
+        --text-primary: #3a2a28; /* Café oscuro cálido, no negro puro */
+        --text-secondary: #8c7c6d; /* Beige grisáceo para texto secundario */
+        --text-light: #fffdfb;
+        --accent-main: #8c2f45; /* Tinto vivo — acento principal */
+        --accent-muted: #c98a95; /* Tinto suave / rosa polvo */
+        --accent-botanical: #b8912f; /* Dorado cálido */
+        --accent-line: #b8912f; /* Línea dorada para detalles finos */
+        --border-color: #e6d9c3; /* Beige claro para bordes */
         --card-bg: rgba(255, 255, 255, 0.92);
-        --shadow-subtle: 0 10px 30px rgba(168, 85, 122, 0.08);
-        --shadow-medium: 0 18px 40px rgba(217, 123, 141, 0.18);
+        --shadow-subtle: 0 10px 30px rgba(110, 36, 54, 0.08);
+        --shadow-medium: 0 18px 40px rgba(140, 47, 69, 0.18);
         --font-serif: "Marcellus", serif;
         --font-script: "Alex Brush", cursive;
         --font-sans: "Jost", sans-serif;
@@ -920,6 +914,10 @@
         color: var(--text-light);
       }
 
+      ._dresscode-section .font-script {
+        color: var(--accent-botanical);
+      }
+
       ._dresscode-section .editorial-section-title h2::after {
         background-color: var(--accent-muted);
       }
@@ -1158,7 +1156,7 @@
 
     <!-- 1. SECCIÓN PRINCIPAL / HERO -->
     <section class="_main-section" id="mainSection">
-      <div class="hero-bg" data-replace="Image_MainCard" style="background-image: url(&quot;1.webp&quot;)"></div>
+      <div class="hero-bg" data-replace="Image_MainCard" style="background-image: url('1.webp')"></div>
       <div class="hero-content-box reveal-element active">
         <div class="hero-subtitle hero-stagger">Nuestra Boda</div>
         <h1 class="hero-names hero-stagger">
@@ -1294,15 +1292,16 @@
           </div>
           <div class="timeline-container reveal-element">
             <div class="timeline-item">
-              <div class="timeline-dot"><i class="fa-solid fa-door-open"></i></div>
-              <div class="timeline-time" data-replace="MainEventHourString"></div>
-              <h5>Recepción de invitados</h5>
-              <p>Bienvenida y aperitivos.</p>
-            </div>
-            <div class="timeline-item">
               <div class="timeline-dot"><i class="fa-solid fa-cross"></i></div>
+              <span class="timeline-time" data-replace="MainEventHourString"></span>
               <h5>Ceremonia Religiosa</h5>
               <p data-replace="MainEventLocationDescription"></p>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot"><i class="fa-solid fa-door-open"></i></div>
+              <div class="timeline-time" data-replace="EventReceptionHourString"></div>
+              <h5>Recepción de invitados</h5>
+              <p data-replace="SecondaryEventLocationDescription"></p>
             </div>
             <div class="timeline-item">
               <div class="timeline-dot"><i class="fa-solid fa-scale-balanced"></i></div>
@@ -1313,12 +1312,6 @@
               <div class="timeline-dot"><i class="fa-solid fa-camera"></i></div>
               <h5>Sesión de Fotos</h5>
               <p>Momentos para siempre.</p>
-            </div>
-            <div class="timeline-item">
-              <div class="timeline-dot"><i class="fa-solid fa-champagne-glasses"></i></div>
-              <div class="timeline-time" data-replace="EventReceptionHourString"></div>
-              <h5>Recepción</h5>
-              <p data-replace="SecondaryEventLocationDescription"></p>
             </div>
             <div class="timeline-item">
               <div class="timeline-dot"><i class="fa-solid fa-utensils"></i></div>
@@ -1518,7 +1511,7 @@
       };
       // ─── DATOS DEL EVENTO ─────────────────────────────
       var mainEvent = {
-        Date: new Date("2026-10-17T17:30:00"),
+        Date: new Date("2026-10-17T14:00:00"),
 
         BrideName: "Daniela Curiel",
         GroomName: "Rodrigo Gil",
@@ -1611,7 +1604,7 @@
 
         document.querySelectorAll(".reveal-element").forEach((el) => observer.observe(el));
 
-        // Confirmación
+         // Confirmación
         $("#_btnYes").on("click", function () {
           rsvp.onPostRSPV(true, $("textarea[name=guestAttendants]").val(), $("textarea[name=wishes]").val());
         });
