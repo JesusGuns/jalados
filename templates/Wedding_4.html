@@ -415,27 +415,6 @@
         user-select: none;
       }
 
-      /* Micro-animación al "cambiar" cada unidad — activada por JS con la clase .tick */
-      /* .counter-num.tick {
-        animation: counterTick 0.5s var(--transition-smooth);
-      }
-
-      @keyframes counterTick {
-        0% {
-          transform: translateY(-6px);
-          opacity: 0.35;
-          text-shadow: 0 0 22px rgba(184, 145, 47, 0.9);
-        }
-        60% {
-          transform: translateY(1px);
-          opacity: 1;
-        }
-        100% {
-          transform: translateY(0);
-          opacity: 1;
-        }
-      } */
-
       .counter-label {
         font-size: clamp(0.52rem, 2.1vw, 0.68rem);
         letter-spacing: 0.14em;
@@ -1893,20 +1872,13 @@
         const hiddenContent = document.getElementById("hiddenContent");
 
         enterBtn.addEventListener("click", () => {
+          helpers.onCounterStart(mainEvent.Date);
+
           hiddenContent.classList.add("show");
           enterBtn.style.display = "none";
 
-          // Arrancar el contador regresivo al revelar la invitación
-          helpers.onCounterStart(mainEvent.Date);
-          setInterval(function () {
-            helpers.onCounterStart(mainEvent.Date);
-          }, 1000);
-
-          // Iniciar la música con el mecanismo real del helper (togglea la clase "off"
-          // y maneja el caso de autoplay bloqueado por el navegador)
           helpers.onPlay();
 
-          // Activar Partículas Botánicas Volantes (Micro-interacción diferenciadora)
           createBotanicalLeaves();
         });
 
@@ -1932,8 +1904,6 @@
       }
 
       // ─── GALERÍA: CONSTRUCCIÓN DINÁMICA ────────────────
-      // Construye las tarjetas de la galería a partir de mainEvent.Gallery en lugar de dejarlas
-      // hardcodeadas en el HTML, igual que en Wedding_3.
       function buildGallery() {
         const $row = $("#_gallery-section .row.g-3");
         $row.empty();
@@ -2035,24 +2005,6 @@
         }
       }
 
-      // ─── CONTADOR: Micro-animación "tick" dorada al cambiar cada unidad ──
-      // Observa los 4 dígitos y añade la clase .tick cada vez que su valor
-      // cambia (sin importar cómo helpers.onCounterStart actualice el texto).
-      function initCounterTicks() {
-        const ids = ["days", "hours", "minutes", "seconds"];
-        ids.forEach((id) => {
-          const el = document.getElementById(id);
-          if (!el) return;
-          const observer = new MutationObserver(() => {
-            el.classList.remove("tick");
-            // Forzar reflow para poder re-disparar la animación en cambios seguidos
-            void el.offsetWidth;
-            el.classList.add("tick");
-          });
-          observer.observe(el, { characterData: true, childList: true, subtree: true });
-        });
-      }
-
       // ─── INIT PAGE ────────────────────────────────────
       function InitPage() {
         helpers.init(Init);
@@ -2064,7 +2016,6 @@
         helpers.onAudioPlayer();
         buildGallery();
         initGalleryLightbox();
-        initCounterTicks();
       }
 
       InitPage();

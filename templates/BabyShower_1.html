@@ -506,9 +506,6 @@
       function InitPage() {
         helpers.init(Init);
         helpers.onCounterStart(Init.MainEvent.Date);
-        setInterval(function () {
-          helpers.onCounterStart(Init.MainEvent.Date);
-        }, 1000);
         helpers.onAudioPlayer();
         applyTheme("themeBoy");
       }

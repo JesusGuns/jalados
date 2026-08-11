@@ -137,25 +137,43 @@ export const helpers = {
     const $hours = $("#hours");
     const $minutes = $("#minutes");
     const $seconds = $("#seconds");
-    const $countdown = $("#countdown"); // contenedor del contador
 
-    const intervalId = setInterval(() => {
-      const distance = eventDate - new Date().getTime();
+    // Constantes para evitar recalcular literales en cada tick
+    const SECOND = 1000;
+    const MINUTE = SECOND * 60;
+    const HOUR = MINUTE * 60;
+    const DAY = HOUR * 24;
 
-      if (distance < 0) {
+    // Guardamos el último valor mostrado para evitar tocar el DOM si no cambió
+    let last = { d: null, h: null, m: null, s: null };
+
+    const render = (d, h, m, s) => {
+      if (d !== last.d) $days.text(helpers.onAddZeroToNumber(d));
+      if (h !== last.h) $hours.text(helpers.onAddZeroToNumber(h));
+      if (m !== last.m) $minutes.text(helpers.onAddZeroToNumber(m));
+      if (s !== last.s) $seconds.text(helpers.onAddZeroToNumber(s));
+      last = { d, h, m, s };
+    };
+
+    const tick = () => {
+      const distance = eventDate - Date.now();
+
+      if (distance <= 0) {
         clearInterval(intervalId);
-        $days.text("00");
-        $hours.text("00");
-        $minutes.text("00");
-        $seconds.text("00");
-        return; // ← sale del tick, no actualiza los números
+        render(0, 0, 0, 0);
+        return;
       }
 
-      $days.text(helpers.onAddZeroToNumber(Math.floor(distance / 86400000)));
-      $hours.text(helpers.onAddZeroToNumber(Math.floor((distance % 86400000) / 3600000)));
-      $minutes.text(helpers.onAddZeroToNumber(Math.floor((distance % 3600000) / 60000)));
-      $seconds.text(helpers.onAddZeroToNumber(Math.floor((distance % 60000) / 1000)));
-    }, 1000);
+      const d = Math.floor(distance / DAY);
+      const h = Math.floor((distance % DAY) / HOUR);
+      const m = Math.floor((distance % HOUR) / MINUTE);
+      const s = Math.floor((distance % MINUTE) / SECOND);
+
+      render(d, h, m, s);
+    };
+
+    tick(); // primer render inmediato, sin esperar 1s
+    const intervalId = setInterval(tick, 1000);
 
     return intervalId;
   },

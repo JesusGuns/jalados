@@ -631,9 +631,6 @@
         // Play button
         $("._play-button").on("click", function () {
           helpers.onCounterStart(mainEvent.Date);
-          setInterval(function () {
-            helpers.onCounterStart(mainEvent.Date);
-          }, 1000);
 
           $(this).hide();
           $("._hide-section").removeClass("_hide-section");
