@@ -64,25 +64,26 @@
 
     <style>
       :root {
-        --bg-primary: #fffdfb;
-        --bg-secondary: #f2e9dc;
-        --bg-dark: #6e2436; /* la sección oscura ya funciona bien, la dejo igual */
-        --text-primary: #3a2a28;
-        --text-secondary: #6b5546; /* antes #8c7c6d, muy fundido con el beige */
-        --text-light: #fffdfb;
-        --accent-main: #a11b3d; /* antes #8c2f45, poco contraste sobre beige */
-        --accent-muted: #d4919e; /* antes #c98a95, un poco más luminoso */
-        --accent-botanical: #b8912f;
-        --accent-line: #b8912f;
-        --border-color: #e6d9c3;
-        --card-bg: rgba(255, 255, 255, 0.92);
-        --shadow-subtle: 0 10px 30px rgba(110, 36, 54, 0.08);
-        --shadow-medium: 0 18px 40px rgba(161, 27, 61, 0.18);
-        --font-serif: "Marcellus", serif;
-        --font-script: "Alex Brush", cursive;
-        --font-sans: "Jost", sans-serif;
-        --transition-smooth: cubic-bezier(0.25, 1, 0.5, 1);
-      }
+  --bg-primary: #fdf8f4;
+  --bg-secondary: #f0ddd2; /* terracota suave */
+  --bg-dark: #5c2a3d; /* ciruela profundo */
+  --text-primary: #43302c;
+  --text-secondary: #7a5c52;
+  --text-light: #fdf8f4;
+  --accent-main: #b1543f; /* terracota/óxido */
+  --accent-muted: #e0a998; /* terracota rosado suave */
+  --accent-botanical: #4a5733; /* salvia oscuro — default para fondos claros */
+  --accent-botanical-dark: #a8b98c; /* salvia claro — para usar sobre bg-dark */
+  --accent-line: #4a5733;
+  --border-color: #e6cebd;
+  --card-bg: rgba(255, 255, 255, 0.92);
+  --shadow-subtle: 0 10px 30px rgba(92, 42, 61, 0.08);
+  --shadow-medium: 0 18px 40px rgba(177, 84, 63, 0.18);
+  --font-serif: "Marcellus", serif;
+  --font-script: "Alex Brush", cursive;
+  --font-sans: "Jost", sans-serif;
+  --transition-smooth: cubic-bezier(0.25, 1, 0.5, 1);
+}
 
       @media (prefers-reduced-motion: reduce) {
         *,
@@ -544,7 +545,7 @@
       ._introduction-section p {
         font-family: var(--font-serif);
         font-size: 1.15rem;
-        color: var(--accent-botanical);
+        color: var(--accent-botanical-dark);
         margin-bottom: 10px;
       }
       /* PADRES DE LOS NOVIOS */
@@ -598,7 +599,7 @@
       }
 
       ._place-section .editorial-section-title h2::after {
-        background-color: var(--accent-botanical);
+        background-color: var(--accent-botanical-dark);
       }
 
       .place-row {
@@ -619,7 +620,7 @@
       .place-separator {
         width: 1px;
         flex-shrink: 0;
-        background: linear-gradient(180deg, transparent, var(--accent-botanical) 18%, var(--accent-botanical) 82%, transparent);
+        background: linear-gradient(180deg, transparent, var(--accent-botanical-dark) 18%, var(--accent-botanical-dark) 82%, transparent);
         opacity: 0.55;
       }
 
@@ -632,7 +633,7 @@
         font-size: 0.66rem;
         letter-spacing: 0.34em;
         text-transform: uppercase;
-        color: var(--accent-botanical);
+        color: var(--accent-botanical-dark);
         margin-bottom: 24px;
       }
 
@@ -641,7 +642,7 @@
         content: "";
         width: 22px;
         height: 1px;
-        background: var(--accent-botanical);
+        background: var(--accent-botanical-dark);
         opacity: 0.6;
       }
 
@@ -660,7 +661,7 @@
         font-family: var(--font-serif);
         font-size: 2.1rem;
         letter-spacing: 0.06em;
-        color: var(--accent-botanical);
+        color: var(--accent-botanical-dark);
         margin-bottom: 10px;
       }
 
@@ -690,8 +691,8 @@
       }
 
       .place-block-link:hover {
-        color: var(--accent-botanical);
-        border-color: var(--accent-botanical);
+        color: var(--accent-botanical-dark);
+        border-color: var(--accent-botanical-dark);
       }
 
       .btn-custom {
@@ -1073,7 +1074,7 @@
       }
 
       .dresscode-ornament {
-        color: var(--accent-botanical);
+        color: var(--accent-botanical-dark);
         margin-bottom: 18px;
         opacity: 0.9;
       }
@@ -1106,7 +1107,7 @@
       .dresscode-note svg {
         width: 22px;
         height: 12px;
-        color: var(--accent-botanical);
+        color: var(--accent-botanical-dark);
         flex-shrink: 0;
         opacity: 0.85;
       }
@@ -1128,11 +1129,11 @@
       }
 
       ._dresscode-section .font-script {
-        color: var(--accent-botanical);
+        color: var(--accent-botanical-dark);
       }
 
       ._dresscode-section .editorial-section-title h2::after {
-        background-color: var(--accent-botanical);
+        background-color: var(--accent-botanical-dark);
       }
 
       /* FORMULARIO DE ASISTENCIA (RSVP) */
