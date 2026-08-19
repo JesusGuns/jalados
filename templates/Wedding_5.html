@@ -1,0 +1,978 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nuestra boda</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --paper:#FFFFFF;
+    --paper-soft:#F5F4EF;
+    --ink:#16171A;
+    --ink-soft:#706E68;
+    --line:#E2DFD4;
+    --accent:#2F4A46;
+    --accent-soft:#EDF1EF;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+
+  body{
+    margin:0;
+    background:var(--paper-soft);
+    color:var(--ink);
+    font-family:'Inter', sans-serif;
+  }
+
+  .frame{
+    max-width:480px;
+    margin:0 auto;
+    background:var(--paper);
+    min-height:100vh;
+    position:relative;
+    overflow:hidden;
+  }
+
+  h1,h2,h3{
+    font-family:'Fraunces', serif;
+    font-weight:500;
+    margin:0;
+    line-height:1.1;
+  }
+
+  .eyebrow{
+    font-family:'Inter', sans-serif;
+    font-size:11px;
+    letter-spacing:.22em;
+    text-transform:uppercase;
+    color:var(--ink-soft);
+    display:block;
+    margin-bottom:14px;
+  }
+
+  .amp{
+    font-family:'Fraunces', serif;
+    font-style:italic;
+    color:var(--accent);
+  }
+
+  section{
+    padding:72px 32px;
+    border-bottom:1px solid var(--line);
+  }
+  section:last-of-type{border-bottom:none;}
+
+  /* Secciones que se revelan al dar play — igual que el template de referencia */
+  ._hide-section{display:none !important;}
+
+  /* ---------- Portada + reproductor de vinilo (dispara la revelación) ---------- */
+  .cover{
+    padding:56px 32px 48px;
+    border-bottom:1px solid var(--line);
+    text-align:center;
+  }
+  .cover .eyebrow{justify-content:center;}
+
+  .vinyl-player{
+    position:relative;
+    width:216px;
+    margin:0 auto 30px;
+  }
+  .vinyl-disc{
+    position:absolute;
+    top:-78px;left:50%;
+    transform:translateX(-50%);
+    width:190px;height:190px;
+    border-radius:50%;
+    background:
+      repeating-radial-gradient(circle at center,
+        #232220 0px, #232220 1px, #111 1px, #111 4px);
+    box-shadow:0 14px 30px rgba(0,0,0,.18);
+    display:flex;align-items:center;justify-content:center;
+    animation:vinylSpin 6s linear infinite;
+    animation-play-state:paused;
+  }
+  .vinyl-disc-label{
+    width:60px;height:60px;border-radius:50%;
+    background:var(--ink);
+    border:2px solid var(--accent);
+    position:relative;
+  }
+  .vinyl-disc-label::after{
+    content:"";position:absolute;
+    top:50%;left:50%;transform:translate(-50%,-50%);
+    width:6px;height:6px;border-radius:50%;
+    background:var(--paper);
+  }
+  @keyframes vinylSpin{
+    from{transform:translateX(-50%) rotate(0deg);}
+    to{transform:translateX(-50%) rotate(360deg);}
+  }
+  .vinyl-card{
+    position:relative;z-index:2;
+    width:100%;
+    border-radius:2px;
+    padding:6px;
+    background:var(--paper);
+    border:1px solid var(--line);
+    box-shadow:0 18px 36px rgba(0,0,0,.1);
+  }
+  .vinyl-photo{
+    position:relative;
+    width:100%;aspect-ratio:1/1;
+    border-radius:1px;
+    overflow:hidden;
+    background:linear-gradient(160deg,#E3DFD3,#B9B2A0);
+  }
+  ._play-button{
+    position:absolute;top:50%;left:50%;
+    transform:translate(-50%,-50%);
+    width:56px;height:56px;border-radius:50%;
+    border:1px solid rgba(255,255,255,.85);
+    background:rgba(22,23,26,.4);
+    -webkit-backdrop-filter:blur(2px);backdrop-filter:blur(2px);
+    cursor:pointer;
+    display:flex;align-items:center;justify-content:center;
+    transition:box-shadow .25s ease;
+  }
+  ._play-button.is-playing{box-shadow:0 0 0 6px rgba(47,74,70,.16);}
+  ._play-button .vp-icon{width:16px;height:16px;fill:#fff;}
+  ._play-button .vp-pause{display:none;}
+  ._play-button.is-playing .vp-play{display:none;}
+  ._play-button.is-playing .vp-pause{display:block;}
+  .vinyl-status{
+    padding:13px 4px 4px;text-align:center;
+    font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--ink-soft);
+  }
+  .vinyl-status span{display:inline-block;width:1.1em;text-align:left;letter-spacing:normal;}
+
+  .cover .names{display:flex;flex-direction:column;align-items:center;gap:2px;}
+  .cover h1{font-size:36px;}
+  .cover .amp{font-size:20px;margin:2px 0;}
+  .cover .date-badge{
+    margin-top:18px;
+    font-size:12px;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+    color:var(--ink-soft);
+  }
+
+  /* ---------- Contador ---------- */
+  .countdown-section{text-align:center;}
+  #countdown{
+    display:flex;
+    justify-content:center;
+    gap:0;
+    margin-top:24px;
+  }
+  .cd-box{
+    padding:0 18px;
+    position:relative;
+  }
+  .cd-box+.cd-box{border-left:1px solid var(--line);}
+  .cd-num{
+    font-family:'Fraunces', serif;
+    font-size:32px;
+    font-weight:500;
+    display:block;
+  }
+  .cd-label{
+    font-size:10px;
+    letter-spacing:.16em;
+    text-transform:uppercase;
+    color:var(--ink-soft);
+  }
+
+  /* ---------- Introducción ---------- */
+  .intro-section{text-align:center;}
+  .intro-section .photo-block{
+    width:100%;aspect-ratio:4/5;border-radius:2px;
+    background:linear-gradient(160deg,#E7E3D8,#C7C1AD);
+    margin-bottom:28px;
+  }
+  .intro-section blockquote{
+    font-family:'Fraunces', serif;
+    font-style:italic;
+    font-weight:400;
+    font-size:19px;
+    line-height:1.5;
+    margin:0;
+    color:var(--ink);
+  }
+
+  /* ---------- Padres ---------- */
+  .parents-section{
+    display:flex;
+    gap:32px;
+    text-align:center;
+  }
+  .parents-col{flex:1;}
+  .parents-col small{
+    display:block;
+    margin-top:14px;
+    font-size:10px;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--ink-soft);
+  }
+  .parents-col p{
+    font-family:'Fraunces', serif;
+    font-size:16px;
+    margin:0 0 4px;
+  }
+
+  /* ---------- Lugar ---------- */
+  .place-photo{
+    width:100%;aspect-ratio:16/10;border-radius:2px;
+    background:linear-gradient(160deg,#DCD8CB,#AFA893);
+    margin-bottom:24px;
+  }
+  .place-section h2{font-size:26px;margin-bottom:6px;}
+  .place-section .meta{font-size:14px;color:var(--ink-soft);margin:2px 0;}
+  .map-btn{
+    margin-top:22px;
+    display:inline-flex;align-items:center;gap:8px;
+    padding:13px 22px;
+    border:1px solid var(--ink);
+    text-decoration:none;color:var(--ink);
+    font-size:13px;letter-spacing:.04em;
+    border-radius:2px;
+  }
+
+  /* ---------- Itinerario (elemento firma) ---------- */
+  .itinerary-list{
+    margin-top:28px;
+    position:relative;
+    padding-left:26px;
+  }
+  .itinerary-list::before{
+    content:"";
+    position:absolute;
+    left:4px;top:6px;bottom:6px;
+    width:1px;
+    background:var(--line);
+  }
+  .itinerary-item{
+    position:relative;
+    padding-bottom:28px;
+  }
+  .itinerary-item:last-child{padding-bottom:0;}
+  .itinerary-item::before{
+    content:"";
+    position:absolute;
+    left:-26px;top:4px;
+    width:9px;height:9px;
+    border-radius:50%;
+    background:var(--paper);
+    border:1px solid var(--accent);
+  }
+  .itinerary-time{
+    font-size:11px;letter-spacing:.12em;text-transform:uppercase;
+    color:var(--accent);display:block;margin-bottom:3px;
+  }
+  .itinerary-title{font-family:'Fraunces', serif;font-size:18px;}
+
+  /* ---------- Galería ---------- */
+  .gallery-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:6px;
+    margin-top:24px;
+  }
+  .gallery-grid .g-item{
+    aspect-ratio:1/1;
+    border-radius:2px;
+    cursor:pointer;
+    background:linear-gradient(160deg,#E3DFD3,#BEB8A4);
+  }
+  .gallery-grid .g-item:nth-child(3n+1){background:linear-gradient(160deg,#DAD5C7,#B0A98F);}
+  .gallery-grid .g-item:nth-child(3n+2){background:linear-gradient(160deg,#E7E3D8,#C4BEA9);}
+
+  /* ---------- Historia ---------- */
+  .story-photo{
+    width:100%;aspect-ratio:4/5;border-radius:2px;
+    background:linear-gradient(160deg,#D4CFC0,#A7A08B);
+    margin-bottom:26px;
+  }
+  .story-section p{
+    font-size:15px;line-height:1.75;color:var(--ink);
+    margin:0 0 16px;
+  }
+
+  /* ---------- Video ---------- */
+  .video-placeholder{
+    margin-top:24px;
+    aspect-ratio:16/9;
+    background:var(--paper-soft);
+    border:1px solid var(--line);
+    border-radius:2px;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    gap:10px;
+    color:var(--ink-soft);
+  }
+  .video-placeholder svg{width:26px;height:26px;fill:var(--ink-soft);}
+  .video-placeholder span{font-size:12px;letter-spacing:.08em;text-transform:uppercase;}
+
+  /* ---------- Vestimenta ---------- */
+  .dresscode-section{text-align:center;background:var(--accent-soft);}
+  .dresscode-section h2{font-size:30px;}
+  .dresscode-section .style-name{
+    margin-top:16px;
+    font-size:12px;letter-spacing:.18em;text-transform:uppercase;
+    color:var(--accent);
+  }
+  .palette-row{
+    display:flex;justify-content:center;gap:10px;margin-top:22px;
+  }
+  .swatch{width:26px;height:26px;border-radius:50%;border:1px solid rgba(0,0,0,.08);}
+
+  /* ---------- Asistencia ---------- */
+  .rsvp-section h2{font-size:28px;margin-bottom:6px;}
+  .rsvp-section .sub{font-size:14px;color:var(--ink-soft);margin-bottom:28px;}
+  .field{margin-bottom:18px;}
+  .field label{
+    display:block;font-size:11px;letter-spacing:.1em;text-transform:uppercase;
+    color:var(--ink-soft);margin-bottom:8px;
+  }
+  .field input,.field textarea{
+    width:100%;
+    border:none;border-bottom:1px solid var(--line);
+    background:none;
+    padding:8px 2px;
+    font-family:'Inter', sans-serif;
+    font-size:15px;color:var(--ink);
+    resize:none;
+  }
+  .field input:focus,.field textarea:focus{outline:none;border-color:var(--accent);}
+  .attend-toggle{display:flex;gap:10px;}
+  .attend-toggle button{
+    flex:1;padding:13px;
+    border:1px solid var(--line);background:none;
+    font-family:'Inter', sans-serif;font-size:14px;color:var(--ink);
+    cursor:pointer;border-radius:2px;
+    transition:border-color .2s ease, background .2s ease;
+  }
+  .attend-toggle button.active{
+    border-color:var(--accent);
+    background:var(--accent-soft);
+    color:var(--accent);
+  }
+  #rsvpSubmit{
+    margin-top:26px;width:100%;padding:15px;
+    background:var(--ink);color:#fff;border:none;border-radius:2px;
+    font-family:'Inter', sans-serif;font-size:14px;letter-spacing:.03em;
+    cursor:pointer;
+  }
+  #rsvpSubmit:hover{background:var(--accent);}
+  #rsvpMsg{
+    margin-top:16px;font-size:13px;text-align:center;color:var(--accent);display:none;
+  }
+
+  /* ---------- Regalos ---------- */
+  .gift-section{text-align:center;}
+  .gift-section p{font-size:14px;color:var(--ink-soft);line-height:1.7;margin:14px 0 26px;}
+  .gift-links{display:flex;flex-direction:column;gap:10px;}
+  .gift-links a{
+    display:block;padding:14px;border:1px solid var(--line);
+    text-decoration:none;color:var(--ink);font-size:14px;border-radius:2px;
+  }
+
+  /* ---------- Cierre ---------- */
+  .end-section{
+    text-align:center;
+    background:var(--ink);
+    color:#fff;
+    border-bottom:none;
+  }
+  .end-section h2{
+    font-size:22px;font-style:italic;font-weight:400;line-height:1.6;
+    color:#fff;margin-bottom:24px;
+  }
+  .end-section .end-names{
+    font-family:'Fraunces', serif;font-size:30px;
+  }
+
+  /* ---------- Botón de audio flotante (control posterior) ---------- */
+  #audioButton{
+    position:fixed;
+    bottom:22px;right:22px;
+    z-index:20;
+    width:46px;height:46px;border-radius:50%;
+    background:var(--ink);
+    border:none;cursor:pointer;
+    display:flex;align-items:center;justify-content:center;
+  }
+  #audioButton.off{opacity:.45;}
+  #audioButton .bars{display:flex;align-items:flex-end;gap:2px;height:14px;}
+  #audioButton .bars span{width:2px;background:#fff;animation:bar 1s infinite ease-in-out;}
+  #audioButton .bars span:nth-child(1){height:5px;animation-delay:0s;}
+  #audioButton .bars span:nth-child(2){height:12px;animation-delay:.15s;}
+  #audioButton .bars span:nth-child(3){height:8px;animation-delay:.3s;}
+  #audioButton.off .bars span{animation-play-state:paused;height:4px;}
+  @keyframes bar{0%,100%{transform:scaleY(.4);}50%{transform:scaleY(1);}}
+
+  /* ---------- Reveal on scroll ---------- */
+  .reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease, transform .7s ease;}
+  .reveal.visible{opacity:1;transform:translateY(0);}
+
+  /* ---------- Lightbox ---------- */
+  #lightbox{
+    position:fixed;inset:0;z-index:60;
+    background:rgba(22,23,26,.94);
+    display:none;align-items:center;justify-content:center;
+  }
+  #lightbox.open{display:flex;}
+  #lightbox .lb-frame{
+    width:80%;max-width:340px;aspect-ratio:4/5;border-radius:2px;
+    background:linear-gradient(160deg,#DAD5C7,#A7A08B);
+  }
+  #lightbox .lb-close{
+    position:absolute;top:24px;right:24px;
+    width:36px;height:36px;border:1px solid rgba(255,255,255,.4);
+    border-radius:50%;background:none;cursor:pointer;
+    display:flex;align-items:center;justify-content:center;
+  }
+  #lightbox .lb-close svg{width:14px;height:14px;stroke:#fff;fill:none;stroke-width:1.5;}
+
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto;}
+    .reveal{transition:none;opacity:1;transform:none;}
+    #audioButton .bars span{animation:none;}
+  }
+</style>
+</head>
+<body>
+
+<div id="player">
+  <audio id="audio" src="" data-replace="AudioUrl" preload="none" loop></audio>
+</div>
+<button id="audioButton" class="off" aria-label="Reproducir música">
+  <div class="bars"><span></span><span></span><span></span></div>
+</button>
+
+<div class="frame">
+
+  <section class="cover">
+    <div class="vinyl-player">
+      <div class="vinyl-disc" id="vinylDisc">
+        <div class="vinyl-disc-label"></div>
+      </div>
+      <div class="vinyl-card">
+        <div class="vinyl-photo">
+          <button class="_play-button" aria-label="Reproducir canción y abrir invitación">
+            <svg class="vp-icon vp-play" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+            <svg class="vp-icon vp-pause" viewBox="0 0 24 24"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>
+          </button>
+        </div>
+        <div class="vinyl-status" id="vinylStatus">Toca para reproducir</div>
+      </div>
+    </div>
+
+    <span class="eyebrow" data-replace="EventFormatDate"></span>
+    <div class="names">
+      <h1 data-replace="BrideShortName"></h1>
+      <span class="amp">&amp;</span>
+      <h1 data-replace="GroomShortName"></h1>
+    </div>
+    <div class="date-badge" data-replace="MainEventLocationDescription"></div>
+  </section>
+
+  <section class="_counter-section _hide-section reveal">
+    <span class="eyebrow">Cuenta regresiva</span>
+    <h2 style="font-size:24px;">Falta poco</h2>
+    <div id="countdown">
+      <div class="cd-box"><span class="cd-num" id="days">00</span><span class="cd-label">Días</span></div>
+      <div class="cd-box"><span class="cd-num" id="hours">00</span><span class="cd-label">Hrs</span></div>
+      <div class="cd-box"><span class="cd-num" id="minutes">00</span><span class="cd-label">Min</span></div>
+      <div class="cd-box"><span class="cd-num" id="seconds">00</span><span class="cd-label">Seg</span></div>
+    </div>
+  </section>
+
+  <section class="_introduction-section intro-section _hide-section reveal">
+    <div class="photo-block" data-replace="Image_Introduction"></div>
+    <blockquote data-replace="IntroductionQuote"></blockquote>
+  </section>
+
+  <section class="_parents-section parents-section _hide-section reveal">
+    <div class="parents-col">
+      <span class="eyebrow">Padres de la novia</span>
+      <p data-replace="MotherBride"></p>
+      <p data-replace="FatherBride"></p>
+    </div>
+    <div class="parents-col">
+      <span class="eyebrow">Padres del novio</span>
+      <p data-replace="MotherGroom"></p>
+      <p data-replace="FatherGroom"></p>
+    </div>
+  </section>
+
+  <section class="_place-section place-section _hide-section reveal">
+    <span class="eyebrow">Lugar</span>
+    <div class="place-photo" data-replace="Image_Place"></div>
+    <h2 data-replace="MainEventLocationDescription2"></h2>
+    <p class="meta" data-replace="MainEventHourString"></p>
+    <p class="meta" data-replace="MainEventAddress"></p>
+    <a class="map-btn" data-replace="EventReceptionUrl" href="#" target="_blank" rel="noopener">
+      Ver en el mapa →
+    </a>
+  </section>
+
+  <section class="_itinerary-section itinerary-section _hide-section reveal">
+    <span class="eyebrow">Itinerario</span>
+    <h2 style="font-size:24px;">El plan del día</h2>
+    <div class="itinerary-list" id="itineraryList"></div>
+  </section>
+
+  <section id="_gallery-section" class="gallery-section _hide-section reveal">
+    <span class="eyebrow">Galería</span>
+    <h2 style="font-size:24px;">Momentos</h2>
+    <div class="gallery-grid" id="galleryGrid"></div>
+  </section>
+
+  <section class="_lovestory-section story-section _hide-section reveal">
+    <span class="eyebrow">Nuestra historia</span>
+    <div class="story-photo" data-replace="Image_LoveStory"></div>
+    <div id="storyText"></div>
+  </section>
+
+  <section class="_video-section video-section _hide-section reveal">
+    <span class="eyebrow">Nuestro momento</span>
+    <h2 style="font-size:24px;">Video</h2>
+    <div class="video-placeholder">
+      <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+      <span>Video próximamente</span>
+    </div>
+  </section>
+
+  <section class="_dresscode-section dresscode-section _hide-section reveal">
+    <span class="eyebrow">Código de vestimenta</span>
+    <h2>Vestimenta</h2>
+    <div class="style-name" data-replace="DressCodeStyle"></div>
+    <div class="palette-row" id="paletteRow"></div>
+  </section>
+
+  <section class="_attendance-section rsvp-section _hide-section reveal">
+    <span class="eyebrow">Confirmación</span>
+    <h2>¡Te esperamos!</h2>
+    <p class="sub">Confirma tu asistencia antes del <span data-replace="RsvpDeadline"></span>.</p>
+
+    <div class="field">
+      <label>¿Asistirás?</label>
+      <div class="attend-toggle">
+        <button type="button" id="_btnYes">Sí, ahí estaré</button>
+        <button type="button" id="_btnNo">No podré ir</button>
+      </div>
+    </div>
+    <div class="field">
+      <label>Nombre</label>
+      <input type="text" name="guestName" placeholder="Tu nombre completo">
+    </div>
+    <div class="field">
+      <label>Acompañantes</label>
+      <textarea name="guestAttendants" rows="2" placeholder="Nombres de tus acompañantes"></textarea>
+    </div>
+    <div class="field">
+      <label>Mensaje para los novios</label>
+      <textarea name="wishes" rows="3" placeholder="Escribe tus buenos deseos…"></textarea>
+    </div>
+    <button id="rsvpSubmit">Enviar confirmación</button>
+    <div id="rsvpMsg"></div>
+  </section>
+
+  <section class="_gifttable-section gift-section _hide-section reveal">
+    <span class="eyebrow">Mesa de regalos</span>
+    <h2 style="font-size:24px;">Regalos</h2>
+    <p>Tu presencia es nuestro mejor regalo. Si deseas hacernos llegar un obsequio, estas son nuestras opciones.</p>
+    <div class="gift-links" id="giftLinks"></div>
+  </section>
+
+  <section class="_end-section end-section _hide-section">
+    <h2 data-replace="ClosingMessage"></h2>
+    <div class="end-names" data-replace="BrideGroomShortNames"></div>
+  </section>
+
+</div>
+
+<div id="lightbox">
+  <button class="lb-close" id="lbClose" aria-label="Cerrar">
+    <svg viewBox="0 0 24 24"><line x1="4" y1="4" x2="20" y2="20"/><line x1="20" y1="4" x2="4" y2="20"/></svg>
+  </button>
+  <div class="lb-frame"></div>
+</div>
+
+<script>
+  /* ───────────────────────────────────────────────────────────
+     CONFIGURACIÓN — misma lógica del template de referencia:
+     Sections controla qué bloques existen, mainEvent trae los
+     datos y se inyectan vía data-replace.
+     ─────────────────────────────────────────────────────────── */
+  const settings = {
+    AudioUrl: "",
+    Sections: {
+      showCounter: true,
+      showIntroduction: true,
+      showParents: true,
+      showPlace: true,
+      showItinerary: true,
+      showGallery: true,
+      showLoveStory: true,
+      showVideo: true,
+      showDressCode: true,
+      showAttendance: true,
+      showGiftTable: true,
+    },
+  };
+
+  // ─── DATOS DEL EVENTO ─────────────────────────────
+  const mainEvent = {
+    Date: new Date("2026-10-17T17:30:00"),
+
+    BrideName: "Daniela Curiel",
+    GroomName: "Rodrigo Gil",
+    BrideShortName: "Daniela",
+    GroomShortName: "Rodrigo",
+
+    LocationDescription: "La Terraza Clouthier",
+    Address: "Av Manuel J. Clouthier 480, Lomas de Guadalupe, 45038 Guadalajara, Jal.",
+    HourString: "5:30 PM · Ceremonia y recepción",
+    GoogleMapsUrl: "https://maps.app.goo.gl/KuXfBs9iPrwx48xB6",
+
+    FatherBride: "Cesar Damián Curiel de la O",
+    MotherBride: "Melissa Lara Villalvazo",
+    FatherGroom: "Alessandro Gil Villanueva",
+    MotherGroom: "Eva Georgina Montemayor",
+
+    IntroductionQuote: "Que todas las noches sean noches de boda y que todas las lunas sean lunas de miel.",
+
+    Itinerary: [
+      { time: "5:30 PM", title: "Ceremonia religiosa" },
+      { time: "6:30 PM", title: "Coctel de bienvenida" },
+      { time: "8:00 PM", title: "Cena y brindis" },
+      { time: "9:30 PM", title: "Baile y fiesta" },
+    ],
+
+    Gallery: [`1.webp`, `2.webp`, `3.webp`, `4.webp`, `5.webp`, `6.webp`, `7.webp`, `8.webp`],
+
+    LoveStory: [
+      "Nos conocimos casi de casualidad, en un momento en que ninguno de los dos lo buscaba. No sabemos con precisión cuándo empezó, pero sí sabemos que se convirtió en algo profundo y verdadero.",
+      "Después de 3 años compartiendo risas, aprendizajes y planes, decidimos dar el siguiente paso: elegirnos todos los días y caminar juntos el resto de nuestras vidas.",
+    ],
+
+    DressCodeStyle: "Semi-formal",
+    DressCodePalette: ["#2F4A46", "#B9B2A0", "#16171A", "#F5F4EF"],
+
+    RsvpDeadline: "1 de octubre",
+
+    AmazonGiftTableUrl: "https://www.amazon.com.mx/",
+    LiverpoolGiftTableUrl: "https://mesaderegalos.liverpool.com.mx/milistaderegalos/51963844",
+
+    ClosingMessage: "\"El amor es paciente, es bondadoso.\" 1 Corintios 13:4",
+  };
+
+  const additionalInformation = {
+    Image_Introduction: `2.webp`,
+    Image_Place: `place.webp`,
+    Image_LoveStory: `3.webp`,
+  };
+
+  const Init = {
+    Config: { ...settings },
+    MainEvent: mainEvent,
+  };
+
+  /* ───────────────────────────────────────────────────────────
+     HELPERS — funciones utilitarias reutilizables
+     ─────────────────────────────────────────────────────────── */
+  const helpers = {
+    onGetDay: (d) => d.getDate(),
+    onGetMonth: (d) => ["ene","feb","mar","abr","may","jun","jul","ago","sep","oct","nov","dic"][d.getMonth()],
+    onGetYear: (d) => d.getFullYear(),
+    onGetFullDate: (d) => {
+      const months = ["enero","febrero","marzo","abril","mayo","junio","julio","agosto","septiembre","octubre","noviembre","diciembre"];
+      return `${d.getDate()} de ${months[d.getMonth()]} de ${d.getFullYear()}`;
+    },
+    pad: (n) => String(n).padStart(2, "0"),
+
+    onCounterStart: function (date) {
+      function tick() {
+        const now = new Date();
+        let diff = date - now;
+        if (diff < 0) diff = 0;
+        document.getElementById("days").textContent = helpers.pad(Math.floor(diff / 86400000));
+        document.getElementById("hours").textContent = helpers.pad(Math.floor((diff % 86400000) / 3600000));
+        document.getElementById("minutes").textContent = helpers.pad(Math.floor((diff % 3600000) / 60000));
+        document.getElementById("seconds").textContent = helpers.pad(Math.floor((diff % 60000) / 1000));
+      }
+      tick();
+      setInterval(tick, 1000);
+    },
+
+    onAudioPlayer: function () {
+      const audio = document.getElementById("audio");
+      const btn = document.getElementById("audioButton");
+      if (settings.AudioUrl) audio.src = settings.AudioUrl;
+
+      btn.addEventListener("click", function () {
+        if (!audio.src) return;
+        if (audio.paused) {
+          audio.play();
+          btn.classList.remove("off");
+        } else {
+          audio.pause();
+          btn.classList.add("off");
+        }
+      });
+    },
+
+    onPlay: function () {
+      const audio = document.getElementById("audio");
+      const audioBtn = document.getElementById("audioButton");
+      if (audio.src) {
+        audio.play().catch(() => {});
+        audioBtn.classList.remove("off");
+      }
+    },
+  };
+
+  /* ───────────────────────────────────────────────────────────
+     RENDER — vuelca mainEvent en el DOM vía data-replace
+     ─────────────────────────────────────────────────────────── */
+  function setField(name, value) {
+    document.querySelectorAll(`[data-replace="${name}"]`).forEach((el) => {
+      if (el.tagName === "A") el.href = value;
+      else el.textContent = value;
+    });
+  }
+
+  function onLoad() {
+    const e = mainEvent;
+
+    document.title = `${e.BrideShortName} & ${e.GroomShortName} — Nuestra boda`;
+
+    setField("EventFormatDate", `${helpers.onGetDay(e.Date)} · ${helpers.onGetMonth(e.Date)} · ${helpers.onGetYear(e.Date)}`);
+    setField("BrideShortName", e.BrideShortName);
+    setField("GroomShortName", e.GroomShortName);
+    setField("MainEventLocationDescription", e.LocationDescription);
+    setField("MainEventLocationDescription2", e.LocationDescription);
+    setField("MainEventHourString", e.HourString);
+    setField("MainEventAddress", e.Address);
+    setField("EventReceptionUrl", e.GoogleMapsUrl);
+
+    setField("IntroductionQuote", e.IntroductionQuote);
+
+    setField("MotherBride", e.MotherBride);
+    setField("FatherBride", e.FatherBride);
+    setField("MotherGroom", e.MotherGroom);
+    setField("FatherGroom", e.FatherGroom);
+
+    setField("DressCodeStyle", e.DressCodeStyle);
+    setField("RsvpDeadline", e.RsvpDeadline);
+    setField("ClosingMessage", e.ClosingMessage);
+    setField("BrideGroomShortNames", `${e.BrideShortName} & ${e.GroomShortName}`);
+
+    const list = document.getElementById("itineraryList");
+    list.innerHTML = "";
+    e.Itinerary.forEach((item) => {
+      const el = document.createElement("div");
+      el.className = "itinerary-item";
+      el.innerHTML = `<span class="itinerary-time">${item.time}</span><span class="itinerary-title">${item.title}</span>`;
+      list.appendChild(el);
+    });
+
+    const grid = document.getElementById("galleryGrid");
+    grid.innerHTML = "";
+    e.Gallery.forEach(() => {
+      const item = document.createElement("div");
+      item.className = "g-item";
+      item.addEventListener("click", () => openLightbox());
+      grid.appendChild(item);
+    });
+
+    const storyEl = document.getElementById("storyText");
+    storyEl.innerHTML = "";
+    e.LoveStory.forEach((p) => {
+      const para = document.createElement("p");
+      para.textContent = p;
+      storyEl.appendChild(para);
+    });
+
+    const paletteRow = document.getElementById("paletteRow");
+    paletteRow.innerHTML = "";
+    e.DressCodePalette.forEach((c) => {
+      const sw = document.createElement("span");
+      sw.className = "swatch";
+      sw.style.background = c;
+      paletteRow.appendChild(sw);
+    });
+
+    const giftLinks = document.getElementById("giftLinks");
+    giftLinks.innerHTML = "";
+    [
+      { label: "Mesa de regalos — Amazon", url: e.AmazonGiftTableUrl },
+      { label: "Mesa de regalos — Liverpool", url: e.LiverpoolGiftTableUrl },
+    ].forEach((g) => {
+      const a = document.createElement("a");
+      a.href = g.url;
+      a.target = "_blank";
+      a.rel = "noopener";
+      a.textContent = g.label;
+      giftLinks.appendChild(a);
+    });
+
+    // Oculta por completo (no solo colapsa al primer play) las secciones
+    // desactivadas en settings.Sections
+    const sectionMap = {
+      showCounter: "._counter-section",
+      showIntroduction: "._introduction-section",
+      showParents: "._parents-section",
+      showPlace: "._place-section",
+      showItinerary: "._itinerary-section",
+      showGallery: "#_gallery-section",
+      showLoveStory: "._lovestory-section",
+      showVideo: "._video-section",
+      showDressCode: "._dresscode-section",
+      showAttendance: "._attendance-section",
+      showGiftTable: "._gifttable-section",
+    };
+    Object.entries(sectionMap).forEach(([flag, selector]) => {
+      if (!settings.Sections[flag]) {
+        document.querySelectorAll(selector).forEach((el) => el.remove());
+      }
+    });
+  }
+
+  /* ───────────────────────────────────────────────────────────
+     Revelado al hacer scroll
+     ─────────────────────────────────────────────────────────── */
+  function checkVisibility() {
+    const els = document.querySelectorAll(".reveal");
+    const obs = new IntersectionObserver(
+      (entries) => entries.forEach((e) => e.target.classList.toggle("visible", e.isIntersecting)),
+      { threshold: 0.15 }
+    );
+    els.forEach((el) => obs.observe(el));
+  }
+
+  /* ───────────────────────────────────────────────────────────
+     Lightbox de galería
+     ─────────────────────────────────────────────────────────── */
+  function initLightbox() {
+    const lb = document.getElementById("lightbox");
+    document.getElementById("lbClose").addEventListener("click", () => lb.classList.remove("open"));
+    lb.addEventListener("click", (e) => { if (e.target === lb) lb.classList.remove("open"); });
+  }
+  window.openLightbox = function () {
+    document.getElementById("lightbox").classList.add("open");
+  };
+
+  /* ───────────────────────────────────────────────────────────
+     Confirmación de asistencia
+     ─────────────────────────────────────────────────────────── */
+  function initRsvp() {
+    let attending = null;
+    const yesBtn = document.getElementById("_btnYes");
+    const noBtn = document.getElementById("_btnNo");
+    const msg = document.getElementById("rsvpMsg");
+
+    yesBtn.addEventListener("click", () => {
+      attending = true;
+      yesBtn.classList.add("active");
+      noBtn.classList.remove("active");
+    });
+    noBtn.addEventListener("click", () => {
+      attending = false;
+      noBtn.classList.add("active");
+      yesBtn.classList.remove("active");
+    });
+
+    document.getElementById("rsvpSubmit").addEventListener("click", () => {
+      const name = document.querySelector("[name=guestName]").value.trim();
+
+      if (attending === null) { showMsg("Selecciona si asistirás o no.", true); return; }
+      if (name === "") { showMsg("Escribe tu nombre para confirmar.", true); return; }
+
+      const entry = {
+        name,
+        attending,
+        companions: document.querySelector("[name=guestAttendants]").value.trim(),
+        wishes: document.querySelector("[name=wishes]").value.trim(),
+        submittedAt: new Date().toISOString(),
+      };
+
+      try {
+        const key = "rsvp_" + mainEvent.BrideShortName + "_" + mainEvent.GroomShortName;
+        const existing = JSON.parse(localStorage.getItem(key) || "[]");
+        existing.push(entry);
+        localStorage.setItem(key, JSON.stringify(existing));
+      } catch (e) {}
+
+      showMsg(attending ? "¡Gracias por confirmar! Te esperamos." : "Gracias por avisarnos, te extrañaremos.", false);
+    });
+
+    function showMsg(text, isError) {
+      msg.textContent = text;
+      msg.style.color = isError ? "#A33" : "var(--accent)";
+      msg.style.display = "block";
+    }
+  }
+
+  /* ───────────────────────────────────────────────────────────
+     Reproductor de vinilo — dispara la revelación de secciones
+     (equivalente a ._play-button del template de referencia)
+     ─────────────────────────────────────────────────────────── */
+  function initPlayButton() {
+    const btn = document.querySelector("._play-button");
+    const vinylDisc = document.getElementById("vinylDisc");
+    const vinylStatus = document.getElementById("vinylStatus");
+    let opened = false;
+
+    btn.addEventListener("click", function () {
+      if (!opened) {
+        opened = true;
+        document.querySelectorAll("._hide-section").forEach((el) => el.classList.remove("_hide-section"));
+        void document.body.offsetHeight;
+        helpers.onCounterStart(mainEvent.Date);
+        setTimeout(() => helpers.onPlay(), 50);
+      }
+
+      const audio = document.getElementById("audio");
+      const isPlaying = btn.classList.contains("is-playing");
+
+      if (isPlaying) {
+        if (audio.src) audio.pause();
+        btn.classList.remove("is-playing");
+        vinylDisc.style.animationPlayState = "paused";
+        vinylStatus.innerHTML = "En pausa";
+      } else {
+        if (audio.src) audio.play().catch(() => {});
+        btn.classList.add("is-playing");
+        vinylDisc.style.animationPlayState = "running";
+        vinylStatus.innerHTML = "Reproduciendo<span>...</span>";
+      }
+    });
+  }
+
+  /* ───────────────────────────────────────────────────────────
+     INIT
+     ─────────────────────────────────────────────────────────── */
+  function InitPage() {
+    onLoad();
+    helpers.onAudioPlayer();
+    checkVisibility();
+    initLightbox();
+    initRsvp();
+    initPlayButton();
+  }
+
+  InitPage();
+</script>
+
+</body>
+</html>
