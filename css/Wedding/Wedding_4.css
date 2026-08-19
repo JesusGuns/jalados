@@ -1,6 +1,6 @@
 :root {
   --bg-primary: #fdf8f4;
-  --bg-secondary: #f0ddd2; /* terracota suave */
+  --bg-secondary: #F2ECE6; /* terracota suave */
   --bg-dark: #5c2a3d; /* ciruela profundo */
   --text-primary: #43302c;
   --text-secondary: #7a5c52;
@@ -740,6 +740,8 @@ p {
   margin-bottom: 0;
   font-size: 0.8rem;
   letter-spacing: 0.01em;
+  color: var(--accent-botanical);
+  font-weight: 400;
 }
 
 /* SECCIÓN VIDEO */
@@ -960,6 +962,10 @@ p {
   }
 }
 
+/* ─── LOVE STORY ──────────────────────────────────── */
+._lovestory-section p{
+  color: var(--accent-botanical);
+}
 /* ─── DRESSCODE ──────────────────────────────────── */
 ._dresscode-section {
   background: var(--bg-dark);
