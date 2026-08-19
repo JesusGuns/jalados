@@ -303,7 +303,13 @@ html {
   content: "";
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.04);
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.35) 0%,
+    rgba(0, 0, 0, 0.08) 18%,
+    rgba(0, 0, 0, 0.12) 55%,
+    rgba(0, 0, 0, 0.55) 100%
+  );
   z-index: 1;
 }
 
@@ -313,6 +319,7 @@ html {
   object-fit: cover;
   object-position: center;
   display: block;
+  filter: brightness(0.88) contrast(1.08) saturate(1.05);
 }
 
 ._main-section img._main-mono {
@@ -323,6 +330,7 @@ html {
   width: clamp(120px, 12vw, 160px);
   height: auto;
   z-index: 2;
+  filter: drop-shadow(0 2px 10px rgba(0, 0, 0, 0.25));
 }
 
 ._main-section ._main-image {
@@ -350,7 +358,7 @@ html {
   margin: 0;
   text-align: center;
   color: var(--color-secondary);
-  text-shadow: 2px 2px 10px var(--color-primary);
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.35);
 }
 
 ._main-section ._details h2 {
@@ -360,7 +368,7 @@ html {
   font-size: clamp(1rem, 2.5vw, 1.5rem);
   text-transform: uppercase;
   letter-spacing: 4px;
-  text-shadow: 2px 2px 10px var(--color-primary);
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.35);
   margin: 0.5rem 0;
   text-align: center;
   color: var(--color-secondary);
@@ -383,12 +391,13 @@ html {
   display: flex;
   align-items: stretch;
   justify-content: center;
-  border-radius: 14px;
+  border-radius: 16px;
   margin: 2rem;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08) !important;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.1) !important;
   background: rgba(255, 255, 255, 0.45);
-  backdrop-filter: blur(8px);
-  border: 1px solid rgba(166, 137, 102, 0.25);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(166, 137, 102, 0.12);
   overflow: hidden;
   transition:
     background-color 0.3s ease,
@@ -504,7 +513,7 @@ html {
   margin: 0;
   text-align: center;
   color: var(--color-secondary);
-  text-shadow: -3px 5px 10px var(--color-primary);
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.35);
 }
 
 @media (max-width: 767.98px) {
@@ -522,13 +531,13 @@ html {
   justify-content: space-between;
   align-items: flex-start;
   text-align: center;
-  margin: 1.5rem 0 0 0;
+  margin: 2.5rem 0 3rem 0;
 }
 
 ._family-section > div {
   flex: 1;
   padding: 1.5rem;
-  border-radius: 12px;
+  border-radius: 16px;
 }
 
 ._family-section h1 {
@@ -570,8 +579,8 @@ html {
   align-items: center;
   justify-content: center;
   gap: 2rem;
-  border-radius: 15px;
-  margin: 1.5rem auto;
+  border-radius: 16px;
+  margin: 3rem auto;
   width: 100%;
   max-width: 900px;
   padding: 2rem;
@@ -601,6 +610,7 @@ html {
   font-family: var(--font-d);
   font-size: clamp(0.85rem, 1.2vw, 0.95rem);
   font-weight: 600;
+  letter-spacing: 0.5px;
   line-height: 1.5;
   text-align: center;
   color: var(--color-primary);
@@ -650,7 +660,7 @@ html {
 
 /* #region GALLERY */
 .gallery-section {
-  padding: 56px 0 0;
+  padding: 72px 0 0;
 }
 
 .gallery-header {
@@ -704,7 +714,7 @@ html {
   cursor: pointer;
   position: relative;
   overflow: hidden;
-  border-radius: 6px;
+  border-radius: 8px;
   display: block;
 }
 
@@ -721,6 +731,11 @@ html {
   inset: 0;
   background: rgba(166, 137, 102, 0);
   transition: background 0.3s;
+}
+
+.gal-item:hover img,
+.gal-item:active img {
+  transform: scale(1.06);
 }
 
 .gal-item:hover::after,
@@ -902,7 +917,7 @@ html {
   text-align: center;
   margin: 0;
   color: var(--color-secondary);
-  text-shadow: 2px 2px 10px var(--color-primary);
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.35);
 }
 
 @media (max-width: 767.98px) {
@@ -935,6 +950,19 @@ html {
   color: var(--color-accent);
   margin-bottom: 8px;
   display: block;
+  position: relative;
+  padding-bottom: 14px;
+}
+
+._video-section .eyebrow::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 36px;
+  height: 1px;
+  background: rgba(166, 137, 102, 0.45);
 }
 
 ._video-section .video-title {
@@ -952,7 +980,7 @@ html {
   padding-bottom: 56.25%; /* 16:9 */
   height: 0;
   overflow: hidden;
-  border-radius: 4px;
+  border-radius: 8px;
   border: 1px solid rgba(166, 137, 102, 0.2);
 }
 
@@ -973,7 +1001,7 @@ html {
   aspect-ratio: 16 / 9;
   background: rgba(0, 0, 0, 0.03);
   border: 1px dashed rgba(166, 137, 102, 0.3);
-  border-radius: 4px;
+  border-radius: 8px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1072,7 +1100,7 @@ html {
 
 ._attendance-section > div {
   width: 100%;
-  border-radius: 15px;
+  border-radius: 16px;
   max-width: 600px;
   padding: 2.5rem 2rem;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
@@ -1139,6 +1167,7 @@ html {
   outline: none;
   border-color: var(--color-accent);
   background: rgba(255, 255, 255, 0.85);
+  box-shadow: 0 0 0 3px rgba(166, 137, 102, 0.15);
 }
 
 ._attendance-section textarea[name="wishes"] {
@@ -1160,6 +1189,7 @@ html {
   font-family: var(--font-d);
   font-weight: bold;
   font-size: clamp(0.95rem, 2vw, 1.1rem);
+  letter-spacing: 0.6px;
   padding: 12px 25px;
   border-radius: 10px;
   border: 2px solid rgba(255, 255, 255, 0.3);
@@ -1208,7 +1238,7 @@ html {
 
 /* #region GIFT TABLE */
 ._gifttable-section {
-  border-radius: 15px;
+  border-radius: 16px;
   margin: 3rem auto;
   width: 35%;
   padding: 2rem 1rem;
@@ -1226,6 +1256,19 @@ html {
   text-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
   margin-top: 1rem;
   letter-spacing: 3px;
+  position: relative;
+  padding-top: 18px;
+}
+
+._gifttable-section h1::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 36px;
+  height: 1px;
+  background: rgba(166, 137, 102, 0.45);
 }
 
 ._gifttable-section p {
@@ -1316,7 +1359,7 @@ html {
   position: relative;
   margin: 2rem 0.4rem;
   border: 2px solid var(--color-d);
-  border-radius: 5px;
+  border-radius: 8px;
   max-width: 559px;
 }
 
@@ -1478,7 +1521,7 @@ html {
   font-weight: bold;
   font-size: clamp(0.9rem, 2.5vw, 1.5rem);
   letter-spacing: 4px;
-  text-shadow: 2px 2px 10px var(--color-primary);
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.35);
   margin: 0.5rem 0;
   text-align: center;
   color: var(--color-secondary);
