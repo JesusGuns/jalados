@@ -1247,8 +1247,8 @@ textarea.form-control {
   }
 
   .timeline-image {
-    width: 70px;
-    height: 70px;
+    width: 80px;
+    height: 80px;
   }
 
   /* Altura media de la imagen en móvil (70px / 2 = 35px) */
