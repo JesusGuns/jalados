@@ -985,7 +985,7 @@ p {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: right;
+  object-position: 135%;
   filter: brightness(0.62) saturate(0.92);
 }
 
@@ -993,7 +993,7 @@ p {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(25, 7, 12, 0.35) 0%, rgba(69, 17, 30, 0.62) 30%, rgba(69, 17, 30, 0.68) 62%, rgba(16, 5, 9, 0.94) 100%);
+  background: linear-gradient(180deg, rgba(25, 7, 12, 0.35) 0%, rgba(69, 17, 30, 0.36) 30%, rgba(69, 17, 30, 0.34) 62%, rgba(16, 5, 9, 0.55) 100%);
   z-index: 1;
 }
 
