@@ -55,6 +55,18 @@
     {
       "source": "/wedding-:cliente",
       "destination": "/clientes/Wedding/:cliente/index.html"
+    },
+    {
+      "source": "/privacypolicy",
+      "destination": "/privacypolicy.html"
+    },
+    {
+      "source": "/termsandconditions",
+      "destination": "/termsandconditions.html"
+    },
+    {
+      "source": "/returnspolicy",
+      "destination": "/returnspolicy.html"
     }
   ]
 }

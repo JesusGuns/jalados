@@ -27,13 +27,12 @@
 
     <title>Moomentos</title>
     <meta name="title" content="Moomentos | Invitaciones Digitales para XV, Bodas y Baby Shower" />
-    <meta name="description" content="Invitaciones digitales para XV años, bodas y baby shower con confirmación de asistencia (RSVP) integrada, sin depender de WhatsApp. Elige tu plan en Moomentos." />
-
+    <meta name="description" content="Moomentos | Invitaciones digitales para XV años, bodas y baby shower. Confirmación de asistencia por WhatsApp o RSVP integrado según el plan que elijas." />
     <!-- Open Graph / Facebook / WhatsApp -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://www.moomentos.com" />
     <meta property="og:title" content="Moomentos | Invitaciones Digitales para XV, Bodas y Baby Shower" />
-    <meta property="og:description" content="Invitaciones digitales con RSVP integrado, sin depender de WhatsApp. Planes con distintas características para XV años, bodas y baby shower." />
+    <meta property="og:description" content="Moomentos | Invitaciones digitales para XV años, bodas y baby shower. Confirmación de asistencia por WhatsApp o RSVP integrado según el plan que elijas." />
     <meta property="og:image" content="https://www.moomentos.com/images/icons/social-card-1200x630.png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
@@ -42,7 +41,7 @@
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:url" content="https://www.moomentos.com/" />
     <meta name="twitter:title" content="Moomentos | Invitaciones Digitales para XV, Bodas y Baby Shower" />
-    <meta name="twitter:description" content="Invitaciones digitales con RSVP integrado, sin depender de WhatsApp. Planes con distintas características para XV años, bodas y baby shower." />
+    <meta name="twitter:description" content="Moomentos | Invitaciones digitales para XV años, bodas y baby shower. Confirmación de asistencia por WhatsApp o RSVP integrado según el plan que elijas." />
     <meta name="twitter:image" content="https://www.moomentos.com/social-card-1200x630.png" />
 
     <link rel="icon" type="image/png" sizes="32x32" href="/images/icons/icon-outline-32.png" />
@@ -385,13 +384,14 @@
       }
 
       .btn--ghost {
-        border: 1.5px solid var(--line);
+        border: 1.5px solid var(--ink);
         color: var(--ink);
       }
 
       .btn--ghost:hover,
       .btn--ghost:focus-visible {
-        border-color: var(--ink);
+        border-color: var(--coral);
+        color: var(--coral);
       }
 
       .btn--outline {
@@ -1116,6 +1116,23 @@
         color: var(--ink-dim);
       }
 
+      .footer-legal {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 16px;
+        margin-top: var(--space-2);
+        font-size: 0.75rem;
+      }
+      .footer-legal a {
+        color: var(--ink-dim);
+        transition: color 0.2s var(--ease);
+      }
+      .footer-legal a:hover,
+      .footer-legal a:focus-visible {
+        color: var(--coral);
+      }
+
       .footer-social {
         display: flex;
         justify-content: center;
@@ -1271,7 +1288,11 @@
       <div style="display: flex; align-items: center; gap: 10px">
         <a href="#precios" class="btn-nav">Comenzar</a>
         <button type="button" class="nav-toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
         </button>
       </div>
     </nav>
@@ -1472,7 +1493,7 @@
               <li>Historia de los novios / Video</li>
             </ul>
           </div>
-          <a href="#" class="btn btn--solid-coral" data-package="Premium">Seleccionar</a>
+          <a href="#" class="btn btn--solid-coral" data-package="Premium">Elegir Premium ⭐</a>
         </div>
 
         <div class="pricing-card">
@@ -1491,6 +1512,7 @@
           <a href="#" class="btn btn--outline" data-package="Platinum">Seleccionar</a>
         </div>
       </div>
+      <p class="plans-table__note" style="margin-top: var(--space-3)">⏱ Tu invitación lista en 24 hrs después de confirmar tu pedido.</p>
     </section>
 
     <!-- FOOTER -->
@@ -1515,6 +1537,11 @@
         </a>
       </div>
       <p class="footer-copy">© 2026 Moomentos · Invitaciones digitales · México</p>
+      <div class="footer-legal">
+        <a target="_blank" href="/privacypolicy">Aviso de Privacidad</a>
+        <a target="_blank" href="/termsandconditions">Términos de Servicio</a>
+        <a target="_blank" href="/returnspolicy">Política de Cambios</a>
+      </div>
     </footer>
 
     <!-- WHATSAPP FLOTANTE -->
