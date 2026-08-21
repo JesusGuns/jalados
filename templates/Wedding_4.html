@@ -368,22 +368,50 @@
 
       <!-- 11. SECCIÓN TICKET Y MESA ASIGNADA -->
       <section class="_tickets-section _table-section editorial-section">
-        <div class="container text-center reveal-element">
-          <div class="editorial-section-title">
-            <h2>Pases Reservados</h2>
-          </div>
-          <span class="" data-replace="GuestName">—</span>
-          <p class="mb-1">Hemos reservado para ti:</p>
-          <h3 class="display-6 mb-3" style="color: var(--accent-main)">
-            <span data-replace="TicketCount"></span>
-            Pases
+  <div class="container text-center reveal-element">
+ 
+    <div class="pr-body">
+      <svg class="branch" viewBox="0 0 200 60" xmlns="http://www.w3.org/2000/svg">
+        <line x1="10" y1="45" x2="185" y2="12" stroke-width="1"/>
+        <path d="M30,42 C36,32 44,28 50,20" stroke-width="1"/>
+        <path d="M45,36 C51,27 59,23 65,16" stroke-width="1"/>
+        <path d="M60,31 C66,22 74,19 80,12" stroke-width="1"/>
+        <path d="M75,27 C81,19 88,15 95,9" stroke-width="1"/>
+        <path d="M90,23 C96,15 103,12 109,6" stroke-width="1"/>
+        <path d="M105,19 C111,12 117,9 123,4" stroke-width="1"/>
+        <path d="M120,17 C126,10 132,7 138,3" stroke-width="1"/>
+        <path d="M135,15 C140,9 146,6 151,3" stroke-width="1"/>
+        <path d="M150,14 C155,9 160,7 165,4" stroke-width="1"/>
+      </svg>
+ 
+      <div class="editorial-section-title">
+        <h2>Pases Reservados</h2>
+      </div>
+ 
+      <div class="pr-divider"></div>
+ 
+      <span data-replace="GuestName">María Fernández</span>
+ 
+      <p class="mb-1">Hemos reservado para ti</p>
+ 
+      <div class="stats-row">
+        <div class="stat-block">
+          <h3 class="display-6" style="color: var(--accent-main)">
+            <span data-replace="TicketCount">2</span>
           </h3>
-          <p>
-            Mesa Asignada:
-            <strong><span data-replace="TableNumber"></span></strong>
-          </p>
+          <p class="stat-label">Pases</p>
         </div>
-      </section>
+ 
+        <div class="stat-block">
+          <div class="table-value"><span data-replace="TableNumber">12</span></div>
+          <p class="stat-label">Mesa Asignada</p>
+        </div>
+      </div>
+    </div>
+ 
+  </div>
+</section>
+
 
       <!-- 12. SECCIÓN ASISTENCIA / RSVP -->
       <section class="_attendance-section editorial-section">
