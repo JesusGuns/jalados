@@ -65,8 +65,27 @@
       .terms-table {
         width: 100%;
         border-collapse: collapse;
-        margin: 16px 0;
         font-size: 0.9rem;
+        min-width: 560px;
+      }
+
+      .terms-table-wrap {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        margin: 16px 0;
+        border-radius: 8px;
+        position: relative;
+      }
+
+      .terms-table-wrap::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        width: 28px;
+        background: linear-gradient(to right, transparent, rgba(15, 23, 42, 0.08));
+        pointer-events: none;
       }
       .terms-table th,
       .terms-table td {
@@ -109,36 +128,38 @@
         por evento, sin suscripciones ni cargos automáticos posteriores:
       </p>
 
-      <table class="terms-table">
-        <thead>
-          <tr>
-            <th>Plan</th>
-            <th>Precio (MXN)</th>
-            <th>Incluye</th>
-            <th>Vigencia</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><strong>Estándar</strong></td>
-            <td>$499</td>
-            <td>Portada, contador, detalles, galería, música, envíos ilimitados, RSVP por WhatsApp (Aplica Baby Shower).</td>
-            <td>3 meses</td>
-          </tr>
-          <tr>
-            <td><strong>Premium</strong></td>
-            <td>$899</td>
-            <td>Todo lo de Estándar + Dress code, Mesa de regalos, Presentación/Padres/Padrinos o Historia/Video.</td>
-            <td>3 meses</td>
-          </tr>
-          <tr>
-            <td><strong>Platinum</strong></td>
-            <td>$1,599</td>
-            <td>Todo lo de Premium + RSVP en la invitación, Pases personalizados, Número de mesa y Control de invitados.</td>
-            <td>3 meses</td>
-          </tr>
-        </tbody>
-      </table>
+      <div class="terms-table-wrap">
+        <table class="terms-table">
+          <thead>
+            <tr>
+              <th>Plan</th>
+              <th>Precio (MXN)</th>
+              <th>Incluye</th>
+              <th>Vigencia</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Estándar</strong></td>
+              <td>$499</td>
+              <td>Portada, contador, detalles, galería, música, envíos ilimitados, RSVP por WhatsApp (Aplica Baby Shower).</td>
+              <td>3 meses</td>
+            </tr>
+            <tr>
+              <td><strong>Premium</strong></td>
+              <td>$899</td>
+              <td>Todo lo de Estándar + Dress code, Mesa de regalos, Presentación/Padres/Padrinos o Historia/Video.</td>
+              <td>3 meses</td>
+            </tr>
+            <tr>
+              <td><strong>Platinum</strong></td>
+              <td>$1,599</td>
+              <td>Todo lo de Premium + RSVP en la invitación, Pases personalizados, Número de mesa y Control de invitados.</td>
+              <td>3 meses</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
 
       <h2>3. Responsabilidad sobre el Contenido Proporcionado</h2>
       <p>El Usuario es el único responsable del material suministrado (fotografías, textos, música, nombres y enlaces). El Usuario declara que posee los derechos y autorizaciones necesarias sobre dicho contenido y deslinda a Moomentos de cualquier reclamación sobre derechos de autor o imagen de terceros.</p>
