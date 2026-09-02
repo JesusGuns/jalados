@@ -365,6 +365,7 @@
           color 0.25s var(--ease),
           border-color 0.25s var(--ease),
           box-shadow 0.25s var(--ease);
+        margin-top: 1rem;
       }
 
       .btn:hover,
@@ -1315,64 +1316,197 @@
       .faq-list {
         max-width: 780px;
         margin: 0 auto;
+        counter-reset: faq;
         display: flex;
         flex-direction: column;
         gap: var(--space-2);
       }
 
       .faq-item {
+        position: relative;
+        counter-increment: faq;
         background: var(--surface);
-        border: 1px solid var(--line);
+        border: 1.5px solid var(--line);
         border-radius: var(--radius-m);
         overflow: hidden;
-        transition: border-color 0.25s var(--ease);
+        transition:
+          border-color 0.3s var(--ease),
+          box-shadow 0.3s var(--ease),
+          transform 0.3s var(--ease);
+      }
+
+      .faq-item:hover {
+        border-color: rgba(255, 93, 93, 0.35);
+        transform: translateY(-2px);
+        box-shadow: 0 12px 28px rgba(20, 22, 26, 0.08);
       }
 
       .faq-item[open] {
         border-color: var(--coral);
+        box-shadow: 0 20px 40px rgba(255, 93, 93, 0.14);
+      }
+
+      /* Acento de color alternado: coral / violeta / menta */
+      .faq-item:nth-child(3n + 2)[open] {
+        border-color: var(--violet);
+        box-shadow: 0 20px 40px rgba(108, 92, 231, 0.14);
+      }
+
+      .faq-item:nth-child(3n)[open] {
+        border-color: var(--mint);
+        box-shadow: 0 20px 40px rgba(0, 194, 168, 0.14);
       }
 
       .faq-item__question {
         list-style: none;
         cursor: pointer;
-        padding: var(--space-2) var(--space-3);
+        padding: var(--space-2) var(--space-4) var(--space-2) calc(var(--space-3) + 46px);
         font-family: var(--font-display);
         font-weight: 700;
-        font-size: 1rem;
+        font-size: 1.05rem;
+        line-height: 1.4;
+        position: relative;
         display: flex;
         align-items: center;
-        justify-content: space-between;
         gap: var(--space-2);
+        transition: color 0.25s var(--ease);
       }
 
       .faq-item__question::-webkit-details-marker {
         display: none;
       }
 
-      .faq-item__icon {
-        flex: none;
-        width: 28px;
-        height: 28px;
+      /* Número indicador (01, 02, 03...) */
+      .faq-item__question::before {
+        content: counter(faq, decimal-leading-zero);
+        position: absolute;
+        left: var(--space-3);
+        top: 50%;
+        transform: translateY(-50%);
+        width: 30px;
+        height: 30px;
         border-radius: 50%;
-        background: var(--coral-soft);
-        color: var(--coral);
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: 1.1rem;
+        font-size: 0.7rem;
+        letter-spacing: 0.02em;
+        color: var(--coral);
+        background: var(--coral-soft);
+        transition: transform 0.3s var(--ease);
+      }
+
+      .faq-item:nth-child(3n + 2) .faq-item__question::before {
+        color: var(--violet);
+        background: var(--violet-soft);
+      }
+
+      .faq-item:nth-child(3n) .faq-item__question::before {
+        color: var(--mint);
+        background: var(--mint-soft);
+      }
+
+      .faq-item[open] .faq-item__question::before {
+        transform: translateY(-50%) scale(1.08);
+      }
+
+      .faq-item:hover .faq-item__question {
+        color: var(--coral);
+      }
+
+      .faq-item:nth-child(3n + 2):hover .faq-item__question {
+        color: var(--violet);
+      }
+
+      .faq-item:nth-child(3n):hover .faq-item__question {
+        color: var(--mint);
+      }
+
+      .faq-item__icon {
+        flex: none;
+        margin-left: auto;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background: var(--bg);
+        border: 1.5px solid var(--line);
+        color: var(--ink-dim);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.2rem;
         font-weight: 700;
-        transition: transform 0.25s var(--ease);
+        transition:
+          transform 0.3s var(--ease),
+          background 0.3s var(--ease),
+          border-color 0.3s var(--ease),
+          color 0.3s var(--ease);
       }
 
       .faq-item[open] .faq-item__icon {
-        transform: rotate(45deg);
+        transform: rotate(135deg);
+        background: var(--coral);
+        border-color: var(--coral);
+        color: var(--surface);
+      }
+
+      .faq-item:nth-child(3n + 2)[open] .faq-item__icon {
+        background: var(--violet);
+        border-color: var(--violet);
+      }
+
+      .faq-item:nth-child(3n)[open] .faq-item__icon {
+        background: var(--mint);
+        border-color: var(--mint);
       }
 
       .faq-item__answer {
-        padding: 0 var(--space-3) var(--space-3);
+        margin: 0;
+        padding: 0 var(--space-4) var(--space-3) calc(var(--space-3) + 46px);
         color: var(--ink-dim);
-        font-size: 0.95rem;
-        line-height: 1.6;
+        font-size: 0.97rem;
+        line-height: 1.7;
+      }
+
+      .faq-item[open] .faq-item__answer {
+        animation: faqReveal 0.4s var(--ease);
+      }
+
+      @keyframes faqReveal {
+        from {
+          opacity: 0;
+          transform: translateY(-8px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @media (max-width: 640px) {
+        .faq-item__question {
+          padding: var(--space-2) var(--space-3) var(--space-2) calc(var(--space-2) + 40px);
+          font-size: 0.95rem;
+          gap: var(--space-1);
+        }
+
+        .faq-item__question::before {
+          left: var(--space-2);
+          width: 26px;
+          height: 26px;
+          font-size: 0.62rem;
+        }
+
+        .faq-item__icon {
+          width: 26px;
+          height: 26px;
+          font-size: 1.05rem;
+        }
+
+        .faq-item__answer {
+          padding: 0 var(--space-3) var(--space-3) calc(var(--space-2) + 40px);
+          font-size: 0.9rem;
+        }
       }
 
       /* ============================================
@@ -1803,7 +1937,6 @@
     </section>
 
     <!-- FAQ -->
-    <!-- FAQ -->
     <section class="section" id="faq">
       <div class="section-header">
         <p class="section-eyebrow">Resolvemos tus dudas</p>
@@ -1824,7 +1957,7 @@
             ¿Cómo confirman los invitados su asistencia?
             <span class="faq-item__icon">+</span>
           </summary>
-          <p class="faq-item__answer">Depende del plan y tipo de evento: en Baby Shower la confirmación se hace por WhatsApp. Con el plan Platinum en XV y Bodas, tus invitados pueden confirmar directamente dentro de la invitación (RSVP).</p>
+          <p class="faq-item__answer">Depende del tipo de evento: en Baby Shower la confirmación se hace por WhatsApp. En XV y Bodas no hay confirmación por WhatsApp; solo el plan Platinum incluye confirmación de asistencia, directamente dentro de la invitación (RSVP).</p>
         </details>
 
         <details class="faq-item">
@@ -1861,10 +1994,18 @@
 
         <details class="faq-item">
           <summary class="faq-item__question">
+            ¿Cómo puedo pagar mi invitación?
+            <span class="faq-item__icon">+</span>
+          </summary>
+          <p class="faq-item__answer">El pago se realiza a través de Mercado Pago, lo que te permite elegir entre tarjeta de crédito, débito, transferencia u otros métodos disponibles en la plataforma. Al ser un procesador de pagos certificado, tu compra queda protegida y tus datos viajan cifrados en todo momento.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-item__question">
             ¿Cómo contrato mi invitación?
             <span class="faq-item__icon">+</span>
           </summary>
-          <p class="faq-item__answer">Elige el plan que más te convenga en la sección de precios y da clic en «Seleccionar». Esto abrirá un chat de WhatsApp donde te guiamos con el proceso de pago y la información que necesitamos para armar tu invitación.</p>
+          <p class="faq-item__answer">Elige el plan que más te convenga en la sección de precios y después presiona el botón «Pagar con Mercado Pago». Ahí podrás completar tu pago de forma segura y, una vez confirmado, nos pondremos en contacto contigo para armar tu invitación.</p>
         </details>
       </div>
     </section>
