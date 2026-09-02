@@ -421,6 +421,224 @@
       }
 
       /* ============================================
+      PAGO — botón flotante Mercado Pago
+      ============================================ */
+      .mp-float {
+        position: fixed;
+        bottom: 100px;
+        right: 28px;
+        z-index: 300;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        background: #009ee3;
+        color: #fff;
+        padding: 12px 20px 12px 14px;
+        border-radius: 999px;
+        font-family: var(--font-body);
+        font-size: 0.85rem;
+        font-weight: 700;
+        box-shadow: 0 6px 20px rgba(0, 158, 227, 0.45);
+        animation: mp-float-bob 3s ease-in-out infinite;
+        transition:
+          transform 0.25s var(--ease),
+          box-shadow 0.25s var(--ease);
+      }
+
+      .mp-float:hover,
+      .mp-float:focus-visible {
+        animation-play-state: paused;
+        transform: translateY(-3px) scale(1.04);
+        box-shadow: 0 10px 28px rgba(0, 158, 227, 0.55);
+      }
+
+      @keyframes mp-float-bob {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-6px);
+        }
+      }
+
+      .mp-float__icon {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background: #fff;
+        color: #009ee3;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1rem;
+        flex-shrink: 0;
+      }
+
+      .mp-float__text {
+        display: flex;
+        flex-direction: column;
+        line-height: 1.15;
+        text-align: left;
+        white-space: nowrap;
+      }
+
+      .mp-float__label {
+        font-size: 0.6rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.03em;
+        opacity: 0.85;
+      }
+
+      /* Tooltip del paquete seleccionado */
+      .mp-float::before {
+        content: attr(data-plan);
+        position: absolute;
+        right: calc(100% + 10px);
+        top: 50%;
+        transform: translateY(-50%);
+        background: var(--ink);
+        color: var(--surface);
+        font-family: var(--font-body);
+        font-size: 0.75rem;
+        font-weight: 600;
+        padding: 6px 12px;
+        border-radius: 999px;
+        white-space: nowrap;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.2s var(--ease);
+      }
+
+      .mp-float:hover::before,
+      .mp-float:focus-visible::before {
+        opacity: 1;
+      }
+
+      @media (max-width: 480px) {
+        .mp-float {
+          bottom: 92px;
+          right: 20px;
+          padding: 10px 16px 10px 10px;
+        }
+
+        .mp-float__text {
+          font-size: 0.8rem;
+        }
+      }
+
+      .btn--pay-secondary {
+        display: block;
+        text-align: center;
+        font-size: 0.85rem;
+        font-weight: 500;
+        color: var(--ink-dim);
+        padding: 8px;
+        border-radius: 999px;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+      }
+
+      .btn--pay-secondary:hover,
+      .btn--pay-secondary:focus-visible {
+        color: var(--ink);
+      }
+
+      /* ============================================
+      MODAL — post-pago
+      ============================================ */
+      .pay-modal-overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(20, 22, 26, 0.55);
+        display: none;
+        align-items: center;
+        justify-content: center;
+        z-index: 1000;
+        padding: var(--space-2);
+      }
+
+      .pay-modal-overlay.is-open {
+        display: flex;
+      }
+
+      .pay-modal {
+        background: var(--surface);
+        border-radius: var(--radius-l);
+        padding: var(--space-4);
+        max-width: 420px;
+        width: 100%;
+        text-align: center;
+        position: relative;
+        animation: pay-modal-in 0.25s var(--ease);
+      }
+
+      @keyframes pay-modal-in {
+        from {
+          opacity: 0;
+          transform: translateY(12px) scale(0.98);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0) scale(1);
+        }
+      }
+
+      .pay-modal__icon {
+        font-size: 2.4rem;
+        margin-bottom: var(--space-2);
+      }
+
+      .pay-modal__title {
+        font-family: var(--font-display);
+        font-size: 1.25rem;
+        font-weight: 700;
+        margin-bottom: var(--space-1);
+      }
+
+      .pay-modal__text {
+        color: var(--ink-dim);
+        font-size: 0.95rem;
+        margin-bottom: var(--space-3);
+        line-height: 1.6;
+      }
+
+      .pay-modal__text strong {
+        color: var(--ink);
+      }
+
+      .pay-modal__close {
+        position: absolute;
+        top: 14px;
+        right: 14px;
+        width: 34px;
+        height: 34px;
+        border-radius: 50%;
+        border: 1.5px solid var(--line);
+        background: var(--surface);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        font-size: 1rem;
+        color: var(--ink-dim);
+      }
+
+      .pay-modal__close:hover {
+        background: var(--ink);
+        color: var(--surface);
+        border-color: var(--ink);
+      }
+
+      .pay-modal__actions {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      /* ============================================
    SECTION SHARED
    ============================================ */
       .section {
@@ -1092,6 +1310,72 @@
       }
 
       /* ============================================
+   FAQ
+   ============================================ */
+      .faq-list {
+        max-width: 780px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-2);
+      }
+
+      .faq-item {
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: var(--radius-m);
+        overflow: hidden;
+        transition: border-color 0.25s var(--ease);
+      }
+
+      .faq-item[open] {
+        border-color: var(--coral);
+      }
+
+      .faq-item__question {
+        list-style: none;
+        cursor: pointer;
+        padding: var(--space-2) var(--space-3);
+        font-family: var(--font-display);
+        font-weight: 700;
+        font-size: 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: var(--space-2);
+      }
+
+      .faq-item__question::-webkit-details-marker {
+        display: none;
+      }
+
+      .faq-item__icon {
+        flex: none;
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        background: var(--coral-soft);
+        color: var(--coral);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.1rem;
+        font-weight: 700;
+        transition: transform 0.25s var(--ease);
+      }
+
+      .faq-item[open] .faq-item__icon {
+        transform: rotate(45deg);
+      }
+
+      .faq-item__answer {
+        padding: 0 var(--space-3) var(--space-3);
+        color: var(--ink-dim);
+        font-size: 0.95rem;
+        line-height: 1.6;
+      }
+
+      /* ============================================
    FOOTER
    ============================================ */
       .footer {
@@ -1284,9 +1568,10 @@
         <li><a href="#categorias">Diseños</a></li>
         <li><a href="#planes">Planes</a></li>
         <li><a href="#precios">Precios</a></li>
+        <li><a href="#faq">FAQ</a></li>
       </ul>
       <div style="display: flex; align-items: center; gap: 10px">
-        <a href="#precios" class="btn-nav">Comenzar</a>
+        <!-- <a href="#precios" class="btn-nav">Comenzar</a> -->
         <button type="button" class="nav-toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
             <line x1="3" y1="6" x2="21" y2="6"></line>
@@ -1456,7 +1741,7 @@
             <li>Galería de fotos</li>
             <li>Música de fondo</li>
             <li>Envíos ilimitados</li>
-            <li>Vigencia 3 meses</li>
+            <li>Vigencia 12 meses</li>
           </ul>
           <div class="pricing-card__group">
             <span class="pricing-card__group-tag">🎈 Solo Baby Shower</span>
@@ -1464,7 +1749,7 @@
               <li>Confirmación de asistencia (WhatsApp)</li>
             </ul>
           </div>
-          <a href="#" class="btn btn--outline" data-package="Estándar">Seleccionar</a>
+          <a href="#" class="btn btn--outline" data-package="Estándar" data-price="$499">Seleccionar</a>
         </div>
 
         <div class="pricing-card pricing-card--featured">
@@ -1478,7 +1763,7 @@
             <li>Todo lo de Estándar</li>
             <li>Dress code</li>
             <li>Mesa de regalos</li>
-            <li>Vigencia 3 meses</li>
+            <li>Vigencia 12 meses</li>
           </ul>
           <div class="pricing-card__group">
             <span class="pricing-card__group-tag">👑 Solo XV</span>
@@ -1494,7 +1779,7 @@
               <li>Historia de los novios / Video</li>
             </ul>
           </div>
-          <a href="#" class="btn btn--solid-coral" data-package="Premium">Elegir Premium ⭐</a>
+          <a href="#" class="btn btn--solid-coral" data-package="Premium" data-price="$899">Elegir Premium ⭐</a>
         </div>
 
         <div class="pricing-card">
@@ -1509,12 +1794,79 @@
             <li>Pases personalizados</li>
             <li>Número de mesa</li>
             <li>Control de Invitados</li>
-            <li>Vigencia 3 meses</li>
+            <li>Vigencia 12 meses</li>
           </ul>
-          <a href="#" class="btn btn--outline" data-package="Platinum">Seleccionar</a>
+          <a href="#" class="btn btn--outline" data-package="Platinum" data-price="$1,599">Seleccionar</a>
         </div>
       </div>
       <p class="plans-table__note" style="margin-top: var(--space-3)">⏱ Tu invitación lista en 24 hrs después de confirmar tu pedido.</p>
+    </section>
+
+    <!-- FAQ -->
+    <!-- FAQ -->
+    <section class="section" id="faq">
+      <div class="section-header">
+        <p class="section-eyebrow">Resolvemos tus dudas</p>
+        <h2 class="section-title">Preguntas frecuentes</h2>
+      </div>
+
+      <div class="faq-list">
+        <details class="faq-item" open>
+          <summary class="faq-item__question">
+            ¿Cuánto tiempo estará disponible mi invitación?
+            <span class="faq-item__icon">+</span>
+          </summary>
+          <p class="faq-item__answer">Tu invitación digital tiene una vigencia de 12 meses a partir de su activación, tiempo más que suficiente para compartirla, recibir confirmaciones y que tus invitados puedan consultarla las veces que quieran antes del evento.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-item__question">
+            ¿Cómo confirman los invitados su asistencia?
+            <span class="faq-item__icon">+</span>
+          </summary>
+          <p class="faq-item__answer">Depende del plan y tipo de evento: en Baby Shower la confirmación se hace por WhatsApp. Con el plan Platinum en XV y Bodas, tus invitados pueden confirmar directamente dentro de la invitación (RSVP).</p>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-item__question">
+            ¿Cuánto tarda en estar lista mi invitación?
+            <span class="faq-item__icon">+</span>
+          </summary>
+          <p class="faq-item__answer">Una vez que confirmas tu pedido y nos compartes la información de tu evento, tu invitación queda lista en un máximo de 24 horas.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-item__question">
+            ¿Puedo hacer cambios a mi invitación después de recibirla?
+            <span class="faq-item__icon">+</span>
+          </summary>
+          <p class="faq-item__answer">Sí, si necesitas ajustar algún dato como horarios, lugar o texto, escríbenos por WhatsApp y con gusto te ayudamos a actualizarla.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-item__question">
+            ¿Puedo cambiar de plan más adelante?
+            <span class="faq-item__icon">+</span>
+          </summary>
+          <p class="faq-item__answer">Claro, si ya contrataste un plan y quieres subir a uno superior para desbloquear más funciones (como RSVP, mesa de regalos o video), solo contáctanos por WhatsApp y te ayudamos con el cambio.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-item__question">
+            ¿Necesito que mis invitados descarguen alguna app?
+            <span class="faq-item__icon">+</span>
+          </summary>
+          <p class="faq-item__answer">No. Tu invitación es un sitio web optimizado para celular que se abre directamente desde el enlace que compartas, sin necesidad de instalar nada.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-item__question">
+            ¿Cómo contrato mi invitación?
+            <span class="faq-item__icon">+</span>
+          </summary>
+          <p class="faq-item__answer">Elige el plan que más te convenga en la sección de precios y da clic en «Seleccionar». Esto abrirá un chat de WhatsApp donde te guiamos con el proceso de pago y la información que necesitamos para armar tu invitación.</p>
+        </details>
+      </div>
     </section>
 
     <!-- FOOTER -->
@@ -1546,10 +1898,42 @@
       </div>
     </footer>
 
+    <!-- MERCADO PAGO FLOTANTE -->
+    <a href="#" class="mp-float" id="mpFloatBtn" target="_blank" rel="noopener noreferrer" aria-label="Pagar con Mercado Pago" data-plan="Elige un paquete arriba 👆">
+      <span class="mp-float__icon">💳</span>
+      <span class="mp-float__text">
+        <span class="mp-float__label">Pagar con</span>
+        <span>Mercado Pago</span>
+      </span>
+    </a>
+
     <!-- WHATSAPP FLOTANTE -->
     <a href="#" class="whatsapp-float" id="whatsappBtn" target="_blank" rel="noopener noreferrer" aria-label="Contactar por WhatsApp">
       <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" />
     </a>
+
+    <!-- MODAL: siguiente paso después de pagar en Mercado Pago -->
+    <div class="pay-modal-overlay" id="payModalOverlay">
+      <div class="pay-modal" role="dialog" aria-modal="true" aria-labelledby="payModalTitle">
+        <button type="button" class="pay-modal__close" id="payModalClose" aria-label="Cerrar">✕</button>
+        <div class="pay-modal__icon">🎉</div>
+        <h3 class="pay-modal__title" id="payModalTitle">¡Ya casi! Un último paso</h3>
+        <p class="pay-modal__text">
+          Se abrió Mercado Pago en una pestaña nueva para completar tu pago del paquete
+          <strong id="payModalPackage">Estándar</strong>
+          .
+          <br />
+          <br />
+          En cuanto termines, mándanos tu
+          <strong>comprobante de pago</strong>
+          y los datos de tu evento por WhatsApp para empezar a armar tu invitación (lista en 24 hrs).
+        </p>
+        <div class="pay-modal__actions">
+          <a href="#" id="payModalWhatsapp" class="btn btn--solid-coral" target="_blank" rel="noopener noreferrer">Enviar comprobante por WhatsApp</a>
+          <button type="button" class="btn btn--pay-secondary" id="payModalDismiss">Ya lo hago después</button>
+        </div>
+      </div>
+    </div>
 
     <script>
       document.addEventListener("DOMContentLoaded", function () {
@@ -1751,36 +2135,103 @@
         const WA_NUMBER = "523346004551";
         const whatsappBtn = document.getElementById("whatsappBtn");
 
+        /* ============================================================
+         PAGOS — Mercado Pago (enlaces de pago)
+         ─────────────────────────────────────────────────────────────
+         Actualiza aquí si cambian los links de pago:
+         ============================================================ */
+        const MP_LINKS = {
+          Estándar: "https://mpago.la/22qfXof",
+          Premium: "https://mpago.la/1EAwzKy",
+          Platinum: "https://mpago.la/1jBZpcM",
+        };
+
+        const payModalOverlay = document.getElementById("payModalOverlay");
+        const payModalPackage = document.getElementById("payModalPackage");
+        const payModalWhatsapp = document.getElementById("payModalWhatsapp");
+        const payModalClose = document.getElementById("payModalClose");
+        const payModalDismiss = document.getElementById("payModalDismiss");
+        const mpFloatBtn = document.getElementById("mpFloatBtn");
+
+        function openPayModal(planName) {
+          payModalPackage.textContent = planName;
+          const msg = `Hola 👋, ya realicé mi pago del paquete *${planName}* de invitaciones digitales. Aquí les envío mi comprobante 📎`;
+          payModalWhatsapp.href = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`;
+          payModalOverlay.classList.add("is-open");
+        }
+
+        function closePayModal() {
+          payModalOverlay.classList.remove("is-open");
+        }
+
+        payModalClose.addEventListener("click", closePayModal);
+        payModalDismiss.addEventListener("click", closePayModal);
+        payModalOverlay.addEventListener("click", (e) => {
+          if (e.target === payModalOverlay) closePayModal();
+        });
+
+        function setMpPlan(planName, price) {
+          mpFloatBtn.setAttribute("data-plan", `📦 ${planName} · ${price}`);
+          mpFloatBtn.setAttribute("data-current-plan", planName);
+        }
+
+        mpFloatBtn.addEventListener("click", function (e) {
+          e.preventDefault();
+          const plan = this.getAttribute("data-current-plan");
+          const link = MP_LINKS[plan];
+          if (!link) return;
+
+          // Evento de conversión (opcional, útil para medir en GA4)
+          if (typeof gtag === "function") {
+            gtag("event", "begin_checkout", {
+              items: [{ item_name: plan }],
+            });
+          }
+
+          // Abrir Mercado Pago en pestaña nueva
+          window.open(link, "_blank", "noopener,noreferrer");
+
+          // Mostrar modal con siguiente paso
+          openPayModal(plan);
+        });
+
         function setWhatsappPlan(planName) {
           const msg = planName ? `Hola, me interesa obtener información y contratar el paquete *${planName}* para mis invitaciones digitales.` : "Hola, me interesa obtener información sobre las invitaciones digitales.";
           whatsappBtn.href = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`;
           whatsappBtn.setAttribute("data-plan", planName ? "📦 " + planName : "");
         }
 
-        // Mensaje genérico por defecto
-        setWhatsappPlan(document.querySelector(".pricing-card--featured .btn").getAttribute("data-package"));
+        // Paquete destacado por defecto: Premium
+        setWhatsappPlan("Premium");
+        setMpPlan("Premium", "$899");
 
         // Al hacer clic en "Seleccionar" de cualquier plan
         document.querySelectorAll("[data-package]").forEach((btn) => {
           btn.addEventListener("click", function (e) {
             e.preventDefault();
             const plan = this.getAttribute("data-package");
+            const price = this.getAttribute("data-price");
 
-            // Quitar featured y selected de todas las cards
+            // Quitar featured y estilos de todas las cards
             document.querySelectorAll(".pricing-card").forEach((card) => {
               card.classList.remove("pricing-card--featured", "pricing-card--selected");
-              card.querySelector(".btn").classList.remove("btn--solid-coral");
-              card.querySelector(".btn").classList.add("btn--outline");
+              const cardBtn = card.querySelector("[data-package]");
+              cardBtn.classList.remove("btn--solid-coral");
+              cardBtn.classList.add("btn--outline");
             });
 
             // Aplicar featured a la card seleccionada
             this.closest(".pricing-card").classList.add("pricing-card--featured");
-            this.closest(".pricing-card .btn").classList.remove("btn--outline");
-            this.closest(".pricing-card .btn").classList.add("btn--solid-coral");
-            setWhatsappPlan(plan);
+            this.classList.remove("btn--outline");
+            this.classList.add("btn--solid-coral");
 
-            // Animación de rebote para que el usuario note el botón
-            whatsappBtn.animate([{ transform: "scale(1)" }, { transform: "scale(1.3)" }, { transform: "scale(1)" }], { duration: 400, easing: "ease" });
+            setWhatsappPlan(plan);
+            setMpPlan(plan, price);
+
+            // Animación de rebote en ambos flotantes para que el usuario los note
+            [whatsappBtn, mpFloatBtn].forEach((el) => {
+              el.animate([{ transform: "scale(1)" }, { transform: "scale(1.3)" }, { transform: "scale(1)" }], { duration: 400, easing: "ease" });
+            });
           });
         });
       });
