@@ -29,6 +29,9 @@ var Resources = {
     GuestName: "",
     TableNumber: 4,
     TicketCount: 2,
+    // RSVP WhatsApp
+    WhatsApp: false, // ← NUEVO: true = confirma solo por WhatsApp
+    WhatsAppNumber: "523346004551", // ← NUEVO: número destino (formato internacional sin +)
   },
   MainEvent: {},
   SecondaryEvent: {},
@@ -77,6 +80,8 @@ export const helpers = {
 
     // RSPV
     Resources.RSVP = resources.RSVP;
+    Resources.RSVP.WhatsApp = !!resources.RSVP.WhatsApp;
+    Resources.RSVP.WhatsAppNumber = (resources.RSVP.WhatsAppNumber || "523346004551").replace(/\D/g, "");
     Resources.RSVP.GuestSheetName = resources.RSVP.EventID + "_Guest";
     Resources.RSVP.ConfirmSheetName = resources.RSVP.EventID + "_Confirmed";
     Resources.RSVP.GuestName = resources.Config.Template ? "Jacqueline" : "";
@@ -244,10 +249,10 @@ export const helpers = {
     // ─── SECCIONES — show/hide elements ─────────────────────────
     const elementsMap = {
       showAmazonOption: "[data-replace='EventAmazonGiftTableUrl']",
-      showLiverpoolOption: "[data-replace='EventLiverpoolGiftTableUrl']"
+      showLiverpoolOption: "[data-replace='EventLiverpoolGiftTableUrl']",
     };
 
-    if(Resources.Config.Template){
+    if (Resources.Config.Template) {
       $("#themeSwitcher").removeClass("d-none");
     }
 
@@ -359,7 +364,7 @@ export const rsvp = {
     if (!token) {
       Resources.Config.Sections.showTableNumber = false;
       Resources.Config.Sections.showTickets = false;
-      Resources.Config.Sections.showAttendance = false;
+      Resources.Config.Sections.showAttendance = !!Resources.RSVP.WhatsApp;
       Resources.RSVP.GuestName = "";
       Resources.RSVP.TableNumber = 0;
       Resources.RSVP.TicketCount = 0;
@@ -383,7 +388,7 @@ export const rsvp = {
         } else {
           Resources.Config.Sections.showTableNumber = false;
           Resources.Config.Sections.showTickets = false;
-          Resources.Config.Sections.showAttendance = false;
+          Resources.Config.Sections.showAttendance = !!Resources.RSVP.WhatsApp;
           Resources.RSVP.GuestName = "";
           Resources.RSVP.TableNumber = 0;
           Resources.RSVP.TicketCount = 0;
@@ -394,6 +399,12 @@ export const rsvp = {
       .catch((err) => console.error("Error:", err));
   },
   onPostRSPV: function (confirmation, guestAttendants, wishes) {
+    // ← NUEVO: si WhatsApp está prendido, solo se confirma por WhatsApp
+    if (Resources.RSVP.WhatsApp) {
+      rsvp.onSendWhatsApp(confirmation, guestAttendants, wishes);
+      return;
+    }
+
     if (Resources.RSVP.Enable && Resources.Config.Template) {
       if (confirmation) {
         helpers.onToasty(Resources.Messages.Confirmation);
@@ -445,6 +456,38 @@ export const rsvp = {
         }
       })
       .catch((err) => console.error("Error:", err));
+  },
+  onSendWhatsApp: function (confirmation, guestAttendants, wishes) {
+    const r = Resources.RSVP;
+    const main = Resources.MainEvent;
+    const isWedding = Resources.Config.EventType === "Wedding";
+
+    const eventLabel = isWedding ? "la boda de" : "los XV años de";
+    const eventName = isWedding ? `${main.BrideShortName} y ${main.GroomShortName}` : main.Name;
+
+    const E = {
+      wave: "\u{1F44B}", // 👋
+      check: "\u2705", // ✅
+      heart: "\u{1F90D}", // 🤍
+      user: "\u{1F464}", // 👤
+      ticket: "\u{1F39F}\uFE0F", // 🎟️
+      chair: "\u{1FA91}", // 🪑
+      people: "\u{1F465}", // 👥
+      letter: "\u{1F48C}", // 💌
+    };
+
+    const lines = [confirmation ? `¡Hola! ${E.wave} Confirmo mi asistencia a ${eventLabel} *${eventName}* ${E.check}` : `¡Hola! ${E.wave} Lamentablemente no podré asistir a ${eventLabel} *${eventName}* ${E.heart}`, ""];
+
+    if (r.GuestName) lines.push(`${E.user} *Invitado:* ${r.GuestName}`);
+    if (confirmation && r.TicketCount > 0) lines.push(`${E.ticket} *Pases:* ${r.TicketCount}`);
+    if (confirmation && r.TableNumber > 0) lines.push(`${E.chair} *Mesa:* ${r.TableNumber}`);
+    if (confirmation && guestAttendants && guestAttendants.trim()) lines.push(`${E.people} *Acompañantes:* ${guestAttendants.trim()}`);
+    if (wishes && wishes.trim()) lines.push(`${E.letter} *Mensaje:* ${wishes.trim()}`);
+
+    const url = `https://api.whatsapp.com/send?phone=${r.WhatsAppNumber}&text=${encodeURIComponent(lines.join("\n"))}`;
+    window.open(url, "_blank", "noopener,noreferrer");
+
+    helpers.onToasty(confirmation ? Resources.Messages.Confirmation : Resources.Messages.WillNotAttend);
   },
 };
 

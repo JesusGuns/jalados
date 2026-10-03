@@ -463,6 +463,8 @@
       const configRSVP = {
         Enable: true,
         EventID: "Wedding_Template",
+        WhatsApp: false, // ← NUEVO: true = solo WhatsApp, false = solo form RSVP
+        WhatsAppNumber: "523346004551"
       };
       // ─── Settings ─────────────────────────────
       const settings = {
@@ -480,7 +482,7 @@
           showDressCode: true,
           showTickets: true,
           showTableNumber: configRSVP.Enable,
-          showAttendance: configRSVP.Enable,
+          showAttendance: configRSVP.Enable || configRSVP.WhatsApp,
           showGiftTable: true,
         },
         ShowElements: {
@@ -490,7 +492,7 @@
       };
       // ─── DATOS DEL EVENTO ─────────────────────────────
       var mainEvent = {
-        Date: new Date("2026-10-17T14:00:00"),
+        Date: new Date("2026-10-17T17:30:00"),
 
         BrideName: "Daniela Curiel",
         GroomName: "Rodrigo Gil",

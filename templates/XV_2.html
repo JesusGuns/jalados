@@ -399,8 +399,10 @@
 
       // ─── RSVP ─────────────────────────────
       const configRSVP = {
-        Enable: true,
+        Enable: false,
         EventID: "XV_Template",
+        WhatsApp: true, // ← NUEVO: true = solo WhatsApp, false = solo form RSVP
+        WhatsAppNumber: "523346004551"
       };
       // ─── Settings ─────────────────────────────
       const settings = {
@@ -415,7 +417,7 @@
           showGallery: true,
           showDressCode: true,
           showTableNumber: configRSVP.Enable,
-          showAttendance: configRSVP.Enable,
+          showAttendance: configRSVP.Enable || configRSVP.WhatsApp,
           showGiftTable: true,
         },
         ShowElements: {
