@@ -122,13 +122,13 @@ export const helpers = {
     let hours = eventDate.getHours();
     const ampm = hours >= 12 ? "p.m." : "a.m.";
     const mins = eventDate.getMinutes().toString().padStart(2, "0");
-    const the = hours > 1 ? "las " : "la";
+    const the = hours % 12 === 1 ? "la" : "las";
     hours = hours % 12 || 12;
     const hourString = includeThe ? `${the} ${hours}:${mins} ${ampm}` : `${hours}:${mins} ${ampm}`;
     return hourString;
   },
   onGetDateYYYYMMDD: function (eventDate) {
-    const format = (f) => f.toISOString().split("T")[0].replace(/-/g, "");
+    const format = (f) => `${f.getFullYear()}${String(f.getMonth() + 1).padStart(2, "0")}${String(f.getDate()).padStart(2, "0")}`;
     return format(eventDate);
   },
   onAddZeroToNumber: function (number) {
@@ -160,6 +160,7 @@ export const helpers = {
       last = { d, h, m, s };
     };
 
+    let intervalId;
     const tick = () => {
       const distance = eventDate - Date.now();
 
@@ -178,7 +179,7 @@ export const helpers = {
     };
 
     tick(); // primer render inmediato, sin esperar 1s
-    const intervalId = setInterval(tick, 1000);
+    intervalId = setInterval(tick, 1000);
 
     return intervalId;
   },
@@ -339,6 +340,9 @@ export const helpers = {
 };
 
 export const rsvp = {
+  _sending: false,
+  _lastSent: null,
+
   onGetRSVP: function () {
     if (Resources.RSVP.Enable && Resources.Config.Template) {
       helpers.onLoadRSVP();
@@ -398,65 +402,108 @@ export const rsvp = {
       })
       .catch((err) => console.error("Error:", err));
   },
+
+  // Obtiene el token de la URL (solo en invitaciones reales, no en templates)
+  _getToken: function () {
+    if (Resources.Config.Template) return "";
+    const pathParts = window.location.pathname.split("/").filter(Boolean);
+    if (pathParts.length > 1) return pathParts[pathParts.length - 1];
+    return new URLSearchParams(window.location.search).get("token") || "";
+  },
+
+  // Devuelve true si se guardó. Reintenta solo ante errores de red, timeout o 5xx.
+  _send: async function (payload, maxAttempts) {
+    for (let attempt = 0; attempt < maxAttempts; attempt++) {
+      const ctrl = new AbortController();
+      const timer = setTimeout(() => ctrl.abort(), 20000);
+      try {
+        const resp = await fetch("/api/sheet", {
+          method: "POST",
+          keepalive: true,
+          signal: ctrl.signal,
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload),
+        });
+        clearTimeout(timer);
+
+        // Error del cliente (400, 405...): reintentar no sirve
+        if (resp.status >= 400 && resp.status < 500) return false;
+
+        if (resp.ok) {
+          const data = await resp.json();
+          // Error lógico del Apps Script (token inválido, etc.): no reintentar
+          return !!data.success;
+        }
+        // 5xx: cae al backoff y reintenta
+      } catch (err) {
+        clearTimeout(timer);
+        console.warn(`RSVP intento ${attempt + 1} falló:`, err);
+      }
+
+      if (attempt < maxAttempts - 1) {
+        await new Promise((r) => setTimeout(r, 1000 * 2 ** attempt)); // 1s, 2s
+      }
+    }
+    return false;
+  },
+
   onPostRSPV: function (confirmation, guestAttendants, wishes) {
-    // ← NUEVO: si WhatsApp está prendido, solo se confirma por WhatsApp
+    // WhatsApp: sin cambios
     if (Resources.RSVP.WhatsApp) {
       rsvp.onSendWhatsApp(confirmation, guestAttendants, wishes);
       return;
     }
 
+    // Modo template: sin cambios
     if (Resources.RSVP.Enable && Resources.Config.Template) {
-      if (confirmation) {
-        helpers.onToasty(Resources.Messages.Confirmation);
-      } else {
-        helpers.onToasty(Resources.Messages.WillNotAttend);
-      }
+      helpers.onToasty(confirmation ? Resources.Messages.Confirmation : Resources.Messages.WillNotAttend);
       return;
     }
 
-    if (!Resources.RSVP.Enable) {
+    if (!Resources.RSVP.Enable) return;
+
+    // Ya hay un envío en curso: ignorar clics repetidos
+    if (rsvp._sending) return;
+
+    const token = rsvp._getToken();
+    if (!token) {
+      //helpers.onToasty("No encontramos tu invitación. Abre el enlace que te compartieron.", "#c0392b");
       return;
     }
 
-    const pathParts = window.location.pathname.split("/").filter(Boolean);
-    let token = "";
-    if (Resources.RSVP.Enable && !Resources.Config.Template) {
-      if (pathParts.length > 1) {
-        token = pathParts[pathParts.length - 1];
-      } else {
-        const params = new URLSearchParams(window.location.search);
-        token = params.get("token") || "";
-      }
-    }
+    const payload = {
+      token: token,
+      eventID: Resources.RSVP.EventID,
+      confirmed: confirmation,
+      guests: guestAttendants,
+      wishes: wishes,
+    };
 
-    fetch(`/api/sheet`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        token: token,
-        eventID: Resources.RSVP.EventID,
-        confirmed: confirmation,
-        guests: guestAttendants,
-        wishes: wishes,
-      }),
-    })
-      .then((resp) => {
-        if (!resp.ok) throw new Error(`HTTP error ${resp.status}`);
-        return resp.json();
-      })
-      .then((data) => {
-        if (data.success) {
-          if (confirmation) {
-            helpers.onToasty(Resources.Messages.Confirmation);
-          } else {
-            helpers.onToasty(Resources.Messages.WillNotAttend);
-          }
-        }
-      })
-      .catch((err) => console.error("Error:", err));
+    // Misma respuesta que ya se guardó: no reenviar, solo confirmar de nuevo
+    // const key = JSON.stringify(payload);
+    // if (rsvp._lastSent === key) {
+    //   helpers.onToasty(confirmation ? Resources.Messages.Confirmation : Resources.Messages.WillNotAttend);
+    //   return;
+    // }
+
+    // UI: bloquear botones y mostrar éxito de inmediato
+    rsvp._sending = true;
+    const $btns = $("#_btnYes, #_btnNo").prop("disabled", true).css("opacity", 0.6);
+    helpers.onToasty(confirmation ? Resources.Messages.Confirmation : Resources.Messages.WillNotAttend);
+
+    // Envío en segundo plano con red de seguridad
+    rsvp._send(payload, 3).then((ok) => {
+      rsvp._sending = false;
+      $btns.prop("disabled", false).css("opacity", 1);
+
+      if (ok) {
+        rsvp._lastSent = key;
+      } else {
+        //helpers.onToasty("No pudimos guardar tu respuesta. Por favor inténtalo de nuevo 🙏", "#c0392b");
+      }
+    });
   },
+
   onSendWhatsApp: function (confirmation, guestAttendants, wishes) {
     const r = Resources.RSVP;
     const main = Resources.MainEvent;

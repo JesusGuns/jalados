@@ -10,7 +10,7 @@
       }
       gtag("js", new Date());
 
-      gtag("config", "G-71JZFVKZ5M");
+      if (window.self === window.top) gtag("config", "G-71JZFVKZ5M");
     </script>
     <!-- END Google tag (gtag.js) -->
 
@@ -40,14 +40,14 @@
     <meta property="og:site_name" content="Moomentos" />
     <meta property="og:title" content="Mis XV Años" />
     <meta property="og:description" content="Te invito a celebrar mis XV años. ¡Acompáñame en este día tan especial!" />
-    <meta property="og:image" content="https://www.moomentos.com/icons/_favicon-XV.png" />
+    <meta property="og:image" content="https://www.moomentos.com/images/icons/_favicon-XV.png" />
 
     <!-- X (Twitter) -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:url" content="https://www.moomentos.com/XV/3" />
     <meta name="twitter:title" content="Mis XV Años" />
     <meta name="twitter:description" content="Te invito a celebrar mis XV años. ¡Acompáñame en este día tan especial!" />
-    <meta name="twitter:image" content="https://www.moomentos.com/icons/_favicon-XV.png" />
+    <meta name="twitter:image" content="https://www.moomentos.com/images/icons/_favicon-XV.png" />
 
     <link rel="icon" type="image/png" sizes="196x196" href="/images/icons/_favicon-XV-196.png" />
 
@@ -419,8 +419,6 @@
 
     <!-- jQuery primero — sin defer -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <!-- Bootstrap con defer -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/toastify-js" defer></script>
     <script type="module">
       import { helpers } from "/js/helpers.js";

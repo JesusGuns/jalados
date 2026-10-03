@@ -1359,7 +1359,7 @@ textarea.form-control {
 }
 
 .reveal-element.active {
-  opacity: 0.8;
+  opacity: 0.8 !important;
   transform: translateY(0) scale(1);
 }
 

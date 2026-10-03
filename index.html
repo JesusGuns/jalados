@@ -2077,7 +2077,7 @@
 
     <!-- WHATSAPP FLOTANTE -->
     <a href="#" class="whatsapp-float" id="whatsappBtn" target="_blank" rel="noopener noreferrer" aria-label="Contactar por WhatsApp">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" />
+      <img src="images/icons/WhatsApp.svg" alt="WhatsApp" />
     </a>
 
     <!-- MODAL: siguiente paso después de pagar en Mercado Pago -->
@@ -2187,7 +2187,6 @@
           const iframe = document.createElement("iframe");
           iframe.className = "phone-frame__iframe";
           iframe.title = "Preview " + cat.title;
-          iframe.setAttribute("sandbox", "allow-scripts allow-same-origin");
           iframe.loading = "lazy";
           iframe.addEventListener("load", () => loader.classList.add("is-hidden"));
 
