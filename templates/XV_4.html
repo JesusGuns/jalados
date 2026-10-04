@@ -30,8 +30,8 @@
     <link rel="canonical" href="https://www.moomentos.com/XV/4" />
 
     <!-- Primary Meta Tags -->
-    <title>XV Años - Diseño Couture | Moomentos</title>
-    <meta name="title" content="XV Años - Diseño Couture | Moomentos" />
+    <title>XV Años - Diseño Gala | Moomentos</title>
+    <meta name="title" content="XV Años - Diseño Gala | Moomentos" />
     <meta name="description" content="Invitación digital para XV años de alta costura: arcos, tipografía Didone, galería en arcos, boleto metalizado con mesa y pases, y RSVP integrado. Moomentos." />
 
     <!-- Open Graph / Facebook / WhatsApp -->
@@ -68,7 +68,7 @@
   <body>
     <audio id="audio" src="#" data-replace="AudioUrl" preload="none" loop></audio>
 
-    <span id="audioButton" class="_template-Audio-Button off">
+    <span id="audioButton" class="_template-Audio-Button off d-none">
       <img src="#" data-replace="Image_AudioUrl" alt="Audio" />
     </span>
 
@@ -96,6 +96,10 @@
           <div class="arch"><img src="1.webp" data-replace="Image_MainCard" alt="Festejada" fetchpriority="high" loading="eager" /></div>
         </div>
         <h1 class="hero-name" data-replace="EventName"></h1>
+        <button class="open-btn" id="openBtn" type="button" aria-label="Abrir invitación y reproducir música">
+          <span class="ring"><i class="fas fa-play"></i></span>
+          Toca para abrir mi invitación
+        </button>
         <p class="hero-date">
           <span data-replace="MainEventWeekDay"></span>
           <span data-replace="MainEventDay"></span>
@@ -105,6 +109,8 @@
           <span data-replace="MainEventYear"></span>
         </p>
       </header>
+
+      <div class="_hide-section" id="hiddenContent">
 
       <!-- CONTADOR -->
       <section class="counter _counter-section reveal">
@@ -261,6 +267,7 @@
           </a>
         </section>
       </footer>
+      </div>
     </div>
 
     <!-- Modal galería custom -->
@@ -571,6 +578,17 @@
 
         // Scroll reveal
         initScrollReveal();
+
+        // Abrir invitación: muestra secciones, reproduce música y activa el botón de audio lateral
+        $("#openBtn").on("click", function () {
+          $(this).remove();
+          $("#hiddenContent").removeClass("_hide-section");
+          $("#audioButton").removeClass("d-none");
+          requestAnimationFrame(function () {
+            helpers.onPlay();
+            document.getElementById("hiddenContent").scrollIntoView({ behavior: "smooth" });
+          });
+        });
       }
 
       InitPage();
