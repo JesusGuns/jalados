@@ -400,7 +400,13 @@ export const rsvp = {
         helpers.onLoadRSVP();
         helpers.onLoadSections();
       })
-      .catch((err) => console.error("Error:", err));
+      .catch((err) => {
+        console.error("Error:", err);
+        Resources.Config.Sections.showTableNumber = false;
+        Resources.Config.Sections.showTickets = false;
+        Resources.Config.Sections.showAttendance = !!Resources.RSVP.WhatsApp;
+        helpers.onLoadSections();
+      });
   },
 
   // Obtiene el token de la URL (solo en invitaciones reales, no en templates)
@@ -480,7 +486,7 @@ export const rsvp = {
     };
 
     // Misma respuesta que ya se guardó: no reenviar, solo confirmar de nuevo
-    // const key = JSON.stringify(payload);
+    const key = JSON.stringify(payload);
     // if (rsvp._lastSent === key) {
     //   helpers.onToasty(confirmation ? Resources.Messages.Confirmation : Resources.Messages.WillNotAttend);
     //   return;

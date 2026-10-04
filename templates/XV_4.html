@@ -1,0 +1,579 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-71JZFVKZ5M"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-71JZFVKZ5M");
+    </script>
+    <!-- END Google tag (gtag.js) -->
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="google" content="notranslate" />
+
+    <base href="/images/templates/XV/" />
+
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
+
+    <!-- SEO básico -->
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://www.moomentos.com/XV/4" />
+
+    <!-- Primary Meta Tags -->
+    <title>XV Años - Diseño Couture | Moomentos</title>
+    <meta name="title" content="XV Años - Diseño Couture | Moomentos" />
+    <meta name="description" content="Invitación digital para XV años de alta costura: arcos, tipografía Didone, galería en arcos, boleto metalizado con mesa y pases, y RSVP integrado. Moomentos." />
+
+    <!-- Open Graph / Facebook / WhatsApp -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://www.moomentos.com/XV/4" />
+    <meta property="og:site_name" content="Moomentos" />
+    <meta property="og:title" content="Mis XV Años" />
+    <meta property="og:description" content="Te invito a celebrar mis XV años. ¡Acompáñame en este día tan especial!" />
+    <meta property="og:image" content="https://www.moomentos.com/images/icons/_favicon-XV.png" />
+
+    <!-- X (Twitter) -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://www.moomentos.com/XV/4" />
+    <meta name="twitter:title" content="Mis XV Años" />
+    <meta name="twitter:description" content="Te invito a celebrar mis XV años. ¡Acompáñame en este día tan especial!" />
+    <meta name="twitter:image" content="https://www.moomentos.com/images/icons/_favicon-XV.png" />
+
+    <link rel="icon" type="image/png" sizes="196x196" href="/images/icons/_favicon-XV-196.png" />
+
+    <link rel="preload" fetchpriority="high" as="image" href="1.webp" type="image/webp" />
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="/css/templates.min.css" />
+    <link rel="stylesheet" href="/css/XV/XV_4.min.css" />
+
+    <!-- Font Awesome-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media = 'all'" />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Albert+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+
+    <!-- Toastify-->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css" media="print" onload="this.media = 'all'" />
+  </head>
+
+  <body>
+    <audio id="audio" src="#" data-replace="AudioUrl" preload="none" loop></audio>
+
+    <span id="audioButton" class="_template-Audio-Button off">
+      <img src="#" data-replace="Image_AudioUrl" alt="Audio" />
+    </span>
+
+    <div id="themeSwitcher" class="d-none">
+      <button class="theme-btn active" data-theme="t1" style="background: #134536" title="Esmeralda"></button>
+      <button class="theme-btn" data-theme="t2" style="background: #4a1527" title="Burdeos"></button>
+      <button class="theme-btn" data-theme="t3" style="background: #14305c" title="Zafiro"></button>
+      <button class="theme-btn" data-theme="t4" style="background: #34303a" title="Grafito"></button>
+      <button class="theme-btn" data-theme="t5" style="background: #c0517f" title="Rosa"></button>
+      <button class="theme-btn" data-theme="t6" style="background: #b89a72" title="Arena"></button>
+    </div>
+
+    <div class="wrap">
+      <!-- HERO -->
+      <header class="hero stars">
+        <i class="shoot"></i>
+        <span class="sp s1">✦</span>
+        <span class="sp s2">✦</span>
+        <span class="sp s3">✦</span>
+        <span class="sp s4">✦</span>
+        <span class="sp s5">✦</span>
+        <p class="hero-kicker">Mis quince años</p>
+        <div class="arch-wrap">
+          <div class="halo"></div>
+          <div class="arch"><img src="1.webp" data-replace="Image_MainCard" alt="Festejada" fetchpriority="high" loading="eager" /></div>
+        </div>
+        <h1 class="hero-name" data-replace="EventName"></h1>
+        <p class="hero-date">
+          <span data-replace="MainEventWeekDay"></span>
+          <span data-replace="MainEventDay"></span>
+          de
+          <span data-replace="MainEventMonth"></span>
+          de
+          <span data-replace="MainEventYear"></span>
+        </p>
+      </header>
+
+      <!-- CONTADOR -->
+      <section class="counter _counter-section reveal">
+        <h2>Falta poco</h2>
+        <div class="counter-row">
+          <div class="counter-unit"><span class="num" id="days">00</span><span class="lbl">Días</span></div>
+          <div class="counter-unit"><span class="num" id="hours">00</span><span class="lbl">Horas</span></div>
+          <div class="counter-unit"><span class="num" id="minutes">00</span><span class="lbl">Min</span></div>
+          <div class="counter-unit"><span class="num" id="seconds">00</span><span class="lbl">Seg</span></div>
+        </div>
+      </section>
+
+      <!-- INTRODUCCION -->
+      <section class="intro _introduction-section reveal">
+        <p>Los momentos más esperados se sueñan, se imaginan, se construyen. Y cuando llega ese día tan especial, lo más importante es que estés a mi lado.</p>
+        <small data-replace="EventName"></small>
+      </section>
+
+      <!-- PADRES -->
+      <section class="parents _parents-section reveal">
+        <h2>Con todo mi amor</h2>
+        <div class="parents-grid">
+          <div class="pa">
+            <img src="#" data-replace="Image_MyParents" alt="Mis Padres" />
+            <h3>Mis padres</h3>
+            <ul>
+              <li data-replace="EventFather"></li>
+              <li data-replace="EventMother"></li>
+            </ul>
+          </div>
+          <div class="pa">
+            <img src="#" data-replace="Image_MyGodParents" alt="Mis Padrinos" />
+            <h3>Mis padrinos</h3>
+            <ul>
+              <li data-replace="EventGodFather"></li>
+              <li data-replace="EventGodMother"></li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- DETALLES -->
+      <section class="where reveal">
+        <div class="bigdate">
+          <span class="d" data-replace="MainEventDay"></span>
+          <span class="m">
+            <span data-replace="MainEventWeekDay"></span>
+            <br />
+            <span data-replace="MainEventMonth"></span>
+            <span data-replace="MainEventYear"></span>
+          </span>
+        </div>
+        <a href="#" data-replace="MainEventUrl" target="_blank" class="venue">
+          <div>
+            <span class="tag" data-replace="MainEventHourString"></span>
+            <p class="pl" data-replace="MainEventLocationDescription"></p>
+            <p class="ad" data-replace="MainEventAddress"></p>
+          </div>
+          <div class="mp"><img src="#" data-replace="Image_GoogleLocation" alt="Maps" /></div>
+        </a>
+        <a href="#" data-replace="EventReceptionUrl" target="_blank" class="venue">
+          <div>
+            <span class="tag" data-replace="EventReceptionHourString"></span>
+            <p class="pl" data-replace="SecondaryEventLocationDescription"></p>
+            <p class="ad" data-replace="SecondaryEventAddress"></p>
+          </div>
+          <div class="mp"><img src="#" data-replace="Image_GoogleLocation" alt="Maps" /></div>
+        </a>
+      </section>
+
+      <!-- ITINERARIO -->
+      <section class="program _itinerary-section reveal">
+        <h2>Programa</h2>
+        <ol class="plan">
+          <li><b class="ic"><i class="fas fa-church"></i></b><span>Ceremonia</span><small data-replace="MainEventHourString"></small></li>
+          <li><b class="ic"><i class="fas fa-champagne-glasses"></i></b><span>Recepción</span><small data-replace="EventReceptionHourString"></small></li>
+          <li><b class="ic"><i class="fas fa-camera"></i></b><span>Photo Session</span><small></small></li>
+          <li><b class="ic"><i class="fas fa-utensils"></i></b><span>Banquete</span><small></small></li>
+          <li><b class="ic"><i class="fas fa-music"></i></b><span>Vals</span><small></small></li>
+        </ol>
+      </section>
+
+      <!-- GALERIA -->
+      <section class="gal stars _gallery-section reveal">
+        <h2>Momentos</h2>
+        <p class="count" id="gallery-count"></p>
+        <div class="gallery-grid" id="gallery-grid"></div>
+        <button class="more-btn" id="gallery-more" type="button" hidden></button>
+      </section>
+
+      <!-- DRESS CODE -->
+      <section class="dress _dresscode-section reveal">
+        <img src="#" data-replace="Image_DressCodeUrl" alt="Dress Code" />
+        <div class="tx">
+          <p>Código de vestimenta</p>
+          <h2 data-replace="DressCodeStyle">Semi-Formal</h2>
+        </div>
+      </section>
+
+      <!-- CONFIRMACION -->
+      <section class="rsvp _attendance-section reveal">
+        <h2>¿Me acompañas?</h2>
+        <div class="field">
+          <label for="rsvpGuests">Acompañantes</label>
+          <textarea id="rsvpGuests" name="guestAttendants" placeholder="Nombres de tus acompañantes"></textarea>
+        </div>
+        <div class="field">
+          <label for="rsvpWishes">Un deseo para la festejada</label>
+          <textarea id="rsvpWishes" name="wishes" placeholder="Escribe tu mensaje aquí…"></textarea>
+        </div>
+        <div class="actions">
+          <button class="btn" id="_btnNo" type="button">No asistiré</button>
+          <button class="btn go" id="_btnYes" type="button">¡Asistiré!</button>
+        </div>
+      </section>
+
+      <!-- REGALOS -->
+      <section class="gifts _gifttable-section reveal">
+        <h2>Mesa de regalos</h2>
+        <p>Tu presencia es el mejor regalo. Si deseas obsequiarme algo, estas son mis opciones.</p>
+        <a href="#" data-replace="EventAmazonGiftTableUrl" target="_blank" class="gift">
+          <img src="#" data-replace="Image_AmazonUrl" alt="Amazon" />
+          <span>Amazon</span>
+          <i class="fas fa-arrow-right"></i>
+        </a>
+        <a href="#" data-replace="EventLiverpoolGiftTableUrl" target="_blank" class="gift">
+          <img src="#" data-replace="Image_LiverpoolUrl" alt="Liverpool" />
+          <span>Liverpool</span>
+          <i class="fas fa-arrow-right"></i>
+        </a>
+      </section>
+
+      <!-- MESA Y BOLETOS -->
+      <section class="access _table-section reveal">
+        <h2>Tu lugar</h2>
+        <span class="guest" data-replace="GuestName"></span>
+        <div class="ticket">
+          <p class="hd">Boleto de acceso</p>
+          <div class="bd">
+            <div><span class="t-num" data-replace="TableNumber">4</span><span class="t-lbl">Mesa</span></div>
+            <div><span class="t-num" data-replace="TicketCount">2</span><span class="t-lbl">Pases</span></div>
+          </div>
+          <div class="ft"><span data-replace="EventName">Nicole Gutiérrez</span>, XV Años</div>
+        </div>
+      </section>
+
+      <footer class="bye">
+        <p>Con todo mi cariño,</p>
+        <strong data-replace="EventName"></strong>
+        <section class="moomentos-tagline">
+          <a href="https://www.moomentos.com" target="_blank" rel="noopener noreferrer">
+            Invitaciones que enamoran desde el primer vistazo —
+            <span>Moomentos.</span>
+          </a>
+        </section>
+      </footer>
+    </div>
+
+    <!-- Modal galería custom -->
+    <div id="galleryModal">
+      <button class="gallery-modal-close" id="galleryModalClose" aria-label="Cerrar"><i class="fas fa-times"></i></button>
+      <div class="gallery-modal-img-wrap" id="galleryModalImgWrap">
+        <img src="" id="modalGalleryImage" alt="Galería" />
+      </div>
+      <div class="gallery-modal-bar">
+        <button class="gallery-modal-nav" id="galleryModalPrev" aria-label="Anterior"><i class="fas fa-chevron-left"></i></button>
+        <span>
+          <strong id="galleryModalCurrent">1</strong>
+          /
+          <span id="galleryModalTotal">1</span>
+        </span>
+        <button class="gallery-modal-nav" id="galleryModalNext" aria-label="Siguiente"><i class="fas fa-chevron-right"></i></button>
+      </div>
+    </div>
+
+    <!-- jQuery primero — sin defer -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <!-- Bootstrap con defer -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/toastify-js" defer></script>
+    <script type="module">
+      import { helpers } from "/js/helpers.js";
+      import { rsvp } from "/js/helpers.js";
+
+      // ─── RSVP ─────────────────────────────
+      const configRSVP = {
+        Enable: true,
+        EventID: "XV_Template",
+        WhatsApp: false, // ← NUEVO: true = solo WhatsApp, false = solo form RSVP
+        WhatsAppNumber: "523346004551"
+      };
+      // ─── Settings ─────────────────────────────
+      const settings = {
+        EventType: "XV",
+        Template: true, // Cambiar a false en producción para saber que es un cliente real
+        AudioUrl: "/music/taylor.mp3",
+        Sections: {
+          showCounter: true,
+          showIntroduction: true,
+          showParents: true,
+          showItinerary: true,
+          showGallery: true,
+          showDressCode: true,
+          showTableNumber: configRSVP.Enable,
+          showAttendance: configRSVP.Enable || configRSVP.WhatsApp,
+          showGiftTable: true,
+        },
+        ShowElements: {
+          showAmazonOption: true,
+          showLiverpoolOption: true,
+        },
+      };
+
+      // ─── DATOS DEL EVENTO ─────────────────────────────
+      const mainEvent = {
+        Date: new Date("2026-10-17T13:00:00"),
+        Name: "Nicole Esquivias",
+
+        LocationDescription: "Catedral de Guadalajara",
+        Address: "Av. Fray Antonio Alcalde 10, Guadalajara, Jal.",
+        GoogleMapsUrl: "https://maps.app.goo.gl/hBdb191LiXzkPRfR8",
+
+        Father: "Cesar Curiel",
+        Mother: "Melissa Lara",
+        GodFather: "Alessandro Villanueva",
+        GodMother: "Georgina Montemayor ",
+
+        Gallery: [`1.webp`, `2.webp`, `3.webp`, `4.webp`, `5.webp`, `6.webp`],
+
+        AmazonGiftTableUrl: "https://www.amazon.com.mx/",
+        LiverpoolGiftTableUrl: "https://www.liverpool.com.mx/tienda/home",
+
+        DressCodeStyle: "Semi-Formal",
+      };
+
+      const secondaryEvent = {
+        Date: new Date("2026-10-17T17:00:00"),
+        LocationDescription: "La Terraza Clouthier",
+        Address: "Av Manuel J. Clouthier 480, Zapopan, Jal.",
+        GoogleMapsUrl: "https://maps.app.goo.gl/HpD9ZEkGmku4WTyT8",
+      };
+
+      const additionalInformation = {
+        ImageMainCard: `1.webp`,
+        ImageMyParents: `padres.jpg`,
+        ImageMyGodParents: `padrinos.webp`,
+        ImageDressCodeUrl: `/images/templates/XV/dresscode_2.webp`,
+      };
+
+      const Init = {
+        Config: {
+          ...settings,
+          Themes: {
+            // Esmeralda — verde profundo, perla, rosa pálido, plata
+            t1: { ink: "#0a2820", deep: "#134536", pearl: "#eef1ee", blush: "#ecd3cf", metal: "#c5cbcd" },
+            // Burdeos
+            t2: { ink: "#2b0a16", deep: "#4a1527", pearl: "#f3ecec", blush: "#e6c3c8", metal: "#cdc4c6" },
+            // Zafiro
+            t3: { ink: "#0a1730", deep: "#14305c", pearl: "#edf0f5", blush: "#d9d2e6", metal: "#c3cad6" },
+            // Grafito
+            t4: { ink: "#1c1b20", deep: "#34303a", pearl: "#f2efef", blush: "#e8cfd0", metal: "#cfcdd2" },
+            // Rosa
+            t5: { ink: "#4a1d36", deep: "#8a3a62", pearl: "#fbf0f3", blush: "#f2c6d4", metal: "#e3c7cf" },
+            // Arena (beige)
+            t6: { ink: "#3a2f25", deep: "#6b5642", pearl: "#f6f0e6", blush: "#e6d3b8", metal: "#cdbfa8" },
+          },
+        },
+        RSVP: configRSVP,
+        MainEvent: mainEvent,
+        SecondaryEvent: secondaryEvent,
+      };
+
+      // ─── TEMAS ────────────────────────────────────────
+
+      function applyTheme(key) {
+        const t = Init.Config.Themes[key];
+        if (!t) return;
+        const r = document.documentElement;
+        ["ink", "deep", "pearl", "blush", "metal"].forEach((k) => r.style.setProperty("--" + k, t[k]));
+
+        $(".theme-btn").removeClass("active");
+        $(`.theme-btn[data-theme="${key}"]`).addClass("active");
+      }
+
+      $(".theme-btn").on("click", function () {
+        applyTheme($(this).data("theme"));
+      });
+
+      // ─── ONLOAD LOCAL ─────────────────────────────────
+      function onLoad() {
+        $("[data-replace=Image_MyParents]").attr("src", additionalInformation.ImageMyParents);
+        $("[data-replace=Image_MyGodParents]").attr("src", additionalInformation.ImageMyGodParents);
+        $("[data-replace=Image_DressCodeUrl]").attr("src", additionalInformation.ImageDressCodeUrl);
+        $("[data-replace=DressCodeStyle]").text(mainEvent.DressCodeStyle);
+
+        // Meta tags
+        const title = `XV Años de ${mainEvent.Name}`;
+        document.title = title;
+        $('meta[property="og:title"]').attr("content", title);
+        $('meta[property="og:image"]').attr("content", additionalInformation.ImageMainCard);
+        $('meta[property="og:url"]').attr("content", window.location.href);
+        $('meta[name="twitter:title"]').attr("content", title);
+        $('meta[name="twitter:image"]').attr("content", additionalInformation.ImageMainCard);
+        $('meta[name="twitter:url"]').attr("content", window.location.href);
+
+        // Galería en vitrina de arcos
+        const gallery = Init.MainEvent.Gallery;
+        $("#gallery-count").text(gallery.length + " fotos");
+        gallery.forEach(function (url, index) {
+          const item = $("<div>", { class: "gal-item" + (index >= 9 ? " extra" : ""), "data-index": index });
+          const img = $("<img>", { src: url, alt: `Foto ${index + 1}`, loading: "lazy" });
+          item.append(img);
+          $("#gallery-grid").append(item);
+        });
+
+        // "Ver todas": solo aparece si hay más de 9 fotos
+        if (gallery.length > 9) {
+          $("#gallery-more")
+            .prop("hidden", false)
+            .text("Ver las " + gallery.length + " fotos")
+            .on("click", function () {
+              $("#gallery-grid").addClass("expanded");
+              $(this).remove();
+            });
+        }
+
+        // Confirmación
+        $("#_btnYes").on("click", function () {
+          rsvp.onPostRSPV(true, $("textarea[name=guestAttendants]").val(), $("textarea[name=wishes]").val());
+        });
+        $("#_btnNo").on("click", function () {
+          rsvp.onPostRSPV(false, $("textarea[name=guestAttendants]").val(), $("textarea[name=wishes]").val());
+        });
+      }
+
+      // ─── GALERIA MODAL ────────────────────────────────
+      var galleryModal = {
+        $el: null,
+        currentIndex: 0,
+        images: [],
+        touchStartX: 0,
+        touchStartY: 0,
+
+        init: function () {
+          var self = galleryModal;
+          self.$el = $("#galleryModal");
+          self.images = Init.MainEvent.Gallery;
+
+          $(document).on("click", ".gal-item", function () {
+            self.open(parseInt($(this).data("index")));
+          });
+
+          $("#galleryModalClose").on("click", function (e) {
+            e.stopPropagation();
+            self.close();
+          });
+
+          self.$el.on("click", function (e) {
+            if ($(e.target).is("#galleryModal")) self.close();
+          });
+
+          $("#galleryModalPrev").on("click", function (e) {
+            e.stopPropagation();
+            self.navigate(-1);
+          });
+          $("#galleryModalNext").on("click", function (e) {
+            e.stopPropagation();
+            self.navigate(1);
+          });
+
+          var imgWrap = document.getElementById("galleryModalImgWrap");
+          imgWrap.addEventListener(
+            "touchstart",
+            function (e) {
+              self.touchStartX = e.changedTouches[0].screenX;
+              self.touchStartY = e.changedTouches[0].screenY;
+            },
+            { passive: true },
+          );
+          imgWrap.addEventListener(
+            "touchend",
+            function (e) {
+              var dx = e.changedTouches[0].screenX - self.touchStartX;
+              var dy = e.changedTouches[0].screenY - self.touchStartY;
+              if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 45) {
+                self.navigate(dx < 0 ? 1 : -1);
+              }
+            },
+            { passive: true },
+          );
+
+          document.addEventListener("keydown", function (e) {
+            if (!self.$el.hasClass("open")) return;
+            if (e.key === "ArrowLeft") self.navigate(-1);
+            if (e.key === "ArrowRight") self.navigate(1);
+            if (e.key === "Escape") self.close();
+          });
+        },
+
+        open: function (index) {
+          var self = galleryModal;
+          self.currentIndex = index;
+          self.updateImage();
+          self.$el.addClass("open");
+          $("body").css("overflow", "hidden");
+        },
+
+        close: function () {
+          var self = galleryModal;
+          self.$el.removeClass("open");
+          $("body").css("overflow", "");
+        },
+
+        navigate: function (dir) {
+          var self = galleryModal;
+          var $img = $("#modalGalleryImage");
+          $img.addClass("fading");
+          setTimeout(function () {
+            self.currentIndex = (self.currentIndex + dir + self.images.length) % self.images.length;
+            self.updateImage();
+            $img.removeClass("fading");
+          }, 180);
+        },
+
+        updateImage: function () {
+          var self = galleryModal;
+          $("#modalGalleryImage").attr("src", self.images[self.currentIndex]);
+          $("#galleryModalCurrent").text(self.currentIndex + 1);
+          $("#galleryModalTotal").text(self.images.length);
+        },
+      };
+
+      // ─── SCROLL REVEAL ────────────────────────────────
+      function initScrollReveal() {
+        var observer = new IntersectionObserver(
+          function (entries) {
+            entries.forEach(function (entry) {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("visible");
+              }
+            });
+          },
+          { threshold: 0.1 },
+        );
+
+        document.querySelectorAll(".reveal").forEach(function (el) {
+          observer.observe(el);
+        });
+      }
+
+      // ─── INIT PAGE ────────────────────────────────────
+      function InitPage() {
+        helpers.init(Init);
+
+        // RSVP Invitacion
+        rsvp.onGetRSVP();
+
+        onLoad();
+        helpers.onCounterStart(Init.MainEvent.Date);
+        helpers.onAudioPlayer();
+
+        // Gallery modal
+        galleryModal.init();
+
+        // Scroll reveal
+        initScrollReveal();
+      }
+
+      InitPage();
+    </script>
+  </body>
+</html>
