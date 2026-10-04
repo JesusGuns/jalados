@@ -712,12 +712,6 @@
         // Meta tags
         const title = `XV Años de ${mainEvent.Name}`;
         document.title = title;
-        $('meta[property="og:title"]').attr("content", title);
-        $('meta[property="og:image"]').attr("content", additionalInformation.ImageMainCard);
-        $('meta[property="og:url"]').attr("content", window.location.href);
-        $('meta[name="twitter:title"]').attr("content", title);
-        $('meta[name="twitter:image"]').attr("content", additionalInformation.ImageMainCard);
-        $('meta[name="twitter:url"]').attr("content", window.location.href);
 
         // Galería — masonry inject
         const gallery = Init.MainEvent.Gallery;

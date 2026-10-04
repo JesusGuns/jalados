@@ -40,7 +40,7 @@ em{font-family:var(--fd)}
 .arch{position:relative;z-index:1;aspect-ratio:3/4.3;border-radius:999px 999px 0 0;overflow:hidden;animation:open 1.8s cubic-bezier(.75,0,.2,1) both}
 .arch img{width:100%;height:100%;object-fit:cover}
 .hero-name{position:relative;z-index:2;margin:30px 0 0;font:italic 400 clamp(3rem,14vw,4.4rem)/1.02 var(--fd);background:linear-gradient(100deg,var(--pearl) 20%,var(--blush) 38%,#fff 50%,var(--blush) 62%,var(--pearl) 80%);background-size:250% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:fade 1.5s 1.1s both,shimmer 6s 2s linear infinite}
-.hero-date{margin-top:26px;padding:22px 0 28px;border-top:1px solid rgba(197,203,205,.3);font:400 1.15rem var(--fd);animation:fade 1.4s 1.5s both}
+.hero-date{padding:22px 0 28px;border-top:1px solid rgba(197,203,205,.3);font:400 1.15rem var(--fd);animation:fade 1.4s 1.5s both}
 .sp{position:absolute;z-index:3;color:var(--blush);font-size:1rem;text-shadow:0 0 12px var(--blush);animation:twk 3.4s ease-in-out infinite}
 .s1{left:11%;top:20%}.s2{right:12%;top:30%;font-size:1.5rem;animation-delay:.8s}.s3{left:7%;top:54%;font-size:1.3rem;animation-delay:1.6s}.s4{right:8%;top:62%;animation-delay:.4s}.s5{left:20%;top:80%;font-size:.8rem;animation-delay:2.2s}
 .shoot{position:absolute;z-index:2;top:9%;left:-10%;width:100px;height:1px;background:linear-gradient(90deg,transparent,#fff);opacity:0;animation:shoot 8s 3s infinite}

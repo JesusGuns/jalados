@@ -51,7 +51,7 @@
 
     <link rel="icon" type="image/png" sizes="196x196" href="/images/icons/_favicon-XV-196.png" />
 
-    <link rel="preload" fetchpriority="high" as="image" href="1.webp" type="image/webp" />
+    <link rel="preload" fetchpriority="high" as="image" href="1_v2.webp" type="image/webp" />
 
     <!-- CSS -->
     <link rel="stylesheet" href="/css/templates.min.css" />
@@ -93,7 +93,7 @@
         <p class="hero-kicker">Mis quince años</p>
         <div class="arch-wrap">
           <div class="halo"></div>
-          <div class="arch"><img src="1.webp" data-replace="Image_MainCard" alt="Festejada" fetchpriority="high" loading="eager" /></div>
+          <div class="arch"><img src="1_v2.webp" data-replace="Image_MainCard" alt="Festejada" fetchpriority="high" loading="eager" /></div>
         </div>
         <h1 class="hero-name" data-replace="EventName"></h1>
         <button class="open-btn" id="openBtn" type="button" aria-label="Abrir invitación y reproducir música">
@@ -339,7 +339,7 @@
         GodFather: "Alessandro Villanueva",
         GodMother: "Georgina Montemayor ",
 
-        Gallery: [`1.webp`, `2.webp`, `3.webp`, `4.webp`, `5.webp`, `6.webp`],
+        Gallery: [`1_v2.webp`, `2_v2.webp`, `3_v2.webp`, `4_v2.webp`, `5_v2.webp`, `6.webp`],
 
         AmazonGiftTableUrl: "https://www.amazon.com.mx/",
         LiverpoolGiftTableUrl: "https://www.liverpool.com.mx/tienda/home",
@@ -355,7 +355,7 @@
       };
 
       const additionalInformation = {
-        ImageMainCard: `1.webp`,
+        ImageMainCard: `1_v2.webp`,
         ImageMyParents: `padres.jpg`,
         ImageMyGodParents: `padrinos.webp`,
         ImageDressCodeUrl: `/images/templates/XV/dresscode_2.webp`,
@@ -410,12 +410,6 @@
         // Meta tags
         const title = `XV Años de ${mainEvent.Name}`;
         document.title = title;
-        $('meta[property="og:title"]').attr("content", title);
-        $('meta[property="og:image"]').attr("content", additionalInformation.ImageMainCard);
-        $('meta[property="og:url"]').attr("content", window.location.href);
-        $('meta[name="twitter:title"]').attr("content", title);
-        $('meta[name="twitter:image"]').attr("content", additionalInformation.ImageMainCard);
-        $('meta[name="twitter:url"]').attr("content", window.location.href);
 
         // Galería en vitrina de arcos
         const gallery = Init.MainEvent.Gallery;
