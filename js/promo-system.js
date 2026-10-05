@@ -1,47 +1,100 @@
 /* ============================================================
-   MOOMENTOS — Sistema de promociones
-   Para activar/desactivar: cambia `active` y `currentEvent`.
-   Si active === false NO se descarga promo-styles.css.
+   MOOMENTOS — Sistema de promociones (automático por calendario)
+   ------------------------------------------------------------
+   Ya NO hay interruptor manual. La promo se activa y desactiva
+   sola según las fechas de `events[...].dates`, en hora de CDMX.
+
+   Para agregar o mover una fecha: edita `dates` del evento.
+   Formato: { AÑO: ["YYYY-MM-DD inicio", "YYYY-MM-DD fin"] }
+   (el fin incluye el día completo, hasta las 23:59:59).
+
+   Si hoy no cae en ningún rango NO se descarga promo-styles.css
+   y la página se ve con la interfaz estándar.
+   Si dos eventos coinciden, gana el de mayor descuento.
    ============================================================ */
 const PROMO_CONFIG = {
-  active: false, // ← bandera global
   cssPath: "css/promo-styles.css",
-  currentEvent: "hotsale", // hotsale | blackfriday | custom
-  // false: muestra precios rebajados aunque falte el link de pago (usa el link normal; avisa en consola).
-  // true: sin link promo, ese paquete conserva su precio normal.
-  requireLinks: false,
+
+  // México ya no usa horario de verano: CDMX es UTC-06:00 todo el año.
+  tzOffset: "-06:00",
+
+  // true: si falta el link de pago de ese descuento, NO se muestra la promo
+  // (evita mostrar $674 y cobrar $899). Recomendado dejarlo en true.
+  requireLinks: true,
+
+  // false en producción. true solo para probar: ?promo=buenfin  o  ?promoNow=2026-11-14T10:00
+  allowPreview: true,
+
+  // Links de Mercado Pago con el monto ya rebajado: 1 link por nivel de descuento y plan.
+  // Montos: 15% → 424 / 764 / 1359 · 20% → 399 / 719 / 1279 · 25% → 374 / 674 / 1199
+  paymentLinksByDiscount: {
+    15: { standard: "https://mpago.la/12x5PtT", premium: "https://mpago.la/1pukJ5G", platinum: "https://mpago.la/2Q9Boxq" },
+    20: { standard: "https://mpago.la/2hkQjDd", premium: "https://mpago.la/1p3SMzM", platinum: "https://mpago.la/2j82Umk" },
+    25: { standard: "https://mpago.la/2s6AHpv", premium: "https://mpago.la/1qnNcXf", platinum: "https://mpago.la/1g6buqv" },
+  },
+
   events: {
-    hotsale: {
-      name: "Hot Sale 2026",
-      themeClass: "theme-hotsale",
-      badgeText: "30% OFF",
-      bannerMessage: "🔥 ¡Hot Sale! 30% de descuento en tus invitaciones digitales",
+    moomentosday: {
+      name: "Moomentos Day",
+      themeClass: "theme-custom", // TODO: crear .theme-moomentosday en promo-styles.css
+      discountPercentage: 25,
+      bannerMessage: "🎉 ¡Moomentos Day! 25% de descuento en todas tus invitaciones",
       heroMessage: "En todos los paquetes",
-      deadlineText: "Solo por tiempo limitado", // ej. "Hasta el 31 de mayo"
-      discountPercentage: 30,
-      // Pega aquí los links de Mercado Pago con el precio ya rebajado.
-      // Si falta el link de un paquete, ese paquete NO muestra descuento.
-      paymentLinks: { standard: "", premium: "", platinum: "" },
+      dates: {
+        2026: ["2026-10-16", "2026-10-18"],
+        2027: ["2027-10-16", "2027-10-18"],
+      },
     },
-    blackfriday: {
-      name: "Black Friday",
-      themeClass: "theme-blackfriday",
-      badgeText: "40% OFF",
-      bannerMessage: "⚡ Black Friday: precios especiales por tiempo limitado",
-      heroMessage: "En todos los paquetes",
-      deadlineText: "Solo por tiempo limitado",
-      discountPercentage: 40,
-      paymentLinks: { standard: "", premium: "", platinum: "" },
-    },
-    custom: {
-      name: "Promo de temporada",
+    buenfin: {
+      name: "Buen Fin",
       themeClass: "theme-custom",
-      badgeText: "20% OFF",
-      bannerMessage: "🎉 Promoción de temporada en todos los paquetes",
-      heroMessage: "En todos los paquetes",
-      deadlineText: "Solo por tiempo limitado",
       discountPercentage: 20,
-      paymentLinks: { standard: "", premium: "", platinum: "" },
+      bannerMessage: "🛍️ ¡Buen Fin! 20% de descuento en tus invitaciones digitales",
+      heroMessage: "En todos los paquetes",
+      dates: {
+        2026: ["2026-11-13", "2026-11-17"],
+        // 2027: el SAT/Concamin anuncia fechas cerca de octubre: agregar cuando se publiquen
+      },
+    },
+    nocturna: {
+      name: "Nocturna Navideña",
+      themeClass: "theme-custom",
+      discountPercentage: 15,
+      bannerMessage: "🎄 Nocturna Navideña: 15% de descuento en tus invitaciones",
+      heroMessage: "En todos los paquetes",
+      dates: {
+        2026: ["2026-12-04", "2026-12-06"], // primer fin de semana de diciembre (vie-dom)
+      },
+    },
+    planea2027: {
+      name: "Planea tu 2027",
+      themeClass: "theme-custom",
+      discountPercentage: 15,
+      bannerMessage: "📅 Planea tu 2027: 15% de descuento al reservar tu invitación",
+      heroMessage: "En todos los paquetes",
+      dates: {
+        2027: ["2027-01-02", "2027-01-08"],
+      },
+    },
+    sanvalentin: {
+      name: "San Valentín",
+      themeClass: "theme-custom",
+      discountPercentage: 15,
+      bannerMessage: "💘 San Valentín: 15% de descuento en tus invitaciones",
+      heroMessage: "En todos los paquetes",
+      dates: {
+        2027: ["2027-02-10", "2027-02-14"],
+      },
+    },
+    hotsale: {
+      name: "Hot Sale 2027",
+      themeClass: "theme-hotsale",
+      discountPercentage: 20,
+      bannerMessage: "🔥 ¡Hot Sale! 20% de descuento en tus invitaciones digitales",
+      heroMessage: "En todos los paquetes",
+      dates: {
+        2027: ["2027-05-31", "2027-06-08"], // ⚠ CONFIRMAR cuando se anuncie el Hot Sale oficial
+      },
     },
   },
 };
@@ -49,17 +102,75 @@ const PROMO_CONFIG = {
 (function () {
   // Nombre visible del botón (data-package) → id de paquete
   const PLAN_IDS = { Estándar: "standard", Premium: "premium", Platinum: "platinum" };
-
-  const event = PROMO_CONFIG.active ? PROMO_CONFIG.events[PROMO_CONFIG.currentEvent] : null;
-  if (PROMO_CONFIG.active && !event) console.warn("[Promo] Evento no encontrado:", PROMO_CONFIG.currentEvent);
+  const MONTHS = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"];
 
   const fmt = (n) => "$" + n.toLocaleString("es-MX");
+  const toStart = (d) => new Date(d + "T00:00:00" + PROMO_CONFIG.tzOffset);
+  const toEnd = (d) => new Date(d + "T23:59:59.999" + PROMO_CONFIG.tzOffset);
+  const endLabel = (d) => {
+    const [, m, day] = d.split("-").map(Number);
+    return "Hasta el " + day + " de " + MONTHS[m - 1];
+  };
+
+  // ── Preview opcional (solo si allowPreview = true) ──
+  const params = new URLSearchParams(window.location.search);
+  const preview = PROMO_CONFIG.allowPreview;
+  const previewKey = preview ? params.get("promo") : null;
+  const fakeNow = preview && params.get("promoNow") ? new Date(params.get("promoNow") + (params.get("promoNow").length <= 16 ? ":00" : "") + PROMO_CONFIG.tzOffset) : null;
+  const now = () => (fakeNow && !isNaN(fakeNow) ? fakeNow : new Date());
+
+  // ── Resuelve qué evento está activo en una fecha dada ──
+  // Devuelve { key, event, endDate } o null. Si hay empate de fechas gana el mayor descuento.
+  function resolve(at) {
+    let best = null;
+    Object.entries(PROMO_CONFIG.events).forEach(([key, ev]) => {
+      Object.values(ev.dates || {}).forEach(([from, to]) => {
+        if (at >= toStart(from) && at <= toEnd(to)) {
+          if (!best || ev.discountPercentage > best.event.discountPercentage) best = { key, event: ev, endDate: to };
+        }
+      });
+    });
+    return best;
+  }
+
+  let active = null;
+  if (previewKey && PROMO_CONFIG.events[previewKey]) {
+    const ev = PROMO_CONFIG.events[previewKey];
+    const lastRange = Object.values(ev.dates || {}).pop() || [null, "2099-12-31"];
+    active = { key: previewKey, event: ev, endDate: lastRange[1] };
+  } else {
+    active = resolve(now());
+  }
+
+  // Si el evento no tiene links de pago cargados, no se muestra (requireLinks)
+  if (active && PROMO_CONFIG.requireLinks) {
+    const links = PROMO_CONFIG.paymentLinksByDiscount[active.event.discountPercentage] || {};
+    if (!Object.values(links).some(Boolean)) {
+      console.warn("[Promo] '" + active.key + "' está en fecha pero faltan los links de pago de " + active.event.discountPercentage + "%. Promo desactivada.");
+      active = null;
+    }
+  }
+
+  const event = active ? active.event : null;
+  const paymentLinks = event ? PROMO_CONFIG.paymentLinksByDiscount[event.discountPercentage] || {} : {};
 
   // API pública: el script de pagos del index la consulta
   window.MoomentosPromo = {
     isActive: !!event,
-    getLink: (planName) => (event && event.paymentLinks[PLAN_IDS[planName]]) || null,
+    eventKey: active ? active.key : null, // útil para analytics: gtag("event", "...", { promo: MoomentosPromo.eventKey })
+    getLink: (planName) => (event && paymentLinks[PLAN_IDS[planName]]) || null,
+    resolve: resolve, // expuesto para pruebas: MoomentosPromo.resolve(new Date("2026-11-14T12:00:00-06:00"))
   };
+
+  // ── Cambio automático si la página queda abierta al iniciar/terminar una promo ──
+  if (!fakeNow && !previewKey) {
+    const startKey = active ? active.key : null;
+    setInterval(function () {
+      const current = resolve(new Date());
+      const currentKey = current ? current.key : null;
+      if (currentKey !== startKey) window.location.reload();
+    }, 30000);
+  }
 
   if (!event) return; // Interfaz estándar, cero descargas extra
 
@@ -81,6 +192,7 @@ const PROMO_CONFIG = {
     document.body.prepend(banner);
 
     // Aviso en el hero, justo antes de los botones
+    const badgeText = event.discountPercentage + "% OFF";
     const hero = document.querySelector(".hero");
     const heroActions = hero && hero.querySelector(".hero-actions");
     if (heroActions) {
@@ -88,9 +200,9 @@ const PROMO_CONFIG = {
       promo.id = "promo-hero";
       promo.href = "#precios";
       promo.innerHTML =
-        '<span class="promo-hero__pct">' + event.badgeText + "</span>" +
+        '<span class="promo-hero__pct">' + badgeText + "</span>" +
         '<span class="promo-hero__text"><strong>' + event.name + "</strong>" +
-        "<span>" + event.heroMessage + (event.deadlineText ? " · " + event.deadlineText : "") + "</span></span>" +
+        "<span>" + event.heroMessage + " · " + endLabel(active.endDate) + "</span></span>" +
         '<span class="promo-hero__cta">Ver precios</span>';
       hero.insertBefore(promo, heroActions);
     }
@@ -98,10 +210,9 @@ const PROMO_CONFIG = {
     // 4, 5 y 6. Por cada tarjeta de paquete
     document.querySelectorAll(".pricing-card[data-plan-id]").forEach(function (card) {
       const id = card.dataset.planId;
-      const payLink = event.paymentLinks[id];
-      if (!payLink) {
-        console.warn("[Promo] Sin link de pago promo para '" + id + "'.");
-        if (PROMO_CONFIG.requireLinks) return;
+      if (!paymentLinks[id]) {
+        console.warn("[Promo] Sin link de pago promo para '" + id + "' al " + event.discountPercentage + "%.");
+        if (PROMO_CONFIG.requireLinks) return; // ese paquete conserva su precio normal
       }
       const original = Number(card.dataset.priceMxn);
       const discounted = Math.round(original * (1 - event.discountPercentage / 100));
@@ -109,7 +220,7 @@ const PROMO_CONFIG = {
       // Badge
       const badge = document.createElement("span");
       badge.className = "promo-badge";
-      badge.textContent = event.badgeText;
+      badge.textContent = badgeText;
       card.appendChild(badge);
 
       // Precio tachado + precio con descuento
