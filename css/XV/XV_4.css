@@ -1,5 +1,5 @@
 /* XV_4 — "Couture": esmeralda profundo, perla y plata. Arcos, serif Didone, hairlines */
-:root{--ink:#0a2820;--deep:#134536;--pearl:#eef1ee;--blush:#ecd3cf;--metal:#c5cbcd;--fd:"DM Serif Display",Georgia,serif;--fb:"Albert Sans",system-ui,sans-serif}
+:root{--ink:#1c1b20;--deep:#34303a;--pearl:#f2efef;--blush:#e8cfd0;--metal:#cfcdd2;--fd:"DM Serif Display",Georgia,serif;--fb:"Albert Sans",system-ui,sans-serif}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{background:var(--ink);color:var(--ink);font:400 1rem/1.65 var(--fb);transition:background .5s}
