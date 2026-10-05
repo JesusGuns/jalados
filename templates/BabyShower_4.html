@@ -1,0 +1,462 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-71JZFVKZ5M"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      if (window.self === window.top) gtag("config", "G-71JZFVKZ5M");
+    </script>
+    <!-- END Google tag (gtag.js) -->
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="google" content="notranslate" />
+
+    <base href="/images/templates/BabyShower/" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
+
+    <!-- SEO básico -->
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://www.moomentos.com/BabyShower/4" />
+
+    <title>Baby Shower - Diseño Cucú | Moomentos</title>
+    <meta name="title" content="Baby Shower - Diseño Cucú | Moomentos" />
+    <meta name="description" content="Invitación digital de Baby Shower interactiva: destapa al bebé con un cucú, biberón que se llena, bloques con el nombre y regla de crecimiento. Moomentos." />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://www.moomentos.com/BabyShower/4" />
+    <meta property="og:site_name" content="Moomentos" />
+    <meta property="og:title" content="¡Baby Shower de nuestro bebé! 👶✨" />
+    <meta property="og:description" content="¡Estamos esperando un bebé! Te invitamos a celebrar con nosotros este día tan especial." />
+    <meta property="og:image" content="https://www.moomentos.com/images/icons/_favicon-BabyShower.png" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://www.moomentos.com/BabyShower/4" />
+    <meta name="twitter:title" content="¡Baby Shower de nuestro bebé! 👶✨" />
+    <meta name="twitter:description" content="¡Estamos esperando un bebé! Te invitamos a celebrar con nosotros este día tan especial." />
+    <meta name="twitter:image" content="https://www.moomentos.com/images/icons/_favicon-BabyShower.png" />
+
+    <link rel="icon" type="image/png" sizes="196x196" href="/images/icons/_favicon-BabyShower-196.png" />
+    <link rel="preload" fetchpriority="high" as="image" href="1.webp" type="image/webp" />
+
+    <link rel="stylesheet" href="/css/templates.min.css" />
+    <link rel="stylesheet" href="/css/BabyShower/BabyShower_4.min.css" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media = 'all'" />
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Mali:wght@400;600&display=swap" rel="stylesheet" media="print" onload="this.media = 'all'" />
+  </head>
+
+  <body>
+    <audio id="audio" src="#" data-replace="AudioUrl" preload="none" loop></audio>
+
+    <span id="audioButton" class="_template-Audio-Button off d-none">
+      <img src="#" data-replace="Image_AudioUrl" alt="Audio" />
+    </span>
+
+    <div id="themeSwitcher" class="d-none">
+      <button class="theme-btn" data-theme="themeSky" style="background: #bae6fd" title="Cielo"></button>
+      <button class="theme-btn" data-theme="themeRose" style="background: #fecdd3" title="Rosa"></button>
+    </div>
+
+    <div class="page">
+      <!-- ACCESO: quita las manitas del bebé -->
+      <section class="peek">
+        <span class="peek-top" id="peekTop">Shhh... 🤫</span>
+        <div class="baby" id="baby" role="button" tabindex="0" aria-label="Quitar las manitas del bebé y abrir la invitación">
+          <span class="ear l"></span><span class="ear r"></span>
+          <div class="face">
+            <span class="eye l"></span><span class="eye r"></span>
+            <span class="cheek l"></span><span class="cheek r"></span>
+            <span class="mouth"></span>
+          </div>
+          <span class="hand l"></span><span class="hand r"></span>
+        </div>
+        <div class="cucu">¡Cucú! 👶</div>
+        <div class="peek-hint" id="peekHint">👆 Toca la carita del bebé</div>
+        <p class="peek-date">
+          <span data-replace="MainEventWeekDay"></span>
+          <span data-replace="MainEventDay"></span>
+          de
+          <span data-replace="MainEventMonth"></span>
+        </p>
+      </section>
+
+      <div class="_hide-section" id="hiddenContent">
+        <!-- BIENVENIDA: foto + nombre en bloques -->
+        <section class="blk welcome reveal _introduction-section">
+          <div class="cloud"><img src="1.webp" data-replace="Image_MainCard" alt="Bebé" fetchpriority="high" loading="eager" /></div>
+          <small>Con todo nuestro amor esperamos a</small>
+          <div class="blocks" id="nameBlocks" aria-hidden="true"></div>
+          <p class="sub" style="margin-top:16px">Toca los bloquecitos 🧸</p>
+          <span data-replace="EventName" class="d-none"></span>
+        </section>
+
+        <!-- CONTADOR: biberón -->
+        <section class="blk reveal _template-Counter-Section _counter-section">
+          <h2 class="ttl">El biberón se está llenando…</h2>
+          <p class="sub">¡Falta poquito para conocerlo!</p>
+          <div class="bottle-wrap">
+            <div class="bottle"><span class="cap"></span><div class="glass"><div class="milk" id="milk"></div></div></div>
+            <div class="cd">
+              <div><span id="days">00</span><small>Días</small></div>
+              <div><span id="hours">00</span><small>Hrs</small></div>
+              <div><span id="minutes">00</span><small>Min</small></div>
+              <div><span id="seconds">00</span><small>Seg</small></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- PADRES: stickers -->
+        <section class="blk reveal _parents-section">
+          <h2 class="ttl">Con el cariño de</h2>
+          <p class="sub">Los que hacen posible esta aventura</p>
+          <div class="stickers">
+            <div class="stk" style="--r:-4deg"><i>🤰</i><b>Mamá</b><p data-replace="EventMother"></p></div>
+            <div class="stk" style="--r:3deg"><i>🧔</i><b>Papá</b><p data-replace="EventFather"></p></div>
+            <div class="stk" style="--r:4deg"><i>💐</i><b>Madrina</b><p data-replace="EventGodMother"></p></div>
+            <div class="stk" style="--r:-3deg"><i>🎀</i><b>Padrino</b><p data-replace="EventGodFather"></p></div>
+          </div>
+        </section>
+
+        <!-- DETALLES: acta de llegada -->
+        <section class="blk reveal">
+          <div class="cert">
+            <h3>Acta oficial de la fiesta</h3>
+            <div class="row"><em>Fecha</em><div><span data-replace="MainEventWeekDay"></span> <span data-replace="MainEventDay"></span> de <span data-replace="MainEventMonth"></span> de <span data-replace="MainEventYear"></span></div></div>
+            <div class="row"><em>Hora</em><div data-replace="MainEventHourString"></div></div>
+            <div class="row">
+              <em>Lugar</em>
+              <div>
+                <b data-replace="MainEventLocationDescription"></b>
+                <small data-replace="MainEventAddress"></small>
+                <a href="#" data-replace="MainEventUrl" target="_blank" class="map-link"><span class="vc-map"><img src="#" data-replace="Image_GoogleLocation" alt="Maps" /></span>Ver mapa</a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ITINERARIO: regla de crecimiento -->
+        <section class="blk reveal _itinerary-section">
+          <h2 class="ttl">Midiendo la diversión 📏</h2>
+          <p class="sub">Así de grande será la tarde</p>
+          <div class="ruler">
+            <div class="step"><span>🎈</span><div><b>Bienvenida</b><small data-replace="MainEventHourString"></small></div></div>
+            <div class="step"><span>🎮</span><div><b>Juegos y dinámica</b></div></div>
+            <div class="step"><span>🎁</span><div><b>Apertura de regalos</b></div></div>
+            <div class="step"><span>🍽️</span><div><b>Comida</b></div></div>
+            <div class="step"><span>🎂</span><div><b>Pastel de revelación</b></div></div>
+            <div class="step"><span>📸</span><div><b>Sesión de fotos</b></div></div>
+          </div>
+        </section>
+
+        <!-- GALERÍA: tendedero -->
+        <section class="reveal _gallery-section" style="padding:30px 0">
+          <h2 class="ttl">Del tendedero 🧺</h2>
+          <p class="sub">Desliza para ver más →</p>
+          <div class="line" id="gallery-grid"></div>
+        </section>
+
+        <!-- CONFIRMACIÓN -->
+        <section class="blk rsvp reveal _attendance-section">
+          <h2 class="ttl">¿Nos acompañas?</h2>
+          <p class="sub">Tu presencia es el mejor regalo</p>
+          <a href="#" data-replace="WhatsAppUrl" target="_blank" class="cucu-btn">👋 ¡Sí, ahí estaré!</a>
+        </section>
+
+        <!-- REGALOS: globos -->
+        <section class="blk rsvp reveal _gifttable-section">
+          <h2 class="ttl">Mesa de Regalos</h2>
+          <p class="sub">Si deseas hacerle un regalo al bebé, jala un globo 🎈</p>
+          <div class="balloons">
+            <a href="#" data-replace="EventAmazonGiftTableUrl" target="_blank" class="balloon"><img src="#" data-replace="Image_AmazonUrl" alt="Amazon" />Amazon</a>
+            <a href="#" data-replace="EventLiverpoolGiftTableUrl" target="_blank" class="balloon"><img src="#" data-replace="Image_LiverpoolUrl" alt="Liverpool" />Liverpool</a>
+          </div>
+          <div style="height:40px"></div>
+        </section>
+
+        <footer class="foot">
+          <span class="em">👶</span>
+          <h2>¡Los esperamos!</h2>
+          <p>Con mucho amor y muchas ganas de celebrar<br />la llegada de <strong data-replace="EventName"></strong></p>
+          <section class="moomentos-tagline">
+            <span class="moomentos-tagline__line"></span>
+            <a href="https://www.moomentos.com" target="_blank" rel="noopener noreferrer">Invitaciones que enamoran desde el primer vistazo — <span>Moomentos.</span></a>
+            <span class="moomentos-tagline__line"></span>
+          </section>
+        </footer>
+      </div>
+    </div>
+
+    <!-- Modal galería -->
+    <div id="galleryModal">
+      <button class="gm-close" id="galleryModalClose"><i class="fas fa-times"></i></button>
+      <div class="gm-wrap" id="galleryModalImgWrap"><img src="" id="modalImg" alt="Galería" /></div>
+      <div class="gm-bar">
+        <button class="gm-btn" id="galleryModalPrev"><i class="fas fa-chevron-left"></i></button>
+        <span><strong id="galleryModalCurrent">1</strong> / <span id="galleryModalTotal">1</span></span>
+        <button class="gm-btn" id="galleryModalNext"><i class="fas fa-chevron-right"></i></button>
+      </div>
+    </div>
+
+    <!-- jQuery primero — sin defer -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+    <script type="module">
+      import { helpers } from "/js/helpers.js";
+
+      // ─── Settings ─────────────────────────────
+      const settings = {
+        EventType: "BabyShower",
+        Template: true, // Cambiar a false en producción para saber que es un cliente real
+        AudioUrl: "/music/Here Comes The Sun.mp3",
+        Sections: {
+          showCounter: true,
+          showItinerary: true,
+          showGallery: true,
+          showAttendance: true,
+          showGiftTable: false,
+        },
+        ShowElements: {
+          showAmazonOption: false,
+          showLiverpoolOption: false,
+        },
+      };
+
+      // ─── DATOS DEL EVENTO ─────────────────────────────
+      var mainEvent = {
+        Date: new Date("2026-10-17T17:30:00"),
+        Name: "Mateo",
+
+        LocationDescription: "La Terraza Clouthier",
+        Address: "Av Manuel J. Clouthier 480, Zapopan, Jal.",
+        GoogleMapsUrl: "https://maps.app.goo.gl/HpD9ZEkGmku4WTyT8",
+
+        Father: "Cesar Curiel",
+        Mother: "Melissa Lara",
+        GodFather: "Alessandro Villanueva",
+        GodMother: "Georgina Montemayor ",
+
+        Gallery: [`1.webp`, `2.webp`, `3.webp`, `4.webp`, `5.webp`, `6.webp`, `7.webp`],
+
+        AmazonGiftTableUrl: "https://www.amazon.com.mx/",
+        LiverpoolGiftTableUrl: "https://www.liverpool.com.mx/tienda/home",
+      };
+
+      var additionalInformation = {
+        ImageMainCard: `1.webp`,
+        WhatsAppUrl: "https://wa.link/smvz7g",
+      };
+
+      // BabyShower — un solo evento, sin SecondaryEvent
+      var Init = {
+        Config: {
+          ...settings,
+          Themes: {
+            themeSky: { primary: "#38bdf8", primaryBg: "#e0f2fe", accent: "#bae6fd", accent2: "#fde68a" },
+            themeRose: { primary: "#f48fb1", primaryBg: "#fce4ec", accent: "#fcd5b8", accent2: "#fde68a" },
+          },
+        },
+        RSVP: {
+          Enable: false,
+          EventID: "",
+        },
+        MainEvent: mainEvent,
+      };
+
+      // ─── TEMAS ────────────────────────────────────────
+      function applyTheme(key) {
+        const t = Init.Config.Themes[key];
+        if (!t) return;
+        var r = document.documentElement;
+        r.style.setProperty("--primary", t.primary);
+        r.style.setProperty("--primary-bg", t.primaryBg);
+        r.style.setProperty("--accent", t.accent);
+        r.style.setProperty("--accent2", t.accent2);
+        $(".theme-btn").removeClass("active");
+        $(".theme-btn[data-theme='" + key + "']").addClass("active");
+      }
+
+      $(".theme-btn").on("click", function () {
+        applyTheme($(this).data("theme"));
+      });
+
+      // ─── ONLOAD LOCAL ─────────────────────────────────
+      function onLoad() {
+        $("[data-replace=WhatsAppUrl]").attr("href", additionalInformation.WhatsAppUrl);
+
+        // Nombre en bloques de juguete
+        var $blocks = $("#nameBlocks").empty();
+        String(mainEvent.Name).toUpperCase().split("").forEach(function (ch, i) {
+          if (ch.trim() === "") return $blocks.append('<span style="width:14px"></span>');
+          $("<div>", { class: "tb", text: ch, style: "--r:" + (i % 2 ? 4 : -4) + "deg" }).appendTo($blocks);
+        });
+        $blocks.on("click", ".tb", function () {
+          var el = $(this).removeClass("hop");
+          void this.offsetWidth;
+          el.addClass("hop");
+        });
+
+        // Biberón: se llena según se acerca la fecha (ventana de 60 días)
+        var daysLeft = (mainEvent.Date - new Date()) / 86400000;
+        var pct = Math.min(100, Math.max(8, (1 - daysLeft / 60) * 100));
+        setTimeout(function () {
+          document.getElementById("milk").style.setProperty("--fill", pct + "%");
+        }, 600);
+
+        // Galería: tendedero
+        $("#gallery-grid").css("--n", mainEvent.Gallery.length);
+        mainEvent.Gallery.forEach(function (url, i) {
+          var item = $("<div>", { class: "gal-item", "data-index": i });
+          item[0].style.setProperty("--r", (i % 2 ? 3 : -3) + "deg");
+          item[0].style.setProperty("--d", (i * -0.6) + "s");
+          item.append($("<img>", { src: url, alt: "Foto " + (i + 1), loading: "lazy" }));
+          $("#gallery-grid").append(item);
+        });
+      }
+
+      // ─── GALERIA MODAL ────────────────────────────────
+      var galleryModal = {
+        $el: null,
+        currentIndex: 0,
+        images: [],
+        tX: 0,
+        tY: 0,
+
+        init: function () {
+          var s = this;
+          s.$el = $("#galleryModal");
+          s.images = mainEvent.Gallery;
+
+          $(document).on("click", ".gal-item", function () {
+            s.open(parseInt($(this).data("index")));
+          });
+          $("#galleryModalClose").on("click", function (e) {
+            e.stopPropagation();
+            s.close();
+          });
+          s.$el.on("click", function (e) {
+            if ($(e.target).is("#galleryModal")) s.close();
+          });
+          $("#galleryModalPrev").on("click", function (e) {
+            e.stopPropagation();
+            s.navigate(-1);
+          });
+          $("#galleryModalNext").on("click", function (e) {
+            e.stopPropagation();
+            s.navigate(1);
+          });
+
+          var w = document.getElementById("galleryModalImgWrap");
+          w.addEventListener("touchstart", function (e) {
+            s.tX = e.changedTouches[0].screenX;
+            s.tY = e.changedTouches[0].screenY;
+          }, { passive: true });
+          w.addEventListener("touchend", function (e) {
+            var dx = e.changedTouches[0].screenX - s.tX;
+            var dy = e.changedTouches[0].screenY - s.tY;
+            if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 45) s.navigate(dx < 0 ? 1 : -1);
+          }, { passive: true });
+          document.addEventListener("keydown", function (e) {
+            if (!s.$el.hasClass("open")) return;
+            if (e.key === "ArrowLeft") s.navigate(-1);
+            if (e.key === "ArrowRight") s.navigate(1);
+            if (e.key === "Escape") s.close();
+          });
+        },
+
+        open: function (i) {
+          this.currentIndex = i;
+          this.upd();
+          this.$el.addClass("open");
+          $("body").css("overflow", "hidden");
+        },
+        close: function () {
+          this.$el.removeClass("open");
+          $("body").css("overflow", "");
+        },
+        navigate: function (dir) {
+          var s = this;
+          $("#modalImg").addClass("fading");
+          setTimeout(function () {
+            s.currentIndex = (s.currentIndex + dir + s.images.length) % s.images.length;
+            s.upd();
+            $("#modalImg").removeClass("fading");
+          }, 180);
+        },
+        upd: function () {
+          $("#modalImg").attr("src", this.images[this.currentIndex]);
+          $("#galleryModalCurrent").text(this.currentIndex + 1);
+          $("#galleryModalTotal").text(this.images.length);
+        },
+      };
+
+      // ─── SCROLL REVEAL ────────────────────────────────
+      function initReveal() {
+        var obs = new IntersectionObserver(
+          function (entries) {
+            entries.forEach(function (e) {
+              if (e.isIntersecting) e.target.classList.add("visible");
+            });
+          },
+          { threshold: 0.1 },
+        );
+        document.querySelectorAll(".reveal").forEach(function (el) {
+          obs.observe(el);
+        });
+      }
+
+      // ─── ACCESO: ¡Cucú! ───────────────────────────────
+      function initPeek() {
+        var opened = false;
+        function open() {
+          if (opened) return;
+          opened = true;
+          $("#baby").addClass("open");
+          $("#peekHint").hide();
+          $("#peekTop").text("¡hay una sorpresa!");
+          if (navigator.vibrate) navigator.vibrate(40);
+
+          // La música debe arrancar DENTRO del toque del usuario (igual que XV_4);
+          // si se llama después de un setTimeout el navegador la bloquea.
+          $("#audioButton").removeClass("d-none");
+          helpers.onPlay();
+
+          setTimeout(function () {
+            $("#hiddenContent").removeClass("_hide-section");
+            requestAnimationFrame(function () {
+              initReveal();
+              document.getElementById("hiddenContent").scrollIntoView({ behavior: "smooth" });
+            });
+          }, 900);
+        }
+        $("#baby").on("click", open).on("keydown", function (e) {
+          if (e.key === "Enter" || e.key === " ") { e.preventDefault(); open(); }
+        });
+      }
+
+      // ─── INIT PAGE ────────────────────────────────────
+      function InitPage() {
+        helpers.init(Init);
+
+        onLoad();
+        helpers.onCounterStart(Init.MainEvent.Date);
+        helpers.onAudioPlayer();
+
+        applyTheme("themeMint");
+        galleryModal.init();
+        initPeek();
+      }
+
+      InitPage();
+    </script>
+  </body>
+</html>
