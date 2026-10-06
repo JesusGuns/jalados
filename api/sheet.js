@@ -4,6 +4,12 @@ const CACHE_TTL = 6 * 60 * 60 * 1000; // 6 horas
 const MAX_CACHE = 500; // tope de entradas para que el Map no crezca sin límite
 const UPSTREAM_TIMEOUT = 10000; // 10 s hacia Apps Script
 
+// Anti-duplicados de POST (RSVP): recuerda envíos recientes para que un
+// reintento no vuelva a escribir otra fila en la hoja.
+const recentPosts = new Map();
+const POST_DEDUP_TTL = 2 * 60 * 1000; // 2 min
+const MAX_RECENT = 500;
+
 // URL del Apps Script. En Vercel: Settings → Environment Variables → SHEET_URL
 // (queda el valor actual como respaldo para que no se rompa al desplegar)
 const SHEET_URL =
@@ -30,6 +36,23 @@ function cacheSet(key, data) {
     cache.delete(cache.keys().next().value); // elimina la entrada más antigua
   }
   cache.set(key, { data, time: Date.now() });
+}
+
+function recentSet(key, data) {
+  if (recentPosts.size >= MAX_RECENT) {
+    recentPosts.delete(recentPosts.keys().next().value);
+  }
+  recentPosts.set(key, { data, time: Date.now() });
+}
+
+function recentGet(key) {
+  const hit = recentPosts.get(key);
+  if (!hit) return null;
+  if (Date.now() - hit.time > POST_DEDUP_TTL) {
+    recentPosts.delete(key);
+    return null;
+  }
+  return hit.data;
 }
 
 async function fetchWithTimeout(url, options = {}) {
@@ -97,19 +120,48 @@ export default async function handler(req, res) {
     }
 
     // ── POST ─────────────────────────────────────────
-    const { confirmed, guests, wishes } = req.body ?? {};
+    const { confirmed, guests, wishes, requestId } = req.body ?? {};
+    const confirmedBool = confirmed === true || confirmed === "true";
+    const guestsSafe = safe(guests, 500);
+    const wishesSafe = safe(wishes, 1000);
 
-    const response = await fetchWithTimeout(SHEET_URL, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        token,
-        eventID,
-        confirmed: confirmed === true || confirmed === "true",
-        guests: safe(guests, 500),
-        wishes: safe(wishes, 1000),
-      }),
-    });
+    // Clave de deduplicación: el requestId del cliente (igual en todos los
+    // reintentos) o, si no viene, el contenido exacto del envío.
+    const dedupKey = isValidId(requestId) ? `rid:${requestId}` : `${eventID}|${token}|${confirmedBool}|${guestsSafe}|${wishesSafe}`;
+
+    const already = recentGet(dedupKey);
+    if (already) {
+      res.setHeader("X-Dedup", "HIT");
+      return res.status(200).json(already);
+    }
+
+    let response;
+    try {
+      response = await fetchWithTimeout(SHEET_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          token,
+          eventID,
+          requestId: isValidId(requestId) ? requestId : undefined,
+          confirmed: confirmedBool,
+          guests: guestsSafe,
+          wishes: wishesSafe,
+        }),
+      });
+    } catch (err) {
+      if (err.name === "AbortError") {
+        // Timeout DESPUÉS de enviar: Apps Script ya recibió la petición y
+        // normalmente termina de guardarla aunque tarde. Responder 502 aquí
+        // hacía que el cliente reintentara y se guardara una segunda fila.
+        console.warn("sheet API: timeout hacia Apps Script en POST (se asume guardado)");
+        const data = { success: true, pending: true };
+        recentSet(dedupKey, data);
+        cache.delete(key);
+        return res.status(200).json(data);
+      }
+      throw err; // error de red antes de enviar: sí es un fallo real
+    }
 
     const text = await response.text();
 
@@ -120,9 +172,12 @@ export default async function handler(req, res) {
       throw new Error("Respuesta de Apps Script no es JSON válido");
     }
 
-    // Se invalida DESPUÉS de guardar, para que un GET intermedio
-    // no vuelva a cachear datos viejos
-    if (data.success) cache.delete(key);
+    if (data.success) {
+      recentSet(dedupKey, data);
+      // Se invalida DESPUÉS de guardar, para que un GET intermedio
+      // no vuelva a cachear datos viejos
+      cache.delete(key);
+    }
 
     return res.status(200).json(data);
   } catch (error) {

@@ -480,6 +480,7 @@ export const rsvp = {
     const payload = {
       token: token,
       eventID: Resources.RSVP.EventID,
+      requestId: (window.crypto && crypto.randomUUID && crypto.randomUUID()) || Date.now() + "-" + Math.random().toString(36).slice(2),
       confirmed: confirmation,
       guests: guestAttendants,
       wishes: wishes,
