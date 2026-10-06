@@ -11,6 +11,10 @@
    Si hoy no cae en ningún rango NO se descarga promo-styles.css
    y la página se ve con la interfaz estándar.
    Si dos eventos coinciden, gana el de mayor descuento.
+
+   `themeClass` solo cambia los acentos (ver promo-styles.css):
+   theme-moomentos (coral/violeta), theme-nocturna, theme-sanvalentin,
+   theme-buenfin, theme-hotsale.
    ============================================================ */
 const PROMO_CONFIG = {
   cssPath: "css/promo-styles.css",
@@ -36,9 +40,8 @@ const PROMO_CONFIG = {
   events: {
     moomentosday: {
       name: "Moomentos Day",
-      themeClass: "theme-custom", // TODO: crear .theme-moomentosday en promo-styles.css
+      themeClass: "theme-moomentos",
       discountPercentage: 25,
-      bannerMessage: "🎉 ¡Moomentos Day! 25% de descuento en todas tus invitaciones",
       heroMessage: "En todos los paquetes",
       dates: {
         2026: ["2026-10-16", "2026-10-18"],
@@ -47,9 +50,8 @@ const PROMO_CONFIG = {
     },
     buenfin: {
       name: "Buen Fin",
-      themeClass: "theme-custom",
+      themeClass: "theme-buenfin",
       discountPercentage: 20,
-      bannerMessage: "🛍️ ¡Buen Fin! 20% de descuento en tus invitaciones digitales",
       heroMessage: "En todos los paquetes",
       dates: {
         2026: ["2026-11-13", "2026-11-17"],
@@ -58,9 +60,8 @@ const PROMO_CONFIG = {
     },
     nocturna: {
       name: "Nocturna Navideña",
-      themeClass: "theme-custom",
+      themeClass: "theme-nocturna",
       discountPercentage: 15,
-      bannerMessage: "🎄 Nocturna Navideña: 15% de descuento en tus invitaciones",
       heroMessage: "En todos los paquetes",
       dates: {
         2026: ["2026-12-04", "2026-12-06"], // primer fin de semana de diciembre (vie-dom)
@@ -68,9 +69,8 @@ const PROMO_CONFIG = {
     },
     planea2027: {
       name: "Planea tu 2027",
-      themeClass: "theme-custom",
+      themeClass: "theme-moomentos",
       discountPercentage: 15,
-      bannerMessage: "📅 Planea tu 2027: 15% de descuento al reservar tu invitación",
       heroMessage: "En todos los paquetes",
       dates: {
         2027: ["2027-01-02", "2027-01-08"],
@@ -78,9 +78,8 @@ const PROMO_CONFIG = {
     },
     sanvalentin: {
       name: "San Valentín",
-      themeClass: "theme-custom",
+      themeClass: "theme-sanvalentin",
       discountPercentage: 15,
-      bannerMessage: "💘 San Valentín: 15% de descuento en tus invitaciones",
       heroMessage: "En todos los paquetes",
       dates: {
         2027: ["2027-02-10", "2027-02-14"],
@@ -90,7 +89,6 @@ const PROMO_CONFIG = {
       name: "Hot Sale 2027",
       themeClass: "theme-hotsale",
       discountPercentage: 20,
-      bannerMessage: "🔥 ¡Hot Sale! 20% de descuento en tus invitaciones digitales",
       heroMessage: "En todos los paquetes",
       dates: {
         2027: ["2027-05-31", "2027-06-08"], // ⚠ CONFIRMAR cuando se anuncie el Hot Sale oficial
@@ -107,9 +105,15 @@ const PROMO_CONFIG = {
   const fmt = (n) => "$" + n.toLocaleString("es-MX");
   const toStart = (d) => new Date(d + "T00:00:00" + PROMO_CONFIG.tzOffset);
   const toEnd = (d) => new Date(d + "T23:59:59.999" + PROMO_CONFIG.tzOffset);
-  const endLabel = (d) => {
-    const [, m, day] = d.split("-").map(Number);
-    return "Hasta el " + day + " de " + MONTHS[m - 1];
+
+  // "Del 16 al 18 de octubre" · "Del 31 de mayo al 8 de junio" · "Hasta el 18 de octubre" (sin inicio)
+  const rangeLabel = (from, to) => {
+    const [, m2, d2] = to.split("-").map(Number);
+    if (!from) return "Hasta el " + d2 + " de " + MONTHS[m2 - 1];
+    const [, m1, d1] = from.split("-").map(Number);
+    if (from === to) return d1 + " de " + MONTHS[m1 - 1];
+    if (m1 === m2) return "Del " + d1 + " al " + d2 + " de " + MONTHS[m2 - 1];
+    return "Del " + d1 + " de " + MONTHS[m1 - 1] + " al " + d2 + " de " + MONTHS[m2 - 1];
   };
 
   // ── Preview opcional (solo si allowPreview = true) ──
@@ -120,13 +124,13 @@ const PROMO_CONFIG = {
   const now = () => (fakeNow && !isNaN(fakeNow) ? fakeNow : new Date());
 
   // ── Resuelve qué evento está activo en una fecha dada ──
-  // Devuelve { key, event, endDate } o null. Si hay empate de fechas gana el mayor descuento.
+  // Devuelve { key, event, startDate, endDate } o null. Si hay empate de fechas gana el mayor descuento.
   function resolve(at) {
     let best = null;
     Object.entries(PROMO_CONFIG.events).forEach(([key, ev]) => {
       Object.values(ev.dates || {}).forEach(([from, to]) => {
         if (at >= toStart(from) && at <= toEnd(to)) {
-          if (!best || ev.discountPercentage > best.event.discountPercentage) best = { key, event: ev, endDate: to };
+          if (!best || ev.discountPercentage > best.event.discountPercentage) best = { key, event: ev, startDate: from, endDate: to };
         }
       });
     });
@@ -137,7 +141,7 @@ const PROMO_CONFIG = {
   if (previewKey && PROMO_CONFIG.events[previewKey]) {
     const ev = PROMO_CONFIG.events[previewKey];
     const lastRange = Object.values(ev.dates || {}).pop() || [null, "2099-12-31"];
-    active = { key: previewKey, event: ev, endDate: lastRange[1] };
+    active = { key: previewKey, event: ev, startDate: lastRange[0], endDate: lastRange[1] };
   } else {
     active = resolve(now());
   }
@@ -181,33 +185,45 @@ const PROMO_CONFIG = {
     link.href = PROMO_CONFIG.cssPath;
     document.head.appendChild(link);
 
-    // 2. Clase temática en <body>
+    // 2. Clases en <body>: has-promo + acento del evento
     document.body.classList.add("has-promo", event.themeClass);
 
-    // 3. Banner superior
+    const pct = event.discountPercentage + "%";
+
+    // 3. Barra superior: punto coral · nombre · porcentaje
     const banner = document.createElement("div");
     banner.id = "promo-banner";
     banner.setAttribute("role", "status");
-    banner.textContent = event.bannerMessage;
+    banner.innerHTML = '<span class="promo-banner__dot" aria-hidden="true"></span>' + "<strong>" + event.name + "</strong>" + '<span class="promo-banner__sep" aria-hidden="true">·</span>' + "<span>" + pct + " de descuento</span>";
     document.body.prepend(banner);
 
-    // Aviso en el hero, justo antes de los botones
-    const badgeText = event.discountPercentage + "% OFF";
+    // 4. Hero: nombre grande, fechas pequeñas, porcentaje protagonista.
+    //    (El CSS oculta hero-eyebrow, hero-title y hero-sub mientras haya promo.)
     const hero = document.querySelector(".hero");
     const heroActions = hero && hero.querySelector(".hero-actions");
     if (heroActions) {
-      const promo = document.createElement("a");
+      const promo = document.createElement("div");
       promo.id = "promo-hero";
-      promo.href = "#precios";
       promo.innerHTML =
-        '<span class="promo-hero__pct">' + badgeText + "</span>" +
-        '<span class="promo-hero__text"><strong>' + event.name + "</strong>" +
-        "<span>" + event.heroMessage + " · " + endLabel(active.endDate) + "</span></span>" +
-        '<span class="promo-hero__cta">Ver precios</span>';
+        '<h1 class="promo-hero__name">' + event.name + "</h1>" +
+        '<span class="promo-hero__dates">' + rangeLabel(active.startDate, active.endDate) + "</span>" +
+        '<p class="promo-hero__with">con</p>' +
+        '<p class="promo-hero__pct">' + pct + "</p>" +
+        '<p class="promo-hero__off">de descuento</p>' +
+        '<p class="promo-hero__note">' + event.heroMessage + "</p>";
       hero.insertBefore(promo, heroActions);
+
+      // Botones: "Ver precios" pasa a ser el principal y "Ver diseños" el secundario
+      const btns = heroActions.querySelectorAll(".btn");
+      if (btns.length >= 2) {
+        btns[0].textContent = "Ver precios";
+        btns[0].setAttribute("href", "#precios");
+        btns[1].textContent = "Ver diseños";
+        btns[1].setAttribute("href", "#categorias");
+      }
     }
 
-    // 4, 5 y 6. Por cada tarjeta de paquete
+    // 5. Por cada tarjeta de paquete: badge, precio tachado y precio con descuento
     document.querySelectorAll(".pricing-card[data-plan-id]").forEach(function (card) {
       const id = card.dataset.planId;
       if (!paymentLinks[id]) {
@@ -220,7 +236,7 @@ const PROMO_CONFIG = {
       // Badge
       const badge = document.createElement("span");
       badge.className = "promo-badge";
-      badge.textContent = badgeText;
+      badge.textContent = pct + " OFF";
       card.appendChild(badge);
 
       // Precio tachado + precio con descuento
