@@ -74,18 +74,13 @@
         -webkit-overflow-scrolling: touch;
         margin: 16px 0;
         border-radius: 8px;
+        background:
+          linear-gradient(to right, #fff 30%, transparent) left / 40px 100% no-repeat local,
+          linear-gradient(to left, #fff 30%, transparent) right / 40px 100% no-repeat local,
+          linear-gradient(to right, rgba(15, 23, 42, 0.14), transparent) left / 14px 100% no-repeat scroll,
+          linear-gradient(to left, rgba(15, 23, 42, 0.14), transparent) right / 14px 100% no-repeat scroll;
       }
-
-      .terms-table-wrap::after {
-        content: "";
-        position: absolute;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        width: 28px;
-        background: linear-gradient(to right, transparent, rgba(15, 23, 42, 0.08));
-        pointer-events: none;
-      }
+      /* borra el bloque .terms-table-wrap::after */
       .terms-table th,
       .terms-table td {
         border: 1px solid #cbd5e1;
@@ -194,7 +189,7 @@
         <strong>Política de Reembolsos:</strong>
         <p style="margin-top: 6px">Debido a la naturaleza digital y personalizada del servicio:</p>
         <ul>
-          <li>No se otorgan reembolsos una vez que el equipo de Moomentos haya comenzado con el diseño o maquetación de la invitación.</li>
+          <li>Si la cancelación se solicita dentro de las primeras 12 horas posteriores al pago y antes de iniciar el diseño, procede un reembolso del monto pagado menos la comisión de procesamiento de Mercado Pago, conforme a la Política de Cambios.</li>
           <li>En caso de reprogramación o cambio de fecha del evento, la información en la invitación podrá actualizarse sin costo adicional dentro del periodo de vigencia.</li>
         </ul>
       </div>
