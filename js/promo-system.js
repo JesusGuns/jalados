@@ -17,7 +17,7 @@
    theme-buenfin, theme-hotsale.
    ============================================================ */
 const PROMO_CONFIG = {
-  cssPath: "/css/promo-styles.css",
+  cssPath: "/css/promo-styles.min.css",
 
   // México ya no usa horario de verano: CDMX es UTC-06:00 todo el año.
   tzOffset: "-06:00",
