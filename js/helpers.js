@@ -54,6 +54,16 @@ export const helpers = {
     // Config
     Resources.Config = resources.Config;
 
+    if (resources.Config.Template) {
+      const shiftToFuture = (ev) => {
+        const d = new Date(Date.now() + 45 * 86400000); 
+        d.setHours(ev.Date.getHours(), ev.Date.getMinutes(), 0, 0); 
+        ev.Date = d;
+      };
+      shiftToFuture(resources.MainEvent);
+      if (resources.SecondaryEvent) shiftToFuture(resources.SecondaryEvent);
+    }
+
     // Main Event — propiedades calculadas de la fecha
     Resources.MainEvent = resources.MainEvent;
     Resources.MainEvent.Time = Resources.MainEvent.Date.getTime();
@@ -89,6 +99,11 @@ export const helpers = {
     Resources.RSVP.TicketCount = resources.Config.Template ? 2 : 0;
 
     helpers.onLoad();
+
+    // Evento ya pasado: ocultar contador y RSVP desde el inicio
+    if (!resources.Config.Template && Date.now() > Resources.MainEvent.Date.getTime()) {
+      $("._counter-section, ._template-Counter-Section, ._attendance-section").hide();
+    }
   },
   onGetResources: function () {
     return Resources;
@@ -167,6 +182,10 @@ export const helpers = {
       if (distance <= 0) {
         clearInterval(intervalId);
         render(0, 0, 0, 0);
+
+        if (!Resources.Config.Template) {
+          $("._counter-section, ._template-Counter-Section, ._attendance-section").hide();
+        }
         return;
       }
 
