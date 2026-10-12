@@ -27,7 +27,7 @@ const PROMO_CONFIG = {
   requireLinks: true,
 
   // false en producción. true solo para probar: ?promo=buenfin  o  ?promoNow=2026-11-14T10:00
-  allowPreview: true,
+  allowPreview: false,
 
   // Links de Mercado Pago con el monto ya rebajado: 1 link por nivel de descuento y plan.
   // Montos: 15% → 424 / 764 / 1359 · 20% → 399 / 719 / 1279 · 25% → 374 / 674 / 1199
