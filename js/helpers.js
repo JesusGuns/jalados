@@ -7,6 +7,7 @@ var Resources = {
       showCounter: true,
       showIntroduction: true,
       showParents: true,
+      showVeilGodParents: false,
       showItinerary: true,
       showGallery: true,
       showDressCode: true,
@@ -249,6 +250,7 @@ export const helpers = {
       showCounter: "._counter-section",
       showIntroduction: "._introduction-section",
       showParents: "._parents-section",
+      showVeilGodParents: "._veilgodparents-section",
       showItinerary: "._itinerary-section",
       showGallery: "._gallery-section",
       showLoveStory: "._lovestory-section",
@@ -340,6 +342,9 @@ export const helpers = {
       $("[data-replace=MotherBride]").text(main.MotherBride);
       $("[data-replace=FatherGroom]").text(main.FatherGroom);
       $("[data-replace=MotherGroom]").text(main.MotherGroom);
+
+      $("[data-replace=VeilGodMother]").text(main.VeilGodMother);
+      $("[data-replace=VeilGodFather]").text(main.VeilGodFather);
     }
 
     if (type === "BabyShower") {
