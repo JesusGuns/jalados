@@ -1446,7 +1446,7 @@ a:focus-visible,
 }
 
 .moomentos-tagline a {
-  color: var(--accent-muted);
+  color: var(--bg-primary);
   text-decoration: none;
 }
 
