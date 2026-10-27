@@ -235,7 +235,7 @@ p {
   font-size: 3.5rem;
   color: var(--accent-main);
   text-transform: none;
-  margin: -10px 0;
+  margin: 0px;
 }
 
 .hero-date {
@@ -464,7 +464,7 @@ p {
   margin-bottom: 10px;
 }
 /* PADRES DE LOS NOVIOS */
-._parents-section {
+._parents-section, ._veilgodparents-section {
   background-color: var(--bg-secondary);
   text-align: center;
 }

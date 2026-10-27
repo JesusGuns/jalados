@@ -69,7 +69,9 @@ export const helpers = {
     Resources.MainEvent = resources.MainEvent;
     Resources.MainEvent.Time = Resources.MainEvent.Date.getTime();
     Resources.MainEvent.DateString = helpers.onGetDateString(Resources.MainEvent.Date);
-    Resources.MainEvent.HourString = helpers.onGetHoursString(Resources.MainEvent.Date);
+    
+    const use24h = !!resources.Config.Hour24;
+    Resources.MainEvent.HourString = helpers.onGetHoursString(Resources.MainEvent.Date, false, use24h);
     Resources.MainEvent.WeekDay = helpers.onGetWeekDay(Resources.MainEvent.Date);
     Resources.MainEvent.Day = helpers.onGetDay(Resources.MainEvent.Date);
     Resources.MainEvent.Month = helpers.onGetMonth(Resources.MainEvent.Date);
@@ -81,7 +83,7 @@ export const helpers = {
       Resources.SecondaryEvent = resources.SecondaryEvent;
       Resources.SecondaryEvent.Time = Resources.SecondaryEvent.Date.getTime();
       Resources.SecondaryEvent.DateString = helpers.onGetDateString(Resources.SecondaryEvent.Date);
-      Resources.SecondaryEvent.HourString = helpers.onGetHoursString(Resources.SecondaryEvent.Date);
+      Resources.SecondaryEvent.HourString = helpers.onGetHoursString(Resources.SecondaryEvent.Date, false, use24h);
       Resources.SecondaryEvent.WeekDay = helpers.onGetWeekDay(Resources.SecondaryEvent.Date);
       Resources.SecondaryEvent.Day = helpers.onGetDay(Resources.SecondaryEvent.Date);
       Resources.SecondaryEvent.Month = helpers.onGetMonth(Resources.SecondaryEvent.Date);
@@ -134,10 +136,17 @@ export const helpers = {
     const dateString = includeDayName ? `${dayName} ${day} de ${month} de ${year}` : `${day} de ${month} de ${year}`;
     return dateString;
   },
-  onGetHoursString: function (eventDate, includeThe) {
+  onGetHoursString: function (eventDate, includeThe, use24h) {
     let hours = eventDate.getHours();
-    const ampm = hours >= 12 ? "p.m." : "a.m.";
     const mins = eventDate.getMinutes().toString().padStart(2, "0");
+
+    // Formato 24 hrs (opt-in): "17:30 hrs"
+    if (use24h) {
+      return `${String(hours).padStart(2, "0")}:${mins} hrs`;
+    }
+
+    // Formato 12 hrs (comportamiento original, sin cambios)
+    const ampm = hours >= 12 ? "p.m." : "a.m.";
     const the = hours % 12 === 1 ? "la" : "las";
     hours = hours % 12 || 12;
     const hourString = includeThe ? `${the} ${hours}:${mins} ${ampm}` : `${hours}:${mins} ${ampm}`;

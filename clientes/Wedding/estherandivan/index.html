@@ -62,6 +62,10 @@
     <!-- Toastify CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css" />
     <style>
+      .hero-bg{
+        background-position: 48%;
+        top: -1%;
+      }
       .dresscode-details {
         display: grid;
         gap: 14px;
@@ -74,6 +78,10 @@
           grid-template-columns: 1fr 1fr;
           max-width: 760px;
         }
+
+         .dresscode-style {
+        font-size: 2.6rem;
+    }
       }
       .dresscode-details .dresscode-detail {
         background: rgba(20, 10, 18, 0.55);
@@ -99,6 +107,8 @@
         color: #fff;
         text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
       }
+
+    
     </style>
   </head>
   <body>
@@ -114,7 +124,7 @@
         <div class="hero-subtitle hero-stagger">Nuestra Boda</div>
         <h1 class="hero-names hero-stagger">
           <span data-replace="BrideShortName"></span>
-          &amp;
+          <span>E</span>
           <span data-replace="GroomShortName"></span>
         </h1>
         <p class="mt-3 text-uppercase hero-stagger" style="letter-spacing: 0.2em; font-size: 0.8rem">¡Nos Casamos!</p>
@@ -209,7 +219,7 @@
       <section class="_veilgodparents-section editorial-section" style="background: var(--bg-secondary)">
         <div class="container">
           <div class="editorial-section-title reveal-element">
-            <h2>Nuestros padrinos de velación</h2>
+            <h2>Nuestros padrinos</h2>
           </div>
           <div class="row g-4 justify-content-center reveal-element">
             <div class="col-md-5">
@@ -277,8 +287,18 @@
                 <img src="timeline/1.webp" alt="Ceremonia Religiosa" class="timeline-img" loading="lazy" decoding="async" />
               </div>
               <span class="timeline-time" data-replace="MainEventHourString"></span>
-              <h5>Ceremonia Religiosa</h5>
+              <h5>Iglesia</h5>
               <p data-replace="MainEventLocationDescription"></p>
+            </div>
+
+            <!-- Calenda -->
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-image">
+                <img src="timeline/8.webp" alt="Calenda" class="timeline-img" loading="lazy" decoding="async" />
+              </div>
+              <span class="timeline-time">14:30 hrs</span>
+              <h5>Calenda</h5>
             </div>
 
             <!-- Recepción de invitados -->
@@ -288,29 +308,11 @@
                 <img src="timeline/2.webp" alt="Recepción de invitados" class="timeline-img" loading="lazy" decoding="async" />
               </div>
               <span class="timeline-time" data-replace="EventReceptionHourString"></span>
-              <h5>Recepción de invitados</h5>
+              <h5>Recepción / Coctel</h5>
               <p data-replace="SecondaryEventLocationDescription"></p>
             </div>
 
-            <!-- Ceremonia Civil -->
-            <div class="timeline-item">
-              <div class="timeline-dot"></div>
-              <div class="timeline-image">
-                <img src="timeline/3.webp" alt="Ceremonia Civil" class="timeline-img" loading="lazy" decoding="async" />
-              </div>
-              <h5>Ceremonia Civil</h5>
-              <p>Unión ante la ley.</p>
-            </div>
-
-            <!-- Sesión de Fotos -->
-            <div class="timeline-item">
-              <div class="timeline-dot"></div>
-              <div class="timeline-image">
-                <img src="timeline/4.webp" alt="Sesión de Fotos" class="timeline-img" loading="lazy" decoding="async" />
-              </div>
-              <h5>Sesión de Fotos</h5>
-              <p>Momentos para siempre.</p>
-            </div>
+           
 
             <!-- Banquete -->
             <div class="timeline-item">
@@ -318,8 +320,8 @@
               <div class="timeline-image">
                 <img src="timeline/5.webp" alt="Banquete" class="timeline-img" loading="lazy" decoding="async" />
               </div>
-              <h5>Banquete</h5>
-              <p>Cena entre familia y amigos.</p>
+              <span class="timeline-time">15:30 hrs</span>
+              <h5>Comida</h5>
             </div>
 
             <!-- Primer Baile -->
@@ -328,8 +330,8 @@
               <div class="timeline-image">
                 <img src="timeline/6.webp" alt="Primer Baile" class="timeline-img" loading="lazy" decoding="async" />
               </div>
-              <h5>Primer Baile</h5>
-              <p>El vals de los novios.</p>
+              <span class="timeline-time">17:00 hrs</span>
+              <h5>Vals de los Novios</h5>
             </div>
 
             <!-- Fiesta -->
@@ -338,8 +340,8 @@
               <div class="timeline-image">
                 <img src="timeline/7.webp" alt="Fiesta" class="timeline-img" loading="lazy" decoding="async" />
               </div>
+              <span class="timeline-time">18:00 hrs</span>
               <h5>Fiesta</h5>
-              <p>¡A celebrar toda la noche!</p>
             </div>
           </div>
         </div>
@@ -546,7 +548,8 @@
       const settings = {
         EventType: "Wedding",
         Template: false, // Cambiar a false en producción para saber que es un cliente real
-        AudioUrl: "/music/Perfect.mp3",
+        Hour24: true, // ← NUEVO: muestra la hora en formato 24 hrs
+        AudioUrl: "/music/diosbendiganuestroamor.mp3",
         Sections: {
           showCounter: true,
           showIntroduction: true,
