@@ -113,6 +113,25 @@
         color: #fff;
         text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
       }
+
+      /* Video vertical (Mux) */
+      .video-frame {
+        aspect-ratio: auto !important;
+        height: auto !important;
+        width: 100%;
+        max-width: 320px; /* ajusta: 280 más compacto, 360 más grande */
+        margin: 0 auto;
+        padding: 0;
+        background: transparent !important;
+        border-radius: 16px;
+        overflow: hidden;
+      }
+      .video-frame iframe {
+        display: block;
+        width: 100%;
+        aspect-ratio: 29 / 52; /* la proporción real de tu video */
+        border: 0;
+      }
     </style>
   </head>
   <body>
@@ -356,12 +375,7 @@
             <h2>Nuestro Momento</h2>
           </div>
           <div class="video-frame">
-            <!-- Si tienes URL de YouTube: reemplaza el div .video-placeholder por
-                 <iframe src="https://www.youtube.com/embed/TU_VIDEO_ID" allowfullscreen></iframe> -->
-            <div class="video-placeholder">
-              <div class="video-play-badge"><i class="fa-solid fa-play"></i></div>
-              <p>Video próximamente</p>
-            </div>
+            <iframe src="https://player.mux.com/rlNVMR2vn4cZBmlDOUqT5XbiGWaEFhSURG15cF02zkyE?metadata-video-title=EstherAndIvan&video-title=EstherAndIvan&thumbnail-time=0" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture" allowfullscreen loading="lazy" title="Video de Esther e Iván"></iframe>
           </div>
         </div>
       </section>
@@ -526,9 +540,11 @@
       <!-- 14. PIE DE PÁGINA Y TAGLINE -->
       <footer class="_end-section moomentos-tagline">
         <a href="https://www.moomentos.com" target="_blank" rel="noopener noreferrer">
-          Invitaciones que enamoran 
-          <br>desde el primer vistazo 
-          <br><span>Moomentos.</span>
+          Invitaciones que enamoran
+          <br />
+          desde el primer vistazo
+          <br />
+          <span>Moomentos.</span>
         </a>
       </footer>
     </div>
