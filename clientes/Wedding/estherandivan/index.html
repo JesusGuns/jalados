@@ -132,6 +132,34 @@
         aspect-ratio: 29 / 52; /* la proporción real de tu video */
         border: 0;
       }
+
+      .moomentos-tagline {
+        padding-bottom: 90px; /* evita que el botón flotante de música tape la marca */
+      }
+      .moomentos-tagline a {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 4px;
+        text-decoration: none;
+        font-size: 0.7rem;
+        font-style: normal;
+        font-weight: 400;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        opacity: 0.9;
+      }
+      .moomentos-tagline a span {
+        display: block;
+        font-family: "Alex Brush", cursive; /* ya está cargada en esta invitación */
+        font-size: 3rem;
+        line-height: 1.1;
+        font-style: normal;
+        font-weight: 400;
+        letter-spacing: 0;
+        text-transform: none;
+        color: #e8d3a8; /* dorado claro, resalta sobre el fondo vino */
+      }
     </style>
   </head>
   <body>
@@ -544,11 +572,8 @@
       <!-- 14. PIE DE PÁGINA Y TAGLINE -->
       <footer class="_end-section moomentos-tagline">
         <a href="https://www.moomentos.com" target="_blank" rel="noopener noreferrer">
-          Invitaciones que enamoran
-          <br />
-          desde el primer vistazo
-          <br />
-          <span>Moomentos.</span>
+          Invitaciones que enamoran desde el primer vistazo
+          <span>Moomentos</span>
         </a>
       </footer>
     </div>
