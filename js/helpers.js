@@ -57,8 +57,8 @@ export const helpers = {
 
     if (resources.Config.Template) {
       const shiftToFuture = (ev) => {
-        const d = new Date(Date.now() + 45 * 86400000); 
-        d.setHours(ev.Date.getHours(), ev.Date.getMinutes(), 0, 0); 
+        const d = new Date(Date.now() + 45 * 86400000);
+        d.setHours(ev.Date.getHours(), ev.Date.getMinutes(), 0, 0);
         ev.Date = d;
       };
       shiftToFuture(resources.MainEvent);
@@ -69,7 +69,7 @@ export const helpers = {
     Resources.MainEvent = resources.MainEvent;
     Resources.MainEvent.Time = Resources.MainEvent.Date.getTime();
     Resources.MainEvent.DateString = helpers.onGetDateString(Resources.MainEvent.Date);
-    
+
     const use24h = !!resources.Config.Hour24;
     Resources.MainEvent.HourString = helpers.onGetHoursString(Resources.MainEvent.Date, false, use24h);
     Resources.MainEvent.WeekDay = helpers.onGetWeekDay(Resources.MainEvent.Date);
@@ -274,6 +274,14 @@ export const helpers = {
     Object.entries(sectionMap).forEach(([key, selector]) => {
       if (!sections[key]) $(selector).remove();
     });
+
+    if(Resources.RSVP.Enable){
+      var hasAttendance = $("._attendance-section").length;
+      var hasAttendanceNotes = $("._attendance-section_note").length;
+      if (!hasAttendance && hasAttendanceNotes) {
+        $("._attendance-section_note").show();
+      }
+    }
   },
   onLoadElements: function () {
     const showElements = Resources.Config.ShowElements;
