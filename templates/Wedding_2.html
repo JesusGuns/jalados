@@ -54,7 +54,7 @@
     <link rel="preload" fetchpriority="high" as="image" href="v2/1.webp" type="image/webp" />
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="/css/bootstrap.min.css" crossorigin />
+    <link rel="stylesheet" href="/css/bootstrap.custom.min.css" crossorigin />
     <link rel="stylesheet" href="/css/templates.min.css" />
     <link rel="stylesheet" href="/css/Wedding/Wedding_2.min.css" />
 
@@ -66,17 +66,17 @@
   </head>
 
   <body>
-    <audio id="audio" src="#" data-replace="AudioUrl" preload="none" loop></audio>
+    <audio id="audio" data-replace="AudioUrl" preload="none" loop></audio>
 
     <span id="audioButton" class="_template-Audio-Button off d-none">
-      <img src="#" data-replace="Image_AudioUrl" alt="Audio" />
+      <img data-replace="Image_AudioUrl" alt="Audio" />
     </span>
 
     <div class="page">
       <!-- HERO — split screen -->
       <div class="_main-section">
         <div class="hero-photo-panel">
-          <img class="_main-image" src="v2/1.webp" data-replace="Image_MainCard" fetchpriority="high" loading="eager" />
+          <img class="_main-image" src="v2/1.webp" data-replace="Image_MainCard" alt="Los novios" fetchpriority="high" loading="eager" />
         </div>
         <div class="hero-text-panel">
           <p class="hero-names" data-replace="BrideShortName"></p>
@@ -179,7 +179,7 @@
             <small data-replace="MainEventAddress"></small>
           </div>
           <div class="vc-map">
-            <img src="#" data-replace="Image_GoogleLocation" alt="Maps" />
+            <img data-replace="Image_GoogleLocation" alt="Maps" />
           </div>
         </a>
 
@@ -192,7 +192,7 @@
             <small data-replace="SecondaryEventAddress"></small>
           </div>
           <div class="vc-map">
-            <img src="#" data-replace="Image_GoogleLocation" alt="Maps" />
+            <img data-replace="Image_GoogleLocation" alt="Maps" />
           </div>
         </a>
       </div>
@@ -260,7 +260,7 @@
 
       <!-- HISTORIA DE AMOR -->
       <div class="_third-section _hide-section _lovestory-section">
-        <img class="_main-image" src="#" data-replace="Image_LoveStory" alt="" />
+        <img class="_main-image" data-replace="Image_LoveStory" alt="" />
         <div class="_details">
           <h2>"Donde sea que estemos, siempre estará nuestro hogar. Elegimos amarnos, elegimos crecer juntos."</h2>
         </div>
@@ -290,7 +290,7 @@
 
       <!-- DRESS CODE -->
       <div class="_dresscode-section _hide-section _dresscode-section-wrap">
-        <img class="_main-image" src="#" data-replace="Image_DressCodeUrl" alt="Dress Code" />
+        <img class="_main-image" data-replace="Image_DressCodeUrl" alt="Dress Code" />
         <div class="_details">
           <div class="dc-left">
             <span class="dc-eyebrow">Código de vestimenta</span>
@@ -340,12 +340,12 @@
         <p>Tu presencia es nuestro mejor regalo. Si deseas obsequiarnos algo, te sugerimos la siguiente opción:</p>
         <div class="_btn-brands" style="display: flex; flex-direction: column; width: 100%">
           <a href="#" data-replace="EventAmazonGiftTableUrl" target="_blank" class="_btn-gift">
-            <img src="#" data-replace="Image_AmazonUrl" alt="Amazon" />
+            <img data-replace="Image_AmazonUrl" alt="Amazon" />
             Amazon
             <span class="gift-arrow"><i class="fas fa-arrow-right"></i></span>
           </a>
           <a href="#" data-replace="EventLiverpoolGiftTableUrl" target="_blank" class="_btn-gift">
-            <img src="#" data-replace="Image_LiverpoolUrl" alt="Liverpool" />
+            <img data-replace="Image_LiverpoolUrl" alt="Liverpool" />
             Liverpool
             <span class="gift-arrow"><i class="fas fa-arrow-right"></i></span>
           </a>
@@ -387,7 +387,7 @@
 
       <!-- CIERRE -->
       <div class="_end-section _hide-section">
-        <img class="_main-image" src="#" data-replace="Image_EndCard" alt="" />
+        <img class="_main-image" data-replace="Image_EndCard" alt="" />
         <div class="_details">
           <h2>
             "Y todo lo que hagan, háganlo con amor."
@@ -404,8 +404,8 @@
       <section class="moomentos-tagline _hide-section">
         <span class="moomentos-tagline__line"></span>
         <a href="https://www.moomentos.com" target="_blank" rel="noopener noreferrer">
-          Invitaciones que enamoran desde el primer vistazo —
-          <span>Moomentos.</span>
+          Invitaciones que enamoran desde el primer vistazo
+          <span>Moomentos</span>
         </a>
         <span class="moomentos-tagline__line"></span>
       </section>
@@ -483,7 +483,7 @@
       };
 
       var secondaryEvent = {
-        Date: new Date("2026-10-17T17:30:00"),
+        Date: new Date("2026-10-17T19:30:00"), // recepción después de la ceremonia (17:30)
         LocationDescription: "La Terraza Clouthier",
         Address: "Av Manuel J. Clouthier 480, Lomas de Guadalupe, 45038 Guadalajara, Jal.",
         GoogleMapsUrl: "https://maps.app.goo.gl/HpD9ZEkGmku4WTyT8",
@@ -516,6 +516,9 @@
 
         $("[data-replace=EventFormatDate]").text(eventFormatDate);
         $("[data-replace=DressCodeStyle]").text(mainEvent.DressCodeStyle);
+
+        // Sin galería: helpers solo quita la cuadrícula; quitar también su encabezado
+        if (!Init.Config.Sections.showGallery) $("._gallery-section-wrap").remove();
 
         // Galería
         var gallery_imgs = mainEvent.Gallery;
@@ -603,9 +606,10 @@
           $(this).hide();
           $("._hide-section").removeClass("_hide-section");
           $("#audioButton").removeClass("d-none");
+          // play() directo en el clic: Safari/iOS bloquea el audio si se llama en rAF/setTimeout
+          helpers.onPlay();
 
           requestAnimationFrame(function () {
-            helpers.onPlay();
             checkVisibility();
             initReveal();
 

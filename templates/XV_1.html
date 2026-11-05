@@ -54,7 +54,7 @@
     <link rel="preload" fetchpriority="high" as="image" href="1.webp" type="image/webp" />
 
     <!-- (Bootstrap AND CSS) -->
-    <link rel="stylesheet" href="/css/bootstrap.min.css" crossorigin />
+    <link rel="stylesheet" href="/css/bootstrap.custom.min.css" crossorigin />
     <link rel="stylesheet" href="/css/templates.min.css" />
     <link rel="stylesheet" href="/css/XV/XV_1.min.css" />
     
@@ -70,33 +70,22 @@
   <body>
     <div class="container">
       <main role="main">
-        <audio id="audio" src="#" data-replace="AudioUrl" preload="none" loop></audio>
+        <audio id="audio" data-replace="AudioUrl" preload="none" loop></audio>
 
         <div id="_invitation-carousel" class="carousel slide">
           <!-- Audio button — dentro del carousel para que quede sobre las slides -->
           <span id="audioButton" class="_template-Audio-Button off">
-            <img src="#" data-replace="Image_AudioUrl" alt="Audio" width="22px" height="22px" />
+            <img data-replace="Image_AudioUrl" alt="Audio" width="22px" height="22px" />
           </span>
 
-          <!-- Indicadores -->
-          <div class="carousel-indicators">
-            <button type="button" data-bs-target="#_invitation-carousel" data-bs-slide-to="0" class="active" aria-current="true"></button>
-            <button type="button" data-bs-target="#_invitation-carousel" data-bs-slide-to="1"></button>
-            <button type="button" data-bs-target="#_invitation-carousel" data-bs-slide-to="2"></button>
-            <button type="button" data-bs-target="#_invitation-carousel" data-bs-slide-to="3"></button>
-            <button type="button" data-bs-target="#_invitation-carousel" data-bs-slide-to="4"></button>
-            <button type="button" data-bs-target="#_invitation-carousel" data-bs-slide-to="5"></button>
-            <button type="button" data-bs-target="#_invitation-carousel" data-bs-slide-to="6"></button>
-            <button type="button" data-bs-target="#_invitation-carousel" data-bs-slide-to="7"></button>
-            <button type="button" data-bs-target="#_invitation-carousel" data-bs-slide-to="8"></button>
-            <button type="button" data-bs-target="#_invitation-carousel" data-bs-slide-to="9"></button>
-          </div>
+          <!-- Indicadores: se generan en JS según las tarjetas que quedan visibles -->
+          <div class="carousel-indicators"></div>
 
           <div class="carousel-inner">
             <!-- SLIDE 1 — PORTADA + CONTADOR -->
             <div class="carousel-item active">
               <div class="card-face slide-cover">
-                <img class="cover-img" src="1.webp" data-replace="Image_MainCard" fetchpriority="high" loading="eager" />
+                <img class="cover-img" src="1.webp" data-replace="Image_MainCard" alt="Quinceañera" fetchpriority="high" loading="eager" />
                 <div class="cover-overlay"></div>
                 <div class="cover-content">
                   <p class="cover-eyebrow">Mis XV Años</p>
@@ -253,7 +242,7 @@
                       <p data-replace="MainEventAddress"></p>
                     </div>
                     <a href="#" data-replace="MainEventUrl" target="_blank">
-                      <img src="#" data-replace="Image_GoogleLocation" alt="Google Location" />
+                      <img data-replace="Image_GoogleLocation" alt="Google Location" />
                     </a>
                   </div>
 
@@ -266,7 +255,7 @@
                       <p data-replace="SecondaryEventAddress"></p>
                     </div>
                     <a href="#" data-replace="EventReceptionUrl" target="_blank">
-                      <img src="#" data-replace="Image_GoogleLocation" alt="Google Location" />
+                      <img data-replace="Image_GoogleLocation" alt="Google Location" />
                     </a>
                   </div>
                 </div>
@@ -437,12 +426,12 @@
                   <p class="slide-text" style="margin-bottom: 20px">Tu presencia es el mejor regalo. Si deseas obsequiarme algo, te sugerimos estas opciones:</p>
 
                   <a href="#" data-replace="EventAmazonGiftTableUrl" target="_blank" class="gift-btn">
-                    <img src="#" data-replace="Image_AmazonUrl" alt="Amazon" />
+                    <img data-replace="Image_AmazonUrl" alt="Amazon" />
                     <span class="gift-label">Amazon</span>
                     <span class="gift-arrow"><i class="fas fa-arrow-right"></i></span>
                   </a>
                   <a href="#" data-replace="EventLiverpoolGiftTableUrl" target="_blank" class="gift-btn">
-                    <img src="#" data-replace="Image_LiverpoolUrl" alt="Liverpool" />
+                    <img data-replace="Image_LiverpoolUrl" alt="Liverpool" />
                     <span class="gift-label">Liverpool</span>
                     <span class="gift-arrow"><i class="fas fa-arrow-right"></i></span>
                   </a>
@@ -500,8 +489,8 @@
                   <section class="moomentos-tagline">
                     <span class="moomentos-tagline__line"></span>
                     <a href="https://www.moomentos.com" target="_blank" rel="noopener noreferrer">
-                      Invitaciones que enamoran desde el primer vistazo —
-                      <span>Moomentos.</span>
+                      Invitaciones que enamoran desde el primer vistazo
+                      <span>Moomentos</span>
                     </a>
                     <span class="moomentos-tagline__line"></span>
                   </section>
@@ -841,8 +830,31 @@
 
       // ─── CAROUSEL CHECK ───────────────────────────────
       var actions = {
+        // Un punto por tarjeta real. Antes eran 10 fijos: si se quitaba una sección
+        // (sin token, sin regalos…) sobraban puntos y algunos no llevaban a nada.
+        buildIndicators: function () {
+          var $ind = $("#_invitation-carousel .carousel-indicators").empty();
+          var $items = $("#_invitation-carousel .carousel-item");
+          var active = $items.index($items.filter(".active"));
+          $items.each(function (i) {
+            $("<button>", {
+              type: "button",
+              "data-bs-target": "#_invitation-carousel",
+              "data-bs-slide-to": i,
+              "aria-label": "Tarjeta " + (i + 1),
+            })
+              .toggleClass("active", i === active)
+              .attr("aria-current", i === active ? "true" : null)
+              .appendTo($ind);
+          });
+        },
+
         onCarouselCheckItems: function () {
           var $c = $("#_invitation-carousel");
+          // Las secciones del RSVP se quitan después (respuesta asíncrona): resincronizar
+          if ($c.find(".carousel-indicators").children().length !== $c.find(".carousel-item").length) {
+            actions.buildIndicators();
+          }
           var isFirst = $(".carousel-inner .carousel-item:first").hasClass("active");
           var isLast = $(".carousel-inner .carousel-item:last").hasClass("active");
           var isGallery = $(".carousel-inner .carousel-item._gallery-section").hasClass("active");

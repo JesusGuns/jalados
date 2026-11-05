@@ -41,6 +41,9 @@
 }
 .moomentos-tagline span {
   color: var(--color-accent);
+  font-family: var(--font-e);
+  font-size: clamp(5.5rem, 10vw, 8.2rem);
+  text-shadow: 0px 2px 6px rgba(0, 0, 0, 0.3);
 }
 /* #endregion ROOT*/
 /* #region HTML*/

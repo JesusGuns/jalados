@@ -1,0 +1,10 @@
+# Moomentos - https://www.moomentos.com
+# Las invitaciones de clientes (/clientes/ y /wedding-...) se excluyen con
+# <meta name="robots" content="noindex"> en cada pagina; no se bloquean aqui
+# para que los buscadores puedan leer esa etiqueta y no las indexen.
+
+User-agent: *
+Allow: /
+Disallow: /api/
+
+Sitemap: https://www.moomentos.com/sitemap.xml

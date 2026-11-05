@@ -35,6 +35,7 @@
 }
 .moomentos-tagline span {
   color: var(--gold);
+  font-family: var(--font-display);
 }
 /* ─── BASE ─────────────────────────────────────── */
 *,

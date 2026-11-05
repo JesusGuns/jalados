@@ -55,7 +55,7 @@
     <!-- <link rel="preload" fetchpriority="high" as="image" href="mono.webp" type="image/webp" /> -->
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/css/bootstrap.custom.min.css" />
     <link rel="stylesheet" href="/css/templates.min.css" />
     <link rel="stylesheet" href="/css/Wedding/Wedding_1.min.css" />
 
@@ -72,16 +72,16 @@
     <div class="content">
       <main role="main" class="w-100">
         <div id="player">
-          <audio id="audio" src="#" data-replace="AudioUrl" preload="none" loop></audio>
+          <audio id="audio" data-replace="AudioUrl" preload="none" loop></audio>
         </div>
         <span id="audioButton" class="_template-Audio-Button off _hide-section">
-          <img src="#" data-replace="Image_AudioUrl" />
+          <img data-replace="Image_AudioUrl" alt="Audio" />
         </span>
         <div class="_template">
           <div class="_main-section">
             <div class="_wrapper">
               <!-- <img class="_main-mono" data-replace="Image_Mono" src="mono.webp" fetchpriority="high" loading="eager" decoding="sync" alt="" /> -->
-              <img class="_main-image" data-replace="Image_MainCard" src="1.webp" fetchpriority="high" loading="eager" decoding="sync" alt="" />
+              <img class="_main-image" data-replace="Image_MainCard" src="1.webp" fetchpriority="high" loading="eager" decoding="sync" alt="Los novios" />
             </div>
 
             <div class="_details">
@@ -118,7 +118,7 @@
 
           <div class="_introduction-section _hide-section">
             <div class="_wrapper">
-              <img class="_main-image" src="#" data-replace="Image_Introduction" />
+              <img class="_main-image" data-replace="Image_Introduction" />
             </div>
             <div class="_details slide-up">
               <h2>Que todas las noches sean noches de boda y que todas las lunas sean lunas de miel.</h2>
@@ -150,23 +150,23 @@
 
           <div class="_place-section _hide-section">
             <div>
-              <img class="_main-image" src="#" data-replace="Image_Place" />
+              <img class="_main-image" data-replace="Image_Place" />
             </div>
             <div class="_common-d-flex _common-flex-column">
               <h2 data-replace="MainEventLocationDescription"></h2>
               <small data-replace="MainEventHourString"></small>
               <small data-replace="MainEventAddress"></small>
-              <a class="dc-map" href="#" data-replace="EventReceptionUrl" target="_blank">
-                <img src="#" data-replace="Image_GoogleLocation" alt="Google Location" />
+              <a class="dc-map" href="#" data-replace="MainEventUrl" target="_blank">
+                <img data-replace="Image_GoogleLocation" alt="Google Location" />
               </a>
             </div>
           </div>
 
           <div class="_itinerary-section _hide-section">
-            <img class="_main-image" src="#" data-replace="Image_Itinerary" alt="Evento 1" />
+            <img class="_main-image" data-replace="Image_Itinerary" alt="Evento 1" />
           </div>
 
-          <div id="_gallery-section" class="gallery-section _hide-section">
+          <div id="_gallery-section" class="gallery-section _gallery-section _hide-section">
             <div class="gallery-header">
               <div>
                 <h2 class="section-title" style="margin-bottom: 0">Galería</h2>
@@ -179,11 +179,11 @@
 
           <div class="_lovestory-section _third-section _hide-section">
             <div class="_wrapper">
-              <img class="_main-image" src="#" data-replace="Image_LoveStory" />
+              <img class="_main-image" data-replace="Image_LoveStory" />
             </div>
             <div class="_details slide-up">
               <p>
-                En nuestros momentos más solitarios, cuando menos buscábamos el amor, fue donde el destino decidió encontrarnos. Aún no sabemos en qué instante exácto comenzó a nacer algo tan bonito, pero sí sabemos que, sin darnos cuenta, se transformó en un amor profundo, sincero y eterno.
+                En nuestros momentos más solitarios, cuando menos buscábamos el amor, fue donde el destino decidió encontrarnos. Aún no sabemos en qué instante exacto comenzó a nacer algo tan bonito, pero sí sabemos que, sin darnos cuenta, se transformó en un amor profundo, sincero y eterno.
                 <br />
                 <br />
                 Entre miles de probabilidades en nuestra rutina diaria, todo tuvo que alinearse de manera perfecta para que lo nuestro fuera único y especial. Como si la vida, con paciencia, hubiera preparado cada paso hasta llevarnos el uno al otro.
@@ -211,12 +211,12 @@
 
           <div class="_dresscode-section _hide-section">
             <div class="text-center">
-              <h1>Codigo de</h1>
+              <h1>Código de</h1>
               <h2>VESTIMENTA</h2>
               <h3 data-replace="DressCodeStyle"></h3>
             </div>
             <div class="_common-d-flex">
-              <img class="_main-image" src="#" data-replace="Image_DressCodeUrl" />
+              <img class="_main-image" data-replace="Image_DressCodeUrl" />
             </div>
           </div>
 
@@ -237,7 +237,7 @@
           </div>
 
           <div class="_table-section _hide-section">
-            <img class="_main-image" src="#" data-replace="Image_Table" />
+            <img class="_main-image" data-replace="Image_Table" />
 
             <div class="_details">
               <h1 class="_tableNumber" data-replace="TableNumber"></h1>
@@ -270,11 +270,11 @@
             <p>Para nosotros tu presencia es nuestro mejor regalo, pero si deseas hacernos llegar un obsequio, te sugerimos la siguiente opción:</p>
             <div class="_btn-brands">
               <a href="#" data-replace="EventAmazonGiftTableUrl" target="_blank" class="_btn-gift">
-                <img src="#" data-replace="Image_AmazonUrl" alt="Amazon Logo" />
+                <img data-replace="Image_AmazonUrl" alt="Amazon Logo" />
                 Amazon
               </a>
               <a href="#" data-replace="EventLiverpoolGiftTableUrl" target="_blank" class="_btn-gift">
-                <img src="#" data-replace="Image_LiverpoolUrl" alt="Liverpool Logo" />
+                <img data-replace="Image_LiverpoolUrl" alt="Liverpool Logo" />
                 Liverpool
               </a>
             </div>
@@ -282,7 +282,7 @@
 
           <div class="_end-section _hide-section">
             <div class="_wrapper">
-              <img class="_main-image" src="#" data-replace="Image_End" />
+              <img class="_main-image" data-replace="Image_End" />
             </div>
             <div class="_details">
               <h2>
@@ -290,7 +290,7 @@
                 <br />
                 háganlo con amor".
                 <br />
-                Corintios 16:14
+                1 Corintios 16:14
                 <br />
                 <br />
                 ¡Los esperamos!
@@ -302,8 +302,8 @@
           <section class="moomentos-tagline _hide-section">
             <span class="moomentos-tagline__line"></span>
             <a href="https://www.moomentos.com" target="_blank" rel="noopener noreferrer">
-              Invitaciones que enamoran desde el primer vistazo —
-              <span>Moomentos.</span>
+              Invitaciones que enamoran desde el primer vistazo
+              <span>Moomentos</span>
             </a>
             <span class="moomentos-tagline__line"></span>
           </section>
@@ -352,7 +352,7 @@
       const settings = {
         EventType: "Wedding",
         Template: true, // Cambiar a false en producción para saber que es un cliente real
-        AudioUrl: "/music/Girls Like You_1.mp3",
+        AudioUrl: "/music/girls-like-you-1.mp3",
         Sections: {
           showCounter: true,
           showIntroduction: true,
@@ -605,10 +605,8 @@
           $(this).hide();
           $("._hide-section").removeClass("_hide-section");
 
-          void document.body.offsetHeight;
-          setTimeout(function () {
-            helpers.onPlay();
-          }, 50);
+          // play() directo en el clic: Safari/iOS bloquea el audio si se llama en un setTimeout
+          helpers.onPlay();
         });
 
         checkVisibility();

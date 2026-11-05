@@ -62,10 +62,10 @@
   </head>
 
   <body>
-    <audio id="audio" src="#" data-replace="AudioUrl" preload="none" loop></audio>
+    <audio id="audio" data-replace="AudioUrl" preload="none" loop></audio>
 
     <span id="audioButton" class="_template-Audio-Button off">
-      <img src="#" data-replace="Image_AudioUrl" alt="Audio" />
+      <img data-replace="Image_AudioUrl" alt="Audio" />
     </span>
 
     <div id="themeSwitcher" class="d-none">
@@ -81,7 +81,7 @@
       <section class="hero reveal">
         <span class="hero-eyebrow">¡Ya casi llega! 🧸</span>
         <div class="hero-photo-wrap">
-          <img src="1.webp" data-replace="Image_MainCard" fetchpriority="high" loading="eager" />
+          <img src="1.webp" data-replace="Image_MainCard" alt="Bebé" fetchpriority="high" loading="eager" />
           <div class="hero-badge" id="heroBadge">🍼</div>
         </div>
         <p class="hero-title">Con mucho amor esperamos a</p>
@@ -185,7 +185,7 @@
             <small data-replace="MainEventAddress"></small>
           </div>
           <div class="vc-map">
-            <img src="#" data-replace="Image_GoogleLocation" alt="Maps" />
+            <img data-replace="Image_GoogleLocation" alt="Maps" />
           </div>
         </a>
       </section>
@@ -265,12 +265,12 @@
         <p class="section-title">Mesa de Regalos 🎁</p>
         <p class="section-sub" style="margin-bottom: 22px">Si deseas hacerle un regalo al bebé, aquí te dejamos opciones</p>
         <a href="#" data-replace="EventAmazonGiftTableUrl" target="_blank" class="gift-btn">
-          <img src="#" data-replace="Image_AmazonUrl" alt="Amazon" />
+          <img data-replace="Image_AmazonUrl" alt="Amazon" />
           <span class="gl">Amazon</span>
           <span class="ga"><i class="fas fa-arrow-right"></i></span>
         </a>
         <a href="#" data-replace="EventLiverpoolGiftTableUrl" target="_blank" class="gift-btn">
-          <img src="#" data-replace="Image_LiverpoolUrl" alt="Liverpool" />
+          <img data-replace="Image_LiverpoolUrl" alt="Liverpool" />
           <span class="gl">Liverpool</span>
           <span class="ga"><i class="fas fa-arrow-right"></i></span>
         </a>
@@ -290,8 +290,8 @@
         <section class="moomentos-tagline">
           <span class="moomentos-tagline__line"></span>
           <a href="https://www.moomentos.com" target="_blank" rel="noopener noreferrer">
-            Invitaciones que enamoran desde el primer vistazo —
-            <span>Moomentos.</span>
+            Invitaciones que enamoran desde el primer vistazo
+            <span>Moomentos</span>
           </a>
           <span class="moomentos-tagline__line"></span>
         </section>
@@ -326,9 +326,11 @@
       const settings = {
         EventType: "BabyShower",
         Template: true, // Cambiar a false en producción para saber que es un cliente real
-        AudioUrl: "/music/Here Comes The Sun.mp3",
+        AudioUrl: "/music/here-comes-the-sun.mp3",
         Sections: {
           showCounter: true,
+          showIntroduction: false,
+          showParents: false,
           showItinerary: true,
           showGallery: true,
           showAttendance: true,

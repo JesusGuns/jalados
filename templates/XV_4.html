@@ -66,10 +66,10 @@
   </head>
 
   <body>
-    <audio id="audio" src="#" data-replace="AudioUrl" preload="none" loop></audio>
+    <audio id="audio" data-replace="AudioUrl" preload="none" loop></audio>
 
     <span id="audioButton" class="_template-Audio-Button off d-none">
-      <img src="#" data-replace="Image_AudioUrl" alt="Audio" />
+      <img data-replace="Image_AudioUrl" alt="Audio" />
     </span>
 
     <div id="themeSwitcher" class="d-none">
@@ -130,7 +130,7 @@
         <h2>Con todo mi amor</h2>
         <div class="parents-grid">
           <div class="pa">
-            <img src="#" data-replace="Image_MyParents" alt="Mis Padres" />
+            <img data-replace="Image_MyParents" alt="Mis Padres" />
             <h3>Mis padres</h3>
             <ul>
               <li data-replace="EventFather"></li>
@@ -138,7 +138,7 @@
             </ul>
           </div>
           <div class="pa">
-            <img src="#" data-replace="Image_MyGodParents" alt="Mis Padrinos" />
+            <img data-replace="Image_MyGodParents" alt="Mis Padrinos" />
             <h3>Mis padrinos</h3>
             <ul>
               <li data-replace="EventGodFather"></li>
@@ -165,7 +165,7 @@
             <p class="pl" data-replace="MainEventLocationDescription"></p>
             <p class="ad" data-replace="MainEventAddress"></p>
           </div>
-          <div class="mp"><img src="#" data-replace="Image_GoogleLocation" alt="Maps" /></div>
+          <div class="mp"><img data-replace="Image_GoogleLocation" alt="Maps" /></div>
         </a>
         <a href="#" data-replace="EventReceptionUrl" target="_blank" class="venue">
           <div>
@@ -173,7 +173,7 @@
             <p class="pl" data-replace="SecondaryEventLocationDescription"></p>
             <p class="ad" data-replace="SecondaryEventAddress"></p>
           </div>
-          <div class="mp"><img src="#" data-replace="Image_GoogleLocation" alt="Maps" /></div>
+          <div class="mp"><img data-replace="Image_GoogleLocation" alt="Maps" /></div>
         </a>
       </section>
 
@@ -199,7 +199,7 @@
 
       <!-- DRESS CODE -->
       <section class="dress _dresscode-section reveal">
-        <img src="#" data-replace="Image_DressCodeUrl" alt="Dress Code" />
+        <img data-replace="Image_DressCodeUrl" alt="Dress Code" />
         <div class="tx">
           <p>Código de vestimenta</p>
           <h2 data-replace="DressCodeStyle">Formal</h2>
@@ -228,12 +228,12 @@
         <h2>Mesa de regalos</h2>
         <p>Tu presencia es el mejor regalo. Si deseas obsequiarme algo, estas son mis opciones.</p>
         <a href="#" data-replace="EventAmazonGiftTableUrl" target="_blank" class="gift">
-          <img src="#" data-replace="Image_AmazonUrl" alt="Amazon" />
+          <img data-replace="Image_AmazonUrl" alt="Amazon" />
           <span>Amazon</span>
           <i class="fas fa-arrow-right"></i>
         </a>
         <a href="#" data-replace="EventLiverpoolGiftTableUrl" target="_blank" class="gift">
-          <img src="#" data-replace="Image_LiverpoolUrl" alt="Liverpool" />
+          <img data-replace="Image_LiverpoolUrl" alt="Liverpool" />
           <span>Liverpool</span>
           <i class="fas fa-arrow-right"></i>
         </a>
@@ -258,8 +258,8 @@
         <strong data-replace="EventName"></strong>
         <section class="moomentos-tagline">
           <a href="https://www.moomentos.com" target="_blank" rel="noopener noreferrer">
-            Invitaciones que enamoran desde el primer vistazo —
-            <span>Moomentos.</span>
+            Invitaciones que enamoran desde el primer vistazo
+            <span>Moomentos</span>
           </a>
         </section>
       </footer>
@@ -564,8 +564,9 @@
           $(this).remove();
           $("#hiddenContent").removeClass("_hide-section");
           $("#audioButton").removeClass("d-none");
+          // play() directo en el clic: Safari/iOS bloquea el audio si se llama después (rAF/setTimeout)
+          helpers.onPlay();
           requestAnimationFrame(function () {
-            helpers.onPlay();
             document.getElementById("hiddenContent").scrollIntoView({ behavior: "smooth" });
           });
         });

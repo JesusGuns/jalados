@@ -54,7 +54,7 @@
     <link rel="preload" fetchpriority="high" as="image" href="1.webp" type="image/webp" />
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="/css/bootstrap.min.css" crossorigin />
+    <link rel="stylesheet" href="/css/bootstrap.custom.min.css" crossorigin />
     <link rel="stylesheet" href="/css/templates.min.css" />
     <link rel="stylesheet" href="/css/XV/XV_3.min.css" />
     
@@ -67,18 +67,18 @@
   </head>
 
   <body>
-    <audio id="audio" src="#" data-replace="AudioUrl" preload="none" loop></audio>
+    <audio id="audio" data-replace="AudioUrl" preload="none" loop></audio>
 
     <span id="audioButton" class="_template-Audio-Button off">
-      <img src="#" data-replace="Image_AudioUrl" alt="Audio" />
+      <img data-replace="Image_AudioUrl" alt="Audio" />
     </span>
 
     <div id="themeSwitcher" class="d-none">
-      <button class="theme-btn" data-theme="t1" style="background: #fdf8f0" title="Pergamino"></button>
+      <button class="theme-btn active" data-theme="t1" style="background: #fdf8f0" title="Pergamino"></button>
       <button class="theme-btn" data-theme="t2" style="background: #f0ece4" title="Marfil"></button>
       <button class="theme-btn" data-theme="t3" style="background: #eef4ee" title="Salvia"></button>
       <button class="theme-btn" data-theme="t4" style="background: #f4f0f8" title="Lavanda"></button>
-      <button class="theme-btn active" data-theme="t5" style="background: #fdf0ec" title="Durazno"></button>
+      <button class="theme-btn" data-theme="t5" style="background: #fdf0ec" title="Durazno"></button>
     </div>
 
     <div class="wrap">
@@ -114,8 +114,8 @@
         </div>
 
         <!-- ENCABEZADO -->
-        <div class="ltr-header _counter-section">
-          <span class="ltr-pre">XV · Años · 2026</span>
+        <div class="ltr-header">
+          <span class="ltr-pre">XV · Años · <span data-replace="MainEventYear"></span></span>
           <h1 class="ltr-title">
             Mis Quince
             <br />
@@ -132,7 +132,7 @@
             </svg>
           </div>
           <!-- Contador dentro del header -->
-          <div class="counter-block" style="margin-top: 14px; margin-bottom: 0">
+          <div class="counter-block _counter-section" style="margin-top: 14px; margin-bottom: 0">
             <div class="c-unit">
               <span class="cn" id="days">00</span>
               <span class="cl">Días</span>
@@ -156,9 +156,9 @@
         </div>
 
         <!-- FOTO CIRCULAR + NOMBRE -->
-        <div class="portrait-wrap _introduction-section">
+        <div class="portrait-wrap">
           <div class="portrait-ring">
-            <img class="portrait-img" src="1.webp" data-replace="Image_MainCard" fetchpriority="high" loading="eager" />
+            <img class="portrait-img" src="1.webp" data-replace="Image_MainCard" alt="Quinceañera" fetchpriority="high" loading="eager" />
             <svg class="ring-text" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
               <defs>
                 <path id="circle-path" d="M 100,100 m -75,0 a 75,75 0 1,1 150,0 a 75,75 0 1,1 -150,0" />
@@ -180,7 +180,7 @@
         </div>
 
         <!-- QUOTE -->
-        <div class="quote-block">
+        <div class="quote-block _introduction-section">
           <span class="quote-mark">"</span>
           <p class="quote-text">Los momentos más esperados se sueñan, se imaginan, se construyen. Y cuando llega ese día tan especial, lo más importante es que estés a mi lado.</p>
         </div>
@@ -191,7 +191,7 @@
           <div class="divider"><span>✦</span></div>
           <div class="parents-grid">
             <div class="parent-box">
-              <img src="#" data-replace="Image_MyParents" alt="Mis Padres" />
+              <img data-replace="Image_MyParents" alt="Mis Padres" />
               <div class="pb-body">
                 <span class="pb-label">Mis Padres</span>
                 <p class="pb-names">
@@ -202,7 +202,7 @@
               </div>
             </div>
             <div class="parent-box">
-              <img src="#" data-replace="Image_MyGodParents" alt="Mis Padrinos" />
+              <img data-replace="Image_MyGodParents" alt="Mis Padrinos" />
               <div class="pb-body">
                 <span class="pb-label">Mis Padrinos</span>
                 <p class="pb-names">
@@ -236,7 +236,7 @@
               <p class="dr-address" data-replace="MainEventAddress"></p>
             </div>
             <span class="dr-icon">
-              <img src="#" data-replace="Image_GoogleLocation" alt="Maps" />
+              <img data-replace="Image_GoogleLocation" alt="Maps" />
             </span>
           </a>
           <a href="#" data-replace="EventReceptionUrl" target="_blank" class="detail-row">
@@ -248,7 +248,7 @@
               <p class="dr-address" data-replace="SecondaryEventAddress"></p>
             </div>
             <span class="dr-icon">
-              <img src="#" data-replace="Image_GoogleLocation" alt="Maps" />
+              <img data-replace="Image_GoogleLocation" alt="Maps" />
             </span>
           </a>
         </div>
@@ -291,7 +291,7 @@
 
         <!-- DRESS CODE -->
         <div class="dresscode-block _dresscode-section">
-          <img class="dc-photo" src="#" data-replace="Image_DressCodeUrl" alt="Dress Code" />
+          <img class="dc-photo" data-replace="Image_DressCodeUrl" alt="Dress Code" />
           <div class="dc-veil"></div>
           <div class="dc-text">
             <span class="dc-eyebrow">Código de vestimenta</span>
@@ -337,12 +337,12 @@
           <span class="ltr-pre" style="margin-bottom: 4px">Mesa de Regalos</span>
           <p style="font-family: var(--font-fell); font-style: italic; color: var(--ink-mid); font-size: 0.9rem; margin: 8px 0 14px; line-height: 1.7">Tu presencia es el mejor regalo. Si deseas obsequiarme algo, te sugerimos estas opciones:</p>
           <a href="#" data-replace="EventAmazonGiftTableUrl" target="_blank" class="gift-row">
-            <img src="#" data-replace="Image_AmazonUrl" alt="Amazon" />
+            <img data-replace="Image_AmazonUrl" alt="Amazon" />
             <span class="gl">Amazon</span>
             <span class="ga"><i class="fas fa-arrow-right"></i></span>
           </a>
           <a href="#" data-replace="EventLiverpoolGiftTableUrl" target="_blank" class="gift-row">
-            <img src="#" data-replace="Image_LiverpoolUrl" alt="Liverpool" />
+            <img data-replace="Image_LiverpoolUrl" alt="Liverpool" />
             <span class="gl">Liverpool</span>
             <span class="ga"><i class="fas fa-arrow-right"></i></span>
           </a>
@@ -390,8 +390,8 @@
         <section class="moomentos-tagline">
           <span class="moomentos-tagline__line"></span>
           <a href="https://www.moomentos.com" target="_blank" rel="noopener noreferrer">
-            Invitaciones que enamoran desde el primer vistazo —
-            <span>Moomentos.</span>
+            Invitaciones que enamoran desde el primer vistazo
+            <span>Moomentos</span>
           </a>
           <span class="moomentos-tagline__line"></span>
         </section>

@@ -1,10 +1,16 @@
 .moomentos-tagline {
+  font-size: 0.68rem;
+  letter-spacing: 0.06em;
+  gap: 4px 8px;
+  padding: 48px 24px 90px 24px;
   display: flex;
-  align-items: center;
+  flex-wrap: wrap;
   justify-content: center;
-  gap: 18px;
-  padding: 48px 24px 0;
+  align-items: center;
   text-align: center;
+  background: var(--bg-dark);
+  color: var(--text-light);
+  overflow-wrap: break-word;
 }
 
 .moomentos-tagline__line {
@@ -15,27 +21,35 @@
 }
 
 .moomentos-tagline a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  text-decoration: none;
+  font-size: 0.7rem;
+  font-style: normal;
+  font-weight: 400;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  opacity: 0.9;
+  color: var(--bg-primary);
   font-family: serif;
-  font-style: italic;
-  font-weight: 600;
-  font-size: 1.15rem;
-  line-height: 1.5;
-  color: #2b2b2b;
   margin: 0;
   max-width: 480px;
-  text-decoration: none;;
 }
 
 .moomentos-tagline span {
+  display: block;
+  font-size: 3rem;
+  line-height: 1.1;
   font-style: normal;
-  font-weight: 600;
-  letter-spacing: 0.08em;
+  font-weight: 400;
+  letter-spacing: 0;
+  text-transform: none;
+  color: #e8d3a8;
 }
 
 @media (max-width: 500px) {
-  .moomentos-tagline a {
-    font-size: 1rem;
-  }
   .moomentos-tagline__line {
     max-width: 32px;
   }

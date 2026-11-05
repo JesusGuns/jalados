@@ -40,6 +40,7 @@
 }
 .moomentos-tagline span {
   color: var(--sage);
+  font-family: "Jost", cursive;
 }
 /* ─── BASE ─────────────────────────────────────── */
 *,

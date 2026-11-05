@@ -56,10 +56,10 @@
   </head>
 
   <body>
-    <audio id="audio" src="#" data-replace="AudioUrl" preload="none" loop></audio>
+    <audio id="audio" data-replace="AudioUrl" preload="none" loop></audio>
 
     <span id="audioButton" class="_template-Audio-Button off d-none">
-      <img src="#" data-replace="Image_AudioUrl" alt="Audio" />
+      <img data-replace="Image_AudioUrl" alt="Audio" />
     </span>
 
     <div id="themeSwitcher" class="d-none">
@@ -138,7 +138,7 @@
               <div>
                 <b data-replace="MainEventLocationDescription"></b>
                 <small data-replace="MainEventAddress"></small>
-                <a href="#" data-replace="MainEventUrl" target="_blank" class="map-link"><span class="vc-map"><img src="#" data-replace="Image_GoogleLocation" alt="Maps" /></span>Ver mapa</a>
+                <a href="#" data-replace="MainEventUrl" target="_blank" class="map-link"><span class="vc-map"><img data-replace="Image_GoogleLocation" alt="Maps" /></span>Ver mapa</a>
               </div>
             </div>
           </div>
@@ -177,8 +177,8 @@
           <h2 class="ttl">Mesa de Regalos</h2>
           <p class="sub">Si deseas hacerle un regalo al bebé, jala un globo 🎈</p>
           <div class="balloons">
-            <a href="#" data-replace="EventAmazonGiftTableUrl" target="_blank" class="balloon"><img src="#" data-replace="Image_AmazonUrl" alt="Amazon" />Amazon</a>
-            <a href="#" data-replace="EventLiverpoolGiftTableUrl" target="_blank" class="balloon"><img src="#" data-replace="Image_LiverpoolUrl" alt="Liverpool" />Liverpool</a>
+            <a href="#" data-replace="EventAmazonGiftTableUrl" target="_blank" class="balloon"><img data-replace="Image_AmazonUrl" alt="Amazon" />Amazon</a>
+            <a href="#" data-replace="EventLiverpoolGiftTableUrl" target="_blank" class="balloon"><img data-replace="Image_LiverpoolUrl" alt="Liverpool" />Liverpool</a>
           </div>
           <div style="height:40px"></div>
         </section>
@@ -189,7 +189,7 @@
           <p>Con mucho amor y muchas ganas de celebrar<br />la llegada de <strong data-replace="EventName"></strong></p>
           <section class="moomentos-tagline">
             <span class="moomentos-tagline__line"></span>
-            <a href="https://www.moomentos.com" target="_blank" rel="noopener noreferrer">Invitaciones que enamoran desde el primer vistazo — <span>Moomentos.</span></a>
+            <a href="https://www.moomentos.com" target="_blank" rel="noopener noreferrer">Invitaciones que enamoran desde el primer vistazo <span>Moomentos</span></a>
             <span class="moomentos-tagline__line"></span>
           </section>
         </footer>
@@ -220,6 +220,7 @@
         AudioUrl: "/music/EnMiCorazonViviras.mp3",
         Sections: {
           showCounter: true,
+          showParents: false,
           showItinerary: true,
           showGallery: true,
           showAttendance: true,

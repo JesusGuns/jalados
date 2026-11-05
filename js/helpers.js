@@ -212,28 +212,30 @@ export const helpers = {
 
     return intervalId;
   },
+  // Pone el botón (clase "off" + ícono) según el estado REAL del audio.
+  // Antes el ícono cambiaba a "pausa" al dar clic aunque play() fallara,
+  // y se quedaba así aunque no sonara nada.
+  onSyncAudioButton: function () {
+    var audio = document.getElementById("audio");
+    var playing = !!audio && !audio.paused && !audio.ended;
+    $("#audioButton").toggleClass("off", !playing);
+    $("[data-replace=Image_AudioUrl]").attr("src", playing ? Resources.StaticLinks.ImageAudioPauseUrl : Resources.StaticLinks.ImageAudioUrl);
+  },
   onAudioPlayer: function () {
-    var $audioButton = $("#audioButton");
-    $audioButton.on("click", function () {
-      $("#audio").OnAudioPlayerClick($audioButton);
-      if ($("#audioButton").hasClass("off")) {
-        $("[data-replace=Image_AudioUrl]").attr("src", Resources.StaticLinks.ImageAudioUrl);
-      } else {
-        $("[data-replace=Image_AudioUrl]").attr("src", Resources.StaticLinks.ImageAudioPauseUrl);
-      }
+    var audio = document.getElementById("audio");
+    if (audio && !audio._moomentosBound) {
+      audio._moomentosBound = true;
+      // También cubre pausas que no vienen del botón (llamada, bloqueo de pantalla, etc.)
+      ["play", "playing", "pause", "ended", "error"].forEach(function (ev) {
+        audio.addEventListener(ev, helpers.onSyncAudioButton);
+      });
+    }
+    $("#audioButton").on("click", function () {
+      $("#audio").OnAudioPlayerClick($("#audioButton"));
     });
   },
   onPlay: function () {
-    var $audioButton = $("#audioButton");
-    var $audio = $("#audio");
-
-    // Cachea el selector para no buscarlo dos veces
-    $audio.OnAudioPlayerClick($audioButton);
-
-    var isOff = $audioButton.hasClass("off");
-    var src = isOff ? Resources.StaticLinks.ImageAudioUrl : Resources.StaticLinks.ImageAudioPauseUrl;
-
-    $("[data-replace=Image_AudioUrl]").attr("src", src);
+    $("#audio").OnAudioPlayerClick($("#audioButton"));
   },
   onToasty: function (mensaje, colorPrincipal = "#8B5E83") {
     if (Resources.Config.EventType == "Wedding") colorPrincipal = "#a68966";
@@ -366,6 +368,10 @@ export const helpers = {
 
     if (type === "BabyShower") {
       $("[data-replace=EventName]").text(main.Name);
+      $("[data-replace=EventFather]").text(main.Father || "");
+      $("[data-replace=EventMother]").text(main.Mother || "");
+      $("[data-replace=EventGodFather]").text(main.GodFather || "");
+      $("[data-replace=EventGodMother]").text(main.GodMother || "");
     }
 
     // ─── AUDIO ─────────────────────────────────────────
@@ -382,7 +388,6 @@ export const helpers = {
 
 export const rsvp = {
   _sending: false,
-  _lastSent: null,
 
   onGetRSVP: function () {
     if (Resources.RSVP.Enable && Resources.Config.Template) {
@@ -395,16 +400,7 @@ export const rsvp = {
       return;
     }
 
-    const pathParts = window.location.pathname.split("/").filter(Boolean);
-    let token = "";
-    if (Resources.RSVP.Enable && !Resources.Config.Template) {
-      if (pathParts.length > 1) {
-        token = pathParts[pathParts.length - 1];
-      } else {
-        const params = new URLSearchParams(window.location.search);
-        token = params.get("token") || "";
-      }
-    }
+    const token = rsvp._getToken();
 
     if (!token) {
       Resources.Config.Sections.showTableNumber = false;
@@ -420,7 +416,9 @@ export const rsvp = {
     // ESTA LÍNEA OCULTA EL "?token=..." DE LA BARRA DE DIRECCIONES SIN BORRAR LA VARIABLE
     // window.history.replaceState({}, document.title, window.location.pathname.replace('/index.html', ''));
 
-    fetch(`/api/sheet?token=${token}&eventID=${Resources.RSVP.EventID}`)
+    // URLSearchParams codifica token y eventID (espacios, &, #, etc.)
+    const qs = new URLSearchParams({ token: token, eventID: Resources.RSVP.EventID });
+    fetch(`/api/sheet?${qs}`)
       .then((resp) => {
         if (!resp.ok) throw new Error(`HTTP error ${resp.status}`);
         return resp.json();
@@ -450,48 +448,37 @@ export const rsvp = {
       });
   },
 
-  // Obtiene el token de la URL (solo en invitaciones reales, no en templates)
+  // Obtiene el token de la URL (solo en invitaciones reales, no en templates).
+  // Única fuente para leerlo: la usan onGetRSVP y onPostRSPV.
+  //   /wedding-cliente/TOKEN                          → TOKEN (URL que se comparte)
+  //   /clientes/Wedding/cliente/index.html?token=X   → X     (ruta directa al archivo)
   _getToken: function () {
     if (Resources.Config.Template) return "";
-    const pathParts = window.location.pathname.split("/").filter(Boolean);
-    if (pathParts.length > 1) return pathParts[pathParts.length - 1];
+    const parts = window.location.pathname.split("/").filter(Boolean);
+    const last = parts[parts.length - 1] || "";
+    const isFilePath = parts[0] === "clientes" || /\.html?$/i.test(last);
+    if (parts.length > 1 && !isFilePath) return last;
     return new URLSearchParams(window.location.search).get("token") || "";
   },
 
-  // Devuelve true si se guardó. Reintenta solo ante errores de red, timeout o 5xx.
-  _send: async function (payload, maxAttempts) {
-    for (let attempt = 0; attempt < maxAttempts; attempt++) {
-      const ctrl = new AbortController();
-      const timer = setTimeout(() => ctrl.abort(), 20000);
-      try {
-        const resp = await fetch("/api/sheet", {
-          method: "POST",
-          keepalive: true,
-          signal: ctrl.signal,
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(payload),
-        });
-        clearTimeout(timer);
-
-        // Error del cliente (400, 405...): reintentar no sirve
-        if (resp.status >= 400 && resp.status < 500) return false;
-
-        if (resp.ok) {
-          const data = await resp.json();
-          // Error lógico del Apps Script (token inválido, etc.): no reintentar
-          return !!data.success;
-        }
-        // 5xx: cae al backoff y reintenta
-      } catch (err) {
-        clearTimeout(timer);
-        console.warn(`RSVP intento ${attempt + 1} falló:`, err);
-      }
-
-      if (attempt < maxAttempts - 1) {
-        await new Promise((r) => setTimeout(r, 1000 * 2 ** attempt)); // 1s, 2s
-      }
+  // Un solo envío, sin reintentos: Apps Script siempre termina de guardar
+  // aunque tarde, y reintentar generaba renglones duplicados.
+  // Devuelve true si se guardó.
+  _send: async function (payload) {
+    try {
+      const resp = await fetch("/api/sheet", {
+        method: "POST",
+        keepalive: true, // el envío sigue aunque el invitado cierre la página
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+      if (!resp.ok) return false;
+      const data = await resp.json();
+      return !!data.success;
+    } catch (err) {
+      console.warn("RSVP: el envío falló:", err);
+      return false;
     }
-    return false;
   },
 
   onPostRSPV: function (confirmation, guestAttendants, wishes) {
@@ -514,7 +501,7 @@ export const rsvp = {
 
     const token = rsvp._getToken();
     if (!token) {
-      //helpers.onToasty("No encontramos tu invitación. Abre el enlace que te compartieron.", "#c0392b");
+      console.log("No encontramos tu invitación. Abre el enlace que te compartieron.");
       return;
     }
 
@@ -527,37 +514,26 @@ export const rsvp = {
       wishes: wishes,
     };
 
-    // Misma respuesta que ya se guardó: no reenviar, solo confirmar de nuevo
-    const key = JSON.stringify(payload);
-    // if (rsvp._lastSent === key) {
-    //   helpers.onToasty(confirmation ? Resources.Messages.Confirmation : Resources.Messages.WillNotAttend);
-    //   return;
-    // }
-
-    // UI: bloquear botones y mostrar éxito de inmediato
+    // UI: bloquear botones y mostrar éxito de inmediato (Apps Script tarda)
     rsvp._sending = true;
     const $btns = $("#_btnYes, #_btnNo").prop("disabled", true).css("opacity", 0.6);
     helpers.onToasty(confirmation ? Resources.Messages.Confirmation : Resources.Messages.WillNotAttend);
 
-    // Envío en segundo plano con red de seguridad
-    rsvp._send(payload, 3).then((ok) => {
+    // Envío en segundo plano
+    rsvp._send(payload).then((ok) => {
       rsvp._sending = false;
       $btns.prop("disabled", false).css("opacity", 1);
-
-      if (ok) {
-        rsvp._lastSent = key;
-      } else {
-        //helpers.onToasty("No pudimos guardar tu respuesta. Por favor inténtalo de nuevo 🙏", "#c0392b");
-      }
+      if (!ok) console.warn("RSVP: Apps Script no confirmó el guardado");
     });
   },
 
   onSendWhatsApp: function (confirmation, guestAttendants, wishes) {
     const r = Resources.RSVP;
     const main = Resources.MainEvent;
-    const isWedding = Resources.Config.EventType === "Wedding";
+    const type = Resources.Config.EventType;
+    const isWedding = type === "Wedding";
 
-    const eventLabel = isWedding ? "la boda de" : "los XV años de";
+    const eventLabel = isWedding ? "la boda de" : type === "BabyShower" ? "el baby shower de" : "los XV años de";
     const eventName = isWedding ? `${main.BrideShortName} y ${main.GroomShortName}` : main.Name;
 
     const E = {
@@ -589,20 +565,24 @@ export const rsvp = {
 $.fn.extend({
   OnAudioPlayerClick: function ($audioButton) {
     var audio = this[0];
+    if (!audio) return;
     if (audio.paused) {
-      var playPromise = audio.play();
+      // Si nunca cargó (preload="none" o un intento fallido), forzar la carga
+      if (audio.networkState === audio.NETWORK_NO_SOURCE || audio.error) audio.load();
 
-      // Evita el error silencioso que congela el hilo
+      var playPromise = audio.play();
       if (playPromise !== undefined) {
-        playPromise.catch(function (err) {
-          console.warn("Audio bloqueado por el navegador:", err);
-          $audioButton.addClass("off");
-        });
+        playPromise
+          .then(helpers.onSyncAudioButton)
+          .catch(function (err) {
+            // NotAllowedError = el navegador exige un toque; NotSupportedError = no pudo cargar el archivo
+            console.warn("No se pudo reproducir la música:", err && err.name, audio.currentSrc, audio.error);
+            helpers.onSyncAudioButton();
+          });
       }
-      $audioButton.removeClass("off");
     } else {
       audio.pause();
-      $audioButton.addClass("off");
     }
+    helpers.onSyncAudioButton();
   },
 });

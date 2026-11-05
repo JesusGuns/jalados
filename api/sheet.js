@@ -1,8 +1,12 @@
 // api/sheet.js
 const cache = new Map();
-const CACHE_TTL = 6 * 60 * 60 * 1000; // 6 horas
+// 2 min: solo amortigua ráfagas. La caché larga vive en Apps Script, que sí se
+// puede limpiar al editar la hoja; esta, en memoria de Vercel, no.
+const CACHE_TTL = 2 * 60 * 1000;
 const MAX_CACHE = 500; // tope de entradas para que el Map no crezca sin límite
-const UPSTREAM_TIMEOUT = 10000; // 10 s hacia Apps Script
+// 25 s hacia Apps Script. Debe ser MENOR que maxDuration de vercel.json (30 s):
+// si Vercel corta la función antes, el cliente recibe un 504 aunque Apps Script sí guarde.
+const UPSTREAM_TIMEOUT = 25000;
 
 // Anti-duplicados de POST (RSVP): recuerda envíos recientes para que un
 // reintento no vuelva a escribir otra fila en la hoja.
@@ -13,7 +17,6 @@ const MAX_RECENT = 500;
 // URL del Apps Script. En Vercel: Settings → Environment Variables → SHEET_URL
 // (queda el valor actual como respaldo para que no se rompa al desplegar)
 const SHEET_URL =
-  process.env.SHEET_URL ||
   "https://script.google.com/macros/s/AKfycbyCUTnb4Uh1FUEni-k3y3NuFYI5WPnv9foN39Ay_u8XAHRvL_Y6YKwDRXE3D8z9uOWM/exec";
 
 const ALLOWED_ORIGINS = (process.env.ALLOWED_ORIGINS || "https://www.moomentos.com,https://moomentos.com")

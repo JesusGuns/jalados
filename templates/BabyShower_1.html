@@ -64,10 +64,10 @@
     <div class="container">
       <main role="main" class="w-100">
         <div id="player">
-          <audio id="audio" src="#" data-replace="AudioUrl" preload="none" loop></audio>
+          <audio id="audio" data-replace="AudioUrl" preload="none" loop></audio>
         </div>
         <span id="audioButton" class="_template-Audio-Button on off">
-          <img src="#" data-replace="Image_AudioUrl" alt="Audio" />
+          <img data-replace="Image_AudioUrl" alt="Audio" />
         </span>
         <!-- Initial section -->
         <section class="box">
@@ -123,7 +123,7 @@
                 <h3 class="mt">
                   ¿Dónde?
                   <a href="#" data-replace="MainEventUrl" target="_blank">
-                    <img class="location-maps" src="#" data-replace="Image_GoogleLocation" alt="Google Location" />
+                    <img class="location-maps" data-replace="Image_GoogleLocation" alt="Google Location" />
                   </a>
                 </h3>
                 <p data-replace="MainEventLocationDescription"></p>
@@ -190,7 +190,7 @@
             <h2 class="bookTitle">Momentos ✨</h2>
             <div class="book-wrapper">
               <div class="book" id="book"></div>
-              <img class="imgTap" id="tapHint" src="#" data-replace="Image_Tap" alt="Tap tap" />
+              <img class="imgTap" id="tapHint" data-replace="Image_Tap" alt="Tap tap" />
             </div>
           </div>
         </section>
@@ -201,11 +201,11 @@
             <p>Para nosotros tu presencia es nuestro mejor regalo, pero si deseas hacernos llegar un obsequio, te sugerimos la siguiente opción:</p>
             <div class="_btn-brands">
               <a href="#" data-replace="EventAmazonGiftTableUrl" target="_blank" class="_btn-gift">
-                <img src="#" data-replace="Image_AmazonUrl" />
+                <img data-replace="Image_AmazonUrl" alt="Amazon" />
                 Amazon
               </a>
               <a href="#" data-replace="EventLiverpoolGiftTableUrl" target="_blank" class="_btn-gift">
-                <img src="#" data-replace="Image_LiverpoolUrl" />
+                <img data-replace="Image_LiverpoolUrl" alt="Liverpool" />
                 Liverpool
               </a>
             </div>
@@ -226,8 +226,8 @@
         <section class="moomentos-tagline">
           <span class="moomentos-tagline__line"></span>
           <a href="https://www.moomentos.com" target="_blank" rel="noopener noreferrer">
-            Invitaciones que enamoran desde el primer vistazo —
-            <span>Moomentos.</span>
+            Invitaciones que enamoran desde el primer vistazo
+            <span>Moomentos</span>
           </a>
           <span class="moomentos-tagline__line"></span>
         </section>
@@ -250,7 +250,7 @@
       const settings = {
         EventType: "BabyShower",
         Template: true, // Cambiar a false en producción para saber que es un cliente real
-        AudioUrl: "/music/Here Comes The Sun.mp3",
+        AudioUrl: "/music/here-comes-the-sun.mp3",
         Sections: {
           showCounter: true,
           showItinerary: true,
@@ -350,6 +350,7 @@
       // ─── ONLOAD LOCAL ─────────────────────────────────
       function onLoad() {
         $("body").css("background-image", 'url("' + additionalInformation.ImageBodyBackground + '")');
+        $("[data-replace=Image_MainCard]").attr("src", additionalInformation.ImageMainCard);
         $("[data-replace=Image_Tap]").attr("src", additionalInformation.ImageTap);
         $("[data-replace=Image_Loading]").attr("src", additionalInformation.ImageLoading);
         $("[data-replace=EventName]").text(mainEvent.Name);
@@ -366,6 +367,11 @@
         var flipTimeouts = [];
         for (var k = 0; k < totalPages; k++) flipTimeouts.push(null);
 
+        // Regreso del álbum al llegar a la última foto
+        var FLIP_MS = 1000; // duración del giro (.page transition: transform 1s)
+        var REWIND_STAGGER = 400; // separación entre páginas al regresar
+        var rewinding = false; // ignora clics mientras el álbum regresa
+
         mainEvent.Gallery.forEach(function (img, i) {
           var page = document.createElement("div");
           page.className = "page";
@@ -381,12 +387,13 @@
             "click",
             (function (idx, pageEl) {
               return function () {
-                if (idx !== currentPage) return;
+                if (rewinding || idx !== currentPage) return;
 
                 pageEl.classList.add("flipped");
                 if (flipSound) {
                   flipSound.currentTime = 0;
-                  flipSound.play();
+                  var p = flipSound.play();
+                  if (p && p.catch) p.catch(function () {}); // navegador puede bloquear el sonido
                 }
 
                 currentPage++;
@@ -394,9 +401,11 @@
 
                 if (isLast) {
                   currentPage = 0;
-                  pages.forEach(function (p, j) {
-                    p.style.zIndex = totalPages - j;
-                  });
+                  rewinding = true;
+                  // La última página queda arriba de la pila izquierda mientras gira.
+                  // (Antes se reordenaban todas al instante: la 1a foto quedaba encima,
+                  // inmóvil, tapando a las demás mientras regresaban.)
+                  pageEl.style.zIndex = totalPages + 1;
                 }
 
                 if (!isLast) {
@@ -414,22 +423,36 @@
                 }
 
                 if (isLast) {
+                  // Se espera a que la última página termine de girar y luego se
+                  // regresan de la última a la primera. Cada página que regresa va
+                  // por encima de todo (z-index alto y creciente), así ninguna foto
+                  // se queda fija tapando la animación.
                   for (var j = totalPages - 1; j >= 0; j--) {
                     (function (jj) {
-                      var delay = (totalPages - 1 - jj) * 400;
+                      var delay = FLIP_MS + (totalPages - 1 - jj) * REWIND_STAGGER;
                       var p = pages[jj];
                       setTimeout(function () {
-                        p.style.zIndex = totalPages - jj;
-                        void p.offsetHeight;
-                        p.classList.remove("flipped");
                         if (flipTimeouts[jj] !== null) {
                           clearTimeout(flipTimeouts[jj]);
                           flipTimeouts[jj] = null;
                         }
+                        p.style.zIndex = totalPages * 2 + (totalPages - jj);
+                        void p.offsetHeight;
+                        p.classList.remove("flipped");
                       }, delay);
                     })(j);
                   }
-                  var totalDelay = (totalPages - 1) * 400 + 750;
+
+                  // Cuando la primera página termina de regresar: orden normal de la pila
+                  var rewindEnd = FLIP_MS + (totalPages - 1) * REWIND_STAGGER + FLIP_MS;
+                  setTimeout(function () {
+                    pages.forEach(function (p, j) {
+                      p.style.zIndex = totalPages - j;
+                    });
+                    rewinding = false;
+                  }, rewindEnd);
+
+                  var totalDelay = FLIP_MS + (totalPages - 1) * REWIND_STAGGER + 750;
                   setTimeout(function () {
                     book.style.transition = "transform 1s ease";
                     book.classList.remove("shifted");
@@ -458,7 +481,8 @@
           imgMain.classList.add(themeName);
         }
 
-        $("#audioButton").addClass("off");
+        // La música no se toca al cambiar de tema: antes se marcaba "off"
+        // pero el audio seguía sonando y el botón quedaba desincronizado.
         if (tapHint) tapHint.classList.remove("hidden");
         if (book) book.classList.remove("shifted");
         $("#book").empty();
@@ -470,7 +494,7 @@
             document.documentElement.style.setProperty(key, theme[key]);
           } else if (key === "ImageBodyBackground") {
             additionalInformation.ImageBodyBackground = theme[key];
-          } else if (key === "Image_MainCard") {
+          } else if (key === "ImageMainCard") {
             additionalInformation.ImageMainCard = theme[key];
           } else if (key === "Name") {
             mainEvent.Name = theme[key];
@@ -479,17 +503,9 @@
           }
         }
 
-        // Guardar Gallery antes de helpers.init() que puede modificarla
-        var galleryBackup = mainEvent.Gallery.slice();
-        var gallery2Backup = mainEvent.Gallery2.slice();
-
+        // Solo se refresca lo que cambia con el tema (nombre, fondo, foto).
+        // helpers.init ya corrió una vez en InitPage; repetirlo no hacía falta.
         onLoad();
-        helpers.init(Init);
-
-        // Restaurar Gallery después de helpers.init()
-        mainEvent.Gallery = galleryBackup;
-        mainEvent.Gallery2 = gallery2Backup;
-
         generateBook();
       }
 

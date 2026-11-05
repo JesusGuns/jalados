@@ -51,7 +51,7 @@
     <link rel="preload" fetchpriority="high" as="image" href="v3/1.webp" type="image/webp" />
 
     <!-- Bootstrap 5.3.3 CSS -->
-    <link rel="stylesheet" href="/css/bootstrap.min.css" crossorigin />
+    <link rel="stylesheet" href="/css/bootstrap.custom.min.css" crossorigin />
     <link rel="stylesheet" href="/css/templates.min.css" />
     <link rel="stylesheet" href="/css/Wedding/Wedding_4.min.css" />
 
@@ -60,7 +60,7 @@
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Jost:wght@300;400;500;600&family=Marcellus&display=swap" rel="stylesheet" />
     <!-- Toastify CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css" media="print" onload="this.media = 'all'" />
 
     
   </head>
@@ -68,7 +68,7 @@
     <button class="audio-player-btn off" id="audioButton" title="Reproducir Música">
       <i class="fa-solid fa-music"></i>
     </button>
-    <audio id="audio" src="#" data-replace="AudioUrl" preload="none" loop></audio>
+    <audio id="audio" data-replace="AudioUrl" preload="none" loop></audio>
 
     <!-- 1. SECCIÓN PRINCIPAL / HERO -->
     <section class="_main-section" id="mainSection">
@@ -342,7 +342,7 @@
 
       <!-- 10. SECCIÓN CÓDIGO DE VESTIMENTA -->
       <section class="_dresscode-section editorial-section">
-        <img class="_main-image" src="#" data-replace="Image_DressCodeUrl" alt="Dress Code" />
+        <img class="_main-image" data-replace="Image_DressCodeUrl" alt="Dress Code" />
         <div class="container reveal-element">
           <div class="dresscode-ornament" aria-hidden="true">
             <svg viewBox="0 0 46 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -459,8 +459,8 @@
       <!-- 14. PIE DE PÁGINA Y TAGLINE -->
       <footer class="_end-section moomentos-tagline">
         <a href="https://www.moomentos.com" target="_blank" rel="noopener noreferrer">
-          Invitaciones que enamoran desde el primer vistazo —
-          <span>Moomentos.</span>
+          Invitaciones que enamoran desde el primer vistazo
+          <span>Moomentos</span>
         </a>
       </footer>
     </div>
@@ -526,11 +526,11 @@
         AmazonGiftTableUrl: "https://www.amazon.com.mx/",
         LiverpoolGiftTableUrl: "https://mesaderegalos.liverpool.com.mx/",
 
-        DressCodeStyle: "Semi-Formal",
+        DressCodeStyle: "Rigurosa Etiqueta / Black Tie",
       };
 
       var secondaryEvent = {
-        Date: new Date("2026-10-17T17:30:00"),
+        Date: new Date("2026-10-17T19:30:00"), // recepción después de la ceremonia (17:30)
         LocationDescription: "La Terraza Clouthier",
         Address: "Av Manuel J. Clouthier 480, Lomas de Guadalupe, 45038 Guadalajara, Jal.",
         GoogleMapsUrl: "https://maps.app.goo.gl/HpD9ZEkGmku4WTyT8",
@@ -559,7 +559,7 @@
         $("[data-replace=EventFormatDate]").text(eventFormatDate);
         $("[data-replace=Image_MainCard]").css("background-image", "url('" + additionalInformation.ImageMainCard + "')");
         $("[data-replace=Image_DressCodeUrl]").attr("src", additionalInformation.ImageDressCodeUrl);
-
+        $("[data-replace=DressCodeStyle]").text(mainEvent.DressCodeStyle);
         // Revelar Secciones al Dar Clic en "Ver Invitación"
         const enterBtn = document.getElementById("enterInvitationBtn");
         const hiddenContent = document.getElementById("hiddenContent");
@@ -632,7 +632,7 @@
 
         function updateLightboxImage() {
           const item = galleryImages[currentGalleryIndex];
-          lightboxImg.src = item.src.replace("w=800", "w=1600");
+          lightboxImg.src = item.src;
           lightboxImg.alt = item.alt;
           lightboxCounter.textContent = `${currentGalleryIndex + 1} / ${galleryImages.length}`;
         }
