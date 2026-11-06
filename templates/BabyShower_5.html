@@ -1,0 +1,593 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-71JZFVKZ5M"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      if (window.self === window.top) gtag("config", "G-71JZFVKZ5M");
+    </script>
+    <!-- END Google tag (gtag.js) -->
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="google" content="notranslate" />
+
+    <base href="/images/templates/BabyShower/" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
+
+    <!-- SEO básico -->
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://www.moomentos.com/BabyShower/5" />
+
+    <title>Baby Shower - Diseño Burbujitas | Moomentos</title>
+    <meta name="title" content="Baby Shower - Diseño Burbujitas | Moomentos" />
+    <meta name="description" content="Invitación digital de Baby Shower con temática de hora del baño: revienta la burbuja, patito de hule, tina que se llena con la cuenta regresiva y fotos en burbujas. Moomentos." />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://www.moomentos.com/BabyShower/5" />
+    <meta property="og:site_name" content="Moomentos" />
+    <meta property="og:title" content="¡Baby Shower de nuestro bebé! 🐥🫧" />
+    <meta property="og:description" content="¡Estamos esperando un bebé! Te invitamos a celebrar con nosotros este día tan especial." />
+    <meta property="og:image" content="https://www.moomentos.com/images/icons/_favicon-BabyShower.png" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://www.moomentos.com/BabyShower/5" />
+    <meta name="twitter:title" content="¡Baby Shower de nuestro bebé! 🐥🫧" />
+    <meta name="twitter:description" content="¡Estamos esperando un bebé! Te invitamos a celebrar con nosotros este día tan especial." />
+    <meta name="twitter:image" content="https://www.moomentos.com/images/icons/_favicon-BabyShower.png" />
+
+    <link rel="icon" type="image/png" sizes="196x196" href="/images/icons/_favicon-BabyShower-196.png" />
+    <link rel="preload" fetchpriority="high" as="image" href="2.webp" type="image/webp" />
+
+    <link rel="stylesheet" href="/css/templates.min.css" />
+    <link rel="stylesheet" href="/css/BabyShower/BabyShower_5.min.css" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media = 'all'" />
+    <link href="https://fonts.googleapis.com/css2?family=Chewy&family=Varela+Round&display=swap" rel="stylesheet" media="print" onload="this.media = 'all'" />
+  </head>
+
+  <body>
+    <audio id="audio" data-replace="AudioUrl" preload="none" loop></audio>
+
+    <span id="audioButton" class="_template-Audio-Button off d-none">
+      <img data-replace="Image_AudioUrl" alt="Audio" />
+    </span>
+
+    <div id="themeSwitcher" class="d-none">
+      <button class="theme-btn" data-theme="themeAqua" style="background: #7fd6e3" title="Agua"></button>
+      <button class="theme-btn" data-theme="themeLilac" style="background: #c4b5fd" title="Lila"></button>
+      <button class="theme-btn" data-theme="themeCoral" style="background: #fdb4a6" title="Coral"></button>
+    </div>
+
+    <!-- Burbujas que suben en el fondo (las genera JS) -->
+    <div id="bgBubbles" aria-hidden="true"></div>
+
+    <div class="page">
+      <!-- ACCESO: revienta la gran burbuja -->
+      <section class="gate" id="gate">
+        <span class="gate-top" id="gateTop">¡Blub, blub! Algo flota por aquí…</span>
+        <div class="big-bub bub" id="bigBubble" role="button" tabindex="0" aria-label="Reventar la burbuja y abrir la invitación">
+          <span class="duck" data-duck></span>
+        </div>
+        <div class="quack">¡Quack! 🐥</div>
+        <div class="gate-hint" id="gateHint">🫧 Toca la burbuja para reventarla</div>
+        <p class="gate-date">
+          <small>Baby Shower</small>
+          <span data-replace="MainEventWeekDay"></span>
+          <span data-replace="MainEventDay"></span>
+          de
+          <span data-replace="MainEventMonth"></span>
+        </p>
+        <div class="gate-water" aria-hidden="true">
+          <span class="w w1"></span>
+          <span class="duck" data-duck></span>
+          <span class="w w2"></span>
+        </div>
+      </section>
+
+      <div class="_hide-section" id="hiddenContent">
+        <!-- BIENVENIDA: foto en burbuja + nombre en burbujitas -->
+        <section class="blk welcome reveal">
+          <div class="photo-bub bub">
+            <span class="duck" data-duck></span>
+            <img src="2.webp" data-replace="Image_MainCard" alt="Bebé" fetchpriority="high" loading="eager" />
+          </div>
+          <small>Con burbujas de amor esperamos a</small>
+          <div class="letters" id="nameLetters" aria-hidden="true"></div>
+          <p class="sub" style="margin-top: 16px">Revienta las burbujitas 🫧</p>
+          <span data-replace="EventName" class="d-none"></span>
+        </section>
+
+        <!-- CONTADOR: la tina se llena -->
+        <section class="blk reveal _template-Counter-Section _counter-section">
+          <h2 class="ttl">¡Llenando la tina!</h2>
+          <p class="sub">Cada día el agua sube un poquito más 🛁</p>
+          <div class="tub-wrap">
+            <div class="faucet"><i></i></div>
+            <div class="tub" id="tub">
+              <div class="water"></div>
+              <div class="floaty"><span class="duck" data-duck></span></div>
+            </div>
+            <div class="tub-feet"><span></span><span></span></div>
+          </div>
+          <div class="cd">
+            <div class="bub"><span id="days">00</span><small>Días</small></div>
+            <div class="bub"><span id="hours">00</span><small>Hrs</small></div>
+            <div class="bub"><span id="minutes">00</span><small>Min</small></div>
+            <div class="bub"><span id="seconds">00</span><small>Seg</small></div>
+          </div>
+        </section>
+
+        <!-- PADRES: juguetes de baño -->
+        <section class="blk reveal _parents-section">
+          <h2 class="ttl">Con el cariño de</h2>
+          <p class="sub">Los que preparan el baño más especial</p>
+          <div class="toys">
+            <div class="toy" style="--d: 0s"><i class="bub">🐣</i><b>Mamá</b><p data-replace="EventMother"></p></div>
+            <div class="toy" style="--d: -0.9s"><i class="bub">🐳</i><b>Papá</b><p data-replace="EventFather"></p></div>
+            <div class="toy" style="--d: -1.8s"><i class="bub">🐙</i><b>Madrina</b><p data-replace="EventGodMother"></p></div>
+            <div class="toy" style="--d: -2.7s"><i class="bub">⛵</i><b>Padrino</b><p data-replace="EventGodFather"></p></div>
+          </div>
+        </section>
+
+        <!-- DETALLES: barra de jabón -->
+        <section class="blk reveal">
+          <div class="soap">
+            <h3>Detalles de la fiesta</h3>
+            <div class="row">
+              <span class="ic">📅</span>
+              <div>
+                <em>Fecha</em>
+                <strong><span data-replace="MainEventWeekDay"></span> <span data-replace="MainEventDay"></span> de <span data-replace="MainEventMonth"></span> de <span data-replace="MainEventYear"></span></strong>
+              </div>
+            </div>
+            <div class="row">
+              <span class="ic">⏰</span>
+              <div>
+                <em>Hora</em>
+                <strong data-replace="MainEventHourString"></strong>
+              </div>
+            </div>
+            <div class="row">
+              <span class="ic">📍</span>
+              <div>
+                <em>Lugar</em>
+                <b data-replace="MainEventLocationDescription"></b>
+                <small data-replace="MainEventAddress"></small>
+                <a href="#" data-replace="MainEventUrl" target="_blank" class="map-link"><span class="vc-map"><img data-replace="Image_GoogleLocation" alt="Maps" /></span>Ver mapa</a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ITINERARIO: burbuja a burbuja -->
+        <section class="blk reveal _itinerary-section">
+          <h2 class="ttl">Burbuja a burbuja</h2>
+          <p class="sub">Así irá subiendo la diversión</p>
+          <div class="trail">
+            <div class="step" style="--i: 0"><span class="sb bub"><span>🫧</span></span><div><b>Bienvenida</b><small data-replace="MainEventHourString"></small></div></div>
+            <div class="step" style="--i: 1"><span class="sb bub"><span>🎲</span></span><div><b>Juegos y dinámicas</b></div></div>
+            <div class="step" style="--i: 2"><span class="sb bub"><span>🍽️</span></span><div><b>Comida</b></div></div>
+            <div class="step" style="--i: 3"><span class="sb bub"><span>🎁</span></span><div><b>Apertura de regalos</b></div></div>
+            <div class="step" style="--i: 4"><span class="sb bub"><span>🎂</span></span><div><b>Pastel</b></div></div>
+            <div class="step" style="--i: 5"><span class="sb bub"><span>📸</span></span><div><b>Fotos del recuerdo</b></div></div>
+          </div>
+        </section>
+
+        <!-- GALERÍA: racimo de burbujas -->
+        <section class="blk reveal _gallery-section">
+          <h2 class="ttl">Momentos en burbuja</h2>
+          <p class="sub">Toca una burbuja para verla en grande</p>
+          <div class="cluster" id="gallery-grid"></div>
+        </section>
+
+        <!-- CONFIRMACIÓN -->
+        <section class="blk rsvp reveal _attendance-section">
+          <div class="pond" aria-hidden="true">
+            <span class="duck" data-duck></span>
+            <span class="duck baby" data-duck></span>
+            <span class="w"></span>
+          </div>
+          <h2 class="ttl">¿Te unes al chapuzón?</h2>
+          <p class="sub">Tu presencia es el mejor regalo</p>
+          <a href="#" data-replace="WhatsAppUrl" target="_blank" class="quack-btn">🐥 ¡Quack! Sí asistiré</a>
+        </section>
+
+        <!-- REGALOS: barquitos de papel -->
+        <section class="blk rsvp reveal _gifttable-section">
+          <h2 class="ttl">Mesa de Regalos</h2>
+          <p class="sub">Si deseas consentir al bebé, sube a un barquito ⛵</p>
+          <div class="boats">
+            <a href="#" data-replace="EventAmazonGiftTableUrl" target="_blank" class="boat"><span class="sail"><img data-replace="Image_AmazonUrl" alt="Amazon" /></span><span class="hull">Amazon</span></a>
+            <a href="#" data-replace="EventLiverpoolGiftTableUrl" target="_blank" class="boat"><span class="sail"><img data-replace="Image_LiverpoolUrl" alt="Liverpool" /></span><span class="hull">Liverpool</span></a>
+          </div>
+          <div class="boats-water" aria-hidden="true"></div>
+        </section>
+
+        <footer class="foot">
+          <span class="duck" data-duck aria-hidden="true"></span>
+          <h2>¡Te esperamos!</h2>
+          <p>Con mucho amor y muchas burbujas<br />celebraremos la llegada de <strong data-replace="EventName"></strong></p>
+          <section class="moomentos-tagline">
+            <span class="moomentos-tagline__line"></span>
+            <a href="https://www.moomentos.com" target="_blank" rel="noopener noreferrer">Invitaciones que enamoran desde el primer vistazo <span>Moomentos</span></a>
+            <span class="moomentos-tagline__line"></span>
+          </section>
+        </footer>
+      </div>
+    </div>
+
+    <!-- Modal galería -->
+    <div id="galleryModal">
+      <button class="gm-close" id="galleryModalClose"><i class="fas fa-times"></i></button>
+      <div class="gm-wrap" id="galleryModalImgWrap"><img src="" id="modalImg" alt="Galería" /></div>
+      <div class="gm-bar">
+        <button class="gm-btn" id="galleryModalPrev"><i class="fas fa-chevron-left"></i></button>
+        <span><strong id="galleryModalCurrent">1</strong> / <span id="galleryModalTotal">1</span></span>
+        <button class="gm-btn" id="galleryModalNext"><i class="fas fa-chevron-right"></i></button>
+      </div>
+    </div>
+
+    <!-- jQuery primero — sin defer -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+    <script type="module">
+      import { helpers } from "/js/helpers.js";
+
+      // ─── Settings ─────────────────────────────
+      const settings = {
+        EventType: "BabyShower",
+        Template: true, // Cambiar a false en producción para saber que es un cliente real
+        AudioUrl: "/music/here-comes-the-sun.mp3",
+        Sections: {
+          showCounter: true,
+          showParents: true,
+          showItinerary: true,
+          showGallery: true,
+          showAttendance: true,
+          showGiftTable: true,
+        },
+        ShowElements: {
+          showAmazonOption: true,
+          showLiverpoolOption: true,
+        },
+      };
+
+      // ─── DATOS DEL EVENTO ─────────────────────────────
+      var mainEvent = {
+        Date: new Date("2026-12-12T16:00:00"),
+        Name: "Emilia",
+
+        LocationDescription: "Jardín Los Patos",
+        Address: "Av. Patria 1891, Zapopan, Jal.",
+        GoogleMapsUrl: "https://maps.app.goo.gl/HpD9ZEkGmku4WTyT8",
+
+        Father: "Daniel Ortega",
+        Mother: "Valeria Ríos",
+        GodFather: "Andrés Medina",
+        GodMother: "Sofía Herrera",
+
+        Gallery: [`2.webp`, `1.webp`, `3.webp`, `4.webp`, `5.webp`, `6.webp`, `7.webp`],
+
+        AmazonGiftTableUrl: "https://www.amazon.com.mx/",
+        LiverpoolGiftTableUrl: "https://www.liverpool.com.mx/tienda/home",
+      };
+
+      var additionalInformation = {
+        ImageMainCard: `2.webp`,
+        WhatsAppUrl: "https://wa.link/smvz7g",
+      };
+
+      // BabyShower — un solo evento, sin SecondaryEvent
+      var Init = {
+        Config: {
+          ...settings,
+          Themes: {
+            themeAqua: { primary: "#2bb5c9", primaryBg: "#e6f8fb", accent: "#b9ecf3", accent2: "#ffd84d" },
+            themeLilac: { primary: "#9b7bf0", primaryBg: "#f3efff", accent: "#ddd3ff", accent2: "#ffd84d" },
+            themeCoral: { primary: "#f2846f", primaryBg: "#fff1ec", accent: "#ffd5c9", accent2: "#ffe27a" },
+          },
+        },
+        RSVP: {
+          Enable: false,
+          EventID: "",
+        },
+        MainEvent: mainEvent,
+      };
+
+      // ─── PATITO DE HULE (SVG) ─────────────────────────
+      // Se inyecta en cada [data-duck]. No se usa <use href="#..."> porque
+      // el <base href> de la plantilla rompe las referencias por fragmento.
+      var DUCK_SVG =
+        '<svg viewBox="0 0 120 100" aria-hidden="true">' +
+        '<path class="d-body" d="M10 42C18 44 26 52 34 54C44 57 52 57 58 55C52 44 56 28 70 21C86 13 104 22 103 40C102 50 97 55 93 58C102 63 106 72 102 80C96 94 76 98 56 98C30 98 12 86 12 62C12 54 11 48 10 42Z"/>' +
+        '<path class="d-tuft" d="M76 20C73 11 80 8 82 15C84 8 91 10 87 19"/>' +
+        '<ellipse class="d-shine" cx="72" cy="30" rx="6" ry="3.5" transform="rotate(-30 72 30)"/>' +
+        '<path class="d-wing" d="M34 66C46 56 64 58 72 68C62 82 44 82 34 66Z"/>' +
+        '<path class="d-beak" d="M98 38C108 34 118 38 116 44C114 50 104 50 97 47Z"/>' +
+        '<circle class="d-eye" cx="86" cy="33" r="4.5"/><circle fill="#fff" cx="87.6" cy="31.4" r="1.6"/>' +
+        '<ellipse class="d-cheek" cx="83" cy="46" rx="5" ry="3"/>' +
+        "</svg>";
+
+      // ─── TEMAS ────────────────────────────────────────
+      function applyTheme(key) {
+        const t = Init.Config.Themes[key];
+        if (!t) return;
+        var r = document.documentElement;
+        r.style.setProperty("--primary", t.primary);
+        r.style.setProperty("--primary-bg", t.primaryBg);
+        r.style.setProperty("--accent", t.accent);
+        r.style.setProperty("--accent2", t.accent2);
+        $(".theme-btn").removeClass("active");
+        $(".theme-btn[data-theme='" + key + "']").addClass("active");
+      }
+
+      $(".theme-btn").on("click", function () {
+        applyTheme($(this).data("theme"));
+      });
+
+      // ─── BURBUJAS: helpers visuales ───────────────────
+      var reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+      // Gotitas que salen disparadas al reventar una burbuja
+      function splash(x, y, count) {
+        if (reduceMotion) return;
+        for (var i = 0; i < count; i++) {
+          var a = (Math.PI * 2 * i) / count + Math.random() * 0.4;
+          var dist = 50 + Math.random() * 70;
+          var d = document.createElement("span");
+          d.className = "drop";
+          d.style.left = x + "px";
+          d.style.top = y + "px";
+          d.style.setProperty("--s", 6 + Math.random() * 10 + "px");
+          d.style.setProperty("--dx", Math.cos(a) * dist + "px");
+          d.style.setProperty("--dy", Math.sin(a) * dist + "px");
+          d.addEventListener("animationend", function () { this.remove(); });
+          document.body.appendChild(d);
+        }
+      }
+
+      function centerOf(el) {
+        var r = el.getBoundingClientRect();
+        return { x: r.left + r.width / 2, y: r.top + r.height / 2 };
+      }
+
+      // Burbujas de fondo que suben sin parar
+      function initBgBubbles() {
+        if (reduceMotion) return;
+        var $bg = $("#bgBubbles");
+        for (var i = 0; i < 14; i++) {
+          var s = 14 + Math.random() * 42;
+          $("<span>", { class: "bub" })
+            .css({ "--x": Math.random() * 100 + "%", "--s": s + "px", "--t": 12 + Math.random() * 14 + "s", "--d": -Math.random() * 26 + "s" })
+            .appendTo($bg);
+        }
+      }
+
+      // Toca cualquier parte vacía y sale una burbujita
+      function initTapBubbles() {
+        if (reduceMotion) return;
+        document.addEventListener("pointerdown", function (e) {
+          if ($(e.target).closest("a,button,.lb,.gal-item,#bigBubble,#galleryModal,#audioButton,#themeSwitcher").length) return;
+          var b = document.createElement("span");
+          b.className = "tap-bub bub";
+          b.style.left = e.clientX + "px";
+          b.style.top = e.clientY + "px";
+          b.style.setProperty("--s", 26 + Math.random() * 26 + "px");
+          b.style.setProperty("--dx", (Math.random() * 60 - 30) + "px");
+          b.addEventListener("animationend", function () {
+            var c = centerOf(this);
+            splash(c.x, c.y, 6);
+            this.remove();
+          });
+          document.body.appendChild(b);
+        });
+      }
+
+      // ─── ONLOAD LOCAL ─────────────────────────────────
+      function onLoad() {
+        $("[data-duck]").html(DUCK_SVG);
+        $("[data-replace=WhatsAppUrl]").attr("href", additionalInformation.WhatsAppUrl);
+        $("[data-replace=Image_MainCard]").attr("src", additionalInformation.ImageMainCard);
+
+        // Nombre en burbujitas que se revientan y vuelven a salir
+        var $letters = $("#nameLetters").empty();
+        String(mainEvent.Name).toUpperCase().split("").forEach(function (ch, i) {
+          if (ch.trim() === "") return $letters.append('<span class="lb-sp"></span>');
+          $("<div>", { class: "lb bub", style: "--d:" + i * -0.35 + "s" }).append($("<b>", { text: ch })).appendTo($letters);
+        });
+        $letters.on("click", ".lb", function () {
+          var c = centerOf(this);
+          splash(c.x, c.y, 8);
+          var el = $(this).removeClass("pop");
+          void this.offsetWidth;
+          el.addClass("pop");
+          if (navigator.vibrate) navigator.vibrate(15);
+        });
+        $letters.on("animationend", ".lb", function (e) {
+          if (e.originalEvent.animationName === "popRe") $(this).removeClass("pop");
+        });
+
+        // Tina: se llena según se acerca la fecha (ventana de 60 días)
+        var daysLeft = (mainEvent.Date - new Date()) / 86400000;
+        var pct = Math.min(88, Math.max(14, (1 - daysLeft / 60) * 100));
+        var tubObs = new IntersectionObserver(function (entries) {
+          if (!entries[0].isIntersecting) return;
+          document.getElementById("tub").style.setProperty("--fill", pct + "%");
+          tubObs.disconnect();
+        }, { threshold: 0.4 });
+        var tub = document.getElementById("tub");
+        if (tub) tubObs.observe(tub);
+
+        // Espuma sobre la orilla de la tina
+        var foam = $("<div>", { class: "foam", "aria-hidden": "true" });
+        [[0, 30], [9, 40], [20, 26], [64, 34], [74, 44], [86, 30], [93, 22]].forEach(function (f, i) {
+          $("<span>").css({ "--x": f[0] + "%", "--s": f[1] + "px", "--d": i * -0.4 + "s" }).appendTo(foam);
+        });
+        $("#tub").before(foam);
+
+        // Galería: racimo de burbujas con tamaños variados
+        var sizes = [150, 112, 128, 104, 140, 118, 132];
+        mainEvent.Gallery.forEach(function (url, i) {
+          var item = $("<div>", { class: "gal-item bub", "data-index": i });
+          item[0].style.setProperty("--sz", sizes[i % sizes.length] + "px");
+          item[0].style.setProperty("--d", i * -0.55 + "s");
+          item.append($("<img>", { src: url, alt: "Foto " + (i + 1), loading: "lazy" }));
+          $("#gallery-grid").append(item);
+        });
+      }
+
+      // ─── GALERIA MODAL ────────────────────────────────
+      var galleryModal = {
+        $el: null,
+        currentIndex: 0,
+        images: [],
+        tX: 0,
+        tY: 0,
+
+        init: function () {
+          var s = this;
+          s.$el = $("#galleryModal");
+          s.images = mainEvent.Gallery;
+
+          $(document).on("click", ".gal-item", function () {
+            var c = centerOf(this);
+            splash(c.x, c.y, 10);
+            s.open(parseInt($(this).data("index")));
+          });
+          $("#galleryModalClose").on("click", function (e) {
+            e.stopPropagation();
+            s.close();
+          });
+          s.$el.on("click", function (e) {
+            if ($(e.target).is("#galleryModal")) s.close();
+          });
+          $("#galleryModalPrev").on("click", function (e) {
+            e.stopPropagation();
+            s.navigate(-1);
+          });
+          $("#galleryModalNext").on("click", function (e) {
+            e.stopPropagation();
+            s.navigate(1);
+          });
+
+          var w = document.getElementById("galleryModalImgWrap");
+          w.addEventListener("touchstart", function (e) {
+            s.tX = e.changedTouches[0].screenX;
+            s.tY = e.changedTouches[0].screenY;
+          }, { passive: true });
+          w.addEventListener("touchend", function (e) {
+            var dx = e.changedTouches[0].screenX - s.tX;
+            var dy = e.changedTouches[0].screenY - s.tY;
+            if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 45) s.navigate(dx < 0 ? 1 : -1);
+          }, { passive: true });
+          document.addEventListener("keydown", function (e) {
+            if (!s.$el.hasClass("open")) return;
+            if (e.key === "ArrowLeft") s.navigate(-1);
+            if (e.key === "ArrowRight") s.navigate(1);
+            if (e.key === "Escape") s.close();
+          });
+        },
+
+        open: function (i) {
+          this.currentIndex = i;
+          this.upd();
+          this.$el.addClass("open");
+          $("body").css("overflow", "hidden");
+        },
+        close: function () {
+          this.$el.removeClass("open");
+          $("body").css("overflow", "");
+        },
+        navigate: function (dir) {
+          var s = this;
+          $("#modalImg").addClass("fading");
+          setTimeout(function () {
+            s.currentIndex = (s.currentIndex + dir + s.images.length) % s.images.length;
+            s.upd();
+            $("#modalImg").removeClass("fading");
+          }, 180);
+        },
+        upd: function () {
+          $("#modalImg").attr("src", this.images[this.currentIndex]);
+          $("#galleryModalCurrent").text(this.currentIndex + 1);
+          $("#galleryModalTotal").text(this.images.length);
+        },
+      };
+
+      // ─── SCROLL REVEAL ────────────────────────────────
+      function initReveal() {
+        var obs = new IntersectionObserver(
+          function (entries) {
+            entries.forEach(function (e) {
+              if (e.isIntersecting) e.target.classList.add("visible");
+            });
+          },
+          { threshold: 0.1 },
+        );
+        document.querySelectorAll(".reveal").forEach(function (el) {
+          obs.observe(el);
+        });
+      }
+
+      // ─── ACCESO: ¡revienta la burbuja! ────────────────
+      function initGate() {
+        var opened = false;
+        function open() {
+          if (opened) return;
+          opened = true;
+          var bub = document.getElementById("bigBubble");
+          var c = centerOf(bub);
+          splash(c.x, c.y, 18);
+          $(bub).addClass("popped");
+          $("#gate").addClass("open");
+          $("#gateHint").hide();
+          $("#gateTop").text("¡Sorpresa! Ya viene un bebé 💛");
+          if (navigator.vibrate) navigator.vibrate([30, 40, 30]);
+
+          // La música debe arrancar DENTRO del toque del usuario;
+          // si se llama después de un setTimeout el navegador la bloquea.
+          $("#audioButton").removeClass("d-none");
+          helpers.onPlay();
+
+          setTimeout(function () {
+            $("#hiddenContent").removeClass("_hide-section");
+            requestAnimationFrame(function () {
+              initReveal();
+              document.getElementById("hiddenContent").scrollIntoView({ behavior: "smooth" });
+            });
+          }, 1100);
+        }
+        $("#bigBubble").on("click", open).on("keydown", function (e) {
+          if (e.key === "Enter" || e.key === " ") { e.preventDefault(); open(); }
+        });
+      }
+
+      // ─── INIT PAGE ────────────────────────────────────
+      function InitPage() {
+        helpers.init(Init);
+
+        onLoad();
+        helpers.onCounterStart(Init.MainEvent.Date);
+        helpers.onAudioPlayer();
+
+        applyTheme("themeAqua");
+        galleryModal.init();
+        initBgBubbles();
+        initTapBubbles();
+        initGate();
+      }
+
+      InitPage();
+    </script>
+  </body>
+</html>
