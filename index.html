@@ -1,6 +1,12 @@
 <!doctype html>
 <html lang="es">
   <head>
+    <script>
+      // ?mp=0 en la URL oculta el botón de Mercado Pago (se aplica antes de pintar para evitar parpadeo)
+      try {
+        if (new URLSearchParams(window.location.search).get("mp") === "0") document.documentElement.classList.add("no-mp");
+      } catch (e) {}
+    </script>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-71JZFVKZ5M"></script>
     <script>
@@ -424,6 +430,10 @@
       /* ============================================
       PAGO — botón flotante Mercado Pago
       ============================================ */
+      .no-mp .mp-float {
+        display: none !important;
+      }
+
       .mp-float {
         position: fixed;
         bottom: 100px;
